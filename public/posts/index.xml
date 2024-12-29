@@ -6,21 +6,14 @@
     <description>Recent content in Posts on console-demo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2024 12:14:25 +0300</lastBuildDate>
     <atom:link href="https://emrepbu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction</title>
-      <link>https://emrepbu.github.io/posts/what-is-hugo/</link>
-      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://emrepbu.github.io/posts/what-is-hugo/</guid>
-      <description>&lt;p&gt;Hugo is an open-source project and lives by the work of its contributors. There are plenty of open issues, and we need your help to make Hugo even more awesome. You don&amp;rsquo;t need to be a Go guru to contribute to the project&amp;rsquo;s development.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>What is Hugo</title>
-      <link>https://emrepbu.github.io/posts/introduction/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://emrepbu.github.io/posts/introduction/</guid>
-      <description>&lt;p&gt;Hugo is a fast and modern static site generator written in Go, and designed to make website creation fun again.&lt;/p&gt;</description>
+      <title>Hello World</title>
+      <link>https://emrepbu.github.io/posts/hello-world/</link>
+      <pubDate>Sun, 29 Dec 2024 12:14:25 +0300</pubDate>
+      <guid>https://emrepbu.github.io/posts/hello-world/</guid>
+      <description>&lt;h2 id=&#34;emre&#34;&gt;emre,&lt;/h2&gt;&#xA;&lt;p&gt;This is a my first post&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

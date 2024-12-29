@@ -6,28 +6,21 @@
     <description>Recent content on console-demo</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Dec 2024 12:14:25 +0300</lastBuildDate>
     <atom:link href="https://emrepbu.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction</title>
-      <link>https://emrepbu.github.io/posts/what-is-hugo/</link>
-      <pubDate>Sat, 03 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://emrepbu.github.io/posts/what-is-hugo/</guid>
-      <description>&lt;p&gt;Hugo is an open-source project and lives by the work of its contributors. There are plenty of open issues, and we need your help to make Hugo even more awesome. You don&amp;rsquo;t need to be a Go guru to contribute to the project&amp;rsquo;s development.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>What is Hugo</title>
-      <link>https://emrepbu.github.io/posts/introduction/</link>
-      <pubDate>Mon, 01 Jul 2019 00:00:00 +0000</pubDate>
-      <guid>https://emrepbu.github.io/posts/introduction/</guid>
-      <description>&lt;p&gt;Hugo is a fast and modern static site generator written in Go, and designed to make website creation fun again.&lt;/p&gt;</description>
+      <title>Hello World</title>
+      <link>https://emrepbu.github.io/posts/hello-world/</link>
+      <pubDate>Sun, 29 Dec 2024 12:14:25 +0300</pubDate>
+      <guid>https://emrepbu.github.io/posts/hello-world/</guid>
+      <description>&lt;h2 id=&#34;emre&#34;&gt;emre,&lt;/h2&gt;&#xA;&lt;p&gt;This is a my first post&lt;/p&gt;</description>
     </item>
     <item>
       <title>About</title>
       <link>https://emrepbu.github.io/about/</link>
-      <pubDate>Sat, 05 Nov 2016 21:05:33 +0530</pubDate>
+      <pubDate>Sun, 29 Dec 2024 12:12:09 +0300</pubDate>
       <guid>https://emrepbu.github.io/about/</guid>
-      <description>&lt;p&gt;A minimal and responsive Hugo theme inspired by the system console, crafted for optimal performance with an average page load time of under one second.&lt;/p&gt;&#xA;&lt;p&gt;Theme is based on a modern and minimal &lt;a href=&#34;https://terminalcss.xyz/&#34;&gt;Terminal CSS&lt;/a&gt; framework.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://github.com/mrmierzejewski/hugo-theme-console/blob/master/images/preview.png?raw=true&#34; alt=&#34;Console&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;live-demo&#34;&gt;Live demo&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://mrmierzejewski.com/hugo-theme-console/&#34;&gt;https://mrmierzejewski.com/hugo-theme-console/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;&#xA;&lt;p&gt;From the root of your Hugo site, clone the theme into &lt;code&gt;themes/hugo-theme-console&lt;/code&gt; by running :&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git submodule add https://github.com/mrmierzejewski/hugo-theme-console.git hugo-theme-console&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;See the &lt;a href=&#34;https://gohugo.io/hugo-modules/theme-components/&#34;&gt;Hugo documentation&lt;/a&gt; for more information.&lt;/p&gt;&#xA;&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;&#xA;&lt;p&gt;Set theme parameter in your config file:&lt;/p&gt;</description>
+      <description>&lt;p&gt;This is a about pages&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
