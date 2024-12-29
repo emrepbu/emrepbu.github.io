@@ -22,7 +22,3 @@ languageCode = "en-us"
   [[params.navlinks]]
   name = "photos/"
   url = "photos/"
-  
-  [[params.navlinks]]
-  name = "photos/"
-  url = "photos/"
