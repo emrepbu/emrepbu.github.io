@@ -9,8 +9,6 @@ import {
 } from 'unocss'
 
 import { UI } from './src/config'
-import { extractIconsStartingWithI } from './src/utils/common'
-import projecstData from './src/content/projects/data.json'
 import { VERSION_COLOR } from './src/utils/github'
 
 import type {
@@ -35,8 +33,6 @@ const socialIcons = socialLinks
       item.displayMode !== 'textHiddenOnMobile'
   )
   .map((item) => (item as IconSocialItem | ResponsiveSocialItem).icon)
-
-const projectIcons = extractIconsStartingWithI(projecstData.projects)
 
 const versionClass = Object.values(VERSION_COLOR).flatMap((colorString) =>
   colorString.split(' ')
@@ -115,7 +111,6 @@ export default defineConfig({
   safelist: [
     ...navIcons,
     ...socialIcons,
-    ...projectIcons,
 
     /* remark-directive-sugar */
     'i-carbon-logo-github',

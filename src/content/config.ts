@@ -3,7 +3,7 @@ import { defineCollection } from 'astro:content'
 import { feedLoader } from '@ascorbic/feed-loader'
 import { githubReleasesLoader } from 'astro-loader-github-releases'
 import { githubPrsLoader } from 'astro-loader-github-prs'
-import { pageSchema, postSchema, projectsSchema, streamsSchema } from './schema'
+import { pageSchema, postSchema } from './schema'
 
 const pages = defineCollection({
   loader: glob({ pattern: '**/*.mdx', base: './src/pages' }),
@@ -13,16 +13,6 @@ const pages = defineCollection({
 const blog = defineCollection({
   type: 'content',
   schema: postSchema,
-})
-
-const projects = defineCollection({
-  type: 'data',
-  schema: projectsSchema,
-})
-
-const streams = defineCollection({
-  type: 'data',
-  schema: streamsSchema,
 })
 
 const feeds = defineCollection({
@@ -58,8 +48,6 @@ const prs = defineCollection({
 export const collections = {
   pages,
   blog,
-  projects,
-  streams,
   feeds,
   releases,
   prs,

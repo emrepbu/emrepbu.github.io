@@ -19,12 +19,6 @@ export const UI: Ui = {
       displayMode: 'alwaysText',
       text: 'Blog',
     },
-    {
-      path: '/projects',
-      title: 'Projects',
-      displayMode: 'alwaysText',
-      text: 'Projects',
-    },
   ],
   socialLinks: [
     {

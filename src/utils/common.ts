@@ -3,7 +3,6 @@ import { join } from 'node:path'
 import { existsSync } from 'node:fs'
 
 import type { html } from 'satori-html'
-import type { ProjectGroupsSchema } from '~/content/schema'
 import type { NavBarLayout } from '~/types'
 
 /**
@@ -11,24 +10,6 @@ import type { NavBarLayout } from '~/types'
  */
 export function slug(text: string) {
   return text.toLowerCase().replace(/[\s\\/]+/g, '-')
-}
-
-/**
- * Extracts all icons from the project groups schema that start with the letter "i".
- */
-export function extractIconsStartingWithI(data: ProjectGroupsSchema): string[] {
-  const icons: string[] = []
-
-  for (const key in data) {
-    const projects = data[key]
-    projects.forEach((project) => {
-      if (project.icon && project.icon.startsWith('i')) {
-        icons.push(project.icon)
-      }
-    })
-  }
-
-  return icons
 }
 
 /**
