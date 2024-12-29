@@ -41,10 +41,6 @@ After installation, take a look in the `exampleSite` folder at. This directory c
   ├── content
   │   ├── about
   │   │   └── index.md
-  │   └── photos
-  │   │   └── arizona-us
-  │   │       ├── arizona-us.jpg
-  │   │       └── index.md
   │   └── posts
   │       └── introduction
   │           └── index.md

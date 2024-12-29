@@ -49,21 +49,4 @@
 </div>
 {{ end }}
 
-
-{{ with .Site.GetPage "/photos" }}
-<h1>Latest photos</h1>
-
-<div class="image-grid">
-    {{ range first 3 (sort .Data.Pages "Date" "desc")}}
-    <a href="{{ .Permalink }}" title="{{ .Title }}">
-        {{ $image := .Page.Resources.GetMatch .Params.image }}
-        {{ with $image }}
-        {{ $thumb := .Resize "400x" }}
-        <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" class="img-responsive">
-        {{end}}
-    </a>
-    {{ end }}
-</div>
-{{ end }}
-
 {{ end }}
