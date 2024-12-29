@@ -2,7 +2,6 @@
 import LogoButton from '~/components/widgets/LogoButton.astro'
 import SearchSwitch from '~/components/widgets/SearchSwitch.astro'
 import ThemeSwitch from '~/components/widgets/ThemeSwitch.astro'
-import RssLink from '~/components/widgets/RssLink.astro'
 import NavItem from '~/components/base/NavItem.astro'
 import NavSwitch from '~/components/widgets/NavSwitch.astro'
 
@@ -34,8 +33,6 @@ validateNavBarLayout(navBarLayout)
                   <SearchSwitch />
                 ) : key === 'themeButton' ? (
                   <ThemeSwitch />
-                ) : key === 'rssLink' ? (
-                  <RssLink class="lt-md:hidden" />
                 ) : key === 'internalNavs' ? (
                   internalNavs.map((item) => (
                     <NavItem type="internal" {item} {mergeOnMobile} />
@@ -58,8 +55,6 @@ validateNavBarLayout(navBarLayout)
                   <SearchSwitch />
                 ) : key === 'themeButton' ? (
                   <ThemeSwitch />
-                ) : key === 'rssLink' ? (
-                  <RssLink class="lt-md:hidden" />
                 ) : key === 'internalNavs' ? (
                   internalNavs.map((item) => (
                     <NavItem type="internal" {item} {mergeOnMobile} />
@@ -112,7 +107,6 @@ validateNavBarLayout(navBarLayout)
                     mobileItemType="icon"
                   />
                 ))}
-              <RssLink />
             </Fragment>
           </NavSwitch>
         </>
@@ -125,8 +119,6 @@ validateNavBarLayout(navBarLayout)
                   <SearchSwitch />
                 ) : key === 'themeButton' ? (
                   <ThemeSwitch />
-                ) : key === 'rssLink' ? (
-                  <RssLink />
                 ) : key === 'internalNavs' ? (
                   internalNavs.map((item) => (
                     <NavItem type="internal" {item} {mergeOnMobile} />
@@ -146,8 +138,6 @@ validateNavBarLayout(navBarLayout)
                   <SearchSwitch />
                 ) : key === 'themeButton' ? (
                   <ThemeSwitch />
-                ) : key === 'rssLink' ? (
-                  <RssLink />
                 ) : key === 'internalNavs' ? (
                   internalNavs.map((item) => (
                     <NavItem type="internal" {item} {mergeOnMobile} />

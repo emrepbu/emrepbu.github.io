@@ -22,13 +22,13 @@ export const UI: Ui = {
   ],
   socialLinks: [
     {
-      link: 'https://github.com/lin-stephanie/astro-antfustyle-theme',
-      title: 'AntfuStyle on Github',
+      link: 'https://github.com/emrepbu',
+      title: 'emrepbu on Github',
       displayMode: 'alwaysIcon',
       icon: 'i-uil-github-alt',
     },
     {
-      link: 'https://x.com/astrodotbuild',
+      link: 'https://x.com/pbuemre',
       title: 'Astro on Twitter',
       displayMode: 'alwaysIcon',
       icon: 'i-ri-twitter-x-fill',
@@ -36,19 +36,10 @@ export const UI: Ui = {
   ],
   navBarLayout: {
     left: [],
-    right: [
-      'internalNavs',
-      'socialLinks',
-      'searchButton',
-      'themeButton',
-      'rssLink',
-    ],
+    right: ['internalNavs', 'socialLinks', 'searchButton', 'themeButton'],
     mergeOnMobile: true,
   },
-  tabbedLayoutTabs: [
-    { title: 'AstroBlog', path: '/feeds' },
-    { title: 'AstroStreams', path: '/streams' },
-  ],
+  tabbedLayoutTabs: false,
   groupView: {
     maxGroupColumns: 3,
     showGroupItemColorOnHover: true,

@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx'
 import { remarkPlugins, rehypePlugins } from './plugins'
 import { SITE } from './src/config'
 
-// https://docs.astro.build/en/reference/configuration-reference/
+// https://d ocs.astro.build/en/reference/configuration-reference/
 export default defineConfig({
   site: SITE.website,
   base: SITE.base,
