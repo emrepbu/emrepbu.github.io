@@ -1,0 +1,105 @@
+---
+import '@unocss/reset/tailwind.css'
+import '~/styles/main.css'
+import '~/styles/prose.css'
+import '~/styles/markdown.css'
+import '~/styles/page.css'
+
+import Head from '~/components/base/Head.astro'
+import Background from '~/components/backgrounds/Background.astro'
+import Link from '~/components/base/Link.astro'
+import NavBar from '~/components/base/NavBar.astro'
+import BackLink from '~/components/widgets/BackLink.astro'
+import Footer from '~/components/base/Footer.astro'
+import ToTopButton from '~/components/widgets/ToTopButton.astro'
+import Backdrop from '~/components/base/Backdrop.astro'
+
+import { SITE, FEATURES } from '~/config'
+import { getUrl } from '~/utils/common'
+
+import type { BgType } from '~/types'
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string | boolean
+  bgType?: BgType | false
+  pubDate?: string
+  lastModDate?: string
+}
+
+const { title, description, ogImage, bgType, pubDate, lastModDate } =
+  Astro.props
+
+const { slideEnterAnim } = FEATURES
+const slideEnterAnimEnabled = Array.isArray(slideEnterAnim) && slideEnterAnim[0]
+const style = slideEnterAnimEnabled
+  ? { '--enter-step': `${slideEnterAnim[1].enterStep}ms` }
+  : undefined
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <Head {title} {description} {ogImage} {pubDate} {lastModDate} />
+  </head>
+
+  <body
+    class="relative flex flex-col min-h-screen
+      font-sans text-gray-700 dark:text-gray-200"
+    data-no-sliding={!slideEnterAnimEnabled ? true : undefined}
+    {style}
+  >
+    <!-- Background -->
+    {bgType && <Background type={bgType} />}
+
+    <!-- Main -->
+    <Link
+      href="#main"
+      class="sr-only focus:(not-sr-only fixed start-1 top-1.5 op-20)"
+    >
+      Skip to content
+    </Link>
+    <NavBar />
+    <main id="main" class="px-7 py-10">
+      <slot />
+      {
+        Astro.url.pathname !== getUrl('/') && (
+          <footer class="slide-enter animate-delay-1000! prose mx-auto mt-8 print:hidden">
+            <slot name="share" />
+            <br />
+            <BackLink />
+          </footer>
+        )
+      }
+    </main>
+    <Footer />
+    <ToTopButton />
+
+    <!-- Panel Backdrop (on mobile) -->
+    <Backdrop />
+
+    <!-- Progress Bar & Image Zoom -->
+    <script>
+      /* nprogress */
+      import nprogress from 'nprogress'
+      document.addEventListener('astro:before-preparation', () => {
+        nprogress.start()
+      })
+      document.addEventListener('astro:page-load', () => {
+        nprogress.done()
+      })
+
+      /* medium-zoom */
+      import mediumZoom from 'medium-zoom/dist/pure'
+      const zoom = mediumZoom({
+        background: 'rgb(0 0 0 / 0.8)',
+      })
+
+      document.addEventListener('astro:page-load', () => {
+        zoom.detach()
+        zoom.attach('.prose img:not(.no-zoom):not(a img)')
+      })
+    </script>
+  </body>
+</html>

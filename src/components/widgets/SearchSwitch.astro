@@ -1,0 +1,165 @@
+---
+import { getUrl } from '~/utils/common'
+---
+
+<button
+  id="search-switch"
+  class="op-60 hover:op-100 op-transition"
+  title="Search"
+  aria-label="Search"
+>
+  <div u-i-grommet-icons-search></div>
+</button>
+
+<div
+  transition:persist
+  id="search-panel"
+  class="z-200 fixed top-20 right-8
+    hidden grid grid-rows-[auto_1fr]
+    w-30rem max-h-82vh p-2 rounded-lg lt-lgp:(w-90% left-5% right-5%)
+    bg-[var(--c-bg)] shadow-c"
+>
+  <div
+    id="search-bar"
+    class="grid grid-cols-[auto_1fr] items-center
+      h-10 px-3 rounded-md
+      bg-[#88888811] dark:bg-[#88888822]"
+  >
+    <div u-i-grommet-icons-search id="search-icon" class="op-60"></div>
+    <label class="sr-only" for="search-input">Search</label>
+    <input
+      type="search"
+      id="search-input"
+      class="h-full pl-2 bg-transparent outline-0"
+      placeholder="Search"
+      autocomplete="off"
+    />
+  </div>
+  <div id="search-results" class="overflow-y-auto" data-base={getUrl('/')}></div>
+</div>
+
+<script>
+  import { dispatchToggleBackdrop, toggleFadeEffect } from '~/utils/animation'
+
+  /* Handle click on search switch to open or close */
+  document.addEventListener('astro:page-load', () => {
+    const handleToggle = () => {
+      const searchPanel = document.getElementById('search-panel')
+      const isClosed = searchPanel?.classList.contains('hidden')
+      const isWidthUnder1128 = window.innerWidth < 1128
+
+      if (searchPanel && isClosed) {
+        if (isWidthUnder1128) dispatchToggleBackdrop(isWidthUnder1128)
+        toggleFadeEffect('search-panel', true, 'hidden')
+      } else if (searchPanel && !isClosed && !isWidthUnder1128) {
+        toggleFadeEffect('search-panel', false, 'hidden')
+      }
+    }
+
+    const searchSwitch = document.getElementById('search-switch')
+    searchSwitch?.addEventListener('click', handleToggle)
+  })
+
+  /* Handle click on link or outside search panel to close */
+  const handleClose = (event: MouseEvent) => {
+    const searchPanel = document.getElementById('search-panel')
+    if (!searchPanel || searchPanel.classList.contains('hidden')) return
+
+    const isWidthUnder1128 = window.innerWidth < 1128
+    const target = event.target
+
+    // check if the click event occurred outside the search panel
+    // in a non-ignored area ('search-switch')
+    const isClickedOutsideOnDesktop =
+      !isWidthUnder1128 &&
+      target instanceof Node &&
+      !searchPanel.contains(target) &&
+      !document.getElementById('search-switch')?.contains(target)
+
+    if (isClickedOutsideOnDesktop) {
+      toggleFadeEffect('search-panel', false, 'hidden')
+      return
+    }
+
+    // check if a link within 'search-results' was clicked
+    const isClickedOnLinkInSearchResults =
+      target instanceof HTMLElement &&
+      target.closest('#search-results') &&
+      target.closest('a')
+
+    if (isClickedOnLinkInSearchResults) {
+      if (isWidthUnder1128) dispatchToggleBackdrop(false)
+      if (!window.matchMedia('(prefers-reduced-motion)').matches)
+        searchPanel.classList.remove('fade-in')
+      searchPanel.classList.add('hidden')
+    }
+  }
+
+  document.addEventListener('click', (event) => handleClose(event))
+</script>
+
+<script>
+  const fakeResults = [
+    {
+      meta: {
+        title: 'Simulated Search Result in Dev Env',
+      },
+      excerpt: 'Mock data is used to simulate pagefind search <mark>in development</mark>, where files required for indexing exist only in memory.',
+    },
+    {
+      meta: {
+        title: 'Testing Search Functionality in Prod Env',
+      },
+      excerpt: 'Try running <mark>pnpm build && pnpm preview</mark> instead.',
+    }
+  ]
+
+  /* Handle user input */
+  const handleInput = async (event: Event) => {
+    const searchResults = document.getElementById('search-results')
+    if (searchResults) searchResults.innerHTML = ''
+    if (import.meta.env.PROD) {
+      // @ts-expect-error (for Cannot find name 'pagefind'.ts(2304), used as window.pagefind)
+      const search = await pagefind.search(event.target.value)
+
+      for (const result of search.results) {
+        const data = await result.data()
+        // console.log('data', data)
+        document.getElementById('search-results')!.innerHTML += `
+        <a href="${data.url}" class="search-results-item">
+          <div class="search-results-title">${data.meta.title}</div>
+          <div class="search-results-excerpt">${data.excerpt}</div>
+        </a>`
+      }
+    } else {
+      for (const data of fakeResults) {
+        const searchResults = document.getElementById('search-results')!
+        searchResults.innerHTML += `
+          <a href=${searchResults.dataset.base} class="search-results-item">
+            <div class="search-results-title">${data.meta.title}</div>
+            <div class="search-results-excerpt">${data.excerpt}</div>
+          </a>`
+      }
+    }
+  }
+
+  const searchInput = document.getElementById('search-input')
+  searchInput?.addEventListener('input', (event) => handleInput(event))
+</script>
+
+{import.meta.env.PROD &&
+  <script is:inline define:vars={{scriptUrl: getUrl('/pagefind/pagefind.js')}}>
+    async function loadPagefind() {
+      const pagefind = await import(scriptUrl)
+
+      await pagefind.options({
+        'excerptLength': 20
+      })
+
+      pagefind.init()
+      window.pagefind = pagefind
+      pagefind.search('')
+    }
+
+    if (!window.pagefind) loadPagefind()
+  </script>}

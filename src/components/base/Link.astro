@@ -1,0 +1,38 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string
+  title?: string
+  external?: boolean
+  children: HTMLElement | HTMLElement[] | string
+}
+
+const { href, title, external = false, class: className, ...rest } = Astro.props
+
+const newTitle = external && title ? `${title} (external link)` : title
+---
+
+<a
+  class={className}
+  {href}
+  title={newTitle}
+  target={external ? '_blank' : '_self'}
+  aria-label={newTitle}
+  {...rest}
+>
+  <slot /></a
+>
+
+<style>
+  a {
+    opacity: 0.6;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover {
+    opacity: 1;
+    text-decoration-color: inherit;
+  }
+</style>

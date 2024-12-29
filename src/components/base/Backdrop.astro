@@ -1,0 +1,85 @@
+---
+
+---
+
+<div
+  id="backdrop"
+  class="hidden z-75 fixed inset-0
+    backdrop-blur-[2px] bg-[#000000cc]"
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  import { dispatchToggleBackdrop, toggleFadeEffect } from '~/utils/animation'
+
+  /* Control Backdrop Fading */
+  document.addEventListener('toggle-backdrop', ((
+    event: CustomEvent<{ visible: boolean }>
+  ) => {
+    const isVisible = event.detail.visible
+    toggleFadeEffect('backdrop', isVisible, 'hidden')
+  }) as EventListener)
+
+  /* Close panel when user click on backdrop */
+  document.addEventListener('astro:page-load', () => {
+    const handleClick = () => {
+      const navPanel = document.getElementById('nav-panel')
+      const tocPanel = document.getElementById('toc-panel')
+      const searchPanel = document.getElementById('search-panel')
+
+      if (navPanel && !navPanel.classList.contains('hidden!'))
+        toggleFadeEffect('nav-panel', false, 'hidden!')
+      if (tocPanel && !tocPanel.classList.contains('hidden!'))
+        toggleFadeEffect('toc-panel', false, 'hidden!')
+      if (searchPanel && !searchPanel.classList.contains('hidden'))
+        toggleFadeEffect('search-panel', false, 'hidden')
+
+      dispatchToggleBackdrop(false)
+    }
+
+    const backdrop = document.getElementById('backdrop')
+    backdrop?.addEventListener('click', handleClick)
+  })
+
+  /* Close panel when 'Tab' shifts focus outside the panel, if backdrop is present */
+  document.addEventListener('keyup', (event) => {
+    const backdrop = document.getElementById('backdrop')
+    if (backdrop?.classList.contains('hidden') || event.key !== 'Tab') return
+
+    const focusEl = document.activeElement
+    const navPanel = document.getElementById('nav-panel')
+    const tocPanel = document.getElementById('toc-panel')
+    const searchPanel = document.getElementById('search-panel')
+
+    if (
+      navPanel &&
+      !navPanel.classList.contains('hidden!') &&
+      !navPanel.contains(focusEl) &&
+      focusEl?.id !== 'nav-open-button'
+    ) {
+      toggleFadeEffect('nav-panel', false, 'hidden!')
+      dispatchToggleBackdrop(false)
+    }
+
+    if (
+      tocPanel &&
+      !tocPanel.classList.contains('hidden!') &&
+      !tocPanel.contains(focusEl) &&
+      focusEl?.id !== 'toc-open-button'
+    ) {
+      toggleFadeEffect('toc-panel', false, 'hidden!')
+      dispatchToggleBackdrop(false)
+    }
+
+    if (
+      searchPanel &&
+      !searchPanel.classList.contains('hidden') &&
+      !searchPanel.contains(focusEl) &&
+      focusEl?.id !== 'search-switch'
+    ) {
+      toggleFadeEffect('search-panel', false, 'hidden')
+      dispatchToggleBackdrop(false)
+    }
+  })
+</script>

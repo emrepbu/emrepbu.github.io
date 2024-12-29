@@ -1,0 +1,24 @@
+/* /releases & /prs */
+.github-item-content h1,
+.github-item-content h2,
+.github-item-content h3,
+.github-item-content h4,
+.github-item-content h5 {
+  --uno: 'text-1em lt-sm:text-sm';
+}
+
+.github-item-content > :first-child {
+  margin-top: 1.6em;
+}
+
+.github-item-content > :last-child {
+  margin-bottom: 1.25em;
+}
+
+.github-item-content h5 a {
+  font-size: 0.875em;
+}
+
+.github-item-content li {
+  --uno: 'lt-sm:text-sm';
+}

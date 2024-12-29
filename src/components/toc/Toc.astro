@@ -1,0 +1,110 @@
+---
+import TocButton from '~/components/toc/TocButton.astro'
+import TocItem from '~/components/toc/TocItem.astro'
+import { slug } from '~/utils/common'
+import { generateToc } from '~/utils/toc'
+import { FEATURES } from '~/config'
+
+import type { MarkdownHeading } from 'astro'
+import type { HeadingLevel } from '~/types'
+
+interface Props {
+  headings?: MarkdownHeading[]
+  category?: string[]
+  years?: string[]
+  style?: string
+}
+
+const { headings = [], category = [], years = [], style } = Astro.props
+
+let minHeadingLevel: HeadingLevel = 2
+let maxHeadingLevel: HeadingLevel = 4
+let displayPosition = 'left'
+let displayMode = 'hover'
+
+if (Array.isArray(FEATURES.toc) && FEATURES.toc[0]) {
+  ;({ minHeadingLevel, maxHeadingLevel, displayPosition, displayMode } =
+    FEATURES.toc[1])
+}
+
+const specHeadings = generateToc(headings, minHeadingLevel, maxHeadingLevel)
+---
+
+<aside>
+  <!-- Greater than or equal to 1024px -->
+  <nav
+    class={`table-of-contents ${displayPosition === 'right' ? 'table-of-contents-right' : ''}
+      ${displayMode === 'always' ? 'toc-always-on' : ''}`}
+    {style}
+  >
+    <div class="table-of-contents-anchor">
+      {
+        displayPosition === 'left' ? (
+          <div
+            u-i-ri-menu-2-fill
+            class={`${displayMode === 'always' ? 'op-60' : ''}`}
+          />
+        ) : (
+          <div
+            u-i-ri-menu-3-fill
+            class={`${displayMode === 'always' ? 'op-60' : ''}`}
+          />
+        )
+      }
+    </div>
+    <ul>
+      {
+        !!specHeadings.length &&
+          specHeadings.map((heading) => <TocItem {heading} />)
+      }
+      {
+        !!category.length &&
+          category.map((item) => (
+            <li>
+              <a href={`#${slug(item)}`} aria-label={item}>
+                {item}
+              </a>
+            </li>
+          ))
+      }
+      {
+        !!years.length &&
+          years.map((item) => (
+            <li>
+              <a href={`#${slug(item)}`} aria-label={item}>
+                {item}
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+  </nav>
+
+  <!-- less than 1024px -->
+  <TocButton>
+    {
+      !!specHeadings.length &&
+        specHeadings.map((heading) => <TocItem {heading} />)
+    }
+    {
+      !!category.length &&
+        category.map((item) => (
+          <li>
+            <a href={`#${slug(item)}`} aria-label={item}>
+              {item}
+            </a>
+          </li>
+        ))
+    }
+    {
+      !!years.length &&
+        years.map((item) => (
+          <li>
+            <a href={`#${slug(item)}`} aria-label={item}>
+              {item}
+            </a>
+          </li>
+        ))
+    }
+  </TocButton>
+</aside>
