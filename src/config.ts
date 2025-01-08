@@ -3,12 +3,12 @@ import type { Site, Ui, Features } from './types'
 export const SITE: Site = {
   website: 'https://emrepbu.github.io/',
   base: '/',
-  title: 'Astro AntfuStyle Theme',
+  title: 'blog',
   description:
     'A customizable, feature-rich Astro theme for blog and portfolio creation',
-  author: 'Stephanie Lin',
-  lang: 'en',
-  ogLocale: 'en_US',
+  author: 'emrepbu',
+  lang: 'tr',
+  ogLocale: 'tr_TR',
 }
 
 export const UI: Ui = {
@@ -71,8 +71,8 @@ export const FEATURES: Features = {
   share: [
     true,
     {
-      twitter: [true, '@ste7lin'],
-      mastodon: [true, '@ste7lin@fairy.id'],
+      twitter: [true, '@pbuemre'],
+      mastodon: false,
       facebook: false,
       pinterest: false,
       reddit: false,

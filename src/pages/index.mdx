@@ -1,7 +1,7 @@
 ---
-title: 'HomePage'
-subtitle: ''
-description: ''
+title: Blog
+description: How to use the Astro AntfuStyle Theme
+subtitle: How to use the Astro AntfuStyle Theme
 bgType: plum
 toc: false
 ogImage: false
@@ -9,7 +9,7 @@ ogImage: false
 
 import BaseLayout from '~/layouts/BaseLayout.astro'
 import StandardLayout from '~/layouts/StandardLayout.astro'
-import RenderPost from '~/components/views/RenderPost.astro'
+import ListView from '~/components/views/ListView.astro'
 
 <BaseLayout
   title={frontmatter.title}
@@ -18,11 +18,6 @@ import RenderPost from '~/components/views/RenderPost.astro'
   ogImage={frontmatter.ogImage}
 >
   <StandardLayout title={frontmatter.title} subtitle={frontmatter.subtitle}>
-    <RenderPost
-      slot="article"
-      pageToc={frontmatter.toc}
-      collectionType="home"
-      slug="index"
-    />
+    <ListView slot="list" pageToc={frontmatter.toc} collectionType="blog" />
   </StandardLayout>
 </BaseLayout>
