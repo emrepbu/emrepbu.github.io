@@ -4,39 +4,25 @@ export const SITE: Site = {
   website: 'https://emrepbu.github.io/',
   base: '/',
   title: 'blog',
-  description:
-    'A customizable, feature-rich Astro theme for blog and portfolio creation',
+  description: 'kisisel blog',
   author: 'emrepbu',
   lang: 'tr',
   ogLocale: 'tr_TR',
 }
 
 export const UI: Ui = {
-  internalNavs: [
-    {
-      path: '/blog',
-      title: 'Blog',
-      displayMode: 'alwaysText',
-      text: 'Blog',
-    },
-  ],
+  internalNavs: [],
   socialLinks: [
     {
       link: 'https://github.com/emrepbu',
-      title: 'emrepbu on Github',
+      title: 'Github',
       displayMode: 'alwaysIcon',
       icon: 'i-uil-github-alt',
     },
-    {
-      link: 'https://x.com/pbuemre',
-      title: 'Astro on Twitter',
-      displayMode: 'alwaysIcon',
-      icon: 'i-ri-twitter-x-fill',
-    },
   ],
   navBarLayout: {
-    left: [],
-    right: ['internalNavs', 'socialLinks', 'searchButton', 'themeButton'],
+    left: ['themeButton'],
+    right: ['internalNavs', 'socialLinks', 'searchButton'],
     mergeOnMobile: true,
   },
   tabbedLayoutTabs: false,
@@ -45,20 +31,9 @@ export const UI: Ui = {
     showGroupItemColorOnHover: true,
   },
   githubView: {
-    monorepos: [
-      'withastro/astro',
-      'withastro/starlight',
-      'lin-stephanie/astro-loaders',
-    ],
-    mainLogoOverrides: [
-      [/starlight/, 'https://starlight.astro.build/favicon.svg'],
-    ],
-    subLogoMatches: [
-      [/theme/, 'i-unjs-theme-colors'],
-      [/github/, 'https://www.svgrepo.com/show/475654/github-color.svg'],
-      [/tweet/, 'i-logos-twitter'],
-      [/bluesky/, 'i-logos-bluesky'],
-    ],
+    monorepos: [],
+    mainLogoOverrides: [],
+    subLogoMatches: [],
   },
 }
 
@@ -71,7 +46,7 @@ export const FEATURES: Features = {
   share: [
     true,
     {
-      twitter: [true, '@pbuemre'],
+      twitter: [false, '@pbuemre'],
       mastodon: false,
       facebook: false,
       pinterest: false,
