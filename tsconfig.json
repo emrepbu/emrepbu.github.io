@@ -1,10 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
-  },
-  "exclude": ["dist", "node_modules", ".local"]
+	"extends": "astro/tsconfigs/strictest",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"lib": ["es2022", "dom", "dom.iterable"],
+		"paths": {
+			"@/*": ["src/*"]
+		}
+	},
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }

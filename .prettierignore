@@ -1,12 +1,8 @@
-# avoid formatting
+*.min.js
+node_modules
+
+# cache-dirs
+**/.cache
+
 pnpm-lock.yaml
-*.md
-
-# will error due to incorrect processing
-SearchSwitch.astro
-GroupView.astro
-GithubItem.astro
-
-# avoid HTML mismatches after formatting
-releases.mdx
-prs.mdx
+dist
