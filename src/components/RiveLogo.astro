@@ -1,0 +1,16 @@
+<script>
+  const r = new rive.Rive({
+      src: "/rive/dashed_lines_experement.riv",
+      // OR the path to a discoverable and public Rive asset
+      // src: '/public/example.riv',
+      canvas: document.getElementById("canvas"),
+      autoplay: true,
+      // artboard: "Arboard", // Optional. If not supplied the default is selected
+      stateMachines: "State Machine 1",
+      onLoad: () => {
+        r.resizeDrawingSurfaceToCanvas();
+      },
+  });
+</script>
+<script is:inline src='https://unpkg.com/@rive-app/canvas'></script>
+<canvas id="canvas" width="50" height="50"></canvas>
