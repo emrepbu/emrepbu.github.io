@@ -1,0 +1,104 @@
+---
+title: İkili Sayı Sistemi
+description: 'İkili sayı sistemi ve mantık seviyeleri elektroniğin temelidir.'
+pubDate: 'Jun 01 2024'
+updatedDate: 'Jun 02 2025'
+tags: ["Binary Numbers", "Digital Electronics", "Logic Levels", "Bits and Bytes", "Binary System", "Digital Circuits", "Electronics Fundamentals", "Logic Gates", "Voltage Levels", "Manim Animations", "Digital Signal Graph"]
+hide: false
+---
+
+This theme comes with the [@astrojs/mdx](https://docs.astro.build/en/guides/integrations-guide/mdx/) integration installed and configured in your `astro.config.mjs` config file. If you prefer not to use MDX, you can disable support by removing the integration from your config file.
+
+## Why MDX?
+
+MDX is a special flavor of Markdown that supports embedded JavaScript & JSX syntax. This unlocks the ability to [mix JavaScript and UI Components into your Markdown content](https://docs.astro.build/en/guides/markdown-content/#mdx-features) for things like interactive charts or alerts.
+
+If you have existing content authored in MDX, this integration will hopefully make migrating to Astro a breeze.
+
+## Example
+
+Here is how you import and use a UI component inside of MDX. 
+When you open this page in the browser, you should see the clickable button below.
+
+import HeaderLink from '../../components/HeaderLink.astro';
+
+<HeaderLink href="#" onclick="alert('clicked!')">
+	Embedded component in MDX
+</HeaderLink>
+
+
+## More Links
+
+- [MDX Syntax Documentation](https://mdxjs.com/docs/what-is-mdx)
+- [Astro Usage Documentation](https://docs.astro.build/en/guides/markdown-content/#markdown-and-mdx-pages)
+- **Note:** [Client Directives](https://docs.astro.build/en/reference/directives-reference/#client-directives) are still required to create interactive components. Otherwise, all components in your MDX will render as static HTML (no JavaScript) by default.
+
+
+### İkili Sayı Sisteminin Matematiksel Temeli
+
+İkili sayı sistemi, **taban-2** (base-2) sayı sistemidir. Bu sistemde her bir basamak (**bit**), 2'nin kuvvetlerini temsil eder. Bir ikili sayının ondalık (decimal) karşılığı, her bir basamağın değerinin 2'nin ilgili kuvveti ile çarpılıp toplanmasıyla bulunur. Matematiksel olarak, \( n \)-bit uzunluğundaki bir ikili sayı şu şekilde ifade edilir:
+
+<video controls width="100%" >
+  <source src="/videos/BinaryNumberExplanation.mp4" type="video/mp4" />
+</video>
+### Dijital Devrelerde İkili Temsil
+
+Dijital devreler, bilgiyi işlemek ve depolamak için **ayrık sinyaller** kullanır. Bu sinyaller, iki farklı voltaj seviyesi ile temsil edilir:
+- **Mantık 1 (YÜKSEK)**: Genellikle **5V**, **3.3V** veya **1.8V** gibi yüksek bir voltaj seviyesi.
+- **Mantık 0 (DÜŞÜK)**: Genellikle **0V** veya toprak (ground) seviyesi.
+
+Bu iki durum, sırasıyla ikili sistemdeki **1** ve **0** değerlerine karşılık gelir. Dijital devreler, bu iki ayrık seviye üzerinden Boolean cebiri ve mantık kapıları (logic gates) kullanarak karmaşık işlemler gerçekleştirir.
+
+### Analog ve Dijital Sistemlerin Karşılaştırılması
+
+1. **Analog Sistemler**:
+   - Sinyaller sürekli bir aralıkta değişir (örneğin, voltaj, akım, frekans).
+   - Gürültüye ve parazite karşı hassastır.
+   - Örnek: Ses amplifikatörleri, radyo frekans devreleri.
+
+2. **Dijital Sistemler**:
+   - Sinyaller yalnızca iki ayrık seviyede bulunur (YÜKSEK ve DÜŞÜK).
+   - Gürültüye karşı daha dayanıklıdır, çünkü sinyalin tam değeri değil, yalnızca iki seviye arasındaki fark önemlidir.
+   - Örnek: Mikroişlemciler, bellek birimleri, dijital iletişim sistemleri.
+
+### İkili Sistemin Avantajları
+
+1. **Donanım Uyumu**:
+   - İkili sistem, transistör tabanlı dijital devrelerle uyumludur. Transistörler, iki durumlu (AÇIK/KAPALI) anahtarlar olarak çalışır ve ikili sistemi fiziksel olarak uygulamak kolaydır.
+
+2. **Hata Toleransı**:
+   - Dijital sistemler, sinyal bozulmalarına karşı daha toleranslıdır. Örneğin, bir sinyal 3.5V olarak algılansa bile, eşik değerlerine göre **1** veya **0** olarak yorumlanabilir.
+
+3. **Ölçeklenebilirlik**:
+   - İkili sistem, birden fazla bitin birleştirilmesiyle büyük veri yapılarını ve karmaşık hesaplamaları destekler. Örneğin, 8 bit (1 byte) 256 farklı değeri temsil edebilir.
+
+### İkili Sistemin Uygulama Alanları
+
+1. **Veri Depolama**:
+   - Sabit diskler, SSD'ler ve RAM'ler veriyi ikili formatta saklar.
+
+2. **Veri İletimi**:
+   - Ağ iletişimi ve kablosuz iletişimde veriler ikili paketler halinde iletilir.
+
+3. **İşlemciler ve Mikrodenetleyiciler**:
+   - CPU'lar ve mikrodenetleyiciler, ikili komut setleri kullanarak aritmetik ve mantık işlemleri gerçekleştirir.
+
+4. **Multimedya ve Görüntü İşleme**:
+   - Metin, ses, görüntü ve video gibi veriler ikili formatta kodlanır ve işlenir.
+
+### İkili-Ondalık Dönüşüm Örneği
+
+İkili sayı **101101**'in ondalık karşılığını bulalım:
+$$
+\[
+1 \times 2^5 + 0 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0
+\]
+\[
+= 32 + 0 + 8 + 4 + 0 + 1 = 45_{10}
+\]
+$$
+Sonuç: **101101** ikili sayısı, ondalık sistemde **45**'e eşittir.
+
+### Sonuç
+
+İkili sayı sistemi, dijital teknolojinin temelini oluşturan matematiksel bir modeldir. İki sembol (0 ve 1) ve iki voltaj seviyesi (YÜKSEK ve DÜŞÜK) üzerine kurulu bu sistem, modern bilgi işlem, iletişim ve elektronik sistemlerin vazgeçilmez bir parçasıdır. İkili sistemin anlaşılması, dijital devre tasarımı, bilgisayar mimarisi ve yazılım geliştirme gibi alanlarda kritik öneme sahiptir.
