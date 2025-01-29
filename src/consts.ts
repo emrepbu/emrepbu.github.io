@@ -3,17 +3,15 @@
 
 export const SITE_TITLE = "emrepbu";
 export const SITE_DESCRIPTION = "Welcome (. ❛ ᴗ ❛.)";
-export const COPYRIGHT = "© 2024 PlainPage All Rights Reserved";
-export const ICP_NUMBER = "";
+export const COPYRIGHT = "© emrepbu All Rights Reserved";
 
-// 社交媒体链接, 留空或注释=不显示
 export const SOCIAL_LINKS = {
-  Github: "https://github.com/yourusername",
-  Twitter: "https://twitter.com/yourusername",
-  //   LinkedIn: "https://www.linkedin.com/in/yourusername",
-  //   Instagram: "https://www.instagram.com/yourusername",
-  //   Facebook: "https://www.facebook.com/yourusername",
-  //   YouTube: "https://www.youtube.com/yourusername",
+  Github: "https://github.com/emrepbu",
+  // Twitter: "https://twitter.com/yourusername",
+  // LinkedIn: "https://www.linkedin.com/in/yourusername",
+  // Instagram: "https://www.instagram.com/yourusername",
+  // Facebook: "https://www.facebook.com/yourusername",
+  // YouTube: "https://www.youtube.com/yourusername",
 };
 
 export const SEO_CONFIG = {
@@ -29,8 +27,8 @@ export const NAV_ITEMS = [
 ];
 
 export const BLOG_CONFIG = {
-  locale: "en-us",
-  profile: "https://github.com/churchTao",
+  locale: "tr-TR",
+  profile: "https://github.com/emrepbu",
   authorName: "Author Name",
   email: "mailto:your-email@example.com",
   tags: {

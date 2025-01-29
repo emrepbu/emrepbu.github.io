@@ -1,25 +1,17 @@
 ---
-import { COPYRIGHT, ICP_NUMBER, SOCIAL_LINKS } from "../consts";
+import { COPYRIGHT, SOCIAL_LINKS } from "../consts";
 import icons, { getSizedIcon } from "../assets/icons";
 ---
 
 <footer>
-  <small>
+  <!-- <small>
     Powered by <a href="https://github.com/ChurchTao/PlainPage" target="_blank"
-      >PlainPage(素纸)</a
+      >test</a
     >
   </small>
-  <br />
+  <br /> -->
   <small
-    >{COPYRIGHT && `${COPYRIGHT}`}
-    {COPYRIGHT && ICP_NUMBER && "｜"}
-    {
-      ICP_NUMBER && (
-        <a href="https://beian.miit.gov.cn/" target="_blank">
-          {ICP_NUMBER}
-        </a>
-      )
-    }
+  >{`${new Date().getFullYear()} ${COPYRIGHT}`}
   </small>
   <br />
   <div class="social-links" role="navigation" aria-label="social links">
