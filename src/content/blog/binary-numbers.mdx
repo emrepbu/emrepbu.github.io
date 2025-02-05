@@ -1,77 +1,33 @@
 ---
 title: İkili Sayı Sistemi
 description: 'İkili sayı sistemi ve mantık seviyeleri elektroniğin temelidir.'
-pubDate: 'Jun 01 2024'
-updatedDate: 'Jun 02 2025'
+pubDate: 'Jun 01 2025'
+updatedDate: 'Jun 05 2025'
 tags: ["Binary Numbers", "Digital Electronics", "Logic Levels", "Bits and Bytes", "Binary System", "Digital Circuits", "Electronics Fundamentals", "Logic Gates", "Voltage Levels", "Manim Animations", "Digital Signal Graph"]
 hide: false
 ---
 
 ### İkili Sayı Sisteminin Matematiksel Temeli
 
-İkili sayı sistemi, **taban-2** (base-2) sayı sistemidir. Bu sistemde her bir basamak (**bit**), 2'nin kuvvetlerini temsil eder. Bir ikili sayının ondalık (decimal) karşılığı, her bir basamağın değerinin 2'nin ilgili kuvveti ile çarpılıp toplanmasıyla bulunur. Matematiksel olarak, \( n \)-bit uzunluğundaki bir ikili sayı şu şekilde ifade edilir:
+İkili sayı sistemi, $$N_{2}$$ (base-2) sayı sistemidir. Bu sistemde her bir basamak ($$bit$$), 2'nin kuvvetlerini temsil eder. Bir ikili sayının ondalık ($$decimal$$) karşılığı, her bir basamağın değerinin 2'nin ilgili kuvveti ile çarpılıp toplanmasıyla bulunur.
 
-<video controls width="100%" >
+---
+
+Matematiksel olarak, ($$n$$)-bit uzunluğundaki bir ikili sayı şu şekilde ifade edilir:
+
+<video controls width="100%">
   <source src="/videos/BinaryNumberExplanation.mp4" type="video/mp4" />
 </video>
-### Dijital Devrelerde İkili Temsil
 
-Dijital devreler, bilgiyi işlemek ve depolamak için **ayrık sinyaller** kullanır. Bu sinyaller, iki farklı voltaj seviyesi ile temsil edilir:
-- **Mantık 1 (YÜKSEK)**: Genellikle **5V**, **3.3V** veya **1.8V** gibi yüksek bir voltaj seviyesi.
-- **Mantık 0 (DÜŞÜK)**: Genellikle **0V** veya toprak (ground) seviyesi.
+---
 
-Bu iki durum, sırasıyla ikili sistemdeki **1** ve **0** değerlerine karşılık gelir. Dijital devreler, bu iki ayrık seviye üzerinden Boolean cebiri ve mantık kapıları (logic gates) kullanarak karmaşık işlemler gerçekleştirir.
+### Dijital Devrelerde İkili Sayı Sistemi
 
-### Analog ve Dijital Sistemlerin Karşılaştırılması
+Dijital devreler, bilgiyi işlemek ve depolamak için $$ayrık sinyaller$$ kullanır. Bu sinyaller, iki farklı voltaj seviyesi ile temsil edilir:
 
-1. **Analog Sistemler**:
-   - Sinyaller sürekli bir aralıkta değişir (örneğin, voltaj, akım, frekans).
-   - Gürültüye ve parazite karşı hassastır.
-   - Örnek: Ses amplifikatörleri, radyo frekans devreleri.
+- $$Logic \ 1 \ (HIGH)$$: Genellikle $$5V$$ $$3.3V$$ veya $$1.8V$$ gibi yüksek bir voltaj seviyesi.
+- $$Logic \ 0 \ (LOW)$$: Genellikle $$0V$$ veya toprak $$(ground)$$ seviyesi.
 
-2. **Dijital Sistemler**:
-   - Sinyaller yalnızca iki ayrık seviyede bulunur (YÜKSEK ve DÜŞÜK).
-   - Gürültüye karşı daha dayanıklıdır, çünkü sinyalin tam değeri değil, yalnızca iki seviye arasındaki fark önemlidir.
-   - Örnek: Mikroişlemciler, bellek birimleri, dijital iletişim sistemleri.
+Bu iki durum, sırasıyla ikili sistemdeki $$1$$ ve $$0$$ değerlerine karşılık gelir. Dijital devreler, bu iki ayrık seviye üzerinden $$Boolean \ cebiri$$ ve mantık kapıları $$(logic \ gates)$$ kullanarak karmaşık işlemler gerçekleştirir.
 
-### İkili Sistemin Avantajları
-
-1. **Donanım Uyumu**:
-   - İkili sistem, transistör tabanlı dijital devrelerle uyumludur. Transistörler, iki durumlu (AÇIK/KAPALI) anahtarlar olarak çalışır ve ikili sistemi fiziksel olarak uygulamak kolaydır.
-
-2. **Hata Toleransı**:
-   - Dijital sistemler, sinyal bozulmalarına karşı daha toleranslıdır. Örneğin, bir sinyal 3.5V olarak algılansa bile, eşik değerlerine göre **1** veya **0** olarak yorumlanabilir.
-
-3. **Ölçeklenebilirlik**:
-   - İkili sistem, birden fazla bitin birleştirilmesiyle büyük veri yapılarını ve karmaşık hesaplamaları destekler. Örneğin, 8 bit (1 byte) 256 farklı değeri temsil edebilir.
-
-### İkili Sistemin Uygulama Alanları
-
-1. **Veri Depolama**:
-   - Sabit diskler, SSD'ler ve RAM'ler veriyi ikili formatta saklar.
-
-2. **Veri İletimi**:
-   - Ağ iletişimi ve kablosuz iletişimde veriler ikili paketler halinde iletilir.
-
-3. **İşlemciler ve Mikrodenetleyiciler**:
-   - CPU'lar ve mikrodenetleyiciler, ikili komut setleri kullanarak aritmetik ve mantık işlemleri gerçekleştirir.
-
-4. **Multimedya ve Görüntü İşleme**:
-   - Metin, ses, görüntü ve video gibi veriler ikili formatta kodlanır ve işlenir.
-
-### İkili-Ondalık Dönüşüm Örneği
-
-İkili sayı **101101**'in ondalık karşılığını bulalım:
-$$
-\[
-1 \times 2^5 + 0 \times 2^4 + 1 \times 2^3 + 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0
-\]
-\[
-= 32 + 0 + 8 + 4 + 0 + 1 = 45_{10}
-\]
-$$
-Sonuç: **101101** ikili sayısı, ondalık sistemde **45**'e eşittir.
-
-### Sonuç
-
-İkili sayı sistemi, dijital teknolojinin temelini oluşturan matematiksel bir modeldir. İki sembol (0 ve 1) ve iki voltaj seviyesi (YÜKSEK ve DÜŞÜK) üzerine kurulu bu sistem, modern bilgi işlem, iletişim ve elektronik sistemlerin vazgeçilmez bir parçasıdır. İkili sistemin anlaşılması, dijital devre tasarımı, bilgisayar mimarisi ve yazılım geliştirme gibi alanlarda kritik öneme sahiptir.
+Boolean cebiri, iki durumlu (1 ve 0) değişkenlerle yapılan matematiksel bir hesaplamadır ve mantık kapıları, bu cebiri uygulayarak çeşitli dijital işlemleri gerçekleştirir. Örneğin, $$AND$$, $$OR$$, $$NOT$$ gibi temel mantık kapıları, ikili sistemde yapılan işlemlerin temel taşlarını oluşturur.
