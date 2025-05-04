@@ -1,0 +1,40 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "Proje 1",
+            "date": "15 Mart 2024",
+            "image": "https://via.placeholder.com/600x400",
+            "summary": "Proje açıklaması buraya gelecek.",
+            "category": "Web Geliştirme",
+            "technologies": "HTML, CSS, JavaScript",
+            "status": "Tamamlandı",
+            "link": "#",
+            "content": "projects/project-1.html"
+        },
+        {
+            "id": 2,
+            "title": "Proje 2",
+            "date": "10 Mart 2024",
+            "image": "https://via.placeholder.com/600x400",
+            "summary": "Proje açıklaması buraya gelecek.",
+            "category": "Mobil Uygulama",
+            "technologies": "React Native, Firebase",
+            "status": "Devam Ediyor",
+            "link": "#",
+            "content": "projects/project-2.html"
+        },
+        {
+            "id": 3,
+            "title": "Proje 3",
+            "date": "5 Mart 2024",
+            "image": "https://via.placeholder.com/600x400",
+            "summary": "Proje açıklaması buraya gelecek.",
+            "category": "Web Tasarım",
+            "technologies": "Figma, Adobe XD",
+            "status": "Tamamlandı",
+            "link": "#",
+            "content": "projects/project-3.html"
+        }
+    ]
+} 

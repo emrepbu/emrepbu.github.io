@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolyo</title>
+    <style>
+        :root {
+            --pastel-purple: #E6E6FA;
+            --pastel-lavender: #D8BFD8;
+            --pastel-plum: #DDA0DD;
+            --pastel-violet: #EE82EE;
+            --text-color: #4B0082;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--pastel-purple);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--pastel-lavender);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .nav-links {
+            margin-top: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background-color: var(--pastel-plum);
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--pastel-violet);
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 5px solid var(--pastel-violet);
+        }
+
+        .skills {
+            background-color: var(--pastel-lavender);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--pastel-plum);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            background-color: var(--pastel-violet);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--pastel-lavender);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="blog.html">Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="profile">
+            <img src="https://via.placeholder.com/200" alt="Profil Fotoğrafı">
+            <h2>Emre Argana</h2>
+            <p>Software Engineer & Mobile Developer</p>
+        </section>
+
+        <section class="skills">
+            <h2>Yeteneklerim</h2>
+            <ul>
+                <li>HTML & CSS</li>
+                <li>JavaScript</li>
+                <li>Web Tasarım</li>
+                <li>UI/UX</li>
+            </ul>
+        </section>
+
+        <section class="projects">
+            <div id="project-cards" class="projects">
+                <div class="loading">Projeler yükleniyor...</div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Portfolyo. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Projeleri yükle
+        fetch('projects/_projects.json')
+            .then(response => response.json())
+            .then(data => {
+                displayProjects(data.projects);
+            })
+            .catch(error => {
+                console.error('Projeler yüklenirken hata oluştu:', error);
+                document.getElementById('project-cards').innerHTML = '<p>Projeler yüklenirken bir hata oluştu.</p>';
+            });
+
+        function displayProjects(projects) {
+            const projectCards = document.getElementById('project-cards');
+            projectCards.className = 'project-cards';
+            projectCards.innerHTML = projects.map(project => `
+                <div class="project-card">
+                    <img src="${project.image}" alt="${project.title}">
+                    <div class="project-info">
+                        <span class="date">${project.date}</span>
+                        <h3>${project.title}</h3>
+                        <p>${project.summary}</p>
+                        <a href="projects/project-${project.id}.html?id=${project.id}" class="read-more">Detayları Gör</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html> 
