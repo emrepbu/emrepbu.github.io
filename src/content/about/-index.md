@@ -1,8 +1,12 @@
 ---
-title: Hey, I'm Jane Doe!
-description: this is meta description
-image: "@assets/profile/jane-doe.jpg"
+title: Hey, I'm Emre Argana!
+description: Software engineer focusing on web development and cloud technologies
+image: "@assets/profile/eric-cartman.png"
 draft: false
 ---
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis illum nesciunt commodi vel nisi ut alias excepturi ipsum, totam, labore tempora, odit ex iste tempore sed. Fugit voluptatibus perspiciatis assumenda nulla ad nihil, omnis vel, doloremque sit quam autem optio maiores, illum eius facilis et quo consectetur provident dolor similique! Enim voluptatem dicta expedita veritatis repellat dolorum impedit, provident quasi at.
+I'm a software engineer with experience in web development, cloud technologies, and system architecture. I'm passionate about creating efficient, scalable applications and exploring new technologies.
+
+Currently working on various projects that involve modern web frameworks, containerization technologies, and cloud infrastructure. I enjoy solving complex problems and continuously learning new skills in the rapidly evolving tech landscape.
+
+When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and staying up-to-date with the latest industry trends.
