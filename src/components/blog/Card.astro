@@ -1,0 +1,90 @@
+---
+import type { BlogEntry } from "@/types";
+import { upperHumanize, plainify, slugify } from "@lib/textConverter";
+import {
+  FaRegFolder,
+  FaRegClock,
+  FaHashtag,
+  FaRegCalendarAlt,
+} from "react-icons/fa";
+import readingTime from "@lib/readingTime";
+import { formatDate } from "@lib/formatDate";
+
+interface Props {
+  entry: BlogEntry;
+}
+
+const { entry }: Props = Astro.props;
+const {
+  title,
+  description,
+  autodescription,
+  date,
+  categories,
+  tags,
+  complexity,
+} = entry.data;
+
+const descriptionLength = 200;
+
+const entryDate = date ? formatDate(date) : null;
+const entryReadingTime = readingTime(entry.body!, complexity);
+const entryDescription =
+  description ||
+  (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
+---
+
+<div class="h-full m-2 pl-0 bg-gradient-to-br gradient rounded-lg">
+  <div class="glass h-full rounded-lg p-4 intersect:animate-fadeUp opacity-0">
+    <h4 class="mb-2">
+      <a href={`/blog/${entry.id}`}>
+        {title}
+      </a>
+    </h4>
+    <ul class="mb-2">
+      {
+        categories && (
+          <li class="mr-0 inline-block">
+            {categories.map((category: string, index: number) => (
+              <a href={`/blog/categories/${slugify(category)}`}>
+                <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                {upperHumanize(category)}
+              </a>
+            ))}
+          </li>
+        )
+      }
+      <!-- { tags && (
+        <li class="mr-0 inline-block">
+          {
+            tags.map((tag: string, index: number) => (
+              <a href={`/blog/tags/${slugify(tag)}`}>
+                <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                {lowerHumanize(tag)}
+              </a>
+            ))
+          }
+        </li>
+      )} -->
+      {
+        entryDate && (
+          <li class="mr-0 inline-block">
+            <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+            {entryDate}
+          </li>
+        )
+      }
+      {
+        complexity > 0 && (
+          <li class="mr-0 inline-block">
+            <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+            {entryReadingTime}
+          </li>
+        )
+      }
+    </ul>
+    <p class="">
+      {entryDescription}
+    </p>
+  </div>
+</div>

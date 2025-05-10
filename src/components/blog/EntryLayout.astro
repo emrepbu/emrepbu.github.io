@@ -1,0 +1,85 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import BlogCard from "@components/blog/Card.astro";
+import Share from "@components/common/Share.astro";
+import { plainify } from "@lib/textConverter";
+import type { BlogEntry } from "@/types";
+import TableOfContents from "@components/common/TableOfContents.astro";
+import { render } from "astro:content";
+import EntryHeader from "@components/common/EntryHeader.astro";
+interface Props {
+  entry: BlogEntry;
+  relatedEntries: BlogEntry[];
+}
+
+const { entry, relatedEntries }: Props = Astro.props;
+const { title, description, autodescription, image, hideToc } = entry.data;
+const { Content, headings } = await render(entry);
+
+const descriptionLenth = 200; // the max length in characters for the auto-generated description
+const globalHideToc = false; // set true to always hide the table of contents (right side menu)
+const tocDepth = 3; // maximum depth for the table of contents 1 = h1, etc
+
+const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
+
+const entryDescription =
+  description ||
+  (autodescription ? plainify(entry.body!.slice(0, descriptionLenth)) : null);
+---
+
+<BaseLayout title={title} description={entryDescription} image={image?.src}>
+  <section class="flex container p-4">
+    <div class=`w-full ${actuallyHideToc ? "" : "md:col-9"}`>
+      <article class="">
+        <section>
+          <EntryHeader
+            entry={entry}
+            showImage
+            showAuthor
+            showDate
+            showReadingTime
+            showCategories
+            showTags
+          />
+        </section>
+        <section class="content mb-4 glass px-4 rounded-lg">
+          <Content />
+        </section>
+      </article>
+    </div>
+    <div
+      class=`hidden max-h-static_sidemenu sticky top-[5rem] pl-4 ${globalHideToc || hideToc ? "" : "md:flex md:col-3"}`
+    >
+      <TableOfContents {headings} />
+    </div>
+  </section>
+
+  <section class=`container items-start justify-between mt-4`>
+    <hr />
+    <div class="flex items-center justify-center lg:justify-end mt-4">
+      <Share
+        title={title}
+        description={entryDescription}
+        folder={"blog"}
+        id={entry.id}
+      />
+    </div>
+  </section>
+  <!-- Related posts -->
+  {
+    relatedEntries.length > 0 && (
+      <section class="row justify-center my-8">
+        <h2 class="h3 mb-4 text-center">Related Posts</h2>
+        <div class="lg:col-10">
+          <div class="row justify-center">
+            {relatedEntries.slice(0, 2).map((entry) => (
+              <div class="md:col-6 px-4 py-2 h-min">
+                <BlogCard entry={entry} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

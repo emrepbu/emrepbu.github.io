@@ -1,0 +1,40 @@
+<script is:inline data-astro-rerun>
+  const defaultTheme = "system";
+
+  function getTheme(defaultTheme) {
+    var darkMode = defaultTheme === "dark" ? true : false;
+    if (localStorage.getItem("theme") === "system") {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        darkMode = true;
+      }
+    } else if (localStorage.getItem("theme") === "dark") {
+      darkMode = true;
+    } else if (localStorage.getItem("theme") === "light") {
+      darkMode = false;
+    }
+    return darkMode;
+  }
+
+  function setTheme(darkMode) {
+    // Update DOM
+    darkMode
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+    // Update localStorage
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }
+
+  // This prevents flickering back to default theme before the page is fully loaded
+  setTheme(getTheme(defaultTheme));
+
+  document.addEventListener("astro:page-load", () => {
+    setTheme(getTheme(defaultTheme));
+    // Theme switcher
+    var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
+    themeSwitch.forEach((el) => {
+      el.addEventListener("change", (e) => {
+        setTheme(e.target.checked);
+      });
+    });
+  });
+</script>

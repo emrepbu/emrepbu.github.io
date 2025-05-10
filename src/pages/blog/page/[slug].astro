@@ -1,0 +1,52 @@
+---
+import { getIndex, getEntries } from "@lib/contentParser";
+import { getTaxaMultiset, getTaxa } from "@lib/taxonomyParser";
+import { sortByDate } from "@lib/sortFunctions";
+import CollectionLayout from "@components/blog/CollectionLayout.astro";
+import type { BlogEntry } from "@/types";
+
+const { slug } = Astro.params;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+
+const entryIndex = (await getIndex("blog")) as BlogEntry;
+const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
+
+const allCategories = await getTaxaMultiset("blog", "categories");
+const categories = await getTaxa("blog", "categories");
+const tags = await getTaxa("blog", "tags");
+
+const entriesPerPage = 4;
+const indexOfLastEntry = currentPageIndex * entriesPerPage;
+const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+
+const pageCount: number = Math.ceil(
+  entries.length / entriesPerPage
+);
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("blog", sortByDate)) as BlogEntry[];
+  // divisor below must equal entriesPerPage
+  const pageCount = Math.ceil(entries.length / 4);
+  const paths = [];
+
+  for (let i = 1; i < pageCount; i++) {
+    paths.push({
+      params: {
+        slug: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
+}
+---
+
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  categories={categories}
+  tags={tags}
+  allCategories={allCategories}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

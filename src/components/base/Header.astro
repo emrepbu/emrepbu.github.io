@@ -1,0 +1,103 @@
+---
+import ThemeSwitcher from "@components/base/ThemeSwitcher.astro";
+import { IoSearch } from "react-icons/io5";
+
+const { pathname } = Astro.url;
+
+const stickyHeader = true;
+
+const menu = [
+  {
+    name: "Home",
+    url: "/",
+  },
+  {
+    name: "About",
+    url: "/about",
+  },
+  {
+    name: "Docs",
+    url: "/docs",
+  },
+  {
+    name: "Blog",
+    url: "/blog",
+  },
+  {
+    name: "Recipes",
+    url: "/recipes",
+  },
+  {
+    name: "Poetry",
+    url: "/poetry",
+  },
+  {
+    name: "Index Cards",
+    url: "/index-cards",
+  },
+  {
+    name: "Authors",
+    url: "/authors",
+  },
+  {
+    name: "Portfolio",
+    url: "/portfolio",
+  },
+];
+---
+
+<header
+  transition:persist
+  class={`container glass py-2 z-30 mb-4 lg:mt-4 lg:rounded-lg ${stickyHeader && "sticky top-0"}`}
+>
+  <nav class="relative flex flex-wrap items-center justify-between">
+    <!-- navbar toggler -->
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-0 cursor-pointer flex items-center md:hidden text-txt-p dark:text-darkmode-txt-p lg:order-1"
+    >
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Menu Open</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Menu Close</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    <!-- /navbar toggler -->
+    <ul
+      id="nav-menu"
+      class="text-center lg:text-left order-3 hidden w-full pb-6 md:order-1 md:flex md:w-auto md:space-x-2 md:pb-0 lg:space-x-4"
+    >
+      {
+        menu.map((item) => (
+          <li class="">
+            <a
+              href={item.url}
+              class={`block p-2 font-secondary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
+                (pathname === `${item.url}/` || pathname === item.url) &&
+                "active"
+              }`}
+            >
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+      <a
+        class="mr-4 inline-block border-border text-xl text-txt-p dark:border-darkmode-border dark:text-darkmode-txt-p"
+        href="/search"
+        aria-label="search"
+      >
+        <IoSearch />
+      </a>
+      <ThemeSwitcher />
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,156 @@
+---
+import { formatDate } from "@lib/formatDate";
+import readingTime from "@lib/readingTime";
+import {
+  lowerHumanize,
+  upperHumanize,
+  markdownify,
+  slugify,
+} from "@lib/textConverter";
+
+import { Image } from "astro:assets";
+import {
+  FaRegCalendarAlt,
+  FaRegFolder,
+  FaRegUserCircle,
+  FaHashtag,
+  FaRegClock,
+} from "react-icons/fa";
+import type { GenericEntry, EntryReference } from "@/types";
+
+interface EntryData {
+  title: string;
+  image?: string;
+  imageAlt?: string;
+  author?: EntryReference;
+  date?: string;
+  pubDate?: string;
+  modDate?: string;
+  categories?: string[];
+  tags?: string[];
+  complexity?: number;
+}
+
+interface Props {
+  entry: GenericEntry;
+  showInfo?: boolean;
+  showImage?: boolean;
+  showTitle?: boolean;
+  showAuthor?: boolean;
+  showDate?: boolean;
+  showPubDate?: boolean;
+  showModDate?: boolean;
+  showReadingTime?: boolean;
+  showCategories?: boolean;
+  showTags?: boolean;
+}
+
+const {
+  entry,
+  showInfo = true,
+  showImage = false,
+  showAuthor = false,
+  showDate = false,
+  showPubDate = false,
+  showModDate = false,
+  showReadingTime = false,
+  showCategories = false,
+  showTags = false,
+}: Props = Astro.props;
+
+const {
+  title,
+  author,
+  categories,
+  tags,
+  image,
+  imageAlt,
+  date,
+  pubDate,
+  modDate,
+  complexity,
+} = entry.data as EntryData;
+
+categories?.sort((a: string, b: string) => a.localeCompare(b));
+tags?.sort((a: string, b: string) => a.localeCompare(b));
+---
+
+<div class="mt-2">
+  {
+    image && showImage && (
+      <div class="mb-8 glass rounded-lg intersect:animate-fadeDown opacity-0 intersect-no-queue">
+        <Image
+          class="w-full rounded-lg"
+          src={image}
+          alt={imageAlt || ""}
+          height={500}
+          width={1200}
+          loading="eager"
+        />
+      </div>
+    )
+  }
+  {
+    showInfo && (
+      <div class="glass mb-8 p-4 rounded-lg intersect:animate-fade opacity-0 intersect-no-queue">
+        <h1 set:html={markdownify(title)} class="mb-4" />
+        <ul>
+          {author && showAuthor && (
+            <li class="mr-1 inline-block">
+              <a href={`/authors/${slugify(author.id)}`}>
+                <FaRegUserCircle className={"-mt-1 inline-block"} />
+                {upperHumanize(author.id)}
+              </a>
+            </li>
+          )}
+          {date && showDate && (
+            <li class="mr-1 inline-block">
+              <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+              {formatDate(date)}
+            </li>
+          )}
+          {pubDate && showPubDate && (
+            <li class="mr-1 inline-block">
+              <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+              Published
+              {formatDate(pubDate)}
+            </li>
+          )}
+          {modDate && showModDate && (
+            <li class="mr-1 inline-block">
+              <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
+              Updated
+              {formatDate(modDate)}
+            </li>
+          )}
+          {complexity && complexity > 0 && showReadingTime && (
+            <li class="mr-1 inline-block">
+              <FaRegClock className={"ml-2 -mt-1 inline-block"} />
+              {readingTime(entry.body!, complexity)}
+            </li>
+          )}
+          {categories && showCategories && (
+            <li class="mr-1 inline-block">
+              {categories.map((category: string, index: number) => (
+                <a href={`/blog/categories/${slugify(category)}`}>
+                  <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
+                  {upperHumanize(category)}
+                </a>
+              ))}
+            </li>
+          )}
+          {tags && showTags && (
+            <li class="mr-1 inline-block">
+              {tags.map((tag: string, index: number) => (
+                <a href={`/blog/tags/${slugify(tag)}`}>
+                  <FaHashtag className={"ml-2 -mt-1 inline-block"} />
+                  {lowerHumanize(tag)}
+                </a>
+              ))}
+            </li>
+          )}
+        </ul>
+      </div>
+    )
+  }
+</div>

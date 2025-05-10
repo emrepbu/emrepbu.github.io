@@ -1,0 +1,143 @@
+---
+import { plainify } from "@lib/textConverter";
+import Footer from "@components/base/Footer.astro";
+import Header from "@components/base/Header.astro";
+import ObserverScript from "@components/base/ObserverScript.astro";
+import "@/styles/main.scss";
+import { ClientRouter } from "astro:transitions";
+import Background from "@/components/base/Background.astro";
+import { Tooltips } from "astro-tooltips";
+
+// types for frontmatters
+export interface Props {
+  title?: string;
+  description?: string | null;
+  image?: string;
+  noindex?: boolean;
+  canonical?: string;
+}
+
+const { title, description, image, noindex, canonical } = Astro.props;
+
+const siteTitle = "Astrogon";
+const siteDescription = "Astrogon is a simple and elegant Astro theme.";
+const siteImage = "@assets/og-image.png";
+const siteAuthor = "Jane Doe";
+const baseUrl = "https://janedoe.com";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta name="theme-name" content="pages" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#fff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#000"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=5"
+    />
+
+    <title>
+      {plainify(title ? title : siteTitle)}
+    </title>
+
+    {canonical && <link rel="canonical" href={canonical} item-prop="url" />}
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <meta
+      name="description"
+      content={plainify(description ? description : siteDescription)}
+    />
+    <meta name="author" content={siteAuthor} />
+    <meta property="og:title" content={plainify(title ? title : siteTitle)} />
+    <meta
+      property="og:description"
+      content={plainify(description ? description : siteDescription)}
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content={`${baseUrl}/${Astro.url.pathname.replace("/", "")}`}
+    />
+    <meta
+      property="og:image"
+      content={`${baseUrl}${image ? image : siteImage}`}
+    />
+
+    <meta name="twitter:title" content={plainify(title ? title : siteTitle)} />
+    <meta
+      name="twitter:description"
+      content={plainify(description ? description : siteDescription)}
+    />
+    <meta
+      name="twitter:image"
+      content={`${baseUrl}${image ? image : siteImage}`}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Katex -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+      integrity="sha384-Rma6DA2IPUwhNxmrB/7S3Tno0YY7sFu9WSYMCuulLhIqYSGZ2gKCJWIqhBWqMQfh"
+      crossorigin="anonymous"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+      integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script>
+      
+    <!-- https://docs.astro.build/en/guides/view-transitions -->
+    <ClientRouter fallback="swap" />
+    <Tooltips interactive={false} delay={[333, 0]} />
+  </head>
+  <body>
+    <Background />
+    <Header />
+    <main id="main-content" class="flex-1">
+      <slot/>
+    </main>
+    <Footer />
+    <!-- <ObserverScript /> -->
+  </body>
+</html>

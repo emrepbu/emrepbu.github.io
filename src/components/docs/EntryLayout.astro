@@ -1,0 +1,74 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import type { DocsEntry, MenuItem } from "@/types";
+import DocBrowser from "@components/docs/Browser.astro";
+import TableOfContents from "@components/common/TableOfContents.astro";
+import { render } from "astro:content";
+import EntryHeader from "@components/common/EntryHeader.astro";
+
+interface Props {
+  entry: DocsEntry;
+  browserMenu: MenuItem[];
+}
+
+const { entry, browserMenu } = Astro.props;
+const { Content, headings } = await render(entry);
+const { title, description, hideNav, hideToc, image } = entry.data;
+
+const globalHideNav = false; // set true to always hide the nav bar (left side menu)
+const globalHideToc = false; // set true to always hide the table of contents (right side menu)
+const tocDepth = 3; // maximum depth for the table of contents 1 = h1, etc
+
+const actuallyHideNav = hideNav || globalHideNav;
+const actuallyHideToc = hideToc || globalHideToc || headings.filter((heading) => heading.depth <= tocDepth).length === 0;
+
+let articleClass = "";
+let navClass = "";
+let tocClass = "";
+
+if (actuallyHideNav && actuallyHideToc) {
+  // Both nav and toc are hidden
+  navClass = "hidden";
+  articleClass = "w-full";
+  tocClass = "hidden";
+} else if (!actuallyHideNav && actuallyHideToc) {
+  // Nav is visible, toc is hidden
+  navClass = "hidden md:flex md:w-1/4 lg:w-1/5";
+  articleClass = "w-full md:w-3/4 lg:w-4/5";
+  tocClass = "hidden";
+} else if (actuallyHideNav && !actuallyHideToc) {
+  // Nav is hidden, toc is visible
+  navClass = "hidden";
+  articleClass = "w-full md:w-3/4 lg:w-4/5";
+  tocClass = "hidden md:flex md:w-1/4 lg:w-1/5";
+} else {
+  // Both nav and toc are visble
+  navClass = "hidden md:flex md:w-1/4 lg:w-1/5";
+  articleClass = "w-full md:w-3/4 lg:w-3/5";
+  tocClass = "hidden lg:flex lg:w-1/5";
+}
+---
+
+<BaseLayout title={title} image={image?.src} description={description}>
+  <section class="flex container p-4">
+    <div class=`max-h-static_sidemenu sticky top-[5rem] mr-4 ${navClass}`>
+      <DocBrowser
+        menu={browserMenu}
+        currentPage={entry.id.replace("/-index", "")}
+      />
+    </div>
+    <div class=`w-full ${articleClass}`>
+      <article class="">
+        <section class="">
+          <EntryHeader entry={entry} showImage showPubDate />
+        </section>
+        <section class="content mb-4 glass px-4 rounded-lg">
+          <Content />
+        </section>
+      </article>
+    </div>
+    <div class=`max-h-static_sidemenu sticky top-[5rem] ml-4 ${tocClass}`>
+      <TableOfContents headings={headings} tocDepth={tocDepth} />
+    </div>
+  </section>
+</BaseLayout>

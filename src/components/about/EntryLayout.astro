@@ -1,0 +1,40 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import { markdownify } from "@lib/textConverter";
+import { Image } from "astro:assets";
+import type { AboutEntry } from "@/types";
+import { render } from "astro:content";
+
+interface Props {
+  entry: AboutEntry;
+}
+
+const { entry } = Astro.props;
+const { title, description, image, imageAlt } = entry.data;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={title} description={description} image={image?.src}>
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="glass rounded-lg text-center p-8 md:col-10 lg:col-7 intersect:animate-fadeUp opacity-0 intersect-no-queue">
+          {
+            image && (
+              <Image
+                class="mx-auto mb-6 rounded-lg w-64"
+                src={image}
+                alt={imageAlt}
+                width={1024}
+                height={1024}
+                loading="eager"
+              />
+            )
+          }
+          <h2 set:html={markdownify(title)} class="h3 mb-6" />
+            <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

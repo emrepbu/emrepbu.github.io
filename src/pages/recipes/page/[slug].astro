@@ -1,0 +1,41 @@
+---
+import { getIndex, getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
+import type { RecipesEntry } from "@/types";
+import CollectionLayout from "@components/recipes/CollectionLayout.astro";
+
+const entryIndex = (await getIndex("recipes")) as RecipesEntry;
+const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
+
+const { slug } = Astro.params;
+
+const entriesPerPage = 6;
+const currentPageIndex = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const pageCount = Math.ceil(entries.length / entriesPerPage);
+const indexOfLastEntry = currentPageIndex * entriesPerPage;
+const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+const currentEntries = entries.slice(indexOfFirstEntry, indexOfLastEntry);
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("recipes", sortByDate)) as RecipesEntry[];
+  // divisor below must equal entriesPerPage
+  const pageCount = Math.ceil(entries.length / 6);
+  const paths = [];
+
+  for (let i = 1; i < pageCount; i++) {
+    paths.push({
+      params: {
+        slug: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
+}
+---
+
+<CollectionLayout
+  entryIndex={entryIndex}
+  entries={currentEntries}
+  pageIndex={currentPageIndex}
+  pageCount={pageCount}
+/>

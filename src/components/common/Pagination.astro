@@ -1,0 +1,118 @@
+---
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
+type Props = {
+  collection?: string;
+  pageIndex?: number;
+  pageCount?: number;
+  pageIDs?: string[];
+};
+
+const { collection, pageIndex = 1, pageCount = 1, pageIDs } = Astro.props;
+
+let pageList: number[] = [];
+for (let i = 1; i <= pageCount; i++) {
+  pageList.push(i);
+}
+
+let prevPage: string | null;
+let nextPage: string | null;
+
+if (pageIDs) {
+  prevPage =
+    pageIndex > 0
+      ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex - 1]}`
+      : null;
+  nextPage =
+    pageIndex < pageCount - 1
+      ? `${collection ? "/" + collection : ""}/${pageIDs[pageIndex + 1]}`
+      : null;
+} else {
+  prevPage =
+    pageIndex === 2
+      ? `${collection ? "/" + collection : "/"}`
+      : pageIndex > 2
+        ? `${collection ? "/" + collection : ""}/page/${pageIndex - 1}`
+        : null;
+  nextPage =
+    pageIndex < pageCount
+      ? `${collection ? "/" + collection : ""}/page/${pageIndex + 1}`
+      : null;
+}
+---
+
+{
+  pageCount > 1 && (
+    <nav class="flex items-center justify-center pb-8">
+      <div class="row glass rounded-md p-2 m-2 space-x-2 intersect:animate-fadeUp opacity-0">
+        {/* previous */}
+        {prevPage ? (
+          <a
+            href={prevPage}
+            class="col rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
+            aria-label="Previous"
+          >
+            <FaArrowLeft className="inline-block" />
+          </a>
+        ) : (
+          <span
+            class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
+            aria-label="Previous"
+          >
+            <FaArrowLeft className="inline-block" />
+          </span>
+        )}
+        {/* page index */}
+        {pageIDs ? (
+          <div
+            aria-current="page"
+            class="col rounded px-4 py-2 text-txt-p  dark:text-darkmode-txt-p"
+          >
+            {pageIndex + 1}
+          </div>
+        ) : (
+          pageList.map((pagination) =>
+            pagination === pageIndex ? (
+              <span
+                aria-current="page"
+                class="col rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p border border-txt-light dark:border-darkmode-txt-light"
+              >
+                {pagination}
+              </span>
+            ) : (
+              <a
+                href={
+                  pagination === 1
+                    ? `${collection ? "/" + collection : "/"}`
+                    : `${collection ? "/" + collection : ""}/page/${pagination}`
+                }
+                aria-current="page"
+                class="col rounded px-4 py-2 font-semibold text-txt-p dark:text-darkmode-txt-p"
+              >
+                {pagination}
+              </a>
+            )
+          )
+        )}
+
+        {/* next page */}
+        {nextPage ? (
+          <a
+            href={nextPage}
+            class="col rounded px-2 py-1.5 text-txt-p dark:text-darkmode-txt-p"
+            aria-label="Next"
+          >
+            <FaArrowRight className="inline-block" />
+          </a>
+        ) : (
+          <span
+            class="col rounded px-2 py-1.5 text-txt-light dark:text-darkmode-txt-light"
+            aria-label="Next"
+          >
+            <FaArrowRight className="inline-block" />
+          </span>
+        )}
+      </div>
+    </nav>
+  )
+}

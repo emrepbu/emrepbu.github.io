@@ -1,0 +1,173 @@
+---
+import type { SocialLinks } from "@/types";
+
+import {
+  FaDiscord,
+  FaEnvelope,
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaPinterest,
+  FaTiktok,
+  FaGlobe,
+  FaYoutube,
+} from "react-icons/fa";
+
+interface Props {
+  links?: SocialLinks;
+}
+
+const { links } = Astro.props;
+
+const liClass = "inline-block px-1 intersect:animate-fade opacity-0";
+const iconClass =
+  "glass-t rounded text-txt-p dark:text-darkmode-txt-p flex h-9 w-9 items-center justify-center text-center";
+---
+
+{
+  links && (
+    <ul class="py-2 flex items-center">
+      {links.discord && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Discord"
+            href={links.discord}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Discord</span>
+            <FaDiscord className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.email && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Email"
+            href={`mailto:${links.email}`}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Email</span>
+            <FaEnvelope className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.facebook && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Facebook"
+            href={links.facebook}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Facebook</span>
+            <FaFacebook className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.github && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="GitHub"
+            href={links.github}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">GitHub</span>
+            <FaGithub className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.instagram && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Instagram"
+            href={links.instagram}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Instagram</span>
+            <FaInstagram className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.linkedIn && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="LinkedIn"
+            href={links.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">LinkedIn</span>
+            <FaLinkedin className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.pinterest && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Pinterest"
+            href={links.pinterest}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Pinterest</span>
+            <FaPinterest className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.tiktok && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="TikTok"
+            href={links.tiktok}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">TikTok</span>
+            <FaTiktok className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.website && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="Website"
+            href={links.website}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">Website</span>
+            <FaGlobe className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+      {links.youtube && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="YouTube"
+            href={links.youtube}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">YouTube</span>
+            <FaYoutube className="w-6 h-6" />
+          </a>
+        </li>
+      )}
+    </ul>
+  )
+}

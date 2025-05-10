@@ -1,0 +1,181 @@
+---
+title: "Elements"
+image: "@assets/backgrounds/bwca-dusk.png"
+---
+
+# Heading 1
+
+## Heading 2
+
+### Heading 3
+
+#### Heading 4
+
+##### Heading 5
+
+###### Heading 6
+
+---
+
+### Emphasis
+
+- *Everyone's* a slave to something
+- Everyone's <ins>a slave</ins> to something
+- Everyone's a slave to **something**
+- Everyone's ***a slave*** to something
+- Everyone's ~~a slave~~ to something
+
+---
+
+### Link
+
+[An inline-style link](https://reednel.com)
+
+[An inline-style link with tooltip](https://reednel.com "Reed Nelson's website")
+
+[A reference-style link][arbitrary case-insensitive reference text]
+
+[You can use numbers for reference-style link definitions][1]
+
+[reference text]: https://reednel.com
+[1]: https://reednel.com
+
+---
+
+### Ordered List
+
+1. List item
+2. List item
+3. List item
+
+---
+
+### Unordered List
+
+- List item
+- List item
+- List item
+
+---
+
+### Code and Syntax Highlighting
+
+#### SQL
+
+```sql
+SELECT
+  p.personID,
+  id.firstName,
+  id.lastName
+FROM
+  dbo.Person AS p
+INNER JOIN dbo.Identity AS id ON id.identityID = p.currentIdentityID
+WHERE
+  p.age > 30 AND p.eyeColor = 'grn'
+```
+---
+
+### LaTeX
+
+In the middle of this sentance $$\int_0^\infty x^2 dx = \frac{1}{3}$$ is an inline expression. And after that is a block expression:
+
+$$$
+\int_0^\infty x^2 dx = \frac{1}{3}
+$$$
+
+Before this is a block expression.
+
+---
+
+### Button
+
+<Button
+  label="Button"
+  link="/"
+  type="primary"
+  color='bg-gradient-to-br from-blue-500 to-pink-500'
+  newtab
+  hoverInvert
+/>
+
+---
+
+### Quote
+
+> When I saw my devil, I found him serious, thorough, profound, solemn. He was the spirit of gravity, through which all things fall.
+
+---
+
+### Notice
+
+<Notice type="note">This is a simple note.</Notice>
+
+<Notice type="tip">This is a simple note.</Notice>
+
+<Notice type="info">This is a simple note.</Notice>
+
+<Notice type="warning">This is a simple note.</Notice>
+
+---
+
+### Tab
+
+<Tabs client:load>
+
+<Tab name="Tab 1">
+
+#### On Gambling
+
+If we focus on making the best moves, we will never get the better of our opponent. When necessary, we must be willing to take the big risks and be prepared to lose everything.
+
+</Tab>
+
+<Tab name="Tab 2">
+
+#### On Soldiering
+
+You should give up on becoming a soldier. Throwing your life away is not the only way to fight.
+
+</Tab>
+
+<Tab name="Tab 3">
+
+#### On Soldering
+
+Maintain a coating of solder on working area of soldering iron tip. Protects the tip from oxidation.
+
+</Tab>
+
+</Tabs>
+
+---
+
+### Table
+
+| #   |    First     |     Last     |       Handle |
+| :-- | :----------: | :----------: | -----------: |
+| 1   | Row:1 Cell:1 | Row:1 Cell:2 | Row:1 Cell:3 |
+| 2   | Row:2 Cell:1 | Row:2 Cell:2 | Row:2 Cell:3 |
+| 3   | Row:3 Cell:1 | Row:3 Cell:2 | Row:3 Cell:3 |
+
+---
+
+### Accordion
+
+<Accordion client:load title="Why would you use an accordion?">
+
+Maybe you don't need to see everything all the time geez.
+
+</Accordion>
+
+---
+
+### Youtube video
+
+<Youtube client:load id="XYsk4ibhd5g" title="Witcher IV Gameplay Trailer" />
+
+---
+
+### Image
+
+![image](@assets/backgrounds/bwca-dusk.png "BWCA at dusk")

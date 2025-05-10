@@ -1,0 +1,37 @@
+// Section
+.section {
+  @apply py-12 xl:py-16;
+  &-sm {
+    @apply py-8 xl:py-12;
+  }
+}
+
+// Container
+.container {
+  @apply mx-auto max-w-[1200px] px-4;
+}
+
+// Border
+.rounded-sm {
+  @apply rounded-[4px];
+}
+.rounded {
+  @apply rounded-[6px];
+}
+.rounded-lg {
+  @apply rounded-[12px];
+}
+.rounded-xl {
+  @apply rounded-[16px];
+}
+
+// Header Conditionals
+input#nav-toggle:checked + label #show-button {
+  @apply hidden;
+}
+input#nav-toggle:checked + label #hide-button {
+  @apply block;
+}
+input#nav-toggle:checked ~ #nav-menu {
+  @apply block;
+}

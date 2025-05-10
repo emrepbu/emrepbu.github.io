@@ -1,0 +1,27 @@
+---
+import BaseLayout from "@components/base/BaseLayout.astro";
+import PageHeader from "@components/common/PageHeader.astro";
+import type { TermsEntry } from "@/types";
+import { render } from "astro:content";
+
+interface Props {
+  entry: TermsEntry;
+}
+
+const { entry } = Astro.props;
+const { title, description } = entry.data;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHeader title={title} />
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="col-10 content glass rounded-lg p-4">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
