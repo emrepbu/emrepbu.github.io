@@ -43,4 +43,20 @@ projects:
     github: "https://github.com/emrepbu/ReminderWave"
     content:
       - "ReminderWave is a modern task reminder and management application for iOS that helps users organize tasks, set priorities, and schedule reminders. Built with Swift and SwiftUI using the MVVM architecture, the app features task creation with priority levels, date scheduling, local notifications, and multilingual support (English and Turkish). It leverages SwiftData for persistent storage and implements color-coded deadline visualization to enhance user experience."
+  - title: "ShineOnYouFile"
+    technologies:
+      - "Swift"
+      - "SwiftUI"
+      - "macOS"
+    github: "https://github.com/emrepbu/ShineOnYouFile"
+    content:
+      - "ShineOnYouFile is a file management application for macOS designed to organize and interact with files in a tree-like structure. Built with Swift and SwiftUI, the project aims to provide an intuitive file navigation experience with features such as hierarchical file viewing using DisclosureGroup, regex-based search functionality, customizable application settings, and drag-and-drop file handling. The application follows MVVM architecture and showcases modern macOS app development practices."
+  - title: "ARMeter"
+    technologies:
+      - "Swift"
+      - "ARKit"
+      - "Metal API"
+    github: "https://github.com/emrepbu/ARMeter"
+    content:
+      - "ARMeter is an augmented reality application that allows measuring distances in the real world using ARKit on iOS devices. The app features precise AR-based measurements with multiple unit options (meters, centimeters, inches, feet), measurement recording with notes, visual and haptic feedback, and multilingual support (English and Turkish). Built with Swift, SwiftUI, and Combine following MVVM architecture, it leverages Metal API for optimized performance and includes automatic surface detection for both horizontal and vertical surfaces."
 ---
