@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="src/assets/astrogon-logo.svg" style="width:80%;" alt="Astrogon Logo" align="center" />
+  <img src="src/assets/home-logo.svg" style="width:80%;" alt="Astrogon Logo" align="center" />
 </div>
 
 ---

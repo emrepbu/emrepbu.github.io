@@ -1,5 +1,5 @@
 ---
-image: "@assets/astrogon-star.svg"
+image: "@assets/home-logo.svg"
 imageAlt: Astrogon logo
 title: Astrogon
 content: A rapidly-customizable template for a blog, documentation, and more.

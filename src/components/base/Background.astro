@@ -1,12 +1,12 @@
 <!-- ---
-// Twinkling Star Background 
+// Twinkling Star Background
 const numStars = 1600;
 const stars = Array.from({ length: numStars }).map(() => ({
   left: `${Math.random() * 100}%`,
   top: `${Math.random() * 100}%`,
   size: `${Math.random() * 2 + 1}px`,
   delay: `${7 * Math.random()}s`,
-  // hsl: `hsl(${Math.random() * 360}, 100%, 50%)`, // background: ${hsl}; 
+  // hsl: `hsl(${Math.random() * 360}, 100%, 50%)`, // background: ${hsl};
 }));
 ---
 <div
@@ -72,7 +72,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
   }
 
   html::before {
-    background-image: url(/src/assets/backgrounds/bwca-day.png);
+    background-image: url(/src/assets/backgrounds/light.png);
     opacity: 1;
   }
 
@@ -81,7 +81,7 @@ const stars = Array.from({ length: numStars }).map(() => ({
   }
 
   html::after {
-    background-image: url(/src/assets/backgrounds/bwca-night.png);
+    background-image: url(/src/assets/backgrounds/dark.png);
     opacity: 0;
   }
 
