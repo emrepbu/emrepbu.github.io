@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Learning Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="main-title">Web Animations with GSAP</h1>
+        <p class="subtitle">Animation in Modern Web Design</p>
+    </header>
+
+    <nav class="navigation">
+        <a href="#basics" class="nav-link">Basic Concepts</a>
+        <a href="#animations" class="nav-link">Animations</a>
+        <a href="#timeline" class="nav-link">Timeline</a>
+        <a href="#scroll" class="nav-link">Scroll Animations</a>
+    </nav>
+
+    <section id="basics" class="section">
+        <h2>Basic GSAP Concepts</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Tween</h3>
+                <p>A single animation movement</p>
+                <div class="demo-box" id="tween-demo">Click!</div>
+            </div>
+            <div class="card">
+                <h3>Timeline</h3>
+                <p>Sequence of multiple animations</p>
+                <div class="demo-box" id="timeline-demo">Hover!</div>
+            </div>
+            <div class="card">
+                <h3>Easing</h3>
+                <p>Animation speed curves</p>
+                <div class="demo-box" id="easing-demo">Watch!</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="animations" class="section">
+        <h2>Animation Examples</h2>
+        <div class="animation-grid">
+            <div class="anim-item" id="fade-demo">
+                <h4>Fade In/Out</h4>
+            </div>
+            <div class="anim-item" id="scale-demo">
+                <h4>Scale</h4>
+            </div>
+            <div class="anim-item" id="rotate-demo">
+                <h4>Rotate</h4>
+            </div>
+            <div class="anim-item" id="stagger-demo">
+                <div class="stagger-box"></div>
+                <div class="stagger-box"></div>
+                <div class="stagger-box"></div>
+                <div class="stagger-box"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="section">
+        <h2>Timeline Control</h2>
+        <div class="timeline-container">
+            <div class="timeline-controls">
+                <button id="play-btn">Play</button>
+                <button id="pause-btn">Pause</button>
+                <button id="reverse-btn">Reverse</button>
+                <button id="restart-btn">Restart</button>
+            </div>
+            <div class="timeline-demo">
+                <div class="timeline-element" id="elem1"></div>
+                <div class="timeline-element" id="elem2"></div>
+                <div class="timeline-element" id="elem3"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scroll" class="section">
+        <h2>Scroll Animations</h2>
+        <div class="scroll-container">
+            <div class="scroll-element" data-speed="0.5">
+                <h3>Parallax Effect</h3>
+                <p>Movement at different speeds</p>
+            </div>
+            <div class="scroll-element" data-speed="0.8">
+                <h3>Fade In on Scroll</h3>
+                <p>Appear on scroll</p>
+            </div>
+            <div class="scroll-element" data-speed="1">
+                <h3>Pin Element</h3>
+                <p>Pinning feature</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="interactive-section">
+        <h2>Interactive Examples</h2>
+        <div class="interactive-container">
+            <div class="draggable-box">Drag Me!</div>
+            <div class="morph-shape">
+                <svg viewBox="0 0 200 200">
+                    <path id="morph-path" d="M100,20 C150,20 180,50 180,100 C180,150 150,180 100,180 C50,180 20,150 20,100 C20,50 50,20 100,20" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>GSAP Learning Journey © 2025</p>
+    </footer>
+
+    <!-- GSAP CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EaselPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/GSDevTools.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathHelper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Physics2DPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PhysicsPropsPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/PixiPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <!-- ScrollSmoother requires ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+
+    <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/EasePack.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+    <!-- CustomBounce requires CustomEase -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomBounce.min.js"></script>
+    <!-- CustomWiggle requires CustomEase -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomWiggle.min.js"></script>
+    <script src="animations.js"></script>
+</body>
+</html>
