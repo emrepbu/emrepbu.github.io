@@ -1,6 +1,11 @@
 import { getText } from '../utils/language.js';
+import { loadProjects, loadArticles } from '../utils/contentLoader.js';
+import { formatDate } from '../utils/markdown.js';
 
 export function createHomePage(): string {
+  const projects = loadProjects().filter(p => p.frontmatter.featured).slice(0, 3);
+  const articles = loadArticles().filter(a => a.frontmatter.featured).slice(0, 3);
+
   return `
     <div class="home-page">
       <section class="hero-section">
@@ -39,68 +44,31 @@ export function createHomePage(): string {
       <section class="projects-section">
         <h2>${getText('projects.title')}</h2>
         <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-code"></i>
+          ${projects.map(project => `
+            <div class="project-card">
+              <div class="project-image">
+                ${project.frontmatter.image 
+                  ? `<img src="${project.frontmatter.image}" alt="${project.frontmatter.title}" />`
+                  : `<div class="project-placeholder">
+                      <i class="fas fa-code"></i>
+                    </div>`
+                }
+              </div>
+              <div class="project-content">
+                <h3>${project.frontmatter.title}</h3>
+                <p>${project.frontmatter.description}</p>
+                <div class="project-tech">
+                  ${project.frontmatter.technologies.map(tech => 
+                    `<span class="tech-tag">${tech}</span>`
+                  ).join('')}
+                </div>
+                <div class="project-links">
+                  ${project.frontmatter.demoUrl ? `<a href="${project.frontmatter.demoUrl}" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>` : ''}
+                  ${project.frontmatter.githubUrl ? `<a href="${project.frontmatter.githubUrl}" class="project-link"><i class="fab fa-github"></i> GitHub</a>` : ''}
+                </div>
               </div>
             </div>
-            <div class="project-content">
-              <h3>${getText('projects.ecommerce.title')}</h3>
-              <p>${getText('projects.ecommerce.description')}</p>
-              <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">GSAP</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-mobile-alt"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>${getText('projects.portfolio.title')}</h3>
-              <p>${getText('projects.portfolio.description')}</p>
-              <div class="project-tech">
-                <span class="tech-tag">Three.js</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">Vite</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="project-image">
-              <div class="project-placeholder">
-                <i class="fas fa-chart-line"></i>
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>${getText('projects.dataviz.title')}</h3>
-              <p>${getText('projects.dataviz.description')}</p>
-              <div class="project-tech">
-                <span class="tech-tag">D3.js</span>
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">Chart.js</span>
-              </div>
-              <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
-                <a href="#" class="project-link"><i class="fab fa-github"></i> GitHub</a>
-              </div>
-            </div>
-          </div>
+          `).join('')}
         </div>
         <div class="section-footer">
           <a href="/projects" class="view-all-btn">${getText('projects.viewAll')} <i class="fas fa-arrow-right"></i></a>
@@ -110,35 +78,17 @@ export function createHomePage(): string {
       <section class="blog-section">
         <h2>${getText('blog.title')}</h2>
         <div class="blog-grid">
-          <article class="blog-card">
-            <div class="blog-meta">
-              <span class="blog-date">15 Aralık 2024</span>
-              <span class="blog-category">Web Development</span>
-            </div>
-            <h3>${getText('blog.post1.title')}</h3>
-            <p>${getText('blog.post1.description')}</p>
-            <a href="/articles/gsap-modern-animations" class="blog-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
-          </article>
-
-          <article class="blog-card">
-            <div class="blog-meta">
-              <span class="blog-date">08 Aralık 2024</span>
-              <span class="blog-category">Frontend</span>
-            </div>
-            <h3>${getText('blog.post2.title')}</h3>
-            <p>${getText('blog.post2.description')}</p>
-            <a href="/articles/react-typescript-performance" class="blog-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
-          </article>
-
-          <article class="blog-card">
-            <div class="blog-meta">
-              <span class="blog-date">01 Aralık 2024</span>
-              <span class="blog-category">Career</span>
-            </div>
-            <h3>${getText('blog.post3.title')}</h3>
-            <p>${getText('blog.post3.description')}</p>
-            <a href="/articles/frontend-journey-3-years" class="blog-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
-          </article>
+          ${articles.map(article => `
+            <article class="blog-card">
+              <div class="blog-meta">
+                <span class="blog-date">${formatDate(article.frontmatter.date)}</span>
+                <span class="blog-category">${article.frontmatter.category}</span>
+              </div>
+              <h3>${article.frontmatter.title}</h3>
+              <p>${article.frontmatter.description}</p>
+              <a href="/articles/${article.slug}" class="blog-link">Devamını Oku <i class="fas fa-arrow-right"></i></a>
+            </article>
+          `).join('')}
         </div>
         <div class="section-footer">
           <a href="/articles" class="view-all-btn">${getText('blog.viewAll')} <i class="fas fa-arrow-right"></i></a>

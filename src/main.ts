@@ -1,3 +1,7 @@
+// Buffer polyfill for browser
+import { Buffer } from 'buffer';
+(window as any).Buffer = Buffer;
+
 import { gsap } from 'gsap';
 
 import { CustomEase } from 'gsap/CustomEase';
@@ -31,6 +35,9 @@ import { createHomePage, initHomePage } from './pages/home.js';
 import { createBasicPage, initBasicPage } from './pages/basic.js';
 import { createProjectsPage, initProjectsPage } from './pages/projects.js';
 import { createArticlesPage, initArticlesPage } from './pages/articles.js';
+import { createArticleDetailPage, initArticleDetailPage } from './pages/articleDetail.js';
+import { createProjectDetailPage, initProjectDetailPage } from './pages/projectDetail.js';
+import { getArticleBySlug, getProjectBySlug } from './utils/contentLoader.js';
 import { getText } from './utils/language.js';
 
 // Make GSAP available globally for pages
@@ -77,6 +84,9 @@ function initApp() {
 
   // Initialize router
   const router = new Router(app);
+  
+  // Make router available globally for navigation
+  (window as any).router = router;
 
 
   // Add routes
@@ -177,6 +187,31 @@ function initApp() {
   // Create and initialize navbar
   navbarContainer.innerHTML = createNavbar(router);
   initNavbar(router);
+
+  // Add dynamic routes for article and project details
+  router.addDynamicRoute({
+    pattern: /^\/articles\/(.+)$/,
+    title: (params) => {
+      const article = getArticleBySlug(params.slug);
+      return article ? article.frontmatter.title : 'Makale';
+    },
+    component: (params) => {
+      app.innerHTML = createArticleDetailPage(params.slug);
+      initArticleDetailPage(params.slug);
+    }
+  });
+
+  router.addDynamicRoute({
+    pattern: /^\/projects\/(.+)$/,
+    title: (params) => {
+      const project = getProjectBySlug(params.slug);
+      return project ? project.frontmatter.title : 'Proje';
+    },
+    component: (params) => {
+      app.innerHTML = createProjectDetailPage(params.slug);
+      initProjectDetailPage(params.slug);
+    }
+  });
 
   // Navigate to current path or home
   const currentPath = window.location.pathname;

@@ -1,99 +1,152 @@
-# İçerik Şablonları
+# İçerik Şablonları - Markdown Sistemi
 
-Bu klasör, blog yazıları ve projeler için şablon dosyaları içerir.
+Bu klasör, blog yazıları ve projeler için **Markdown** şablonları içerir.
+
+## 📝 Markdown Sistemi
+
+Artık tüm içerikler Markdown formatında yazılır ve otomatik olarak HTML'e dönüştürülür.
 
 ## 🚀 Yeni Proje Ekleme
 
-1. `new-project-template.ts` dosyasını inceleyin
-2. Şablonu doldurun:
-   ```typescript
-   const yeniProjem: Project = {
-     id: 'proje-adi',
-     title: 'Proje Başlığı',
-     description: 'Kısa açıklama...',
-     technologies: ['React', 'GSAP'],
-     demoUrl: 'https://demo.com',
-     githubUrl: 'https://github.com/user/repo',
-     date: '2024-03-20',
-     featured: true
-   };
-   ```
-3. `src/pages/projects.ts` dosyasını açın
-4. `projects` dizisine yeni projenizi ekleyin
-5. Proje görseli varsa `public/projects/` klasörüne ekleyin
+1. `content/projects/` klasörüne yeni bir `.md` dosyası oluşturun
+2. Dosya adı URL'de kullanılacak (örn: `my-project.md` → `/projects/my-project`)
+3. `project-template.md` şablonunu kullanın:
 
-## 📝 Yeni Blog Yazısı Ekleme
+```markdown
+---
+title: Proje Başlığı
+description: Kısa açıklama
+date: 2024-03-20
+technologies:
+  - React
+  - GSAP
+  - TypeScript
+demoUrl: https://demo.com
+githubUrl: https://github.com/user/repo
+featured: true
+image: /projects/proje-gorseli.jpg
+---
 
-1. `new-article-template.ts` dosyasını inceleyin
-2. Şablonu doldurun:
-   ```typescript
-   const yeniMakalem: Article = {
-     id: 'makale-adi',
-     title: 'Makale Başlığı',
-     description: 'Kısa açıklama...',
-     category: 'Web Development',
-     tags: ['JavaScript', 'Tutorial'],
-     date: '2024-03-20',
-     readTime: 8,
-     featured: true
-   };
-   ```
-3. `src/pages/articles.ts` dosyasını açın
-4. `articles` dizisine yeni makalenizi ekleyin
-5. Makale görseli varsa `public/articles/` klasörüne ekleyin
+# Proje İçeriği
+
+Markdown formatında detaylı açıklama...
+```
+
+## 📰 Yeni Blog Yazısı Ekleme
+
+1. `content/articles/` klasörüne yeni bir `.md` dosyası oluşturun
+2. Dosya adı URL'de kullanılacak (örn: `my-article.md` → `/articles/my-article`)
+3. `article-template.md` şablonunu kullanın:
+
+```markdown
+---
+title: Makale Başlığı
+description: Kısa özet
+date: 2024-03-20
+category: Web Development
+tags:
+  - JavaScript
+  - Tutorial
+readTime: 8
+featured: true
+image: /articles/kapak-gorseli.jpg
+---
+
+# Makale İçeriği
+
+Markdown formatında makale...
+```
 
 ## 📁 Dosya Yapısı
 
 ```
+content/
+├── projects/          # Proje markdown dosyaları
+│   ├── ecommerce-platform.md
+│   ├── portfolio-dashboard.md
+│   └── data-visualization.md
+├── articles/          # Makale markdown dosyaları
+│   ├── gsap-modern-animations.md
+│   ├── react-typescript-performance.md
+│   └── frontend-journey-3-years.md
+
 public/
 ├── projects/          # Proje görselleri
-│   ├── proje1.jpg
-│   └── proje2.png
+│   └── screenshots/
 ├── articles/          # Makale görselleri
-│   ├── makale1.jpg
-│   └── makale2.png
-└── ...
-
-src/pages/
-├── projects.ts        # Proje listesi ve sayfa
-├── articles.ts        # Makale listesi ve sayfa
-└── ...
+│   └── images/
 
 templates/
-├── new-project-template.ts    # Proje şablonu
-├── new-article-template.ts    # Makale şablonu
-└── README.md                  # Bu dosya
+├── project-template.md    # Proje şablonu
+├── article-template.md    # Makale şablonu
+└── README.md             # Bu dosya
 ```
 
-## ✨ Özellikler
+## ✨ Markdown Özellikleri
 
-### Projeler için:
-- ✅ Teknoloji filtreleme (React, GSAP, Three.js, vb.)
-- ✅ Demo ve GitHub linkleri
-- ✅ Öne çıkan projeler
-- ✅ Hover animasyonları
-- ✅ Responsive tasarım
+### Desteklenen Özellikler:
+- ✅ Başlıklar (H1-H6)
+- ✅ Kalın, italic, strikethrough
+- ✅ Listeler (sıralı/sırasız)
+- ✅ Kod blokları (syntax highlighting)
+- ✅ Tablolar
+- ✅ Linkler ve görseller
+- ✅ Alıntılar (blockquote)
+- ✅ Horizontal rule
+- ✅ HTML (inline)
 
-### Blog Yazıları için:
-- ✅ Kategori filtreleme (Web Development, Frontend, Career)
-- ✅ Etiket sistemi (#tag)
-- ✅ Okuma süresi gösterimi
-- ✅ Öne çıkan yazılar
-- ✅ Paylaşım özelliği
-- ✅ Responsive tasarım
+### Frontmatter Alanları:
 
-## 🎨 Animasyonlar
+#### Projeler için:
+- `title` (zorunlu): Proje başlığı
+- `description` (zorunlu): Kısa açıklama
+- `date` (zorunlu): YYYY-MM-DD formatında
+- `technologies` (zorunlu): Teknoloji listesi
+- `demoUrl`: Demo linki
+- `githubUrl`: GitHub linki
+- `featured`: Ana sayfada göster
+- `image`: Kapak görseli
+- `draft`: Taslak (listelenmez)
 
-Tüm sayfalar GSAP animasyonları ile:
-- Sayfa girişi (stagger animasyonları)
-- Filtre değişimi (smooth scale/opacity)
-- Hover efektleri
-- Responsive mobile menü
+#### Makaleler için:
+- `title` (zorunlu): Makale başlığı
+- `description` (zorunlu): Kısa özet
+- `date` (zorunlu): YYYY-MM-DD formatında
+- `category` (zorunlu): Kategori
+- `tags` (zorunlu): Etiket listesi
+- `readTime` (zorunlu): Okuma süresi (dk)
+- `featured`: Ana sayfada göster
+- `image`: Kapak görseli
+- `draft`: Taslak (listelenmez)
 
-## 📱 Responsive
+## 🎨 Görsel Ekleme
 
-Tüm sayfalar mobil-first yaklaşımla tasarlanmıştır:
-- Desktop: Grid layout
-- Tablet: 2 kolon
-- Mobile: 1 kolon
-- Touch-friendly butonlar
+1. Görselleri `public/projects/` veya `public/articles/` klasörüne ekleyin
+2. Markdown'da relative path kullanın:
+   ```markdown
+   ![Açıklama](/projects/my-image.jpg)
+   ```
+
+## 📱 Responsive Görseller
+
+Görseller otomatik olarak responsive olur. CSS'te `object-fit: cover` kullanılır.
+
+## 🔍 SEO
+
+- `title` ve `description` meta taglar için kullanılır
+- URL-friendly dosya adları kullanın (küçük harf, tire ile ayrılmış)
+- Anlamlı `alt` text'ler kullanın
+
+## 💡 İpuçları
+
+1. **Dosya Adlandırma**: URL'de görünecek şekilde adlandırın
+   - ✅ `react-performance-tips.md`
+   - ❌ `React Performance Tips.md`
+
+2. **Tarih Formatı**: ISO 8601 formatı kullanın (YYYY-MM-DD)
+
+3. **Görseller**: Optimize edilmiş görseller kullanın (WebP tercih edilir)
+
+4. **Draft**: Yayınlanmaya hazır olmayan içerikler için `draft: true` kullanın
+
+5. **Featured**: Maksimum 3 içerik featured olarak işaretlenebilir

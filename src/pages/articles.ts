@@ -1,53 +1,10 @@
 import { getText } from '../utils/language.js';
-
-export interface Article {
-  id: string;
-  title: string;
-  description: string;
-  content?: string;
-  category: string;
-  tags: string[];
-  date: string;
-  readTime: number;
-  featured?: boolean;
-  image?: string;
-}
-
-export const articles: Article[] = [
-  {
-    id: 'gsap-modern-animations',
-    title: 'Modern JavaScript ile GSAP Animasyonları',
-    description: 'GSAP kullanarak web sitelerinize profesyonel animasyonlar eklemenin modern yolları ve best practice\'ler...',
-    category: 'Web Development',
-    tags: ['GSAP', 'JavaScript', 'Animation', 'Frontend'],
-    date: '2024-12-15',
-    readTime: 8,
-    featured: true
-  },
-  {
-    id: 'react-typescript-performance',
-    title: 'TypeScript ile React Performance Optimizasyonu',
-    description: 'React uygulamalarında performansı artırmak için TypeScript\'ten nasıl faydalanabiliriz? Pratik örnekler...',
-    category: 'Frontend',
-    tags: ['React', 'TypeScript', 'Performance', 'Optimization'],
-    date: '2024-12-08',
-    readTime: 12,
-    featured: true
-  },
-  {
-    id: 'frontend-journey-3-years',
-    title: 'Frontend Developer Olarak 3 Yıllık Deneyimim',
-    description: 'Frontend geliştirme alanında edindiğim deneyimler, karşılaştığım zorluklar ve öğrendiğim dersler...',
-    category: 'Career',
-    tags: ['Career', 'Frontend', 'Experience', 'Learning'],
-    date: '2024-12-01',
-    readTime: 6,
-    featured: true
-  }
-];
+import { loadArticles, ContentItem, ArticleFrontMatter } from '../utils/contentLoader.js';
+import { formatDate } from '../utils/markdown.js';
 
 export function createArticlesPage(): string {
-  const categories = [...new Set(articles.map(article => article.category))];
+  const articles = loadArticles();
+  const categories = [...new Set(articles.map(article => article.frontmatter.category))];
   
   return `
     <div class="articles-page">
@@ -70,39 +27,37 @@ export function createArticlesPage(): string {
   `;
 }
 
-function createArticleCard(article: Article): string {
+function createArticleCard(article: ContentItem<ArticleFrontMatter>): string {
+  const { frontmatter, slug } = article;
+  
   return `
-    <article class="article-card" data-category="${article.category.toLowerCase()}" data-article-id="${article.id}">
-      ${article.featured ? '<div class="featured-badge">Öne Çıkan</div>' : ''}
+    <article class="article-card" data-category="${frontmatter.category.toLowerCase()}" data-article-slug="${slug}">
+      ${frontmatter.featured ? '<div class="featured-badge">Öne Çıkan</div>' : ''}
+      ${frontmatter.image ? `
+        <div class="article-image">
+          <img src="${frontmatter.image}" alt="${frontmatter.title}" />
+        </div>
+      ` : ''}
       <div class="article-meta">
-        <span class="article-date">${formatDate(article.date)}</span>
-        <span class="article-category">${article.category}</span>
-        <span class="read-time"><i class="fas fa-clock"></i> ${article.readTime} dk okuma</span>
+        <span class="article-date">${formatDate(frontmatter.date)}</span>
+        <span class="article-category">${frontmatter.category}</span>
+        <span class="read-time"><i class="fas fa-clock"></i> ${frontmatter.readTime} dk okuma</span>
       </div>
-      <h3>${article.title}</h3>
-      <p>${article.description}</p>
+      <h3>${frontmatter.title}</h3>
+      <p>${frontmatter.description}</p>
       <div class="article-tags">
-        ${article.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+        ${frontmatter.tags.map((tag: string) => `<span class="tag">#${tag}</span>`).join('')}
       </div>
       <div class="article-actions">
-        <button class="article-link read-article" data-article-id="${article.id}">
+        <button class="article-link read-article" data-article-slug="${slug}">
           <i class="fas fa-book-open"></i> Oku
         </button>
-        <button class="article-link share-article" data-article-id="${article.id}">
+        <button class="article-link share-article" data-article-slug="${slug}">
           <i class="fas fa-share"></i> Paylaş
         </button>
       </div>
     </article>
   `;
-}
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('tr-TR', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
 }
 
 export function initArticlesPage(): void {
@@ -153,11 +108,13 @@ export function initArticlesPage(): void {
   const readButtons = document.querySelectorAll('.read-article');
   readButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const articleId = button.getAttribute('data-article-id');
-      if (articleId) {
-        // Here you can implement article detail navigation
-        console.log('Read article:', articleId);
-        // Example: navigateToArticle(articleId);
+      const articleSlug = button.getAttribute('data-article-slug');
+      if (articleSlug) {
+        // Navigate to article detail page
+        const router = (window as any).router;
+        if (router) {
+          router.navigate(`/articles/${articleSlug}`);
+        }
       }
     });
   });
@@ -165,38 +122,48 @@ export function initArticlesPage(): void {
   // Share functionality
   const shareButtons = document.querySelectorAll('.share-article');
   shareButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const articleId = button.getAttribute('data-article-id');
-      if (articleId) {
-        // Simple share functionality
-        const article = articles.find(a => a.id === articleId);
-        if (article) {
-          const url = `${window.location.origin}/articles/${articleId}`;
-          if (navigator.share) {
-            navigator.share({
-              title: article.title,
-              text: article.description,
+    button.addEventListener('click', async () => {
+      const articleSlug = button.getAttribute('data-article-slug');
+      if (articleSlug) {
+        const url = `${window.location.origin}/articles/${articleSlug}`;
+        
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: 'Blog Yazısı',
               url: url
             });
-          } else {
-            // Fallback: copy to clipboard
-            navigator.clipboard.writeText(url);
-            // You can show a toast notification here
-            console.log('URL copied to clipboard');
+          } catch (err) {
+            console.log('Share cancelled or failed');
           }
+        } else {
+          // Fallback: copy to clipboard
+          navigator.clipboard.writeText(url);
+          // You can show a toast notification here
+          console.log('URL copied to clipboard');
         }
       }
     });
   });
 
+  // Set initial state for cards to ensure visibility
+  gsap.set('.article-card', { opacity: 1 });
+
   // Entrance animations
-  gsap.from('.article-card', {
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: 'power3.out'
-  });
+  gsap.fromTo('.article-card', 
+    {
+      y: 50,
+      opacity: 0
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'power3.out',
+      clearProps: 'all'
+    }
+  );
 
   gsap.from('.filter-btn', {
     y: 20,

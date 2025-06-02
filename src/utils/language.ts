@@ -16,8 +16,8 @@ export const texts = {
 
   // Home Page Hero
   'hero.greeting': 'Merhaba, Ben Emre!',
-  'hero.subtitle': 'Web Developer & Creative Coder',
-  'hero.description': 'Frontend geliştirme, web animasyonları ve kullanıcı deneyimi konularında uzmanlaşan bir geliştiriciyim. Bu blog ve portfolyo sitesinde projelerimi, deneyimlerimi ve öğrendiklerimi paylaşıyorum.',
+  'hero.subtitle': 'Native iOS & Android Developer',
+  'hero.description': 'Backend ve mobil uygulama geliştirme konularında uzmanlaşan bir geliştiriciyim. Bu blog ve portfolyo sitesinde projelerimi, deneyimlerimi ve öğrendiklerimi paylaşıyorum.',
   'hero.experience': 'Yıl Deneyim',
   'hero.projects': 'Proje',
   'hero.learning': 'Öğrenme',
@@ -51,7 +51,7 @@ export const texts = {
 
   // Footer
   'footer.copyright': '© 2024 Emre Argana | Blog & Portfolio',
-  'footer.subtitle': 'Frontend Developer & Creative Coder',
+  'footer.subtitle': 'Backend & Mobile Developer',
 
   // Page Headers
   'page.projects.title': 'Projelerim',

@@ -618,6 +618,18 @@ img {
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
 }
 
 .project-placeholder {
@@ -1133,6 +1145,23 @@ img {
     box-shadow: 0 8px 25px rgba(252, 200, 23, 0.2);
 }
 
+.article-image {
+    height: 200px;
+    margin: -1.5rem -1.5rem 1rem;
+    overflow: hidden;
+}
+
+.article-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-image img {
+    transform: scale(1.05);
+}
+
 .article-meta {
     display: flex;
     gap: 1rem;
@@ -1230,6 +1259,13 @@ img {
 
 .projects-page .project-card {
     position: relative;
+    opacity: 1 !important;
+}
+
+/* Ensure all cards are visible */
+.article-card,
+.project-card {
+    opacity: 1 !important;
 }
 
 .project-meta {
