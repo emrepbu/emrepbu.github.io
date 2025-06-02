@@ -22,65 +22,98 @@ export function createArticleDetailPage(slug: string): string {
 
   return `
     <div class="article-detail-page">
-      <article class="article-container">
-        <header class="article-header">
-          <div class="article-meta-detail">
-            <span class="article-date">${formatDate(frontmatter.date)}</span>
-            <span class="article-category">${frontmatter.category}</span>
-            <span class="read-time"><i class="fas fa-clock"></i> ${frontmatter.readTime} dk okuma</span>
+      <div class="article-detail-container">
+        <header class="article-detail-header">
+          <div class="article-breadcrumb">
+            <a href="/" class="breadcrumb-link">Ana Sayfa</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="/articles" class="breadcrumb-link">Yazılarım</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">${frontmatter.title}</span>
           </div>
           
-          <h1 class="article-title">${frontmatter.title}</h1>
+          <h1 class="article-detail-title">${frontmatter.title}</h1>
           
-          <p class="article-description">${frontmatter.description}</p>
-          
-          <div class="article-tags">
-            ${frontmatter.tags.map((tag: string) => `<span class="tag">#${tag}</span>`).join('')}
+          <div class="article-detail-meta">
+            <div class="meta-item">
+              <i class="fas fa-calendar"></i>
+              <span>${formatDate(frontmatter.date)}</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-folder"></i>
+              <span>${frontmatter.category}</span>
+            </div>
+            <div class="meta-item">
+              <i class="fas fa-clock"></i>
+              <span>${frontmatter.readTime} dk okuma</span>
+            </div>
           </div>
-
+          
+          <p class="article-detail-description">${frontmatter.description}</p>
+          
           ${frontmatter.image ? `
-            <div class="article-hero-image">
+            <div class="article-detail-hero">
               <img src="${frontmatter.image}" alt="${frontmatter.title}" />
             </div>
           ` : ''}
         </header>
 
-        <div class="article-content">
-          ${html}
+        <div class="article-detail-body">
+          <aside class="article-detail-sidebar">
+            <div class="sidebar-sticky">
+              <div class="sidebar-section">
+                <h3 class="sidebar-title">İçindekiler</h3>
+                <nav class="toc" id="toc">
+                  <!-- Will be populated by JS -->
+                </nav>
+              </div>
+              
+              <div class="sidebar-section">
+                <h3 class="sidebar-title">Paylaş</h3>
+                <div class="share-buttons-vertical">
+                  <button class="share-btn-vertical" data-share="twitter" title="Twitter'da Paylaş">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button class="share-btn-vertical" data-share="linkedin" title="LinkedIn'de Paylaş">
+                    <i class="fab fa-linkedin"></i>
+                  </button>
+                  <button class="share-btn-vertical" data-share="copy" title="Linki Kopyala">
+                    <i class="fas fa-link"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <article class="article-detail-content">
+            ${html}
+            
+            <div class="article-detail-tags">
+              <i class="fas fa-tags"></i>
+              ${frontmatter.tags.map((tag: string) => `<span class="article-tag">#${tag}</span>`).join('')}
+            </div>
+          </article>
         </div>
 
-        <footer class="article-footer">
-          <div class="article-share">
-            <h3>Bu yazıyı paylaş</h3>
-            <div class="share-buttons">
-              <button class="share-btn" data-share="twitter">
-                <i class="fab fa-twitter"></i> Twitter
-              </button>
-              <button class="share-btn" data-share="linkedin">
-                <i class="fab fa-linkedin"></i> LinkedIn
-              </button>
-              <button class="share-btn" data-share="copy">
-                <i class="fas fa-link"></i> Linki Kopyala
-              </button>
+        <footer class="article-detail-footer">
+          <div class="footer-content">
+            <div class="author-info">
+              <div class="author-avatar">
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="author-details">
+                <h4>Emre Argana</h4>
+                <p>Backend & Mobile Developer</p>
+              </div>
             </div>
-          </div>
-
-          <div class="article-navigation">
-            <a href="/articles" class="back-to-articles">
-              <i class="fas fa-arrow-left"></i> Tüm Yazılara Dön
+            
+            <a href="/articles" class="back-button">
+              <i class="fas fa-arrow-left"></i>
+              <span>Tüm Yazılara Dön</span>
             </a>
           </div>
         </footer>
-      </article>
-
-      <aside class="article-sidebar">
-        <div class="sidebar-section">
-          <h3>İçindekiler</h3>
-          <div class="table-of-contents" id="toc">
-            <!-- Will be populated by JS -->
-          </div>
-        </div>
-      </aside>
+      </div>
     </div>
   `;
 }
@@ -89,14 +122,14 @@ export function initArticleDetailPage(_slug: string): void {
   const { gsap } = window as any;
 
   // Page entrance animation
-  gsap.from('.article-header', { 
+  gsap.from('.article-detail-header', { 
     y: 30, 
     opacity: 0, 
     duration: 0.8, 
     ease: 'power3.out' 
   });
 
-  gsap.from('.article-content', { 
+  gsap.from('.article-detail-content', { 
     y: 30, 
     opacity: 0, 
     duration: 0.8, 
@@ -104,8 +137,16 @@ export function initArticleDetailPage(_slug: string): void {
     ease: 'power3.out' 
   });
 
-  gsap.from('.article-sidebar', { 
-    x: 30, 
+  gsap.from('.article-detail-sidebar', { 
+    x: -30, 
+    opacity: 0, 
+    duration: 0.8, 
+    delay: 0.3,
+    ease: 'power3.out' 
+  });
+  
+  gsap.from('.article-detail-footer', { 
+    y: 30, 
     opacity: 0, 
     duration: 0.8, 
     delay: 0.4,
@@ -116,12 +157,12 @@ export function initArticleDetailPage(_slug: string): void {
   generateTableOfContents();
 
   // Share functionality
-  const shareButtons = document.querySelectorAll('.share-btn');
+  const shareButtons = document.querySelectorAll('.share-btn-vertical');
   shareButtons.forEach(button => {
     button.addEventListener('click', () => {
       const shareType = button.getAttribute('data-share');
       const url = window.location.href;
-      const title = document.querySelector('.article-title')?.textContent || '';
+      const title = document.querySelector('.article-detail-title')?.textContent || '';
 
       switch (shareType) {
         case 'twitter':
@@ -133,10 +174,12 @@ export function initArticleDetailPage(_slug: string): void {
         case 'copy':
           navigator.clipboard.writeText(url).then(() => {
             // Show success message
-            const originalText = button.innerHTML;
-            button.innerHTML = '<i class="fas fa-check"></i> Kopyalandı!';
+            button.classList.add('copied');
+            const originalTitle = button.getAttribute('title') || '';
+            button.setAttribute('title', 'Kopyalandı!');
             setTimeout(() => {
-              button.innerHTML = originalText;
+              button.classList.remove('copied');
+              button.setAttribute('title', originalTitle);
             }, 2000);
           });
           break;
@@ -164,7 +207,7 @@ export function initArticleDetailPage(_slug: string): void {
 
 function generateTableOfContents(): void {
   const toc = document.getElementById('toc');
-  const headings = document.querySelectorAll('.article-content h2, .article-content h3');
+  const headings = document.querySelectorAll('.article-detail-content h2, .article-detail-content h3');
   
   if (!toc || headings.length === 0) return;
 
