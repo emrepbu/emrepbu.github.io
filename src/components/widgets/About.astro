@@ -1,0 +1,25 @@
+---
+import { getEntry } from 'astro:content'
+import { render } from 'astro:content'
+
+const aboutEntry = await getEntry('about', 'about')
+// Check if there is actual content (excluding comments)
+const hasContent = aboutEntry?.body
+  ? aboutEntry.body.replace(/<!--[\s\S]*?-->/g, '').trim().length > 0
+  : false
+const { Content } = hasContent && aboutEntry ? await render(aboutEntry) : { Content: null }
+---
+
+{
+  hasContent && Content && (
+    <div class="about prose">
+      <Content />
+    </div>
+  )
+}
+
+<style>
+  .about:not(:empty) {
+    margin-bottom: 1.25rem;
+  }
+</style>

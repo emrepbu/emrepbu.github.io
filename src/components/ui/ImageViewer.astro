@@ -1,0 +1,148 @@
+<div id="image-viewer" class="image-viewer">
+  <img id="image-viewer-img" src="" alt="" />
+</div>
+
+<script>
+  function initImageViewer() {
+    const viewer = document.getElementById('image-viewer')
+    const viewerImg = document.getElementById('image-viewer-img') as HTMLImageElement
+
+    if (!viewer || !viewerImg || viewerImg.tagName !== 'IMG') return
+
+    // Display image in fullscreen viewer overlay
+    function showImage(src: string, alt?: string) {
+      if (viewerImg && src) {
+        viewerImg.src = src
+        viewerImg.alt = alt || ''
+      }
+      // Show visibility first
+      viewer!.style.visibility = 'visible'
+      void viewer!.offsetWidth
+      viewer!.classList.add('active')
+      document.body.classList.add('image-viewer-open')
+      document.body.style.overflow = 'hidden'
+      document.body.dataset.scrollY = window.scrollY.toString()
+      viewer!.style.cursor = 'auto'
+      setTimeout(() => {
+        viewer!.style.cursor = ''
+      }, 10)
+    }
+
+    // Hide the image viewer and restore page scroll
+    function hideImage() {
+      viewer!.classList.remove('active')
+      document.body.classList.remove('image-viewer-open')
+      document.body.style.overflow = ''
+    }
+
+    // Hide and clear image after transition ends
+    viewer!.addEventListener('transitionend', (e) => {
+      if (e.propertyName === 'opacity' && !viewer!.classList.contains('active')) {
+        viewer!.style.visibility = 'hidden'
+        if (viewerImg) {
+          viewerImg.src = ''
+          viewerImg.alt = ''
+        }
+        viewer!.style.cursor = 'auto'
+        setTimeout(() => {
+          viewer!.style.cursor = ''
+        }, 10)
+      }
+    })
+
+    // Bind click events to images with data-preview="true" attribute
+    function bindImageClickEvents() {
+      const previewImages = document.querySelectorAll('img[data-preview="true"]')
+      previewImages.forEach((img) => {
+        const imgElement = img as HTMLImageElement
+        imgElement.style.cursor = 'zoom-in'
+        imgElement.addEventListener('click', (e) => {
+          e.preventDefault()
+          const target = e.target as HTMLImageElement
+          showImage(target.src, target.alt || '')
+        })
+      })
+    }
+
+    viewer?.addEventListener('click', hideImage)
+
+    // Prevent touch scroll in image viewer
+    viewer?.addEventListener(
+      'touchmove',
+      (e) => {
+        if (viewer.classList.contains('active')) {
+          e.preventDefault()
+        }
+      },
+      { passive: false }
+    )
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && viewer.classList.contains('active')) {
+        hideImage()
+      }
+    })
+
+    bindImageClickEvents()
+
+    const observer = new MutationObserver(() => {
+      bindImageClickEvents()
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    })
+
+    // Hide initially
+    viewer!.style.visibility = 'hidden'
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initImageViewer)
+  } else {
+    initImageViewer()
+  }
+
+  document.addEventListener('astro:page-load', initImageViewer)
+</script>
+
+<style>
+  .image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    cursor: zoom-out;
+  }
+
+  .image-viewer.active {
+    opacity: 1;
+  }
+
+  .image-viewer img {
+    min-width: 45rem;
+    max-width: 60vw;
+    max-height: 80vh;
+    object-fit: contain;
+    cursor: zoom-out;
+  }
+
+  @media (max-width: 768px) {
+    .image-viewer img {
+      min-width: 100vw;
+    }
+  }
+
+  body.image-viewer-open {
+    overflow: hidden;
+  }
+</style>

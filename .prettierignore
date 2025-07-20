@@ -1,0 +1,40 @@
+# Build output
+dist/
+.output/
+
+# Dependencies
+node_modules/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Log files
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Cache directories
+.cache/
+.astro/
+
+# Others
+.DS_Store
+coverage/
+
+# Media files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.webm
+*.mp3
+*.wav
+*.pdf

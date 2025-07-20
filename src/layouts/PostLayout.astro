@@ -1,0 +1,82 @@
+---
+import '@/styles/global.css'
+import type { PostLayoutProps } from '@/types'
+import FormattedDate from '@/components/widgets/FormattedDate.astro'
+import FootnoteScroll from '@/components/widgets/FootnoteScroll.astro'
+import BaseHead from '@/components/layout/BaseHead.astro'
+import Footer from '@/components/layout/Footer.astro'
+import BackButton from '@/components/ui/BackButton.astro'
+import TableOfContents from '@/components/ui/TableOfContents.astro'
+import GradientMask from '@/components/ui/GradientMask.astro'
+import ImageViewer from '@/components/ui/ImageViewer.astro'
+import GitHubCard from '@/components/ui/GitHubCard.astro'
+import LinkCard from '@/components/ui/LinkCard.astro'
+import ImageOptimizer from '@/components/ui/ImageOptimizer.astro'
+import XPOST from '@/components/ui/XPOST.astro'
+import CopyCode from '@/components/ui/CopyCode.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+import { themeConfig } from '@/config'
+
+const { title, pubDate, readingTime, toc } = Astro.props as PostLayoutProps
+
+const postSlug = Astro.url.pathname.split('/').filter(Boolean).pop() || ''
+const ogImage = `/open-graph/${postSlug}.png`
+---
+
+<BaseLayout
+  title={`${title} · ${themeConfig.site.title}`}
+  description={themeConfig.site.description}
+  type="post"
+>
+  <BaseHead
+    title={`${title} · ${themeConfig.site.title}`}
+    description={themeConfig.site.description}
+    ogImage={ogImage}
+    slot="head"
+  />
+  <div class="post-container">
+    <main>
+      <div class="prose">
+        <GradientMask />
+        <BackButton />
+        {themeConfig.post.toc && <TableOfContents toc={toc} />}
+        <div class="title">
+          <h1>{title}</h1>
+          <div class="date">
+            <FormattedDate date={pubDate} context="post" />
+            {
+              themeConfig.post.readingTime && readingTime && (
+                <span class="reading-time">
+                  <span class="separator">·</span>
+                  {readingTime.text}
+                </span>
+              )
+            }
+          </div>
+        </div>
+        <slot />
+      </div>
+    </main>
+    <FootnoteScroll />
+    <CopyCode />
+    <GitHubCard />
+    <LinkCard />
+    <XPOST />
+    <ImageOptimizer />
+    {themeConfig.post.imageViewer && <ImageViewer />}
+    {themeConfig.general.footer && <Footer />}
+  </div>
+</BaseLayout>
+
+<style>
+  .post-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .post-container main {
+    flex: 1;
+  }
+</style>

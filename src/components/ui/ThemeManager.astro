@@ -1,0 +1,122 @@
+<script is:inline>
+  // Global Theme Manager
+  ;(function () {
+    // Prevent duplicate initialization
+    if (window.ThemeManager && window.ThemeManager.initialized) {
+      return
+    }
+
+    window.ThemeManager = {
+      STORAGE_KEY: 'chiri-theme',
+      initialized: false,
+
+      getSystemTheme() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      },
+
+      getStoredTheme() {
+        try {
+          return localStorage.getItem(this.STORAGE_KEY)
+        } catch {
+          return null
+        }
+      },
+
+      setStoredTheme(theme) {
+        try {
+          if (theme === 'system') {
+            localStorage.removeItem(this.STORAGE_KEY)
+          } else {
+            localStorage.setItem(this.STORAGE_KEY, theme)
+          }
+        } catch (e) {
+          console.warn('Failed to store theme preference:', e)
+        }
+      },
+
+      getEffectiveTheme() {
+        const stored = this.getStoredTheme()
+        return stored || this.getSystemTheme()
+      },
+
+      isUsingSystemTheme() {
+        return this.getStoredTheme() === null
+      },
+
+      applyTheme(theme) {
+        document.documentElement.classList.remove('light', 'dark')
+        document.documentElement.classList.add(theme)
+
+        // Dispatch event for other components
+        document.dispatchEvent(
+          new CustomEvent('themechange', {
+            detail: {
+              theme,
+              isUserChoice: !this.isUsingSystemTheme(),
+              isSystemTheme: this.isUsingSystemTheme()
+            }
+          })
+        )
+      },
+
+      toggle() {
+        const currentTheme = this.getEffectiveTheme()
+        // Simply toggle between light and dark
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+
+        this.setStoredTheme(newTheme)
+        this.applyTheme(newTheme)
+      },
+
+      init() {
+        if (this.initialized) return
+
+        // Set initial theme (maintain current theme when refreshing page)
+        this.applyTheme(this.getEffectiveTheme())
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          const newSystemTheme = e.matches ? 'dark' : 'light'
+
+          // Always follow system theme changes and update stored theme preference
+          this.setStoredTheme(newSystemTheme)
+          this.applyTheme(newSystemTheme)
+        })
+
+        this.initialized = true
+      }
+    }
+
+    // Initialize theme manager
+    window.ThemeManager.init()
+
+    // Listen for Astro page transition events, but delay execution to avoid conflicts with transition animations
+    document.addEventListener('astro:page-load', () => {
+      if (window.ThemeManager) {
+        // Use requestAnimationFrame to ensure execution in the next frame, avoiding conflicts with transition animations
+        requestAnimationFrame(() => {
+          const currentTheme = window.ThemeManager.getEffectiveTheme()
+          const appliedTheme = document.documentElement.classList.contains('dark')
+            ? 'dark'
+            : 'light'
+
+          // Only reapply theme when there's a mismatch to avoid unnecessary flickering
+          if (currentTheme !== appliedTheme) {
+            window.ThemeManager.applyTheme(currentTheme)
+          }
+        })
+      }
+    })
+
+    // Listen for page transition start event to ensure theme is ready before transition
+    document.addEventListener('astro:before-preparation', () => {
+      if (window.ThemeManager) {
+        const theme = window.ThemeManager.getEffectiveTheme()
+        // Ensure theme class is applied before transition starts
+        if (!document.documentElement.classList.contains(theme)) {
+          document.documentElement.classList.add(theme)
+        }
+      }
+    })
+  })()
+</script>

@@ -1,0 +1,341 @@
+<script>
+  import type { LinkCardMetadata } from '@/types'
+
+  let linkCardsObserver: IntersectionObserver | null = null
+  const metadataCache = new Map<string, LinkCardMetadata>()
+
+  // Fetch metadata from URL using our own proxy API with caching
+  async function fetchLinkMetadata(url: string): Promise<LinkCardMetadata | null> {
+    // Check cache first
+    if (metadataCache.has(url)) {
+      return metadataCache.get(url)!
+    }
+
+    try {
+      // Use our own proxy API
+      const proxyUrl = `/api/proxy?url=${encodeURIComponent(url)}`
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 3000) // 3 second timeout
+
+      const response = await fetch(proxyUrl, {
+        signal: controller.signal
+      })
+
+      clearTimeout(timeoutId)
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch metadata')
+      }
+
+      const html = await response.text()
+
+      // Parse HTML to extract metadata
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(html, 'text/html')
+
+      const title =
+        doc.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
+        doc.querySelector('meta[name="twitter:title"]')?.getAttribute('content') ||
+        doc.querySelector('title')?.textContent ||
+        ''
+
+      const description =
+        doc.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
+        doc.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ||
+        doc.querySelector('meta[name="description"]')?.getAttribute('content') ||
+        ''
+
+      const image =
+        doc.querySelector('meta[property="og:image"]')?.getAttribute('content') ||
+        doc.querySelector('meta[name="twitter:image"]')?.getAttribute('content') ||
+        ''
+
+      const imageAlt =
+        doc.querySelector('meta[property="og:image:alt"]')?.getAttribute('content') || title || ''
+
+      const metadata = {
+        title: title?.trim() || '',
+        description: description?.trim() || '',
+        image: image?.trim() || '',
+        imageAlt: imageAlt?.trim() || ''
+      }
+
+      // Cache the result
+      metadataCache.set(url, metadata)
+      return metadata
+    } catch {
+      return null
+    }
+  }
+
+  // Update link card with fetched metadata
+  async function updateLinkCard(el: HTMLElement) {
+    const url = el.dataset.url
+    if (!url) {
+      return
+    }
+
+    try {
+      // Fetch and update metadata
+      const metadata = await fetchLinkMetadata(url)
+      if (!metadata) {
+        return
+      }
+
+      // Update title
+      const titleElement = el.querySelector('.link-card-title') as HTMLElement
+      if (titleElement) {
+        if (metadata.title && metadata.title.trim()) {
+          titleElement.textContent = metadata.title
+          titleElement.style.display = 'block'
+        } else {
+          // Hide title element if empty
+          titleElement.style.display = 'none'
+        }
+      }
+
+      // Update description
+      const descElement = el.querySelector('.link-card-description') as HTMLElement
+      if (descElement) {
+        if (metadata.description && metadata.description.trim()) {
+          descElement.textContent = metadata.description
+          descElement.style.display = 'block'
+        } else {
+          // Hide description element if empty
+          descElement.style.display = 'none'
+          descElement.textContent = ''
+        }
+      }
+
+      // Update image
+      const imageContainer = el.querySelector('.link-card-image') as HTMLElement
+      const imageElement = el.querySelector('.link-card-image img') as HTMLImageElement
+      if (imageContainer && imageElement && metadata.image) {
+        imageElement.src = metadata.image
+        imageElement.alt = metadata.imageAlt
+        imageContainer.style.display = 'block'
+      }
+    } catch {
+      // Handle error silently
+    }
+  }
+
+  // Set up intersection observer for link cards
+  function setupLinkCards() {
+    linkCardsObserver?.disconnect()
+
+    const linkCards = document.getElementsByClassName('link-card')
+    if (linkCards.length === 0) {
+      return
+    }
+
+    // Create an intersection observer to process link cards when they enter viewport
+    linkCardsObserver = new IntersectionObserver(
+      (entries) => {
+        // Process all intersecting cards in parallel
+        const intersectingCards = entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => entry.target as HTMLElement)
+
+        if (intersectingCards.length > 0) {
+          // Update domain names immediately for better perceived performance
+          intersectingCards.forEach((card) => {
+            const url = card.dataset.url
+            if (url) {
+              try {
+                const domain = new URL(url).hostname.replace('www.', '')
+                const urlElement = card.querySelector('.link-card-url')
+                if (urlElement) {
+                  // Keep the SVG icon and update only the text content
+                  const textSpan = urlElement.querySelector('span')
+                  if (textSpan) {
+                    textSpan.textContent = domain
+                  } else {
+                    // Fallback if span doesn't exist
+                    urlElement.innerHTML = `
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                        <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path>
+                      </svg>
+                      <span>${domain}</span>
+                    `
+                  }
+                }
+              } catch {
+                const urlElement = card.querySelector('.link-card-url')
+                if (urlElement) {
+                  // Keep the SVG icon and update only the text content
+                  const textSpan = urlElement.querySelector('span')
+                  if (textSpan) {
+                    textSpan.textContent = 'invalid-url'
+                  } else {
+                    // Fallback if span doesn't exist
+                    urlElement.innerHTML = `
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                        <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path>
+                      </svg>
+                      <span>invalid-url</span>
+                    `
+                  }
+                }
+              }
+            }
+          })
+
+          // Fetch metadata in parallel
+          Promise.allSettled(intersectingCards.map((card) => updateLinkCard(card))).then(() => {
+            // Unobserve all processed cards
+            intersectingCards.forEach((card) => linkCardsObserver?.unobserve(card))
+          })
+        }
+      },
+      { rootMargin: '200px' }
+    )
+
+    Array.from(linkCards).forEach((card) => linkCardsObserver?.observe(card))
+  }
+
+  setupLinkCards()
+  document.addEventListener('astro:page-load', setupLinkCards)
+</script>
+
+<style is:inline>
+  .prose .link-card {
+    display: block;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background: var(--astro-code-background);
+    margin: 1.25rem 0 1.75rem 0;
+    transition: background 0.2s ease-out;
+  }
+
+  .prose .link-card:hover {
+    background: color-mix(in srgb, var(--selection) 75%, transparent);
+    text-decoration: none;
+  }
+
+  .prose .link-card-content {
+    padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+  }
+
+  .prose .link-card-image-outer {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+  }
+
+  /* Set container size/padding when image hidden */
+  .prose .link-card-image-outer:has(.link-card-image[style*='display: none']) {
+    padding: 0 0.25rem 0.25rem 0.25rem;
+  }
+
+  .prose .link-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Fallback for browsers that don't support aspect-ratio */
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+    overflow: hidden;
+    background: var(--astro-code-background);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  /* Modern browsers with aspect-ratio support */
+  @supports (aspect-ratio: 16 / 9) {
+    .prose .link-card-image {
+      height: auto;
+      padding-bottom: 0;
+    }
+  }
+
+  .prose .link-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .prose .link-card-title {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0.375rem 0 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+  }
+
+  .prose .link-card .link-card-description {
+    font-size: var(--font-size-m);
+    color: var(--text-primary);
+    opacity: 0.6;
+    margin: 0;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    word-wrap: break-word !important;
+    /* Fallback for older browsers */
+    max-height: calc(1.4em * 2) !important;
+  }
+
+  /* Hide description when display is set to none */
+  .prose .link-card .link-card-description[style*='display: none'] {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Modern browsers with line-clamp support */
+  @supports (-webkit-line-clamp: 2) {
+    .prose .link-card .link-card-description {
+      max-height: none !important;
+    }
+  }
+
+  .prose .link-card-url {
+    color: var(--text-secondary);
+    letter-spacing: 0.015em;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.325rem;
+  }
+
+  .prose .link-card-url svg {
+    width: 0.875em;
+    height: 0.875em;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .prose .link-card-url span {
+    font-size: var(--font-size-s);
+    vertical-align: baseline;
+  }
+
+  .prose .link-card:not(:has(.link-card-image[style*='display: block'])) {
+    padding: 1rem 1.25rem 0.75rem 1.25rem;
+  }
+
+  .prose .link-card:not(:has(.link-card-image[style*='display: block'])) .link-card-content {
+    padding: 0;
+  }
+
+  .prose .link-card:has(.link-card-image[style*='display: block']) .link-card-content {
+    padding: 1rem 1.25rem 0.75rem 1.25rem;
+  }
+</style>

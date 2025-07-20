@@ -1,0 +1,30 @@
+version: 2
+updates:
+  # Enable npm (pnpm) dependency updates
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      # Check for updates every Monday at 09:00 (Asia/Shanghai)
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Shanghai'
+    # Limit the number of open PRs created by Dependabot
+    open-pull-requests-limit: 10
+    commit-message:
+      # Use 'chore' as the commit message prefix
+      prefix: 'chore'
+      include: 'scope'
+    # Labels to add to Dependabot PRs
+    labels:
+      - 'dependencies'
+      - 'automated'
+    ignore:
+      # Ignore major version updates (breaking changes)
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    allow:
+      # Allow updates for development dependencies
+      - dependency-type: 'development'
+      # Allow updates for direct dependencies
+      - dependency-type: 'direct'

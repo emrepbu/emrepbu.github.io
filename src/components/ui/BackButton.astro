@@ -1,0 +1,121 @@
+---
+import { themeConfig } from '@/config'
+---
+
+<a href="/" class="back-button">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M2.5 6.5H9.5C11.1569 6.5 12.5 7.84315 12.5 9.5V9.5C12.5 11.1569 11.1569 12.5 9.5 12.5H7.5M2.5 6.5L5.5 9.5M2.5 6.5L5.5 3.5"
+      stroke="currentColor"
+      stroke-width="1.25"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+  index
+</a>
+
+<script
+  is:inline
+  define:vars={{
+    contentWidth: themeConfig.general.contentWidth,
+    centeredLayout: themeConfig.general.centeredLayout,
+    toc: themeConfig.post.toc
+  }}
+>
+  ;(function () {
+    // Adjust back button position based on layout and screen size
+    function adjustBackButtonPosition() {
+      const button = document.querySelector('.back-button')
+      if (!button) return
+
+      // If not using centered layout, remove fixed positioning
+      if (!centeredLayout) {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+        return
+      }
+
+      // Calculate available margin space for positioning
+      const pageWidth = window.innerWidth
+      const contentWidthValue = parseFloat(contentWidth)
+      // Apply the same minimum width logic as in BaseLayout
+      const widthValue = Math.min(contentWidthValue, 50)
+      const shouldUseCustomWidth = widthValue > 25
+      const finalWidthValue = shouldUseCustomWidth ? widthValue : 25
+      const margin = (pageWidth - finalWidthValue * 16) / 2
+      const baseMinSpace = 11 * 16 // Base minimum space needed
+      // If toc is enabled, need additional 2.5rem (40px) space
+      const minSpace = toc ? baseMinSpace + 52 : baseMinSpace + 12
+
+      // Position button fixed on the left if there's enough space
+      if (margin >= minSpace) {
+        button.classList.add('fixed-position')
+        const basePosition = margin - baseMinSpace
+        // If toc is enabled, move 2.5rem (40px) further left
+        const leftPosition = toc ? basePosition - 40 : basePosition
+        button.style.left = `${leftPosition}px`
+      } else {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+      }
+    }
+
+    adjustBackButtonPosition()
+
+    document.addEventListener('astro:page-load', () => {
+      adjustBackButtonPosition()
+    })
+    document.addEventListener('DOMContentLoaded', () => {
+      adjustBackButtonPosition()
+    })
+    window.addEventListener('resize', adjustBackButtonPosition)
+  })()
+</script>
+
+<style>
+  .back-button {
+    width: 8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--serif);
+    font-size: var(--font-size-m);
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    margin-bottom: 2.5em;
+    padding: 0;
+    left: -0.175em;
+    transition: color 0.2s ease-out;
+    text-decoration: none;
+  }
+
+  .back-button:hover {
+    color: var(--text-primary);
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .back-button:hover {
+      color: var(--text-secondary);
+    }
+  }
+
+  .back-button svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .back-button.fixed-position {
+    position: fixed;
+    top: 6rem;
+    margin-bottom: 0;
+    padding-left: 0.75rem;
+    z-index: 10;
+  }
+</style>

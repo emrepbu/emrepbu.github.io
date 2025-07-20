@@ -1,0 +1,33 @@
+<script>
+  function bindFootnoteEvents() {
+    const footnoteLinks = document.querySelectorAll('[data-footnote-ref], [data-footnote-backref]')
+
+    footnoteLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault()
+        const href = link.getAttribute('href')
+        if (!href) return
+
+        const target = document.querySelector(href)
+        if (!target) return
+
+        // Use fixed offset of 128px
+        const offset = 128
+
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset
+
+        window.scrollTo({
+          top: targetPosition
+        })
+      })
+    })
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    bindFootnoteEvents()
+  })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    bindFootnoteEvents()
+  })
+</script>

@@ -1,0 +1,60 @@
+<div class="counter-card">
+  <div class="counter-container">
+    <button id="counter-btn" class="counter-button">
+      Click me (<span id="counter-value">0</span>)
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  let count = 0
+
+  function setupCounter() {
+    const button = document.getElementById('counter-btn')
+    const valueSpan = document.getElementById('counter-value')
+
+    if (button && valueSpan) {
+      valueSpan.textContent = count.toString()
+      button.onclick = function () {
+        count++
+        valueSpan.textContent = count.toString()
+      }
+    }
+  }
+
+  setupCounter()
+
+  document.addEventListener('astro:page-load', setupCounter)
+</script>
+
+<style>
+  .counter-card {
+    border: 1px solid var(--border);
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .counter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .counter-button {
+    background-color: var(--text-primary);
+    color: var(--bg);
+    border: none;
+    font-family: var(--mono);
+    font-size: var(--font-size-s);
+    border-radius: 12px;
+    cursor: pointer;
+    width: 160px;
+    height: 44px;
+    transition: all 0.15s ease-in-out;
+  }
+  .counter-button:hover {
+    opacity: 0.9;
+  }
+</style>

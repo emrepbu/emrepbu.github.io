@@ -1,0 +1,61 @@
+---
+import { themeConfig } from '@/config'
+import { ClientRouter } from 'astro:transitions'
+import ThemeManager from '@/components/ui/ThemeManager.astro'
+import FaviconThemeSwitcher from '@/components/ui/FaviconThemeSwitcher.astro'
+import TransitionWrapper from '@/components/layout/TransitionWrapper.astro'
+import type { LayoutProps } from '@/types'
+
+type Props = LayoutProps
+
+const { type = 'page' } = Astro.props
+const language = themeConfig.site.language || 'en-US'
+const contentWidth = themeConfig.general.contentWidth
+const fadeAnimation = themeConfig.general.fadeAnimation
+const widthValue = Math.min(parseFloat(contentWidth), 50)
+const shouldUseCustomWidth = widthValue > 25
+const finalWidth = shouldUseCustomWidth ? `${widthValue}rem` : '25rem'
+---
+
+<html lang={language}>
+  <head>
+    {fadeAnimation && <ClientRouter />}
+    <slot name="head" />
+  </head>
+  <body
+    data-centered={themeConfig.general.centeredLayout}
+    style={`
+      max-width: ${finalWidth};
+      ${shouldUseCustomWidth ? `--content-width: ${widthValue}rem;` : ''}
+    `}
+  >
+    <ThemeManager />
+    <FaviconThemeSwitcher />
+
+    {
+      fadeAnimation ? (
+        <TransitionWrapper type={type} class="layout-wrapper">
+          <slot />
+        </TransitionWrapper>
+      ) : (
+        <div class="layout-wrapper">
+          <slot />
+        </div>
+      )
+    }
+  </body>
+</html>
+
+<style is:global>
+  .layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 7.5rem);
+  }
+
+  @media (max-width: 768px) {
+    .layout-wrapper {
+      min-height: calc(100vh - 5.5rem);
+    }
+  }
+</style>

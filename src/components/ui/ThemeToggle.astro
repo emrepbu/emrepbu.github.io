@@ -1,0 +1,68 @@
+---
+import { themeConfig } from '@/config'
+---
+
+{
+  themeConfig.general.themeToggle && (
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+      <div class="theme-icon hollow-circle" />
+      <div class="theme-icon solid-circle" />
+    </button>
+  )
+}
+
+<script is:inline>
+  function bindThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle')
+    if (themeToggle && window.ThemeManager) {
+      // Remove existing event listeners to prevent duplicates
+      const newToggle = themeToggle.cloneNode(true)
+      themeToggle.parentNode.replaceChild(newToggle, themeToggle)
+
+      newToggle.addEventListener('click', function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+        window.ThemeManager.toggle()
+      })
+    }
+  }
+
+  // Bind on initial load
+  window.addEventListener('DOMContentLoaded', bindThemeToggle)
+
+  // Bind on Astro page transitions
+  document.addEventListener('astro:page-load', bindThemeToggle)
+</script>
+
+<style>
+  .theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    gap: 0.325rem;
+    color: var(--text-primary);
+    transition: opacity 0.2s ease;
+    padding: 0;
+    position: relative;
+  }
+
+  .theme-icon {
+    width: 0.5625rem;
+    height: 0.5625rem;
+    transition: all 0.2s ease;
+  }
+
+  .hollow-circle {
+    border: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px var(--text-primary);
+  }
+
+  .solid-circle {
+    background-color: var(--text-primary);
+    border-radius: 50%;
+  }
+</style>

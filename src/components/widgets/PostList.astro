@@ -1,0 +1,145 @@
+---
+import FormattedDate from '@/components/widgets/FormattedDate.astro'
+import type { PostListProps } from '@/types'
+import { themeConfig } from '@/config'
+
+const { posts } = Astro.props as PostListProps
+---
+
+<ul>
+  {
+    posts.map((post) => (
+      <li>
+        <a href={`/${post.id}/`}>
+          <div class={`post-item ${!themeConfig.date.dateOnRight ? 'date-left' : ''}`}>
+            {!themeConfig.date.dateOnRight && (
+              <p class="date font-features">
+                <FormattedDate date={post.data.pubDate} context="list" />
+              </p>
+            )}
+            <p class="title">{post.data.title}</p>
+            {themeConfig.date.dateOnRight && (
+              <div
+                class={themeConfig.general.postListDottedDivider ? 'dotted-divider' : 'divider'}
+              />
+            )}
+            {themeConfig.date.dateOnRight && (
+              <p class="date font-features">
+                <FormattedDate date={post.data.pubDate} context="list" />
+              </p>
+            )}
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+<div class="placeholder"></div>
+
+<style>
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  a {
+    color: var(--text-primary);
+    display: block;
+    text-decoration: none;
+    transition: opacity 0.15s ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    ul:hover a {
+      opacity: 0.4;
+    }
+
+    ul:hover a:hover {
+      opacity: 1;
+    }
+
+    ul:hover a:hover .divider {
+      background-color: var(--text-tertiary);
+      opacity: 0.75;
+    }
+    ul:hover a:hover .dotted-divider {
+      color: var(--text-secondary);
+    }
+    ul:hover a:hover .date {
+      color: var(--text-secondary);
+      opacity: 1;
+    }
+  }
+
+  .post-item {
+    height: 2.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .post-item.date-left {
+    justify-content: flex-start;
+  }
+
+  .post-item.date-left .title {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .post-item.date-left .date {
+    margin-right: 0.75rem;
+  }
+
+  .title {
+    margin: 0;
+    flex-shrink: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .date {
+    margin: 0;
+    color: var(--text-secondary);
+    opacity: 0.75;
+    letter-spacing: var(--spacing-s);
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .divider {
+    flex: 1 1 auto;
+    min-width: 3rem;
+    margin: 0 0.25rem;
+    height: 0.5px;
+    background-color: var(--border);
+  }
+
+  .dotted-divider {
+    flex: 1 1 3rem;
+    min-width: 3rem;
+    max-width: 100%;
+    text-align: end;
+    letter-spacing: 5px;
+    height: 1.675rem;
+    overflow: hidden;
+    color: var(--text-tertiary);
+    opacity: 0.75;
+  }
+
+  .dotted-divider::after {
+    content: '·····························································································································································';
+    pointer-events: none;
+  }
+
+  .placeholder {
+    height: 3rem;
+  }
+</style>
