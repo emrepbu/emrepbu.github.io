@@ -1,5 +1,5 @@
 ---
-name: 'enscribe'
+name: 'emre argana'
 pronouns: 'he/him'
 avatar: 'https://avatars.githubusercontent.com/u/33737009?v=4'
 bio: 'd(-_-)b'
