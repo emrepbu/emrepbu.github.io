@@ -2,8 +2,7 @@ import type { IconMap, SocialLink, Site } from '@/types'
 
 export const SITE: Site = {
   title: 'emrepbu',
-  description:
-    'astro-erudite is a opinionated, unstyled blogging template—built with Astro, Tailwind, and shadcn/ui.',
+  description: '',
   href: 'https://emrepbu.github.io',
   author: 'emrepbu',
   locale: 'tr-TR',
