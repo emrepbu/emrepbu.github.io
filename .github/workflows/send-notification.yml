@@ -6,7 +6,7 @@ on:
   # 'notification' branch'ine her 'push' yapıldığında çalışacaktır.
   push:
     branches:
-      - notification
+      - main
     # Sadece .md veya .mdx uzantılı dosyalar değiştiğinde workflow'u başlat.
     paths:
       - '**.md'
