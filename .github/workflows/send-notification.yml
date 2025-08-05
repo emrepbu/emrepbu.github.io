@@ -6,7 +6,7 @@ on:
   # 'main' branch'ine her 'push' yapıldığında çalışacaktır.
   push:
     branches:
-      - notifications
+      - main
 
 # Yapılacak işler (Jobs)
 jobs:
