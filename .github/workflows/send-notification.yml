@@ -1,0 +1,29 @@
+# Workflow'un adı: GitHub'ın Actions sekmesinde bu isimle görünecektir.
+name: Send Push Notification on Main Push
+
+# Tetikleyici: Bu workflow'un ne zaman çalışacağını belirler.
+on:
+  # 'main' branch'ine her 'push' yapıldığında çalışacaktır.
+  push:
+    branches:
+      - notifications
+
+# Yapılacak işler (Jobs)
+jobs:
+  # Tek bir iş tanımlıyoruz, adını 'send_notification' koyduk.
+  send_notification:
+    # İşin çalışacağı sanal makine tipi. 'ubuntu-latest' en yaygın ve stabil olanıdır.
+    runs-on: ubuntu-latest
+
+    # İşin adımları (Steps)
+    steps:
+      # Bu adım, Cloud Function'a cURL ile HTTP isteği gönderir.
+      - name: Trigger Announcement Cloud Function
+        run: |
+          curl -X POST "${{ secrets.CLOUD_FUNCTION_URL }}" \
+          -H "Content-Type: application/json" \
+          -H "x-secret-key: ${{ secrets.ANNOUNCEMENT_SECRET_KEY }}" \
+          -d '{
+            "title": "Projede Güncelleme",
+            "body": "main branch''ine yeni bir sürüm eklendi. Gelişmeleri takip edebilirsiniz!"
+          }'
