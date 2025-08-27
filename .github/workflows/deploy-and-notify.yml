@@ -1,145 +1,145 @@
-# Astro sitesini kuran, dağıtan ve içerik güncellendiğinde bildirim gönderen birleşik workflow.
-name: Deploy Astro Site and Notify
+# # Astro sitesini kuran, dağıtan ve içerik güncellendiğinde bildirim gönderen birleşik workflow.
+# name: Deploy Astro Site and Notify
 
-on:
-  # 'main' branch'ine her 'push' yapıldığında çalışır.
-  push:
-    branches: ["main"]
+# on:
+#   # 'main' branch'ine her 'push' yapıldığında çalışır.
+#   push:
+#     branches: ["main"]
 
-  # Bu workflow'u Actions sekmesinden manuel olarak çalıştırmanıza olanak tanır.
-  workflow_dispatch:
+#   # Bu workflow'u Actions sekmesinden manuel olarak çalıştırmanıza olanak tanır.
+#   workflow_dispatch:
 
-# GITHUB_TOKEN'ın GitHub Pages'e dağıtım yapmasına izin vermek için yetkileri ayarlar.
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# # GITHUB_TOKEN'ın GitHub Pages'e dağıtım yapmasına izin vermek için yetkileri ayarlar.
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
-# Yalnızca bir eşzamanlı dağıtıma izin ver.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+# # Yalnızca bir eşzamanlı dağıtıma izin ver.
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
 
-env:
-  BUILD_PATH: "." # alt klasör kullanmıyorsanız varsayılan değer
+# env:
+#   BUILD_PATH: "." # alt klasör kullanmıyorsanız varsayılan değer
 
-jobs:
-  # 1. ADIM: Web sitesini build etme işi
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-      - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Build with Astro
-        run: |
-          ${{ steps.detect-package-manager.outputs.runner }} astro build \
-            --site "${{ steps.pages.outputs.origin }}" \
-            --base "${{ steps.pages.outputs.base_path }}"
-        working-directory: ${{ env.BUILD_PATH }}
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ${{ env.BUILD_PATH }}/dist
+# jobs:
+#   # 1. ADIM: Web sitesini build etme işi
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#       - name: Detect package manager
+#         id: detect-package-manager
+#         run: |
+#           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
+#             echo "manager=yarn" >> $GITHUB_OUTPUT
+#             echo "command=install" >> $GITHUB_OUTPUT
+#             echo "runner=yarn" >> $GITHUB_OUTPUT
+#             echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
+#             exit 0
+#           elif [ -f "${{ github.workspace }}/package.json" ]; then
+#             echo "manager=npm" >> $GITHUB_OUTPUT
+#             echo "command=ci" >> $GITHUB_OUTPUT
+#             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+#             echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+#             exit 0
+#           else
+#             echo "Unable to determine package manager"
+#             exit 1
+#           fi
+#       - name: Setup Node
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: "20"
+#           cache: ${{ steps.detect-package-manager.outputs.manager }}
+#           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+#       - name: Setup Pages
+#         id: pages
+#         uses: actions/configure-pages@v5
+#       - name: Install dependencies
+#         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+#         working-directory: ${{ env.BUILD_PATH }}
+#       - name: Build with Astro
+#         run: |
+#           ${{ steps.detect-package-manager.outputs.runner }} astro build \
+#             --site "${{ steps.pages.outputs.origin }}" \
+#             --base "${{ steps.pages.outputs.base_path }}"
+#         working-directory: ${{ env.BUILD_PATH }}
+#       - name: Upload artifact
+#         uses: actions/upload-pages-artifact@v3
+#         with:
+#           path: ${{ env.BUILD_PATH }}/dist
 
-  # 2. ADIM: Build edilen siteyi dağıtma işi
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    # 'deploy' işi, 'build' işi bittikten sonra başlayacak.
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+#   # 2. ADIM: Build edilen siteyi dağıtma işi
+#   deploy:
+#     environment:
+#       name: github-pages
+#       url: ${{ steps.deployment.outputs.page_url }}
+#     # 'deploy' işi, 'build' işi bittikten sonra başlayacak.
+#     needs: build
+#     runs-on: ubuntu-latest
+#     name: Deploy
+#     steps:
+#       - name: Deploy to GitHub Pages
+#         id: deployment
+#         uses: actions/deploy-pages@v4
 
-  # 3. ADIM: Bildirim gönderme işi
-  send_notification:
-    name: Send Push Notification
-    # 'send_notification' işi, 'deploy' işi BAŞARIYLA bittikten sonra başlayacak.
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      # Değişen dosyaları kontrol edebilmek için repoyu klonluyoruz.
-      # fetch-depth: 0 parametresi, tüm commit geçmişini çekerek doğru bir karşılaştırma yapmamızı sağlar.
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+#   # 3. ADIM: Bildirim gönderme işi
+#   send_notification:
+#     name: Send Push Notification
+#     # 'send_notification' işi, 'deploy' işi BAŞARIYLA bittikten sonra başlayacak.
+#     needs: deploy
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Değişen dosyaları kontrol edebilmek için repoyu klonluyoruz.
+#       # fetch-depth: 0 parametresi, tüm commit geçmişini çekerek doğru bir karşılaştırma yapmamızı sağlar.
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
 
-      # Yalnızca .mdx dosyaları değiştiyse sonraki adımların çalışmasını sağlamak için kontrol adımı.
-      - name: Check for Markdown file changes
-        id: check_files
-        run: |
-          # Son committe değişen dosyaları listele ve .mdx uzantılı dosya var mı kontrol et.
-          if git diff --name-only HEAD~1 HEAD | grep -q -E '\.mdx$'; then
-            echo "markdown_changed=true" >> $GITHUB_OUTPUT
-            echo "Markdown files changed. Proceeding to send notification."
-          else
-            echo "markdown_changed=false" >> $GITHUB_OUTPUT
-            echo "No Markdown files changed. Skipping notification."
-          fi
+#       # Yalnızca .mdx dosyaları değiştiyse sonraki adımların çalışmasını sağlamak için kontrol adımı.
+#       - name: Check for Markdown file changes
+#         id: check_files
+#         run: |
+#           # Son committe değişen dosyaları listele ve .mdx uzantılı dosya var mı kontrol et.
+#           if git diff --name-only HEAD~1 HEAD | grep -q -E '\.mdx$'; then
+#             echo "markdown_changed=true" >> $GITHUB_OUTPUT
+#             echo "Markdown files changed. Proceeding to send notification."
+#           else
+#             echo "markdown_changed=false" >> $GITHUB_OUTPUT
+#             echo "No Markdown files changed. Skipping notification."
+#           fi
 
-      # Commit mesajını ve gövdesini alıp bir sonraki adıma hazırla.
-      # Bu adım SADECE bir önceki adımda markdown_changed=true olarak ayarlandıysa çalışır.
-      - name: Prepare Notification Content
-        id: prep_content
-        if: steps.check_files.outputs.markdown_changed == 'true'
-        run: |
-          TITLE=$(git log -1 --pretty=%s)
-          BODY=$(git log -1 --pretty=%b)
-          echo "title<<EOF" >> $GITHUB_OUTPUT
-          echo "$TITLE" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "body<<EOF" >> $GITHUB_OUTPUT
-          echo "$BODY" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+#       # Commit mesajını ve gövdesini alıp bir sonraki adıma hazırla.
+#       # Bu adım SADECE bir önceki adımda markdown_changed=true olarak ayarlandıysa çalışır.
+#       - name: Prepare Notification Content
+#         id: prep_content
+#         if: steps.check_files.outputs.markdown_changed == 'true'
+#         run: |
+#           TITLE=$(git log -1 --pretty=%s)
+#           BODY=$(git log -1 --pretty=%b)
+#           echo "title<<EOF" >> $GITHUB_OUTPUT
+#           echo "$TITLE" >> $GITHUB_OUTPUT
+#           echo "EOF" >> $GITHUB_OUTPUT
+#           echo "body<<EOF" >> $GITHUB_OUTPUT
+#           echo "$BODY" >> $GITHUB_OUTPUT
+#           echo "EOF" >> $GITHUB_OUTPUT
 
-      # Cloud Function'ı tetikleyerek bildirimi gönder.
-      # Bu adım da SADECE markdown dosyaları değiştiyse çalışır.
-      - name: Trigger Announcement Cloud Function
-        if: steps.check_files.outputs.markdown_changed == 'true'
-        run: |
-          JSON_PAYLOAD=$(jq -n \
-            --arg title "${{ steps.prep_content.outputs.title }}" \
-            --arg body "${{ steps.prep_content.outputs.body }}" \
-            '{title: $title, body: $body}')
+#       # Cloud Function'ı tetikleyerek bildirimi gönder.
+#       # Bu adım da SADECE markdown dosyaları değiştiyse çalışır.
+#       - name: Trigger Announcement Cloud Function
+#         if: steps.check_files.outputs.markdown_changed == 'true'
+#         run: |
+#           JSON_PAYLOAD=$(jq -n \
+#             --arg title "${{ steps.prep_content.outputs.title }}" \
+#             --arg body "${{ steps.prep_content.outputs.body }}" \
+#             '{title: $title, body: $body}')
 
-          curl -X POST "${{ secrets.CLOUD_FUNCTION_URL }}" \
-          -H "Content-Type: application/json" \
-          -H "x-secret-key: ${{ secrets.ANNOUNCEMENT_SECRET_KEY }}" \
-          -d "$JSON_PAYLOAD"
+#           curl -X POST "${{ secrets.CLOUD_FUNCTION_URL }}" \
+#           -H "Content-Type: application/json" \
+#           -H "x-secret-key: ${{ secrets.ANNOUNCEMENT_SECRET_KEY }}" \
+#           -d "$JSON_PAYLOAD"
