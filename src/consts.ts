@@ -17,11 +17,11 @@ export const NAV_LINKS: SocialLink[] = [
   },
   {
     href: '/authors',
-    label: 'authors',
+    label: 'yazarlar',
   },
   {
     href: '/about',
-    label: 'about',
+    label: 'hakkında',
   },
 ]
 
