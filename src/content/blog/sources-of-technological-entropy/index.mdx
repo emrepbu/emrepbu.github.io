@@ -1,0 +1,824 @@
+---
+title: "Modern Bilişim Sistemlerinde Entropi Kaynakları"
+description: "Donanım ve kuantum entropi kaynaklarından yazılım tabanlı toplama mekanizmalarına kadar modern rastgelelik üretiminin teknik analizi."
+date: 2026-01-16
+tags: ['entropy', 'randomness', 'TRNG', 'PRNG', 'CSPRNG', 'cryptography', 'hardware-security', 'RNG', 'quantum-RNG', 'thermal-noise', 'security', 'NIST-SP-800-90B', 'Linux-random', 'Intel-RdRand', 'FIPS-140-3']
+image: './sources-of-technological-entropy.png'
+authors: ['emreargana']
+---
+
+## Özet
+
+Yüksek kaliteli rastgelelik üretimi, neredeyse tüm kriptografik protokollerin güvenliğinin öngörülemeyen rastgele sayılara bağlı olduğu modern kriptografik sistemlerde temel bir zorluk olmaya devam etmektedir. Bu yazıda ele alınan konular, kuantum mekanik fenomenlerden yararlanan donanım tabanlı gerçek rastgele sayı üreticilerinden (True Random Number Generator - TRNG) işletim sistemlerindeki sofistike yazılım entropi toplama mekanizmalarına kadar, çağdaş bilişim ortamlarında mevcut olan çeşitli entropi kaynaklarını incelemektedir. Entropi ölçümünün teorik temellerini analiz ediyor, termal gürültü, kuantum kaynakları ve kararsızlık tabanlı tasarımlar dahil olmak üzere çeşitli donanım uygulamalarını değerlendiriyor ve büyük işletim sistemlerindeki yazılım tabanlı entropi toplama stratejilerini araştırıyoruz. Detaylı güvenlik analizi yoluyla, farklı dağıtım senaryoları için pratik uygulama yönergeleri sağlarken, yaygın saldırı vektörlerini, doğrulama metodolojilerini ve uyumluluk gereksinimlerini belirliyoruz. Bulgularımız, çok kaynaklı entropi birleştirme stratejilerinin, uygun doğrulama tekniklerinin ve sanallaştırılmış IoT ortamlarındaki gelişen zorlukların farkında olmanın kritik önemini vurgulamaktadır.
+
+## 1. Giriş
+
+### 1.1 Kriptografik Güvenliğin Temeli
+
+Bilgi güvenliği alanında, öngörülemeyen rastgele sayıların üretimi en temel ancak en zorlu gereksinimlerden birini temsil eder. Anahtar üretiminden nonce oluşturmaya, başlatma vektörlerinden tuz değerlerine kadar her kriptografik işlem, kritik olarak yüksek kaliteli rastgeleliğin mevcudiyetine bağlıdır. Gerçekten rastgele değerler üretmedeki başarısızlık, bilişim tarihindeki en yıkıcı güvenlik ihlallerinden bazılarından sorumlu olmuştur; bu da entropi kaynaklarının çalışmasını yalnızca akademik değil, pratik güvenlik için de gerekli kılmaktadır.
+
+Claude Elwood Shannon tarafından tanımlanan bilgi-teorik anlamda entropi, bir rastgele değişkendeki belirsizliği veya öngörülemezliği ölçer. Olası değerleri `{x₁, x₂, ..., xₙ}` ve olasılık kütle fonksiyonu P(X) olan ayrık bir rastgele değişken X için, Shannon entropisi H(X) şu şekilde tanımlanır:
+
+$$
+H(X) = -\sum_{i} P(x_i) \log_2 P(x_i)
+$$
+
+Ancak, kriptografik uygulamalar için min-entropi daha muhafazakar ve uygun bir ölçüm sağlar:
+
+$$
+H_{\infty}(X) = -\log_2(\max_i P(x_i))
+$$
+
+Bu ayrım, entropi kaynaklarını değerlendirirken kritik hale gelir, çünkü min-entropi, bir saldırganın rastgele çıktı hakkındaki belirsizliği için en kötü senaryoyu temsil eder.
+
+### 1.2 Tarihsel Bağlam ve Öğrenilen Dersler
+
+Kriptografik sistemlerde rastgele sayı üretimi başarısızlıklarının tarihi, ders verici örnekler sunar. Bir kod değişikliğinin entropi havuzunu yalnızca 15 bite düşürdüğü 2008 Debian OpenSSL güvenlik açığı, dünya çapında yüz binlerce sistemi etkiledi. Kriptografi topluluğunun endişelerine rağmen standartlaştırılan NSA'nın Dual_EC_DRBG arka kapısı, standartlaştırılmış rastgele sayı üreticilerinin bile nasıl tehlikeye atılabileceğini gösterdi. Daha yakın zamanda, araştırmacılar IoT cihazlarında, sınırlı entropi kaynaklarının agresif güç yönetimi ile birleşerek öngörülebilir çıktılar oluşturduğu entropi açlığı güvenlik açıklarını keşfettiler.
+
+### 1.3 Rastgele Sayı Üreticilerinin Sınıflandırması
+
+Farklı rastgele sayı üretici türleri arasındaki ayrımı anlamak esastır:
+
+**Gerçek Rastgele Sayı Üreticileri (TRNG'ler)** temelde öngörülemeyen fiziksel fenomenlerden rastgelelik çıkarır. Bunlar arasında kuantum mekanik süreçler, termal gürültü ve radyoaktif bozunma bulunur. TRNG'ler gerçek rastgelelik sağlar ancak tipik olarak sınırlı verim sunar ve özel donanım gerektirebilir.
+
+**Sözde Rastgele Sayı Üreticileri (PRNG'ler)** rastgele görünen ancak başlangıç tohum değeri tarafından tamamen belirlenen sayı dizileri üreten deterministik algoritmalardır. PRNG'ler yüksek hızlarda çıktı üretebilirken, gerçek entropi kaynaklarından uygun tohumlama olmadan kriptografik uygulamalar için uygun değildir.
+
+**Kriptografik Olarak Güvenli Sözde Rastgele Sayı Üreticileri (CSPRNG'ler)** sınırlı gerçek entropiyi daha büyük miktarlarda sözde rastgele çıktıya genişletmek için kriptografik ilkelleri kullanarak boşluğu doldurur. Örnekler arasında Fortuna, Yarrow ve NIST SP 800-90A'da belirtilen yapılar bulunur.
+
+### 1.4 Modern Standartlarda Entropi Gereksinimleri
+
+NIST Özel Yayını 800-90B, kriptografik uygulamalarda kullanılan entropi kaynakları için titiz gereksinimler belirler. Standart, entropi kaynaklarının çıktı başına minimum miktarda entropi sağlamasını zorunlu kılar, tipik olarak tam entropi kaynakları için çıktının biti başına en az 0,5 bit min-entropi gerektirir. Alman BSI'nin AIS 31 standardı, özellikle yüksek güvenlikli uygulamalarda kullanılan donanım rastgele sayı üreticileri için daha da katı gereksinimler sağlar.
+
+## 2. Donanım Entropi Kaynakları
+
+### 2.1 Termal Gürültü Kaynakları
+
+Johnson-Nyquist gürültüsü olarak da bilinen termal gürültü, en yaygın kullanılan donanım entropi kaynaklarından birini temsil eder. Bu fenomen, iletkenlerdeki yük taşıyıcılarının rastgele termal hareketinden kaynaklanır ve güç spektral yoğunluğu ile bir voltaj dalgalanması üretir:
+
+$$
+S_v = 4kTR
+$$
+
+burada k Boltzmann sabiti, T mutlak sıcaklık ve R dirençtir.
+
+Intel'in RdRand ve RdSeed talimatlarında termal gürültü hasadı uygulaması modern yaklaşımları örneklendirir. Intel Dijital Rastgele Sayı Üreteci (DRNG), silikon içindeki termal gürültüye dayanan bir donanım entropi kaynağı kullanır, özellikle bir direnç boyunca termal gürültüdeki öngörülemeyen varyasyonlardan yararlanır. Ham entropi, 3 Gbps'yi aşan hızlarda hem ham entropi (RdSeed) hem de koşullandırılmış rastgele sayılar (RdRand) sağlayan donanım uygulamalı AES tabanlı bir CSPRNG aracılığıyla koşullandırmaya tabi tutulur.
+
+AMD'nin yaklaşımı benzer şekilde termal gürültüden yararlanır ancak üretilen bitlerin istatistiksel özelliklerini sürekli olarak doğrulayan ek sağlık izleme devreleri uygular. Uygulama şunları içerir:
+
+- Ortak mod parazitini reddederken gürültüyü çıkarmak için diferansiyel yükselteçler
+- 1 GHz'in üzerinde frekanslarda çalışan yüksek hızlı örnekleme devreleri
+- Kriptografik hash fonksiyonları kullanarak dijital son işleme
+- Sapma, korelasyon ve entropi hızını izleyen sürekli sağlık testleri
+
+Termal gürültü kaynaklarının sıcaklığa bağımlılığı hem fırsatlar hem de zorluklar sunar. Daha yüksek sıcaklıklar mevcut gürültü gücünü artırırken, aşırı sıcaklık varyasyonları devre özelliklerini etkileyebilir ve potansiyel olarak entropi kalitesini azaltabilir. Modern uygulamalar, çalışma koşulları boyunca tutarlı entropi çıktısını korumak için sıcaklık telafi mekanizmaları ve uyarlanabilir örnekleme hızları içerir.
+
+### 2.2 Kuantum Entropi Kaynakları
+
+Kuantum mekanik belirsizlik, gerçek rastgelelik için teorik altın standardı sağlar. Klasik gürültü kaynaklarının aksine, kuantum rastgeleliği temeldir ve daha iyi ölçüm veya kontrol yoluyla azaltılamaz. Birkaç kuantum fenomeni pratik entropi kaynakları olarak hizmet eder:
+
+**Foton Tespit Zamanlaması**: Zayıflatılmış kaynaklardan fotonların varış zamanlarını ölçen tek foton dedektörleri, 1 Gbps'yi aşan hızlarda kuantum rastgeleliği sağlar. IDQuantique'in Quantis serisi bu yaklaşımı şu şekilde uygular:
+- Tek foton seviyelerine zayıflatılmış LED veya lazer kaynakları
+- Geiger modunda çalışan çığ fotodiyotları
+- Pikosaniye çözünürlüğüne sahip zamandan dijitale dönüştürücüler
+- Gerçek zamanlı rastgelelik çıkarma algoritmaları
+
+**Kuantum Tünelleme**: Potansiyel bariyerlerden kuantum tünellemenin olasılıksal doğası, başka bir kuantum rastgelelik kaynağı sağlar. Ticari uygulamalar şunları kullanır:
+- Kırılma modunda çalışan ters eğimli Zener diyotları
+- Süperiletken cihazlarda tünel kavşakları
+- Kontrol edilebilir tünelleme hızlarına sahip kuantum noktaları
+
+**Kuantum Optik Uygulamaları**: Gelişmiş kuantum optik düzenekleri şunlardan yararlanır:
+- Vakum dalgalanmalarının homodin tespiti
+- Parametrik aşağı dönüşümden foton sayısı istatistikleri
+- Işın ayırıcılarda kuantum girişimi
+
+Kuantum olaylarının istatistiksel dağılımı iyi tanımlanmış olasılık dağılımlarını izler. Foton sayımı için dağılım Poisson istatistiklerini takip eder:
+
+$$
+P(n) = \frac{\lambda^n}{n!} \cdot e^{-\lambda}
+$$
+
+burada λ ortalama foton sayısıdır. Rastgelelik çıkarımı, düzgün çıktı bitleri sağlamak için bu dağılımların dikkatli bir şekilde değerlendirilmesini gerektirir.
+
+### 2.3 Radyoaktif Bozunma Kaynakları
+
+Radyoaktif bozunma, gerçek rastgeleliğin en eski çalışılmış kaynaklarından birini temsil eder. Kararsız atom çekirdeklerinin bozunması, bozunma sabiti λ ile üstel dağılımı takip eder:
+
+$$
+N(t) = N_0 \cdot e^{-\lambda t}
+$$
+
+Geiger-Müller sayaçları veya katı hal dedektörleri kullanan pratik uygulamalar, birkaç Mbps'lik entropi hızlarına ulaşabilir. Ancak, düzenleyici gereksinimler, güvenlik hususları ve radyoaktif malzemelere duyulan ihtiyaç yaygın kullanımı sınırlar. Modern uygulamalar genellikle şunları kullanır:
+
+- Düşük aktiviteli amerikyum-241 kaynakları (duman dedektörlerine benzer)
+- Doğal arka plan radyasyonu tespiti
+- Tesadüf sayaçları kullanarak kozmik ışın müon tespiti
+
+### 2.4 Kararsızlık ve Zamanlama Titreşimi
+
+Halka osilatör tasarımları, entropi üretmek için dijital devrelerdeki doğal titreşimden yararlanır. Bir halka osilatör, bir döngüde bağlanmış tek sayıda tersleyen kapıdan oluşur ve frekansı şunlar nedeniyle değişen kararsız bir salınım oluşturur:
+- Transistörlerdeki termal gürültü
+- Güç kaynağı varyasyonları
+- Elektromanyetik girişim
+- İmalat süreci varyasyonları
+
+Intel'in dijital rastgele sayı üreteci, entropi çıkarmak için göreceli fazlarını örnekleyerek biraz farklı frekanslara sahip birden fazla halka osilatör kullanır. Tasarım şunları içerir:
+
+- Kasıtlı olarak değiştirilmiş düzenlere sahip 512 halka osilatör
+- Osilatör çıktılarını birleştirmek için XOR ağları
+- Sapmayı kaldırmak için Von Neumann düzelticiler
+- Frekans kilitleme veya harici manipülasyonu tespit eden çevrimiçi sağlık izleme
+
+FPGA uygulamaları, düzenli yapı ve sınırlı analog bileşenler nedeniyle benzersiz zorluklarla karşı karşıyadır. Başarılı FPGA entropi kaynakları şunları birleştirir:
+- Aralarında asal periyotlara sahip çoklu halka osilatör zincirleri
+- Geçiş etkili halka osilatörleri (TERO'lar)
+- Saat alanı sınırlarında tetiklenen kararsız mandallar
+- Faz kilitli döngü (PLL) titreşim amplifikasyonu
+
+## 3. Yazılım Entropi Toplama
+
+### 3.1 İşletim Sistemi Entropi Mekanizmaları
+
+Modern işletim sistemleri, her biri benzersiz mimari kararlar ve ödünleşimlerle sofistike entropi toplama ve yönetim sistemleri uygular.
+
+**Linux Çekirdek Entropi Yönetimi**
+
+Yakın zamanda çekirdek 5.17+'de yeniden tasarlanan Linux rastgele sayı alt sistemi, BLAKE2s hash fonksiyonuna dayalı kriptografik olarak güvenli bir rastgele sayı üreteci uygular. Mimari şunlardan oluşur:
+
+Birincil entropi havuzu çeşitli kaynaklardan rastgelelik toplar:
+- `hwrng` çerçevesi aracılığıyla donanım rastgele sayı üreticileri
+- IRQ işleyicilerinde yakalanan kesme zamanlama varyasyonları
+- Blok cihazı G/Ç tamamlanma zamanlamaları
+- Giriş cihazı olayları (klavye, fare, dokunmatik yüzey)
+- Bağlam değişimlerinde CPU döngü sayacı varyasyonları
+
+Çekirdek ayrı arayüzler sağlar:
+- `/dev/random`: Tarihsel olarak entropi yetersiz görüldüğünde engellenirdi (çekirdek 5.6+'da davranış değişti)
+- `/dev/urandom`: Çoğu uygulama için uygun engellenmeyen arayüz
+- `getrandom()` sistem çağrısı: Engelleme davranışı ve farklı entropi havuzlarına doğrudan erişim için bayraklar sağlar
+
+Yeni Linux Rastgele Sayı Üreteci (LRNG) tasarımı tarihsel eleştirileri ele alır:
+- Kilit çekişmesini azaltmak için CPU başına entropi havuzları
+- ChaCha20 kullanarak kriptografik olarak güvenli karıştırma
+- Önyükleme sırasında daha hızlı entropi birikimi
+- Aşırı tahmine dirençli daha iyi entropi tahmin algoritmaları
+
+**Windows Entropi Mimarisi**
+
+Windows, entropi toplamayı birden fazla katman aracılığıyla uygular:
+
+Çekirdek modu `SystemPrng` şunlardan entropi toplar:
+- Mevcut olduğunda RDRAND/RDSEED talimatları
+- TPM 2.0 donanım rastgele sayı üreticileri
+- Kesme zamanlamaları ve CPU döngü sayaçları
+- Disk arama süreleri ve ağ paketi varışları
+- İş parçacığı zamanlama kararları
+
+Kullanıcı modu API'leri şunlar aracılığıyla erişim sağlar:
+- `BCryptGenRandom`: Birden fazla algoritma sağlayıcısını destekleyen modern API
+- Eski `CryptGenRandom`: Uyumluluk için korunur
+- `RtlGenRandom` (SystemFunction036): Belgelenmemiş ancak yaygın olarak kullanılan
+
+Windows, FIPS 186-4 uyumlu işleme uygular:
+- Çıktı üretimi için AES-256 sayaç modu DRBG
+- Entropi kaynakları üzerinde sürekli sağlık testleri
+- Çekirdek entropi havuzlarından otomatik yeniden tohumlama
+
+**macOS ve iOS Entropi Sistemleri**
+
+Apple'ın işletim sistemleri entropi toplamayı şu şekilde uygular:
+
+Çekirdek düzeyinde toplama:
+- Güvenli Enklave donanım rastgele sayı üreteci
+- Mevcut olduğunda Intel RDRAND
+- Kesme birleştirme zamanlamaları
+- Mach mesaj geçirme gecikmeleri
+
+Uygulama Fortuna tabanlı mimari kullanır:
+- Üstel yeniden tohumlama periyotlarına sahip 32 entropi havuzu
+- Çıktı üretimi için sayaç modunda AES-256
+- Donanım hızlandırmalı kriptografik işlemler
+
+### 3.2 Kullanıcı Girişi Entropisi
+
+İnsan-bilgisayar etkileşimi, önemli sınırlamalarla birlikte zengin bir entropi kaynağı sağlar:
+
+**Fare Hareketi Entropisi**
+- Mikrosaniye çözünürlüğünde örneklenen koordinat deltaları
+- Hızlanma ve hız profilleri
+- Tıklama zamanlaması ve süre kalıpları
+- Kesirli konumlara sahip kaydırma tekerleği olayları
+
+İstatistiksel analiz, fare olayı başına yaklaşık 2-3 bit entropi ortaya koyar, şunlarla sınırlıdır:
+- İnsan tepki süresi kısıtlamaları (minimum ~200ms)
+- Öngörülebilir hareket kalıpları (Fitts Yasası)
+- Ekran çözünürlüğü sınırları
+
+**Klavye Zamanlama Analizi**
+Tuşlar arası zamanlamalar şunlar aracılığıyla entropi sağlar:
+- Bireysel yazma ritmi varyasyonları
+- Digraf ve trigraf zamanlama kalıpları
+- Tuşa basma ve bırakma süreleri
+- Değiştirici tuş kombinasyonu zamanlamaları
+
+Araştırma, tuş vuruşu zamanlaması başına 1-2 bit entropi gösterir, şunlar göz önünde bulundurularak:
+- Entropiyi azaltan dile özgü kalıplar
+- Öngörülebilirliği etkileyen yazma beceri düzeyi
+- Varyasyonu azaltan otomatik düzeltme ve tahmine dayalı metin
+
+### 3.3 Sistem Olay Entropisi
+
+İşletim sistemleri sürekli olarak entropi çıkarımı için uygun zamanlama varyasyonları ile olaylar üretir:
+
+**Disk G/Ç Zamanlama Varyasyonları**
+- Kafa konumlandırmasından kaynaklanan arama süresi varyasyonları
+- Geleneksel sabit sürücülerde dönme gecikmesi
+- SSD aşınma dengeleme ve çöp toplama gecikmeleri
+- Kuyruk derinliği ve komut yeniden sıralama etkileri
+
+Modern NVMe sürücüler geleneksel sürücülerden daha az zamanlama varyasyonu sağlar ve dikkatli entropi tahmin ayarlamaları gerektirir.
+
+**Ağ Paketi Varışları**
+- Mikrosaniye hassasiyetinde paketler arası varış süreleri
+- TCP sıra numarası rastgeleliği
+- Ethernet çerçeve çarpışma geri çekilme zamanlamaları
+- WiFi işaret aralığı varyasyonları
+
+Ağ tabanlı entropi, kontrollü paket iletimi yoluyla düşmanca manipülasyonu önlemek için dikkatli filtreleme gerektirir.
+
+## 4. Çevresel Entropi Kaynakları
+
+### 4.1 Sensör Tabanlı Entropi
+
+Modern cihazlar, özellikle mobil platformlar, potansiyel entropi sağlayan çok sayıda sensör içerir:
+
+**Kamera Sensör Gürültüsü**
+CMOS ve CCD sensörler birkaç gürültü kaynağı sergiler:
+- Yükselteç devrelerinden okuma gürültüsü (5-15 elektron RMS)
+- Karanlık akım atış gürültüsü (sıcaklığa bağlı)
+- Sabit desen gürültüsü (kalibrasyon kaldırma gerektirir)
+- Foton atış gürültüsü (Poisson dağılımını takip eder)
+
+Pratik uygulamalar entropiyi şu şekilde çıkarır:
+- Lens kapağı kapalı veya karanlıkta görüntü yakalama
+- Sabit desenleri kaldırmak için ardışık çerçeveleri farklılaştırma
+- Piksel değerlerinden en az anlamlı bitleri çıkarma
+- Ham verilere kriptografik hash fonksiyonları uygulama
+
+Android'in Keystore'u ve iOS'un Güvenli Enklavı, anahtar üretimi sırasında sistem kaynaklarının ötesinde ek entropi sağlayarak kamera gürültüsünü dahil eder.
+
+**İvmeölçer ve Jiroskop Entropisi**
+MEMS sensörler şunlar aracılığıyla entropi sağlar:
+- Kanıt kütlelerinin Brownian hareketi
+- Kapasitif algılama devrelerinde elektronik gürültü
+- Mekanik rezonans frekansı varyasyonları
+- Sıcaklık kaynaklı kayma
+
+Entropi çıkarımı, gürültüyü korurken öngörülebilir hareket bileşenlerini kaldırmak için yüksek geçiren filtreleme gerektirir.
+
+### 4.2 Ağ Tabanlı Çevresel Entropi
+
+Kablosuz iletişim sistemleri birden fazla entropi kaynağı sağlar:
+
+**WiFi RSSI Dalgalanmaları**
+- 20-30 dB varyasyonlara neden olan çok yollu sönümleme
+- Diğer vericilerden gelen girişim
+- Termal gürültü tabanı varyasyonları
+- Anten deseni düzensizlikleri
+
+**Hücresel Sinyal Metrikleri**
+- Referans Sinyal Alınan Güç (RSRP) varyasyonları
+- Sinyal-Girişim-artı-Gürültü Oranı (SINR)
+- Kanal Kalite Göstergesi (CQI) dalgalanmaları
+- Zamanlama avans ayarlamaları
+
+**GPS Zamanlama Sinyalleri**
+- Atmosferik gecikme varyasyonları
+- Kentsel ortamlarda çok yollu yansımalar
+- Uydu takımyıldızı geometri değişiklikleri
+- Alıcı osilatörlerinde saat kayması
+
+### 4.3 Atmosferik Gürültü Toplama
+
+Radyo frekansı atmosferik gürültü yüksek kaliteli entropi sağlar:
+
+Random.org'un metodolojisi şunları içerir:
+- Farklı frekanslara ayarlanmış birden fazla radyo alıcısı
+- Yüksek örnekleme hızlarında analog-dijital dönüşüm
+- Kriptografik hash fonksiyonları kullanarak istatistiksel beyazlatma
+- Gerçek zamanlı kalite izleme ve kaynak değiştirme
+
+Atmosferik gürültüyü yerel girişimden ayırmanın zorlukları şunları içerir:
+- 50/60 Hz katlarında güç hattı harmonikleri
+- Anahtarlamalı güç kaynağı gürültüsü
+- Dijital cihaz emisyonları
+- Kasıtlı parazit veya manipülasyon
+
+## 5. Entropi Havuzu Yönetimi ve Karıştırma
+
+### 5.1 Kriptografik Karıştırma Fonksiyonları
+
+Entropi havuzları, öngörülemezliği korurken birden fazla entropi kaynağını birleştirmek için sofistike karıştırma fonksiyonları gerektirir:
+
+**BLAKE2 Karıştırma**
+Linux çekirdek 5.17+'de benimsenen BLAKE2s fonksiyonu şunları sağlar:
+- Yüksek hızlı çalışma (MD5'ten daha hızlı, SHA-3 kadar güvenli)
+- Uzunluk genişletme saldırılarına direnç
+- Paralel işleme yeteneği
+- Gömülü sistemler için uygun minimal bellek gereksinimleri
+
+Karıştırma işlemi şu şekildedir:
+```
+yeni_havuz = BLAKE2s(eski_havuz || yeni_entropi || sayaç)
+```
+
+**SHA-3/Keccak Sünger Yapısı**
+Sünger yapısı benzersiz avantajlar sunar:
+- Değişken giriş ve çıkış uzunlukları
+- Rastgele oracle'dan kanıtlanmış ayırt edilemezlik
+- Yan kanal saldırılarına doğal direnç
+- Verimli donanım uygulaması
+
+Sünger iki aşamada çalışır:
+1. Emme: Girişi duruma XOR'la ve permütasyon uygula
+2. Sıkma: Arasında permütasyon ile durum bloklarını çıkart
+
+### 5.2 Entropi Tahmin Teknikleri
+
+Doğru entropi tahmini hem aşırı güveni hem de gereksiz engellemeyi önler:
+
+**Min-Entropi Tahmini (NIST SP 800-90B)**
+Standart birden fazla tahmin edici belirtir:
+- En Yaygın Değer tahmini
+- Çarpışma tahmini
+- Markov tahmini
+- Sıkıştırma tahmini
+- Pencerede Çoklu En Yaygın tahmini
+
+Nihai tahmin, muhafazakar sınırlar sağlayarak tüm tahmin ediciler arasında minimum değeri alır.
+
+**Çevrimiçi Sağlık Testleri**
+Sürekli izleme entropi kaynağı hatalarını tespit eder:
+- Tekrarlama Sayısı Testi: Takılı değerleri tespit eder
+- Uyarlanabilir Oran Testi: Sapma değişikliklerini tanımlar
+- Lag-1 Otokorelasyon Testi: Sıralı bağımlılıkları bulur
+- Hızlı Fourier Dönüşümü Testi: Periyodik desenleri tespit eder
+
+### 5.3 Havuz Başlatma ve Yeniden Tohumlama
+
+**Felaket Yeniden Tohumlama (Fortuna)**
+Fortuna algoritması üstel yeniden tohumlama periyotlarına sahip 32 havuz uygular:
+- Havuz 0 her yeterli entropi biriktiğinde yeniden tohumlanır
+- Havuz i, 2^i yeniden tohumlama olayı gerçekleştiğinde yeniden tohumlanır
+- Logaritmik garanti ile durum tehlikesinden kurtulma sağlar
+
+**İleri ve Geri Güvenlik**
+Modern tasarımlar şunları sağlar:
+- İleri güvenlik: Mevcut durum tehlikeye atılsa bile geçmiş çıktılar güvenli kalır
+- Geri güvenlik: Yeterli entropi birikiminden sonra gelecekteki çıktılar güvenli hale gelir
+
+Uygulama şunları gerektirir:
+```
+durum = H(durum || yeni_entropi)
+çıktı = CSPRNG(durum)
+durum = H(durum || çıktı || sayaç)
+```
+
+## 6. Güvenlik Analizi ve Doğrulama
+
+### 6.1 Saldırı Vektörleri ve Güvenlik Açıkları
+
+**Yan Kanal Saldırıları**
+Entropi kaynakları çeşitli yan kanal güvenlik açıklarıyla karşı karşıyadır:
+
+- Osilatör frekanslarını ortaya çıkaran güç analizi
+- Halka osilatörlerden elektromanyetik emisyonlar
+- Mekanik bileşenlerden akustik emisyonlar
+- Entropi toplama rutinlerinin zamanlama analizi
+
+Karşı önlemler şunları içerir:
+- Güç kaynağı filtreleme ve regülasyon
+- Elektromanyetik kalkan
+- Sabit zamanlı entropi karıştırma işlemleri
+- Entropi toplamada rastgele gecikmeler
+
+**Entropi Açlığı Saldırıları**
+Saldırganlar mevcut entropiyi tüketmeye çalışabilir:
+- API çağrıları yoluyla hızlı tüketim
+- Entropi toplamayı önleme (kesme maskeleme)
+- Önyükleme sırasında öngörülebilir sistem durumları oluşturma
+
+Savunmalar şunları gerektirir:
+- Entropi tüketiminde hız sınırlama
+- Kritik işlemler için ayrılmış entropi havuzları
+- Donanım kaynaklarından önyükleme zamanı entropi enjeksiyonu
+
+**Sanal Makine Entropi Zorlukları**
+Sanallaştırılmış ortamlar benzersiz zorluklar sunar:
+- Özdeş durumlar oluşturan VM anlık görüntü/geri yükleme
+- Entropi kaynaklarını kaldıran sınırlı donanım erişimi
+- Zamanlama ölçümlerini etkileyen hipervizör zamanlaması
+- Entropi birikimini bozan canlı geçiş
+
+Çözümler şunları içerir:
+- Virtio-rng parasanallaştırılmış entropi enjeksiyonu
+- VMware araçları aracılığıyla ana bilgisayar entropi yönlendirmesi
+- TPM/HSM cihazları için donanım geçişi
+- VM'ler arasında dağıtılmış entropi protokolleri
+
+### 6.2 İstatistiksel Test Çerçeveleri
+
+**NIST SP 800-22 İstatistiksel Test Paketi**
+On beş istatistiksel test rastgeleliği değerlendirir:
+1. Frekans (Monobit) Testi
+2. Blok Frekans Testi
+3. Koşu Testi
+4. En Uzun Birler Koşusu Testi
+5. İkili Matris Sıralaması Testi
+6. Ayrık Fourier Dönüşümü Testi
+7. Örtüşmeyen Şablon Eşleştirme Testi
+8. Örtüşen Şablon Eşleştirme Testi
+9. Maurer'in Evrensel İstatistiksel Testi
+10. Doğrusal Karmaşıklık Testi
+11. Seri Testi
+12. Yaklaşık Entropi Testi
+13. Kümülatif Toplamlar Testi
+14. Rastgele Gezintiler Testi
+15. Rastgele Gezintiler Varyant Testi
+
+Her test bir p-değeri üretir, 0,01'in altındaki değerler rastgele olmayanı gösterir.
+
+**Dieharder Test Bataryası**
+Genişletilmiş paket şunları içerir:
+- Tüm NIST SP 800-22 testleri
+- George Marsaglia'dan Diehard testleri
+- TestU01'den ek testler
+- Belirli sapma desenleri için özel testler
+
+**TestU01 Çerçevesi**
+Üç batarya ile kapsamlı test:
+- SmallCrush: 10 test, 15 dakika çalışma süresi
+- Crush: 96 test, 1 saat çalışma süresi
+- BigCrush: 106 test, 6 saat çalışma süresi
+
+### 6.3 Uyumluluk ve Sertifikasyon
+
+**FIPS 140-3 Gereksinimleri**
+Entropi kaynakları için Seviye 1-4 güvenlik gereksinimleri:
+- Belgelenmiş entropi kaynağı açıklaması
+- Min-entropi gerekçesi
+- Sağlık testi uygulaması
+- Açılışta koşullu öz test
+- Daha yüksek seviyeler için fiziksel güvenlik
+
+**Ortak Kriterler Değerlendirmesi**
+Koruma Profili gereksinimleri:
+- FCS_RNG.1: Rastgele sayı üretimi
+- FPT_TST.1: Öz test yetenekleri
+- FMT_MTD.1: TSF verilerinin yönetimi
+
+**Sektöre Özel Gereksinimler**
+- PCI-DSS: Güçlü kriptografi zorunluluğu
+- Tıbbi cihazlar (FDA): Siber güvenlik belgeleri
+- Otomotiv (ISO 26262): Fonksiyonel güvenlik değerlendirmesi
+- IoT (ETSI EN 303 645): Temel güvenlik gereksinimleri
+
+## 7. Uygulama En İyi Uygulamaları
+
+### 7.1 Çok Kaynaklı Entropi Stratejileri
+
+Sağlam uygulamalar birden fazla bağımsız entropi kaynağını birleştirir:
+
+```c
+// Örnek çok kaynaklı entropi toplayıcı
+typedef struct {
+    uint8_t hw_random[32];    // Donanım RNG
+    uint8_t timing[32];        // Zamanlama ölçümleri
+    uint8_t system[32];        // Sistem olayları
+    uint8_t environment[32];   // Çevresel sensörler
+} entropy_sources_t;
+
+void collect_entropy(uint8_t *output, size_t len) {
+    entropy_sources_t sources = {0};
+    
+    // Her kaynaktan zaman aşımı ile topla
+    collect_hw_random(sources.hw_random, 32, timeout_ms);
+    collect_timing_entropy(sources.timing, 32);
+    collect_system_entropy(sources.system, 32);
+    collect_environmental(sources.environment, 32);
+    
+    // Kriptografik hash kullanarak karıştır
+    BLAKE2s_CTX ctx;
+    BLAKE2s_Init(&ctx, len);
+    BLAKE2s_Update(&ctx, &sources, sizeof(sources));
+    BLAKE2s_Final(output, &ctx);
+    
+    // Hassas verileri temizle
+    secure_zero(&sources, sizeof(sources));
+}
+```
+
+### 7.2 CSPRNG Tohumlama Yönergeleri
+
+Uygun tohumlama, başlatmaya dikkatli özen gerektirir:
+
+```python
+import os
+import hashlib
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.backends import default_backend
+
+class SecureRandom:
+    def __init__(self):
+        # Birden fazla kaynaktan başlangıç entropisi topla
+        entropy_sources = []
+        
+        # İşletim sistemi rastgele (Linux'ta hazır olana kadar engeller)
+        entropy_sources.append(os.urandom(32))
+        
+        # Varsa donanım rastgele
+        try:
+            with open('/dev/hwrng', 'rb') as f:
+                entropy_sources.append(f.read(32))
+        except:
+            pass
+            
+        # Ek platforma özgü kaynaklar
+        self._collect_platform_entropy(entropy_sources)
+        
+        # Tüm kaynakları karıştır
+        h = hashlib.blake2s()
+        for source in entropy_sources:
+            h.update(source)
+        
+        self.seed = h.digest()
+        self.counter = 0
+        
+    def get_random_bytes(self, n):
+        """ChaCha20 kullanarak n rastgele bayt üret"""
+        # Uygulama detayları kısalık için atlandı
+        pass
+```
+
+### 7.3 Önyükleme Zamanı Entropi Çözümleri
+
+Erken önyükleme entropi kıtlığı özel işlem gerektirir:
+
+1. **Tohum Dosyaları**: Yeniden başlatmalar arasında entropiyi kaydet
+```bash
+# Kapatmada entropiyi kaydet
+dd if=/dev/urandom of=/var/lib/random-seed bs=512 count=1
+# Önyüklemede geri yükle
+cat /var/lib/random-seed > /dev/urandom
+```
+
+2. **Donanım Entropi Enjeksiyonu**: Önyükleme sırasında donanım kaynaklarına öncelik ver
+3. **Titreşim Entropisi**: CPU titreşim entropisi hemen kullanılabilir
+4. **UEFI Rastgele Protokolü**: Modern firmware entropi sağlar
+
+### 7.4 Konteyner ve Bulut Hususları
+
+**Docker/Kubernetes Entropi Yönetimi**
+- Ana bilgisayarın `/dev/urandom`'unu konteynerlere bağla
+- Donanım entropisini beslemek için `rng-tools` kullan
+- Entropi enjeksiyon sidecar'ları uygula
+- Entropi kullanılabilirlik metriklerini izle
+
+**Bulut Örneği Entropisi**
+- AWS: Başlangıç tohumu için örnek metadata hizmetini kullan
+- Azure: Sanal TPM ile 2. Nesil VM'lerden yararlan
+- GCP: vTPM desteği ile Korumalı VM'leri kullan
+- Kritik işlemler için yönetilen HSM hizmetlerini düşün
+
+## 8. Gelişen Teknolojiler ve Gelecek Yönelimler
+
+### 8.1 Kuantum Sonrası Kriptografi Gereksinimleri
+
+Kuantum bilişim tehditleri artan entropi gereksinimleri gerektirir:
+- Daha büyük anahtar boyutları (256-bit simetrik, 3072-bit RSA eşdeğeri)
+- Gauss örnekleme gerektiren kafes tabanlı şemalar
+- Büyük rastgelelik gerektiren hash tabanlı imzalar
+- Gürültü gerektiren yan kanala dirençli uygulamalar
+
+### 8.2 Entropi Değerlendirmesi için Makine Öğrenmesi
+
+Sinir ağları sözde rastgele verilerde ince desenleri tanımlayabilir:
+- Zamansal korelasyonları tespit eden LSTM ağları
+- Gizli yapıyı bulan otokodlayıcılar
+- Gerçek ile sözde rastgeleyi ayırt eden GAN'lar
+- Test bataryalarını optimize eden pekiştirmeli öğrenme
+
+### 8.3 Dağıtık ve Blokzincir Tabanlı Entropi
+
+Merkezi olmayan entropi üretim protokolleri:
+- Ethereum'un RANDAO işaret zinciri rastgeleliği
+- Dağıtık anahtar üretimi törenleri
+- Öngörülemeyen rastgelelik için doğrulanabilir gecikme fonksiyonları
+- Tek hata noktalarını önleyen eşik şemaları
+
+### 8.4 IoT ve Edge Computing Zorlukları
+
+Kaynak kısıtlı cihazlar benzersiz zorluklarla karşı karşıyadır:
+- Sınırlı entropi kaynakları (disk yok, minimum kullanıcı girişi)
+- Güç tüketimi kısıtlamaları
+- Uzak entropiyi önleyen kesintili bağlantı
+- İlişkili cihazlar oluşturan seri üretim
+
+Çözümler şunları içerir:
+- Fiziksel olarak klonlanamayan fonksiyonlar (PUF'ler)
+- SRAM başlangıç deseni rastgeleliği
+- Ultra düşük güç halka osilatörleri
+- Cihazlar arasında entropi paylaşım protokolleri
+
+## 9. Vaka Çalışmaları ve Öğrenilen Dersler
+
+### 9.1 Debian OpenSSL Felaketi (2008)
+
+İyi niyetli bir kod temizliği kritik entropiyi kaldırdı:
+```c
+// Önce: MD_Update(&m, buf, j); /* purify şikayet ediyor */
+// Sonra: /* MD_Update(&m, buf, j); */
+```
+
+Etki:
+- Yalnızca 32.767 olası SSH anahtarı
+- Etkilenen anahtarlar kolayca çarpanlarına ayrılabilir
+- Dünya çapında sertifika iptali
+
+Dersler:
+- Uzman incelemesi olmadan kriptografik kodu asla değiştirmeyin
+- Kapsamlı test paketleri bulundurun
+- Entropi kaynağı bağımlılıklarını belgeleyin
+
+### 9.2 Dual_EC_DRBG Arka Kapısı
+
+NSA tarafından tasarlanan kasıtlı zayıflığa sahip rastgele sayı üreteci:
+- Eliptik eğri noktaları aracılığıyla kleptografik arka kapı
+- 32 bayt çıktı verildiğinde öngörülebilir çıktı
+- Kriptografi topluluğu uyarılarına rağmen standartlaştırıldı
+
+Sonuçlar:
+- Açık, şeffaf standart sürecinin önemi
+- Birden fazla bağımsız uygulamaya ihtiyaç
+- Resmi güvenlik kanıtlarının değeri
+
+### 9.3 PlayStation 3 ECDSA Başarısızlığı
+
+Sony'nin uygulaması ECDSA imzaları için sabit nonce kullandı:
+```
+k = sabit  // Rastgele olmalı!
+imza = (r, s) burada r = (k × G).x
+```
+
+Sonuç: Özel anahtar iki imzadan önemsiz şekilde kurtarılabilir
+
+Önemli çıkarım: Mükemmel entropi kaynakları bile yanlış kullanımla başarısız olur
+
+### 9.4 Android SecureRandom Güvenlik Açığı
+
+Erken Android sürümlerinin kritik kusurlu `SecureRandom`'u vardı:
+- Apache Harmony'de yanlış tohumlama
+- Bazı cihazlarda öngörülebilir çıktı
+- Zayıf anahtarlar nedeniyle Bitcoin cüzdan hırsızlıkları
+
+Çözüm şunları gerektirdi:
+- Milyonlarca cihazın yamalanması
+- Uygun kullanım konusunda geliştirici eğitimi
+- İşletim sistemi düzeyinde geliştirilmiş entropi toplama
+
+## 10. Sonuç ve Öneriler
+
+### 10.1 Kritik Başarı Faktörleri
+
+Kriptografik uygulamalar için yüksek kaliteli rastgelelik üretimi, birden fazla disiplini birleştiren bütünsel bir yaklaşım gerektirir:
+
+**Çeşitli Entropi Kaynakları**: Hiçbir tek entropi kaynağı tüm koşullar altında mükemmel rastgelelik sağlamaz. Sağlam sistemler, kaynaklar başarısız olduğunda zarif bozulma ile donanım üreticilerini, yazılım toplamayı ve çevresel kaynakları birleştirmelidir.
+
+**Titiz Doğrulama**: İstatistiksel test tek başına rastgeleliği kanıtlayamaz ancak bariz başarısızlıkları tespit edebilir. Muhafazakar entropi tahmini ile birleştirilmiş sürekli sağlık izleme, hem kazara hem de kötü niyetli hatalara karşı savunma sağlar.
+
+**Derinlemesine Savunma**: Güvenlik birden fazla katman gerektirir: kritik anahtarlar için donanım güvenlik modülleri, genel kullanım için işletim sistemi entropi havuzları ve kritik olmayan işlemler için uygulamaya özgü rastgelelik.
+
+### 10.2 Pratik Öneriler
+
+**Sistem Mimarları İçin**:
+- Mevcut olduğunda donanım rastgele sayı üreticileri dağıtın
+- Entropi izleme ve uyarı sistemleri uygulayın
+- Kritik işlemler için entropi rezervleri bulundurun
+- Entropi kaynağı varsayımlarını ve bağımlılıklarını belgeleyin
+
+**Yazılım Geliştiriciler İçin**:
+- Yalnızca işletim sistemi tarafından sağlanan kriptografik API'leri kullanın
+- Asla özel rastgele sayı üreticileri uygulamayın
+- Kullanıcı alanı CSPRNG'lerini düzgün tohumlayın
+- Entropi tükenmesini zarif bir şekilde ele alın
+
+**Güvenlik Denetçileri İçin**:
+- Entropi kaynağı belgelerini doğrulayın
+- Rastgele sayı üreteci çıktılarını istatistiksel olarak test edin
+- Entropi toplama ve karıştırma kodunu inceleyin
+- Entropi manipülasyon saldırılarına karşı dayanıklılığı değerlendirin
+
+### 10.3 Gelecek Araştırma Yönleri
+
+Entropi üretimi alanı gelişen zorluklarla evrimleşmeye devam ediyor:
+
+- Daha büyük tohumlar gerektiren kuantum güvenli entropi gereksinimleri
+- Entropi kalite değerlendirmesi için makine öğrenmesi yaklaşımları
+- Entropi toplama sistemlerinin resmi doğrulaması
+- IoT cihaz entropi gereksinimlerinin standartlaştırılması
+- Gizliliği koruyan dağıtık entropi protokolleri
+
+### 10.4 Son Düşünceler
+
+Bilişim sistemleri giderek karmaşık ve birbirine bağlı hale geldikçe, sağlam rastgelelik üretiminin önemi yalnızca artmaktadır. İletişimleri güvence altına almaktan dijital varlıkları korumaya, gizliliği sürdürmekten yeni kriptografik protokolleri etkinleştirmeye kadar, entropi kaynakları bilgi güvenliğinin temelini oluşturur. Zorluklar önemlidir—sanallaştırma, konteynerleştirme ve kaynak kısıtlamaları hepsi entropi toplamayı karmaşıklaştırır—ancak dikkatli tasarım, birden fazla entropi kaynağı ve titiz doğrulama yoluyla çözümler mevcuttur.
+
+Kriptografik başarısızlıkların tarihi bize entropi üretiminin sonradan düşünülen bir şey olamayacağını öğretir. Baştan sistemlere tasarlanmalı, sürekli izlenmeli ve düzenli olarak denetlenmelidir. Yeni kriptografik gereksinimlerle kuantum sonrası bir geleceğe doğru ilerlerken, on yıllarca entropi kaynağı geliştirmeden öğrenilen dersler yarının güvenli sistemlerini inşa etmede paha biçilmez olacaktır.
+
+## Kaynaklar
+
+https://en.wikipedia.org/wiki/Entropy_(information_theory)
+https://en.wikipedia.org/wiki/Dual_EC_DRBG
+
+[1] National Institute of Standards and Technology. (2018). "Recommendation for the Entropy Sources Used for Random Bit Generation." NIST Special Publication 800-90B.
+
+[2] Barker, E., & Kelsey, J. (2015). "Recommendation for Random Number Generation Using Deterministic Random Bit Generators." NIST Special Publication 800-90A Revision 1.
+
+[3] Hamburg, M., Kocher, P., & Marson, M. E. (2012). "Analysis of Intel's Ivy Bridge Digital Random Number Generator." Cryptography Research, Inc.
+
+[4] Schindler, W., & Killmann, W. (2011). "Evaluation Criteria for True (Physical) Random Number Generators Used in Cryptographic Applications." AIS 31, Version 2.0, Bundesamt für Sicherheit in der Informationstechnik.
+
+[5] Müller, S. (2020). "Linux Random Number Generator – A New Approach." Linux Kernel Documentation.
+
+[6] Lacharme, P., Röck, A., Strubel, V., & Videau, M. (2012). "The Linux Pseudorandom Number Generator Revisited." INRIA Research Report.
+
+[7] Ferguson, N., & Schneier, B. (2003). "Practical Cryptography." John Wiley & Sons, Chapter 10: "Generating Randomness."
+
+[8] Matsumoto, M., Wada, I., Kuramoto, A., & Ashihara, H. (2007). "Common Defects in Initialization of Pseudorandom Number Generators." ACM Transactions on Modeling and Computer Simulation.
+
+[9] Gutterman, Z., Pinkas, B., & Reinman, T. (2006). "Analysis of the Linux Random Number Generator." IEEE Symposium on Security and Privacy.
+
+[10] Dorrendorf, L., Gutterman, Z., & Pinkas, B. (2009). "Cryptanalysis of the Random Number Generator of the Windows Operating System." ACM Transactions on Information and System Security.
+
+[11] Heninger, N., Durumeric, Z., Wustrow, E., & Halderman, J. A. (2012). "Mining Your Ps and Qs: Detection of Widespread Weak Keys in Network Devices." USENIX Security Symposium.
+
+[12] Ristenpart, T., & Yilek, S. (2010). "When Good Randomness Goes Bad: Virtual Machine Reset Vulnerabilities and Hedging Deployed Cryptography." NDSS Symposium.
+
+[13] Bernstein, D. J., Chang, Y. A., Cheng, C. M., Chou, L. P., Heninger, N., Lange, T., & van Someren, N. (2013). "Factoring RSA Keys from Certified Smart Cards: Coppersmith in the Wild." ASIACRYPT.
+
+[14] Checkoway, S., Fredrikson, M., Niederhagen, R., Everspaugh, A., Green, M., Lange, T., ... & Bernstein, D. J. (2014). "On the Practical Exploitability of Dual EC in TLS Implementations." USENIX Security Symposium.
+
+[15] Kim, S. H., Han, D., & Lee, D. H. (2013). "Predictability of Android OpenSSL's Pseudo Random Number Generator." ACM Conference on Computer and Communications Security.
+
+[16] Cornejo, M., & Ruhault, S. (2014). "Characterization of Real-Life PRNGs under Partial State Corruption." ACM Conference on Computer and Communications Security.
+
+[17] Baudet, M., Lubicz, D., Micolod, J., & Tassiaux, A. (2011). "On the Security of Oscillator-Based Random Number Generators." Journal of Cryptology, 24(2), 398-425.
+
+[18] Ma, Y., Lin, J., Chen, T., Xu, C., Liu, Z., & Jing, J. (2014). "Entropy Evaluation for Oscillator-Based True Random Number Generators." Cryptographic Hardware and Embedded Systems.
+
+[19] Anthes, G. (2011). "The Quest for Randomness." Communications of the ACM, 54(4), 13-15.
+
+[20] Kelsey, J., Schneier, B., & Ferguson, N. (1998). "Yarrow-160: Notes on the Design and Analysis of the Yarrow Cryptographic Pseudorandom Number Generator." Selected Areas in Cryptography.
+
+[21] L'Ecuyer, P., & Simard, R. (2007). "TestU01: A C Library for Empirical Testing of Random Number Generators." ACM Transactions on Mathematical Software, 33(4), 1-40.
+
+[22] Marsaglia, G. (1995). "The Marsaglia Random Number CDROM including the Diehard Battery of Tests of Randomness." Florida State University.
+
+[23] Rukhin, A., Soto, J., Nechvatal, J., Smid, M., & Barker, E. (2010). "A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications." NIST Special Publication 800-22 Revision 1a.
+
+[24] Sunar, B., Martin, W. J., & Stinson, D. R. (2007). "A Provably Secure True Random Number Generator with Built-In Tolerance to Active Attacks." IEEE Transactions on Computers, 56(1), 109-119.
+
+[25] Tokunaga, C., Blaauw, D., & Mudge, T. (2008). "True Random Number Generator With a Metastability-Based Quality Control." IEEE Journal of Solid-State Circuits, 43(1), 78-85.
+
+[26] Vasyltsov, I., Hambardzumyan, E., Kim, Y. S., & Karpinskyy, B. (2008). "Fast Digital TRNG Based on Metastable Ring Oscillator." Cryptographic Hardware and Embedded Systems.
+
+[27] Wayne, M. A., Jeffrey, E., Akselrod, G. M., & Kwiat, P. G. (2009). "Photon Arrival Time Quantum Random Number Generation." Journal of Modern Optics, 56(4), 516-522.
+
+[28] Herrero-Collantes, M., & Garcia-Escartin, J. C. (2017). "Quantum Random Number Generators." Reviews of Modern Physics, 89(1), 015004.
+
+[29] Mayers, D., & Yao, A. (1998). "Quantum Cryptography with Imperfect Apparatus." IEEE Symposium on Foundations of Computer Science.
+
+[30] Pironio, S., Acín, A., Massar, S., de la Giroday, A. B., Matsukevich, D. N., Maunz, P., ... & Monroe, C. (2010). "Random Numbers Certified by Bell's Theorem." Nature, 464(7291), 1021-1024.
+
+[31] Barak, B., Shaltiel, R., & Tromer, E. (2003). "True Random Number Generators Secure in a Changing Environment." Cryptographic Hardware and Embedded Systems.
+
+[32] Dodis, Y., Pointcheval, D., Ruhault, S., Vergniaud, D., & Wichs, D. (2013). "Security Analysis of Pseudo-Random Number Generators with Input: /dev/random is not Robust." ACM Conference on Computer and Communications Security.
+
+[33] Barak, B., & Halevi, S. (2005). "A Model and Architecture for Pseudo-Random Generation with Applications to /dev/random." ACM Conference on Computer and Communications Security.
+
+[34] Hutchinson, A. (2019). "Testing Random Number Generators Used in Cryptographic Applications." PhD Dissertation, Royal Holloway, University of London.
+
+[35] Marton, K., Suciu, A., & Sacarea, C. (2015). "Generation and Testing of Random Numbers for Cryptographic Applications." Proceedings of the Romanian Academy, Series A, 16, 368-377.
+
+[36] Schellekens, D., Preneel, B., & Verbauwhede, I. (2006). "FPGA Vendor Agnostic True Random Number Generator." Field Programmable Logic and Applications.
+
+[37] Varchola, M., & Drutarovsky, M. (2010). "New High Entropy Element for FPGA Based True Random Number Generators." Cryptographic Hardware and Embedded Systems.
+
+[38] Wold, K., & Tan, C. H. (2008). "Analysis and Enhancement of Random Number Generator in FPGA Based on Oscillator Rings." International Conference on Reconfigurable Computing and FPGAs.
+
+[39] Danger, J. L., Guilley, S., & Hoogvorst, P. (2009). "High Speed True Random Number Generator Based on Open Loop Structures in FPGAs." Microelectronics Journal, 40(11), 1650-1656.
+
+[40] Koç, Ç. K. (Ed.). (2009). "Cryptographic Engineering." Springer, Chapter 4: "True Random Number Generators."
+
+[41] Menezes, A. J., Van Oorschot, P. C., & Vanstone, S. A. (1996). "Handbook of Applied Cryptography." CRC Press, Chapter 5: "Pseudorandom Bits and Sequences."
+
+[42] Goldreich, O. (2001). "Foundations of Cryptography: Volume 1, Basic Tools." Cambridge University Press, Chapter 3: "Pseudorandom Generators."
