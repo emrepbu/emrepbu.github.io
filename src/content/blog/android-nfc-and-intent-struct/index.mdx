@@ -1,0 +1,336 @@
+---
+title: "Donanımdan Uygulamaya: Android'de NFC ve Intent Yapısı"
+description: "Android geliştiricileri için NFC veri akışı rehberi. Donanımdan Android uygulamasına doğru izlenen NFC veri akışı"
+date: 2026-01-17
+tags: ['android', 'nfc', 'intent', 'android-nfc', 'android-intent', 'android-nfc-intent']
+image: './android-nfc-and-intent-struct.png'
+authors: ['emreargana']
+---
+
+## 1. NFC Veri Akış Mimarisi
+
+### 1.1 Donanım Seviyesinde Algılama
+
+NFC kontrolcü çipi, RF (Radio Frequency) alanında bir etiket algıladığında ilk olarak anti-collision protokolü başlatılır [1]. Bu aşamada donanım, etiketin tipini (ISO14443 TypeA/B, ISO15693, FeliCa gibi) belirler ve etiketle temel iletişimi kurar. Kontrolcü, etiketin UID (Unique Identifier) bilgisini okur ve desteklenen teknolojileri tespit eder.
+
+### 1.2 Kernel ve HAL Katmanında İşlem
+
+Donanımdan gelen ham veri önce kernel seviyesindeki NFC driver tarafından işlenir. Android'de bu genellikle NFC-NCI (Near Field Communication Controller Interface) protokolü üzerinden gerçekleşir [2]. Driver, donanımdan gelen interrupt sinyallerini yakalar ve ham verileri HAL (Hardware Abstraction Layer) katmanına iletir.
+
+HAL katmanında libnfc-nci kütüphanesi devreye girer. Bu kütüphane, farklı donanım üreticilerinin NFC çiplerini standart bir arayüz üzerinden yönetmeyi sağlar. HAL, etiket verilerini standart formatlara dönüştürür ve üst katmanlara hazır hale getirir [3].
+
+### 1.3 Framework Seviyesinde Sistem Servisleri
+
+Android Framework'ünde NfcService sistem servisi, tüm NFC işlemlerinin merkezi kontrolünü sağlar. Bu servis, HAL katmanından gelen etiket bilgilerini alır ve işler. NfcService, etiket tipini analiz eder, NDEF (NFC Data Exchange Format) mesajlarını parse eder ve hangi uygulamaların bu etiketi işleyebileceğini belirler [4].
+
+NfcAdapter sınıfı, uygulamaların NFC özelliklerine erişimini sağlayan ana arayüzdür. Bu adapter, NfcService ile iletişim kurarak etiket verilerini uygulama katmanına sunar.
+
+### 1.4 Intent Dispatch Mekanizması
+
+Android'de NFC etiket algılandığında sistem, Intent mekanizması üzerinden uygulamaları bilgilendirir. Bu süreç üç farklı öncelik seviyesinde gerçekleşir [4]:
+
+<div className="bg-white p-4 rounded-lg">
+  <img src="/static/nfc_tag_dispatch.png" alt="Tag Dispatch System" />
+</div>
+[*Figure 1. Tag Dispatch System [4]*](https://developer.android.com/develop/connectivity/nfc/nfc)
+
+İlk olarak "foreground dispatch" kontrolü yapılır. Eğer ekranda aktif olan bir uygulama NFC dinleme modundaysa, etiket verisi doğrudan o uygulamaya iletilir. Bu mekanizma, uygulamanın `enableForegroundDispatch` metoduyla aktifleştirilir.
+
+Foreground dispatch yoksa sistem "NDEF discovery" aşamasına geçer. Etiket üzerinde NDEF formatında veri varsa, bu verilerin MIME tipine veya URI şemasına göre uygun uygulama belirlenir. Sistem, `ACTION_NDEF_DISCOVERED` intent'ini ilgili uygulamaya gönderir.
+
+Son olarak "tag discovery" mekanizması devreye girer. Eğer önceki aşamalar başarısız olursa, sistem `ACTION_TAG_DISCOVERED` intent'ini gönderir. Bu genel amaçlı intent, etiketin temel özelliklerini içerir ve herhangi bir NFC uygulaması tarafından yakalanabilir.
+
+### 1.5 Veri Formatları ve Teknoloji Seçimi
+
+Intent ile birlikte gönderilen veri, `Tag` nesnesi içinde paketlenir. Bu nesne, etiketin desteklediği teknolojileri (NfcA, NfcB, NfcF, NfcV, IsoDep, MifareClassic, MifareUltralight, Ndef gibi) ve temel özelliklerini içerir. Uygulama, bu teknolojilerden uygun olanını seçerek etiketle detaylı iletişim kurabilir [5].
+
+NDEF mesajları varsa, bunlar `NdefMessage` ve `NdefRecord` nesneleri halinde parse edilerek uygulamaya sunulur. Her NDEF record'u type, payload ve opsiyonel identifier bilgilerini içerir.
+
+### 1.6 Güvenlik ve İzin Kontrolü
+
+Sistem, NFC işlemleri için gerekli izinleri kontrol eder. Temel etiket okuma işlemleri için NFC izni yeterlidir, ancak belirli teknolojiler için ek izinler gerekebilir. Android 4.4 ve sonrasında HCE (Host Card Emulation) özelliği için `BIND_NFC_SERVICE` izni de kontrol edilir [6].
+
+Bu çok katmanlı yapı sayesinde Android, farklı donanım platformlarında tutarlı NFC deneyimi sunarken, uygulamalara da esnek bir API sağlar. Sistem, performans optimizasyonu için etiket algılama sürecini asenkron olarak işler ve power management entegrasyonu ile batarya tüketimini minimize eder.
+
+## 2. NFC Dispatch Mekanizması ve Teknik İmplementasyonu
+
+`enableForegroundDispatch()` fonksiyonu, Android NFC API'sinin kritik bir bileşenidir ve aktif durumdaki bir uygulamanın NFC etiket algılama işlemlerinde en yüksek önceliğe sahip olmasını sağlar. Bu mekanizma, uygulamanın ekranda görünür olduğu süre boyunca tüm NFC etiket olaylarını doğrudan yakalayabilmesine olanak tanır.
+
+Fonksiyonun temel amacı, kullanıcının o anda etkileşim halinde olduğu uygulamanın NFC işlemlerini kesintisiz bir şekilde yönetebilmesidir. Bu özellikle NFC tabanlı ödeme uygulamaları, etiket yazma araçları veya özel NFC protokolleri kullanan uygulamalar için kritik öneme sahiptir.
+
+### 2.1 Teknik Çalışma Mekanizması
+
+`enableForegroundDispatch()` metodu, `NfcAdapter` sınıfı üzerinden çağrılır ve dört temel parametre alır. İlk parametre, fonksiyonu çağıran Activity referansıdır. İkinci parametre, NFC etiket algılandığında tetiklenecek `PendingIntent` nesnesidir. Üçüncü parametre, uygulamanın yakalamak istediği intent tiplerini belirten `IntentFilter` dizisidir. Dördüncü parametre ise, desteklenen NFC teknoloji tiplerini içeren String dizileridir [5].
+
+```kotlin
+public override fun onPause() {
+    super.onPause()
+    adapter.disableForegroundDispatch(this)
+}
+
+public override fun onResume() {
+    super.onResume()
+    adapter.enableForegroundDispatch(this, pendingIntent, intentFiltersArray, techListsArray)
+}
+
+public override fun onNewIntent(intent: Intent) {
+    val tagFromIntent: Tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG)
+    // do something with tagFromIntent
+}
+```
+
+Sistem seviyesinde bu fonksiyon çağrıldığında, `NfcService` içinde bir foreground dispatch kaydı oluşturulur. Bu kayıt, çağıran Activity'nin package name, UID ve PID bilgilerini içerir. `NfcService`, bu bilgileri kullanarak hangi uygulamanın şu anda foreground dispatch hakkına sahip olduğunu takip eder.
+
+Fonksiyonun aktivasyonu sonrasında, herhangi bir NFC etiket algılandığında sistem öncelikle foreground dispatch kaydını kontrol eder. Eğer kayıtlı bir uygulama varsa ve bu uygulama halen aktif durumda ise, etiket verisi doğrudan bu uygulamaya yönlendirilir. Bu işlem, normal intent resolution sürecini tamamen bypass eder.
+
+### 2.2 Intent Önceliklendirme Sistemi Üzerindeki Etkisi
+
+Android'in standart NFC intent önceliklendirme sistemi üç seviyeli bir hiyerarşi izler. En üst seviyede foreground dispatch, ortada NDEF discovery ve en altta tag discovery yer alır. `enableForegroundDispatch()` fonksiyonu, bu hiyerarşinin en üst seviyesini kontrol eder ve diğer tüm mekanizmaları geçersiz kılar.
+
+Normal şartlarda bir NFC etiket algılandığında, sistem önce etiket üzerindeki NDEF verilerini analiz eder, sonra bu verilerin MIME tipine veya URI şemasına göre uygun uygulamayı belirler. Manifest dosyasında tanımlı intent filter'lar ve priority değerleri bu süreçte rol oynar. Ancak foreground dispatch aktif olduğunda, bu analiz süreci atlanır ve etiket verisi doğrudan kayıtlı uygulamaya iletilir.
+
+Bu mekanizma, kullanıcı deneyimi açısından önemli avantajlar sağlar. Örneğin, bir kullanıcı NFC etiket yazma uygulaması kullanırken, algılanan etiketler otomatik olarak başka uygulamalarda açılmaz. Bunun yerine, yazma uygulaması tüm etiket verilerini kontrol altında tutar.
+
+### 2.3 Sistem Seviyesinde Implementation Detayları
+
+`NfcService` içinde foreground dispatch mekanizması, Activity Lifecycle'ı ile sıkı bir entegrasyon halinde çalışır. Uygulama `onResume()` durumuna geçtiğinde foreground dispatch aktifleştirilir ve `onPause()` durumunda deaktifleştirilir. Bu yaklaşım, yalnızca kullanıcının aktif olarak etkileşim kurduğu uygulamanın NFC kontrolüne sahip olmasını garanti eder.
+
+Sistem, foreground dispatch kaydını Activity'nin hash değeri ve process ID'si ile ilişkilendirir. Bu sayede, aynı uygulamanın farklı Activity'leri arasında bile doğru yönlendirme yapılabilir. NFC chip'ten gelen tag discovery eventi, öncelikle `NfcDispatcher` sınıfı tarafından işlenir ve foreground dispatch tablosu kontrol edilir [7].
+
+### 2.4 Performans ve Kaynak Yönetimi
+
+`enableForegroundDispatch()` fonksiyonu, sistem kaynaklarının verimli kullanımı açısından optimize edilmiştir. Foreground dispatch aktif olduğunda, `NfcService` normal intent resolution pipeline'ını bypass ederek latency'yi minimize eder. Bu optimizasyon, özellikle yüksek frekanslı NFC işlemlerinde belirgin performans artışı sağlar.
+
+Fonksiyonun deaktivasyonu için kullanılan `disableForegroundDispatch()` metodu, mutlaka Activity'nin `onPause()` metodunda çağrılmalıdır. Bu gereklilik, sistem kaynaklarının düzgün olarak serbest bırakılmasını ve diğer uygulamaların NFC özelliklerine sağlıklı erişebilmesini garanti eder. Eğer bu cleanup işlemi yapılmazsa, uygulamanın background'a geçmesine rağmen NFC trafiğini kendi üzerinde tutmaya devam edebilir.
+
+## 3. Android 12'de PendingIntent Güvenlik Değişiklikleri
+
+Android 12 (API Level 31) ile birlikte, `PendingIntent` oluşturma mekanizmasında kritik bir güvenlik değişikliği yapılmıştır. Bu değişiklik, Android 9'da sorunsuz çalışan kod parçalarının Android 12'de `IllegalArgumentException` fırlatmasına neden olmaktadır [8].
+
+### 3.1 Zorunlu Flag Gereksinimleri
+
+Android 12 öncesinde, `PendingIntent` nesneleri oluşturulurken mutability durumunun açıkça belirtilmesi zorunlu değildi. Sistem, varsayılan olarak mutable davranış sergilemekteydi. Android 12 ile birlikte, her `PendingIntent` oluşturma işleminde `FLAG_MUTABLE` veya `FLAG_IMMUTABLE` flaglerinden birinin açıkça belirtilmesi zorunlu hale gelmiştir.
+
+`FLAG_IMMUTABLE` flag'i kullanıldığında, `PendingIntent`'in Intent nesnesi ve ekstra parametreleri oluşturulduktan sonra değiştirilemez duruma gelir. Bu flag, güvenlik açısından tercih edilen seçenektir ve çoğu kullanım senaryosunda yeterli işlevselliği sağlamaktadır.
+
+`FLAG_MUTABLE` flag'i ise, `PendingIntent`'in Intent nesnesinin belirli kısımlarının runtime sırasında değiştirilebilmesine olanak tanır. Bu flag, yalnızca `PendingIntent`'in mutlaka değiştirilmesi gereken durumlarda kullanılması önerilmektedir.
+
+### 3.2 Teknik Implementation Detayları
+
+Android 12 öncesinde yazılmış kod örnekleri incelendiğinde, `PendingIntent.getActivity()`, `PendingIntent.getBroadcast()` ve `PendingIntent.getService()` metodlarının çoğunlukla yalnızca context, request code, intent ve flags parametreleriyle çağrıldığı görülmektedir. Bu kullanım şekli Android 12'de runtime exception'a neden olmaktadır [8].
+
+> Warning: Missing PendingIntent mutability flag [UnspecifiedImmutableFlag]
+
+Migrasyon sürecinde, mevcut kod yapısının analiz edilmesi ve her `PendingIntent` kullanımının amacının belirlenmesi gerekmektedir. Intent'in sonradan değiştirilmesi gerekmeyen durumlarda `FLAG_IMMUTABLE` kullanılması önerilmektedir. Yalnızca `Intent.fillIn()` metodunun kullanıldığı veya runtime'da Intent modifikasyonunun gerekli olduğu senaryolarda `FLAG_MUTABLE` tercih edilmelidir.
+
+Android 11 ve öncesi: `FLAG_IMMUTABLE` veya `FLAG_MUTABLE` belirtmek zorunlu değildir.
+
+```kotlin
+val intent = Intent(this, TargetActivity::class.java)
+val pendingIntent = PendingIntent.getActivity(
+    this,
+    0,
+    intent,
+    PendingIntent.FLAG_UPDATE_CURRENT // Sadece güncelleme flag'i yeterli
+)
+```
+
+Android 12 ve sonrası: `FLAG_IMMUTABLE` veya `FLAG_MUTABLE` zorunludur.
+
+```kotlin
+val intent = Intent(this, TargetActivity::class.java)
+val pendingIntent = PendingIntent.getActivity(
+    this,
+    0,
+    intent,
+    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT // FLAG_IMMUTABLE veya FLAG_MUTABLE biri eklenmeli
+)
+```
+
+### 3.3 PendingIntent Flag'lerinin Teknik İşlevleri
+
+`FLAG_MUTABLE` ve `FLAG_IMMUTABLE` flag'leri, `PendingIntent` nesnelerinin oluşturulduktan sonraki değiştirilebilirlik özelliklerini kontrol eden kritik parametrelerdir. Bu flag'ler, Intent nesnesinin içeriğinin runtime sırasında nasıl manipüle edilebileceğini belirler ve uygulamalar arası güvenlik sınırlarını tanımlar.
+
+`FLAG_IMMUTABLE` kullanıldığında, `PendingIntent` içerisindeki Intent nesnesinin tüm bileşenleri sabitlenir. Component adı, action, data URI, kategoriler ve extra parametreler oluşturma anından itibaren değiştirilemez duruma gelir. Sistem bu flag'i tercih eder çünkü güvenlik açıklarını minimize eder ve beklenmedik davranışları önler.
+
+`FLAG_MUTABLE` ise `PendingIntent`'in Intent içeriğinin belirli kısımlarının sonradan değiştirilebilmesine olanak tanır. Bu değişiklikler özellikle `Intent.fillIn()` metodu aracılığıyla gerçekleştirilir ve sistem servisleri tarafından runtime'da ek bilgilerin Intent'e eklenmesi durumlarında gerekli hale gelir.
+
+### 3.4 NFC Sisteminde Intent Modifikasyonu Örnekleri
+
+NFC sisteminde `FLAG_MUTABLE` kullanımının gerekli olduğu somut senaryolar bulunmaktadır. NFC etiket algılandığında sistem, `PendingIntent` aracılığıyla uygulamaya bildirim gönderirken Intent nesnesine dinamik olarak etiket bilgilerini eklemektedir.
+
+NFC foreground dispatch mekanizmasında `enableForegroundDispatch()` metoduna geçilen `PendingIntent`, başlangıçta minimal bir Intent içermektedir. Ancak etiket algılandığında `NfcService`, bu Intent'e Tag nesnesini, NDEF mesajlarını ve etiket teknoloji bilgilerini ekler. Bu işlem `Intent.fillIn()` metoduyla gerçekleştirilir ve orijinal Intent'teki boş alanları doldurur.
+
+Örneğin, bir NFC okuyucu uygulaması `PendingIntent` oluştururken yalnızca target Activity'yi belirtir. Etiket algılandığında sistem bu Intent'e `EXTRA_TAG`, `EXTRA_NDEF_MESSAGES` ve `EXTRA_ID` bilgilerini otomatik olarak ekler [4]. Bu dinamik ekleme işlemi `FLAG_MUTABLE` gerektirmektedir çünkü Intent'in extra alanları runtime'da değiştirilmektedir.
+
+AlarmManager sistemi benzer bir davranış sergiler. Zamanlanmış alarm tetiklendiğinde, sistem `PendingIntent`'e alarm tetiklenme zamanı ve diğer context bilgilerini ekleyebilir. Notification sisteminde de kullanıcı etkileşimleri sonucu ek bilgiler Intent'e dahil edilmektedir.
+
+### 3.5 Kullanım Senaryolarına Göre Flag Seçimi
+
+`FLAG_IMMUTABLE` tercih edilmesi gereken durumlar, Intent içeriğinin tamamen önceden belirlendiği ve sonradan değişiklik gerektirmeyen senaryoları kapsamaktadır. Navigation intent'leri, basit Activity başlatma işlemleri ve sabit parametreli broadcast mesajları bu kategoriye girmektedir. Güvenlik açısından bu flag her zaman tercih edilmelidir.
+
+`FLAG_MUTABLE` kullanımı ise sistem servisleri tarafından Intent içeriğinin dinamik olarak değiştirildiği durumlarda zorunlu hale gelmektedir. NFC işlemleri, location callback'leri, sensor data delivery ve notification action handling gibi senaryolar bu kapsamdadır. Ancak bu flag'in kullanımı dikkatli güvenlik değerlendirmesi gerektirir.
+
+Geolocation sisteminde `LocationManager`, konum güncellemelerini `PendingIntent` aracılığıyla iletirken Intent'e Location nesnesi ve accuracy bilgilerini ekler. Bu işlem için mutable `PendingIntent` gereklidir çünkü her konum güncellemesinde farklı veriler Intent'e dahil edilmektedir.
+
+Media session controller'ları da mutable `PendingIntent` kullanır. Playback durumu değişikliklerinde sistem, Intent'e current position, playback state ve metadata bilgilerini dinamik olarak eklemektedir. Bu bilgiler runtime'da belirlenir ve önceden tahmin edilemez
+
+### 3.6 Güvenlikle İlgili Hususlar
+
+`FLAG_MUTABLE` kullanımında en kritik güvenlik riski, Intent injection saldırılarıdır. Kötü niyetli uygulamalar, mutable `PendingIntent`'lerin fillIn işlemleri sırasında beklenmedik component'lere yönlendirme yapabilir veya hassas bilgileri manipüle edebilir. Bu nedenle mutable flag yalnızca kesinlikle gerekli durumlarda kullanılmalıdır [9].
+
+Mutable `PendingIntent` oluştururken Intent nesnesinin mümkün olduğunca spesifik olması güvenliği artırır. Component name açıkça belirtilmeli, gerekli olmayan extra alanları boş bırakılmamalı ve intent filter scope'u minimum seviyeye indirilmelidir.
+
+`FLAG_IMMUTABLE` kullanımında ise Intent'in tüm gerekli bilgileri oluşturma anında içermesi gerekir. Sonradan eklenmesi planlanan bilgiler varsa, bu durum architecture review gerektirmelidir. Çoğu durumda immutable yaklaşımını benimseyen alternatif implementation'lar geliştirilebilir.
+
+Modern Android geliştirme süreçlerinde lint tools, mutable `PendingIntent` kullanımlarını otomatik olarak tespit eder ve gerekçelendirme yapılmasını ister. Bu yaklaşım, gereksiz mutable kullanımlarının önlenmesine ve güvenlik standartlarının sürdürülmesine katkıda bulunmaktadır.
+
+```kotlin
+// NFC foreground dispatch için PendingIntent oluşturuluyor.
+// GEREKÇE: Sistem, intent'e dinamik olarak Tag ve NDEF bilgisi ekleyeceği için FLAG_MUTABLE zorunludur.
+val intent = Intent(this, javaClass).apply {
+    addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+}
+
+@SuppressLint("UnspecifiedImmutableFlag") // NFC foreground dispatch için mutable zorunlu
+val pendingIntent = PendingIntent.getActivity(
+    this,
+    0,
+    intent,
+    PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+)
+```
+
+## 4. Sistem Seviyesinde PendingIntent Veri Ekleme Mekanizması
+
+Android sisteminde `PendingIntent` nesneleri, uygulama ve sistem servisleri arasında asenkron mesajlaşma köprüsü görevi görmektedir. NFC gibi sistem olaylarında, Android Framework'ü karmaşık bir süreç izleyerek runtime verilerini `PendingIntent` içerisine dinamik olarak yerleştirmektedir.
+
+### 4.1 ActivityManagerService ve Intent Resolution Süreci
+
+`PendingIntent`'in sistem seviyesindeki işleyişi `ActivityManagerService` (AMS) üzerinden yönetilmektedir. Uygulama bir `PendingIntent` oluşturduğunda, AMS bu intent'in bir kopyasını sistem memory space'inde saklamakta ve unique bir token oluşturmaktadır. Bu token, daha sonra intent'in tetiklenmesi için referans noktası olarak kullanılmaktadır.
+
+### 4.2 Intent.fillIn() Metodunun Teknik İşleyişi
+
+Sistem servisleri `PendingIntent`'e veri eklemek için `Intent.fillIn()` metodunu kullanmaktadır. Bu metod, kaynak Intent nesnesindeki boş veya null olan alanları, yeni Intent nesnesindeki karşılık gelen değerlerle doldurur. NFC senaryosunda `NfcService`, algıladığı etiket bilgilerini içeren yeni bir Intent oluşturur ve bunu orijinal Intent ile merge eder.
+
+`fillIn()` işlemi sırasında sistem, Intent'in çeşitli bileşenlerini hedef alarak güncelleyebilir. Component name, action string, data URI, categories ve extra bundle alanları bu güncelleme kapsamına girmektedir. Ancak `FILL_IN_*` flag parametreleri, hangi alanların güncelleneceğini kesin olarak kontrol etmektedir [10].
+
+NFC sisteminde tipik olarak `FILL_IN_DATA`, `FILL_IN_CATEGORIES` ve `FILL_IN_EXTRAS` flag'leri kullanılmaktadır. Bu flag'ler sayesinde sistem, orijinal Intent'in component routing bilgilerini korurken sadece veri alanlarını günceller. Bu yaklaşım hem güvenliği sağlar hem de intended behavior'ı korur.
+
+### 4.3 NFC Etiket Verilerinin Intent'e Entegrasyonu
+
+NFC etiket algılandığında `NfcDispatcher` sınıfı, etiket bilgilerini standart format'a dönüştürür. `Tag` nesnesi, NDEF mesajları ve teknoloji bilgileri Bundle formatında hazırlanır. Bu Bundle, Intent’in extras alanına eklenmek üzere hazırlanır.
+
+`EXTRA_TAG` sabiti "android.nfc.extra.TAG" string değerini içermekte ve `Tag` nesnesinin serialize edilmiş halini taşımaktadır. `Tag` nesnesi Parcelable interface'ini implement ettiği için Bundle içerisinde güvenli şekilde serialize edilebilmektedir. Sistem bu nesneyi Intent extras'ına eklerken internal marshalling mekanizmasını kullanır.
+
+`EXTRA_ID` sabiti ise "android.nfc.extra.ID" key'i altında etiketin unique identifier bilgisini byte array formatında saklamaktadır. Bu ID genellikle etiketin UID bilgisini içerir ve anti-collision protocol sırasında elde edilen değeri temsil eder. `NfcService` bu bilgiyi HAL layer'dan aldığı raw data'dan extract ederek Intent'e dahil eder.
+
+NDEF mesajları varsa `EXTRA_NDEF_MESSAGES` sabiti altında `NdefMessage` array'i olarak Intent'e eklenir. Bu mesajlar parse edilmiş format'ta gelir ve uygulama tarafından direkt olarak kullanılabilir durumda bulunur.
+
+## 5. Intent Resolution Sisteminin Temel Çalışma Prensibi
+
+Android işletim sistemi bir NFC etiketi algıladığında, hangi uygulamanın bu olayı işleyeceğini belirlemek için karmaşık bir intent resolution süreci başlatır. Bu süreç, sistem seviyesinde `PackageManager` servisi tarafından yönetilen intent-filter eşleştirme algoritmasını kullanarak gerçekleştirilir.
+
+NFC etiket algılandığında sistem, etiketin içeriğine ve teknoloji özelliklerine göre bir dizi Intent nesnesi oluşturur. Bu Intent'ler hiyerarşik bir öncelik sırasına göre resolve edilmeye çalışılır. Sistem öncelikle en spesifik Intent'lerden başlayarak en genel Intent'lere doğru ilerler ve her aşamada uygun intent-filter'a sahip uygulamaları arar.
+
+Intent resolution sürecinin başarılı olması, hem Intent nesnesinin özellikleri hem de uygulamaların `AndroidManifest.xml` dosyalarında tanımladıkları intent-filter spesifikasyonlarının uyumluluğuna bağlıdır. `PackageManager` bu eşleştirmeyi yaparken action, category, data ve MIME type kriterlerini kapsamlı bir şekilde değerlendirir.
+
+### 5.1 AndroidManifest.xml İçindeki Intent-Filter Yapısı
+
+NFC işlemleri için uygulamaların `AndroidManifest.xml` dosyalarında tanımladıkları intent-filter yapıları, sistem tarafından yapılacak eşleştirmelerin temelini oluşturur. Bu filter'lar genellikle activity, service veya broadcast receiver bileşenleri için tanımlanır ve NFC olaylarına yanıt verebilecek uygulamaları sistem seviyesinde kayıt altına alır.
+
+NFC intent-filter'ları tipik olarak üç farklı action türünü hedefleyebilir. `ACTION_NDEF_DISCOVERED` action'ı, NDEF formatında veri içeren etiketler için kullanılır ve en yüksek önceliğe sahiptir. Bu action için tanımlanan intent-filter'lar genellikle spesifik MIME type veya data scheme bilgileri içerir. `ACTION_TECH_DISCOVERED` action'ı, belirli NFC teknolojilerini destekleyen etiketler için kullanılır ve meta-data etiketleri aracılığıyla desteklenen teknoloji listesi tanımlanır. `ACTION_TAG_DISCOVERED` action'ı ise en genel seviyede tüm NFC etiketleri için fallback mekanizması sağlar.
+
+Data element'leri intent-filter içerisinde kritik rol oynar. NDEF etiketleri için MIME type spesifikasyonu veya URI scheme tanımlaması yapılabilir. Örneğin, bir uygulama yalnızca "text/plain" MIME type'ına sahip NDEF mesajlarını işlemek istiyorsa, intent-filter'ında bu spesifikasyonu belirtmelidir. Benzer şekilde, HTTP URL'leri içeren etiketler için "http" scheme'li data filter'ları tanımlanabilir.
+
+```kotlin
+val uriRecord = ByteArray(0).let { emptyByteArray ->
+    NdefRecord(
+            TNF_ABSOLUTE_URI,
+            "https://developer.android.com/index.html".toByteArray(Charset.forName("US-ASCII")),
+            emptyByteArray,
+            emptyByteArray
+    )
+}
+```
+
+```xml
+<intent-filter>
+    <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:scheme="https"
+        android:host="developer.android.com"
+        android:pathPrefix="/index.html" />
+</intent-filter>
+```
+
+Meta-data element'leri, özellikle `ACTION_TECH_DISCOVERED` için kullanılır ve XML resource dosyası referansı içerir. Bu resource dosyasında desteklenen NFC teknoloji sınıflarının listesi bulunur. Sistem bu listeyi kontrol ederek etiketin desteklediği teknolojiler ile uygulamanın handle edebileceği teknolojiler arasında intersection olup olmadığını değerlendirir.
+
+```xml
+<meta-data
+    android:name="android.nfc.action.TECH_DISCOVERED"
+    android:resource="@xml/nfc_tech_filter" />
+```
+
+```xml
+<!-- res/xml/nfc_tech_filter.xml -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <tech-list>
+        <tech>android.nfc.tech.NfcA</tech>
+        <tech>android.nfc.tech.Ndef</tech>
+    </tech-list>
+    <!-- İsterseniz başka teknoloji kombinasyonları da ekleyebilirsiniz -->
+</resources>
+```
+
+### 5.2 PackageManager'ın Intent Eşleştirme Süreci
+
+`PackageManager` servisi, sistem başlatıldığında tüm yüklü uygulamaların `AndroidManifest.xml` dosyalarını parse ederek intent-filter bilgilerini internal database'inde saklar. Bu database, intent resolution işlemleri sırasında hızlı erişim sağlamak amacıyla memory'de optimize edilmiş veri yapıları kullanır.
+
+NFC Intent’i resolve edilirken `PackageManager`, öncelikle Intent’in action string’ini kullanarak uygun adayları filtreler. Bu ilk filtreleme aşamasında yalnızca matching action'a sahip intent-filter'lar dikkate alınır. Ardından category matching işlemi gerçekleştirilir.
+
+Data matching aşaması en karmaşık kısmı oluşturur. `PackageManager`, Intent'in data URI'si ile intent-filter'ın data specification'ı arasında kapsamlı karşılaştırma yapar. Bu comparison scheme, host, port, path ve MIME type element'lerini ayrı ayrı değerlendirir. NDEF etiketleri için MIME type matching özellikle kritik önem taşır çünkü sistem bu bilgiyi kullanarak en uygun uygulamayı belirler.
+
+Permission checking de resolution sürecinin ayrılmaz bir parçasıdır. `PackageManager`, birleşenin gerektirdiği ettiği permission'ları kontrol eder ve Intent'i gönderen process'in gerekli permission'lara sahip olup olmadığını doğrular. NFC işlemleri için genellikle `android.permission.NFC` izni gerekli olduğundan, bu kontrole özellikle dikkat edilir.
+
+```xml
+<uses-feature android:name="android.hardware.nfc" android:required="true" />
+```
+
+## 6. Sonuç
+
+Android işletim sisteminde NFC teknolojisinin donanımdan uygulamaya kadar olan yolculuğu, modern mobile programlamanın ne denli sofistike bir yapıya sahip olduğunu gözler önüne sermektedir. Bu yazıda incelediğimiz katmanlı mimari, Android'in hem güvenlik hem de performans açısından ne kadar detaylı optimize edildiğini ortaya koymaktadır.
+
+Donanım seviyesinden başlayarak HAL katmanı, sistem servisleri ve uygulama framework'üne kadar uzanan veri akışı, her aşamada dikkatli tasarlanmış abstraction katmanları ve güvenlik kontrolleriyle desteklenmektedir. `NfcService`'in merkezi rolü, intent dispatch mekanizmasının karmaşıklığı ve `PackageManager`'ın akıllı yönlendirme algoritması, Android'in kurumsal düzeyde sistem tasarımının birer yansımasıdır.
+
+Android 12 ile birlikte getirilen `PendingIntent` güvenlik kuralları, Google'ın sistem güvenliğine verdiği önemi göstermektedir. `FLAG_MUTABLE` ve `FLAG_IMMUTABLE` zorunluluğu, geliştiricileri daha güvenli kod yazmaya yönlendirirken, sistemin kötüye kullanım potansiyelini minimize etmektedir. Bu değişiklikler, geriye dönük uyuyumluluk sorunları yaratsa da, uzun vadede Android ekosisteminin güvenilirliğini artırmaktadır.
+
+Foreground dispatch mekanizması ve intent priority sistemi, kullanıcı deneyimini optimize etmek için tasarlanmış akıllı çözümlerdir. Bu mekanizmalar sayesinde, kullanıcıların aktif olarak etkileşim kurduğu uygulamalar NFC olaylarında öncelik alırken, sistem kaynaklarının verimli kullanımı da sağlanmaktadır.
+
+Intent matching algoritmasının çok kriterli yapısı ve conflict resolution mekanizmaları, Android'in çoklu uygulama ortamında tutarlı davranış sergilemesini mümkün kılmaktadır. `AndroidManifest.xml`'deki intent-filter yapılarının sistem tarafından intelligent şekilde değerlendirilmesi, geliştiricilere esnek uygulama entegrasyonu imkanı sunarken, kullanıcılara da seamless deneyim yaşatmaktadır.
+
+NFC teknolojisinin temassız ödeme, geçiş kontrol, veri paylaşma ve IoT entegrasyonları gibi alanlardaki artan önemi göz önünde bulundurulduğında, Android'in bu alandaki altyapı kritik değer taşımaktadır. Sistem seviyesindeki bu detaylı implementation, geliştiricilerin güvenli ve performanslı NFC uygulamaları geliştirmesine olanak tanırken, son kullanıcılar için de güvenilir teknoloji deneyimi sağlamaktadır.
+
+Sonuç olarak, Android'de NFC ve Intent yapısının bu kapsamlı analizi, modern işletim sistemlerinin ne denli karmaşık mühendislik problem'lerini çözdüğünü göstermektedir. Bu teknolojik çözümler, mobil programlamanın geleceğinde NFC tabanlı yeniliklerin güvenli ve efektif bir şekilde hayata geçirilmesine zemin hazırlamaktadır. Geliştiricilerin bu altyapıyı derinlemesine anlaması, hem mevcut uygulamaların optimizasyonu hem de yenilikçi çözümlerin geliştirilmesi açısından büyük önem arz etmektedir.
+
+## 7. Kaynakça
+
+[1] Texas Instruments, *Implementation of ISO14443A Anti-Collision Sequence in the TI TRF796x*, Application Report SLOA136, April 2009. [Online]. Available: [https://www.ti.com/lit/an/sloa136/sloa136.pdf](https://www.ti.com/lit/an/sloa136/sloa136.pdf). [Accessed: 09-Jul-2025].
+
+[2] NFC Forum, "NFC Controller Interface (NCI) Technical Specification". [Online]. Available: [https://nfc-forum.org/build/specifications/controller-interface-nci-technical-specification/](https://nfc-forum.org/build/specifications/controller-interface-nci-technical-specification/). [Accessed: 09-Jul-2025].
+
+[3] Android Open Source Project, "Secure NFC", [Online]. Available: [https://source.android.com/docs/core/connect/secure-nfc](https://source.android.com/docs/core/connect/secure-nfc). [Accessed: 10-Jul-2025].
+
+[4] Android Developers, "NFC basics", [Online]. Available: [https://developer.android.com/develop/connectivity/nfc/nfc](https://developer.android.com/develop/connectivity/nfc/nfc). [Accessed: 10-Jul-2025].
+
+[5] Android Developers, "Advanced NFC Overview", [Online]. Available: [https://developer.android.com/develop/connectivity/nfc/advanced-nfc](https://developer.android.com/develop/connectivity/nfc/advanced-nfc). [Accessed: 10-Jul-2025].
+
+[6] Android Developers “Host-based card emulation overview“, [Online]. Available: [https://developer.android.com/develop/connectivity/nfc/hce](https://developer.android.com/develop/connectivity/nfc/hce). [Accessed: 10-Jul-2025].
+
+[7] Android Open Source Project, “RoutingTableParser.java,” 2021. [Online]. Available: [cs.android.com](https://cs.android.com/android/platform/superproject/main/+/main:packages/modules/Nfc/NfcNci/src/com/android/nfc/RoutingTableParser.java).
+
+[8] Android Developers, “Behavior changes: Apps targeting Android 12,” Android Developers. [Online]. Available: [https://developer.android.com/about/versions/12/behavior-changes-12#pending-intent-mutability](https://developer.android.com/about/versions/12/behavior-changes-12#pending-intent-mutability). [Accessed: 10-Jul-2025].
+
+[9] Android Developers “Pending Intents Security”, [Online]. Available: [https://developer.android.com/privacy-and-security/risks/pending-intent](https://developer.android.com/privacy-and-security/risks/pending-intent). [Accessed: 10-Jul-2025].
+
+[10] Android Developers “Intent”, [Online]. Available: [https://developer.android.com/reference/android/content/Intent#fillIn(android.content.Intent,%20int)](https://developer.android.com/reference/android/content/Intent#fillIn(android.content.Intent,%20int)). [Accessed: 11-Jul-2025].
