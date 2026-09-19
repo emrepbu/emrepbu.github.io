@@ -1,0 +1,170 @@
+---
+import { getCoverAnimation } from '@/lib/cover-animation'
+import { Image } from 'astro:assets'
+import type { CollectionEntry } from 'astro:content'
+import fallbackImage from '../../public/static/1200x630.png'
+
+interface Props {
+  post: CollectionEntry<'blog'>
+  variant?: 'detail' | 'card'
+}
+
+const { post, variant = 'detail' } = Astro.props
+const isCard = variant === 'card'
+const animation = getCoverAnimation(post)
+// Cards are at most 256 CSS pixels wide; 2x resolution also covers Retina screens.
+const renderWidth = animation
+  ? Math.min(animation.width, isCard ? 512 : Infinity)
+  : 0
+const renderHeight = animation
+  ? Math.round((animation.height * renderWidth) / animation.width)
+  : 0
+---
+
+{
+  animation ? (
+    <animated-cover
+      class:list={[
+        'relative block w-full overflow-hidden',
+        isCard
+          ? 'max-w-3xs self-start rounded-lg sm:w-3xs sm:shrink-0'
+          : 'col-span-full mx-auto max-w-5xl rounded-2xl',
+      ]}
+      style={{ aspectRatio: `${animation.width} / ${animation.height}` }}
+      data-src={animation.src + (isCard ? '?preview=1' : '')}
+      data-width={renderWidth}
+      data-preview={isCard ? '' : undefined}
+      aria-hidden={isCard ? 'true' : undefined}
+    >
+      <Image
+        src={post.data.image ?? fallbackImage}
+        alt={post.data.title}
+        width={1200}
+        height={630}
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+      <iframe
+        title={`${post.data.title} — animasyonlu kapak`}
+        width={renderWidth}
+        height={renderHeight}
+        sandbox="allow-scripts"
+        class:list={[
+          'absolute top-0 left-0 origin-top-left border-0',
+          { 'pointer-events-none': isCard },
+        ]}
+        tabindex={isCard ? -1 : undefined}
+        hidden
+      />
+    </animated-cover>
+  ) : (
+    post.data.image && (
+      <Image
+        src={post.data.image}
+        alt={isCard ? '' : post.data.title}
+        width={1200}
+        height={630}
+        class={
+          isCard
+            ? 'w-full max-w-3xs self-start rounded-lg object-cover sm:w-3xs sm:shrink-0'
+            : 'col-span-full mx-auto w-full max-w-5xl object-cover'
+        }
+      />
+    )
+  )
+}
+
+<script>
+  class AnimatedCover extends HTMLElement {
+    private cleanup?: () => void
+
+    connectedCallback() {
+      this.cleanup?.()
+
+      const frame = this.querySelector('iframe')
+      const src = this.dataset.src
+      const width = Number(this.dataset.width)
+      if (!frame || !src || !width) return
+
+      const controller = new AbortController()
+      const { signal } = controller
+      let visible = false
+      let startTimer: ReturnType<typeof setTimeout> | undefined
+      let releaseTimer: ReturnType<typeof setTimeout> | undefined
+
+      const isPlaying = () => visible && !document.hidden
+      const notifyPlayer = () => {
+        // The sandbox intentionally has an opaque origin; the child checks source.
+        frame.contentWindow?.postMessage(
+          { type: 'blog-cover:visibility', playing: isPlaying() },
+          '*',
+        )
+      }
+
+      const update = () => {
+        clearTimeout(startTimer)
+        if (isPlaying()) {
+          clearTimeout(releaseTimer)
+          releaseTimer = undefined
+          frame.hidden = false
+          if (frame.hasAttribute('src')) notifyPlayer()
+          else {
+            // A quick scroll past a card should not compile another WebGL scene.
+            startTimer = setTimeout(
+              () => {
+                if (isPlaying()) frame.src = src
+              },
+              this.hasAttribute('data-preview') ? 120 : 0,
+            )
+          }
+        } else {
+          notifyPlayer()
+          frame.hidden = true
+          // Keep a short-lived, paused player for scrolling back, then free its GPU resources.
+          if (frame.hasAttribute('src') && releaseTimer === undefined) {
+            releaseTimer = setTimeout(() => {
+              if (!isPlaying()) frame.removeAttribute('src')
+              releaseTimer = undefined
+            }, 30_000)
+          }
+        }
+      }
+
+      const resize = () => {
+        // Keep the export's original canvas coordinates at every screen size.
+        frame.style.transform = `scale(${this.clientWidth / width})`
+      }
+
+      const resizeObserver = new ResizeObserver(resize)
+      resizeObserver.observe(this)
+      resize()
+
+      const visibilityObserver = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting
+        update()
+      })
+      visibilityObserver.observe(this)
+
+      frame.addEventListener('load', notifyPlayer, { signal })
+      document.addEventListener('visibilitychange', update, { signal })
+      update()
+
+      this.cleanup = () => {
+        controller.abort()
+        clearTimeout(startTimer)
+        clearTimeout(releaseTimer)
+        resizeObserver.disconnect()
+        visibilityObserver.disconnect()
+        frame.removeAttribute('src')
+        frame.hidden = true
+      }
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.()
+    }
+  }
+
+  if (!customElements.get('animated-cover')) {
+    customElements.define('animated-cover', AnimatedCover)
+  }
+</script>

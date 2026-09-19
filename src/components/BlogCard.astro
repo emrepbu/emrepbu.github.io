@@ -1,5 +1,6 @@
 ---
 import AvatarComponent from '@/components/ui/avatar'
+import PostCover from '@/components/PostCover.astro'
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
 import {
@@ -10,7 +11,6 @@ import {
 } from '@/lib/data-utils'
 import { formatDate } from '@/lib/utils'
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 import Link from './Link.astro'
 
@@ -26,26 +26,13 @@ const subpostCount = !isSubpost(entry.id) ? await getSubpostCount(entry.id) : 0
 ---
 
 <div
-  class="hover:bg-secondary/50 rounded-xl border p-4 transition-colors duration-300 ease-in-out"
+  class="hover:bg-secondary/50 relative flex flex-col gap-4 rounded-xl border p-4 transition-colors duration-300 ease-in-out sm:flex-row"
 >
+  <PostCover post={entry} variant="card" />
   <Link
     href={`/${entry.collection}/${entry.id}`}
-    class="flex flex-col gap-4 sm:flex-row"
+    class="min-w-0 grow after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2"
   >
-    {
-      entry.data.image && (
-        <div class="max-w-3xs sm:shrink-0">
-          <Image
-            src={entry.data.image}
-            alt={entry.data.title}
-            width={1200}
-            height={630}
-            class="object-cover"
-          />
-        </div>
-      )
-    }
-
     <div class="grow">
       <h3 class="mb-1 text-lg font-medium">{entry.data.title}</h3>
       <p class="text-muted-foreground mb-2 text-sm">{entry.data.description}</p>

@@ -1,0 +1,319 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
+}
+
+#patch-target {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: all;
+}
+
+.rpd-background {
+    fill: transparent !important; /* FIXME: is it not possible to set it in RPD? */
+    pointer-events: none;
+}
+
+.rpd-node-box {
+    pointer-events: all;
+}
+
+.fps {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+}
+
+/* .rpd-node.rpd-jb-layers .rpd-process text {
+    dominant-baseline: hanging;
+} */
+
+.rpd-jb-palette-variant rect {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.rpd-jb-palette-variant.rpd-jb-active-variant rect {
+    stroke: white;
+}
+
+text.rpd-jb-active-label {
+    fill: white;
+}
+
+.rpd-patch text.rpd-jb-product-label {
+    font-size: 8px;
+}
+
+#export-target, #import-target {
+    display: none;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    padding: 40px;
+    background-color: wheat;
+    flex-direction: column;
+}
+
+#close-export, #close-import {
+    margin-bottom: 20px;
+}
+
+#export-target textarea, #import-target textarea {
+    min-width: 500px;
+    min-height: 400px;
+}
+
+#export-target.shown, #import-target.shown {
+    display: flex;
+}
+
+#export-code, #import-code {
+    font-family: monospace;
+    font-size: 10px;
+}
+
+svg.text-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.layers {
+    position: absolute;
+    left: 0;
+	right: 0;
+}
+
+
+.layer { /* TODO: use it everywhere where absolute-position is needed */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.overlay-panel {
+    position: absolute;
+    bottom: 5px !important;
+    left: 0;
+	right: 0;
+	margin-left: auto;
+ 	margin-right: auto;
+    /* left: 35.5%; */
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.import-export-panel {
+    /* top: 10px;
+    left: 10px; */
+    z-index: 20;
+}
+
+.timeline-holder {
+    margin-bottom: 20px;
+}
+
+.timeline {
+    text-align: center;
+    position: relative;
+    top: 3px;
+}
+
+.overlay-panel .label {
+    color: #fff !important;
+    font-size: 13px;
+}
+
+.overlay-panel .past {
+    padding-right: 10px;
+}
+
+.overlay-panel .future {
+    padding-left: 10px;
+}
+
+.export_html5, .export_png, .export_url {
+    position: relative;
+    left: -5px;
+    text-align: center;
+    display: block;
+    height: 50px;
+    padding: 0 16px;
+    /* background: #167dff; */
+    /* background: #000; */
+    background: #fc2c99;
+
+    font-size: 12px;
+    color: #fff;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 24px;
+    position: relative;
+    z-index: 1;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #000;
+
+}
+
+
+.hash_url {
+    position: relative;
+    left: -5px;
+    text-align: center;
+    display: block;
+    height: 50px;
+    padding: 0 16px;
+    /* background: #167dff; */
+    /* background: #000; */
+    background: #fc2c99;
+
+    font-size: 12px;
+    color: #fff;
+    margin: 0 auto;
+    font-weight: 400;
+    line-height: 24px;
+    position: relative;
+    z-index: 1;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 25px;
+    outline: none;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: underline;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+}
+
+.export_html5 {
+    margin-right: 5px;
+
+}
+
+.export_url, .hash_url {
+    margin-left: 5px;
+}
+/*
+.export_html5:hover {
+    background-color: #0775ba;
+} */
+
+.export_html5:hover, .export_png:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.spacebar_info {
+    color: #fff;
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.text-layer--title, .text-layer--subtitle {
+    font-family: 'Gotham', Helvetica, sans-serif;
+    font-weight: 170;
+    text-transform: uppercase;
+    color: white;
+}
+
+.webgl-sample {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#js-save-buffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    /* border: 1px solid red; */
+}
+
+#error-pane {
+    display: none;
+}
+
+#error-pane.has-errors {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 1.4em;
+    z-index: 10000;
+    width: 100%;
+    padding: 5px;
+    color: firebrick;
+    background-color: #fefefe;
+    border-bottom: solid red 3px;
+}
+
+#error-pane.has-errors span {
+    display: block;
+    padding: 2px;
+    max-height: 4em;
+    overflow: hidden;
+    font-size: 0.6em;
+}
+
+.dg.ac {
+    z-index: 30 !important;
+}
+
+.fluid-grid {
+    /* margin-top: 300px; */
+}
+
+.fluid-grid .fluid-grid-ball {
+    color: white;
+    display: inline-block;
+    width: 70px;
+    font-size: 60px;
+    font-family: monospace;
+}
+
+
+#native-metaballs-0 {
+    /* background: #171717; */
+}

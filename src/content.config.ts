@@ -2,7 +2,10 @@ import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
+  loader: glob({
+    pattern: ['**/*.{md,mdx}', '!**/cover/**'],
+    base: './src/content/blog',
+  }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -10,6 +13,11 @@ const blog = defineCollection({
       date: z.coerce.date(),
       order: z.number().optional(),
       image: image().optional(),
+      coverAnimation: z
+        .string()
+        .startsWith('./cover/')
+        .endsWith('/index.html')
+        .optional(),
       tags: z.array(z.string()).optional(),
       authors: z.array(z.string()).optional(),
       draft: z.boolean().optional(),
