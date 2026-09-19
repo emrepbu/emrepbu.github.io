@@ -27,7 +27,7 @@ if (
 ) {
   const source = resolve(process.argv[2] ?? '../open-radiant')
   const destination = fileURLToPath(
-    new URL('../public/open-radiant/v1/', import.meta.url),
+    new URL('../public/blog-assets/open-radiant/v1/', import.meta.url),
   )
   try {
     const count = await syncOpenRadiant(source, destination)

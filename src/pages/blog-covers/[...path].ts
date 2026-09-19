@@ -1,4 +1,5 @@
 import { getCoverAnimation, getCoverAssets } from '@/lib/cover-animation'
+import { resolveCoverAssetUrls } from '@/lib/cover-asset-urls.mjs'
 import { getAllPostsAndSubposts } from '@/lib/data-utils'
 import type { APIRoute, GetStaticPaths } from 'astro'
 import { readFile } from 'node:fs/promises'
@@ -37,7 +38,7 @@ export const GET: APIRoute = async ({ props }) => {
   // Inline SVG/canvas layers add a baseline gap and an inner scrollbar.
   // Constrain the player document so wheel scrolling continues on the blog.
   const body = props.isEntry
-    ? source.toString('utf8').replace(
+    ? resolveCoverAssetUrls(source.toString('utf8')).replace(
         /<\/head>/i,
         `<style>
           html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }

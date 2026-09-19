@@ -15,12 +15,16 @@ src/content/blog/yazi-adi/
 ```
 
 Oynatıcı, gömülü JetBrains Mono fontları, CSS ve lisanslar
-`public/open-radiant/v1/` altında bir kez tutulur. Bütün blog kapakları aynı
+`public/blog-assets/open-radiant/v1/` altında bir kez tutulur. Bütün blog kapakları aynı
 adresleri kullanır; tarayıcı bu dosyaları önbellekten tekrar kullanabilir.
 Logo kapalıysa logo SVG'si istenmez. Özel başlık veya alt başlık kullanıldığında
 ürün başlığı SVG'si de istenmez. Logo veya ürün başlığı açıksa yalnızca
 kullanılan SVG dosyaları ZIP'in `assets/` klasörüne eklenir; bunları da
 yazının `cover/` klasörüne kopyala. SVG'ler ortak klasörde tutulmaz.
+
+`/open-radiant/` ayrı bir GitHub Pages proje sitesinin adresi olduğu için ortak
+dosyalar `/blog-assets/open-radiant/v1/` altında sunulur. Eski küçük paketlerdeki
+`/open-radiant/v1/` bağlantıları blog tarafından otomatik olarak yeni yola çevrilir.
 
 **HTML5** düğmesi bağımsız, tam paket indirmeye devam eder. Bu paketler de
 desteklenir: ZIP'teki tüm dosyaları klasör yapısını koruyarak `cover/` içine koy.
@@ -34,7 +38,7 @@ komutlarını çalıştır; ardından bu blog projesinde ortak dosyaları günce
 npm run covers:sync -- ../open-radiant
 ```
 
-Güncellenen `public/open-radiant/v1/` klasörünü de blog ile birlikte commit et.
+Güncellenen `public/blog-assets/open-radiant/v1/` klasörünü de blog ile birlikte commit et.
 `v1` ortak dosya biçiminin sürümüdür; ileride yeni bir biçime geçilirse eski
 kapakların kullandığı sürüm klasörünü koru. Yeni kapak eklerken ortak dosyaları
 tekrar kopyalamana gerek yoktur.
@@ -81,7 +85,7 @@ Kapak görünürken otomatik oynar; oynat/durdur düğmesi yoktur.
 
 Örnek kapak `src/content/blog/android-nfc-and-intent-struct/cover/` klasöründedir.
 Ortak oynatıcı Open Radiant çıktısıdır; kaynak ve font lisansları
-`public/open-radiant/v1/` altında korunur.
+`public/blog-assets/open-radiant/v1/` altında korunur.
 Proje: https://github.com/JetBrains/open-radiant
 
 ## Yerel kontrol ve yayın
@@ -98,7 +102,7 @@ npm run preview
 ```
 
 Derleme, tanımlanmış kapakların HTML, JavaScript, CSS ve diğer dosyalarını
-`dist/blog-covers/yazi-adi/` içine, ortak dosyaları ise `dist/open-radiant/v1/`
+`dist/blog-covers/yazi-adi/` içine, ortak dosyaları ise `dist/blog-assets/open-radiant/v1/`
 altına kopyalar. Böylece GitHub Pages üzerinde
 Open Radiant sunucusunun ayrıca çalışması gerekmez. `cover/` içindeki lisans
 dosyaları blog yazısı olarak alınmaz; üretilmiş oynatıcı kodu tip kontrolünün

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /* Exported players render inside iframes and ship their own styles. */
-@source not '../../public/open-radiant';
+@source not '../../public/blog-assets/open-radiant';
 @source not '../content/blog/**/cover';
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
