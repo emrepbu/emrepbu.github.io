@@ -6,8 +6,8 @@ export const SITE: Site = {
   href: 'https://emrepbu.github.io',
   author: 'emrepbu',
   locale: 'tr-TR',
-  featuredPostCount: 2,
-  postsPerPage: 3,
+  featuredPostCount: 4,
+  postsPerPage: 5,
 }
 
 export const NAV_LINKS: SocialLink[] = [
