@@ -11,3 +11,6 @@ pnpm-debug.log*
 .idea/
 teaser.pptx
 ~$teaser.pptx
+
+# Local working files and generated media
+/artifacts/
