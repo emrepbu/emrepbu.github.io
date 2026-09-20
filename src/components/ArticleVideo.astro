@@ -1,0 +1,30 @@
+---
+interface Props {
+  src: string
+  poster: string
+  title: string
+  caption: string
+}
+
+const { src, poster, title, caption } = Astro.props
+---
+
+<figure class="not-prose mx-auto my-8 w-full max-w-xs">
+  <video
+    controls
+    playsinline
+    muted
+    preload="none"
+    width="1080"
+    height="1920"
+    poster={poster}
+    aria-label={title}
+    class="border-border block aspect-[9/16] h-auto w-full rounded-xl border bg-[#0d1721]"
+  >
+    <source src={src} type="video/mp4" />
+    <p>Tarayıcınız videoyu oynatamıyor. <a href={src}>Videoyu indirin.</a></p>
+  </video>
+  <figcaption class="text-muted-foreground mt-3 text-center text-sm leading-6">
+    {caption}
+  </figcaption>
+</figure>
