@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="410" viewBox="0 0 1080 410" role="img" aria-labelledby="title desc">
+  <title id="title">Kosinüs ve işaretli yatay izdüşüm</title>
+  <desc id="desc">Dar açıda B noktası O'nun sağında, geniş açıda solundadır. B'den yatay doğruya indirilen dikmenin ayağı H, yüksekliği h'dir. Yatay konum p eşittir b kosinüs theta; dar açıda pozitif, geniş açıda negatiftir.</desc>
+  <defs>
+    <marker id="axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/></marker>
+    <marker id="projection" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/></marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; fill: #172033; }
+      .heading { font-size: 23px; font-weight: 650; }
+      .label { font-size: 21px; font-style: italic; }
+      .point { font-size: 18px; font-weight: 600; }
+      .note { font-size: 20px; fill: #047857; }
+      .caption { font-size: 18px; fill: #475569; }
+      .axis { stroke: #94a3b8; stroke-width: 1.5; marker-end: url(#axis); }
+      .side { fill: none; stroke: #334155; stroke-width: 3; stroke-linejoin: round; }
+      .opposite { stroke: #2563eb; stroke-width: 3; }
+      .height { fill: none; stroke: #047857; stroke-width: 2; stroke-dasharray: 6 5; }
+      .right { fill: none; stroke: #047857; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1078" height="408" rx="16" fill="#f8fafc" stroke="#dbe3ec"/>
+  <path d="M 540 30 V 380" stroke="#dbe3ec"/>
+  <text x="270" y="47" text-anchor="middle" class="heading">Dar açı: izdüşüm sağda</text>
+  <text x="810" y="47" text-anchor="middle" class="heading">Geniş açı: izdüşüm solda</text>
+  <g transform="translate(30 0)">
+    <line x1="40" y1="260" x2="450" y2="260" class="axis"/>
+    <path d="M 95 260 L 295 260 L 170 130 Z" fill="#dbeafe" fill-opacity="0.65"/>
+    <path d="M 170 130 L 95 260 L 295 260" class="side"/>
+    <line x1="295" y1="260" x2="170" y2="130" class="opposite"/>
+    <path d="M 170 130 V 260" class="height"/>
+    <path d="M 170 248 H 182 V 260" class="right"/>
+    <path d="M 131 260 A 36 36 0 0 0 113 229" fill="none" stroke="#c2410c" stroke-width="2"/>
+    <text x="137" y="240" class="label" style="fill:#c2410c">θ</text>
+    <text x="78" y="287" class="point">O</text>
+    <text x="293" y="287" class="point">A</text>
+    <text x="163" y="116" class="point">B</text>
+    <text x="163" y="287" class="point">H</text>
+    <text x="107" y="190" class="label">b</text>
+    <text x="247" y="188" class="label" style="fill:#2563eb">c</text>
+    <text x="190" y="207" class="label" style="fill:#047857">h</text>
+    <line x1="95" y1="311" x2="170" y2="311" stroke="#047857" stroke-width="2" marker-end="url(#projection)"/>
+    <text x="218" y="319" class="note">p = b cos θ &gt; 0</text>
+    <path d="M 95 347 V 359 M 95 353 H 295 M 295 347 V 359" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    <text x="195" y="384" text-anchor="middle" class="caption">OA = a</text>
+  </g>
+  <g transform="translate(545 0)">
+    <line x1="30" y1="260" x2="470" y2="260" class="axis"/>
+    <path d="M 170 260 L 370 260 L 95 130 Z" fill="#dbeafe" fill-opacity="0.65"/>
+    <path d="M 95 130 L 170 260 L 370 260" class="side"/>
+    <line x1="370" y1="260" x2="95" y2="130" class="opposite"/>
+    <path d="M 95 130 V 260" class="height"/>
+    <path d="M 95 248 H 107 V 260" class="right"/>
+    <path d="M 206 260 A 36 36 0 0 0 152 229" fill="none" stroke="#c2410c" stroke-width="2"/>
+    <text x="183" y="222" class="label" style="fill:#c2410c">θ</text>
+    <text x="163" y="287" class="point">O</text>
+    <text x="369" y="287" class="point">A</text>
+    <text x="88" y="116" class="point">B</text>
+    <text x="87" y="287" class="point">H</text>
+    <text x="131" y="184" class="label">b</text>
+    <text x="238" y="187" class="label" style="fill:#2563eb">c</text>
+    <text x="71" y="207" class="label" style="fill:#047857">h</text>
+    <line x1="170" y1="311" x2="95" y2="311" stroke="#047857" stroke-width="2" marker-end="url(#projection)"/>
+    <text x="218" y="319" class="note">p = b cos θ &lt; 0</text>
+    <path d="M 170 347 V 359 M 170 353 H 370 M 370 347 V 359" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    <text x="270" y="384" text-anchor="middle" class="caption">OA = a</text>
+  </g>
+</svg>
