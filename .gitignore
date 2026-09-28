@@ -14,3 +14,6 @@ teaser.pptx
 
 # Local working files and generated media
 /artifacts/
+
+# Private notes and learning plans
+/docs/

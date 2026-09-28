@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350" role="img" aria-labelledby="title desc">
+  <title id="title">Sayı doğrusunda konum ve yön</title>
+  <desc id="desc">A eksi iki, B artı üç konumundadır. A'dan B'ye beş birim sağa, B'den A'ya beş birim sola gidilir. İki nokta arasındaki uzaklık her iki durumda da beş birimdir.</desc>
+  <defs>
+    <marker id="axis" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker>
+    <marker id="right" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0369a1"/></marker>
+    <marker id="left" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9a3412"/></marker>
+  </defs>
+  <rect width="760" height="350" rx="18" fill="#f8fafc"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="380" y="40" font-size="22" font-weight="650" fill="#0f172a">Aynı uzaklık, iki farklı yön</text>
+    <path d="M 35 175 H 725" stroke="#475569" stroke-width="2" marker-start="url(#axis)" marker-end="url(#axis)"/>
+    <g stroke="#94a3b8" stroke-width="2">
+      <path d="M 68 167 V 183 M 146 167 V 183 M 224 167 V 183 M 302 167 V 183 M 380 163 V 187 M 458 167 V 183 M 536 167 V 183 M 614 167 V 183 M 692 167 V 183"/>
+    </g>
+    <g fill="#334155" font-size="18">
+      <text x="68" y="207">−4</text><text x="146" y="207">−3</text><text x="224" y="207">−2</text><text x="302" y="207">−1</text><text x="380" y="207">0</text><text x="458" y="207">1</text><text x="536" y="207">2</text><text x="614" y="207">3</text><text x="692" y="207">4</text>
+    </g>
+    <path d="M 224 111 V 175 M 614 111 V 175" stroke="#94a3b8" stroke-dasharray="4 5"/>
+    <path d="M 224 117 H 614" stroke="#0369a1" stroke-width="3" marker-end="url(#right)"/>
+    <text x="419" y="96" font-size="19" fill="#075985">+5 birim: sağa</text>
+    <circle cx="224" cy="175" r="6" fill="#0369a1"/><circle cx="614" cy="175" r="6" fill="#9a3412"/>
+    <text x="224" y="151" font-size="19" font-weight="700" fill="#075985">A</text><text x="614" y="151" font-size="19" font-weight="700" fill="#9a3412">B</text>
+    <path d="M 614 247 H 224" stroke="#9a3412" stroke-width="3" marker-end="url(#left)"/>
+    <text x="419" y="279" font-size="19" fill="#9a3412">−5 birim: sola</text>
+    <text x="380" y="321" font-size="18" fill="#334155">İki nokta arasındaki uzaklık: 5 birim</text>
+  </g>
+</svg>
