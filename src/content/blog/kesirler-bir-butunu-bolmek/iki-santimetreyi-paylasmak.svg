@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">İki santimetreyi üç kişiye eşit paylaştırmak</title>
+  <desc id="desc">İki tane bir santimetrelik şeridin her biri üç eş parçaya ayrılır. Her kişi her şeritten birer parça alır. Kişi başına uzunluk iki bölü üç santimetredir. Şekildeki bütün bir santimetrelik aralıklar aynı uzunlukta çizilmiştir.</desc>
+  <rect width="720" height="720" rx="22" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="360" y="50" font-size="26" fill="#eef4f5">2 santimetreyi 3 kişiye paylaştırmak</text>
+    <g font-size="23" fill="#90a7b8"><text x="195" y="105">1 cm</text><text x="525" y="105">1 cm</text></g>
+    <g stroke="#0d1721" stroke-width="2">
+      <rect x="60" y="128" width="90" height="60" fill="#62dcc3"/><rect x="150" y="128" width="90" height="60" fill="#ffaa8c"/><rect x="240" y="128" width="90" height="60" fill="#f4cb75"/>
+      <rect x="390" y="128" width="90" height="60" fill="#62dcc3"/><rect x="480" y="128" width="90" height="60" fill="#ffaa8c"/><rect x="570" y="128" width="90" height="60" fill="#f4cb75"/>
+    </g>
+    <text x="360" y="238" font-size="22" fill="#eef4f5">Her küçük parça: 1/3 cm</text>
+    <path d="M60 278 H660" stroke="#304858" stroke-width="2"/>
+    <text x="360" y="322" font-size="22" fill="#90a7b8">Her kişiye, her şeritten bir parça</text>
+    <g stroke="#90a7b8" stroke-dasharray="5 5" fill="none" stroke-width="1.5">
+      <rect x="300" y="360" width="270" height="56"/>
+      <rect x="300" y="460" width="270" height="56"/>
+      <rect x="300" y="560" width="270" height="56"/>
+    </g>
+    <g stroke="#0d1721" stroke-width="2">
+      <rect x="300" y="360" width="90" height="56" fill="#62dcc3"/><rect x="390" y="360" width="90" height="56" fill="#62dcc3"/>
+      <rect x="300" y="460" width="90" height="56" fill="#ffaa8c"/><rect x="390" y="460" width="90" height="56" fill="#ffaa8c"/>
+      <rect x="300" y="560" width="90" height="56" fill="#f4cb75"/><rect x="390" y="560" width="90" height="56" fill="#f4cb75"/>
+    </g>
+    <g font-size="23">
+      <text x="153" y="396" fill="#62dcc3">1. kişi</text><text x="623" y="396" fill="#62dcc3">2/3 cm</text>
+      <text x="153" y="496" fill="#ffaa8c">2. kişi</text><text x="623" y="496" fill="#ffaa8c">2/3 cm</text>
+      <text x="153" y="596" fill="#f4cb75">3. kişi</text><text x="623" y="596" fill="#f4cb75">2/3 cm</text>
+    </g>
+    <text x="360" y="677" font-size="23" fill="#eef4f5">Üç pay birleşince yeniden 2 cm.</text>
+  </g>
+</svg>

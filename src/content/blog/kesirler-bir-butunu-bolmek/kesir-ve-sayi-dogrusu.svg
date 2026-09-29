@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dörtte üç: şeritten sayı doğrusuna</title>
+  <desc id="desc">Bir bütün dört eş parçaya ayrılmıştır. İlk üç parça boyalıdır. Boyalı uzunluğun ucu sayı doğrusunda dörtte üçe karşılık gelir; bir bütünün sağında beş bölü dört de gösterilmiştir.</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#90a7b8" stroke-width="1.5"/></marker></defs>
+  <rect width="720" height="420" rx="22" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="360" y="48" font-size="27" fill="#eef4f5">Dörtte üçü sayı doğrusunda görmek</text>
+    <path d="M80 105 V91 H528 V105" fill="none" stroke="#90a7b8" stroke-width="2"/>
+    <text x="304" y="81" font-size="22" fill="#90a7b8">1 bütün</text>
+    <rect x="80" y="131" width="448" height="62" fill="#193247"/>
+    <rect x="80" y="131" width="336" height="62" fill="#62dcc3" fill-opacity="0.85"/>
+    <rect x="80" y="131" width="448" height="62" fill="none" stroke="#eef4f5" stroke-width="2"/>
+    <path d="M192 131 V193 M304 131 V193 M416 131 V193" stroke="#eef4f5" stroke-width="2"/>
+    <path d="M416 195 V269" stroke="#f4cb75" stroke-width="2" stroke-dasharray="5 6"/>
+    <path d="M66 271 H672" stroke="#90a7b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M80 261 V281 M192 261 V281 M304 261 V281 M416 261 V281 M528 261 V281 M640 261 V281" stroke="#eef4f5" stroke-width="2"/>
+    <circle cx="416" cy="271" r="7" fill="#f4cb75"/>
+    <g font-size="23" fill="#eef4f5">
+      <text x="80" y="318">0</text><text x="192" y="318">1/4</text><text x="304" y="318">2/4</text>
+      <text x="416" y="318" fill="#f4cb75">3/4</text><text x="528" y="318">1</text><text x="640" y="318">5/4</text>
+    </g>
+    <text x="360" y="383" font-size="23" fill="#62dcc3">3 tane dörtte birlik adım</text>
+  </g>
+</svg>
