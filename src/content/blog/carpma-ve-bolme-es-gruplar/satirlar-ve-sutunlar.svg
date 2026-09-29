@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 470" role="img" aria-labelledby="title desc">
+  <title id="title">On beş taşı iki yönden saymak</title>
+  <desc id="desc">Üç satırın her birinde beş taş, beş sütunun her birinde üç taş vardır. Aynı on beş taş için üç çarpı beş ve beş çarpı üç eşittir.</desc>
+  <rect width="720" height="470" rx="22" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="360" y="53" fill="#eef4f5" font-size="27">Aynı 15 taş, iki sayma yolu</text>
+    <text x="360" y="98" fill="#f4cb75" font-size="22">5 sütun · her sütunda 3 taş</text>
+    <g stroke="#62dcc3" stroke-width="2" fill="#62dcc3" fill-opacity="0.06">
+      <rect x="150" y="129" width="420" height="58" rx="12"/>
+      <rect x="150" y="209" width="420" height="58" rx="12"/>
+      <rect x="150" y="289" width="420" height="58" rx="12"/>
+    </g>
+    <g stroke="#f4cb75" stroke-width="1.5" stroke-dasharray="5 6" fill="none" opacity="0.65">
+      <rect x="173" y="120" width="54" height="236" rx="12"/>
+      <rect x="253" y="120" width="54" height="236" rx="12"/>
+      <rect x="333" y="120" width="54" height="236" rx="12"/>
+      <rect x="413" y="120" width="54" height="236" rx="12"/>
+      <rect x="493" y="120" width="54" height="236" rx="12"/>
+    </g>
+    <g fill="#eef4f5">
+      <circle cx="200" cy="158" r="13"/><circle cx="280" cy="158" r="13"/><circle cx="360" cy="158" r="13"/><circle cx="440" cy="158" r="13"/><circle cx="520" cy="158" r="13"/>
+      <circle cx="200" cy="238" r="13"/><circle cx="280" cy="238" r="13"/><circle cx="360" cy="238" r="13"/><circle cx="440" cy="238" r="13"/><circle cx="520" cy="238" r="13"/>
+      <circle cx="200" cy="318" r="13"/><circle cx="280" cy="318" r="13"/><circle cx="360" cy="318" r="13"/><circle cx="440" cy="318" r="13"/><circle cx="520" cy="318" r="13"/>
+    </g>
+    <text x="360" y="394" fill="#62dcc3" font-size="22">3 satır · her satırda 5 taş</text>
+    <text x="360" y="441" fill="#eef4f5" font-size="30">3 × 5 = 5 × 3 = 15</text>
+  </g>
+</svg>
