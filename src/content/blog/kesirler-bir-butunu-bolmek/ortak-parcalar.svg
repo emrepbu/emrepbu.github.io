@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 510" role="img" aria-labelledby="title desc">
+<title id="title">Üçte iki ile dörtte biri on ikide birlik parçalarla toplamak</title>
+<desc id="desc">Üç çerçeve de bir metre uzunluğundadır. İlkinde sekiz on ikide birlik parça, ikincisinde üç parça boyalıdır. Son çerçevede sekiz yeşil ve üç turuncu parça toplam on bir on ikide birlik uzunluk oluşturur.</desc>
+<rect width="720" height="510" rx="22" fill="#0d1721"/>
+<g font-family="system-ui, sans-serif" fill="#eef4f5" text-anchor="middle">
+<text x="360" y="44" font-size="27">Aynı büyüklükte parçaları birleştirmek</text>
+<text x="360" y="80" font-size="22" fill="#90a7b8">Her çerçeve: 1 m</text>
+<text x="360" y="110" font-size="25">2/3 = 8/12</text>
+<rect x="90" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="135" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="180" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="225" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="270" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="315" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="360" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="405" y="127" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="450" y="127" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="495" y="127" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="540" y="127" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="585" y="127" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="90" y="127" width="540" height="50" fill="none" stroke="#90a7b8" stroke-width="1.5"/>
+<text x="360" y="232" font-size="25">1/4 = 3/12</text>
+<rect x="90" y="249" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="135" y="249" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="180" y="249" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="225" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="270" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="315" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="360" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="405" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="450" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="495" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="540" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="585" y="249" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="90" y="249" width="540" height="50" fill="none" stroke="#90a7b8" stroke-width="1.5"/>
+<text x="360" y="364" font-size="25">8/12 + 3/12 = 11/12</text>
+<rect x="90" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="135" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="180" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="225" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="270" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="315" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="360" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="405" y="381" width="45" height="50" fill="#62dcc3" stroke="#0d1721" stroke-width="2"/>
+<rect x="450" y="381" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="495" y="381" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="540" y="381" width="45" height="50" fill="#ffaa8a" stroke="#0d1721" stroke-width="2"/>
+<rect x="585" y="381" width="45" height="50" fill="#193247" stroke="#0d1721" stroke-width="2"/>
+<rect x="90" y="381" width="540" height="50" fill="none" stroke="#90a7b8" stroke-width="1.5"/>
+<text x="360" y="477" font-size="23" fill="#f4cb75">Sekiz parça + üç parça = on bir parça</text></g></svg>

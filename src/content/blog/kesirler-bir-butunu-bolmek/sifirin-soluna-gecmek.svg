@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-labelledby="title desc">
+<title id="title">Üçte birden dörtte üçü çıkarmak</title>
+<desc id="desc">Sayı doğrusunda her küçük aralık on ikide birdir. Dört bölü on iki noktasından sola doğru dokuz aralık ilerleyen ok, eksi beş bölü on iki noktasında biter.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L7 4 L0 8" fill="none" stroke="#ffaa8a" stroke-width="2"/></marker></defs>
+<rect width="720" height="430" rx="22" fill="#0d1721"/>
+<g font-family="system-ui, sans-serif" fill="#eef4f5" text-anchor="middle">
+<text x="360" y="49" font-size="28">Dokuz küçük adım sola</text>
+<text x="360" y="90" font-size="23" fill="#90a7b8">Her küçük aralık: 1/12</text>
+<path d="M390 174 H120" fill="none" stroke="#ffaa8a" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="255" y="152" font-size="24" fill="#ffaa8a">−9/12</text>
+<path d="M120 186 V239 M390 186 V239" fill="none" stroke="#90a7b8" stroke-width="1.5" stroke-dasharray="5 5"/>
+<path d="M75 246 H650" stroke="#90a7b8" stroke-width="2"/>
+<path d="M90 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M120 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M150 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M180 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M210 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M240 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M270 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M300 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M330 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M360 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M390 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M420 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M450 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M480 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M510 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M540 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M570 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M600 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<path d="M630 238 V254" stroke="#90a7b8" stroke-width="2"/>
+<text x="120" y="294" font-size="24" fill="#ffaa8a">−5/12</text>
+<text x="270" y="294" font-size="24" fill="#eef4f5">0</text>
+<text x="390" y="294" font-size="24" fill="#62dcc3">4/12</text>
+<text x="630" y="294" font-size="24" fill="#eef4f5">1</text>
+<circle cx="390" cy="246" r="7" fill="#62dcc3"/>
+<circle cx="120" cy="246" r="7" fill="#ffaa8a"/>
+<text x="360" y="378" font-size="29">4/12 − 9/12 = −5/12</text>
+</g></svg>

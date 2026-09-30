@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" role="img" aria-labelledby="title desc">
+  <title id="title">Yarım litre, dörtte üç litrelik kabın üçte ikisidir</title>
+  <desc id="desc">Kabın toplam hacmi üç eş bölümle gösterilir. Her bölüm dörtte bir litredir. İlk iki bölüm dolu, üçüncü bölüm boştur. Dolu miktar iki bölü dört, yani yarım litre; doluluk oranı iki bölü üçtür.</desc>
+  <rect width="720" height="440" rx="22" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle">
+    <text x="360" y="48" font-size="26" fill="#eef4f5">Bir kabın ne kadarını doldurur?</text>
+    <text x="360" y="98" font-size="23" fill="#90a7b8">Kabın tamamı: 3/4 litre</text>
+    <path d="M90 129 V115 H630 V129" stroke="#90a7b8" stroke-width="2" fill="none"/>
+    <rect x="90" y="148" width="540" height="92" fill="#193247" stroke="#90a7b8" stroke-width="2"/>
+    <rect x="90" y="148" width="360" height="92" fill="#62dcc3"/>
+    <path d="M270 148 V240 M450 148 V240" stroke="#eef4f5" stroke-width="2"/>
+    <g font-size="23" fill="#0d1721"><text x="180" y="203">1/4 litre</text><text x="360" y="203">1/4 litre</text></g>
+    <text x="540" y="203" font-size="23" fill="#90a7b8">boş</text>
+    <path d="M90 255 V271 H450 V255" stroke="#62dcc3" stroke-width="2" fill="none"/>
+    <text x="270" y="311" font-size="24" fill="#62dcc3">2/4 litre = 1/2 litre</text>
+    <text x="360" y="370" font-size="28" fill="#f4cb75">1/2 ÷ 3/4 = 2/3</text>
+    <text x="360" y="410" font-size="22" fill="#eef4f5">Üç eş hacim bölümünün ikisi dolu.</text>
+  </g>
+</svg>
