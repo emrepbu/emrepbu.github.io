@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" role="img" aria-labelledby="title desc">
+<title id="title">Ondalık sayılarla bölme</title>
+<desc id="desc">0,60 metre uzunluğundaki şerit dört eş parçadan oluşur. Her parça 0,15 metredir. Uzunlukları yüzde birlik metrelerle sayınca 60 içinde dört tane 15 bulunur.</desc>
+<rect width="720" height="350" rx="22" fill="#0d1721"/>
+<g font-family="system-ui, sans-serif" text-anchor="middle">
+<text x="360" y="48" font-size="26" fill="#eef4f5">0,60 metrede kaç tane 0,15 metre var?</text>
+<text x="360" y="98" font-size="24" fill="#90a7b8">Toplam: 0,60 metre</text>
+<rect x="70" y="129" width="145" height="82" fill="#62dcc3" stroke="#0d1721" stroke-width="3"/>
+<text x="142.5" y="180" font-size="27" fill="#0d1721">0,15</text>
+<rect x="215" y="129" width="145" height="82" fill="#f4cb75" stroke="#0d1721" stroke-width="3"/>
+<text x="287.5" y="180" font-size="27" fill="#0d1721">0,15</text>
+<rect x="360" y="129" width="145" height="82" fill="#62dcc3" stroke="#0d1721" stroke-width="3"/>
+<text x="432.5" y="180" font-size="27" fill="#0d1721">0,15</text>
+<rect x="505" y="129" width="145" height="82" fill="#f4cb75" stroke="#0d1721" stroke-width="3"/>
+<text x="577.5" y="180" font-size="27" fill="#0d1721">0,15</text>
+<text x="360" y="266" font-size="32" fill="#f4cb75">60 ÷ 15 = 4</text>
+<text x="360" y="311" font-size="24" fill="#eef4f5">İki uzunluğu da aynı birimle sayıyoruz.</text>
+</g>
+</svg>
