@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="710" viewBox="0 0 720 710" role="img" aria-labelledby="title desc">
+  <title id="title">Birim karenin köşegeni</title>
+  <desc id="desc">Bir birim kenarlı karenin köşegeni karekök iki birimdir. Alt kenar ve sağ kenar bir dik üçgen oluşturur.</desc>
+  <rect width="720" height="710" rx="20" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#eef4f5">
+    <text x="360" y="62" font-size="32" font-weight="650">√2, bir uzunluğun tam değeri</text>
+    <path d="M170 175 H550 L170 555 Z" fill="#62dcc3" fill-opacity=".06"/>
+    <path d="M170 555 H550 V175 Z" fill="#62dcc3" fill-opacity=".22"/>
+    <path d="M170 555 V175 H550" fill="none" stroke="#90a7b8" stroke-width="2" stroke-dasharray="8 8"/>
+    <path d="M170 555 H550 V175" fill="none" stroke="#62dcc3" stroke-width="4"/>
+    <path d="M170 555 L550 175" stroke="#f4cb75" stroke-width="5"/>
+    <path d="M518 555 V523 H550" fill="none" stroke="#eef4f5" stroke-width="2"/>
+    <text x="360" y="601" font-size="30" fill="#62dcc3">1 birim</text>
+    <text x="620" y="373" font-size="30" fill="#62dcc3">1</text>
+    <text x="325" y="333" font-size="32" fill="#f4cb75" transform="rotate(-45 325 333)">√2 birim</text>
+    <text x="360" y="672" font-size="32">1² + 1² = 2</text>
+  </g>
+</svg>

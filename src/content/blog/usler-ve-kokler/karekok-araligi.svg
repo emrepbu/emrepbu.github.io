@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="690" viewBox="0 0 720 690" role="img" aria-labelledby="title desc">
+  <title id="title">Karekök ikiyi iki sayı arasında bulmak</title>
+  <desc id="desc">Bir virgül kırk birin karesi ikiden küçük, bir virgül kırk ikinin karesi ikiden büyüktür. Karekök iki bu iki sayı arasındadır.</desc>
+  <rect width="720" height="690" rx="20" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#eef4f5">
+    <text x="360" y="62" font-size="32" font-weight="650">Karesini al, aralığı daralt</text>
+    <rect x="40" y="112" width="640" height="142" rx="12" fill="#172735"/>
+    <text x="210" y="157" font-size="28">1,41² = 1,9881</text>
+    <text x="510" y="157" font-size="28">1,42² = 2,0164</text>
+    <text x="210" y="207" font-size="27" fill="#62dcc3">2’den küçük</text>
+    <text x="510" y="207" font-size="27" fill="#f4cb75">2’den büyük</text>
+    <text x="360" y="313" font-size="29">1,41 &lt; √2 &lt; 1,42</text>
+    <g stroke="#90a7b8" stroke-width="3">
+      <path d="M100 425 H620"/>
+      <path d="M140 407 V443 M580 407 V443"/>
+    </g>
+    <path d="M140 425 H580" stroke="#62dcc3" stroke-width="6"/>
+    <!-- sqrt(2) position on the 1.41 to 1.42 interval, shown approximately. -->
+    <path d="M325.397 382 V415" stroke="#f4cb75" stroke-width="3"/>
+    <circle cx="325.397" cy="425" r="9" fill="#f4cb75"/>
+    <text x="325.397" y="366" font-size="32" fill="#f4cb75">√2</text>
+    <text x="140" y="488" font-size="28">1,41</text>
+    <text x="580" y="488" font-size="28">1,42</text>
+    <text x="360" y="550" font-size="24" fill="#90a7b8">Noktanın çizimdeki konumu yaklaşıktır.</text>
+    <text x="360" y="610" font-size="28">Tam: √2</text>
+    <text x="360" y="653" font-size="28" fill="#f4cb75">Yaklaşık: 1,4142</text>
+  </g>
+</svg>

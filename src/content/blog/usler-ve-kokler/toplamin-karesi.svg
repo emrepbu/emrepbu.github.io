@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="770" viewBox="0 0 720 770" role="img" aria-labelledby="title desc">
+  <title id="title">Toplamın karesindeki dört bölge</title>
+  <desc id="desc">Beş birimlik kare, iki yönde de üç ve iki birim olarak bölünür. Alanlar dokuz, altı, altı ve dört birimkaredir.</desc>
+  <rect width="720" height="770" rx="20" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" fill="#eef4f5">
+    <text x="360" y="60" font-size="32" font-weight="650">(3 + 2)² = 25</text>
+    <text x="360" y="103" font-size="24" fill="#90a7b8">Bir kenarın iki parçası, dört alan</text>
+    <g stroke="#eef4f5" stroke-width="2">
+      <rect x="160" y="220" width="240" height="240" fill="#62dcc3" fill-opacity=".30"/>
+      <rect x="400" y="220" width="160" height="240" fill="#f4cb75" fill-opacity=".27"/>
+      <rect x="160" y="460" width="240" height="160" fill="#f4cb75" fill-opacity=".27"/>
+      <rect x="400" y="460" width="160" height="160" fill="#62dcc3" fill-opacity=".18"/>
+    </g>
+    <g stroke="#90a7b8" stroke-width="2" fill="none">
+      <path d="M160 190 V175 H400 V190 M400 175 H560 V190"/>
+      <path d="M130 220 H115 V460 H130 M115 460 V620 H130"/>
+    </g>
+    <g font-size="28">
+      <text x="280" y="160">3</text><text x="480" y="160">2</text>
+      <text x="84" y="350">3</text><text x="84" y="550">2</text>
+    </g>
+    <g font-size="40" font-weight="650">
+      <text x="280" y="344" fill="#62dcc3">9</text>
+      <text x="480" y="344" fill="#f4cb75">6</text>
+      <text x="280" y="544" fill="#f4cb75">6</text>
+      <text x="480" y="544" fill="#62dcc3">4</text>
+    </g>
+    <g font-size="24" fill="#eef4f5">
+      <text x="280" y="383">3 × 3</text><text x="480" y="383">2 × 3</text>
+      <text x="280" y="583">3 × 2</text><text x="480" y="583">2 × 2</text>
+    </g>
+    <text x="360" y="685" font-size="30">9 + 6 + 6 + 4 = 25</text>
+    <text x="360" y="730" font-size="24" fill="#f4cb75">İki dikdörtgen de toplama katılır.</text>
+  </g>
+</svg>
