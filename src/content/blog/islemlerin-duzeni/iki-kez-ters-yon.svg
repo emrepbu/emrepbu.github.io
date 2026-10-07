@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="700" viewBox="0 0 720 700" role="img" aria-labelledby="title desc">
+  <title id="title">İki kez tersini almak</title>
+  <desc id="desc">Aynı ölçekte üç sayı doğrusu. İlkinde üç, ikincisinde eksi üç, üçüncüsünde tekrar üç işaretli. Eksi birle her çarpışta sıfıra uzaklık üç birim kalırken nokta sıfırın diğer tarafına geçer.</desc>
+  <rect width="720" height="700" rx="24" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" fill="#eef4f5">
+    <text x="360" y="54" font-size="30" font-weight="650" text-anchor="middle">İki kez tersini almak</text>
+    <g font-size="27"><text x="40" y="123">Başlangıç: 3</text><text x="40" y="308">−1 ile çarp: −3</text><text x="40" y="493">Yeniden −1 ile çarp: 3</text></g>
+    <g fill="none" stroke="#90a7b8" stroke-width="2">
+      <path d="M80 175H640 M80 360H640 M80 545H640"/>
+      <path d="M150 164v22 M360 164v22 M570 164v22 M150 349v22 M360 349v22 M570 349v22 M150 534v22 M360 534v22 M570 534v22"/>
+      <path d="M360 145V590" stroke-dasharray="5 7" stroke="#314657"/>
+    </g>
+    <g stroke-width="6"><path d="M360 175H570" stroke="#62dcc3"/><path d="M150 360H360" stroke="#f4cb75"/><path d="M360 545H570" stroke="#62dcc3"/></g>
+    <g><circle cx="570" cy="175" r="11" fill="#62dcc3"/><circle cx="150" cy="360" r="11" fill="#f4cb75"/><circle cx="570" cy="545" r="11" fill="#62dcc3"/></g>
+    <g font-size="25" text-anchor="middle" fill="#90a7b8"><text x="150" y="219">−3</text><text x="360" y="219">0</text><text x="570" y="219">3</text><text x="150" y="404">−3</text><text x="360" y="404">0</text><text x="570" y="404">3</text><text x="150" y="589">−3</text><text x="360" y="589">0</text><text x="570" y="589">3</text></g>
+    <text x="360" y="661" font-size="25" text-anchor="middle" fill="#62dcc3">Uzaklık aynı, yön iki kez değişiyor.</text>
+  </g>
+</svg>

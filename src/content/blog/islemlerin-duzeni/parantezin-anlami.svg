@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="800" viewBox="0 0 720 800" role="img" aria-labelledby="title desc">
+  <title id="title">Parantez, grubu değiştirir</title>
+  <desc id="desc">Üstte dört tek boncuk ve üç kutuda ikişer boncuk toplam on ediyor. Altta her birinde dört mavi ve üç sarı boncuk bulunan iki kutu toplam on dört ediyor. Dört artı üçün ikiyle çarpılması ile dört artı üç çarpı iki farklı düzenler.</desc>
+  <rect width="720" height="800" rx="24" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" fill="#eef4f5">
+    <text x="360" y="54" font-size="30" font-weight="650" text-anchor="middle">Hangi grubun iki katı?</text>
+    <text x="40" y="117" font-size="26">4 tek boncuk + 3 ikili kutu</text>
+    <g fill="#74b9ff"><circle cx="75" cy="195" r="15"/><circle cx="120" cy="195" r="15"/><circle cx="165" cy="195" r="15"/><circle cx="210" cy="195" r="15"/></g>
+    <text x="248" y="207" font-size="36">+</text>
+    <g fill="#172633" stroke="#90a7b8" stroke-width="2"><rect x="290" y="153" width="110" height="84" rx="12"/><rect x="425" y="153" width="110" height="84" rx="12"/><rect x="560" y="153" width="110" height="84" rx="12"/></g>
+    <g fill="#f4cb75"><circle cx="322" cy="195" r="15"/><circle cx="367" cy="195" r="15"/><circle cx="457" cy="195" r="15"/><circle cx="502" cy="195" r="15"/><circle cx="592" cy="195" r="15"/><circle cx="637" cy="195" r="15"/></g>
+    <text x="360" y="310" font-size="39" font-weight="650" text-anchor="middle" fill="#62dcc3">4 + 3 × 2 = 10</text>
+    <path d="M40 368H680" stroke="#314657" stroke-width="2"/>
+    <text x="40" y="434" font-size="26">Her kutuda 4 + 3 boncuk, toplam 2 kutu</text>
+    <g fill="#172633" stroke="#90a7b8" stroke-width="2"><rect x="90" y="480" width="245" height="165" rx="14"/><rect x="385" y="480" width="245" height="165" rx="14"/></g>
+    <g fill="#74b9ff"><circle cx="130" cy="525" r="15"/><circle cx="185" cy="525" r="15"/><circle cx="240" cy="525" r="15"/><circle cx="295" cy="525" r="15"/><circle cx="425" cy="525" r="15"/><circle cx="480" cy="525" r="15"/><circle cx="535" cy="525" r="15"/><circle cx="590" cy="525" r="15"/></g>
+    <g fill="#f4cb75"><circle cx="158" cy="597" r="15"/><circle cx="213" cy="597" r="15"/><circle cx="268" cy="597" r="15"/><circle cx="453" cy="597" r="15"/><circle cx="508" cy="597" r="15"/><circle cx="563" cy="597" r="15"/></g>
+    <text x="360" y="725" font-size="39" font-weight="650" text-anchor="middle" fill="#62dcc3">(4 + 3) × 2 = 14</text>
+  </g>
+</svg>
