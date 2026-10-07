@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="570" viewBox="0 0 720 570" role="img" aria-labelledby="title desc">
+  <title id="title">Farklı büyüklükte iki grubun toplamı</title>
+  <desc id="desc">Çubuk uzunlukları kişi sayısıyla orantılı. Birinci grupta yirmi kişiden on, ikinci grupta altmış kişiden kırk beş kişi kitabı bitirmiş. Toplam seksen kişinin elli beşi, yani yüzde altmış sekiz virgül yetmiş beşi kitabı bitirmiş.</desc>
+  <rect width="720" height="570" rx="24" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" fill="#eef4f5">
+    <text x="40" y="55" font-size="29" font-weight="650">Bütünü de hesaba katmak</text>
+    <circle cx="50" cy="94" r="8" fill="#62dcc3"/><text x="70" y="103" font-size="22" fill="#90a7b8">Kitabı bitiren kişiler</text>
+    <text x="40" y="154" font-size="25">1. grup: 10 / 20 = %50</text>
+    <rect x="40" y="177" width="150" height="44" fill="#263b4c" rx="5"/>
+    <path d="M45 177h70v44H45q-5 0-5-5v-34q0-5 5-5" fill="#62dcc3"/>
+    <text x="40" y="280" font-size="25">2. grup: 45 / 60 = %75</text>
+    <rect x="40" y="303" width="450" height="44" fill="#263b4c" rx="5"/>
+    <path d="M45 303h332.5v44H45q-5 0-5-5v-34q0-5 5-5" fill="#62dcc3"/>
+    <path d="M40 380H680" stroke="#314657" stroke-width="2"/>
+    <text x="40" y="425" font-size="27" font-weight="650">Birlikte: 55 / 80 = %68,75</text>
+    <rect x="40" y="450" width="600" height="44" fill="#263b4c" rx="5"/>
+    <path d="M45 450h407.5v44H45q-5 0-5-5v-34q0-5 5-5" fill="#62dcc3"/>
+    <text x="40" y="539" font-size="23" fill="#90a7b8">Çubuklarda kişi başına aynı uzunluk.</text>
+  </g>
+</svg>

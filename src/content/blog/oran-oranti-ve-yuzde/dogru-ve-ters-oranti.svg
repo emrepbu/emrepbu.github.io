@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="810" viewBox="0 0 720 810" role="img" aria-labelledby="title desc">
+  <title id="title">Oran mı sabit, çarpım mı?</title>
+  <desc id="desc">Doğru orantı örneğinde bir defter on beş, iki defter otuz, dört defter altmış liradır. Ters orantı örneğinde sabit on iki litre su iki kap arasında altışar litre, dört kap arasında üçer litre paylaştırılır.</desc>
+  <rect width="720" height="810" rx="24" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" fill="#eef4f5">
+    <text x="40" y="55" font-size="29" font-weight="650">Doğru orantı: oran sabit</text>
+    <g fill="#62dcc3">
+      <rect x="250" y="94" width="90" height="43" rx="5"/>
+      <rect x="250" y="165" width="180" height="43" rx="5"/>
+      <rect x="250" y="236" width="360" height="43" rx="5"/>
+    </g>
+    <g font-size="26">
+      <text x="50" y="125">1 defter</text><text x="354" y="125">15 TL</text>
+      <text x="50" y="196">2 defter</text><text x="444" y="196">30 TL</text>
+      <text x="50" y="267">4 defter</text><text x="624" y="267">60 TL</text>
+      <text x="360" y="335" text-anchor="middle" fill="#62dcc3">Her defter için 15 TL</text>
+    </g>
+    <path d="M40 370H680" stroke="#314657" stroke-width="2"/>
+    <text x="40" y="425" font-size="29" font-weight="650">Ters orantı: çarpım sabit</text>
+    <text x="360" y="472" font-size="26" text-anchor="middle" fill="#f4cb75">Toplam su: 12 litre</text>
+    <g fill="#62dcc3" fill-opacity=".5">
+      <rect x="267" y="512" width="64" height="84"/>
+      <rect x="399" y="512" width="64" height="84"/>
+      <rect x="267" y="683" width="64" height="42"/>
+      <rect x="355" y="683" width="64" height="42"/>
+      <rect x="443" y="683" width="64" height="42"/>
+      <rect x="531" y="683" width="64" height="42"/>
+    </g>
+    <g fill="none" stroke="#90a7b8" stroke-width="3">
+      <path d="M267 498v98h64v-98 M399 498v98h64v-98"/>
+      <path d="M267 627v98h64v-98 M355 627v98h64v-98 M443 627v98h64v-98 M531 627v98h64v-98"/>
+    </g>
+    <g font-size="26">
+      <text x="50" y="557">2 kap</text><text x="495" y="557">6 L / kap</text>
+      <text x="50" y="690">4 kap</text>
+      <text x="360" y="774" text-anchor="middle" fill="#62dcc3">Kap sayısı × kap başına su = 12 L</text>
+    </g>
+    <g font-size="24" text-anchor="middle">
+      <text x="299" y="559">6 L</text><text x="431" y="559">6 L</text>
+      <text x="299" y="713">3 L</text><text x="387" y="713">3 L</text><text x="475" y="713">3 L</text><text x="563" y="713">3 L</text>
+    </g>
+  </g>
+</svg>

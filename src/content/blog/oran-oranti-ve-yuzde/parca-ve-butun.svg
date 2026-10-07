@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="560" viewBox="0 0 720 560" role="img" aria-labelledby="title desc">
+  <title id="title">Aynı iki boncuk, iki farklı oran</title>
+  <desc id="desc">İki mavi ve üç sarı boncuk var. Mavi sayısının sarı sayısına oranı iki bölü üç; mavi sayısının toplam beş boncuğa oranı iki bölü beş.</desc>
+  <rect width="720" height="560" rx="24" fill="#0d1721"/>
+  <g font-family="system-ui, sans-serif" fill="#eef4f5" text-anchor="middle">
+    <text x="360" y="55" font-size="29" font-weight="650">Neyi neyle karşılaştırıyoruz?</text>
+    <g stroke-width="3">
+      <g fill="#74b9ff" stroke="#a8d3ff"><circle cx="168" cy="140" r="28"/><circle cx="258" cy="140" r="28"/></g>
+      <g fill="#f4cb75" stroke="#ffe4ad"><circle cx="372" cy="140" r="28"/><circle cx="462" cy="140" r="28"/><circle cx="552" cy="140" r="28"/></g>
+    </g>
+    <path d="M128 187v12h170v-12 M332 187v12h260v-12" fill="none" stroke="#90a7b8" stroke-width="2"/>
+    <text x="213" y="239" font-size="25" fill="#74b9ff">2 mavi</text><text x="462" y="239" font-size="25" fill="#f4cb75">3 sarı</text>
+    <path d="M128 266v12h464v-12" fill="none" stroke="#62dcc3" stroke-width="2"/>
+    <text x="360" y="315" font-size="25" fill="#62dcc3">Bütün: 5 boncuk</text>
+    <rect x="32" y="352" width="312" height="165" rx="16" fill="#172633"/>
+    <rect x="376" y="352" width="312" height="165" rx="16" fill="#172633"/>
+    <text x="188" y="394" font-size="25">Mavi / sarı</text>
+    <text x="188" y="468" font-size="48" font-weight="650" fill="#74b9ff">2 / 3</text>
+    <text x="532" y="394" font-size="25">Mavi / bütün</text>
+    <text x="532" y="468" font-size="48" font-weight="650" fill="#62dcc3">2 / 5</text>
+  </g>
+</svg>
