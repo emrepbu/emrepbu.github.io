@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && node --max-old-space-size=6144 ./node_modules/astro/astro.js build",
     "test": "node --test tests/*.test.mjs",
     "covers:sync": "node scripts/sync-open-radiant.mjs",
     "preview": "astro preview",
