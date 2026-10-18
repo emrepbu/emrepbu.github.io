@@ -88,6 +88,34 @@ Ortak oynatıcı Open Radiant çıktısıdır; kaynak ve font lisansları
 `public/blog-assets/open-radiant/v1/` altında korunur.
 Proje: https://github.com/JetBrains/open-radiant
 
+## Konu sayfalarının animasyonlu kapakları
+
+Fizik, Matematik ve Bilgisayar/Yazılım sayfaları da aynı Open Radiant kapak
+sistemini kullanır. **HTML5 (Blog)** ile indirdiğin ZIP'i açıp dosyaları ilgili
+klasöre koy:
+
+| Sayfa | Kapak klasörü |
+| --- | --- |
+| Fizik | `src/assets/topics/fizik/cover/` |
+| Matematik | `src/assets/topics/matematik/cover/` |
+| Bilgisayar ve Yazılım | `src/assets/topics/yazilim/cover/` |
+
+Her klasörde doğrudan `index.html` ve `scene.js` bulunmalı. ZIP'in içinde
+`assets/` veya başka dosyalar varsa onları da klasör yapısını koruyarak kopyala.
+Bağımsız **HTML5** paketleri de desteklenir. Sayfa dosyalarına veya YAML
+alanlarına ayrıca kapak yolu yazmana gerek yok.
+
+Kapak, konu başlığının üstünde ve ana sayfanın **Konuya göre oku** alanında
+otomatik görünür; kendi en-boy oranını korur. Ana sayfadaki küçük önizlemeye
+tıklayınca ilgili konu sayfası açılır.
+Henüz `index.html` eklenmemişse sayfa normal biçimde gösterilir; boş bir kapak
+alanı veya kırık iframe oluşmaz. Yeni bir kapak eklediğinde geliştirme
+sunucusunu yeniden başlat; `npm run preview` kullanıyorsan önce yeniden
+`npm run build` çalıştır. Yayın için yeni kapak dosyalarını da commit edip gönder.
+
+Derleme, konu kapaklarını `dist/blog-covers/konular/<konu>/` altına çıkarır.
+Ortak oynatıcı ve eski export adreslerinin düzeltilmesi yazı kapaklarıyla aynıdır.
+
 ## Yerel kontrol ve yayın
 
 ```sh

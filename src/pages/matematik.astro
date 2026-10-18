@@ -1,0 +1,18 @@
+---
+import ReadingPath from '@/components/ReadingPath.astro'
+import { getAllPosts } from '@/lib/data-utils'
+import { getMathReadingSections } from '@/lib/reading-paths.mjs'
+
+const sections = getMathReadingSections(await getAllPosts())
+---
+
+<ReadingPath
+  subject="math"
+  label="Matematik"
+  title="Matematik Okuma Yolu"
+  description="Sayı doğrusundan cebir, geometri, türev, integral ve olasılığa: bütün matematik yazıları öğrenme sırasıyla."
+  intro="Sayı doğrusundan başlayıp işlemler, cebir ve geometriyle temeli kur. Ardından fonksiyonlara, vektörlere, türev, integral ve olasılığa ilerle. Her bölüm önceki konuların üzerine kuruluyor."
+  startLabel="İlk matematik yazısından başla"
+  related={[{ href: '/fizik/', label: 'Fizik okuma yolu' }]}
+  sections={sections}
+/>

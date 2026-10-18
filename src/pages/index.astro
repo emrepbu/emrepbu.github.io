@@ -1,21 +1,50 @@
 ---
-import BlogCard from '@/components/BlogCard.astro'
+import Cover from '@/components/Cover.astro'
 import Link from '@/components/Link.astro'
 import PageHead from '@/components/PageHead.astro'
-import { buttonVariants } from '@/components/ui/button'
-import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
-import { getRecentPosts } from '@/lib/data-utils'
+import { getTopicCoverAnimation } from '@/lib/cover-animation'
+import { getAllPosts } from '@/lib/data-utils'
+import {
+  getMathReadingSections,
+  getPhysicsReadingSections,
+  getSoftwareReadingSections,
+} from '@/lib/reading-paths.mjs'
 
-const blog = await getRecentPosts(SITE.featuredPostCount)
+const posts = await getAllPosts()
+const topics = [
+  {
+    title: 'Fizik',
+    href: '/fizik/',
+    animation: getTopicCoverAnimation('fizik'),
+    description: 'Ölçüm ve hareketten dalgalara, atomlara ve kuantum fiziğine.',
+    sections: getPhysicsReadingSections(posts),
+  },
+  {
+    title: 'Matematik',
+    href: '/matematik/',
+    animation: getTopicCoverAnimation('matematik'),
+    description:
+      'Sayı doğrusundan cebire, geometriye, türev, integral ve olasılığa.',
+    sections: getMathReadingSections(posts),
+  },
+  {
+    title: 'Bilgisayar ve Yazılım',
+    href: '/yazilim/',
+    animation: getTopicCoverAnimation('yazilim'),
+    description:
+      'Kotlin, Android, eşzamanlılık, donanım ve kriptografi üzerine.',
+    sections: getSoftwareReadingSections(posts),
+  },
+]
 ---
 
 <Layout class="max-w-3xl">
-  <PageHead slot="head" title="Home" />
+  <PageHead slot="head" title="Ana sayfa" />
   <section>
     <div class="rounded-lg border">
       <div class="flex flex-col space-y-1.5 p-6">
-        <h3 class="text-3xl leading-none font-medium">Proxima Centauri</h3>
+        <h1 class="text-3xl leading-none font-medium">Proxima Centauri</h1>
         <p class="text-muted-foreground text-sm">
           /ˌprɒksəmə sɛnˈtɔːri/ &bull; <span class="font-medium"
             >Kırmızı Cüce</span
@@ -30,35 +59,51 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
             underline
             external>Proxima Centauri</Link
           >
-          , Güneş'e en yakın, yaklaşık 4.24 ışık yılı
-          uzaklıktaki bir kırmızı cüce yıldızdır. Alpha Centauri sisteminin bir
-          parçası olduğu düşünülen bu yıldız, düşük parlaklığı nedeniyle çıplak
-          gözle görülemez ve bilinen en az iki gezegene ev sahipliği yapar.
+          , Güneş'e en yakın, yaklaşık 4.24 ışık yılı uzaklıktaki bir kırmızı cüce
+          yıldızdır. Alpha Centauri sisteminin bir parçası olduğu düşünülen bu yıldız,
+          düşük parlaklığı nedeniyle çıplak gözle görülemez ve bilinen en az iki
+          gezegene ev sahipliği yapar.
         </p>
       </div>
     </div>
   </section>
-  <section class="flex flex-col gap-y-4"> 
-    <h2 class="text-2xl font-medium">Son yazılar</h2>
-    <ul class="flex flex-col gap-y-4">
+  <section class="flex flex-col gap-y-4 py-6" aria-labelledby="topics-heading">
+    <h2 id="topics-heading" class="text-2xl font-medium">Konuya göre oku</h2>
+    <p class="text-muted-foreground max-w-prose leading-7">
+      İlgilendiğin alanı seç. Yazıları her bölümün kendi okuma sırasıyla takip
+      edebilirsin.
+    </p>
+    <div class="divide-border border-border flex flex-col divide-y border-y">
       {
-        blog.map((post) => (
-          <li>
-            <BlogCard entry={post} />
-          </li>
+        topics.map((topic) => (
+          <div class="hover:bg-muted relative flex min-w-0 flex-col gap-4 rounded-xl px-4 py-5 sm:flex-row">
+            <Cover
+              title={topic.title}
+              animation={topic.animation}
+              variant="topic-card"
+            />
+            <Link
+              href={topic.href}
+              class="focus-visible:after:outline-foreground flex min-w-0 grow flex-col gap-3 after:absolute after:inset-0 after:rounded-xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2"
+            >
+              <h3 class="text-lg font-medium">{topic.title}</h3>
+              <p class="text-muted-foreground grow text-sm leading-6">
+                {topic.description}
+              </p>
+              <span class="text-sm">
+                {topic.sections.reduce(
+                  (sum, section) => sum + section.entries.length,
+                  0,
+                )}{' '}
+                yazı <span aria-hidden="true">→</span>
+              </span>
+            </Link>
+          </div>
         ))
       }
-    </ul>
-    <div class="flex justify-center">
-      <Link
-        href="/blog"
-        class={buttonVariants({ variant: 'ghost' }) + ' group'}
-      >
-        Tüm yazıları gör <span
-          class="ml-1.5 transition-transform group-hover:translate-x-1"
-          >&rarr;</span
-        >
-      </Link>
     </div>
+    <Link href="/blog/" underline class="w-fit text-sm"
+      >Tüm yazılar: Blog arşivi</Link
+    >
   </section>
 </Layout>

@@ -4,16 +4,32 @@ import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { Icon } from 'astro-icon/components'
 
-const { newerPost, olderPost, parentPost } = Astro.props
+const { newerPost, olderPost, parentPost, readingStep } = Astro.props
 const isSubpost = !!parentPost
 ---
 
 <nav
+  aria-label={readingStep
+    ? `${readingStep.label} okuma sırası`
+    : 'Yazılar arasında gezinme'}
+  data-reading-path={readingStep?.key}
   class={cn(
     'col-start-2 grid grid-cols-1 gap-4',
     isSubpost ? 'sm:grid-cols-3' : 'sm:grid-cols-2',
   )}
 >
+  {
+    readingStep && (
+      <div class="col-span-full flex flex-wrap items-center justify-between gap-2 text-sm">
+        <Link href={`${readingStep.path}#yazi-${readingStep.id}`} underline>
+          {readingStep.label} yazılarına dön
+        </Link>
+        <span class="text-muted-foreground">
+          {readingStep.number} / {readingStep.total}
+        </span>
+      </div>
+    )
+  }
   <Link
     href={olderPost ? `/blog/${olderPost.id}` : '#'}
     class={cn(
@@ -29,12 +45,22 @@ const isSubpost = !!parentPost
     />
     <div class="flex flex-col items-start overflow-hidden text-wrap">
       <span class="text-muted-foreground text-left text-xs">
-        {isSubpost ? 'Önceki alt yazı' : 'Önceki yazı'}
+        {
+          readingStep
+            ? 'Önceki konu'
+            : isSubpost
+              ? 'Önceki alt yazı'
+              : 'Önceki yazı'
+        }
       </span>
       <span class="w-full text-left text-sm text-balance text-ellipsis">
         {
           olderPost?.data.title ||
-            (isSubpost ? 'No older subpost' : "You're at the oldest post!")
+            (readingStep
+              ? 'İlk yazıdasın'
+              : isSubpost
+                ? 'No older subpost'
+                : "You're at the oldest post!")
         }
       </span>
     </div>
@@ -77,12 +103,22 @@ const isSubpost = !!parentPost
   >
     <div class="flex flex-col items-end overflow-hidden text-wrap">
       <span class="text-muted-foreground text-right text-xs">
-        {isSubpost ? 'Sonraki alt yazı' : 'Sonraki yazı'}
+        {
+          readingStep
+            ? 'Sonraki konu'
+            : isSubpost
+              ? 'Sonraki alt yazı'
+              : 'Sonraki yazı'
+        }
       </span>
       <span class="w-full text-right text-sm text-balance text-ellipsis">
         {
           newerPost?.data.title ||
-            (isSubpost ? 'No newer subpost' : "You're at the newest post!")
+            (readingStep
+              ? 'Son yazıdasın'
+              : isSubpost
+                ? 'No newer subpost'
+                : "You're at the newest post!")
         }
       </span>
     </div>

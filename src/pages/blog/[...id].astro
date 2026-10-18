@@ -24,6 +24,7 @@ import {
   isSubpost,
   parseAuthors,
 } from '@/lib/data-utils'
+import { getReadingStep } from '@/lib/reading-paths.mjs'
 import { formatDate } from '@/lib/utils'
 import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
@@ -44,6 +45,7 @@ const authors = await parseAuthors(post.data.authors ?? [])
 
 const isCurrentSubpost = isSubpost(currentPostId)
 const navigation = await getAdjacentPosts(currentPostId)
+const readingStep = getReadingStep(currentPostId)
 const parentPost = isCurrentSubpost ? await getParentPost(currentPostId) : null
 
 const hasChildPosts = await hasSubposts(currentPostId)
@@ -202,6 +204,7 @@ const tocSections = await getTOCSections(currentPostId)
       </div>
 
       <PostNavigation
+        readingStep={readingStep}
         newerPost={navigation.newer}
         olderPost={navigation.older}
         parentPost={isCurrentSubpost ? navigation.parent : undefined}
@@ -230,6 +233,7 @@ const tocSections = await getTOCSections(currentPostId)
     }
 
     <PostNavigation
+      readingStep={readingStep}
       newerPost={navigation.newer}
       olderPost={navigation.older}
       parentPost={isCurrentSubpost ? navigation.parent : undefined}

@@ -10,6 +10,7 @@ import {
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import test from 'node:test'
+import vm from 'node:vm'
 import { syncOpenRadiant } from '../scripts/sync-open-radiant.mjs'
 
 async function fixture(t) {
@@ -57,4 +58,61 @@ test('missing player fails before changing an installed runtime', async (t) => {
   await assert.rejects(access(join(destination, 'LICENSE.md')), {
     code: 'ENOENT',
   })
+})
+
+function checkNativeMetaballsCallback(bundle) {
+  const marker = 'informNativeMetaballsUpdate.subscribe('
+  const start = bundle.indexOf(marker) + marker.length
+  const end = bundle.indexOf(
+    '):console.error("No port `informNativeMetaballsUpdate`',
+    start,
+  )
+  assert(start >= marker.length && end > start, 'v1 callback must be present')
+  const layers = {}
+  const calls = []
+  const updated = { updated: true }
+  const callback = vm.runInNewContext(`(${bundle.slice(start, end)})`, {
+    t: { layers: [{ def: 'native-metaballs' }] },
+    c: { nativeMetaballs: () => true },
+    f: layers,
+    a: {
+      update: (...args) => {
+        calls.push(args)
+        return updated
+      },
+    },
+  })
+  assert.doesNotThrow(
+    callback,
+    'import can notify before the first animation frame creates a renderer',
+  )
+  assert.equal(calls.length, 0)
+  const previous = { size: [800, 600], model: {}, palette: [], stop() {} }
+  layers[0] = previous
+  callback()
+  assert.equal(calls.length, 1)
+  assert.deepEqual(calls[0], [previous.size, previous, previous.stop, 0])
+  assert.equal(layers[0], updated)
+}
+
+test('installed cover player handles updates before and after the renderer exists', async () => {
+  const bundle = await readFile(
+    new URL(
+      '../public/blog-assets/open-radiant/v1/player.bundle.js',
+      import.meta.url,
+    ),
+    'utf8',
+  )
+  checkNativeMetaballsCallback(bundle)
+})
+
+test('sync retains the native renderer startup fix when importing the original v1 player', async (t) => {
+  const { source, destination } = await fixture(t)
+  const original =
+    'n.ports.informNativeMetaballsUpdate?n.ports.informNativeMetaballsUpdate.subscribe(()=>{t.layers.forEach((n,r)=>{if(c.nativeMetaballs(n)){const n=f[r];f[r]=a.update(n.size,colors,n.metaballs)}})}):console.error("No port `informNativeMetaballsUpdate` was detected")'
+  await writeFile(join(source, 'player.bundle.js'), original)
+  await syncOpenRadiant(source, destination)
+  checkNativeMetaballsCallback(
+    await readFile(join(destination, 'player.bundle.js'), 'utf8'),
+  )
 })

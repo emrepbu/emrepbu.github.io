@@ -1,0 +1,18 @@
+---
+import ReadingPath from '@/components/ReadingPath.astro'
+import { getAllPosts } from '@/lib/data-utils'
+import { getSoftwareReadingSections } from '@/lib/reading-paths.mjs'
+
+const sections = getSoftwareReadingSections(await getAllPosts())
+---
+
+<ReadingPath
+  subject="software"
+  label="Bilgisayar ve Yazılım"
+  title="Bilgisayar ve Yazılım"
+  description="Kotlin, Android, eşzamanlılık, entropi ve kriptografi üzerine bilgisayar ve yazılım yazıları."
+  intro="Kotlin'in dil özelliklerinden veri akışlarına, Android donanım iletişimine ve kriptografiye uzanan yazılar. Sırayla ilerleyebilir veya ilgilendiğin bölümden başlayabilirsin."
+  startLabel="İlk yazıdan başla"
+  related={[{ href: '/blog/', label: 'Blog arşivi' }]}
+  sections={sections}
+/>

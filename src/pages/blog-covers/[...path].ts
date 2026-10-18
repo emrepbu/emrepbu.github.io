@@ -1,4 +1,9 @@
-import { getCoverAnimation, getCoverAssets } from '@/lib/cover-animation'
+import {
+  getCoverAnimation,
+  getCoverAssets,
+  getTopicCoverAnimation,
+  TOPIC_COVER_FOLDERS,
+} from '@/lib/cover-animation'
 import { resolveCoverAssetUrls } from '@/lib/cover-asset-urls.mjs'
 import { getAllPostsAndSubposts } from '@/lib/data-utils'
 import type { APIRoute, GetStaticPaths } from 'astro'
@@ -7,7 +12,7 @@ import { extname } from 'node:path'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPostsAndSubposts()
-  return posts.flatMap((post) => {
+  const postAssets = posts.flatMap((post) => {
     const animation = getCoverAnimation(post)
     if (!animation) return []
     return getCoverAssets(animation.directory).map((asset) => ({
@@ -15,6 +20,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
       props: { file: asset.file, isEntry: asset.path === 'index.html' },
     }))
   })
+  const topicAssets = Object.values(TOPIC_COVER_FOLDERS).flatMap((slug) => {
+    const animation = getTopicCoverAnimation(slug)
+    if (!animation) return []
+    return getCoverAssets(animation.directory).map((asset) => ({
+      params: { path: `konular/${slug}/${asset.path}` },
+      props: { file: asset.file, isEntry: asset.path === 'index.html' },
+    }))
+  })
+  return [...postAssets, ...topicAssets]
 }
 
 const contentTypes: Record<string, string> = {

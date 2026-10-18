@@ -1,12 +1,16 @@
-import {
-  existsSync,
-  readFileSync,
-  readdirSync,
-  realpathSync,
-  statSync,
-} from 'node:fs'
+import { existsSync, readdirSync, realpathSync, statSync } from 'node:fs'
 import { dirname, join, relative, resolve, sep } from 'node:path'
 import type { CollectionEntry } from 'astro:content'
+
+import { readCoverAnimation } from './cover-export.mjs'
+export { getTopicCoverAnimation, TOPIC_COVER_FOLDERS } from './cover-export.mjs'
+
+export interface CoverAnimation {
+  src: string
+  directory: string
+  width: number
+  height: number
+}
 
 export function getCoverAnimation(post: CollectionEntry<'blog'>) {
   const source = post.data.coverAnimation ?? './cover/index.html'
@@ -28,33 +32,11 @@ export function getCoverAnimation(post: CollectionEntry<'blog'>) {
     )
   }
 
-  const directory = dirname(indexFile)
-  const sceneSource = readFileSync(join(directory, 'scene.js'), 'utf8')
-  // Read the exported JSON as data; never execute the scene's JavaScript.
-  const match = sceneSource.match(
-    /^\s*window\.jsGenScene\s*=\s*(\{[\s\S]*\})\s*;?\s*$/,
+  return readCoverAnimation(
+    indexFile,
+    `/blog-covers/${post.id}/index.html`,
+    post.id,
   )
-  if (!match) {
-    throw new Error(`Open Radiant sahne verisi okunamadı: ${post.id}/scene.js`)
-  }
-  const scene = JSON.parse(match[1])
-  const width = scene.size?.v1
-  const height = scene.size?.v2
-  if (
-    !Number.isInteger(width) ||
-    !Number.isInteger(height) ||
-    width <= 0 ||
-    height <= 0
-  ) {
-    throw new Error(`Kapak animasyonunun sahne ölçüleri geçersiz: ${post.id}`)
-  }
-
-  return {
-    src: `/blog-covers/${post.id}/index.html`,
-    directory,
-    width: width as number,
-    height: height as number,
-  }
 }
 
 export function getCoverAssets(directory: string) {

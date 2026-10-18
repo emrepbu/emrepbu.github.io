@@ -1,5 +1,6 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content'
 import { readingTime, calculateWordCountFromHtml } from '@/lib/utils'
+import { getReadingStep } from '@/lib/reading-paths.mjs'
 
 export async function getAllAuthors(): Promise<CollectionEntry<'authors'>[]> {
   return await getCollection('authors')
@@ -79,6 +80,16 @@ export async function getAdjacentPosts(currentId: string): Promise<{
         currentIndex < subposts.length - 1 ? subposts[currentIndex + 1] : null,
       older: currentIndex > 0 ? subposts[currentIndex - 1] : null,
       parent,
+    }
+  }
+
+  const readingStep = getReadingStep(currentId)
+  if (readingStep) {
+    return {
+      newer: allPosts.find((post) => post.id === readingStep.nextId) || null,
+      older:
+        allPosts.find((post) => post.id === readingStep.previousId) || null,
+      parent: null,
     }
   }
 

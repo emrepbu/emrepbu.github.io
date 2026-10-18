@@ -1,0 +1,233 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Cover from '@/components/Cover.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import { buttonVariants } from '@/components/ui/button'
+import Layout from '@/layouts/Layout.astro'
+import {
+  getTopicCoverAnimation,
+  TOPIC_COVER_FOLDERS,
+} from '@/lib/cover-animation'
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  subject: 'physics' | 'math' | 'software'
+  label: string
+  title: string
+  description: string
+  intro: string
+  startLabel: string
+  related: { href: string; label: string }[]
+  sections: {
+    id: string
+    title: string
+    description: string
+    start: number
+    entries: { post: CollectionEntry<'blog'>; number: number }[]
+  }[]
+}
+
+const {
+  subject,
+  label,
+  title,
+  description,
+  intro,
+  startLabel,
+  related,
+  sections,
+} = Astro.props
+const total = sections.reduce((sum, section) => sum + section.entries.length, 0)
+const first = sections[0].entries[0].post
+const animation = getTopicCoverAnimation(TOPIC_COVER_FOLDERS[subject])
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title={title} description={description} />
+  <Breadcrumbs items={[{ label, icon: 'lucide:book-open' }]} />
+  <Cover title={label} animation={animation} variant="topic" />
+
+  <section class="reading-intro" aria-labelledby="reading-title">
+    <h1 id="reading-title" class="text-3xl font-medium sm:text-4xl">
+      {title}
+    </h1>
+    <p class="text-muted-foreground max-w-prose leading-7">{intro}</p>
+    <p class="text-muted-foreground text-sm">
+      {total} yazı · {sections.length} bölüm
+    </p>
+    <div class="flex flex-wrap items-center gap-4">
+      <Link
+        href={`/blog/${first.id}/`}
+        class={buttonVariants({ variant: 'default' })}
+        data-reading-start
+      >
+        {startLabel}
+      </Link>
+      {
+        related.map((link) => (
+          <Link href={link.href} underline>
+            {link.label}
+          </Link>
+        ))
+      }
+    </div>
+  </section>
+
+  <nav class="stage-index" aria-label="Okuma aşamaları">
+    <h2 class="text-base font-medium">Okuma aşamaları</h2>
+    <ol>
+      {
+        sections.map((section) => (
+          <li>
+            <Link href={`#${section.id}`}>{section.title}</Link>
+          </li>
+        ))
+      }
+    </ol>
+  </nav>
+
+  <div class="reading-sections">
+    {
+      sections.map((section) => (
+        <section
+          id={section.id}
+          class="reading-section"
+          aria-labelledby={`baslik-${section.id}`}
+        >
+          <div class="stage-heading">
+            <h2 id={`baslik-${section.id}`} class="text-2xl font-medium">
+              {section.title}
+            </h2>
+            <span class="text-muted-foreground text-sm">
+              {section.entries.length === 1
+                ? `${section.start}. yazı`
+                : `${section.start}–${section.start + section.entries.length - 1}. yazılar`}
+            </span>
+          </div>
+          <p class="text-muted-foreground mb-5 max-w-prose leading-7">
+            {section.description}
+          </p>
+          <ol start={section.start} class="reading-list">
+            {section.entries.map(({ post, number }) => (
+              <li id={`yazi-${post.id}`}>
+                <Link
+                  href={`/blog/${post.id}/`}
+                  class="reading-link"
+                  data-reading-post={post.id}
+                  data-subject={subject}
+                >
+                  <span class="reading-number" aria-hidden="true">
+                    {String(number).padStart(2, '0')}
+                  </span>
+                  <span class="reading-name">{post.data.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .reading-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding-block: 0.5rem 1rem;
+  }
+  .stage-index {
+    padding-block: 1.25rem;
+    border-block: 1px solid var(--border);
+  }
+  .stage-index ol {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem 2rem;
+    padding-left: 1.35rem;
+    margin-top: 1rem;
+    list-style: decimal;
+  }
+  .stage-index li {
+    padding-left: 0.2rem;
+    line-height: 1.5;
+    font-size: 0.875rem;
+  }
+  .stage-index li::marker {
+    color: var(--muted-foreground);
+  }
+  .stage-index a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .reading-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 1rem;
+  }
+  .reading-section,
+  .reading-list li {
+    scroll-margin-top: 5rem;
+  }
+  .stage-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.4rem 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .stage-heading > span {
+    white-space: nowrap;
+  }
+  .reading-list {
+    list-style: none;
+    border-top: 1px solid var(--border);
+  }
+  .reading-list li {
+    border-bottom: 1px solid var(--border);
+  }
+  .reading-link {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: baseline;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    line-height: 1.6;
+  }
+  .reading-number {
+    color: var(--muted-foreground);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.875rem;
+  }
+  .reading-name {
+    overflow-wrap: anywhere;
+  }
+  .reading-link:hover {
+    background: var(--muted);
+  }
+  .reading-link:hover .reading-name {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .reading-link:focus-visible,
+  .stage-index a:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 3px;
+  }
+  @media (max-width: 480px) {
+    .stage-index ol {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reading-link {
+      transition: none;
+    }
+  }
+</style>

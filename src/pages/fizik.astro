@@ -1,0 +1,18 @@
+---
+import ReadingPath from '@/components/ReadingPath.astro'
+import { getAllPosts } from '@/lib/data-utils'
+import { getPhysicsReadingSections } from '@/lib/reading-paths.mjs'
+
+const sections = getPhysicsReadingSections(await getAllPosts())
+---
+
+<ReadingPath
+  subject="physics"
+  label="Fizik"
+  title="Fizik Okuma Yolu"
+  description="Ölçüm, hareket ve kuvvetten kuantum fiziğine: bütün fizik yazıları, ön bilgileri gözeten bir okuma sırasıyla."
+  intro="Önce ölçmeyi ve hareketi anlamak, sonra dalgalara, atomlara ve kuantuma geçmek. Fizik yazıları burada temel konulardan ileri konulara uzanan bir öğrenme sırasını izliyor."
+  startLabel="İlk fizik yazısından başla"
+  related={[{ href: '/matematik/', label: 'Matematik okuma yolu' }]}
+  sections={sections}
+/>
