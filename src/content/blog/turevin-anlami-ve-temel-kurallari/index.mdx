@@ -51,14 +51,32 @@ $f'(a)$ “f türev a” diye okunur. Kesir içinde doğrudan $h=0$ yazmıyoruz.
 
 Türev varsa grafiğin o noktadaki **teğet eğimi** budur. Teğeti yalnızca “eğriye tek noktada değen doğru” diye tanımlamak yeterli değildir. Bir teğet eğriyi kesebilir veya başka bir noktada tekrar buluşabilir. Buradaki belirleyici fikir, sekant eğimlerinin yerel limitidir.
 
+### Zaman aralığı küçülürken birim neden aynı kalır?
+
+Konumu $s(t)=t^2$ metre olan bir hareketi düşünelim; $t$ saniye cinsinden zamanın sayısal değeridir. $t=2$ ile $t=2+h$ arasındaki ortalama hızın sayısal değerini hesaplayalım:
+
+$$
+\begin{aligned}
+\frac{s(2+h)-s(2)}h
+&=\frac{(2+h)^2-4}{h}\\
+&=\frac{4h+h^2}{h}\\
+&=4+h,\qquad h\ne0.
+\end{aligned}
+$$
+
+$h=0{,}1$ için hız $4{,}1$ m/s, $h=-0{,}1$ için $3{,}9$ m/s'dir. İkinci durumda zaman farkı da konum farkı da negatiftir; bölümleri pozitiftir. Negatif $h$, aracın geri hareket ettiğini değil, seçtiğimiz andan önceki bir zamanı karşılaştırdığımızı anlatır.
+
+İki taraftan $h\to0$ iken oran 4 m/s'ye yaklaşır. Aralığı küçültmek birimi değiştirmez: her adımda metreyi saniyeye bölüyoruz. $s(2)=4$ metre ile $s'(2)=4$ m/s sayısal olarak aynı olsa da farklı fiziksel büyüklüklerdir. Biri konum, diğeri konumun zamana göre değişme hızıdır. Ayrıca burada $h=0$ için bir “sıfır saniyelik yolculuk hızı” hesaplamıyoruz; sıfırdan farklı sürelerdeki oranların limitini buluyoruz.
+
 ## 3. Kare Fonksiyonunun Türevini Kurmak
 
 Önce $a=1$ noktasında çalışalım. $f(1+h)=(1+h)^2=1+2h+h^2$, $f(1)=1$ olur. Farkı ve bölümü sırayla yazalım:
 
 $$
-\frac{f(1+h)-f(1)}h
-=\frac{1+2h+h^2-1}h
-=\frac{2h+h^2}h.
+\begin{aligned}
+\frac{f(1+h)-f(1)}h&=\frac{1+2h+h^2-1}h\\
+&=\frac{2h+h^2}h.
+\end{aligned}
 $$
 
 $h\ne0$ olduğu için ortak $h$ çarpanını sadeleştirebiliriz. Sonuç $2+h$'dir. $h\to0$ iken limit 2 olur; dolayısıyla $f'(1)=2$.
@@ -99,6 +117,41 @@ $h\to0$ iken ilk çarpan sonlu $f'(a)$ değerine, ikinci çarpan 0'a gider. Çar
 
 Sonuç tek yönlüdür: **türevlenebilirlik sürekliliği gerektirir**, süreklilik türevlenebilirliği garanti etmez. Mutlak değer bunun karşı örneğidir. Süreksiz bir noktada sonlu türev aramak sonuç vermez; önce fonksiyonun o noktada tanımlı ve sürekli olması gerekir.
 
+### İki formülü köşe oluşturmadan birleştirmek
+
+Süreklilik ile türevlenebilirlik arasındaki farkı, iki parçalı bir fonksiyon kurarak inceleyelim. Sol tarafta kare fonksiyonu, sağ tarafta bir doğru kullanacağız:
+
+$$
+f(x)=\begin{cases}
+x^2,&x\le1,\\
+ax+b,&x>1.
+\end{cases}
+$$
+
+Burada $a$ ve $b$, seçeceğimiz sabitlerdir. İki parçanın $x=1$'de hem buluşmasını hem de aynı eğimle birleşmesini istiyoruz. Önce fonksiyon değeri $f(1)=1$'dir. Sağdan limit $a+b$ olduğundan süreklilik için $a+b=1$ gerekir. Bu koşul tek başına birçok doğruya izin verir; örneğin $a=3$, $b=-2$ de parçaları aynı noktada birleştirir.
+
+Türev için birleşme noktasındaki fark oranına bakalım. $h<0$ olduğunda sol parçayı kullanırız:
+
+$$
+\begin{aligned}
+\frac{f(1+h)-f(1)}h&=\frac{(1+h)^2-1}{h}\\
+&=2+h\longrightarrow2.
+\end{aligned}
+$$
+
+$h>0$ olduğunda sağ parça geçerlidir. Süreklilik koşulunu önceden sağlamışsak:
+
+$$
+\frac{a(1+h)+b-1}{h}
+=\frac{a+b-1+ah}{h}=a.
+$$
+
+İki taraftaki eğimlerin aynı olması için $a=2$ gerekir. Ardından $a+b=1$ eşitliği $b=-1$ verir. Yani uygun doğru $2x-1$'dir; bu, kare fonksiyonunun 1 noktasındaki teğetidir. İki parça aynı değerde buluşurken aynı yerel değişim oranını da taşır.
+
+Önceki $a=3$, $b=-2$ seçimi ise süreklidir ama türevlenebilir değildir: soldan eğim 2, sağdan eğim 3 olur. Birleşim noktasında sıçrama yoktur; yine de yön değişiminde bir köşe vardır. Daha başlangıçta $a+b\ne1$ seçseydik sağ fark oranında $(a+b-1)/h$ terimi kalırdı. Sıfırdan farklı sabitin küçülen $h$'ye bölünmesi sonlu türev vermeyecekti.
+
+Bu örnekte dalların türevlerini hesaplamak yeterli olmadı; sınırdaki fonksiyon değerini de kullandık. Parçalı fonksiyonlarda önce değerlerin buluşmasını, ardından iki tek taraflı fark oranının aynı sonlu sayıya yaklaşmasını kontrol etmek, eksik koşulla sonuç çıkarmamızı önler.
+
 ## 5. Sabit, Toplam ve Kuvvet Kuralları
 
 Sabit $f(x)=c$ fonksiyonunda $f(x+h)-f(x)=c-c=0$ olur. Bu yüzden türev 0'dır. Çıktı hiç değişmiyorsa değişim oranının sıfır olması beklenir. $f(x)=x$ için fark $h$, bölüm 1 olur; türev 1'dir.
@@ -124,6 +177,17 @@ $$
 
 sonucunu verir. $d/dx$ sembolü “$x$'e göre türev al” işlemini gösterir. $n$ katsayı olarak öne gelir, üs bir azalır. Bu kuralın tekrar eden çarpımlarla gerekçesini çarpım kuralından sonra da görebileceğiz.
 
+Küp açılımının ara işlemlerini görmek için önce $(x+h)^3=x^3+3x^2h+3xh^2+h^3$ yazalım. $x^3$ çıkarılınca ilk terim gider. Kalan her terimde en az bir $h$ çarpanı vardır:
+
+$$
+\begin{aligned}
+(x+h)^3-x^3
+&=h(3x^2+3xh+h^2).
+\end{aligned}
+$$
+
+$h\ne0$ için bu ortak çarpana bölebiliriz. Limitte $x$ sabit kalırken $h$ içeren son iki terim sıfıra gider; yalnız $3x^2$ kalır. Dolayısıyla üs kuralındaki katsayı, cebirsel açılımda birinci dereceden değişimin önündeki sayıdır; sonradan eklenen keyfî bir sayı değildir.
+
 Örneğin $p(x)=4x^3-5x^2+7x-9$ için her terimi ayrı ele alırız:
 
 $$
@@ -132,15 +196,32 @@ $$
 
 Sabit $-9$'un türevi 0 olduğu için yazılmadı. Fonksiyon değerini bulmakla türevini bulmak farklı işlerdir: $p(1)=-3$, $p'(1)=9$ olur. Biri yüksekliği, diğeri o noktadaki değişim eğimini anlatır.
 
+### Sabit terimin kaybolmasını tanımdan görmek
+
+$f(x)=mx+b$ doğrusunda $m$ ve $b$ sabit sayılar olsun. Türev kurallarını kullanmadan, herhangi bir $a$ noktasındaki farkı açalım:
+
+$$
+\begin{aligned}
+f(a+h)-f(a)
+&=m(a+h)+b-(ma+b)\\
+&=ma+mh+b-ma-b\\
+&=mh.
+\end{aligned}
+$$
+
+$h\ne0$ için bölüm $m$'dir; bu sabit ifadenin limiti de $m$ olur. Böylece $f'(a)=m$ sonucunu elde ederiz. $b$ sabiti çıktının seviyesini değiştirir ama iki çıktıdan da aynı miktar çıkarıldığı için değişim hesabından silinir. Doğruyu yukarı taşımak eğimini değiştirmez.
+
+Örneğin $f(x)=3x+8$ için $f(2)=14$, $f'(2)=3$'tür. Girdiyi $0{,}2$ artırırsak çıktı tam $3\cdot0{,}2=0{,}6$ artar. Doğrusal fonksiyonda bu ilişki yaklaşık değil, her girdi değişimi için tamdır. Eğri bir fonksiyonda ise türev yalnızca yeterince küçük değişimlerin ilk yaklaşımını verir.
+
+“Sabitin türevi sıfır” kuralı, sabit çarpanların da yok olduğu anlamına gelmez. $7x$'te 7 değişmiyor olsa da bütün fonksiyon değişir; türevi 7'dir. $7$ fonksiyonunda ise çıktı hiç değişmediği için türev sıfırdır.
+
 ## 6. Çarpımda Neden İki Terim Var?
 
 $f(x)g(x)$ çarpımının türevi genel olarak $f'(x)g'(x)$ değildir. İki çarpanın da değişimini izlemek gerekir. Paydaki farkı şöyle ayıralım:
 
 $$
 \begin{aligned}
-f(x+h)g(x+h)-f(x)g(x)
-={}&f(x+h)[g(x+h)-g(x)]\\
-&+g(x)[f(x+h)-f(x)].
+&f(x+h)g(x+h)-f(x)g(x)\\&\quad=f(x+h)[g(x+h)-g(x)]\\&\qquad+g(x)[f(x+h)-f(x)].
 \end{aligned}
 $$
 
@@ -153,13 +234,34 @@ $$
 Örneğin $q(x)=(x^2+1)(x-3)$ için:
 
 $$
-q'(x)=2x(x-3)+(x^2+1)\cdot1
-=3x^2-6x+1.
+\begin{aligned}
+q'(x)&=2x(x-3)+(x^2+1)\cdot1\\
+&=3x^2-6x+1.
+\end{aligned}
 $$
 
 Önce çarpımı açarak da kontrol edebiliriz: $q(x)=x^3-3x^2+x-3$, türevi aynı sonuçtur. Çarpım kuralı, her çarpımı önce açmak zorunda kalmadan hesap yapar.
 
 $x^n$, $n$ tane $x$ çarpanı içerir. Çarpım kuralını art arda uyguladığımızda her terimde çarpanlardan biri türevlenip 1 olur, kalan $n-1$ çarpan $x^{n-1}$ verir. Böyle $n$ tane eşit terim toplandığı için $nx^{n-1}$ çıkar. Bu gerekçe pozitif tam sayı kuvvetleri içindir; başka üslerin kapsamını ayrıca belirtmeliyiz.
+
+### Çarpım kuralında neden iki ayrı katkı bulunur?
+
+Bir dikdörtgenin kenarları $x$'e bağlı $u(x)$ ve $v(x)$ olsun. Alanı $A(x)=u(x)v(x)$'dir. Girdi $h$ kadar değiştiğinde kenar artışlarını $\Delta u=u(x+h)-u(x)$ ve $\Delta v=v(x+h)-v(x)$ ile gösterelim. Yeni alandan eski alanı çıkarınca
+
+$$
+\begin{aligned}
+\Delta A
+&=(u+\Delta u)(v+\Delta v)-uv\\
+&=u\Delta v+v\Delta u
+  +\Delta u\,\Delta v
+\end{aligned}
+$$
+
+elde ederiz. Burada $u$ ve $v$, başlangıç noktasındaki kenar değerleridir. İlk iki terim, kenarlardan yalnız biri uzasaydı eklenecek şerit alanlarıdır; son terim iki uzamanın ortak köşesidir.
+
+$h$'ye böldüğümüzde son katkı $(\Delta u/h)\Delta v$ olur. Türevler varsa $\Delta u/h$ sonlu bir limite yaklaşır ve süreklilik nedeniyle $\Delta v\to0$ olur. Bu çarpımın limiti sıfırdır. Geriye $uv'+vu'$ kalır. Böylece çarpım kuralının neden $u'v'$ olmadığını, iki farklı değişim katkısından görürüz.
+
+Örneğin $u=x+1$, $v=2x$ için $A'=2(x+1)+2x=4x+2$ çıkar. Alanı önce $2x^2+2x$ diye açıp türev alırsak aynı sonucu buluruz. Bu ikinci yol, kuralın bu örnekte doğru uygulandığını bağımsız biçimde denetler.
 
 ## 7. Bölüm Kuralı ve Paydanın Koşulu
 
@@ -173,8 +275,9 @@ $$
 Paydaki sıranın önemi vardır; çıkarma yer değiştirmez. Paydada ise fonksiyonun karesi bulunur. Kuralın gerekçesi, iki yakın bölümün farkını ortak paydada toplamaktır:
 
 $$
-\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}
-=\frac{f(x+h)g(x)-f(x)g(x+h)}{g(x+h)g(x)}.
+\begin{aligned}
+&\frac{f(x+h)}{g(x+h)}-\frac{f(x)}{g(x)}\\&\quad=\frac{f(x+h)g(x)-f(x)g(x+h)}{g(x+h)g(x)}.
+\end{aligned}
 $$
 
 Payı $g(x)[f(x+h)-f(x)]-f(x)[g(x+h)-g(x)]$ olarak düzenler, $h$'ye böler ve limit alırız. Payda $g(x)^2$'ye gider; bu değer sıfır değildir. $g$'nin sürekliliği yakın çevrede de paydanın sıfır olmamasını sağlar.
@@ -182,8 +285,10 @@ Payı $g(x)[f(x+h)-f(x)]-f(x)[g(x+h)-g(x)]$ olarak düzenler, $h$'ye böler ve l
 $r(x)=(x^2+1)/(x+2)$ için $x\ne-2$ olmalıdır. Kuralı uygulayalım:
 
 $$
-r'(x)=\frac{2x(x+2)-(x^2+1)}{(x+2)^2}
-=\frac{x^2+4x-1}{(x+2)^2}.
+\begin{aligned}
+r'(x)&=\frac{2x(x+2)-(x^2+1)}{(x+2)^2}\\
+&=\frac{x^2+4x-1}{(x+2)^2}.
+\end{aligned}
 $$
 
 Sadeleştirme tanım dışı $x=-2$ noktasını geri getirmez. Aynı kuralla $(1/x)'=-1/x^2$ bulunur. Daha genel negatif tam sayı kuvvetleri için de kuvvet kuralı çalışır; $x\ne0$ koşulu korunur.
@@ -195,6 +300,23 @@ $$
 $$
 
 çıkar. Sıfırda sağdan bölüm $1/\sqrt h$ sınırsız büyür; sonlu türev yoktur. Tanım kümesinde bulunmak ile türev bulunması yine ayrı koşullardır.
+
+### Bölümün işaretini küçük bir değişimle denetlemek
+
+$g(x)=1/x$ için $x\ne0$ olsun. Türevin negatif çıkmasının nedeni, pozitif bölgede paydayı büyüttüğümüzde kesrin küçülmesidir. Fark bölümünü ortak paydada yazarsak bu işaret açıkça görünür:
+
+$$
+\begin{aligned}
+\frac{g(x+h)-g(x)}h
+&=\frac{1/(x+h)-1/x}{h}\\
+&=\frac{x-(x+h)}{hx(x+h)}\\
+&=-\frac1{x(x+h)}.
+\end{aligned}
+$$
+
+Son satıra geçerken $h\ne0$ kullandık; ayrıca $x+h\ne0$ gerekir. Sabit bir $x\ne0$ için $h$'yi yeterince küçük seçerek bu koşulu sağlayabiliriz. Limit alınca $g'(x)=-1/x^2$ bulunur. Negatif $x$ için de paydadaki kare pozitif olduğundan türev negatiftir; grafik sıfırın iki yanındaki ayrı aralıkların her birinde azalır.
+
+Ancak buradan “negatif bir girdiden pozitif bir girdiye geçince değer mutlaka azalır” sonucu çıkmaz. Örneğin $g(-1)=-1$, $g(1)=1$'dir. Bu iki noktanın arasındaki $x=0$ fonksiyonun tanımında yoktur. Türevden değişim davranışı çıkarırken kesintisiz bir aralık üzerinde çalışmak gerekir; bir boşluğun üzerinden atlayamayız.
 
 ## 8. Zincir Kuralı: Bir Değişim Başkasını Tetiklerse
 
@@ -226,6 +348,22 @@ $$
 olarak ayrılır. İkinci çarpan $g'(x)$'e, ilk çarpan $f'(u)$'ya yaklaşır; çünkü $g$ sürekli olduğundan $\Delta u\to0$ olur.
 
 Bazı $h$ değerlerinde $\Delta u=0$ olabilir; o durumda yukarıdaki bölmeyi doğrudan yapamayız. Bu boşluğu kapatmak için ilk çarpanı $\Delta u=0$ olduğunda $f'(u)$ değeriyle tanımlarız. Türevin tanımı, bu tamamlanmış çarpanın sıfırda sürekli olmasını sağlar. İkinci çarpan o durumda 0'dır; bileşkenin çıktı farkı da 0 olduğu için çarpım eşitliği yine doğrudur. Böylece zincir kuralı, iç değişimin hiçbir zaman sıfır olmayacağı varsayımına dayanmaz.
+
+### Zincirde dış ve iç değişimi sırayla izlemek
+
+$F(x)=(x^2+1)^3$ için ara değişkeni $u=x^2+1$ diye adlandıralım. İşlem sırası önce $x$'ten $u$'yu, sonra $u$'dan $u^3$'ü üretmektir. Dış fonksiyonun kendi girdisine göre türevi $3u^2$, iç fonksiyonun $x$'e göre türevi $2x$ olduğundan
+
+$$
+\begin{aligned}
+F'(x)
+&=3u^2\cdot2x\\
+&=6x(x^2+1)^2
+\end{aligned}
+$$
+
+olur. $x=1$'de iç çıktı 2, dış türev 12 ve iç türev 2'dir; toplam değişim çarpanı $12\cdot2=24$ çıkar. Yalnızca dış türevi almak 12 sonucunu verir ve ara girdinin de iki kat hızla değiştiğini kaçırır.
+
+Sonucu başka bir yoldan kontrol edebiliriz. Küpü açınca $F(x)=x^6+3x^4+3x^2+1$ olur. Terim terim türev $6x^5+12x^3+6x$ verir. Ortak $6x$ çarpanını ayırınca $6x(x^4+2x^2+1)$, yani yine $6x(x^2+1)^2$ elde edilir. Zincir kuralı bu açılımı her seferinde yapmak zorunda kalmadan aynı hesabı düzenler; iç fonksiyonun türevini eklemek isteğe bağlı bir düzeltme değildir.
 
 ## 9. Trigonometrik, Üstel ve Logaritmik Türevlerin Yeri
 
@@ -270,6 +408,24 @@ $x^2$ fonksiyonunda $a=1$ için $f(1)=1$, $f'(1)=2$ olduğundan teğet $y=1+2(x-
 Genel türev tanımı da benzer bir yerel fikir taşır: $f(a+h)=f(a)+f'(a)h$ ifadesinin hatası, $h$'nin büyüklüğüne bölündüğünde sıfıra yaklaşır. Bu, küçük değişimlerde doğrusal parçanın başlıca davranışı yakalamasıdır. Fonksiyonun bütün aralıkta düz bir doğru olduğunu söylemez.
 
 Karekök için $a=4$ seçersek $f(4)=2$, $f'(4)=1/4$ olur. $\sqrt{4{,}08}\approx2+(1/4)\cdot0{,}08=2{,}02$ bulunur. Yaklaşık işareti önemlidir; teğet hesabı burada tam eşitlik değildir.
+
+### Teğet denklemindeki farkın görevi
+
+Teğet doğrusu yalnızca doğru eğime sahip olmamalı; $(a,f(a))$ noktasından da geçmelidir. $x-a$ ifadesi, girdinin temas noktasından uzaklığıdır. Bu nedenle $f(a)+f'(a)(x-a)$ yazdığımızda $x=a$ için eklenen terim sıfır olur ve çıktı tam $f(a)$ çıkar.
+
+Örneğin $f(x)=x^2$ için $a=2$ alırsak $f(a)=4$, $f'(a)=4$ ve teğet $L(x)=4+4(x-2)=4x-4$ olur. Yanlışlıkla $4+4x$ yazsaydık $x=2$'de 12 elde ederdik; doğru eğimi taşısa da temas noktasından geçmeyen başka bir doğru bulmuş olurduk. Basit yerine koyma kontrolü bu hatayı yakalar.
+
+Yaklaştırmanın hatasını da tam olarak hesaplayabiliriz:
+
+$$
+\begin{aligned}
+f(2+h)&=4+4h+h^2,\\
+L(2+h)&=4+4h,\\
+f(2+h)-L(2+h)&=h^2.
+\end{aligned}
+$$
+
+$h=0{,}01$ için hata $0{,}0001$'dir. Hata sıfır değildir; fakat $h$'ye oranının mutlak değeri $|h|$ olduğundan küçük değişim yanında giderek önemsizleşir. Türevin yerel doğrusal yaklaşım anlamı, tam da bu hata karşılaştırmasıdır.
 
 ## 11. Konum, Hız ve İvme
 

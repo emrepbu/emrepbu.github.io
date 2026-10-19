@@ -55,6 +55,12 @@ $$
 
 Bu yazıda ondalık ayıracı olarak virgül kullanıyoruz. Bazı kitaplarda ve hesap makinelerinde aynı sayı `0.25` biçiminde, noktayla gösterilir. Burada virgülün sağındaki ilk rakam onda birlikleri, ikincisi yüzde birlikleri, üçüncüsü binde birlikleri sayar.
 
+### Rakam ile rakamın değeri farklıdır
+
+$0{,}22$ sayısında iki tane 2 rakamı vardır, fakat katkıları eşit değildir. Soldaki 2, iki onda birlik; sağdaki 2, iki yüzde birlik parça sayar. Bir onda birlik on yüzde birlik olduğundan soldaki katkı sağdakinin on katıdır. Sayıyı oluşturan şey yalnız hangi rakamların yazıldığı değil, hangi basamaklara yerleştirildiğidir.
+
+Bu yüzden $0{,}22$'yi “iki tane 2 yan yana gelmiş” diye okumak hesabı açıklamaz. Ortak küçük birim kullanırsak yirmi yüzde birlik ile iki yüzde birlik toplanır; toplam yirmi iki yüzde birliktir. $0{,}202$ yazımında ise aradaki 0, yüzde birlik katkı bulunmadığını söyler ve son 2'yi binde birler yerinde tutar. İki rakamın görünüşü aynı kalırken temsil ettikleri parçalar değiştiği için sayı farklı olur. Basamak adlarını söylemek, ondalık işlemlerde rakamları yanlış büyüklüklerle eşleştirmemizi önler.
+
 ## 2. Basamak Değeri ve Sıfırın Görevi
 
 $24$ sayısındaki 2, iki onluğu; 4, dört birliği anlatır. Bir basamak sağa geçtiğimizde saydığımız birimin büyüklüğü onda bire iner. Aynı düzen virgülden sonra da sürer.
@@ -127,6 +133,12 @@ Pozitif sayıları karşılaştırırken önce tam kısımlarına bakarız. Bunl
 
 Negatif sayılarda sayı doğrusunu hatırlamak gerekir. $-0{,}8$, $-0{,}75$'ten daha soldadır; bu yüzden $-0{,}8<-0{,}75$. Sıfıra uzaklığı daha büyük olduğu hâlde sayı olarak daha küçüktür.
 
+### Karşılaştırmada ilk farklı basamak neden belirleyicidir?
+
+$2{,}34$ ile $2{,}29$'da tam kısımlar eşittir. İlk sayının onda birler basamağı 3, ikincininki 2'dir. İkinci sayıda sonraki basamakta 9 bulunması bu farkı kapatmaz: $2{,}29$, $2{,}30$'a henüz ulaşmamıştır; $2{,}34$ ise onu geçmiştir. Ondalık basamaklar daha sağa gittikçe küçüldüğü için önce soldaki farklılığı kontrol ederiz.
+
+Daha açık bir kontrol için ikisini yüzde birliklerle sayabiliriz: $2{,}34=234/100$, $2{,}29=229/100$. Aynı büyüklükte 234 parça, 229 parçadan fazladır. Bu işlem, soldan karşılaştırma kuralının arkasındaki ortak birimi görünür yapar. Negatiflerde ise sonuç sayı doğrusuna göre ters sıraya döner: $-2{,}34$, $-2{,}29$'dan daha soldadır. Mutlak büyüklükleri karşılaştırıp aynı yönü negatif sayılara taşımak, konumla sıfıra uzaklığı karıştırmak olur.
+
 ## 4. Toplama ve Çıkarma: Virgüller Neden Hizalanır?
 
 $2{,}7$ metre uzunluğundaki bir şeride $0{,}46$ metre ekleyelim. Yedi onda birlik parça, yetmiş yüzde birlik parçadır. İki uzunluğu yüzde birlik metrelerle yazarsak:
@@ -163,6 +175,12 @@ $$
 $$
 
 İşaretli sayılarda da parçalar değişmez. Örneğin $-0{,}6+0{,}25=-0{,}35$: sıfırın solunda altmış yüzde birlik uzaklıktan başlayıp yirmi beş yüzde birlik adım sağa gideriz.
+
+### Çıkarma sonucunu iki ayrı yoldan kontrol etmek
+
+$3{,}20-0{,}47=2{,}73$ sonucuna ulaştık. Önce ters işlem yapalım: $2{,}73+0{,}47$ toplamında yüzde birlikler $3+7=10$ eder; on yüzde birlik bir onda birlik olur. Onda birlikler bu aktarım dahil $7+4+1=12$ eder; bunun onu bir bütüne aktarılır. Sonuç $3{,}20$ olur ve başlangıca döneriz. “Ödünç alma” veya “elde” işlemleri sayıyı eksiltip artırmaz; aynı miktarı farklı büyüklükte parçalarla yazar.
+
+İkinci kontrol, yaklaşık büyüklüğe bakmaktır. $0{,}47$ yarıma yakındır. $3{,}20$'den yaklaşık yarım çıkarınca sonuç yaklaşık $2{,}70$ olmalıdır. $2{,}73$ buna yakındır. Yanlışlıkla $3{,}73$ bulsaydık pozitif bir miktar çıkardığımız hâlde sayının büyüdüğünü görürdük. Yaklaşık kontrol kesin doğru sonucu tek başına kanıtlamaz, fakat çok sayıda basamak ve işaret hatasını hızlı biçimde ortaya çıkarır. Kesinlik için ters toplamı da kullandık.
 
 ## 5. Çarpma: Virgülün Yerini Parçalar Belirler
 
@@ -233,6 +251,22 @@ Son adımı parçalara ayırabiliriz: $12{,}5$, 125 onda birlik parçadır. Beş
 
 Bölüm tam sayı olmak zorunda değildir. Ayrıca pozitif bir sayıyı sıfır ile bir arasındaki pozitif bir sayıya bölmek, onu büyütebilir; küçük gruplardan daha çok bulunur. Sıfırla ilgili koşul ise aynen kalır: $0\div0{,}5=0$, ama $0{,}5\div0$ tanımsızdır. İşaretli bir örnekte $-0{,}60\div0{,}15=-4$ olur.
 
+### Bölenin virgülünü kaldırırken bölünen neden değişir?
+
+$0{,}84\div0{,}07$ işlemi, $0{,}84$ miktarının içinde kaç tane $0{,}07$ bulunduğunu sorar. İkisini de yüzde birliklerle sayalım: 84 küçük parça içinde yedilik kaç grup vardır? On grup 70 parça, kalan 14 parça iki grup daha eder. Toplam 12 grup buluruz:
+
+$$
+\begin{aligned}
+0{,}84\div0{,}07&=84\div7,\\
+&=12,\\
+12\times0{,}07&=0{,}84.
+\end{aligned}
+$$
+
+Son satır başlangıç miktarını geri oluşturur. Böleni 7 yaparken bölüneni $0{,}84$ bıraksaydık, eski miktarın içindeki yedi bütünlük grupları sayardık; artık her grup yüz kat büyük olurdu. Bölüm de yüz kat küçük çıkardı. İki sayıyı birlikte ölçeklemek bu değişimi önler.
+
+Burada ondalık basamakları aynı sayıda olmadığı için toplamadaki gibi yalnız virgülleri hizalamaya çalışmadık. Bölmede önemli olan iki miktarı aynı yeni birimle saymaktır. Toplama için doğru olan yazım yöntemi, bölmeye düşünmeden taşınamaz; her işlemde neyin korunması gerektiği farklıdır.
+
 ## 7. Kesirden Ondalık Gösterime: Bölmeye Devam Etmek
 
 $\frac{1}{4}$'ü yüz parçalı bir gösterime genişleterek $0{,}25$ bulmuştuk. Bazen uygun paydayı hemen göremeyiz. O zaman kesrin zaten bir bölme işlemi söylediğini kullanırız.
@@ -289,6 +323,8 @@ Burada iki basamak yazıp durmadık. Devir çizgisi, bütün tekrarı temsil edi
 
 Devirli bir gösterim de tam bir değeri anlatabilir. $0{,}\overline{3}$ tam olarak üçte birdir; fakat $0{,}33$ tam olarak üçte bir değildir. Bu fark bizi yaklaşık değerlere götürüyor.
 
+Tekrarlayan basamakları $1/6$ örneğinde açıkça izleyebiliriz. Bir bütünü altı kişiye dağıtmak için onu on onda birlik parçaya ayıralım. Her kişiye bir parça verince altı parça dağılır, dört onda birlik parça kalır. Bu kalan 40 yüzde birlik parçadır. Her kişiye altışar yüzde birlik verince 36 parça dağılır, dört yüzde birlik kalır. Sonraki basamakta bu dört parça 40 binde birliğe dönüşür ve aynı dağıtım tekrar edilir. Bu nedenle ilk basamak 1, sonraki basamaklar hep 6 olur: $1/6=0{,}1666\ldots$. Her adımda kalan sıfırlanmadığı için yazım bitmez; aynı kalan yapısına dönüldüğü için rastgele de ilerlemez. Üç nokta, yazılmayan devamın bulunduğunu anlatır. Sonlu $0{,}166$ yazımı ise bu kesrin tam değeri değildir.
+
 ## 8. Eşitlikten Yaklaşık Değere
 
 İki basamakta durup $\frac{1}{3}$ yerine $0{,}33$ yazdığımızda bir miktarı dışarıda bırakırız:
@@ -341,6 +377,39 @@ Artırma bazen önceki basamağa da taşar: $2{,}998$ yüzde birlere yuvarlandı
 $0{,}379$ sayısının yüzde birlerden sonrasını yalnızca kesersek $0{,}37$ kalır. En yakın yüzde birliğe yuvarlarsak $0{,}38$ elde ederiz. İlkinde rakamları bıraktık; ikincisinde hangi adayın daha yakın olduğuna baktık.
 
 Yuvarlama farkını da uzaklık olarak düşünebiliriz. En yakın onda birliğe yuvarlamada adaylar $0{,}1$ aralıklıdır. Her noktanın en yakın adaya uzaklığı bu aralığın yarısını, yani $0{,}05$'i aşmaz. En yakın yüzde birliğe yuvarlamada bu sınır $0{,}005$ olur. Bunlar **yalnızca yuvarlamanın getirdiği farkın** sınırlarıdır; bir ölçüm cihazının yanılgısını açıklamaz.
+
+### Yuvarlanmış bir sayı ne kadar bilgi taşır?
+
+Bir uzunluğun tam değerini en yakın yüzde bir metreye yuvarlayınca $1{,}24$ metre elde etmiş olalım. Bu gösterim, asıl uzunluğun kesin olarak $1{,}24000\ldots$ metre olduğunu söylemez. Örneğin hem $1{,}236$ hem $1{,}244$ metre aynı $1{,}24$ değerine yuvarlanır.
+
+İki komşu aday $1{,}23$ ve $1{,}25$'tir. Ortadaki sınırlar:
+
+$$
+\begin{aligned}
+\frac{1{,}23+1{,}24}{2}&=1{,}235,\\
+\frac{1{,}24+1{,}25}{2}&=1{,}245
+\end{aligned}
+$$
+
+olur. Bu yazıdaki eşit uzaklık kuralıyla, pozitif gerçek değer $1{,}235$'ten başlayıp $1{,}245$'e varmadan önceki aralıkta bulunuyorsa $1{,}24$ yazılır. Alt sınırdaki sayı $1{,}24$'e, üst sınırdaki sayı ise $1{,}25$'e yuvarlanır. Sınırın dahil olup olmaması, yarım durumunda hangi kuralı seçtiğimize bağlıdır.
+
+Şimdi bu şekilde yuvarlanmış iki uzunluk $1{,}24$ ve $2{,}36$ metre olsun. Gösterilen değerleri toplarsak $3{,}60$ metre buluruz. Her birinde yalnız yuvarlamadan kaynaklanan fark en çok $0{,}005$ metre olduğundan, toplamda iki fark aynı yöndeyse en çok:
+
+$$
+0{,}005+0{,}005=0{,}010\ \text{metre}
+$$
+
+birikebilir. Burada cihazın ölçüm hatasını hesaplamadık; daha önce doğru bilinen iki sayıyı kısaltmanın etkisini izledik. Gerçek ölçümlerde cihazın çözünürlüğü ve ölçüm yöntemi ayrıca değerlendirilir.
+
+Bu nedenle hesap makinesinde $3{,}600000$ görmek, başlangıç verilerinin taşıdığı bilgiyi artırmaz. Sonuçtaki basamak sayısını seçerken yalnız hesap işlemini değil, sayıları nasıl elde ettiğimizi de hatırlarız. Öte yandan iki yuvarlama farkının birbirini azaltması da mümkündür; yukarıdaki değer, her deneyde gerçekleşecek bir sapma değil, izin verilen en büyük fark için bir sınırdır.
+
+### Üst üste yuvarlama neden farklı sonuç verebilir?
+
+Bir sayının tam değeri $1{,}249$ olsun. Doğrudan onda birlere yuvarlarsak adaylar $1{,}2$ ve $1{,}3$'tür. Uzaklıklar sırasıyla $0{,}049$ ve $0{,}051$ olduğundan $1{,}2$ daha yakındır. Şimdi önce yüzde birlere yuvarlayıp $1{,}25$ elde edelim. Bu ara değeri onda birlere yuvarlarsak tam orta noktada kalırız; bu yazının eşit uzaklık kuralı $1{,}3$'ü seçer. Aynı sayıya doğrudan ve iki aşamada yaklaşmak farklı sonuca ulaştı.
+
+Bunun nedeni aritmetik bir çelişki değildir. İlk yuvarlama, sayının $1{,}25$'in biraz altında olduğu bilgisini kaybettirdi. İkinci işlem artık asıl sayıyla değil, onun yuvarlanmış temsilcisiyle çalıştı. Bu yüzden istenen son basamağa mümkün olduğunca asıl değerden tek adımda yuvarlamak daha güvenlidir.
+
+$1{,}249\approx1{,}25$ yazarken yaklaşık eşitlik kullandığımızı da hatırlayalım. Bu işareti sıradan eşitlik gibi okuyup bütün sonraki adımlarda kayıpsız bilgi taşıdığını varsayamayız. Yuvarlama hesabı kısaltır; karşılığında hangi ayrıntıdan vazgeçildiğini bilmemiz gerekir. Burada kaybolan yalnız binde birlik basamaktı, fakat bir sonraki yuvarlama kararını değiştirmeye yetti.
 
 ## 9. Hesabın Sonunda Yuvarlamak
 

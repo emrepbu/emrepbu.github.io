@@ -29,6 +29,10 @@ Buna karşılık $\sin x=1/2$ eşitliği her açı için doğru değildir. Söz 
 
 Özdeşliklerin de tanım koşulları vardır. $\tan x=\sin x/\cos x$ eşitliği ancak $\cos x\ne0$ olduğunda anlamlıdır. “Her açı için doğru” yerine, gerektiğinde “iki tarafın da tanımlı olduğu bütün açılar için doğru” dememiz gerekir. Tanımsız bir ifadeyi eşitliğe yazmak onu tanımlı hâle getirmez.
 
+Bir özdeşliği kanıtlarken aradığımız sonuç baştan doğruymuş gibi kullanılamaz. Örneğin $\sin^2x+\cos^2x=1$ eşitliğinin iki tarafını aynı biçime getirmek istiyorsak dayanağımız çemberin uzaklık eşitliği olabilir. Yalnız eşitliğin iki tarafından aynı ifadeyi çıkarıp sonunda $0=0$ yazmak, başlangıçtaki adımların hangi koşullarda geri alınabildiği açıklanmadan tek başına gerekçe oluşturmaz. Her geçişte bilinen bir eşitlik veya geçerli bir cebir kuralı kullanmalıyız.
+
+Sayısal deneme ise başka işe yarar. $x=0$ ve $x=\pi/2$ seçmek, önerilmiş bir formülün bariz işaret hatasını gösterebilir. Bir karşı örnek genel iddiayı çürütmeye yeterlidir; birkaç doğru örnek ise bütün gerçek açılarda doğru olduğunu kanıtlamaz. Bu yazıda geometrik türetimlere yer vermemizin nedeni tam olarak budur. Hesap kontrolü, uzun bir işlemin sonucunu sınar; ispat, bütün uygun girdileri neden kapsadığımızı açıklar. İkisini birbirini tamamlayan fakat farklı görevler olarak kullanacağız.
+
 ## 2. Dönüş Bir Uzaklığı Değiştirmez
 
 Kosinüsün fark bağıntısını, aynı doğru parçasının uzunluğunu iki farklı konumda hesaplayarak kurabiliriz. Birim çember üzerinde açıları $a$ ve $b$ olan iki noktayı seçelim. $a$ ve $b$ burada iki gerçek açı ölçüsünü temsil eder. Noktalara $P$ ve $Q$ dersek koordinatları:
@@ -73,6 +77,10 @@ $$
 
 Çizimde iki dar açı gösterilmiş olması, sonucun yalnızca dar açılara ait olduğu anlamına gelmez. Koordinatlar işaretli gerçek sayılardır; dönüş ve uzaklık hesabı bütün yönlü açılar için çalışır. Böylece tek bir şeklin görünüşüne bağlı bir varsayım yapmadan genel bağıntıya ulaştık.
 
+Bu ispatta dönüşü hangi bilgiyle kullandığımızı ayıralım. Açısı $b$ olan ışını $-b$ kadar döndürünce başlangıç ışınına getiririz; aynı dönüş diğer ışının açısını $a-b$ yapar. Bu, yönlü açıların toplanmasıdır. Yeni noktanın koordinatlarını $(\cos(a-b),\sin(a-b))$ yazmamızsa birim çemberdeki tanımın doğrudan kullanımıdır. Henüz bu koordinatların $\cos a$, $\sin a$, $\cos b$, $\sin b$ ile nasıl yazıldığını bilmiyoruz; tam olarak bunu uzaklık eşitliğinden çıkarıyoruz.
+
+Böylece kanıtlamak istediğimiz toplam veya fark formülünü döndürme adımına gizlice yerleştirmedik. Uzunluğun değişmemesi, katı döndürmenin eşliği korumasına dayanır. İşlemin sonunda örneğin $a=b$ seçersek iki nokta aynı olur, kiriş uzunluğu sıfırdır. Bulduğumuz eşitlik de $\cos0=\cos^2a+\sin^2a=1$ verir. $b=0$ seçilirse formül $\cos a=\cos a$ hâline gelir. Bunlar genel ispatın yerine geçmez, fakat özel durumlarda şekil ile hesabın birbirini doğruladığını gösterir.
+
 ## 3. Toplam ve Fark Formülleri
 
 Birim çemberde yatay eksene göre yansıma, açıyı $b$'den $-b$'ye götürür. Yatay koordinat değişmez, düşey koordinatın işareti değişir. Bu nedenle $\cos(-b)=\cos b$ ve $\sin(-b)=-\sin b$ olur.
@@ -83,7 +91,9 @@ $$
 \boxed{\cos(a+b)=\cos a\cos b-\sin a\sin b.}
 $$
 
-Sinüs formülünü de aynı geometriden çıkarabiliriz. Birim çemberde $\sin t=\cos(\pi/2-t)$ ilişkisi vardır. Buradaki $t$ herhangi bir açıdır; çeyrek turla ilişkilenen iki noktanın yatay ve düşey koordinatları yer değiştirir. Dolayısıyla:
+Sinüs formülünü de aynı geometriden çıkarabiliriz. Birim çemberde $\sin t=\cos(\pi/2-t)$ ilişkisi vardır. Buradaki $t$ herhangi bir açıdır; çeyrek turla ilişkilenen iki noktanın yatay ve düşey koordinatları yer değiştirir. Bu ilişkinin bütün açılarda geçerli olmasını, birim çemberi $y=x$ doğrusuna göre yansıtarak da görebiliriz. Bu yansıma $(x,y)$ koordinatlarını $(y,x)$ yapar. $t$ açılı noktanın görüntüsü $\pi/2-t$ açısına karşılık gelir; yatay ve düşey koordinatlar yer değiştirdiğinden $\cos(\pi/2-t)=\sin t$ ve $\sin(\pi/2-t)=\cos t$ olur. Yansıma yalnız birinci bölgeye özgü değildir; işaretli koordinatlarla bütün çemberde tanımlıdır. Dolayısıyla dar dik üçgendeki tümler açı kuralını burada gerekçesiz biçimde büyük açılara taşımıyoruz.
+
+Dolayısıyla:
 
 $$
 \sin(a+b)=\cos\bigl((\pi/2-a)-b\bigr).
@@ -136,6 +146,17 @@ Bu yazım için $\cos a$ ve $\cos b$ sıfır olmamalıdır. Son payda da sıfır
 
 Fark formülünde benzer biçimde $\tan(a-b)=(\tan a-\tan b)/(1+\tan a\tan b)$ elde edilir. Yine iki ayrı tanjantın ve son bölümün tanımlı olması gerekir. Sinüs ve kosinüs toplamları bu ek bölme kısıtlarına ihtiyaç duymaz.
 
+Tanjant toplamındaki iki kesrin nasıl oluştuğunu açalım. Sinüs ve kosinüs toplamlarının bölümünde payın ilk terimini $\cos a\cos b$ ile böldüğümüzde $\sin a/\cos a=\tan a$ kalır. Payın ikinci terimi aynı yolla $\tan b$ olur. Paydanın ilk terimi kendi kendine bölününce 1, ikinci terimi ise:
+
+$$
+\frac{\sin a\sin b}{\cos a\cos b}
+=\tan a\tan b
+$$
+
+verir. Önündeki eksi işaretini koruyunca son payda $1-\tan a\tan b$ olur. Her terimi aynı sıfırdan farklı ifadeye bölmemiz, bölümün değerini değiştirmez. Koşulların neden ayrı ayrı yazıldığı böylece görünür olur.
+
+Örneğin $a=30^\circ$, $b=45^\circ$ için toplam açı 75 derecedir. Pay $1/\sqrt3+1$ pozitif, payda $1-1/\sqrt3$ de pozitiftir; tanjantın pozitif olması birinci bölgeyle uyumludur. Paydanın eksi işaretini yanlışlıkla artı yapsaydık aynı geometrik açıyı anlatmayan başka bir oran bulurduk. İşaret kontrolü, formüldeki her terimin türetimdeki yerini hatırlatır.
+
 ## 4. İki Kat Açı Yeni Bir Konu Değil
 
 Toplam bağıntılarında iki açıyı eşit seçelim: $b=a$. Böylece:
@@ -162,14 +183,19 @@ $$
 
 Birinci bölgede $\sin a=3/5$ verilsin. Önce $\cos^2a=1-9/25=16/25$ buluruz. Bölge kosinüsün pozitif olduğunu söylediği için $\cos a=4/5$ seçeriz. Ardından $\sin2a=2(3/5)(4/5)=24/25$ ve $\cos2a=16/25-9/25=7/25$ çıkar. İki değerin kareleri toplamı $(576+49)/625=1$ olduğundan çember koşulu da sağlanır.
 
+İki kat açının bölgesini, başlangıç açısının bölgesiyle otomatik olarak aynı sayamayız. Birinci bölgede bulunan 60 derecenin iki katı 120 derecedir ve ikinci bölgededir. Formüller bunu doğru taşır: $\sin120^\circ=2(\sqrt3/2)(1/2)=\sqrt3/2$ pozitifken, $\cos120^\circ=2(1/2)^2-1=-1/2$ negatiftir. Başlangıçta iki değer de pozitif olsa bile yeni kosinüsün işareti değişebilir.
+
+Bu örnek $\sin2a$ ile $2\sin a$ ayrımını da denetler. $a=60^\circ$ için $2\sin a=\sqrt3$ sayısı 1'den büyüktür; herhangi bir açının sinüsü olamaz. Eksik $\cos a$ çarpanı olmadan yazılan kuralın neden geçersiz olduğunu yalnız sembollerle değil, mümkün çıktı aralığıyla da görürüz. İki kat açı bağıntıları yeni açının koordinatlarını verir; eski koordinatları yalnız ikiyle çarpmak birim çemberin dışına taşır. Dönüşte ise noktanın merkeze uzaklığı 1 olarak kalmalıdır.
+
 ## 5. Yarım Açıda İşareti Kim Belirler?
 
 İki kat açı bağıntısında $a$ yerine $x/2$ yazarsak:
 
 $$
-\sin^2(x/2)=\frac{1-\cos x}{2},
-\qquad
-\cos^2(x/2)=\frac{1+\cos x}{2}.
+\begin{aligned}
+\sin^2(x/2)&=\frac{1-\cos x}{2},\\
+\cos^2(x/2)&=\frac{1+\cos x}{2}.
+\end{aligned}
 $$
 
 Karelerden fonksiyon değerlerine geçerken işaret bilgisi gerekir:
@@ -198,6 +224,10 @@ $$
 
 İşareti $240^\circ$'nin bölgesine göre seçmek yanlış olurdu. Formülde aradığımız değerler $120^\circ$'ye aittir. Aynı şekilde, yalnızca $\cos x$ verilmesi yarım açıların işaretlerini her zaman belirlemeye yetmez; açının aralığı da gerekebilir.
 
+Yarım açı hesabında aynı son ışına sahip iki açının yarılarının aynı son ışına sahip olmayabileceğine dikkat edelim. 240 ve 600 derece arasında bir tam tur vardır; kosinüsleri aynıdır. Ancak yarıları 120 ve 300 derecedir. Birincisinde sinüs pozitif ve kosinüs negatif, ikincisinde sinüs negatif ve kosinüs pozitiftir. Kareleri aynı, işaretleri farklıdır. Bu nedenle yalnız $\cos x$ sayısını bilmek, $x/2$ değerlerinin işaretini her durumda belirleyemez.
+
+Formüldeki artı-eksi işaretinin açıklaması burada somutlaşır. Karekökler büyüklüğü üretir; açı aralığı hangi işaretin seçileceğini söyler. Örneğin $0<x<180^\circ$ verilmişse $0<x/2<90^\circ$ olur ve iki yarım açı değeri de pozitiftir. Fakat $180^\circ<x<360^\circ$ verilirse yarım açı ikinci bölgededir; sinüs pozitif, kosinüs negatiftir. Aralık uçlarını da ayrıca düşünürüz: sınırda değerlerden biri sıfır olabilir. İşaret seçimini yeni açının aralığına taşımak, karekök almanın kaybettiği bilgiyi yerine koyar.
+
 ## 6. Bir Denklemde Bütün Açıları Bulmak
 
 $\sin x=1/2$ denklemini birim çemberde düşünelim. Sinüs düşey koordinattı. Yüksekliği $1/2$ olan yatay çizgi, çemberi bir tur içinde iki noktada keser: $\pi/6$ ve $5\pi/6$.
@@ -207,10 +237,11 @@ $\sin x=1/2$ denklemini birim çemberde düşünelim. Sinüs düşey koordinatt�
 Tam tur eklemek aynı noktaya döndürdüğünden bütün gerçek çözümler:
 
 $$
-x=\frac\pi6+2k\pi
-\quad\text{veya}\quad
-x=\frac{5\pi}6+2k\pi,
-\qquad k\in\mathbb Z.
+\begin{aligned}
+x&=\frac\pi6+2k\pi\\
+\text{veya}\quad x&=\frac{5\pi}6+2k\pi,\\
+&\qquad k\in\mathbb Z.
+\end{aligned}
 $$
 
 $\mathbb Z$ tam sayılar kümesidir; $k$ sıfır, pozitif veya negatif herhangi bir tam sayı olabilir. Böylece ileri ve geri yöndeki bütün turları tek bir yazımda kapsarız. Soruda yalnızca $0\le x<2\pi$ isteniyorsa iki temel açıyı alırız. Genel çözüm ile belirli aralıktaki çözüm aynı şey değildir.
@@ -239,6 +270,19 @@ $$
 
 $0\le x<2\pi$ aralığında $k=0$ ve $k=1$ uygundur. Sonuçlar $\pi/12$, $5\pi/12$, $13\pi/12$ ve $17\pi/12$ olur. İçerideki açı iki kat hızlı ilerlediği için, aynı $x$ aralığında daha çok çözümle karşılaşırız.
 
+İç açıda kayma olduğunda da önce o açıyı çözeriz. Örneğin $0\le x<2\pi$ aralığında $\sin(x-\pi/6)=1/2$ olsun. Geçici olarak $u=x-\pi/6$ yazarsak bildiğimiz iki aile $u=\pi/6+2k\pi$ ve $u=5\pi/6+2k\pi$ olur. Her iki aileye $\pi/6$ eklediğimizde:
+
+$$
+\begin{aligned}
+x&=\frac\pi3+2k\pi\\
+\text{veya}\quad x&=\pi+2k\pi
+\end{aligned}
+$$
+
+çıkar. Belirtilen aralıkta yalnız $k=0$ uygundur; sonuçlar $\pi/3$ ve $\pi$'dir. Başlangıçta kontrol edersek iç açılar sırasıyla $\pi/6$ ve $5\pi/6$ olur; iki sinüs de $1/2$ verir.
+
+Burada aralığı $u$'ya doğrudan $[0,2\pi)$ diye taşımadık. Aslında $u$ aralığı $[-\pi/6,11\pi/6)$'dır. Genel çözümleri önce bulup son aşamada asıl değişken $x$ için verilen aralığı uygulamak, iç açı dönüşümünün sınırları nasıl değiştirdiğini gözden kaçırmamızı önler. Aynı disiplin hem çarpan hem kayma bulunan denklemlerde de geçerlidir.
+
 ## 7. Bölme Yaparken Bir Çözümü Kaybetmemek
 
 Şimdi $\sin2x=\sin x$ denklemini çözelim. İki kat açı bağıntısıyla:
@@ -258,6 +302,35 @@ Bir çarpımın sıfır olması için çarpanlardan en az biri sıfır olmalıd�
 $0\le x<2\pi$ aralığında çözümler $0$, $\pi/3$, $\pi$ ve $5\pi/3$ olur. Başta sinüse bölseydik $0$ ile $\pi$'yi kaybederdik. Bölme adımı yanlış cebir yapıldığı için değil, bölenin sıfır olabileceği durumu dışladığı için sorun çıkarır.
 
 Kare alma işlemi ters yönde tehlike taşır: çözüm kaybetmek yerine yeni adaylar ekleyebilir. Örneğin $\sin x=-1/2$ denkleminin karesini alınca $\sin^2x=1/4$ olur. Son denklem $\sin x=+1/2$ olan açıları da kabul eder. Bu yüzden adayları başlangıç denkleminde doğrulamak gerekir. Aynı dikkat köklü ve paydalı cebirsel denklemlerde de geçerliydi.
+
+### İkinci derece bir denklemin içinde sinüs varsa
+
+$0\le x<2\pi$ aralığında şu denklemi çözelim:
+
+$$
+2\sin^2x-\sin x-1=0.
+$$
+
+$\sin^2x$, $\sin(x^2)$ değil, $(\sin x)^2$ demektir. Tekrarlanan $\sin x$ ifadesine geçici olarak $u$ diyelim. Denklem $2u^2-u-1=0$ olur. Çarpanlara ayırarak:
+
+$$
+(2u+1)(u-1)=0
+$$
+
+elde ederiz. Buradan $u=-1/2$ veya $u=1$ çıkar. Fakat aradığımız şey $u$ değeri değil, açı olan $x$'tir. Bu nedenle geri dönüp iki ayrı trigonometrik denklem çözeriz.
+
+$\sin x=1$ çemberin en üst noktasını verir: belirtilen aralıkta yalnız $x=\pi/2$. $\sin x=-1/2$ ise düşey koordinatın negatif olduğu üçüncü ve dördüncü bölgeleri verir. Referans açı $\pi/6$ olduğundan açılar $x=7\pi/6$ ve $x=11\pi/6$'dır. Toplam üç çözüm bulunur.
+
+Başlangıç denkleminde sinüs değeri 1 olan dal için $2-1-1=0$; sinüs değeri $-1/2$ olan dal için:
+
+$$
+2\left(-\frac12\right)^2-\left(-\frac12\right)-1
+=\frac12+\frac12-1=0
+$$
+
+çıkar. Kontrolü açıların yaklaşık ondalık değerleriyle değil, tam sinüs değerleriyle yaptığımız için yuvarlama hatası taşımadık.
+
+Bu tür bir yerine koymada ayrıca $-1\le u\le1$ koşulunu korumalıyız. İkinci derece denklem örneğin $u=2$ kökünü verseydi, bu sayı cebirsel denklemi sağlayabilir ama gerçek bir açının sinüsü olamazdı. Sonra her kabul edilen $u$ için çemberdeki bütün açıları ve verilen aralık uçlarını denetleriz. Cebirsel kök sayısı ile trigonometrik çözüm sayısının aynı olmak zorunda olmaması, bu iki aşamalı yapının sonucudur.
 
 ## 8. Aralığı ve Birimi Sonuca Taşımak
 

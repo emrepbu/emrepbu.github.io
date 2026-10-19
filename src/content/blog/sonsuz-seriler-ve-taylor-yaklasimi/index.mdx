@@ -33,14 +33,20 @@ $$
 
 $r\ne1$ için $S_N=a(1-r^N)/(1-r)$ bulunur. $r=1$ için bütün terimler $a$ olduğundan toplam $Na$'dır. Bölme formülünün istisnasını böylece ayrıca ele alırız.
 
+### Toplam işaretindeki üç farklı bilgi
+
+$\sum_{n=1}^{N}a_n$ yazımında $n$, toplanan terimin sıra numarasıdır; $a_n$ o sıradaki değerdir; $N$ ise nerede durduğumuzu söyler. Örneğin $a_n=1/2^n$ ve $N=3$ seçildiğinde yazım $1/2+1/4+1/8=7/8$ anlamına gelir. Burada $n$'yi tek bir değere eşitlemiyoruz; 1, 2 ve 3 değerlerini sırayla kullanıyoruz. Toplam bittikten sonra sonuçta serbest bir $n$ kalmaz.
+
+Başlangıç indisi de hesabın parçasıdır. Aynı formülde $n=0$'dan başlarsak $1/2^0=1$ terimini ekleriz; sonuç $15/8$ olur. Sonsuzluk işareti de çok büyük bir son terim numarası değildir. Önce her sonlu $N$ için bir sayı üretir, sonra bu sayıların $N$ büyürken ne yaptığını inceleriz. Sonsuz bir ifadeyle güvenilir işlem yapmanın zemini bu sonlu toplamlar ve onların limitidir.
+
 ## 2. Dizi ile seri aynı nesne değildir
 
 $a_1,a_2,\ldots$ tek tek terimlerin dizisidir. Bu terimlerden $S_N=a_1+\cdots+a_N$ adlı başka bir dizi kurarız; buna kısmi toplamlar dizisi denir. Sonsuz seri $\sum_{n=1}^{\infty}a_n$, bu kısmi toplamların limitidir:
 
 $$
-\sum_{n=1}^{\infty}a_n=S
-\quad\text{demek}\quad
-\lim_{N\to\infty}S_N=S\text{ demektir.}
+\begin{aligned}
+&\sum_{n=1}^{\infty}a_n=S\\&\quad\Longleftrightarrow\quad\lim_{N\to\infty}S_N=S.
+\end{aligned}
 $$
 
 Limit sonluysa seri yakınsaktır. Bir sonlu limit yoksa ıraksaktır. “Sonsuz terimlerin hepsini bitirip topladık” demiyoruz; sonlu toplamların giderek büyüyen ailesinin davranışını tanımlıyoruz.
@@ -50,6 +56,8 @@ Geometrik örnekte $|r|<1$ ise $r^N\to0$ olur ve toplam $a/(1-r)$'ye gider. $a=1
 $r=-1/2$ olduğunda işaretler sırayla değişir; toplam $1/(1+1/2)=2/3$ olur. Kısmi toplamlar bu değerin iki yanında gidip gelir. $r=-1$ için ise $1,0,1,0,\ldots$ kısmi toplamları oluşur; tek bir limit yoktur. Bu standart seri tanımında toplama herhangi bir “ortalama değer” atamayız.
 
 ![Geometrik serinin kısmi toplamları 2 sınırına yaklaşırken kalan miktar küçülür.](./geometrik-toplam.svg)
+
+İlk bölümdeki $a_n=1/2^n$ örneğine dönersek ilk üç **terim** $1/2,1/4,1/8$, ilk üç **kısmi toplam** ise $1/2,3/4,7/8$'dir. Terimler küçülürken toplamlar büyür. Genel geometrik toplamdan $S_N=1-2^{-N}$ çıkar; dolayısıyla $S_N$ ile 1 arasındaki fark tam olarak $2^{-N}$'dir. On terimde fark $1/1024$ olur. “Serinin toplamı 1” dediğimizde herhangi bir sonlu toplamın 1 olduğunu söylemiyoruz; istediğimiz kadar küçük bir fark sağlayacak kadar terim alabileceğimizi söylüyoruz.
 
 ## 3. Terimlerin sıfıra gitmesi neden yetmez?
 
@@ -66,6 +74,18 @@ $0\leq a_n\leq b_n$ ve $\sum b_n$ yakınsaksa $\sum a_n$ da yakınsaktır. Kısm
 Pozitif, sürekli ve azalan $f$ için $a_n=f(n)$ seçersek dikdörtgenleri eğri altı alanlarla karşılaştırabiliriz. $[n,n+1]$ üzerinde $f(n+1)\leq f(x)\leq f(n)$ olur. İntegral alınca her alan iki komşu terim arasında kalır. Bu eşitsizlikler toplandığında $\sum f(n)$ ile $\int_1^\infty f(x)dx$ aynı yakınsaklık davranışına sahip olur.
 
 Örneğin $\sum1/n^p$ pozitif $p$ için bu teste uyar. Önceki uygunsuz integral hesabı, $p>1$ iken yakınsak, $0<p\leq1$ iken ıraksak olduğunu verir. $p\leq0$ iken terimler zaten sıfıra gitmez. Böylece bütün gerçek $p$ değerleri için sınır yine 1'dir.
+
+### Yakınsadığını bilmek ile kalanını ölçmek
+
+$\sum_{n=1}^{\infty}1/n^2$ için ilk $N$ terimden sonraki kuyruk $R_N=\sum_{n=N+1}^{\infty}1/n^2$ olsun. $1/x^2$ pozitif ve azalan olduğundan, her birim aralıkta eğriyi sağ veya sol uçtaki yüksekliğe sahip dikdörtgenlerle sınırlayabiliriz. Bu karşılaştırma:
+
+$$
+\int_{N+1}^{\infty}\frac{dx}{x^2}
+\le R_N\le
+\int_N^{\infty}\frac{dx}{x^2}
+$$
+
+verir. Antitürev $-1/x$ olduğu için sınırlar $1/(N+1)$ ve $1/N$'dir. Örneğin on terim topladıktan sonra eklenmemiş miktar $1/11$ ile $1/10$ arasındadır. Sonraki tek terimin $1/121$ olması, toplam hatanın da bu kadar olduğu anlamına gelmez; arkada sonsuz sayıda pozitif terim vardır. Alternanslı serilerdeki “ilk atılan terim” kuralını burada kullanamayız. Hata kuralı, serinin hangi özelliklerine dayanarak türetildiyse o koşullarla birlikte geçerlidir.
 
 ## 5. Oran testi geometrik karşılaştırmadır
 
@@ -87,6 +107,16 @@ $$
 
 Dolayısıyla seri mutlak yakınsaktır. Faktöriyelin büyümesi, sabit tabanlı üstel büyümeyi sonunda bastırır. Buna karşılık hem $1/n$ hem $1/n^2$ için oran limiti 1'dir; biri ıraksak, diğeri yakınsaktır. Kararsız bir testi başarısız hesap gibi görmeyiz; başka bilgi gerektiğini öğrenmiş oluruz.
 
+Faktöriyel içeren oranı bir satır daha açalım. $n!=1\cdot2\cdots n$ ve $(n+1)!=(n+1)n!$ olduğundan $a_n=3^n/n!$ için:
+
+$$
+\frac{a_{n+1}}{a_n}
+=\frac{3^{n+1}}{(n+1)n!}\frac{n!}{3^n}
+=\frac3{n+1}.
+$$
+
+$n!$ çarpanları ve $3^n$ sadeleşir; geriye yalnız yeni eklenen çarpanlar kalır. $n\ge5$ olduğunda oran en fazla $1/2$'dir. Bu noktadan sonraki terimler, her adımda en az yarıya inen bir geometrik dizinin altında kalır. İlk birkaç terimin önce büyümüş olması yakınsamayı bozmaz; sonlu sayıda terim sonlu bir katkı yapar. Testin bütün terimlerin baştan itibaren azalmasını istememesinin nedeni budur.
+
 ## 6. Alternans ve hata sınırı
 
 $b_n\geq0$ terimleri azalarak sıfıra gitsin. İşaretleri sırayla değişen $\sum_{n=1}^{\infty}(-1)^{n-1}b_n$ serisi yakınsaktır. Çift ve tek kısmi toplamları ayrı düşündüğümüzde biri alttan yükselir, diğeri üstten iner. Aralarındaki fark sıradaki $b_n$ olduğundan sıfıra yaklaşır ve iki dizi aynı limite sıkışır.
@@ -101,6 +131,10 @@ $$
 
 Mutlak değerli seri $\sum|a_n|$ yakınsaksa asıl seri de yakınsaktır; buna mutlak yakınsaklık denir. Alternanslı harmonik serinin mutlak değerleri harmonik seriyi verdiğinden o yalnız koşullu yakınsaktır. Mutlak yakınsak serilerde terim sırasını değiştirmek toplamı korur. Koşullu serilerde bunu gelişigüzel yapamayız; sonsuz toplamlar sonlu toplamların bütün alışkanlıklarını koşulsuz taşımaz.
 
+Alternanslı harmonik seride ilk dört toplamı açık yazarsak $S_1=1$, $S_2=1/2$, $S_3=5/6$, $S_4=7/12$ olur. Çift toplamın iki adım sonraki artışı $S_{2m+2}-S_{2m}=b_{2m+1}-b_{2m+2}\ge0$'dır. Tek toplamın değişimi ise $S_{2m+3}-S_{2m+1}=-b_{2m+2}+b_{2m+3}\le0$'dır. Bu işaretler, terim büyüklüklerinin azaldığı koşulundan gelir.
+
+Her çift toplam karşılık gelen tek toplamın altında kalır; aralarındaki fark bir $b_n$ terimidir. Bu fark sıfıra giderken alttaki artan ve üstteki azalan toplamlar aynı sayıya yaklaşır. Limit iki komşu toplamın arasında olduğundan, herhangi bir $S_N$'nin limite uzaklığı en fazla $|S_{N+1}-S_N|=b_{N+1}$ olabilir. Hata sınırı böylece yakınsama ispatının geometrisinden çıkar; ayrı bir ezber formülü değildir.
+
 ## 7. Girdi içeren seri: kuvvet serisi
 
 Bir $a$ merkezi çevresinde:
@@ -114,6 +148,17 @@ biçimindeki seriye kuvvet serisi denir. $c_n$ katsayıları sabittir; $x$ deği
 $\sum_{n=1}^{\infty}x^n/n$ için oran limiti $|x|$ olur. Bu nedenle $|x|<1$ içinde yakınsaktır. $x=1$ noktasında harmonik seri olduğu için ıraksar. $x=-1$ noktasında alternanslı harmonik seri olduğu için yakınsar. Yakınsaklık aralığı $[-1,1)$'dir; sağ uç açık, sol uç kapalıdır. Bir yarıçap bulmak uçları otomatik karara bağlamaz.
 
 Kuvvet serileri açık yakınsaklık aralığının içindeki her kapalı küçük aralıkta yeterince düzenli yakınsar. Bu özellik sayesinde terim terim türev ve integral alınabilir; türev ve integral serilerinin yarıçapı aynıdır. Uç noktalardaki davranış değişebilir. Bu sonuç genel seriler için izinsiz bir kural değildir; kuvvet serilerinin özel düzenine dayanır.
+
+Kuvvet serisi örneğinde $x\ne0$ için oran hesabı:
+
+$$
+\left|\frac{x^{n+1}/(n+1)}{x^n/n}\right|
+=|x|\frac{n}{n+1}\longrightarrow |x|
+$$
+
+olur. $n/(n+1)$ limitte 1'e gittiği için kalan ölçü $|x|$'tir. $x=0$ durumunda oran $0/0$ görünür; burada teste gerek yoktur, bütün terimler sıfırdır ve seri yakınsar. Uçlardan $x=-1$ konunca seri $-1+1/2-1/3+\cdots$ olur; bu, alternanslı harmonik serinin eksilisidir ve yine yakınsaktır. $x=1$ konunca işaret değişimi kaybolur ve harmonik ıraksama geri gelir.
+
+Terim terim işlem kuralını $1/(1-x)=1+x+x^2+\cdots$ serisinde deneyebiliriz. $|x|<1$ içinde türev almak $1/(1-x)^2=1+2x+3x^2+\cdots$ verir. Sabit 1'in türevi sıfır olduğu için yeni seri eski ikinci terimden başlar. Bu eşitliği $x=1$'de kullanamayız: hem sol ifade tanımsızdır hem seri ıraksar. İşlem yapılan aralığı sonuçla birlikte taşımak gerekir.
 
 ## 8. Taylor katsayıları nereden gelir?
 
@@ -132,8 +177,10 @@ Bu eşleşme bütün gerçek doğru üzerinde kusursuz yaklaşım garantisi değ
 $f$'nin $a$ ile $x$ arasındaki aralıkta $N+1$ kez sürekli türevlenebilir olduğunu varsayalım. Taylor teoremi bir ara $\xi$ noktası için:
 
 $$
-f(x)=P_N(x)+R_N(x),\qquad
-R_N(x)=\frac{f^{(N+1)}(\xi)}{(N+1)!}(x-a)^{N+1}
+\begin{aligned}
+f(x)&=P_N(x)+R_N(x),\\
+R_N(x)&=\frac{f^{(N+1)}(\xi)}{(N+1)!}(x-a)^{N+1}
+\end{aligned}
 $$
 
 verir. $\xi$'nin tam yerini bilmesek de bütün aralıkta $|f^{(N+1)}|\leq M$ ise:
@@ -145,6 +192,37 @@ $$
 buluruz. Bu yalnız “yaklaşık” demekten güçlüdür: belirli bir polinomun belirli bir noktadaki hatasını sınırlar.
 
 Teoremin yapısı temel teoremden de görülebilir. $f(x)=f(a)+\int_a^xf'(t)dt$ ile başlarız. İntegrandaki türevi de kendi başlangıç değeri ve birikimi olarak açar, işlemi tekrarlarsak polinom terimleri ortaya çıkar. Kalan $\frac1{N!}\int_a^x f^{(N+1)}(t)(x-t)^Ndt$ biçimindedir. Süreklilik ve integralin ortalama değer özelliği bu ifadeyi yukarıdaki ara nokta biçimine dönüştürür. Böylece Taylor yaklaşımı, tekrarlanan birikimin düzenli hesabıdır.
+
+Kalanın integral biçimini birinci derecede açık görebiliriz. $a<x$ için $\int_a^x(x-t)f''(t)dt$ integraline kısmi integrasyon uygulayalım. $u=x-t$, $dv=f''(t)dt$ seçilirse $du=-dt$, $v=f'(t)$ olur. Sınır terimi $[(x-t)f'(t)]_a^x=-(x-a)f'(a)$'dır. Kalan integral $\int_a^xf'(t)dt=f(x)-f(a)$ verir. Düzenlemek:
+
+$$
+\begin{aligned}
+f(x)&=f(a)+(x-a)f'(a)\\
+&\quad+\int_a^x(x-t)f''(t)dt.
+\end{aligned}
+$$
+
+sonucunu üretir. Böylece teğet doğrudan kalan farkın nerede saklandığı açıkça görülür. $|f''(t)|\le M$ ise son integralin mutlak değeri en fazla $M\int_a^x(x-t)dt=M(x-a)^2/2$ olur. Daha yüksek dereceler aynı kısmi integrasyon adımının tekrarıyla gelir; faktöriyeller, bu kuvvetlerin art arda integrallerinden oluşur.
+
+### Katsayıdan yaklaşık değere, yaklaşık değerden hata sınırına
+
+$f(x)=\sqrt{x}$ için $a=4$ çevresinde ikinci derece Taylor polinomunu kuralım. Merkezde değer $f(4)=2$'dir. Türevler $f'(x)=1/(2\sqrt{x})$ ve $f''(x)=-1/(4x^{3/2})$ olduğundan $f'(4)=1/4$, $f''(4)=-1/32$ buluruz. İkinci katsayıya doğrudan $-1/32$ yazmayız: ikinci türev alınırken $(x-4)^2$ teriminden 2 çarpanı geleceği için katsayıyı $2!=2$'ye böleriz.
+
+$h=x-4$ dersek sonuç:
+
+$$
+P_2(4+h)=2+\frac h4-\frac{h^2}{64}.
+$$
+
+$x=4{,}4$ için $h=0{,}4$ ve $P_2=2+0{,}1-0{,}0025=2{,}0975$ olur. Hatanın küçük olduğunu yalnız görünüşten çıkarmayalım. Üçüncü türev $f^{(3)}(x)=3/(8x^{5/2})$'dir. $[4,4{,}4]$ aralığında bu pozitif fonksiyon azalır; en büyük değeri $3/256$'dır. Kalan terim sınırı:
+
+$$
+|f(4{,}4)-P_2(4{,}4)|
+\le\frac{3}{256}\frac{(0{,}4)^3}{6}
+=0{,}000125
+$$
+
+verir. Böylece yaklaşık değeri ve güvenilirliğini aynı hesap içinde elde ettik. Merkezden uzaklık $h$, katsayılar ve türevin bütün aralıktaki üst sınırı birbirinden farklı rollere sahiptir; bunları ayrı izlemek Taylor formülünü kullanılabilir bir yönteme dönüştürür.
 
 ## 10. Üstel fonksiyonun serisi
 
@@ -164,9 +242,10 @@ $x=0{,}2$ ve derece 3 için polinom $1+0{,}2+0{,}02+0{,}001333\ldots=1{,}221333\
 Sinüsün türevleri sırayla $\cos x,-\sin x,-\cos x,\sin x$ biçiminde döner. Sıfırdaki çift dereceli katsayılar kaybolur; tek dereceliler sırayla işaret değiştirir. Kosinüste bunun tersi olur:
 
 $$
-\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,
-\qquad
-\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots.
+\begin{aligned}
+\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,\\
+\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots.
+\end{aligned}
 $$
 
 Bütün türevlerin mutlak değeri en fazla 1 olduğu için Taylor kalanı $|x|^{N+1}/(N+1)!$ ile sınırlıdır ve her sabit $x$ için sıfıra gider. Dolayısıyla bu seriler de bütün gerçek girdilerde fonksiyonlara eşittir. Açılar yine radyan cinsindedir; türev kurallarındaki birim koşulu katsayılara da taşınır.
@@ -177,11 +256,44 @@ $x=0{,}5$ için üçüncü dereceden sinüs yaklaşımı $0{,}5-0{,}125/6=0{,}47
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Taylor polinomlarıyla yaklaşmak" caption="Sinüsün değer ve türev bilgileriyle kurulan polinomlar üst üste gösterilir; merkeze yakın uyum ile uzak bölgedeki hata karşılaştırılır." />
 
+### Kaç terimde duracağımıza önceden karar vermek
+
+Bir seri yaklaşımında yalnız yakınsaklık bilgisi pratik hesap için yeterli değildir; istenen hata payına kaç terimle ulaşacağımızı da bilmek isteriz. $\ln(1{,}2)$ değerini hata $0{,}0001$'den küçük olacak biçimde hesaplayalım. Geometrik seri, $|t|<1$ için $1/(1+t)=1-t+t^2-t^3+\cdots$ verir. Sıfır ile $x$ arasında terim terim integral alınca:
+
+$$
+\begin{aligned}
+\ln(1+x)&=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots,\\
+&|x|<1
+\end{aligned}
+$$
+
+elde edilir. Sabit terim sıfırdır çünkü $\ln1=0$ olur. Burada integral işlemi, kuvvet serisinin açık yakınsaklık aralığı içindeki kapalı aralıkta uygulanmıştır; sınır noktaları hakkında koşulsuz bir işlem yapmadık.
+
+$x=0{,}2$ seçildiğinde terim büyüklükleri $b_n=(0{,}2)^n/n$ olur. Ardışık oran $b_{n+1}/b_n=0{,}2n/(n+1)<0{,}2$ olduğundan terimler azalır ve sıfıra gider. Alternans hata sınırını bu nedenle kullanabiliriz. İlk dört terimin toplamı:
+
+$$
+\begin{aligned}
+S_4&=0{,}2-\frac{0{,}04}{2}
++\frac{0{,}008}{3}-\frac{0{,}0016}{4}\\
+&=0{,}1822666\ldots
+\end{aligned}
+$$
+
+olur. İlk atlanan terim $b_5=(0{,}2)^5/5=0{,}000064$'tür; istenen $0{,}0001$ sınırından küçüktür. Üstelik ilk atlanan terim pozitif olduğu için gerçek toplam $S_4$ ile $S_4+0{,}000064$ arasında kalır. Ondalık uçları aralığın dışına doğru yuvarlarsak $0{,}1822666$ ile $0{,}1823307$ arasında güvenilir bir aralık elde ederiz. Alt sınırı aşağı, üst sınırı yukarı yuvarlamak önemlidir; içe yuvarlamak hesapladığımız güvencenin küçük bir parçasını kaybettirebilir.
+
+Üç terimde dursaydık aynı test yalnız $b_4=0{,}0004$ sınırını verecekti. Bu, hatanın kesinlikle büyük olduğunu söylemez; istediğimiz küçük hatayı bu testle henüz garanti edemediğimizi söyler. Dördüncü terimi ekleme kararını gerçek cevabı önceden bilmeden verdik.
+
+Sonucun çok sayıda ondalığını yazmak ile o basamakların güvenilirliğini göstermek farklıdır. Burada güveni sağlayan şey hesap makinesinin gösterdiği rakam sayısı değil, terimlerin azaldığını doğrulamamız ve kalan toplamı ilk atlanan terimle sınırlamamızdır.
+
 ## 12. Her düzgün fonksiyon kendi Taylor serisine eşit mi?
 
 Hayır. $x\ne0$ için $f(x)=e^{-1/x^2}$ ve $f(0)=0$ tanımlansın. Bu fonksiyonun sıfırdaki bütün türevleri sıfırdır; Taylor serisi tamamen sıfır çıkar. Buna rağmen sıfır dışındaki her noktada fonksiyon pozitiftir. Bu örneğin temel nedeni, $e^{-1/x^2}$'nin sıfıra herhangi bir $x$ kuvvetinden daha hızlı yaklaşmasıdır.
 
 Bu hızlı azalmayı $t=1/x^2\to\infty$ dönüşümüyle görebiliriz. Her sabit $m$ için $t^m e^{-t}\to0$ olur; üstel seride yeterince yüksek tek bir pozitif terim bile $e^t$'nin bir güçten daha hızlı büyüdüğünü gösterir. Tekrarlanan türevler üstel ifadeyi $1/x$'in polinomlarıyla çarpar; bu hızlı azalma bütün limitleri sıfıra götürür. Böylece çok kez türevlenebilir olmak ile Taylor serisine eşit olmak farklı özelliklerdir.
+
+Son örnekte ilk türevin sıfırda nasıl bulunduğunu doğrudan tanımdan kontrol edelim. $f'(0)$ için oran $e^{-1/h^2}/h$'dir. Mutlak değerde $t=1/h^2$ yazmak $t^{1/2}e^{-t}$ verir. Pozitif $t$ için üstel seriden $e^t\ge t^2/2$ olduğundan bu oran en fazla $2/t^{3/2}$ olur ve sıfıra gider. Dolayısıyla $f'(0)=0$'dır.
+
+Sıfır dışında türev $f'(x)=2x^{-3}e^{-1/x^2}$ olur; zincir kuralında $-x^{-2}$'nin türevi $2x^{-3}$'tür. Sonraki türevlerde yine üstel çarpan ve sonlu sayıda negatif $x$ kuvveti oluşur. Her sabit kuvvet için üstel seriden daha yüksek bir kuvvetli alt sınır seçebiliriz: $e^t\ge t^k/k!$. $k$ yeterince büyük seçildiğinde bütün gerekli oranlar sıfıra sıkışır. Bu, her sonraki türevin sıfırda yine 0 olmasını sağlar. Bütün katsayıların sıfır olmasıyla fonksiyonun sıfır dışında pozitif kalması arasındaki fark, kalan terimin önemini somutlaştırır.
 
 Serilerle çalışırken üç soruyu ayrı tutacağız: terimler hangi ifadeyi veriyor, kısmi toplamlar yakınsıyor mu, yakınsıyorsa toplam hedef fonksiyona eşit mi? Taylor kalanı üçüncü soruya cevap verir. Bu ayrım, bir sonraki yazıda karmaşık üstel fonksiyonu tanımlayıp sinüs ve kosinüsle ilişkilendirirken de hesabın temel güvencesi olacak.
 

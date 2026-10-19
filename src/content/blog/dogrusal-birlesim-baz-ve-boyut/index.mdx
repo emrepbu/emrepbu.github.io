@@ -69,6 +69,14 @@ Bu hesap iki okun bütün düzlemi gerdiğini kanıtlar. Yalnızca birkaç hedef
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="İki bağımsız yönle düzlemi kurmak" caption="(1, 0) ve (1, 1) yönleri, (3, 2) vektörünü 1 ve 2 katsayılarıyla oluşturur. Aynı doğru üzerindeki iki yön ise düzlemin dışına açılamaz." />
 
+### Bir hedefin gerilen kümede olup olmadığını sınamak
+
+Germe sorusunda önce hedefi bir birleşime eşitleriz; katsayıları bulmadan erişilebilir olduğuna karar vermeyiz. Tek yön $\mathbf u=(2,1)$ ve hedef $(6,3)$ olsun. $t(2,1)=(6,3)$ iki koşul verir: $2t=6$ ve $t=3$. İkisi de aynı $t$ değerini istediği için hedef doğru üzerindedir. Hedef $(6,4)$ olsaydı birinci koşul $t=3$, ikincisi $t=4$ isterdi. Tek katsayı iki farklı değere sahip olamayacağı için hedefe ulaşılamazdı.
+
+İki vektör kullanıldığında da mantık değişmez; yalnız iki bilinmeyenli bir sistem kurarız. Örneğin $(1,1)$ ve $(1,-1)$ ile $(4,2)$ hedefini üretmek için $s+t=4$, $s-t=2$ yazılır. Denklemleri toplamak $2s=6$, yani $s=3$ verir. İlk denklemden $t=1$ bulunur. Yerine koyunca $3(1,1)+(1,-1)=(4,2)$ elde edilir.
+
+Burada “birleşim var” sonucunu bu tek hedef için gösterdik. Bütün düzlemi gerdiğimizi söylemek için aynı işlemi genel $(x,y)$ hedefinde yapmak gerekir: katsayılar $s=(x+y)/2$ ve $t=(x-y)/2$ olur. Payda olan 2 hiçbir hedef için sıfır olmadığı için her hedefe erişilir.
+
 ## 3. Daha Fazla Ok Her Zaman Yeni Yön Değildir
 
 $\mathbf u=(1,1)$ ve $\mathbf v=(2,2)$ olsun. İkinci vektör birincinin iki katıdır. Birleşimlerini açalım:
@@ -108,6 +116,14 @@ Sıfır vektörü içeren her liste bağımlıdır. Sıfır vektörünün katsay
 
 $\mathbf u=(1,0)$, $\mathbf v=(0,1)$ ve $\mathbf w=(2,3)$ vektörlerini alalım. $\mathbf w=2\mathbf u+3\mathbf v$ olduğundan $2\mathbf u+3\mathbf v-\mathbf w=\mathbf0$ bulunur. Üçü birlikte bağımlıdır. Fakat bu, listenin hiçbir işe yaramadığı anlamına gelmez; hâlâ bütün düzlemi gererler. Yalnızca gereğinden fazla yön bilgisi taşırlar.
 
+### Sıfır birleşimi gereksiz vektörü nasıl açığa çıkarır?
+
+Üç vektör arasında $2\mathbf u-\mathbf v+3\mathbf w=\mathbf0$ ilişkisi bulunduğunu düşünelim. Buradaki sıfır olmayan katsayılar bize bir vektörün diğerlerinden kurulabileceğini söyler. Örneğin iki tarafa $\mathbf v$ ekleyince $\mathbf v=2\mathbf u+3\mathbf w$ olur. Dolayısıyla içinde $\mathbf v$ bulunan her birleşimde bu ifadeyi yerine koyabiliriz; erişilebilen sonuçlar değişmeden $\mathbf v$ listeden çıkarılabilir.
+
+Genel gerekçe de aynıdır. Sıfır birleşiminde katsayılardan biri sıfırdan farklıysa, ona ait vektörü yalnız bırakmak için bu katsayıya böleriz. En az bir sıfır olmayan katsayı bulunması koşulu tam da bu adımı mümkün kılar. Bütün katsayılar sıfır olsaydı eşitlik yalnız $\mathbf0=\mathbf0$ der, hiçbir vektörün gereksiz olduğunu göstermezdi.
+
+Bağımlılığı ararken katsayıların hepsinin sıfırdan farklı olması gerekmez. $(1,0),(2,0),(0,1)$ listesinde $2(1,0)-(2,0)+0(0,1)=\mathbf0$ ilişkisi yeterlidir. Üçüncü vektörün katsayısının sıfır olması bağımlılığı bozmaz. Ayrıca bu listede üçüncü yön gerçekten gereklidir; bağımlı bir listeden rastgele herhangi bir vektörü çıkarmanın gerilen kümeyi koruyacağını söylemeyiz. Hangi vektörün diğerlerinden yazıldığını ilişki gösterir.
+
 ## 5. Baz: Yeterli ve Tekrarsız Yönler
 
 Bir vektör kümesini hem geren hem de doğrusal bağımsız olan vektör listesine o kümenin **bazı** denir. İki koşul birlikte gerekir. Germe, hiçbir hedefin dışarıda kalmamasını sağlar. Bağımsızlık, aynı işi yapan gereksiz vektör bulunmamasını sağlar.
@@ -117,6 +133,14 @@ Düzlemin alışılmış bazı $\mathbf e_1=(1,0)$ ve $\mathbf e_2=(0,1)$'dir. B
 $\mathbf b_1=(1,0)$ ve $\mathbf b_2=(1,1)$ de düzlem için bir bazdır. Eksenlere dik olmak veya uzunluğu 1 olmak baz tanımının koşulu değildir. Bu iki yön birbirine dik değildir; ikinci vektörün normu $\sqrt2$'dir. Yine de bütün düzlemi tek anlamlı biçimde tarif ederler.
 
 Sadece $(1,0)$ vektörü bağımsızdır ama düzlemi germez; dolayısıyla düzlemin bazı değildir. Buna karşılık $(1,0),(0,1),(2,3)$ listesi düzlemi gerer ama bağımlıdır; o da baz değildir. “Yeterli” ile “tekrarsız” koşullarının ikisini birden istememizin nedeni bu iki örnekte görülebilir.
+
+### Bazın iki koşulunu ayrı sorularla kontrol etmek
+
+Baz olup olmadığını denetlemek için “kaç ok var?” yerine iki ayrı denklem sorusu sorarız. Germe testinde sağ taraf genel bir hedef $(x,y)$'dir; her hedef için çözüm ararız. Bağımsızlık testinde sağ taraf yalnız sıfırdır; sıfır dışında bir katsayı seçimi bulunup bulunmadığını ararız. Bu testler aynı tür vektör denklemleri kullanır ama farklı iddiaları doğrular.
+
+$\mathbf b_1=(2,0)$, $\mathbf b_2=(0,-3)$ örneğinde genel hedef için $2s=x$, $-3t=y$ elde edilir. $s=x/2$, $t=-y/3$ her gerçek hedefte tanımlıdır. Sıfır hedefte ise bu formüller zorunlu olarak $s=t=0$ verir. Dolayısıyla liste bazdır. Bir vektörün uzunluğunun 2, diğerinin 3 olması veya aşağı yönelmesi baz olmayı engellemez.
+
+Aynı listeyi yalnız yatay doğru için bir baz diye adlandıramayız; ikinci vektör o kümenin içinde bile değildir. Baz her zaman belirtilmiş bir uzayın bazıdır. Örneğin yalnız $(2,0)$ yatay doğrunun bazıdır, ama düzlemin bazı değildir. “Yeterli sayıda yön” ifadesinin yeterliliği hangi hedeflerin istendiğine bağlıdır. Bu nedenle baz seçimini, hangi kümede çalıştığımızı söylemeden tamamlanmış bir bilgi saymayız.
 
 ## 6. Koordinatlar Seçilen Baza Göredir
 
@@ -141,6 +165,48 @@ Baz vektörlerinin birbirine dik ve birim uzunlukta olması zorunlu değildi. Bu
 Örneğin $\mathbf v=a\mathbf e_1+b\mathbf e_2$ ifadesinin $\mathbf e_1$ ile skaler çarpımını alalım. Birinci baz vektörünün kendisiyle çarpımı 1, diğerine dik olduğu için ikinci çarpım 0 olur. Sonuç $a$'dır. Benzer biçimde $\mathbf v\cdot\mathbf e_2=b$ elde edilir. Yani bu özel bazda koordinatlar, doğrudan işaretli dik izdüşümlerdir.
 
 Eğik bazımızda aynı kestirme çalışmaz. $(3,2)\cdot(1,0)=3$ olmasına rağmen, $(1,0),(1,1)$ bazındaki ilk katsayı 1'di. Çünkü ikinci baz vektörü de yatay harekete katkı yapar. Bir yöndeki dik izdüşüm ile bir eğik bazın katsayısı aynı soru değildir. Bu ayrımı korumak, baz değiştirirken işlemlerin anlamını kaybetmememizi sağlar.
+
+### İki yön birbirine yaklaşırken katsayılar nasıl belirlenir?
+
+Bir bazın koşullarını yalnızca şekilden okumak yerine denklemin içinde izleyelim. İlk yön $\mathbf u=(1,2)$, ikinci yön $\mathbf v=(2,k)$ olsun; $k$ şimdilik seçilecek bir gerçek sayıdır. Herhangi bir $(x,y)$ hedefini kurmak için $a\mathbf u+b\mathbf v=(x,y)$ yazarsak:
+
+$$
+a+2b=x,\qquad 2a+kb=y.
+$$
+
+Birinci denklemi ikiyle çarpıp ikinciden çıkarıyoruz. Aynı bilinmeyenin eşit katkılarını çıkarmak, $a$'yı ortadan kaldırır:
+
+$$
+\begin{aligned}
+(2a+kb)-2(a+2b)&=y-2x,\\
+(k-4)b&=y-2x.
+\end{aligned}
+$$
+
+$k\ne4$ olduğunda $k-4$ sıfır değildir; bölme yapabiliriz. Böylece $b=(y-2x)/(k-4)$, ardından $a=x-2b$ bulunur. Her hedef için tek bir katsayı çifti elde edildi. Bu hesap hem bütün düzlemi gerdiğimizi hem de tarifin tek olduğunu gösterir.
+
+Somut olarak $k=3$ ve hedef $(5,8)$ seçelim. $b=(8-10)/(3-4)=(-2)/(-1)=2$, sonra $a=5-2\cdot2=1$ olur. Kontrol için $1(1,2)+2(2,3)=(1,2)+(4,6)=(5,8)$ yazarız. İkinci bileşendeki 8, ikinci katsayının 8 olması demek değildir; iki baz vektörü de düşey bileşene katkı yapar.
+
+$k=4$ olduğunda ise aynı adım $0\cdot b=y-2x$ verir. Hedef $(5,8)$ ise sağ taraf $-2$ olduğundan hiçbir çözüm yoktur. Hedef $(5,10)$ olursa sağ taraf sıfırdır ve her $b$ için $a=5-2b$ seçilebilir. Örneğin $(a,b)=(5,0)$ ve $(1,2)$ aynı hedefi üretir. Bu kez $\mathbf v=2\mathbf u$ olduğu için bir bağımsız yön kaybolmuştur.
+
+Demek ki “iki ok var” bilgisi baz kararı için yetmez. Katsayı denkleminde bir bilinmeyeni çözerken sıfıra bölmek zorunda kalmamız, geometrik bağımlılığın cebirdeki işaretidir. Böyle bir durumda bölmeyi yapıp devam etmek yerine, kalan eşitliğin imkânsız mı yoksa her katsayı için doğru mu olduğunu okumalıyız.
+
+### Eğik koordinatlarda normu doğru hesaplamak
+
+Bazdaki sayıların karelerini toplamak neden bazen yanlış oluyor? $B=((1,0),(1,1))$ bazında koordinatlar $(s,t)$ ise standart vektör $(s+t,t)$ olur. Önce bu vektöre dönüp normu hesaplayalım:
+
+$$
+\begin{aligned}
+\|\mathbf v\|^2&=(s+t)^2+t^2\\
+&=s^2+2st+2t^2.
+\end{aligned}
+$$
+
+Buradaki $2st$ terimi iki baz yönünün dik olmamasından gelir; ikinci $t^2$ ise ikinci baz vektörünün uzunluğunun 1 değil $\sqrt2$ olmasını yansıtır. Dolayısıyla koordinatların nasıl birleştiğini bilmeden $s^2+t^2$ kullanmak geometrik varsayımları değiştirmek olur.
+
+Örneğin baz koordinatları $(2,-1)$ olan vektör $2(1,0)-(1,1)=(1,-1)$'dir. Norm karesi standart hesapla 2; açtığımız ifadeyle $4-4+2=2$ çıkar. Katsayı karelerini doğrudan toplamak ise 5 verirdi. Aradaki fark yuvarlama hatası değil, yanlış ölçü kuralıdır.
+
+Öte yandan vektör toplarken baz koordinatlarını bileşen bileşen toplamak geçerlidir. Çünkü $s_1\mathbf b_1+t_1\mathbf b_2$ ile $s_2\mathbf b_1+t_2\mathbf b_2$ toplanınca katsayılar $(s_1+s_2,t_1+t_2)$ olur. Norm kuralı baza bağlıyken doğrusal birleşim hesabının bu kadar kolay kalması, baz seçmenin temel yararıdır.
 
 ## 7. Koordinatlar Neden Tek Olur?
 
@@ -185,6 +251,14 @@ Orijini içermek de tek başına yeterli değildir. Pozitif yatay ışın $(t,0)
 
 Her gerilen küme altuzaydır. Çünkü iki doğrusal birleşimi toplayınca katsayılar toplanır ve yine bir doğrusal birleşim elde edilir. Bir birleşimi skalerle çarptığımızda da yalnızca katsayılar ölçeklenir. Bütün katsayıları sıfır seçmek sıfır vektörünü verir. Böylece germe kavramıyla altuzay tanımı birbirine bağlanır.
 
+### Bir koşul, hangi katsayıyı bağımlı yapıyor?
+
+Üç bileşenli olmak, her zaman üç bağımsız seçim yapabildiğimiz anlamına gelmez. Örneğin $z=2x$ koşulunu sağlayan vektörlerde $x$ ve $y$ serbest seçilebilir; $z$ ardından zorunlu olarak belirlenir. Her vektörü $(x,y,2x)=x(1,0,2)+y(0,1,0)$ biçiminde ayırırız. İki açık katsayı, düzlemin neden iki boyutlu olduğuna ilişkin bir aday verir.
+
+Fakat iki vektör yazmak tek başına boyut kanıtı değildir; bunların bağımsız olduğunu da denetleriz. $s(1,0,2)+t(0,1,0)=\mathbf0$ yazıldığında ilk bileşen $s=0$, ikincisi $t=0$ ister. Böylece germe ile bağımsızlık birlikte sağlanır. Örneğin $(3,-2,6)$ için koordinatlar $(3,-2)$'dir; yerine koyarak üçüncü bileşenin 6 olduğunu da geri buluruz.
+
+Koşul $z=2x+1$ olsaydı aynı ayırma $(0,0,1)+x(1,0,2)+y(0,1,0)$ biçimini alırdı. Burada ayrıca sabit bir adres vardır. Bu küme bir düzlemdir ama sıfır vektörünü içermez; kendi başına altuzay değildir. Yine de iki noktasının farkındaki sabit $(0,0,1)$ katkıları birbirini götürür. Aynı yönlerin bir altuzayı germesiyle bu yönlere paralel bir düzlemin farklı yerde bulunması ayrı durumlardır.
+
 ## 10. Üç Boyutta İki Boyutlu Bir Örnek
 
 Şu koşulu sağlayan bütün gerçek sayı üçlülerini ele alalım:
@@ -196,8 +270,10 @@ $$
 Bu küme $\mathbb R^3$ içinde bir düzlemdir. Eşitlikten $z=-x-y$ yazabiliriz. Böylece her vektör:
 
 $$
-(x,y,z)=(x,y,-x-y)
-=x(1,0,-1)+y(0,1,-1)
+\begin{aligned}
+(x,y,z)&=(x,y,-x-y)\\
+&=x(1,0,-1)+y(0,1,-1)
+\end{aligned}
 $$
 
 biçimindedir. İki vektör bütün kümeyi gerer. Bağımsızlıklarını kontrol etmek için $s(1,0,-1)+t(0,1,-1)=(0,0,0)$ yazalım. İlk bileşen $s=0$, ikinci bileşen $t=0$ verir. Dolayısıyla bunlar bir bazdır ve düzlemin boyutu 2'dir.

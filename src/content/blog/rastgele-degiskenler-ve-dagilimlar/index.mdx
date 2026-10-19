@@ -37,6 +37,10 @@ $$
 
 Dağılım grafiğinde ayrık olasılıkları sütun yükseklikleri veya noktalarla gösterebiliriz. Sürekli yoğunluk grafiğindeki alan yorumunu bu sütunlarla karıştırmamalıyız. Ayrık modelde temel ağırlık tek tek değerlere atanır; eksen üzerinde çubukların görsel genişliğini değiştirmek olasılığı değiştirmez.
 
+Dağılımın nasıl oluştuğunu tek bir değerde izleyelim. $X=1$ olayı, tam bir yazı içeren $YTT,TYT,TTY$ sıralarıdır. Her sıra $1/8$ ağırlıklı olduğu için bu üç ayrık sonucu toplamak $3/8$ verir. $X=0$ ise yalnız $TTT$ sırasından gelir. Sonuçları sayılara dönüştürürken “bir olayın içindeki temel sonuçların ağırlıklarını topla” kuralını kullanıyoruz.
+
+Normalizasyon bilinmeyen katsayıyı da belirleyebilir. $X=0,1,2$ değerlerinin ağırlıkları sırasıyla $c,2c,3c$ verilmiş olsun. Bütün ağırlık $6c$ olduğundan $6c=1$ ve $c=1/6$ gerekir. Böylece olasılıklar $1/6,1/3,1/2$ olur. $c$'yi keyfî seçemeyiz; değerlerin bütün mümkün sonuçları kapsaması toplamı 1'e zorlar. Ayrıca katsayının pozitif çıkması negatif olmama koşulunu doğrular.
+
 ## 3. Birikimli dağılım iki türü birleştirir
 
 Her rastgele değişken için birikimli dağılım fonksiyonu:
@@ -50,6 +54,10 @@ olarak tanımlanır. Girdi büyüdükçe daha çok sonucu kapsadığı için aza
 Üç atış örneğinde $x<0$ için 0, $0\leq x<1$ için $1/8$, $1\leq x<2$ için $1/2$, $2\leq x<3$ için $7/8$, $x\geq3$ için 1 olur. Her sıçramanın büyüklüğü ilgili noktanın olasılığıdır. Örneğin 2 noktasındaki sıçrama $7/8-1/2=3/8$'dir.
 
 Aralık olasılığı $P(a<X\leq b)=F_X(b)-F_X(a)$ ile bulunur. Uçlardaki eşitlik işaretleri ayrık modellerde önemlidir. Sürekli yoğunluğu olan modellerde tek noktanın olasılığı sıfır olacağı için açık veya kapalı uç aynı sonucu verir. Bu farkı dağılım türünden bağımsız bir yazım alışkanlığı gibi görmeyiz.
+
+Birikimli fonksiyonun uçlarını bir olasılık hesabında takip edelim. Üç atış için $P(1<X\le2)=F_X(2)-F_X(1)=7/8-1/2=3/8$ olur; bu olay yalnız $X=2$'yi içerir. Buna karşılık $P(1\le X\le2)$ hem 1'i hem 2'yi içerdiğinden $3/8+3/8=3/4$'tür. Alt uçta eşitlik eklemek, orada pozitif kütle varsa sonucu değiştirir.
+
+Grafikte 1 noktasının hemen solunda birikmiş ağırlık $1/8$, tam 1'de $1/2$'dir. Sıçrama $3/8$'dir; yani 1'in kendi olasılığıdır. 1 ile 2 arasında yeni mümkün değer olmadığı için fonksiyon yatay kalır. Böylece basamak grafiğinin hem sıçramaları hem yatay parçaları temel sonuç sayımından çıkar; yalnız şekil ezberlemiyoruz.
 
 ## 4. Beklenen değer ağırlıklı ortalamadır
 
@@ -67,7 +75,7 @@ Bir $g$ fonksiyonu için $E[g(X)]=\sum_xg(x)p_X(x)$ kullanılır. Özellikle $E[
 
 ## 5. Varyans ve standart sapma
 
-Ortalama çevresindeki yayılımı ölçmek için sapmaların karelerinin ortalamasını alırız:
+Bu bölümde $E[X^2]<\infty$ olan değişkenlerle çalışıyoruz; böylece ortalama ve varyans sonludur. Ortalama çevresindeki yayılımı ölçmek için sapmaların karelerinin ortalamasını alırız:
 
 $$
 \operatorname{Var}(X)=E[(X-\mu)^2]=E[X^2]-\mu^2.
@@ -81,6 +89,35 @@ Standart sapma genel olarak ortalamadan mutlak uzaklığın ortalaması değildi
 
 ![Üç bağımsız adil atışın yazı sayısı dağılımında orta iki sonuç daha ağırdır.](./binom-dagilimi.svg)
 
+### Varyans formülündeki kısa geçişi açmak
+
+$\mu=E[X]$ sabit bir sayıdır. Kareyi açıp beklentinin doğrusallığını kullanırsak:
+
+$$
+\begin{aligned}
+E[(X-\mu)^2]
+&=E[X^2-2\mu X+\mu^2]\\
+&=E[X^2]-2\mu E[X]+\mu^2E[1]\\
+&=E[X^2]-2\mu^2+\mu^2\\
+&=E[X^2]-\mu^2.
+\end{aligned}
+$$
+
+$E[1]=1$ olması, bütün olasılıkların toplamının 1 olmasından gelir. Doğrudan sapmaların ortalamasını alsaydık $E[X-\mu]=E[X]-\mu=0$ çıkardı; pozitif ve negatif sapmalar birbirini götürürdü. Kare alma bu iptali önler ve büyük sapmaları daha güçlü sayar.
+
+Üç atışın $\mu=3/2$ ortalaması çevresinde sapmalar $-3/2,-1/2,1/2,3/2$'dir. Kareleri olasılıklarla ağırlıklandırınca:
+
+$$
+\begin{aligned}
+\operatorname{Var}(X)
+&=\frac94\frac18+\frac14\frac38
++\frac14\frac38+\frac94\frac18\\
+&=\frac{9+3+3+9}{32}=\frac34.
+\end{aligned}
+$$
+
+elde edilir. Burada ilk ve son terimler $(9/4)(1/8)=9/32$, orta iki terim $(1/4)(3/8)=3/32$'dir; toplam $24/32=3/4$ olur. Aynı varyansı hem doğrudan sapmalardan hem kısa $E[X^2]-\mu^2$ formülünden bulduk. Standart sapmanın $\sqrt{3/4}=\sqrt3/2$ olması ise yayılımı asıl değişkenin ölçeğine geri taşır.
+
 ## 6. Bernoulli ve binom dağılımı
 
 Tek denemede başarıya 1, başarısızlığa 0 veren değişken Bernoulli değişkenidir. Başarı olasılığı $p$ ise $P(X=1)=p$, $P(X=0)=1-p$ olur. $X^2=X$ olduğundan $E[X]=p$ ve $\operatorname{Var}(X)=p-p^2=p(1-p)$ bulunur.
@@ -88,21 +125,30 @@ Tek denemede başarıya 1, başarısızlığa 0 veren değişken Bernoulli deği
 Bağımsız, aynı başarı olasılığına sahip $n$ Bernoulli denemesinin başarı sayısına binom dağılımlı değişken denir. Tam $k$ başarı için başarı konumları $\binom nk$ biçimde seçilir. Her sıranın olasılığı $p^k(1-p)^{n-k}$ olduğundan:
 
 $$
-P(X=k)=\binom nkp^k(1-p)^{n-k},\qquad k=0,\ldots,n.
+\begin{aligned}
+P(X&=k)\\
+&=\binom nkp^k(1-p)^{n-k},\\
+k&=0,\ldots,n.
+\end{aligned}
 $$
 
 Toplamın 1 olması binom açılımından da görülür: $\sum_k\binom nkp^k(1-p)^{n-k}=[p+(1-p)]^n=1$. Denemelerin olasılıkları farklıysa veya denemeler bağımlıysa bu formül doğrudan kullanılamaz.
 
 Her denemenin gösterge değişkenini $X_j$ yazarsak toplam başarı sayısı $X=\sum_jX_j$'dir. Beklenen değerin doğrusallığı $E[X]=np$ verir. Bağımsızlık altında varyanslar da toplanır ve $\operatorname{Var}(X)=np(1-p)$ olur. Varyans toplamının neden bağımsızlık istediğini birazdan kovaryansla açıklayacağız.
 
+Binom formülünü dört denemede $p=1/3$, tam iki başarı için kullanalım. İki başarı konumu $\binom42=6$ yolla seçilir. Belirli bir sırada başarıların çarpanı $(1/3)^2$, başarısızlıkların çarpanı $(2/3)^2$'dir. Bağımsızlık bu dört çarpanı birlikte kullanmamızı sağlar. Sonuç $6\cdot(1/9)\cdot(4/9)=8/27$ olur.
+
+Beklenen başarı sayısı $np=4/3$'tür; bu tek deneyde bir buçuktan az “kısmi başarı” olacağı anlamına gelmez. Her deneme yalnız 0 veya 1 katkısı yapar, fakat çok sayıda dört-denemelik grubun ortalaması tam sayı olmak zorunda değildir. Gösterge değişkenlerinin toplamını yazmak bu yüzden yararlıdır: her katkının beklentisi $p$, toplam beklenti $n$ tane $p$'dir. Beklentiler bağımsızlık olmadan da toplanır; ancak binom olasılık formülü ve burada kullanılan varyans toplamı bağımsızlık koşuluna dayanır.
+
 ## 7. Sürekli yoğunluk nokta olasılığı değildir
 
 Yoğunluk fonksiyonu olan bir sürekli rastgele değişkende $f_X(x)\geq0$ ve:
 
 $$
-\int_{-\infty}^{\infty}f_X(x)dx=1,
-\qquad
-P(a\leq X\leq b)=\int_a^bf_X(x)dx
+\begin{aligned}
+\int_{-\infty}^{\infty}f_X(x)dx&=1,\\
+P(a\le X\le b)&=\int_a^bf_X(x)dx.
+\end{aligned}
 $$
 
 olur. Olasılık eğrinin yüksekliği değil, aralık altındaki alandır. $f_X(x)$ değeri 1'den büyük olabilir; toplam alan 1 kaldığı sürece sorun yoktur. $X$ saniyeyle ölçülüyorsa yoğunluğun birimi saniyenin tersidir, böylece yoğunluk ile aralık genişliğinin çarpımı boyutsuz olasılık verir.
@@ -111,9 +157,13 @@ Tek noktada aralık genişliği sıfır olduğundan $P(X=x)=0$ olur. Buna rağme
 
 Yoğunluk varsa $F_X(x)=\int_{-\infty}^xf_X(t)dt$ olur. Yoğunluğun sürekli olduğu noktalarda temel teorem $F_X'=f_X$ verir. Her dağılımın yoğunluğu olmak zorunda değildir; ayrık ve sürekli bileşenleri karışan modeller de vardır. Burada iki temel türü ayrı ve açık biçimde kuruyoruz.
 
+Yoğunluğun 1'i aşmasıyla olasılığın 1'i aşmasını ayıran küçük bir örnek düşünelim. $X$, $[0,1/4]$ aralığında düzgün dağılsın. Yoğunluk 4'tür; toplam alan $4\cdot(1/4)=1$ olur. İlk $1/8$ uzunluğundaki aralığın olasılığı $4\cdot(1/8)=1/2$'dir. Yükseklik 4 bir olasılık değil, birim aralık başına olasılık yoğunluğudur.
+
+Tek nokta olasılığının sıfır olması da aynı ölçüden gelir. Sabit bir $x$ noktasının çevresindeki aralığın genişliğini küçülttükçe alan sıfıra iner. Yalnız yoğunluğun noktada tanımlı değerini değiştirmek integrali değiştirmez; tek noktanın genişliği yoktur. Olasılık hesaplarında belirleyici olan eğrinin noktasal yüksekliği değil, ilgili aralıktaki alanıdır.
+
 ## 8. Düzgün dağılım örneği
 
-$[a,b]$ aralığında eşit uzunluktaki aralıkların eşit olasılıklı olduğu modelde yoğunluk $1/(b-a)$, dışarıda 0'dır. Buna düzgün dağılım denir. Yükseklik ile toplam genişliğin çarpımı 1 olduğundan normalizasyon sağlanır.
+$a<b$ olmak üzere $[a,b]$ aralığında eşit uzunluktaki aralıkların eşit olasılıklı olduğu modelde yoğunluk $1/(b-a)$, dışarıda 0'dır. Buna düzgün dağılım denir. Yükseklik ile toplam genişliğin çarpımı 1 olduğundan normalizasyon sağlanır.
 
 $X$, 2 ile 6 arasında düzgün dağılsın. Yoğunluk $1/4$, $P(3\leq X\leq5)=2/4=1/2$ olur. Ortalama:
 
@@ -124,6 +174,21 @@ $$
 İkinci moment $E[X^2]=\frac14[x^3/3]_2^6=52/3$ ve varyans $52/3-16=4/3$ olur. Standart sapma $2/\sqrt3$'tür. Genel hesap düzgün dağılımda ortalamanın $(a+b)/2$, varyansın $(b-a)^2/12$ olduğunu verir.
 
 Sürekli beklenen değerlerin formülü de aynı ağırlıklı toplama fikridir: $E[g(X)]=\int g(x)f_X(x)dx$, uygun integrallenebilirlik koşuluyla. Ayrık toplam ile sürekli integral arasında kavramsal farktan çok ağırlığın nasıl dağıtıldığı farkı vardır.
+
+Düzgün dağılımın genel varyansını merkez etrafında hesaplamak daha anlaşılırdır. Aralığın orta noktasına $m=(a+b)/2$, yarı genişliğine $h=(b-a)/2$ diyelim. $u=x-m$ değişkeni $[-h,h]$ aralığındadır ve yoğunluk $1/(2h)$ olur. Simetriden ortalama sapma sıfırdır. Varyans:
+
+$$
+\begin{aligned}
+\operatorname{Var}(X)
+&=\frac1{2h}\int_{-h}^{h}u^2du\\
+&=\frac1h\int_0^hu^2du
+=\frac1h\frac{h^3}{3}
+=\frac{h^2}{3}\\
+&=\frac{(b-a)^2}{12}
+\end{aligned}
+$$
+
+çıkar. İkinci adımda $u^2$ çift fonksiyon olduğu için iki eşit yarıyı birleştirdik. Son adımda $h=(b-a)/2$ yerine koyduk. Aralığı kaydırmak $m$'yi değiştirir ama genişlik aynıysa varyans değişmez; aralığı iki kat genişletmek varyansı dört katına çıkarır. Bu davranış, birazdan göreceğimiz doğrusal ölçekleme kuralıyla uyumludur.
 
 ## 9. Gauss dağılımı ve normalizasyon
 
@@ -141,13 +206,19 @@ $\mu$ eğrinin merkezini kaydırır. $\sigma$ büyürse dağılım yayılır ve 
 Simetriden standart normalin ortalaması 0'dır. Varyansını görmek için $\varphi(z)=e^{-z^2/2}/\sqrt{2\pi}$ yazalım. $\varphi'=-z\varphi$ olduğundan kısmi integrasyon:
 
 $$
-\int_{-\infty}^{\infty}z^2\varphi(z)dz
-=[-z\varphi(z)]_{-\infty}^{\infty}+\int_{-\infty}^{\infty}\varphi(z)dz=1
+\begin{aligned}
+\int_{-\infty}^{\infty}z^2\varphi(z)dz&=[-z\varphi(z)]_{-\infty}^{\infty}+\int_{-\infty}^{\infty}\varphi(z)dz\\
+&=1
+\end{aligned}
 $$
 
 verir. Üstel kuyruk yüzünden sınır terimi sıfırdır. Dolayısıyla ölçekleme sonrası $X$'in varyansı gerçekten $\sigma^2$ olur; parametrenin adı formülle uyumludur.
 
 ![Aynı merkezli iki Gauss yoğunluğunda genişlik büyürken tepe azalır ve toplam alan korunur.](./gauss-genisligi.svg)
+
+Gauss varyansındaki kısmi integrasyonda hangi parçaları seçtiğimizi açalım. $\varphi'=-z\varphi$ olduğundan $z^2\varphi=-z\varphi'$ yazılır. Kısmi integrasyonda $u=-z$, $dv=\varphi'(z)dz$ seçersek $du=-dz$, $v=\varphi$ olur. Böylece $\int-z\varphi' dz=-z\varphi+\int\varphi dz$ çıkar. Sonlu sınırlar üzerinde bu hesabı yapıp sınırları sonsuza götürürüz. $z\varphi(z)$ üstel azalma nedeniyle iki uçta sıfıra gider; kalan integral normalizasyon gereği 1'dir.
+
+Genel $X=\mu+\sigma Z$ için $E[X]=\mu+\sigma E[Z]=\mu$ olur. Merkezden sapma $X-\mu=\sigma Z$ olduğundan karesi $\sigma^2Z^2$'dir ve beklentisi $\sigma^2E[Z^2]=\sigma^2$ çıkar. Böylece yoğunluk formülündeki iki parametrenin yalnız isimleri değil, gerçekten ortalama ve standart sapma oldukları da doğrulanır.
 
 ## 10. Ölçek ve değişken dönüşümü
 
@@ -164,6 +235,29 @@ Yoğunluğu dönüştürmek için $a\ne0$ durumunda $x=(y-b)/a$ ve küçük uzun
 
 Örneğin $X$, $[0,1]$ üzerinde düzgünse $Y=2X+3$, $[3,5]$ üzerinde yoğunluğu $1/2$ olan düzgün dağılımdır. Aralık iki kat genişlediği için yükseklik yarıya iner. $a=0$ ise $Y=b$ sabit değişkendir; sıradan sürekli yoğunluk formülünde sıfıra bölme yapamayız.
 
+### Kare almak, düzgün dağılımı düzgün bırakmaz
+
+Doğrusal olmayan bir dönüşümde dağılımın nasıl değiştiğini görelim. $X$, $[-1,1]$ aralığında düzgün dağılsın; yoğunluğu bu aralıkta $1/2$'dir. Yeni değişken $Y=X^2$ olsun. Olası değerler $0\le Y\le1$ aralığındadır. Ancak bu yeni aralıkta her eşit uzunluğun eşit olasılıklı olacağını varsayamayız; kare alma, aralıkları eşit ölçekte taşımaz.
+
+Önce birikimli dağılımı hesaplamak en açık yoldur. $0\le y\le1$ için:
+
+$$
+F_Y(y)=P(X^2\le y)
+=P(-\sqrt y\le X\le\sqrt y).
+$$
+
+Son aralığın uzunluğu $2\sqrt y$, yoğunluk $1/2$ olduğundan $F_Y(y)=\sqrt y$ olur. Negatif $y$ için birikimli olasılık 0, $y\ge1$ için 1'dir. İç aralıkta türev alarak yoğunluğu buluruz:
+
+$$
+f_Y(y)=\frac1{2\sqrt y},\qquad0<y<1.
+$$
+
+İki ters dalı birlikte hesaba kattık: aynı pozitif $y$ değeri hem $X=\sqrt y$ hem $X=-\sqrt y$ tarafından üretilebilir. Yalnız pozitif dalın katkısını kullanmak toplam olasılığın yarısını kaybettirirdi. Gerçekten yoğunluğun uygunsuz integrali $\int_0^1dy/(2\sqrt y)=[\sqrt y]_0^1=1$'dir. Sıfır yakınında yoğunluk sınırsız olsa da toplam alan sonludur ve tek noktanın olasılığı hâlâ sıfırdır.
+
+Örneğin $P(Y\le1/4)=\sqrt{1/4}=1/2$ olur. Düzgün dağılım sanılsaydı $1/4$ denecekti. Kare alma, küçük $Y$ değerlerine daha fazla olasılık ağırlığı taşımıştır.
+
+Ortalamayı yeni yoğunluktan bulalım: $E[Y]=\tfrac12\int_0^1y^{1/2}dy=1/3$. Aynı sayı eski değişkenden $E[X^2]=\tfrac12\int_{-1}^1x^2dx=1/3$ olarak çıkar. İkinci moment $E[Y^2]=\tfrac12\int_0^1y^{3/2}dy=1/5$ ve varyans $1/5-(1/3)^2=4/45$ olur. Böylece dönüşümden önce ve sonra aynı beklentiyi hesaplayarak dağılımın tutarlılığını da denetledik. $E[X]=0$ olmasına rağmen $E[X^2]=1/3$ çıkması, önce ortalama alıp sonra kare almanın aynı işlem olmadığını yeniden gösterir.
+
 ## 11. Kovaryans ve toplamın yayılımı
 
 İki değişkenin birlikte sapmasını **kovaryans** ölçer:
@@ -177,12 +271,18 @@ Sonlu ikinci momentler altında $E[XY]-E[X]E[Y]$ biçiminde de yazılır. Poziti
 Kare açılımından:
 
 $$
-\operatorname{Var}(X+Y)=\operatorname{Var}(X)+\operatorname{Var}(Y)+2\operatorname{Cov}(X,Y)
+\begin{aligned}
+\operatorname{Var}(X+Y)&=\operatorname{Var}(X)+\operatorname{Var}(Y)\\&\quad+2\operatorname{Cov}(X,Y)
+\end{aligned}
 $$
 
 elde edilir. Bağımsız değişkenlerde ortak dağılım ayrıştığı için $E[XY]=E[X]E[Y]$ ve kovaryans sıfır olur. Böylece varyanslar toplanır. Beklenen değerlerin toplanması ise bağımsızlık gerektirmez; bu iki kuralı ayırmalıyız.
 
 Sıfır kovaryans bağımsızlık demek değildir. $X$, $[-1,1]$ üzerinde düzgün olsun ve $Y=X^2$ seçilsin. Simetriden $E[X]=0$, $E[X^3]=0$ olduğundan kovaryans sıfırdır. Buna rağmen $Y$, $X$ tarafından tamamen belirlenir. Kovaryans yalnız belirli bir doğrusal birlikte değişim bilgisidir; bütün bağımlılık türlerini yakalamaz.
+
+Toplam varyansındaki çapraz terimi görmek için $U=X-E[X]$, $V=Y-E[Y]$ diyelim. Toplamın merkezden sapması $U+V$'dir. Karesi $U^2+2UV+V^2$ olur. Beklenti alındığında ilk ve son terim iki varyansı, ortadaki $2E[UV]$ ise kovaryansın iki katını verir. Kovaryans bir düzeltme olarak sonradan eklenmedi; kare açılımının zorunlu çapraz terimidir.
+
+Örneğin $Y=X$ seçersek toplam $2X$ olur ve varyansı $4\operatorname{Var}(X)$ olmalıdır. Formülde $\operatorname{Cov}(X,X)=\operatorname{Var}(X)$ olduğu için iki varyans ve iki kovaryans toplamı gerçekten dört varyans verir. Bağımsız sanıp yalnız iki varyansı toplasaydık yayılımı yarısı kadar hesaplardık. $Y=-X$ seçilirse toplam sıfır, kovaryans $-\operatorname{Var}(X)$ olur; aynı formül bu kez bütün katkıların iptalini verir.
 
 ## 12. Çok sayıda tekrarın ortalaması
 
@@ -207,6 +307,12 @@ verir. Eşitsizliğin fikri basittir: sapma en az $\varepsilon$ olan olayda sapm
 Bu, her yeni denemede ortalamanın merkeze monoton yaklaşacağını söylemez. Belirli bir sonlu tekrar sayısında tam eşitlik de garanti etmez. Söylediği şey, sabit bir hata eşiğini aşma olasılığının çok sayıda bağımsız tekrarda küçülmesidir. Varsayımlar bozulursa aynı sonuç otomatik uygulanmaz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Yoğunluğun altındaki alan" caption="Standart normal dağılımda merkez çevresindeki aralık genişler. Sarı alan, seçilen aralığa düşme olasılığıdır; eğrinin tek bir noktadaki yüksekliği olasılık değildir." />
+
+Örnek ortalamasında $n$'ye bölmenin karesini unutmamak gerekir. Bağımsız toplamın varyansı $n\sigma^2$'dir; toplamı $1/n$ ile ölçeklemek varyansı $1/n^2$ ile çarpar. Dolayısıyla $(1/n^2)(n\sigma^2)=\sigma^2/n$ kalır. Standart sapma karekök olduğu için azalma $1/n$ değil $1/\sqrt n$ oranındadır.
+
+Chebyshev sınırını örnek bir sayıyla okuyalım. Her ölçümün varyansı 4, tekrar sayısı 100 ve hata eşiği $\varepsilon=1$ olsun. Ortalamanın varyansı $4/100=0{,}04$, eşikten en az 1 sapma olasılığı en fazla $0{,}04/1^2=0{,}04$ olur. Bu yüzde 4, kesin olasılık değil bir üst sınırdır; gerçek olasılık daha küçük olabilir. Tekrar sayısını 400 yaparsak üst sınır yüzde 1'e iner.
+
+Eşitsizlik, yalnız ortalama ve varyans bilgisini kullandığı için dağılımın bütün ayrıntılarını bilmez. Sağ taraf 1'den büyük çıkarsa olasılığın zaten en fazla 1 olduğu bilgisi daha güçlüdür. Ayrıca “yüzde 4'ten küçük sapma olasılığı” demek, belirli bir deneyde sapmanın kesin küçük olacağı demek değildir; rastgele sonucu değil, büyük sapmaların ağırlığını sınırlıyoruz.
 
 ## 13. Ölçüm yayılımı ile başka belirsizlikleri ayırmak
 

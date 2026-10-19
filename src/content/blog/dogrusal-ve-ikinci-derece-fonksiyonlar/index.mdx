@@ -37,6 +37,16 @@ $$
 
 Burada $x$ girdi, $m$ sabit değişim oranı yani eğim, $b$ ise $x=0$ girdisindeki çıktıdır. Bu yazıda grafik olarak doğru veren kuralları okul matematiğindeki yaygın kullanımla **doğrusal fonksiyon** diye adlandırıyoruz. Daha dar bir kullanımda, özellikle lineer cebirde, “doğrusal dönüşüm” adı $b=0$ koşulunu da ister; iki bağlamı ileride ayıracağız.
 
+Sabit değişim oranını genel iki girdiyle doğrulayabiliriz. $x_1$ ve $x_2$ birbirinden farklı iki gerçek sayı olsun. $f(x)=mx+b$ kuralında çıktı farkı $m(x_2-x_1)$ olur; çünkü iki çıktıda da bulunan $b$ terimleri birbirini götürür. Girdi farkına böldüğümüzde:
+
+$$
+\frac{f(x_2)-f(x_1)}{x_2-x_1}=m
+$$
+
+çıkar. Böylece bir doğru üzerinde hangi iki ayrı noktayı seçersek seçelim aynı eğim elde edilir. $b$ bütün çıktılara aynı miktarı eklediği için farkı etkilemez; grafiğin yüksekliğini değiştirir, değişim oranını değiştirmez.
+
+Örneğin $f(x)=3x+12$ için girdiyi yalnız bir tam birim artırmak zorunda değiliz. $x$ artışı $1/2$ ise çıktı artışı $3/2$, artış 4 ise çıktı artışı 12 olur. Bu, doğruyu yalnız tam sayılı tablo noktalarıyla sınırlamadığımızı gösterir. Gerçek bir modelde kesirli girdilerin izinli olup olmadığı ise ayrı bir tanım kümesi sorusudur. Sabit oran formülü, izin verilen girdilerde çalışır.
+
 ## 2. Eğimin İşareti ve Başlangıç Değeri
 
 $m>0$ olduğunda girdi artarken çıktı artar. $m<0$ olduğunda çıktı azalır. $m=0$ olduğunda $f(x)=b$ sabit fonksiyonu elde edilir. Grafiğin yatay olması, fonksiyonun tanımsız olduğu anlamına gelmez; her girdiye aynı çıktı atanır.
@@ -79,6 +89,30 @@ $$
 
 olur. Artış başlangıçtaki $x$ değerine bağlıdır. Pozitif tarafta $x$ büyüdükçe bir birimlik girdi artışının getirdiği çıktı artışı da büyür.
 
+### Eşit adımlarda birinci ve ikinci farklar
+
+Bir tablonun neden doğruya veya parabole ait olabileceğini çıktı farklarıyla inceleyebiliriz. $f(x)=2x^2-3x+1$ için girdiyi her seferinde 1 artırarak hesaplayalım:
+
+| $x$ | 0 | 1 | 2 | 3 | 4 |
+| --- | --- | --- | --- | --- | --- |
+| $f(x)$ | 1 | 0 | 3 | 10 | 21 |
+
+Örneğin $f(3)=2\times9-3\times3+1=18-9+1=10$'dur. Ardışık çıktıları çıkarınca **birinci farklar** $-1,3,7,11$ olur. Bunlar sabit olmadığı için, aynı tabloyu bütün bu noktalarda tek bir doğrusal fonksiyon veremez. Bu kez farkların kendi farklarını alalım: $3-(-1)=4$, $7-3=4$, $11-7=4$. **İkinci farklar** sabittir.
+
+Bu örüntünün cebirsel nedenini $f(x)=ax^2+bx+c$ için görebiliriz:
+
+$$
+f(x+1)-f(x)=a(2x+1)+b.
+$$
+
+Bu farkta $x$ bir daha 1 arttığında değişen bölüm yalnız $2ax$ olur; farkın artışı $2a$'dır. Örneğimizde $a=2$ olduğu için ikinci fark $2\times2=4$ çıktı. Sabit terim $c$ ilk çıkarmada, sabit eğim katkısı $b$ ise ikinci çıkarmada kaybolmuştur.
+
+Burada girdilerin eşit aralıklarla seçilmesi önemlidir. 0, 1, 3 ve 6 gibi düzensiz adımlarda yalnız çıktı farklarına aynı testi uygulayamayız. Ayrıca birkaç ölçümde sabit ikinci fark görmek, gerçek sürecin bütün girdilerde kesinlikle ikinci derece olduğunu kanıtlamaz. Veriler ikinci derece bir modelle uyumlu olabilir; modelin geçerliliği için başka bilgi gerekir. Hesap, tablo ile seçilen formül arasındaki ilişkiyi denetlememize yardım eder.
+
+Kare alma grafiğinin negatif tarafta neden aşağı indiğini, “eksi sayının karesi artar” gibi belirsiz bir cümleyle anlatmayalım. Girdi soldan sağa $-3,-2,-1,0$ olarak büyürken sıfıra uzaklığı 3, 2, 1, 0 olarak küçülür. Kare bu uzaklığın karesi olduğundan çıktılar 9, 4, 1, 0 olur. Pozitif tarafta girdi büyürken sıfıra uzaklık da büyür ve çıktılar yükselir. Yön değişiminin merkezi bu nedenle 0'dır.
+
+Simetriyi de herhangi bir $u$ gerçek sayısı için $(-u)^2=u^2$ eşitliğiyle ifade edebiliriz. Grafikte $(u,u^2)$ varsa $(-u,u^2)$ de vardır; noktaların yükseklikleri aynı, yatay koordinatları zıttır. Bu tam olarak düşey eksene göre yansımadır. Simetri, bütün grafiği yalnız üç beş noktadan tahmin etmek değildir; kuralın her girdide taşıdığı bir özelliktir. Bir tarafın noktalarını doğru hesapladığımızda öteki tarafın konumları bu eşitlikle belirlenir.
+
 ## 5. Tepe Noktası ve Simetri
 
 Şimdi $f(x)=(x-2)^2-1$ fonksiyonuna bakalım. Önce girdiden 2 çıkarıyor, çıkan sayının karesini alıyor, sonra 1 çıkarıyoruz. Kareli parça en küçük 0 olabilir. Bu, $x-2=0$, yani $x=2$ olduğunda gerçekleşir. En küçük fonksiyon değeri $0-1=-1$ olur.
@@ -98,6 +132,10 @@ $$
 Burada $h$ tepenin yatay koordinatı, $k$ düşey koordinatı, $a$ ise kareli uzaklığın katsayısıdır. Tepe $(h,k)$, simetri doğrusu $x=h$ olur. $a>0$ ise kareli miktar pozitif yönde eklenir ve parabol yukarı açılır. $a<0$ ise negatif yönde eklenir ve parabol aşağı açılır; tepe bu kez en büyük değeri verir.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Parabolde tepe ve simetri" caption="Hareketli nokta y=(x−2)²−1 kuralını izler. x=2 doğrusunun iki yanındaki eşit uzaklıklar aynı yüksekliği verir." />
+
+Tepe biçimindeki $x-h$, girdinin tepenin yatay konumundan işaretli farkıdır. Mutlak değeri $|x-h|$ ise tepe doğrultusuna yatay uzaklıktır. İki tarafta aynı uzaklığı seçmek için $x=h-u$ ve $x=h+u$ yazalım; $u\ge0$ bu uzaklık olsun. İki durumda da $(x-h)^2=u^2$ çıkar. Dolayısıyla iki çıktı $au^2+k$ olarak aynıdır. Simetri doğrusu $x=h$ sonucunu genel bir hesapla elde etmiş olduk.
+
+Örneğin $f(x)=-2(x-1)^2+8$ için tepe $(1,8)$'dir. Tepeden bir birim uzakta, $x=0$ ve $x=2$ girdilerinde çıktı $-2+8=6$ olur. İki birim uzakta, $x=-1$ ve $x=3$ için çıktı $-8+8=0$ olur. Tepe yüksekliğinin en büyük olması, kareli uzaklığın sıfır veya pozitif olmasından ve $-2$ ile çarpılarak çıkarılmasından gelir. Formülde görünen 1 sayısını “sola kayma” diye okumak yerine, kareyi sıfır yapan girdiyi aramak işaret hatasını önler.
 
 ## 6. Katsayının Büyüklüğü Neyi Değiştirir?
 
@@ -137,6 +175,28 @@ elde edilir. Tepe $(2,-3)$ olur. Parantez içindeki düzeltmenin dışarıdaki 2
 
 Aynı işlem genel katsayılarla yapıldığında tepenin yatay koordinatı $h=-b/(2a)$ bulunur. Düşey koordinat $k=f(h)$'dir. Bu formül kareye tamamlamanın kısaltılmış sonucudur; doğrudan ezberlemeden önce yukarıdaki dönüşümün anlamını görmek gerekir.
 
+Genel tepe formülünde atlanan kareye tamamlama adımını da yazalım. $a\ne0$ olduğu için ilk iki terimden $a$ çarpanını ayırabiliriz. Parantezdeki $x$ katsayısının yarısı $b/(2a)$'dır; karesini ekleyip çıkarırız:
+
+$$
+\begin{aligned}
+f(x)&=a\left(x^2+\frac ba x\right)+c,\\
+x^2+\frac ba x
+&=\left(x+\frac b{2a}\right)^2
+-\frac{b^2}{4a^2}.
+\end{aligned}
+$$
+
+İkinci satırı birinciye koyunca dışarıdaki $a$, çıkarılan terimi de çarpar. Sonuç:
+
+$$
+\begin{aligned}
+f(x)&=a\left(x+\frac b{2a}\right)^2\\
+&\quad+c-\frac{b^2}{4a}.
+\end{aligned}
+$$
+
+olur. Kareli parçayı sıfır yapan girdi $x=-b/(2a)$'dır. Böylece $h=-b/(2a)$ ve $k=c-b^2/(4a)$ bulunur. Parantezde artı işareti görülmesine rağmen tepenin yatay koordinatında eksi bulunmasının nedeni, iç ifadeyi sıfıra eşitlememizdir. $a=2,b=-8,c=5$ değerlerini koyarsak $h=2$, $k=5-64/8=-3$ çıkar; önceki açık hesapla aynı sonucu elde ederiz. Formül böylece bağımsız bir ezber olmaktan çıkar, yaptığımız işlemin kısaltması hâline gelir.
+
 ## 8. Kökler Grafikte Ne Söyler?
 
 $f(x)=x^2-4x+3$ fonksiyonunun sıfırları için $x^2-4x+3=0$ çözeriz. Çarpanlara ayırınca $(x-1)(x-3)=0$ olur. Sıfır çarpım ilkesiyle $x=1$ veya $x=3$ bulunur. Grafik yatay ekseni $(1,0)$ ve $(3,0)$ noktalarında keser.
@@ -147,6 +207,20 @@ Her parabol yatay ekseni iki noktada kesmez. $x^2+1$ fonksiyonunun en küçük d
 
 [İkinci derece denklemlerde](/blog/ikinci-derece-denklemler/) kullandığımız diskriminant $\Delta=b^2-4ac$, bu durumları cebirsel olarak ayırır. Pozitifse iki farklı gerçek kök, sıfırsa tek tekrarlı kök, negatifse gerçek kök yoktur. Tepe biçiminde $k=-\Delta/(4a)$ yazılabilmesi aynı ilişkinin başka ifadesidir. Örneğin yukarı açılan parabolde $\Delta<0$ ise $k>0$, yani tepe bile eksenin üstündedir.
 
+Diskriminantla tepenin bağı da bu son ifadenin düzenlenmesidir. Ortak payda alırsak:
+
+$$
+\begin{aligned}
+k&=c-\frac{b^2}{4a}\\
+&=\frac{4ac-b^2}{4a}\\
+&=-\frac{\Delta}{4a}.
+\end{aligned}
+$$
+
+Burada $\Delta=b^2-4ac$'dir. Yukarı açılan parabolde $a>0$ olduğundan $\Delta$ pozitifse $k$ negatif olur: tepe eksenin altında kalır ve iki yanda eksene ulaşılır. $\Delta=0$ ise tepe eksenin üzerindedir, tek tekrarlı kök vardır. $\Delta<0$ ise en küçük çıktı bile pozitiftir; sıfıra ulaşılamaz.
+
+Aşağı açılan parabolde aynı tabloyu yalnız “tepe yukarıda mı?” sorusuna bakarak kopyalayamayız; bu kez tepe en büyük çıktıdır. Örneğin $-x^2-1$'in en büyük çıktısı $-1$ olduğundan gerçek sıfırı yoktur. Diskriminantı da $0-4(-1)(-1)=-4$ çıkar. Formül ile grafik yorumunun uyuşması, katsayının işaretini hesaba katmamıza bağlıdır.
+
 ## 9. İşaret ve İkinci Derece Eşitsizlik
 
 $(x-1)(x-3)$ ifadesinin işaretini aralıklara ayıralım. $x<1$ iken iki çarpan da negatif, çarpım pozitiftir. $1<x<3$ iken birinci pozitif, ikinci negatif; çarpım negatiftir. $x>3$ iken ikisi de pozitif olduğundan çarpım pozitiftir.
@@ -156,6 +230,10 @@ Bu yüzden $x^2-4x+3<0$ eşitsizliğinin çözümü $(1,3)$ olur. Eşitsizlik $\
 Baş katsayı negatifse işaretler tersine döner. $-(x-1)(x-3)>0$ eşitsizliği yine köklerin arasında sağlanır. Kökleri bulduktan sonra grafiğin açılma yönünü veya çarpanların işaretlerini kontrol etmek gerekir; “her zaman dış aralık” gibi bir ezber doğru değildir.
 
 Tekrarlı kökte ayrı bir durum vardır. $(x-2)^2\ge0$ bütün gerçek girdilerde doğrudur, fakat $(x-2)^2<0$ hiçbir gerçek girdide sağlanmaz. Teğet gibi değip geri dönen grafikte kökten geçerken işaret değişmez. Kökün bulunması, iki yanında zıt işaret olacağını zorunlu kılmaz.
+
+İşaret tablosundaki aralıkları rastgele seçmiyoruz. $x-1$ çarpanının işareti yalnız 1'in iki yanında, $x-3$ çarpanının işareti yalnız 3'ün iki yanında değişir. Bu yüzden bütün gerçek doğruyu 1 ve 3 ile bölmek yeterlidir. Örneğin $(1,3)$ aralığındaki her $x$ için ilk fark pozitif, ikinci fark negatiftir; tek bir deneme sayısına dayanmak zorunda değiliz.
+
+$x=2$ ile kontrol edersek fonksiyon $4-8+3=-1$ verir ve bu aralığın negatif olduğu doğrulanır. $x=0$ için 3, $x=4$ için de 3 çıkması dış aralıkların işaretleriyle uyumludur. Fakat yalnız bu üç kontrol, genel gerekçenin yerine geçmez; her çarpanın sıfırının iki yanındaki davranışını bilmemiz gerekir. Ayrıca $f(x)<0$ sorusuna çıktı olan $-1$ sayısını cevap yazmayız. Aranan, bu tür negatif çıktıları üreten girdilerin tamamıdır; bu nedenle cevap bir girdi aralığı olan $(1,3)$'tür.
 
 ## 10. Doğru ile Parabolü Karşılaştırmak
 

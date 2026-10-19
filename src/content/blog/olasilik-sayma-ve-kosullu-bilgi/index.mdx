@@ -23,6 +23,10 @@ Belirli bir denemenin bütün mümkün sonuçlarının kümesine **örnek uzay**
 
 Bu ayrım ilk önemli korumadır: aynı listede görünmek eşit olasılıklı olmak anlamına gelmez. Bir olasılık modeli, yalnız sonuç listesini değil her olaya atanan olasılıkları da içerir. Modeli kurmadan “istenen sonuç sayısı bölü bütün sonuç sayısı” işlemini otomatik yapmayız.
 
+İki zarın toplam 7 vermesinin altı yolunu açık yazalım: $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$. İlk bileşen birinci, ikinci bileşen ikinci zarın sonucudur; bu yüzden $(1,6)$ ile $(6,1)$ farklı temel sonuçlardır. Zarlar adil ve birbirinden bağımsızsa 36 sıralı çiftin her birinin olasılığı $1/36$ olur; altı ayrık yolu toplamak $6/36=1/6$ verir.
+
+Yalnız toplamı kaydetmek deneyin bilgisini azaltır, ama olasılık ağırlıklarını eşitlemez. Toplam 2 için bir, toplam 7 için altı temel yol vardır. Örnek uzayı daha kısa yazmak mümkündür; ancak bu yeni listedeki sayılara eski sonuçların toplam ağırlıklarını taşımalıyız. “Listede 11 sayı var, her biri $1/11$” demek başka bir rastgele deney modeli kurmak olurdu.
+
 ## 2. Olasılığın temel kuralları
 
 Bir $A$ olayının olasılığını $P(A)$ ile yazalım. Olasılık negatif olamaz, bütün örnek uzayın olasılığı 1'dir ve birbirinden ayrık olayların birleşiminin olasılığı toplamlarına eşittir. Sayılabilir sonsuz olay ailelerinde de bu toplama özelliği korunur; burada ağırlıkla sonlu örneklerle çalışacağız.
@@ -32,6 +36,10 @@ Ayrık olaylar ortak sonuç içermez. $A\cap B=\varnothing$ yazımı kesişimin 
 $A$ ile $A^c$ ayrık ve birleşimleri $\Omega$ olduğundan $P(A)+P(A^c)=1$, yani $P(A^c)=1-P(A)$ olur. Ayrıca boş olayın olasılığı 0'dır ve her olay için $0\leq P(A)\leq1$ elde edilir. Bunlar ayrı ezber kuralları değil, başlangıç ilkelerinin sonuçlarıdır.
 
 Sonlu eşit olasılıklı bir örnek uzayda $N$ sonuç varsa her birine $1/N$ düşer. Bir olay $m$ sonuç içeriyorsa olasılığı $m/N$'dir. Zarın adil olduğu varsayımı bu özel modeli gerekçelendirir. Dengesiz bir zar için aynı sayım yapılabilir ama yüzlerin olasılıklarını ayrıca bilmek gerekir.
+
+Olasılığın neden 1'i aşamadığını da başlangıç kurallarından çıkarabiliriz. $A$ ve tümleyeni $A^c$ birlikte bütün örnek uzayı oluşturur; dolayısıyla $P(A)+P(A^c)=1$'dir. İkinci terim negatif olamayacağı için $P(A)\le1$ olur. Ayrıca $A\subseteq B$ ise $B$, ayrık $A$ ile $B\setminus A$ parçalarından oluşur. Bu nedenle $P(B)=P(A)+P(B\setminus A)\ge P(A)$'dır. Daha çok sonucu içeren olayın daha küçük olasılığı olamaz.
+
+Yüzdeye geçmek yalnız ölçek değiştirmektir: $1/4=0{,}25=\%25$. $P(A)=25$ yazmak ise yüzde işareti olmadan 25 sayısını ifade eder ve olasılık aralığının dışındadır. Hesapta önce aynı biçimdeki sayıları kullanır, sonucu istersek yüzdeyle ifade ederiz. Özellikle koşullu oranları çarparken yüzde 40 ile yüzde 2'nin çarpımı $0{,}40\cdot0{,}02=0{,}008$, yani yüzde 0,8'dir; yüzde 80 değildir.
 
 ## 3. Model olasılığı ve gözlenen sıklık
 
@@ -63,6 +71,10 @@ Birbirinden farklı $n$ nesnenin tümünü sıralama sayısı $n!=n(n-1)\cdots1$
 
 $n$ nesneden tekrar kullanmadan sıralı $k$ seçim yaparsak sayı $n!/(n-k)!$ olur. Beş kişiden bir başkan ve farklı bir yardımcı seçmek $5\cdot4=20$ sonuç verir. Aynı iki kişinin görevleri değişirse farklı sonuç sayılır. Sıra veya görev önemliyse bu ayrımı korumalıyız.
 
+Sıralı seçimdeki faktöriyel oranını bir örnekte sadeleştirelim. Beş nesneden üçünü sıra gözeterek seçmek $5\cdot4\cdot3=60$ yoldur. Formülde $5!/(5-3)!=5!/2!$ yazılır. Açınca $(5\cdot4\cdot3\cdot2\cdot1)/(2\cdot1)$ olur; kullanılmayan son iki çarpan sadeleşir ve aynı 60 kalır. Faktöriyel oranı bu ardışık azalan seçenekleri kısa yazmanın yoludur.
+
+Tekrar seçmeye izin verilseydi seçenek sayısı azalmazdı: her üç yerde 5 seçenek kalır, sayı $5^3=125$ olurdu. Dolayısıyla hesabı belirleyen iki ayrı soru vardır: sıra önemli mi ve aynı nesne yeniden kullanılabilir mi? “Üç seçim” ifadesi tek başına hangi formülün kullanılacağını söylemez. Önce deneyin kurallarını belirtmek, sonra saymak gerekir.
+
 ## 6. Kombinasyon: sıranın gereksiz tekrarını çıkarmak
 
 Beş kişiden iki kişilik bir ekip seçerken görev ayrımı olmasın. Önce sıralı 20 seçimi sayabiliriz, fakat her ekip iki farklı sırayla görünür. Bu yüzden $20/2=10$ ekip vardır. Genel olarak seçilen $k$ farklı nesnenin her kümesi $k!$ sırayla yazılabilir. Dolayısıyla:
@@ -76,6 +88,10 @@ ifadesi sırasız $k$ seçim sayısıdır. Buna kombinasyon sayısı veya binom 
 Dört para atışında tam iki yazı gelecekse yazıların bulunacağı iki konumu seçeriz. $\binom42=6$ sıra vardır. Atışlar bağımsız ve her yazı olasılığı $p$ ise bu sıraların her birinin olasılığı $p^2(1-p)^2$ olur. Toplam $6p^2(1-p)^2$'dir. Olasılıkların eşitliği, bağımsız ve aynı $p$ varsayımından gelir; yalnız altı sıra saymış olmak yetmez.
 
 ![Dört denemedeki iki başarı konumunun altı farklı seçimi gösterilir.](./iki-basari-sayimi.svg)
+
+Dört atıştaki altı sırayı $Y$ yazı, $T$ tura diyerek listeleyebiliriz: $YYTT,YTYT,YTTY,TYYT,TYTY,TTYY$. Her biri farklı konumlarda tam iki yazı içerir. Adil atışlarda her sıranın olasılığı $1/16$ olur; toplam $6/16=3/8$'dir. Yazı olasılığı $p=1/3$ olsaydı her sıranın olasılığı $(1/3)^2(2/3)^2=4/81$, toplam ise $24/81=8/27$ çıkardı. Sıra sayısı değişmedi; sıraların ağırlıkları değişti.
+
+$\binom42$ bir olasılık değil, altı olası konum seçiminin sayısıdır. Olasılığa geçmek için bu ayrık sonuçların ağırlıklarını topladık. Atışlar arasında başarı olasılıkları farklı olsaydı altı sıranın ağırlığı aynı olmayabilirdi; o durumda “bir sıranın olasılığı çarpı altı” kısa yolu ayrıca gerekçelendirilmeden kullanılamaz.
 
 ## 7. Koşul bilgisi örnek uzayı değiştirir
 
@@ -91,6 +107,15 @@ Adil zarın çift geldiğini biliyorsak yeni sonuçlar $\{2,4,6\}$'dır. Sonucun
 
 Koşullu olasılık, olayın mutlaka zaman bakımından önce gerçekleştiği anlamına gelmez. Bir sonucun bilgisine dayanarak başka bir özellik hakkında değerlendirme yaparız. Nedensellik iddiası tanımın içinde yoktur. Bu ayrım Bayes hesabında yönü ters çevirdiğimizde özellikle önem kazanacak.
 
+Koşullu oranı aynı zar örneğinde kesirlerle hesaplayalım. $A$ en az 4, $B$ çift gelmesi olsun. $A\cap B=\{4,6\}$ olduğu için $P(A\cap B)=2/6$, $P(B)=3/6$'dır. Bölme:
+
+$$
+P(A\mid B)=\frac{2/6}{3/6}
+=\frac26\cdot\frac63=\frac23
+$$
+
+verir. Altılı eski ölçek sadeleşir; kalan üç mümkün sonucun ikisi uygundur. Koşul $B$'nin gerçekleştiği bilindiği için $B$ artık bu hesabın bütün evrenidir. Nitekim $P(B\mid B)=P(B)/P(B)=1$ olur. Bu, eski modelde $P(B)$'nin de 1 olduğu anlamına gelmez; yeni bilgi altında ağırlıkları yeniden ölçekledik.
+
 ## 8. Birlikte gerçekleşme ve bağımsızlık
 
 Koşullu tanımı düzenlersek:
@@ -99,13 +124,17 @@ $$
 P(A\cap B)=P(A\mid B)P(B)
 $$
 
-elde edilir. Aynı ortak olayı ters sırayla da yazabiliriz: $P(A\cap B)=P(B\mid A)P(A)$. “Ve” olasılığında doğrudan koşulsuz olasılıkları çarpmak ancak bağımsızlık varsa geçerlidir.
+elde edilir. Ayrıca $P(A)>0$ ise aynı ortak olayı ters sırayla da yazabiliriz: $P(A\cap B)=P(B\mid A)P(A)$. “Ve” olasılığında doğrudan koşulsuz olasılıkları çarpmak ancak bağımsızlık varsa geçerlidir.
 
 $A$ ve $B$ **bağımsız** ise $P(A\cap B)=P(A)P(B)$ olur. Pozitif koşul olasılığında bu, $P(A\mid B)=P(A)$ demektir; $B$ bilgisi $A$'nın olasılığını değiştirmez. Aynı denemenin olayları da bağımsız olabilir. Adil zarda çift gelme ile 4'ten büyük gelme olaylarının kesişimi yalnız 6'dır: $1/6=(1/2)(1/3)$.
 
 Bağımsızlık ile ayrıklık aynı değildir. Pozitif olasılıklı iki ayrık olayın ortak olasılığı sıfırdır, fakat olasılıklarının çarpımı pozitiftir; bağımsız olamazlar. Zarın çift ve tek gelmesi ayrık olaylardır. Birinin gerçekleştiğini öğrenmek diğerini olanaksız kıldığı için bilgi etkisi çok güçlüdür.
 
 Üç veya daha çok olayda yalnız her çiftin bağımsızlığı, bütün ailenin birlikte bağımsızlığını garanti etmez. Birden çok bağımsız deneme modeli kurarken bütün gerekli ortak olasılıkların çarpım biçiminde ayrıştığını varsayarız. Buradaki para örnekleri bu tam bağımsızlık varsayımını kullanır.
+
+Çiftler halinde bağımsızlığın neden yetmediğini iki adil bağımsız para atışında görebiliriz. Dört eşit olasılıklı sıra $YY,YT,TY,TT$ olsun. $A$ ilk atışın yazı, $B$ ikinci atışın yazı, $C$ iki atışın aynı gelmesi olayı olsun. Üç olayın da olasılığı $1/2$'dir. Her iki olayın kesişimi yalnız $YY$ olduğundan olasılığı $1/4=(1/2)(1/2)$'dir; çiftler bağımsızdır.
+
+Üçlü kesişim de yalnız $YY$'dir ve olasılığı $1/4$'tür. Oysa üç olasılığın çarpımı $1/8$ olur. Demek ki üçünün birlikte bağımsızlığı yoktur. İlk iki atışı bildiğimizde aynı gelip gelmediklerini artık kesin biliyoruz. Bu örnek, çok sayıda olayın ortak olasılığını çarpmak için yalnız ikişer ikişer yapılan kontrollerin yeterli olmadığını gösterir.
 
 ## 9. Geri koymadan seçmek bağımlılık yaratır
 
@@ -129,9 +158,13 @@ elde edilir; koşullu terimler için ilgili $P(B_j)$ pozitif olmalıdır. Bu top
 
 Bu değerler gerçek bir işletme verisi değildir, yöntemi göstermek için seçilmiş model sayılarıdır. Bir uygulamada hangi hattın ne kadar katkı verdiği ve koşullu oranların nasıl ölçüldüğü ayrıca doğrulanmalıdır. Matematik, verilen ağırlıkları tutarlı biçimde birleştirir.
 
+Üretim hattı hesabını varsayımsal 1.000 ürün üzerinde okuyalım. İlk hattın ağırlığı 400, ikinci hattın ağırlığı 600 ürüne karşılık gelir. İlk grubun yüzde 2'si $400\cdot0{,}02=8$, ikinci grubun yüzde 5'i $600\cdot0{,}05=30$ kusurlu üründür. Toplam kusurlu ağırlık 38, bütün ağırlık 1.000 olduğu için oran $38/1000=0{,}038$ çıkar. Gruplar farklı büyüklükte olduğu için oranları eşit ağırlıkla ortalamadık.
+
+Kusurlu olduğu öğrenilen bir ürünün hangi hattan geldiğini sorduğumuzda ise payda artık 1.000 değildir. Dikkate alınan grup 38 kusurlu üründür; bunun 30'u ikinci hattan gelir. Dolayısıyla koşullu oran $30/38=15/19$ olur. Aynı tabloya başka bir koşulla bakmak, paydanın temsil ettiği grubu değiştirir. Bayes formülü birazdan bu yeniden gruplanmayı cebirle ifade edecek.
+
 ## 11. Bayes: koşulun yönünü çevirmek
 
-Aynı ortak olayı iki biçimde yazdığımız için $P(A\mid B)P(B)=P(B\mid A)P(A)$ olur. $P(B)>0$ ise:
+Bu bölümde $P(A)>0$ ve $P(B)>0$ olsun; böylece iki yöndeki koşullu olasılık da tanımlıdır. Aynı ortak olayı iki biçimde yazdığımız için $P(A\mid B)P(B)=P(B\mid A)P(A)$ olur. $P(B)>0$ ise:
 
 $$
 \boxed{P(A\mid B)=\frac{P(B\mid A)P(A)}{P(B)}.}
@@ -155,11 +188,46 @@ $$
 
 çıkar. Yani yaklaşık yüzde 15,38. Formülle aynı hesap $0{,}90\cdot0{,}01/[0{,}90\cdot0{,}01+0{,}05\cdot0{,}99]$'dur. Yüzde 90 algılama başarısı, işaretli bir ürünün yüzde 90 olasılıkla kusurlu olduğu anlamına gelmiyordu.
 
+Hesaptaki üç farklı paydayı ayıralım. $90/100$ oranı **kusurluların içindeki işaretlileri** ölçer ve denetleyicinin yüzde 90 yakalama oranıdır. $90/10000$ oranı **bütün ürünlerin içindeki işaretli kusurluları** ölçer ve yüzde 0,9'dur. $90/585$ ise **işaretlilerin içindeki kusurluları** ölçer ve aradığımız yaklaşık yüzde 15,38'dir. Pay aynı 90 olsa bile sorunun koşulu değiştiğinde payda değişir.
+
+Bayes hesabında pay $P(+\mid D)P(D)=0{,}009$, payda $P(+)=0{,}009+0{,}0495=0{,}0585$'tir. İki sayıyı da 10.000 ile çarpmak $90/585$ oranını üretir; doğal sayım ile formül bu yüzden aynı cevaptır. Yüzde 5 yanlış işaret oranının paydası kusursuz gruptur. Onu bütün ürünlerin yüzde 5'i diye almak, koşullu bir oranı başka bir gruba uygulamak olurdu.
+
 ![Kusurlu ve kusursuz gruplardan işaretli sonuca gelen iki yol doğal sayımla gösterilir.](./bayes-agaci.svg)
 
 Kusur başlangıç oranı yüzde 10 olsaydı, aynı denetleyici özellikleriyle işaretli kusurlu ağırlık 0,09, yanlış işaret ağırlığı 0,045 olurdu. Sonuç $0{,}09/0{,}135=2/3$'e yükselirdi. Denetleyici değişmedi; taban oranı değişti. Bayes hesabının temel dersi, yeni kanıtı başlangıç sıklığından koparmamaktır.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Koşulla daralan örnek uzay" caption="Adil zarın çift geldiği bilindiğinde 2, 4 ve 6 kalır. Bu koşul altında 4’ten büyük sonuç yalnız 6 olduğu için olasılık 1/3 olur." />
+
+### Ortak bir seçim, sonraki sonuçları birbirine bağlayabilir
+
+Geri koyarak çekim yapmamız, bütün belirsizlikleri birlikte düşündüğümüzde sonuçların mutlaka bağımsız olduğu anlamına gelmez. İki kutulu bir model kuralım. A kutusunda iki kırmızı, bir mavi; B kutusunda bir kırmızı, iki mavi top olsun. Önce kutulardan birini eşit olasılıkla seçelim. Sonra **seçilen aynı kutudan**, her seferinde topu geri koyup karıştırarak iki çekim yapalım. Hangi kutunun seçildiği bize söylenmesin.
+
+İlk çekimin kırmızı olması $R_1$, ikincinin kırmızı olması $R_2$ olsun. Başta kırmızı olasılığı toplam olasılıkla:
+
+$$
+P(R_1)=\frac12\frac23+\frac12\frac13=\frac12
+$$
+
+bulunur. Aynı hesap $P(R_2)=1/2$ verir. Fakat iki kırmızının birlikte olasılığında önce her kutunun içindeki koşullu hesabı yapmalıyız:
+
+$$
+P(R_1\cap R_2)
+=\frac12\left(\frac23\right)^2
++\frac12\left(\frac13\right)^2
+=\frac{5}{18}.
+$$
+
+Bu sayı $P(R_1)P(R_2)=1/4$'e eşit değildir. Dolayısıyla kutu bilgisi olmadan ele aldığımız iki sonuç bağımsız değildir. Koşullu tanımdan $P(R_2\mid R_1)=(5/18)/(1/2)=5/9$ çıkar; ilk kırmızıdan sonra ikinci kırmızının olasılığı artmıştır.
+
+Bunun nedeni ilk çekimin kutudaki topları kalıcı biçimde değiştirmesi değildir; topu geri koyduk. Değişen, hangi kutuyu seçtiğimize ilişkin bilgimizdir. Bayes ile:
+
+$$
+P(A\mid R_1)=\frac{(2/3)(1/2)}{1/2}=\frac23
+$$
+
+buluruz. İlk kırmızı, kırmızısı daha çok olan A kutusunun ağırlığını artırdı. Yeni ağırlıklarla ikinci çekim olasılığı $(2/3)(2/3)+(1/3)(1/3)=5/9$ olur; aynı sonucu yeniden elde ederiz.
+
+Kutu sabit ve biliniyorken çekimler modelimizde bağımsızdır. Kutu bilinmiyorken ise ikisi de ortak, gizli kalan kutu seçimine bağlıdır. Bu örnek “bağımsızlık” sözünün hangi bilgi altında söylendiğini belirtmenin önemini gösterir. Her çekimden önce kutuyu yeniden ve bağımsız seçseydik farklı bir deney düzeni kurmuş olurduk; o durumda ortak sabit kutunun yarattığı bağlantı bulunmazdı.
 
 ## 13. Olasılık neyi söylemez?
 

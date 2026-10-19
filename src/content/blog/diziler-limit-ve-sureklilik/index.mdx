@@ -43,6 +43,23 @@ olsun. Sonraki terim, öncekiyle 2'nin aritmetik ortalamasıdır. Böylece $b_2=
 
 2'ye uzaklığı izlersek $b_{n+1}-2=(b_n-2)/2$ olur. Başlangıç uzaklığı 1'dir ve her adımda yarıya iner. Bu nedenle $b_n=2+1/2^{n-1}$ yazabiliriz. Genel terim, özyinelemeli işlemin tekrarlanan etkisini tek satırda gösterir.
 
+### Dizinin kuralını birkaç terimden ayırmak
+
+Bir dizide $n$ sayısı, terimin listedeki yerini gösterir; terimin kendisi $a_n$'dir. Örneğin $a_n=2+3/n$ kuralında $n=1,2,3$ yazınca sırasıyla $5$, $7/2$ ve $3$ elde ederiz. Burada $a_2=7/2$ demek, “ikinci terimin değeri $7/2$” demektir; $a$ ile 2'nin çarpımı demek değildir. Ardışık terimler arasındaki farkı da aynı kuralla bulabiliriz:
+
+$$
+\begin{aligned}
+a_{n+1}-a_n
+&=\frac3{n+1}-\frac3n\\
+&=\frac{3n-3(n+1)}{n(n+1)}\\
+&=-\frac3{n(n+1)}<0.
+\end{aligned}
+$$
+
+Payda pozitif olduğundan terimler azalır. Ayrıca $3/n>0$ olduğu için bütün terimler 2'nin üzerindedir. Bu iki gözlem, listeyi çizmeden bile davranışını anlamamızı sağlar. Ancak birkaç terimin azalması, sonsuz listenin geri kalanını kanıtlamaz; burada sonuç her pozitif tam sayı $n$ için geçerli eşitsizlikten gelir.
+
+Bir dizinin başlangıçtaki sonlu sayıda terimini değiştirsek de yeterince ilerideki davranışı değişmeyebilir. İlk yüz terimi çok büyük olan bir dizi, yüz birinci terimden itibaren $2+3/n$ kuralını izleyebilir. Limit tanımındaki “bir yerden sonra” ifadesi, bu başlangıç bölümünü geride bırakabilmemizi sağlar.
+
 ## 2. Yakınsaklık: Sonunda Hep Yakın Kalmak
 
 $a_n=1/n$ dizisi için:
@@ -60,6 +77,22 @@ Bu davranışa **yakınsaklık**, yaklaşılan gerçek sayıya limit deriz. Dizi
 $(-1)^n$ dizisi $-1,1,-1,1,\ldots$ diye salınır ve hiçbir tek gerçek sayıya yaklaşmaz. Buna karşılık $(-1)^n/n$ işaret değiştirse de mutlak değeri $1/n$ olduğu için sıfıra yaklaşır. Yakınsak olmak, mutlaka tek yönde ilerlemek veya hedefin hep aynı tarafında durmak demek değildir.
 
 Sabit dizi $a_n=5$ de 5'e yakınsar. Limit, “hiçbir zaman ulaşılmayan sayı” diye tanımlanamaz. Terimler hedefe baştan beri eşit olabilir, bazen eşit olabilir veya hiç eşit olmayabilir. Belirleyici olan, sonraki bütün terimlerin her istenen yakınlık koşulunu sağlamasıdır.
+
+### “Yeterince büyük” olan sıra numarasını gerçekten bulmak
+
+Az önceki $a_n=2+3/n$ dizisinin 2'ye yaklaştığını söylerken ölçtüğümüz hata $|a_n-2|=3/n$'dir. Hatanın $0{,}02$'den küçük olmasını isteyelim. $n$ pozitif olduğundan eşitsizliği $n$ ile çarpmak yönünü değiştirmez:
+
+$$
+\begin{aligned}
+\frac3n&<0{,}02\\
+3&<0{,}02n\\
+150&<n.
+\end{aligned}
+$$
+
+Dolayısıyla 151. terim ve sonrasındaki bütün terimler istenen aralıktadır. $n=150$ için hata tam $0{,}02$ olur; sıkı “küçük” koşulunu sağlamadığına dikkat edelim. Genel bir $\varepsilon>0$ hata payı için de aynı işlem $n>3/\varepsilon$ koşulunu verir. Böyle bir sıra numarası her pozitif hata payı için seçilebilir; limitin 2 olmasının dayanağı budur.
+
+Bu inceleme “dizi sonunda 2 oluyor” anlamına gelmez. Her sonlu $n$ için $3/n$ hâlâ pozitiftir. Yaklaşmak, hedefe eşit olmak zorunda değildir. Tersine, $a_n=2$ sabit dizisinin limiti de 2'dir: hatası her adımda sıfırdır. Limit kavramı hem hiç erişmeyen hem baştan beri hedefte olan dizileri kapsar.
 
 ## 3. Bir Fonksiyonun Girdisini Yaklaştırmak
 
@@ -110,6 +143,20 @@ Bir iç noktada iki taraflı sonlu limitin var olması için sol ve sağ limitle
 
 Tanım kümesinin sınırında ise yaklaşılabilen tarafı açıkça söyleriz. $\sqrt{x}$ gerçek sayılarda yalnızca $x\ge0$ için tanımlıdır. Bu yüzden sıfırda sağdan yaklaşmayı inceleyebiliriz; olmayan negatif girdilerden yaklaşma beklemeyiz. Bu yazıdaki iki taraflı örneklerde hedefin iki yanında da tanım kümesinden noktalar vardır.
 
+### Mutlak değeri yaklaşma yönüne göre açmak
+
+Tek taraflı limitlerde cebirsel ifadenin hangi bölgede hangi kurala dönüştüğünü belirlemek gerekir. Örneğin
+
+$$
+q(x)=\frac{|x-2|}{x-2},\qquad x\ne2
+$$
+
+olsun. $x>2$ olduğunda $x-2$ pozitiftir; mutlak değer onu değiştirmez. Böylece $q(x)=1$ olur. $x<2$ olduğunda ise $x-2$ negatiftir ve $|x-2|=-(x-2)$ yazılır. Bu tarafta $q(x)=-1$'dir. Dolayısıyla sağ limit 1, sol limit $-1$ çıkar.
+
+Buradaki sorun $x=2$'de paydaya sıfır gelmesiyle sınırlı değildir. Noktanın iki yanındaki davranışlar uyuşmaz. $q(2)$ için istediğimiz sayıyı seçsek bile iki taraflı limit oluşturamayız. Buna karşılık $(x^2-4)/(x-2)$ ifadesi $x\ne2$ için $x+2$'ye eşittir; iki taraftan da 4'e yaklaşır. İki örnek aynı sıfır paydayı gösterse de biri atlama, diğeri doldurulabilir bir delik içerir.
+
+Bu yüzden “payda sıfırsa limit yoktur” kestirmesi güvenilir değildir. Önce sıfırdan farklı yakın girdilerde ifadenin ne yaptığını araştırırız; noktanın kendi değerini bundan ayrı tutarız.
+
 ## 5. Limit Kuralları ve Koşulları
 
 $x\to a$ iken $f(x)\to L$ ve $g(x)\to M$ olsun; $L$ ve $M$ sonlu gerçek sayılardır. Bu durumda toplamın limiti $L+M$, farkınki $L-M$, çarpımınki $LM$ olur. Sabit bir katsayı limitin dışına çıkarılabilir.
@@ -124,6 +171,16 @@ $$
 Payda limitinin sıfır olmaması, hedefe yeterince yakın girdilerde paydanın da sıfırdan uzak tutulabilmesini sağlar. Bu koşulu atlayarak 0'a bölme yapamayız.
 
 Toplama kuralının sezgisel gerekçesi hata paylarını birleştirmektir. $f(x)$ ile $L$ arasındaki fark küçük, $g(x)$ ile $M$ arasındaki fark da küçükse toplamın hedefinden uzaklığı en fazla bu iki farkın mutlak değerlerinin toplamı kadardır. Her bir hatayı istenen toplam hatanın yarısından küçük tutmak yeterlidir.
+
+Çarpım kuralında da hatayı iki parçaya ayırabiliriz. $f$ ve $g$ kısaltmaları, aynı yakın girdideki fonksiyon değerleri olsun. Araya $fM$ ekleyip çıkarırsak
+
+$$
+fg-LM=f(g-M)+M(f-L)
+$$
+
+elde edilir. $f$ sonlu $L$'ye yaklaştığı için yakında büyüklüğü örneğin $|L|+1$ ile sınırlanabilir. Dolayısıyla $g-M$ ve $f-L$ küçüldüğünde sağdaki iki katkı da küçülür; sonlu bir sayıya yaklaşan çarpan hata büyümesini denetim altında tutar.
+
+Bölümdeki koşulun görevi de bu tür bir sınır sağlamaktır. $M\ne0$ ise yeterince yakında $|g-M|<|M|/2$ seçilebilir. Üçgen eşitsizliğinden $|g|\ge|M|-|g-M|>|M|/2$ olur; payda sıfıra yaklaşarak küçülemez. Örneğin payda limiti 3 ise yakın girdilerde paydanın mutlak değeri $3/2$'den büyük tutulabilir. Böyle bir alt sınır yoksa bölme küçük hataları büyütebilir. Payda limitinin sıfır olduğu duruma ayrı bakmamızın nedeni budur.
 
 Polinomların limitini bulurken girdiyi doğrudan yerine koyabiliriz; sabit, $x$ ve bunların sonlu sayıdaki toplam ve çarpımlarından oluşurlar. Örneğin:
 
@@ -172,6 +229,18 @@ $$
 
 Burada kullandığımız eşlenik hedefin yakınında sıfır değildir; aslında gerçek tanım kümesinde en az 2'dir. Geçersiz bir bölmeyle yeni değer uydurmadık. Başlangıç ifadesinin tanımsız noktası dururken yakın davranışı hesapladık.
 
+### Eşit ifadelerin tanım kümelerini unutmamak
+
+Sadeleştirme, bir toplamın içindeki benzer parçaları silmek değildir; pay ve paydada ortak olan **çarpanı** bölmektir. Örneğin $x^2-9=(x-3)(x+3)$ olduğundan
+
+$$
+\frac{x^2-9}{x-3}=x+3,\qquad x\ne3
+$$
+
+yazabiliriz. $x=3$'ü dışarıda tutmamızın nedeni, bölme işleminin o noktada geçerli olmamasıdır. Limit için bu engel değildir: limite bakarken $x$'in 3'e eşit olmadığı yakın değerlerini kullanırız. Ancak iki formülü bütün gerçek sayılarda aynı fonksiyon sayamayız; sağdaki ifade 3'te tanımlıdır, soldaki değildir.
+
+Eşlenikle çarpmada da değişmeyen değer fikri vardır. Payı $\sqrt{x+4}+2$ ile çarpıyorsak paydayı da aynı sayıyla çarpmalıyız. Böylece ifadeyi 1 ile çarpmış oluruz. $x=0$ yakınında bu çarpan sıfır değildir ve kök içi pozitiftir. Payda kalan $x$ çarpanını ancak $x\ne0$ için sadeleştiririz. Her adımın koşulunu taşımak, sonucun hem doğru olmasını hem hangi soruya cevap verdiğini görmemizi sağlar.
+
 ## 7. Sonsuz Limit ile Sonsuzda Limit Farklıdır
 
 $1/x^2$ fonksiyonunda $x$ sıfıra her iki yandan yaklaşırken değerler pozitif ve sınırsız büyür. Bunu:
@@ -197,6 +266,22 @@ $x\to+\infty$ iken $1/x^2\to0$ olduğundan limit 3 olur. Burada “sonsuzu sonsu
 
 Fonksiyon bir girdiye yaklaşırken sınırsız büyüyorsa ilgili düşey doğruya **düşey asimptot** denebilir. Sonsuzda sonlu $L$ değerine yaklaşıyorsa $y=L$ yatay bir asimptottur. Yatay asimptot, grafiğin o doğruyu hiçbir yerde kesemeyeceği anlamına gelmez; uzaklardaki davranışı anlatır.
 
+### Sonsuzdaki yaklaşmanın hata miktarını hesaplamak
+
+$R(x)=(3x^2-1)/(x^2+2)$ ifadesinin 3'e yaklaştığını en büyük kuvvete bölerek bulmuştuk. Sonucu doğrudan çıkararak da denetleyebiliriz:
+
+$$
+\begin{aligned}
+R(x)-3
+&=\frac{3x^2-1-3(x^2+2)}{x^2+2}\\
+&=-\frac7{x^2+2}.
+\end{aligned}
+$$
+
+Payda daima pozitiftir; dolayısıyla grafik bütün gerçek girdilerde 3'ün altındadır. Uzaklık ise $7/(x^2+2)$'dir. Bunun $0{,}01$'den küçük olması için $x^2+2>700$, yani $|x|>\sqrt{698}$ yeterlidir. Örneğin $|x|\ge27$ olduğunda hata en fazla $7/731$ olur; bu da $0{,}01$'den küçüktür.
+
+Aynı işlem hem $x\to+\infty$ hem $x\to-\infty$ için çalışır; çünkü $x^2$ iki yönde de büyür. Burada sonsuzu girdinin yerine koymadık. İstenen hata payını sağlayacak sonlu bir uzaklık sınırı bulduk. Yatay asimptotun bu örnekte kesilmemesi ayrıca bulduğumuz negatif farktan gelir; yalnızca yatay asimptot olması bütün fonksiyonlar için böyle bir sonuç vermez.
+
 ## 8. Yakınlığı Kesin Söylemek: Epsilon ve Delta
 
 “$x$ yeterince yakınsa $f(x)$ de yakındır” cümlesindeki iki yakınlığı ayrı adlandıralım. Çıktıda izin verdiğimiz pozitif hata payına $\varepsilon$ (**epsilon**), girdide seçeceğimiz pozitif yakınlık sınırına $\delta$ (**delta**) diyelim.
@@ -218,7 +303,11 @@ Tanımın sırası önemlidir: önce istenen çıktı hassasiyeti verilir; sonra
 $x$ 2'ye yaklaşırken çıktının 5'e yaklaştığını gösterelim. Çıktı hatasını hesaplayalım:
 
 $$
-|f(x)-5|=|2x+1-5|=|2(x-2)|=2|x-2|.
+\begin{aligned}
+|f(x)-5|&=|2x+1-5|\\
+&=|2(x-2)|\\
+&=2|x-2|.
+\end{aligned}
 $$
 
 Çıktı hatası girdi uzaklığının iki katıdır. O hâlde istenen her $\varepsilon>0$ için $\delta=\varepsilon/2$ seçersek:
@@ -235,6 +324,32 @@ $$
 
 Dizide aynı fikir delta yerine bir sıra eşiğiyle ifade edilir. $a_n\to L$ demek, her pozitif epsilon için yeterince büyük bir $N$ bulunup $n\ge N$ olan bütün terimlerde $|a_n-L|<\varepsilon$ olmasıdır. $a_n=1/n$ için $N>1/\varepsilon$ seçmek yeterlidir. Böylece başlangıçta sezgisel söylediğimiz yaklaşmayı kesin bir koşula bağlamış oluruz.
 
+### Çıktı hatasında değişken bir çarpan kalırsa
+
+Doğrusal örnekte çıktı hatası, girdi hatasının sabit bir katıydı. $f(x)=x^2$ için $x\to3$ iken limitin 9 olduğunu aynı kesinlikle gösterelim. İki kare farkını kullanınca:
+
+$$
+|x^2-9|=|(x-3)(x+3)|=|x-3|\,|x+3|
+$$
+
+elde ederiz. İlk çarpanı küçültmek istiyoruz, fakat ikinci çarpan da $x$'e bağlıdır. Bu yüzden doğrudan “$\delta=\varepsilon/|x+3|$ seçelim” demek uygun bir tamamlanmış seçim değildir. Bir kez seçtiğimiz $\delta$, izin verilen bütün yakın $x$ değerleri için çalışmalıdır.
+
+Önce $|x-3|<1$ koşulunu isteyelim. Bu, $2<x<4$ demektir; dolayısıyla $5<x+3<7$ ve $|x+3|<7$ olur. Değişken çarpanı artık sabit 7 ile üstten sınırladık. Şimdi her $\varepsilon>0$ için:
+
+$$
+\delta=\min\left(1,\frac{\varepsilon}{7}\right)
+$$
+
+seçelim. $\min$ iki sayının küçüğünü alır. Bu seçim hem başlangıçta kullandığımız bir birimlik yakınlığı hem de çıktı hatası için gereken yakınlığı sağlar. Gerçekten $0<|x-3|<\delta$ ise:
+
+$$
+|x^2-9|<7|x-3|<7\delta\le\varepsilon.
+$$
+
+Son adımda eşitlik mümkün olsa bile önceki sıkı eşitsizlik nedeniyle çıktı hatası kesin olarak $\varepsilon$'dan küçüktür. Örneğin $\varepsilon=0{,}07$ istendiğinde $\delta=0{,}01$ yeterlidir. $x=3{,}005$ seçimi bu aralıktadır ve çıktı hatası $9{,}030025-9=0{,}030025<0{,}07$ çıkar. Tek sayısal kontrol kanıtın yerine geçmez; sadece bütün aralık için kurduğumuz denetimin bir örneğidir.
+
+Seçtiğimiz sınırın mümkün olan en geniş girdi aralığı olması gerekmez. Limit tanımı, her hassasiyet için işe yarayan **bir** pozitif aralık bulmamızı ister. Burada iki aşamalı seçim yaptık: önce diğer çarpanın büyümesini sınırladık, sonra asıl uzaklığı küçülttük. Böylece doğrusal olmayan bir fonksiyonda da “yeterince yakın” sözünü açık bir kurala çevirebildik.
+
 ## 9. Süreklilik: Yakın Davranış ve Nokta Değeri Buluşursa
 
 Bir fonksiyonun $a$ noktasında **sürekli** olması için üç şey birlikte gerekir: $f(a)$ tanımlı olmalı, $x\to a$ limiti bulunmalı ve bu limit $f(a)$'ya eşit olmalıdır. İç noktalarda bunu:
@@ -250,6 +365,22 @@ Başlangıçtaki $(x^2-1)/(x-1)$ fonksiyonunun 1'de limiti 2'ydi ama fonksiyon d
 Solda 0, sağda 1 olan sıçrama örneğinde ise tek bir nokta değerini değiştirerek süreklilik kuramayız. İki tarafın limitleri farklıdır. Böylece giderilebilir bir delik ile giderilemeyen sıçramayı ayırırız.
 
 “Kalemi kaldırmadan çizmek” sürekliliği hatırlatabilen bir resimdir, fakat tanımın yerini tutmaz. Grafik farklı aralıklarda tanımlı olabilir, ölçekte görünmeyen kopukluklar bulunabilir. Kesin ölçüt fonksiyon değeri ile limitin ilişkisi olmalıdır.
+
+### Parçaların birleşmesini bir bilinmeyenle sağlamak
+
+Süreklilik koşulları, parçalı bir fonksiyondaki katsayıyı belirlemek için kullanılabilir. $x\le2$ için $f(x)=x+1$, $x>2$ için $f(x)=mx-1$ olsun. Sol parçadan $f(2)=3$ ve sol limit 3 çıkar. Sağ parça doğrusal olduğundan sağ limit $2m-1$'dir. İki tarafın uyuşması için
+
+$$
+\begin{aligned}
+2m-1&=3\\
+2m&=4\\
+m&=2
+\end{aligned}
+$$
+
+olmalıdır. Bu seçimle iki taraflı limit 3 olur ve noktadaki değer de 3'tür; üç süreklilik koşulu birlikte sağlanır.
+
+Şimdi aynı fonksiyonda yalnızca $f(2)$'yi 10 yapalım. Yakındaki diğer değerler değişmediği için iki taraflı limit hâlâ 3'tür, fakat süreklilik bozulur. Bu ters kontrol, “sağ ve sol limit eşitse fonksiyon süreklidir” cümlesindeki eksik şartı gösterir: ortak limit, fonksiyonun o noktadaki değerine de eşit olmalıdır. Süreklilik bir bölgedeki bütün noktalar için söylendiğinde bu denetim, özellikle kuralın değiştiği birleşme noktalarında yapılır.
 
 ## 10. Bir Tablo Ne Kadarını Kanıtlar?
 

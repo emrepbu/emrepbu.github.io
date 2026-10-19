@@ -27,6 +27,12 @@ Terimler başlangıçta farklı taraflarda durabilir. Pano örneğinde iki taraf
 
 Denklemi sağlayan sayılara bu bağlamda **kök** de denir. Denklem kökü, karekök sembolüyle aynı şey değildir. $x^2-9=0$ denkleminin iki gerçek kökü 3 ve $-3$'tür; $\sqrt9$ gösterimi ise tek bir sayıyı, pozitif olan 3'ü belirtir.
 
+### Katsayıyı okurken işareti ve eksik terimi korumak
+
+$3x^2+5=2x$ denkleminin katsayılarını, bütün terimleri aynı tarafa toplamadan okumak yanıltıcı olabilir. İki taraftan $2x$ çıkarınca $3x^2-2x+5=0$ olur. Standart biçimde $a=3$, $b=-2$, $c=5$'tir. Sağdaki artı $2x$ görünüşüne bakıp $b=2$ yazmak, farklı bir denklemin katsayısını seçmek olur.
+
+$x^2-9=0$ örneğinde $x$ terimi hiç görünmüyorsa bunun katsayısı sıfırdır; yani $x^2+0x-9=0$ diye okuyabiliriz. Buna karşılık $x^2$'nin önünde sayı görünmemesi katsayısının 1 olduğunu anlatır. Terimin hiç bulunmaması ile terimin çarpanının yazılmaması farklı durumlardır. Benzer terimler varsa önce birleştiririz: $2x^2+x-x^2=3$ denklemi $x^2+x-3=0$ olur. Derece ve katsayılar bu düzenlenmiş biçimden belirlenir. Böylece birazdan formüle yazacağımız sayılar, başlangıçta gözümüze çarpan rakamlar değil, aynı denklemin açıkça düzenlenmiş katsayıları olur. Özellikle negatif katsayıları yerine koyarken parantez kullanmak, karesini aldığımız bütün sayıyı korur.
+
 ## 2. Sıfır Çarpım İlkesi
 
 İki gerçek sayının çarpımı sıfırsa, sayılardan en az biri sıfırdır. $uv=0$ olduğunda $u=0$ **veya** $v=0$ dememizi sağlayan kurala **sıfır çarpım ilkesi** diyoruz. Burada $u$ ve $v$ herhangi iki gerçek sayı veya sayısal değer alan ifadedir.
@@ -56,6 +62,10 @@ Cebirsel kökler $x=-7$ ve $x=4$'tür. Ancak $x$ pano kenarının santimetre cin
 Negatif kökü “hesap hatası” diye silmedik. Önce denklemin gerçek çözümlerini bulduk, ardından uzunluk koşulunu uyguladık. Gerçek sayılar üzerinde $-7$ de denklemi sağlar; yalnızca bu fiziksel yorumda uygun değildir.
 
 ![Sıfıra eşit iki çarpan için x eksi yedi ve x dört seçeneklerinin ayrı gösterilmesi.](./sifir-carpim.svg)
+
+Çarpanları ararken kullanılan iki koşulu açıkça görelim. $(x+r)(x+s)$ açılımı $x^2+(r+s)x+rs$'dir; burada $r$ ve $s$ aradığımız sabit sayılardır. Bu yüzden orta terimin katsayısı için $r+s=3$, sabit terim için $rs=-28$ istedik. Çarpım negatif olduğundan sayılardan biri pozitif, diğeri negatif olmalıdır. 28'in pozitif çarpan çiftleri 1 ile 28, 2 ile 14, 4 ile 7'dir. Farkı 3 olan son çift uygun; toplamın pozitif olması için büyük olan 7'ye artı, 4'e eksi veririz.
+
+Böylece seçim tahmin gibi görünse de iki katsayıyı aynı anda eşleştiren düzenli bir aramadır. Sonra her çarpanı ayrı ayrı sıfıra eşitlememiz “veya” anlamı taşır. $x$'in hem $-7$ hem 4 olması gerekmez; çarpanlardan herhangi birinin sıfır olması bütün çarpımı sıfırlar. $x=4$ için çarpım $11\times0$, $x=-7$ için $0\times(-11)$ olur. İki aday da sıfır çarpım koşulunu sağlar; geometrik uzunluk sınırı bundan sonraki ayrı adımdır.
 
 ## 4. Kareden Geri Dönünce İki İşaret
 
@@ -90,7 +100,24 @@ Böylece $x=2$ veya $x=-6$ bulunur. Başlangıçta $2^2+4\times2=12$ ve $(-6)^2+
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Eksik köşeyi tamamlamak" caption="x² + 4x ifadesine dört birim kare eklenerek (x + 2)² oluşturuluyor. Eşitliğin diğer tarafına da 4 eklemek, çözümü aynı koşul içinde tutuyor." />
 
-İşlemin genel örüntüsü $x^2+px$ için görülür. $(x+h)^2=x^2+2hx+h^2$ olduğundan $2h=p$, yani $h=p/2$ seçilir. Eklenecek sayı $h^2=(p/2)^2$'dir. **Birinci derece katsayısının yarısını alıp karesini eklememizin** nedeni bu eşleşmedir.
+İşlemin genel örüntüsü $x^2+px$ için görülür; burada $p$, $x$ teriminin verilmiş katsayısıdır. Tam karede $x$'e eklenecek sayıya $h$ diyelim. $(x+h)^2=x^2+2hx+h^2$ olduğundan $2h=p$, yani $h=p/2$ seçilir. Eklenecek sayı $h^2=(p/2)^2$'dir. **Birinci derece katsayısının yarısını alıp karesini eklememizin** nedeni bu eşleşmedir.
+
+### Eklenecek sayıyı kare açılımından bulmak
+
+$x^2+6x=7$ denklemini birlikte tamamlayalım. Tam kareyi $(x+h)^2$ biçiminde arıyoruz; $h$, henüz seçmediğimiz ek sayının adıdır. Açılım $x^2+2hx+h^2$ olduğundan ortadaki $2h$ katsayısını 6'ya eşitleriz. $2h=6$ bize $h=3$ verir. Eksik sabit $h^2=9$'dur; 3 değil 9 eklemeliyiz. İki tarafa 9 ekleyerek:
+
+$$
+\begin{aligned}
+x^2+6x+9&=7+9,\\
+(x+3)^2&=16,\\
+x+3&=4\quad\text{veya}\quad-4,\\
+x&=1\quad\text{veya}\quad-7
+\end{aligned}
+$$
+
+buluruz. Son satırda iki seçeneğin her birinden 3 çıkardık. Başlangıç denetimi $1^2+6(1)=7$ ve $(-7)^2+6(-7)=49-42=7$ verir. İki kök de çalışır.
+
+Neden yalnız sol tarafa 9 eklemiyoruz? Sol tarafın değerini artırırken sağ tarafı aynı bırakmak, eski denklemin eşitlik koşulunu değiştirir. Sağdaki 7 de 16'ya çıkmalıdır. Tam kareyi oluşturmak cebirsel bir düzenleme hedefidir; bu hedef eşitliği koruma kuralını ortadan kaldırmaz. Ayrıca karesi 16 olan ifadenin iki işaretini de taşıdık; yalnız pozitif seçeneği almak negatif kökü kaybettirirdi.
 
 ## 6. Baş Katsayı Bir Değilse
 
@@ -101,7 +128,7 @@ x^2+4x-3=0,
 \qquad x^2+4x=3.
 $$
 
-Bir önceki örnekteki gibi 4 ekleyince $(x+2)^2=7$ olur. Kökler:
+$x$ teriminin katsayısı 4 olduğu için yarısı 2, eklenecek kare $2^2=4$'tür. İki tarafa 4 ekleyelim: $x^2+4x+4=3+4$. Soldaki üç terim $(x+2)^2$, sağdaki toplam 7 olur. Dolayısıyla $(x+2)^2=7$ elde ederiz. Önce $x+2=\sqrt7$ veya $x+2=-\sqrt7$ yazıp her iki seçenekte 2 çıkarırız. Kökler:
 
 $$
 x=-2\pm\sqrt7
@@ -126,11 +153,38 @@ $$
 =\frac{b^2-4ac}{4a^2}.
 $$
 
+Aradaki işlemleri açık yazarsak soldaki dönüşüm kare açılımını ters yönde kullanır. Eklediğimiz $b^2/(4a^2)$ sabiti, $b/(2a)$ sayısının karesidir. Orta terim de $2x\,b/(2a)=(b/a)x$ olur; paydaki ve paydadaki 2'ler sadeleşir. Böylece üç terim tam olarak aynı karenin parçalarıdır.
+
+Sağda ise iki kesri aynı birime getiriyoruz:
+
+$$
+\begin{aligned}
+-\frac ca+\frac{b^2}{4a^2}
+&=-\frac{4ac}{4a^2}
+  +\frac{b^2}{4a^2}\\
+&=\frac{b^2-4ac}{4a^2}.
+\end{aligned}
+$$
+
+İlk kesrin payını ve paydasını aynı sıfır olmayan $4a$ ile çarptık. $a$ negatif olsa da bu bir eşitlik hesabıdır; eşitsizlik yönüyle ilgili bir işlem yapmıyoruz. Başlangıçtaki $a\ne0$ koşulu bütün bu bölmelerin tanımlı olmasını sağlar.
+
 Sağ tarafı ortak paydada topladık: $-c/a=-4ac/(4a^2)$, eklenen kare ise $b^2/(4a^2)$'dir. İki tarafı $4a^2$ ile çarparsak daha kullanışlı bir eşitlik elde ederiz:
 
 $$
 (2ax+b)^2=b^2-4ac.
 $$
+
+Soldaki $4a^2$ çarpanının kare içine nasıl girdiğini de açalım. $4a^2=(2a)^2$ olduğu için bir çarpımın karesi kuralı kullanılır:
+
+$$
+\begin{aligned}
+&4a^2\left(x+\frac{b}{2a}\right)^2\\
+&\quad=\left[2a\left(x+\frac{b}{2a}\right)\right]^2\\
+&\quad=(2ax+b)^2.
+\end{aligned}
+$$
+
+Parantezin içinde dağıtınca $2a\cdot b/(2a)=b$ olur. Sağ tarafta da aynı $4a^2$ ile çarpma paydayı kaldırır. Dolayısıyla yeni kareli eşitlik farklı bir yöntem değil, az önceki eşitliğin iki tarafını aynı sıfır olmayan sayıyla çarpıp düzenlenmiş hâlidir.
 
 Bu biçim, karekök alırken $\sqrt{a^2}=|a|$ ayrıntısını yanlış kullanma riskini de azaltır. Sağ taraf negatif değilse:
 
@@ -161,6 +215,10 @@ $$
 Kökler $x=(5\pm7)/4$ olur. Artı seçeneği $12/4=3$, eksi seçeneği $-2/4=-1/2$ verir. Kontrol için $x=3$ yazınca $18-15-3=0$, $x=-1/2$ yazınca $1/2+5/2-3=0$ elde ederiz.
 
 $x^2-6x+9=0$ için $\Delta=36-36=0$'dır. Denklem zaten $(x-3)^2=0$ biçimindedir; farklı tek kök 3'tür. $x^2+2x+5=0$ için $\Delta=4-20=-16$ olur. Kareye tamamlayınca $(x+1)^2=-4$ çıkması da aynı çözümsüzlüğü gösterir.
+
+Diskriminantın sıfır olması “hiç kök yok” demek değildir. Formülde $\sqrt\Delta=0$ olunca artı ve eksi dallar aynı sayıyı verir: $(-b+0)/(2a)=(-b-0)/(2a)$. Çözüm kümesinde tekrar yazılan sayı yeni bir eleman oluşturmadığından bir farklı kök vardır. Diskriminant negatif olduğunda ise sorun başka yerdedir: Karekökün altındaki sayı gerçek bir karenin değeri olamaz.
+
+Pozitif diskriminantta iki dalın neden farklı olduğunu da görebiliriz. Bir dalın payı $-b+\sqrt\Delta$, diğerininki $-b-\sqrt\Delta$'dır. Aralarında $2\sqrt\Delta$ kadar sıfır olmayan fark vardır. Aynı sıfır olmayan $2a$'ya bölmek bu farkı yok etmez. $a$ negatifse artı işaretli dalın daha büyük kök olması gerekmez; artı ve eksi, sıralama etiketi değil formüldeki iki seçimdir. Kökleri küçükten büyüğe yazmak istiyorsak değerlerini ayrıca karşılaştırırız.
 
 ## 9. Paydalı Denklemlerde Yasak Değerler
 
@@ -218,6 +276,37 @@ Bulduğumuz iki kökü kontrol ederken yalnızca son çarpım biçimine bakmak d
 Kontrolün neyi kanıtladığını ayırmak gerekir. Bir sayının başlangıç denklemini sağlaması onun bir kök olduğunu gösterir. Bütün kökleri bulduğumuzu ise dönüşümlerin kapsamı gösterir. İkinci derece polinom denklemini sıfır çarpım ilkesine indirdiğimizde iki çarpanın sıfır olabileceği bütün durumları sayarız. Kareye tamamlarken artı ve eksi seçeneklerinin ikisini de ele alırız. Bu sistematik ayrım yapılmazsa çalışan bir aday bulmuş, başka bir kökü gözden kaçırmış olabiliriz.
 
 Çift katlı kök ifadesi de bu açıdan okunmalıdır. $(x-3)^2=0$ denklemi $(x-3)(x-3)=0$ biçiminde aynı çarpanı iki kez içerir. İki kez görünen çarpan, iki farklı sayı üretmez. “İki katlı” çarpımın yapısını, “bir farklı kök” çözüm kümesindeki eleman sayısını anlatır.
+
+### Köklerin toplamı ve çarpımıyla sonucu denetlemek
+
+İkinci derece bir polinomun kökleri $r$ ve $s$, baş katsayısı $a\ne0$ olsun. Bu durumda polinom $a(x-r)(x-s)$ biçiminde yazılır. Çarpımı açalım:
+
+$$
+a(x-r)(x-s)
+=ax^2-a(r+s)x+ars.
+$$
+
+Bunu $ax^2+bx+c$ ile karşılaştırdığımızda, aynı kuvvetlerin katsayıları eşit olmalıdır. $x$ katsayısı için $-a(r+s)=b$, sabit terim için $ars=c$ elde ederiz. Sıfır olmayan $a$'ya bölünce:
+
+$$
+r+s=-\frac ba,
+\qquad
+rs=\frac ca.
+$$
+
+Bu bağıntılar köklerin her birini tek başına söylemez; ikisinin birlikte uyması gereken iki kontrol verir. Örneğin $3x^2-5x-2=0$ için $a=3$, $b=-5$, $c=-2$'dir. Diskriminant $25+24=49$ olur. Genel formülden kökler $(5+7)/6=2$ ve $(5-7)/6=-1/3$ bulunur.
+
+Toplamı ve çarpımı ayrı ayrı hesaplayalım:
+
+$$
+2-\frac13=\frac53=-\frac{-5}{3},
+\qquad
+2\left(-\frac13\right)=-\frac23.
+$$
+
+İki kontrol de katsayılarla uyumludur. Eksi kökü yanlışlıkla $+1/3$ yazsaydık hem toplam hem çarpım bu koşulları bozardı. Böyle bir kontrol özellikle genel formülde işaret veya payda hatası yaptığımızda yararlıdır.
+
+Burada baş katsayısını unutmamak gerekir. Kökleri 2 ve $-1/3$ olan çarpım $(x-2)(x+1/3)$, başlangıç polinomunun kendisi değildir; onun üçte biridir. Baş katsayısını geri koyunca $3(x-2)(x+1/3)=3x^2-5x-2$ olur. Kökler değişmez, ama polinomun sayısal değeri değişir. Ayrıca bu bölümde gerçek kökleri olan örnek kullandık; diskriminant negatifse gerçek $r,s$ seçemeyiz. Katsayı ilişkisini kullanmak, gerçek köklerin varlığını önceden kontrol etme gereğini ortadan kaldırmaz.
 
 ## 13. Yöntemi Denklemin Yapısına Göre Seçmek
 

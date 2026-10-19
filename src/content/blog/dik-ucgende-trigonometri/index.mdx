@@ -27,6 +27,10 @@ Seçtiğimiz $\theta$ açısının karşısında kalan dik kenar **karşı kenar
 
 Diğer dar açıyı, yani merdivenle duvar arasındaki açıyı seçersek karşı ve komşu kenarlar yer değiştirir. Bu kez karşı kenar 4, komşu kenar 3 metredir. Kenarların uzunluğu değişmedi; ilişkilendirdiğimiz açı değişti. Bu nedenle karşı veya komşu demeden önce açının çizimde işaretlenmesi gerekir.
 
+Kenar adlarını şeklin yönüne göre değil, açının köşesine göre belirlemek için basit bir yol izleyebiliriz. Önce 90 derecelik köşeyi bulur, ona değmeyen kenarı hipotenüs diye işaretleriz. Sonra seçilen dar açının köşesine bakarız. Bu köşeye değmeyen kenar karşı kenardır; köşeye değen diğer iki kenardan biri zaten hipotenüs olduğuna göre kalan dik kenar komşudur. Böylece “açıya değiyor, öyleyse komşu” diyerek hipotenüsü yanlış seçmeyiz.
+
+Üçgeni kâğıt üzerinde döndürdüğümüzde dik açı, seçilmiş açı ve kenarların bağlantıları değişmez. Karşı kenar artık yatay görünse bile adı aynı kalır. Merdiven örneğinde yükseklik karşı kenardı; fakat bu bütün üçgenlerde “düşey kenar karşıdır” kuralı oluşturmaz. Diğer dar açıyı seçtiğimiz anda aynı fiziksel yükseklik komşu kenar olur. Açıya küçük bir yay, dik köşeye kare işareti koymak yalnız çizimi süslemez; hangi oranın kurulacağını belirleyen bilgiyi taşır.
+
 ## 2. Oran Neden Yalnızca Açıya Bağlı?
 
 Aynı $\theta$ açısını içeren iki dik üçgen düşünelim. İkisinde de bir açı 90 derece, bir açı $\theta$ olduğuna göre kalan açı da aynı olmak zorundadır: $90^\circ-\theta$. İki açı eşitliği, üçgenlerin benzerliğini sağlar.
@@ -46,6 +50,10 @@ Ortak ölçek çarpanı sadeleşir. Böylece bu üç oran üçgenin büyüklüğ
 İki üçgenin yalnızca dik olması yetmez; seçilen dar açıları da eşit olmalıdır. Birinde 30 derece, diğerinde 60 dereceyi kullanarak aynı isimli kenar oranlarını karşılaştırırsak farklı sonuçlar bulabiliriz. Benzerlikteki açı eşleşmesi, trigonometrik oranın tanımının parçasıdır.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Benzer üçgenlerde aynı sinüs" caption="3-4-5 üçgeni büyütülerek 6-8-10 üçgenine dönüşür. Seçilen açı ve karşı kenarın hipotenüse oranı değişmez." />
+
+Ortak ölçeğin sadeleşmesini daha küçük bir örnekle düşünelim. Karşı kenar 6, hipotenüs 10 ise oran $6/10=3/5$ olur. Üçgenin bütün uzunluklarını 10'a bölersek hipotenüsü 1, karşı kenarı $3/5$ olan benzer bir üçgen elde ederiz. Böylece oranı “hipotenüs bir birim olsaydı karşı kenar kaç birim olurdu?” sorusunun cevabı olarak okuyabiliriz. Farklı büyüklükteki bütün benzer üçgenleri aynı karşılaştırma ölçüsüne getirmiş oluruz.
+
+Bu işlemde uzunlukları sıfırla çarpmıyoruz; gerçek üçgenin pozitif ölçekli kopyasını kullanıyoruz. Ölçek sıfır olsaydı bütün köşeler tek noktaya çöker, oranlar $0/0$ biçimine dönüşürdü. Dolayısıyla $k>0$ koşulu hem geometrik şeklin korunmasını hem sadeleştirmenin geçerliliğini sağlar. Ayrıca iki üçgende aynı açı eşleştirilmelidir. Benzerlik karşıdaki açıların eşitliğini de taşır; rastgele iki kenarı oranlayarak sinüs veya kosinüs elde etmeyiz. Oranın neyi ölçtüğü, ölçekten önce gelen açı-kenar eşleşmesine bağlıdır.
 
 ## 3. Sinüs, Kosinüs ve Tanjant
 
@@ -76,6 +84,10 @@ $$
 olur. Üç uzunluğu da santimetreyle veya metreyle ölçebiliriz; aynı birime çevrildiklerinde oran değişmez. Uzunluk birimleri pay ve paydada birbirini götürür. Bu yüzden sinüs, kosinüs ve tanjant uzunluk değil, **birimsiz oranlardır**.
 
 Dar açı için dik kenarlar hipotenüsten kısa ve pozitiftir. Dolayısıyla sinüs ile kosinüs 0 ile 1 arasındadır. Tanjant pozitiftir ama 1'den küçük olmak zorunda değildir. Karşı kenar komşudan uzunsa tanjant 1'den büyük çıkar.
+
+Bir oranı uzunluk hesabında kullanırken kesirde bilinmeyenin nerede olduğunu izleriz. Örneğin seçilmiş dar açı için sinüs $3/5$ ve hipotenüs 15 santimetreyse karşı kenara $h$ deyip $h/15=3/5$ yazarız. İki tarafı 15 ile çarpınca $h=15\times3/5=9$ santimetre bulunur. Gerçekten $9/15=3/5$ olduğu için oran korunur; karşı kenar da hipotenüsten kısadır.
+
+Bu kez karşı kenar 9 verilse, hipotenüs $c$ sorulsa denklem $9/c=3/5$ olur. İki tarafı $5c$ ile çarparız: $45=3c$, dolayısıyla $c=15$. Aynı oran kullanıldığı hâlde doğrudan $9\times3/5$ yapmak yanlış sonuç verirdi; çünkü bilinmeyen bu kez paydadır. Formülü “verilen uzunluğu sinüsle çarp” gibi tek yönlü bir ezbere çevirmek yerine önce kenar adlarıyla kesri kurmak güvenilirdir. Bulunan uzunluğu başlangıç oranına koymak, hangi yönde işlem yaptığımızı da kontrol eder.
 
 ## 4. Diğer Açıyı Seçince Ne Değişir?
 
@@ -129,6 +141,20 @@ $$
 
 Bölme için $\cos\theta\ne0$ gerekir. Dar açı aralığında kosinüs pozitiftir; dolayısıyla bu koşul sağlanır. Koşulu yazmak, daha sonra tanımı genişlettiğimizde hangi açılarda sorun çıkacağını izlememizi sağlar.
 
+Sinüsün kosinüse bölümünde içteki kesirlerin nasıl sadeleştiğini de açalım. $\sin\theta=a/c$ ve $\cos\theta=b/c$ olduğundan, bir kesre bölmek onun tersiyle çarpmaktır:
+
+$$
+\begin{aligned}
+\frac{a/c}{b/c}
+&=\frac ac\times\frac cb\\
+&=\frac{ac}{bc}=\frac ab.
+\end{aligned}
+$$
+
+$b$ ve $c$ pozitif olduğu için hiçbir adımda sıfıra bölme yoktur. Böylece tanjant üçüncü bağımsız uzunluk bilgisi getirmez; sinüs ve kosinüs bilindiğinde onlardan hesaplanır. Örneğin $\sin\theta=5/13$ ve $\cos\theta=12/13$ için tanjant $5/12$ olur. Gerçek üçgenin kenarlarının tam 5, 12, 13 birim olması gerekmez; bunların ortak bir katı olabilir.
+
+Temel kareler toplamından kosinüs hesaplarken de önce karesini, sonra kendisini bulduk. $144/169$ sonucu kosinüsün kendisi değil karesidir. Pozitif karekök almak $12/13$ verir. Dar açı koşulunu kaldırdığımızda bu pozitif seçim otomatik olmayacaktır; kareli eşitlik işareti kaybettiği için ayrıca açı bölgesine bakmamız gerekecek.
+
 ## 6. 45 Derecenin Oranlarını Kurmak
 
 İki dik kenarı da 1 birim olan bir dik üçgen düşünelim. Kenarlar eşit olduğundan karşılarındaki dar açılar eşittir. Bu iki açı toplam 90 derece olduğuna göre her biri 45 derecedir. Hipotenüs Pisagor'dan $\sqrt{1^2+1^2}=\sqrt2$ olur.
@@ -164,6 +190,10 @@ Yükseklik için Pisagor $h^2+1^2=2^2$ verir. Buradan $h^2=4-1=3$, uzunluk pozit
 
 Bu tablo, bağımsız ezberlenecek dokuz sayıdan oluşmuyor. İki geometrik şeklin kenar oranlarını kaydediyor. Hangi oranın neden büyüdüğünü düşünmek, karşı ve komşuyu karıştırdığımızda hatayı fark etmemizi sağlar.
 
+Özel açıların oranlarında üçgenin ölçeğini seçme özgürlüğümüz vardır. Eşkenar üçgeni kenarı 2 yerine kenarı 10 olacak biçimde kursaydık, yarım taban 5 ve yükseklik $5\sqrt3$ olurdu. Küçük dik üçgenin hipotenüsü 10'dur. 30 derece için sinüs $5/10=1/2$, kosinüs $5\sqrt3/10=\sqrt3/2$ çıkar. Bütün oranların öncekiyle aynı olması, özel değerlerin seçilen uzunluk 2'ye bağlı olmadığını gösterir. 2'yi yalnız hesabı kolaylaştırmak için seçtik.
+
+Köklü kesirlerdeki eşdeğer yazımları da anlamları değişmeden okuyabiliriz. $1/\sqrt3$ ile $\sqrt3/3$ aynı sayıdır; payı ve paydayı aynı sıfırdan farklı $\sqrt3$ ile çarptık. Çarpan aslında $\sqrt3/\sqrt3=1$ olduğu için değer korunur. Bu işlem oranı değiştirmez ve yeni bir trigonometrik kural değildir; daha önceki kesir sadeleştirme bilgisidir. Yaklaşık $0{,}577$ yazmaksa farklıdır: o artık tam eşit yazım değil, yuvarlanmış bir değerdir.
+
 ## 8. Bilinen Açıyı Kullanarak Uzunluk Bulmak
 
 Uzunluğu 10 metre olan bir merdiven yatay zeminle 30 derece yapsın. Duvarın zemine dik olduğunu, merdivenin düz ve duvara temas ettiğini kabul edelim. Üst ucun yüksekliğine $h$, duvara yatay uzaklığa $d$ diyelim.
@@ -173,6 +203,10 @@ Açıya göre karşı kenar $h$, hipotenüs 10 olduğundan $\sin30^\circ=h/10$ o
 Bu iki sonucu Pisagor'la doğrulayabiliriz: $5^2+(5\sqrt3)^2=25+75=100=10^2$. Böylece trigonometrik hesapla elde ettiğimiz iki uzunluğun aynı üçgene ait olduğunu kontrol ederiz. Yaklaşık yatay uzaklık 8,660 metredir.
 
 Açı ve komşu kenar bilinseydi tanjant daha doğrudan olurdu. Yatay uzaklık 12 metre ve yükselme açısı 30 derece ise $h/12=\tan30^\circ=\sqrt3/3$ olur. Buradan $h=4\sqrt3\approx6{,}928$ metre bulunur. Hipotenüsü ayrıca hesaplamak zorunda kalmadık; verilen ve aranan kenarları aynı oranda buluşturduk.
+
+Yeni bir kolay örnekte yatay uzaklık 7 metre, yükselme açısı 45 derece olsun. Önce dik açının zeminle düşey doğrultu arasında bulunduğunu belirleriz. Aradığımız yükseklik $h$, seçilen açının karşısındadır; bilinen 7 metre komşudur. Dolayısıyla $h/7=\tan45^\circ=1$ olur ve $h=7$ metre bulunur. Eğik uzunluğa $c$ dersek Pisagor $c^2=49+49=98$ verir; $c=7\sqrt2\approx9{,}899$ metredir.
+
+Sonucu sinüsle bağımsız kontrol edebiliriz: $h/c=7/(7\sqrt2)=1/\sqrt2=\sqrt2/2$, yani 45 derecenin sinüsüdür. Aynı üçgende sinüsü kullanıp $h/7$ yazsaydık 7 metreyi hipotenüs saymış olurduk ve $h=7\sqrt2/2$ gibi yanlış bir sonuç çıkardı. Hata sinüs değerinde değil, kesre konan kenarın görevindedir. Bir hesabı diğer trigonometrik oran veya Pisagor ile doğrulamak, yalnız aritmetiği değil şeklin doğru okunup okunmadığını da denetler.
 
 ## 9. Bakış Açısı ile Toplam Yüksekliği Ayırmak
 
@@ -187,6 +221,28 @@ $$
 olur. Göz yüksekliğini eklemeyi unutmak, doğru oranı kullanarak yanlış fiziksel büyüklüğü hesaplamaktır. Zemin eğimli olsaydı veya yatay uzaklık yerine eğik yürüyüş mesafesi ölçülseydi model de değişirdi.
 
 Benzer biçimde eğimli bir yolun üzerinde ölçtüğümüz mesafeyi, tanjantın komşu kenarı yerine doğrudan yazamayız. Tanjant yatay ilerlemeyle düşey değişimi karşılaştırır; yolun eğik uzunluğu hipotenüse karşılık gelir. “Uzaklık” sözcüğünün hangi parçayı anlattığını şekle yazmak çözümün başlangıcıdır.
+
+### Yatay uzaklık bilinmiyorsa iki açıdan yararlanmak
+
+Düz bir zeminde, bir kulenin tepesine aynı doğrultu üzerindeki iki noktadan bakalım. Yakın noktadan yükselme açısı $60^\circ$, 20 metre gerideki uzak noktadan $30^\circ$ olsun. İki ölçümün aynı yatay yükseklikten yapıldığını kabul ediyoruz. Yakın noktanın kuleye yatay uzaklığına $x$, ölçüm hizasından tepeye yükseklik farkına $h$ diyelim. $x$ ve $h$ pozitif uzunluklardır.
+
+Yakındaki dik üçgende tanjant:
+
+$$
+\frac hx=\tan60^\circ=\sqrt3
+$$
+
+verir; buradan $h=x\sqrt3$ olur. Uzak noktada yatay kenar $x+20$ metredir:
+
+$$
+\frac h{x+20}=\tan30^\circ=\frac1{\sqrt3}.
+$$
+
+İki denklemde aynı $h$ bulunduğu için $x\sqrt3=(x+20)/\sqrt3$ yazabiliriz. İki tarafı pozitif $\sqrt3$ ile çarpınca $3x=x+20$ çıkar. Buradan $2x=20$, $x=10$ metre bulunur. Yükseklik farkı $h=10\sqrt3\approx17{,}32$ metredir.
+
+Uzak noktayı kullanarak kontrol edelim: yatay uzaklık $10+20=30$ metredir. $h/30=10\sqrt3/30=\sqrt3/3=\tan30^\circ$ olduğundan ikinci ölçüm de sağlanır. Daha uzaktaki açı daha küçüktür; bu da çizimin beklenen davranışıyla uyumludur.
+
+Hesaplanan $h$'nin ölçüm hizasına göre olduğunu unutmayalım. Alet yerden 1,5 metre yüksekteyse kulenin toplam yüksekliği $1{,}5+10\sqrt3\approx18{,}82$ metredir. İki gözlem noktası farklı yükseklikteyse bu iki denklem aynı $h$ ile kurulamaz. Benzer biçimde aradaki 20 metre, düz yatay mesafe olmalıdır; eğimli bir zeminde yürünmüş yol uzunluğunu doğrudan yerine koyamayız. Burada trigonometrik oranlar ile iki bilinmeyenli denklem sistemi aynı ölçüm problemini birlikte çözmüş oldu.
 
 ## 10. Orandan Açıyı Bulmak
 

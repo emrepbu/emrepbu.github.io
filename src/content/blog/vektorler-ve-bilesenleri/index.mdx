@@ -49,6 +49,14 @@ Aynı $(3,4)$ vektörünü başlangıç noktasından $(3,4)$ noktasına uzanan o
 
 Bir noktaya bir yer değiştirme eklemek yeni bir nokta verir. Örneğin $A=(2,-1)$ adresine $(3,4)$ hareketini uygularsak $(2+3,-1+4)=(5,3)$ adresine ulaşırız. İki noktanın farkı ise aralarındaki yer değiştirmeyi verir. Bu yorum, koordinatlarla işlem yaparken hangi nesneyi hesapladığımızı açıklar.
 
+### Son eksi ilk kuralını bir denklemden çıkarmak
+
+Yer değiştirmeye $\mathbf d=(d_1,d_2)$ diyelim. Başlangıç adresi $A$ ve son adres $B$ arasındaki ilişki $A+\mathbf d=B$'dir. Bu, iki ayrı sayı denklemi demektir: $a_1+d_1=b_1$ ve $a_2+d_2=b_2$. Birincide iki taraftan $a_1$, ikincide $a_2$ çıkarınca bileşen farklarını buluruz. “Son eksi ilk” kuralı böylece ezberlenmiş bir sıra olmaktan çıkar; hareketin başlangıca eklenerek sonu vermesi koşulundan doğar.
+
+Örneğin $A=(-4,3)$, $B=(-1,-2)$ için $\mathbf d=(3,-5)$ olur. Her iki yatay koordinat negatif olmasına rağmen yatay hareket pozitiftir: $-4$'ten $-1$'e gitmek sağa üç birim gitmektir. Düşey hareket ise $3$'ten $-2$'ye, yani aşağı beş birimdir. Negatif bir adreste bulunmakla negatif yönde hareket etmek farklı bilgilerdir.
+
+Ters kontrol için $(-4,3)+(3,-5)=(-1,-2)$ yazarız. Başlangıç yerine son adresi geri elde ettik. Yanlış sırayla çıkarıp $(-3,5)$ bulsaydık, bu vektör $B$'den $A$'ya dönüşü gösterirdi. Bileşenleri okuyabilmek için hem eksen yönünü hem okun başlangıcını belirtmemiz gerekir.
+
 ## 3. Toplama: Bir Hareketin Ardından Diğeri
 
 Önce $\mathbf u=(3,1)$, sonra $\mathbf v=(1,2)$ kadar yer değiştirelim. Toplam yatay değişim $3+1=4$, düşey değişim $1+2=3$ olur:
@@ -85,6 +93,14 @@ Eksi işareti yalnızca ilk bileşene uygulanmaz. $-(3,1)=(-3,-1)$ olur; $(3,-1)
 
 Bir vektörün bileşenlerinden birinin sıfır olması, vektörün sıfır olması demek değildir. $(0,5)$ düşey yönde 5 birimlik hareketi gösterir. Sıfır vektöründe bütün bileşenler sıfırdır.
 
+### Toplam neden ara duraktan bağımsızdır?
+
+$A$'dan $B$'ye, sonra $B$'den $C$'ye giden iki hareketin toplamı $\overrightarrow{AC}$'dir. Bunu adres farklarıyla da görebiliriz: $(B-A)+(C-B)=C-A$. Buradaki $+B$ ve $-B$ her bileşende birbirini götürür. Ara durağın bilgisi toplam yer değiştirmede kaybolur; çünkü toplam yalnız başlangıçla bitişi karşılaştırır.
+
+$A=(0,0)$, $B=(2,3)$, $C=(5,1)$ için ilk hareket $(2,3)$, ikincisi $(3,-2)$'dir. Toplamları $(5,1)$ çıkar. Ara durak $D=(-1,4)$ seçilseydi hareketler $(-1,4)$ ve $(6,-3)$ olur, yine $(5,1)$ elde edilirdi. Buna rağmen ilk yolun uzunluğu $2\sqrt{13}$, ikinci yolunki $\sqrt{17}+\sqrt{45}$ olur; eşit değillerdir.
+
+Bu örnek, vektör toplamının yolun bütün ayrıntılarını neden saklamadığını açıklar. Yol boyunca engeller varsa aynı net yer değiştirme için aynı rotayı izleyemeyebiliriz. Matematiksel toplama bize birleştirilmiş hareketi verir; o hareketin gerçekten tek bir düz çizgi olarak yapılabilirliği problemdeki çevre koşullarına bağlıdır. Sıfır toplam da bu nedenle “hiç hareket olmadı” değil, “başlangıç ve son aynı” demektir.
+
 ## 5. Çıkarma: Bir Değişimi Geri Almak
 
 Vektör çıkarmayı ters vektörü ekleyerek tanımlarız:
@@ -115,6 +131,14 @@ Skaler çarpma toplama üzerine dağılır. $2[(1,3)+(4,-1)]$ hesabında önce t
 
 Buradaki işlem bir **sayı ile vektörün çarpımıdır**. İki vektörü çarpmaya yönelik başka işlemler daha sonra tanımlanacak. “Vektör çarpımı” sözünü tek bir işlem varmış gibi kullanmak, farklı sonuç türlerini karıştırabilir.
 
+### Tek bir çarpanın bütün bileşenlere uygulanması
+
+$\mathbf v=(2,-3)$ vektörünü $k$ ile çarptığımızda $(2k,-3k)$ elde ederiz. İki bileşen aynı oranda değiştiğinden, sıfır olmayan $k$ için düşey/yatay oran $-3/2$ olarak kalır. Pozitif $k$ aynı ışın üzerinde, negatif $k$ karşı ışın üzerinde bir vektör üretir. Yalnız ilk bileşeni iki katına çıkarıp $(4,-3)$ yazmak genel olarak bir ölçekleme değildir; okun yönünü de değiştirmiş oluruz.
+
+Bu kuralı bilinmeyen çarpanı bulmak için tersine kullanabiliriz. $(6,-9)$ aynı yönün kaç katıdır? İlk bileşen $2k=6$ dediği için $k=3$ çıkar. İkinci bileşen $-3k=-9$ ile aynı değeri doğrular. Hedef $(6,-8)$ olsaydı ilk bileşen yine 3 ister, ikinci bileşen bunu sağlamazdı. Demek ki iki vektör aynı uzunlukta olmak zorunda olmadan aynı doğrultuda olabilir; fakat her sayı çifti diğerinin bir katı değildir.
+
+Bir bileşen sıfırken o bileşen üzerinden oran kurmayız. $(0,2)$ ile $(0,6)$ için $0/0$ yazmak yerine ikinci bileşenden $k=3$ buluruz; ilk bileşende $3\cdot0=0$ kontrolü yeterlidir. Denklem kurmak, sıfıra bölme tehlikesini önler.
+
 ## 7. Uzunluk: Vektörün Normu
 
 $\mathbf v=(3,4)$ vektörünü başlangıçtan çizdiğimizde dik kenarları 3 ve 4 olan bir üçgen oluşur. Pisagor'a göre uzunluğu 5'tir. Bir vektörün uzunluğuna bu Öklid geometrisi bağlamında **norm** der ve $\|\mathbf v\|$ ile gösteririz.
@@ -144,6 +168,14 @@ Doğuya 3 ve kuzeye 4 birimlik vektörlerin toplamı $(3,4)$'tür ve uzunluğu 5
 
 Üçgen eşitsizliğinin vektörel yazımı $\|\mathbf u+\mathbf v\|\le\|\mathbf u\|+\|\mathbf v\|$ olur. Uç uca çizilen iki okla oluşan üçgende doğrudan kenar, dolanılan iki kenarın toplamından uzun olamaz. İki sıfırdan farklı vektör aynı yönde olduğunda eşitlik olur. Zıt yönde olduklarında uzunluklar birbirini kısmen veya tamamen götürebilir.
 
+### Normdan bir bileşeni geri bulmak
+
+Uzunluk ile bir bileşen bilindiğinde diğer bileşenin işareti her zaman belirlenmez. $\mathbf v=(x,4)$ ve $\|\mathbf v\|=5$ olsun. Norm tanımı bize $\sqrt{x^2+16}=5$ verir. İki taraf da negatif olmadığı için kare alabiliriz. Böylece $x^2+16=25$, ardından $x^2=9$ çıkar. Buradan $x=3$ **veya** $x=-3$ bulunur. İki ok da 5 birimdir; biri sağa, diğeri sola yönelir.
+
+Bu örnekte uzunluğu 5 bilmek, okun bütün yön bilgisini bilmek değildir. Eğer ayrıca sağa yöneldiği söylenmişse $x=3$ seçilir. Koşul verilmemişse negatif adayı silmek için bir gerekçemiz yoktur. Aynı şekilde $\mathbf v=(x,6)$ için uzunluk 5 istenseydi $x^2=-11$ çıkardı ve gerçek bileşenli bir çözüm bulunmazdı; vektörün tamamı düşey bileşeninden kısa olamaz.
+
+Norm hesabında karelerin kullanılmasının bedeli, bileşen işaretlerinin kaybolmasıdır. Bu kayıp hata değildir: uzunluk yönü ölçmez. Sonuçtan bileşenlere geri dönmeye çalıştığımızda eksik yön bilgisini ayrıca aramamızın nedeni budur. Pisagor hesabını bir çizimle eşleştirmek, aynı uzunluğa ait birden fazla okun olabileceğini görünür kılar.
+
 ## 8. Yalnızca Yönü Taşımak: Birim Vektör
 
 Normu 1 olan vektöre **birim vektör** denir. Sıfırdan farklı bir vektörün yönündeki birim vektörü bulmak için vektörü kendi uzunluğuna böleriz:
@@ -164,6 +196,30 @@ $$
 
 olur. Bu, birim çemberde öğrendiğimiz koordinatların uzunlukla ölçeklenmesidir. Örneğin 6 birim uzunluk ve 120 derece yön için $\mathbf v=(-3,3\sqrt3)$ buluruz. İkinci bölgede yatay bileşenin negatif, düşey bileşenin pozitif olması beklenir.
 
+### Bir hedefe doğru belirli bir uzaklık ilerlemek
+
+Birim vektörün kullanımını iki adresle görelim. Başlangıç noktası $A=(-2,1)$ metre, hedef $B=(4,9)$ metre olsun. Doğrudan hedefe doğru 3 metre ilerlediğimizde nerede oluruz? Önce hedef adresini değil, başlangıçtan hedefe olan farkı kullanırız:
+
+$$
+\overrightarrow{AB}=(4-(-2),9-1)=(6,8)\ \text{metre}.
+$$
+
+Bu farkın uzunluğu $\sqrt{6^2+8^2}=\sqrt{100}=10$ metredir. Demek ki hedef yönünü uzunluktan ayırmak için her iki bileşeni de 10'a böleriz. Böylece yönü belirten birim vektör $\mathbf e=(3/5,4/5)$ olur. Üç metrelik hareketi elde etmek için bu vektörü 3 metreyle çarparız:
+
+$$
+\begin{aligned}
+\mathbf s&=3\mathbf e\\
+&=(9/5,12/5)\ \text{metre},\\
+A+\mathbf s&=(-1/5,17/5)\ \text{metre}.
+\end{aligned}
+$$
+
+Yeni adres yaklaşık $(-0{,}2,3{,}4)$'tür. Hareketin gerçekten 3 metre olduğunu ayrıca denetleyelim: $\|\mathbf s\|=\sqrt{81/25+144/25}=\sqrt9=3$. Yatayda 1,8 ve düşeyde 2,4 metre değişmesi, toplam yolun 4,2 metre olduğu anlamına gelmez; hareketi tek bir düz çizgi boyunca yaptık.
+
+Aynı sonuç, hedefe giden vektörün $3/10$'unu almakla da bulunur. Genel olarak $A+t(B-A)$ ifadesinde $t$ birimsiz bir oran olduğunda, $t=0$ başlangıcı, $t=1$ hedefi gösterir. $0<t<1$ aradaki noktaları, $t>1$ ise hedefin ötesini verir. Buradaki $t$, ileride zaman için kullanacağımız harfle aynı olsa da bu örnekte zaman değildir; sembolün anlamını problemin tanımı belirler.
+
+İki bileşeni ayrı ayrı kendi büyüklüklerine bölüp $(1,1)$ elde etmek doğru olmazdı. Bu işlem ilk vektörün yönünü değiştirir ve üstelik normu $\sqrt2$ olan bir vektör üretir. Her bileşeni **aynı normla** bölmek, oranlarını ve dolayısıyla yönü korur. Başlangıç ile hedef aynı nokta olsaydı fark sıfır olur, bu yöntemle bir ilerleme yönü seçilemezdi.
+
 ## 9. Üç Boyutta Bir Bileşen Daha
 
 Bir odada konum belirlerken sağ-sol ve ileri-geri bilgisine yükseklik eklenir. Dik koordinat eksenleriyle üç boyutlu bir vektörü $(v_1,v_2,v_3)$ biçiminde yazarız. Bütün böyle gerçek sayı üçlülerinin kümesine $\mathbb R^3$ denir. İki bileşenli düzlem için $\mathbb R^2$ kullanılır.
@@ -183,6 +239,14 @@ $$
 $(2,-3,6)$ vektörünün normu $\sqrt{4+9+36}=7$'dir. Aynı yöndeki birim vektör $(2/7,-3/7,6/7)$ olur. Bir çizimde üçüncü eksen eğik gösterilse bile, kullanılan matematiksel koordinat sisteminde eksenler diktir. Ekranın iki boyutlu olması gerçek açıları çizimde bozabilir.
 
 Birim eksen vektörlerini $\mathbf e_1=(1,0,0)$, $\mathbf e_2=(0,1,0)$ ve $\mathbf e_3=(0,0,1)$ diye adlandırabiliriz. Böylece $(2,-3,6)=2\mathbf e_1-3\mathbf e_2+6\mathbf e_3$ yazılır. Her bileşen, ilgili eksen yönünden kaç birim kullandığımızı söyler.
+
+### Üç boyuttaki uzunluğu iki dik üçgene bölmek
+
+Üç boyutlu formülde üç karenin birden bulunmasını görmek zor geliyorsa $(2,3,6)$ vektörünü iki aşamada okuyalım. Önce yükseklik değişimini yok sayarak yatay düzlemde $(2,3,0)$ hareketini ele alırız. Bunun uzunluğu $d=\sqrt{2^2+3^2}=\sqrt{13}$'tür. Ardından bu yatay hareketin sonundan 6 birim yukarı çıkılır. Yatay düzlemdeki her doğrultu düşey eksene dik olduğu için $d$ ile 6 yeni bir dik üçgenin kenarları olur.
+
+Toplam uzunluk bu kez $\sqrt{d^2+6^2}=\sqrt{13+36}=7$ çıkar. İç içe görünen iki karekökü basitleştiren adım $d^2=13$ eşitliğidir. Eksenler dik olmasaydı bu iki Pisagor uygulamasını aynı biçimde yapamazdık; yalnız üç sayı yazmak, her koordinat sisteminde kareler toplamı kuralını geçerli kılmaz.
+
+Bulunan 7'yi kullanarak birim yön $(2/7,3/7,6/7)$ olur. Karelerinin toplamı $(4+9+36)/49=1$ olduğundan uzunluğu gerçekten 1'dir. Bu yönü 14 ile çarpmak $(4,6,12)$ hareketini verir; uzunluk iki katına, 14'e çıkar. Böylece iki boyutta kurduğumuz büyüklük–yön ayrımı üçüncü bileşen eklenince de aynı işlemlerle çalışır.
 
 ## 10. Sabit Hareket ve Koordinat Seçimi
 

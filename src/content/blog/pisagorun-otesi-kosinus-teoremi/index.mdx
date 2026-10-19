@@ -22,7 +22,9 @@ $$
 
 Demek ki iki kenarın uzunluğunu bilmek, üçüncü kenarı belirlemeye yetmiyor. **Aralarındaki açıyı da bilmemiz gerekiyor.**
 
-[Önceki yazıda](/blog/pisagor-teoremi/) Pisagor teoreminin neden doğru olduğunu alanlar üzerinden incelemiştik. Bu kez onun koşullarından birini değiştireceğiz: Üçgenin dik olmasını istemeyeceğiz.
+[Pisagor yazısında](/blog/pisagor-teoremi/) Pisagor teoreminin neden doğru olduğunu alanlar üzerinden incelemiştik. Bu kez onun koşullarından birini değiştireceğiz: Üçgenin dik olmasını istemeyeceğiz.
+
+Burada [dik üçgen oranlarını](/blog/dik-ucgende-trigonometri/), [birim çemberde kosinüsün işaretini](/blog/birim-cember-radyan-ve-trigonometrik-grafikler/) ve koordinat farklarından uzaklık bulmayı kullanacağız. İlk ikisi, kenarın yatayda ne kadar ilerlediğini açıdan hesaplamamızı sağlar. Sonuncusu, aynı noktalar arasındaki uzaklığı iki yoldan karşılaştırmamıza izin verir.
 
 Bu küçük değişiklik bizi kosinüs teoremine götürecek. Yola, açıların bir uzunluk hesabına nasıl katıldığını anlamakla başlayalım.
 
@@ -40,7 +42,7 @@ $OA$ çubuğunu yatay tutup $OB$ çubuğunu yukarı doğru döndürelim. $B$ nok
 
 Uçlar arasındaki mesafenin iki sınırını zihnimizde canlandırabiliriz. Çubuklar aynı yöne doğru neredeyse kapandığında $c$, $|a-b|$ değerine yaklaşır. Ters yönlere doğru neredeyse tamamen açıldığında ise $a+b$ değerine yaklaşır.
 
-3 ve 4 birimlik çubuklarımız için bu sınırlar 1 ve 7’dir. Dik açıda bulduğumuz Bu bağıntıya, bu iki sınırın arasındaki değerlerden yalnızca biridir.
+3 ve 4 birimlik çubuklarımız için bu sınırlar 1 ve 7’dir. Dik açıda bulduğumuz 5, bu iki sınırın arasındaki değerlerden yalnızca biridir.
 
 Tam kapalı ve tam açık konumlarda üç nokta aynı doğru üzerinde kalır; artık alanı olan bir üçgen oluşmaz. Bu nedenle gerçek bir üçgende:
 
@@ -58,6 +60,10 @@ olur.
 />
 
 Peki aradaki bir açı için $c$’yi nasıl hesaplarız?
+
+Burada hangi açının verildiği özellikle önemlidir. $a$ ve $b$ kenarlarının ortak ucu $O$ olduğuna göre aralarındaki açı $\angle AOB$'dir; yazımın ortasındaki harf köşeyi belirtir. Bu açının karşısındaki kenar $AB$, yani $c$'dir. Aynı üçgende $A$ köşesindeki açı verilseydi o açıya komşu kenarlar $a$ ve $c$, karşısındaki kenar ise $b$ olurdu. Formüldeki harfleri seçilen açıya göre yeniden yerleştirmemiz gerekirdi.
+
+İki kenar ve aralarındaki açı bir üçgeni eşliğe kadar belirler. Menteşe modelinde bir çubuğu sabitleyip diğerini verilen açıyla yerleştirdiğimizde serbest ucun yeri de belirlenir. Başka bir köşenin açısını vermek aynı yerleştirmeyi doğrudan belirlemeyebilir. Bu nedenle kosinüs teoremine sayıları koymadan önce “açı hangi iki kenarın arasında?” sorusunu şekil üzerinde cevaplarız. Ayrıca uzunlukları aynı birime çeviririz: 3 metreyle 400 santimetreyi 3 ve 400 olarak aynı formüle koymak, ikinci çubuğu olduğundan yüz kat uzun modellemek olur.
 
 ## 2. Bir Kenarın Yatay Gölgesi: İzdüşüm
 
@@ -92,6 +98,10 @@ elde ederiz. Yani kosinüs, çubuğun uzunluğunun ne kadarının yatay doğrult
 Açı $90^\circ$ olduğunda $B$, tam $O$’nun üstündedir; yatay izdüşüm sıfırdır. Açı $90^\circ$’yi geçtiğinde $B$, $O$’nun soluna geçer ve $p$ negatif olur. Kosinüsün çember üzerinden yapılan tanımı bu işareti de kapsar: Yarıçapı 1 olan bir çemberde, pozitif yatay yönden ölçülen $\theta$ açısına karşılık gelen noktanın yatay koordinatı $\cos\theta$’dır.
 
 Bu yüzden $p=b\cos\theta$ ilişkisini geniş açılarda da kullanabiliriz. Negatif olan fiziksel bir uzunluk değil, seçtiğimiz yöne göre yatay konumdur.
+
+İzdüşüm ile uzunluk arasındaki ayrımı $b=4$ örneğinde görelim. $\theta=60^\circ$ ise $p=4(1/2)=2$ olur; $H$ noktası orijinin iki birim sağındadır. $\theta=120^\circ$ ise kosinüs $-1/2$ ve $p=-2$ olur; bu kez aynı uzaklıkta soldadır. İki durumda da $OH$ parçasının uzunluğu 2'dir. İşaret, parçanın negatif uzunlukta olduğunu değil, noktanın hangi tarafta yer aldığını söyler.
+
+$A$ noktası 3 birim sağda olsun. İlk konumda $A$ ile $H$ arasındaki yatay uzaklık $|3-2|=1$, ikinci konumda $|3-(-2)|=5$ olur. Geniş açıda uçların daha uzaklaşmasının yatay bileşeni böyle görünür. $p$'yi her zaman pozitif bir gölge uzunluğu gibi alıp ikinci durumda da 2 yazsaydık, yatay uzaklığı yanlışlıkla 1 bulurduk. Koordinat yönteminin avantajı, dikmenin ayağı tabanda mı uzantıda mı diye ayrı ayrı formül kurmadan bu yön bilgisini aynı çıkarma içinde taşımasıdır.
 
 ## 3. İki Kez Pisagor, Bir Yeni Teorem
 
@@ -145,6 +155,10 @@ elde ederiz. Bu bağıntıya **kosinüs teoremi** denir. Düzlemdeki bütün ü�
 
 Yeni bağıntıya ulaşırken kullandığımız temel araç hâlâ Pisagor’du. Genel bir üçgenin içine dik üçgenler yerleştirmek, bildiğimiz ilişkiyi daha geniş bir alana taşımamızı sağladı.
 
+İki Pisagor eşitliğinde $h$'nin aynı olmasının nedeni, $O$ ve $A$ noktalarının aynı yatay doğru üzerinde bulunmasıdır. Her ikisinden $B$'ye düşey koordinat farkı $h$'dir; değişen yalnız yatay farktır. Bu ortak yükseklik sayesinde ilk eşitlikten elde ettiğimiz $h^2$'yi ikinciye yerleştirebiliriz. Başka bir yükseklik kullansaydık böyle bir yerine koyma geçerli olmazdı.
+
+Parantez açılımındaki çapraz terimi de izleyelim: $(a-p)^2=(a-p)(a-p)$ çarpımı $a^2-ap-pa+p^2$ verir. Ortadaki iki terim eşit olduğundan toplamları $-2ap$'dir. Sonra $h^2=b^2-p^2$ ifadesindeki $-p^2$, açılımdaki $+p^2$ ile iptal olur. Geriye yatay konumun yalnız çapraz terimdeki etkisi kalır. Böylece düzeltme teriminin işareti bir ezberden gelmez; uzaklık için aldığımız koordinat farkının karesinden gelir. Son eşitlikte bütün terimlerin uzunluğun karesi biriminde olması da tutarlıdır: kosinüs birimsiz, $ab$ iki uzunluğun çarpımıdır.
+
 ## 4. Formüldeki Ek Terim Ne Anlatıyor?
 
 Pisagor’dan farklı görünen kısım:
@@ -195,8 +209,11 @@ birimdir. Açı daraldığında uçlar birbirine yaklaşmıştır.
 Şimdi açıyı $120^\circ$ yapalım. Bu kez $\cos120^\circ=-\tfrac12$:
 
 $$
-c^2=3^2+4^2-2\cdot3\cdot4\cdot\left(-\frac12\right)
-=25+12=37
+\begin{aligned}
+c^2&=3^2+4^2\\
+&\quad-2\cdot3\cdot4\cdot\left(-\frac12\right)\\
+&=25+12=37
+\end{aligned}
 $$
 
 Buradan:
@@ -216,6 +233,20 @@ buluruz. Çubuklar daha fazla açılmış, uçlar birbirinden uzaklaşmıştır.
 | 4 | 3 | $120^\circ$ | $\sqrt{37}\approx6{,}08$ |
 
 3 ve 4 sayıları tek başına 5’i zorunlu kılmaz. 5 sonucunu veren, bu iki uzunluğun dik açıyla bir araya gelmesidir.
+
+60 derecelik hesabı koordinatlar üzerinden bağımsız doğrulayabiliriz. $a=4$, $b=3$ seçelim; $A=(4,0)$ olur. $B$'nin yatay konumu $p=3\cos60^\circ=3/2$, yüksekliği $h=3\sin60^\circ=3\sqrt3/2$'dir. İki nokta arasındaki farkın karesini alalım:
+
+$$
+\begin{aligned}
+c^2&=\left(4-\frac32\right)^2
++\left(\frac{3\sqrt3}{2}\right)^2\\
+&=\frac{25}{4}+\frac{27}{4}=13.
+\end{aligned}
+$$
+
+Dolayısıyla yine $c=\sqrt{13}$ bulunur. Sonuç 1 ile 7 arasındadır; üçgen eşitsizliğini sağlar. Ayrıca 60 derece dik açıdan küçük olduğu için 5'ten küçük çıkması beklenir. Bu iki kontrol birbirinden farklıdır: ilki üçgenin oluşabilirliğini, ikincisi seçilen açıyla tutarlılığını denetler.
+
+Kare alma aşamasından sonra negatif kökü uzunluk olarak seçmeyiz. Cebirsel $c^2=13$ denkleminin iki gerçek çözümü vardır, fakat burada $c$ kenar uzunluğu diye tanımlandığından $c>0$ koşulu baştan mevcuttur. Geometrik anlam, cebirsel adaylar arasından doğru olanı seçmemize yardım eder.
 
 ## 6. Uzunluklardan Açıyı Bulmak
 
@@ -248,6 +279,46 @@ buluruz. Buradaki $\arccos$, verilen kosinüs değerine karşılık gelen açıy
 
 Bu hesap, erişemediğimiz iki noktanın arasındaki mesafeyi bulmak için de kullanılabilir. Örneğin aynı gözlem noktasından iki hedefin uzaklıklarını ve görüş doğrultuları arasındaki açıyı ölçebilirsek, hedefler arasındaki mesafeyi hesaplayabiliriz. Bunun için ölçümleri aynı düzlemde bir üçgen olarak modelleyebilmemiz gerekir.
 
+### Ters kosinüsten önce üçgenin varlığını kontrol etmek
+
+Üç kenar verildiğinde hesap makinesine doğrudan ters kosinüs girmek yerine, önce bir üçgenin oluşup oluşamayacağını denetleyelim. İki kenar 2 ve 3, üçüncü kenar 6 birim olsun. İlk ikisinin toplamı $2+3=5$, üçüncü kenardan küçüktür; çubuklar kapanamaz. Kosinüs hesabı da aynı sorunu gösterir:
+
+$$
+\cos\theta
+=\frac{2^2+3^2-6^2}{2\times2\times3}
+=\frac{-23}{12}.
+$$
+
+Bu sayı $-1$'den küçüktür. Gerçek bir açının kosinüsü $[-1,1]$ aralığında olduğu için böyle bir açı yoktur. Hesap makinesinin sonuç üretememesi burada cihaz hatası değildir; verilen uzunlukların birbiriyle uyuşmadığını haber verir.
+
+Üçüncü kenarı 5 seçersek kosinüs tam $-1$, açı $180^\circ$ olur. Bu kez çubuklar aynı doğru üzerine açılır; pozitif alanlı bir üçgen oluşmaz. Dolayısıyla sıradan bir üçgen için açı $0^\circ$ ile $180^\circ$ arasında, uçlar hariç olmalıdır.
+
+Bu sınırı formülden de çıkarabiliriz. $a,b$ pozitifken $-1<\cos\theta<1$ eşitsizliğini kosinüs teoremine yerleştirirsek:
+
+$$
+(a-b)^2<c^2<(a+b)^2
+$$
+
+elde ederiz. Kenar uzunluğu pozitif olduğundan kök alarak:
+
+$$
+|a-b|<c<a+b
+$$
+
+buluruz. Bu, daha önce gördüğümüz üçgen eşitsizliğinin aynı koşuludur. Kosinüsün izin verilen değerleri ile üç kenarın geometrik kapanma koşulu birbirini doğrular.
+
+Ölçülmüş verilerde çok küçük bir sınır aşımı varsa ölçüm veya yuvarlama farkı araştırılabilir. Ancak tam verilerle $-23/12$ bulduğumuz bir hesabı zorla $-1$'e yuvarlamak, uyumsuzluğu çözmez. Sonucu beklediğimiz aralığa çekmek yerine, kullanılan kenarı, açı karşılığını, birimleri ve verilerin doğruluğunu yeniden kontrol ederiz.
+
+Açıyı yalnız bırakırken iki işlem uyguluyoruz. Önce kosinüs terimini eşitliğin diğer tarafına, $c^2$ terimini bu tarafa taşırız; bunu iki tarafa aynı miktarları ekleyip çıkararak yapabiliriz:
+
+$$
+2ab\cos\theta=a^2+b^2-c^2.
+$$
+
+Sonra $a$ ve $b$ pozitif olduğu için sıfırdan farklı olan $2ab$'ye böleriz. Çıkan sayı henüz açı değil, açının kosinüsüdür. $-11/24$ değerini derece diye okumayız; bu birimsiz yatay oran, açıya ulaşmak için ters sorunun girdisidir.
+
+Bir üçgenin iç açısı 0 ile 180 derece arasındadır. Bu aralık boyunca çember noktasının yatay koordinatı 1'den $-1$'e doğru tek yönde azalır; dolayısıyla uygun bir kosinüs değeri yalnız bir iç açı belirler. Ters kosinüsün bu aralıktaki seçimi bu yüzden üçgenle uyumludur. Hesaplama aracı radyan modundaysa aynı açıyı derece olarak bekleyemeyiz. Yaklaşık sonucu tekrar kosinüse verip $-11/24$'e yakın bir sayı elde etmek, hem birim ayarını hem ters işlem yönünü kontrol eder.
+
 ## 7. Uzunluklara Yön Eklemek: Vektörler
 
 Çubuklarımızın üzerine $O$’dan uçlarına doğru oklar çizelim. Artık yalnızca uzunlukları değil, yönleri de gösteriyoruz. Bu okları iki vektör olarak adlandıralım:
@@ -256,6 +327,8 @@ $$
 \mathbf{u}=\overrightarrow{OA},\qquad
 \mathbf{v}=\overrightarrow{OB}
 $$
+
+Bu vektör yazımındaki yeni işaretlerin görevini açalım. $\mathbf u=(u_x,u_y)$ ifadesinde $u_x$ okun yatay, $u_y$ düşey yer değiştirmesidir; indisler çarpım değildir. Çift çizgili $\|\mathbf u\|$ işareti okun uzunluğunu anlatır ve Pisagor'la $\sqrt{u_x^2+u_y^2}$ olarak hesaplanır. $\mathbf v-\mathbf u$ farkında koordinatlar ayrı ayrı çıkarılır. Ortak başlangıçtan $A$'ya giden hareketi geri alıp $B$'ye giden hareketi eklemek, $A$'dan $B$'ye olan yer değiştirmeyi verir.
 
 Vektörlerin uzunlukları $\|\mathbf{u}\|=a$ ve $\|\mathbf{v}\|=b$’dir. $A$’dan $B$’ye giden vektör ise $\mathbf{v}-\mathbf{u}$ olur; dolayısıyla uzunluğu $c$’dir.
 
@@ -283,14 +356,29 @@ ilişkisi geçerlidir. Böylece skaler çarpım, uzunluklarla aralarındaki aç�
 Kosinüs teoremimizi bu dille yeniden yazabiliriz:
 
 $$
+\begin{aligned}
 \|\mathbf{v}-\mathbf{u}\|^2
-=\|\mathbf{u}\|^2+\|\mathbf{v}\|^2
--2\,\mathbf{u}\cdot\mathbf{v}
+&=\|\mathbf{u}\|^2+\|\mathbf{v}\|^2\\
+&\quad-2\,\mathbf{u}\cdot\mathbf{v}.
+\end{aligned}
 $$
 
 Oklar birbirine dik olduğunda skaler çarpımları sıfırdır ve yine Pisagor’a ulaşırız. Başlangıçta iki çubuk arasındaki mesafeyi sorarken, şimdi yönlü büyüklükler arasındaki ilişkiyi anlatan bir ifadeye sahibiz.
 
 Bu bağlantı, vektörlerle çalışmaya başladığımızda uzunluk ve açı hesaplarını neden birlikte ele aldığımızı görmemizi sağlar.
+
+Son bağıntıyı genel koordinatlarda da doğrulayabiliriz:
+
+$$
+\begin{aligned}
+\|\mathbf v-\mathbf u\|^2
+&=(v_x-u_x)^2+(v_y-u_y)^2\\
+&=(u_x^2+u_y^2)+(v_x^2+v_y^2)\\
+&\quad-2(u_xv_x+u_yv_y).
+\end{aligned}
+$$
+
+İlk iki parantez uzunlukların kareleri, son parantez tanımladığımız skaler çarpımdır. Böylece vektör biçimindeki eşitliğin kaynağı yine iki parantezin karesini açmaktır. Aynı uçların uzaklığını kosinüs teoremiyle karşılaştırınca skaler çarpımın $ab\cos\theta$ olduğu da çıkar. Burada iki okun da sıfırdan farklı uzunluğu olmalıdır ki aralarındaki açı tanımlansın. Vektörler ileride ayrıntılı kurulacak; bu bölümde gereken, yeni gösterimin bildiğimiz koordinat farklarını ve aynı uzaklık hesabını kısalttığını görmektir.
 
 ## 8. Bir Koşulu Değiştirince
 

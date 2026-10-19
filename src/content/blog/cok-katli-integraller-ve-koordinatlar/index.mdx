@@ -33,13 +33,17 @@ $dA$ alan katkısını temsil eder. Dikdörtgensel küçük hücrelerde $\Delta 
 
 $f=1$ seçersek yalnız alanları toplarız ve $\iint_D1dA=\operatorname{Alan}(D)$ olur. $f$ birim alan başına miktarsa sonuç toplam miktardır. Örneğin değer gram/metrekare, $dA$ metrekare ise sonuç gramdır. İntegralin kaç katlı olduğundan önce, çarpılan küçük parçanın hangi ölçüyü taşıdığını belirlemek gerekir.
 
+Çift integralde iki integral işareti, sonucun iki sayı olacağı anlamına gelmez. Bir bölge üzerindeki bütün katkılar toplanır ve tek sayı bulunur. Sonlu bir benzetme için dört hücre düşünelim: her hücrenin alanı 2, yoğunlukları sırasıyla 1, 3, 2 ve 4 olsun. Toplam miktar $2(1+3+2+4)=20$, toplam alan $4\cdot2=8$'dir. Ortalama yoğunluk $20/8=2{,}5$ olur. Hücreler küçültüldüğünde aynı miktar, alan ve ortalama ayrımı korunur. Yalnız fonksiyon değerlerini toplamak, farklı büyüklükteki hücrelerin farklı katkılarını gözden kaçırır.
+
 ## 2. Fubini: bir yönde, sonra diğerinde toplamak
 
 $f$ kapalı bir dikdörtgen üzerinde sürekli olsun. Fubini teoremi çift integrali ardışık tek değişkenli integraller olarak hesaplamamızı sağlar:
 
 $$
-\iint_{[a,b]\times[c,d]} f(x,y)dA
-=\int_a^b\left[\int_c^d f(x,y)dy\right]dx.
+\begin{aligned}
+&\iint_{[a,b]\times[c,d]} f(x,y)dA\\
+&\quad=\int_a^b\left[\int_c^d f(x,y)dy\right]dx.
+\end{aligned}
 $$
 
 İç integralde $x$ sabit tutulur, $y$ değişir. İç hesabın sonucu genellikle $x$'e bağlı bir fonksiyondur; dış integral onu toplar. Sırayı ters çevirebiliriz, fakat hangi değişkenin önce toplandığını $dy\,dx$ veya $dx\,dy$ yazımıyla açık tutarız.
@@ -54,6 +58,16 @@ $$
 Önce $x$'i toplarsak iç integral $[x^2/2+2xy]_0^2=2+4y$ olur. Dış integral $\int_0^1(2+4y)dy=4$ verir. İki yol aynı bütün küçük kutuları farklı sırayla toplar.
 
 Süreklilik burada kolay kontrol edilen yeterli koşuldur. Daha genel teoride mutlak integrallenebilirlik, yani $\iint|f|dA<\infty$, sıralamayı değiştirmek için güçlü bir güvence sağlar. Sınırsız bölgelerde veya tekilliklerde yalnız bir iterasyonun sonlu görünmesi yeterli değildir. İleride limitleri kullanırken koşulları ayrıca denetleyeceğiz.
+
+İç integralde neden $x$ kaybolmadığını açık tutalım. $x$'i geçici olarak sabit bir sayı seçiyoruz; örneğin $x=1$ kesitinde $\int_0^1(1+2y)dy=2$ olur. Genel $x$ için $\int x\,dy=xy$'dir, çünkü $y$'ye göre türev aldığımızda $x$ sabit katsayı olarak kalır. $\int2y\,dy=y^2$ olduğundan iç sonuç $[xy+y^2]_0^1=x+1$ çıkar. Sonraki adımda $x$'i artık serbest bırakıp 0'dan 2'ye kadar dolaştırırız:
+
+$$
+\int_0^2(x+1)dx
+=\left[\frac{x^2}{2}+x\right]_0^2
+=2+2=4.
+$$
+
+İç integral bir kesitteki toplamı, dış integral bütün kesitleri birleştirir. $dy\,dx$ sırasını okurken önce fonksiyona en yakın olan $dy$ işlemini yapmamızın nedeni budur.
 
 ## 3. Eğri sınırlı bölgeyi okumak
 
@@ -82,6 +96,20 @@ $$
 
 Bu seçim, zor bir hesabı basitleştirebilir. $\int_0^1\int_x^1e^{y^2}dy\,dx$ iç integralinde elementer antitürev yoktur. Bölge $0\leq x\leq y\leq1$ olduğundan sıra değişince $\int_0^1\int_0^ye^{y^2}dx\,dy=\int_0^1ye^{y^2}dy$ olur. Artık $u=y^2$ dönüşümüyle sonuç $(e-1)/2$'dir. Fonksiyonun kendisi değişmedi; toplama sırasını bölgeye uygun seçtik.
 
+### Sınırları şekilden kuran daha ayrıntılı bir örnek
+
+$y=x^2$ parabolü ile $y=x$ doğrusu arasında kalan bölgeyi alalım. Kesişim için $x^2=x$, yani $x(x-1)=0$ çözeriz; uçlar 0 ve 1'dir. Bu aralıkta $x^2\le x$ olduğundan düşey bir kesit parabolde başlayıp doğruda biter. Bölgenin alanı:
+
+$$
+\begin{aligned}
+A&=\int_0^1\int_{x^2}^{x}1\,dy\,dx\\
+&=\int_0^1(x-x^2)dx\\
+&=\frac12-\frac13=\frac16.
+\end{aligned}
+$$
+
+Sırayı değiştirirken aynı eşitsizlikleri yatay kesit için çözeriz. $y\le x$ koşulu $x\ge y$ verir. $x^2\le y$ ve bu bölgede $x\ge0$ olduğu için $x\le\sqrt y$ olur. Böylece $0\le y\le1$ ve $y\le x\le\sqrt y$ elde ederiz. Yeni hesap $\int_0^1(\sqrt y-y)dy=2/3-1/2=1/6$ çıkar. Neden negatif karekökü almadık? Başlangıçtaki bölge yalnız $0\le x\le1$ aralığındadır. Sınır denklemini çözerken bölgenin diğer koşullarını da taşımamız gerekir.
+
 ## 5. Kutupsal koordinatların alan parçası
 
 Daire ve halka bölgelerinde $x=r\cos\theta$, $y=r\sin\theta$ kullanmak doğaldır. Burada $r\geq0$ merkezden uzaklık, $\theta$ pozitif $x$ ekseninden saat yönünün tersine ölçülen radyan açıdır. Küçük bir kutupsal hücrenin iki kenarı yaklaşık $\Delta r$ ve $r\Delta\theta$ olur. Bu nedenle alan yaklaşık $r\Delta r\Delta\theta$'dır; yalnız $\Delta r\Delta\theta$ değildir.
@@ -108,9 +136,10 @@ olur. Merkezden uzaklaştıkça aynı açı aralığının daha uzun bir yayı k
 Genel bir dönüşüm $x=x(u,v)$, $y=y(u,v)$ olsun. Küçük bir $(\Delta u,\Delta v)$ dikdörtgeninin iki kenarı yaklaşık $(x_u,y_u)\Delta u$ ve $(x_v,y_v)\Delta v$ vektörlerine dönüşür. Bu vektörlerin gerdiği paralelkenarın alanı determinantın mutlak değeriyle bulunur:
 
 $$
-dA=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv,
-\qquad
-\frac{\partial(x,y)}{\partial(u,v)}=x_uy_v-x_vy_u.
+\begin{aligned}
+dA&=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv,\\
+\frac{\partial(x,y)}{\partial(u,v)}&=x_uy_v-x_vy_u.
+\end{aligned}
 $$
 
 Bu sayı Jacobian determinantıdır. Önceki yazıdaki Jacobian matrisi yerel doğrusal dönüşümü veriyordu; determinantı bu dönüşümün alanı kaç kat büyüttüğünü gösterir. Mutlak değer yönelim işaretini kaldırır, çünkü alan ölçüsü negatif değildir.
@@ -119,14 +148,20 @@ Kutupsal dönüşümde matris $\begin{pmatrix}\cos\theta&-r\sin\theta\\\sin\thet
 
 Dönüşüm yeterince düzgün ve bölgenin içini bir kez örtecek biçimde seçilmeli, Jacobian içte sıfır olmamalıdır. Kutupsal koordinatların merkezde veya açı sınırının iki temsilinde tekilliği bulunur; bunlar alanı sıfır olan sınır kümeleri olarak uygun parçalamayla ele alınır. Bir bölgeyi iki kez taramak integral değerini de iki kez sayar.
 
+Jacobian çarpanının yönünü kontrol etmek için basit ölçeklemeye dönelim. $x=2u$, $y=3v$ dönüşümünde $u,v$ düzlemindeki birim kare, $x,y$ düzleminde kenarları 2 ve 3 olan dikdörtgene gider. Alan 6 katına çıktığı için $dx\,dy=6du\,dv$ olmalıdır. Ters dönüşüm $u=x/2$, $v=y/3$ için determinant $1/6$'dır. Hangi değişkenleri hangileri cinsinden yazdıysak o yöndeki determinantı kullanırız; iki yönün ölçekleri birbirinin tersidir.
+
+Yalnız değişken adlarını değiştirmek de yetmez. Örneğin $f=x+y$ ise yeni ifade $2u+3v$ olur; bölgenin sınırları da yeni değişkenlerle yazılır. Dönüşümün üç adımı birlikte yürür: fonksiyon, bölge ve ölçü. Birini eski değişkenlerde bırakmak, aynı integrali hesaplamayı bırakmak demektir.
+
 ## 7. Disk üzerinde bir örnek
 
 Yarıçapı 2 olan diskte $f=x^2+y^2$ fonksiyonunu toplayalım. Kutupsal biçimde $f=r^2$, bölge $0\leq r\leq2$, $0\leq\theta\leq2\pi$ olur. Alan çarpanını da eklersek:
 
 $$
-\iint_D(x^2+y^2)dA
-=\int_0^{2\pi}\int_0^2r^3dr\,d\theta
-=\int_0^{2\pi}4d\theta=8\pi.
+\begin{aligned}
+\iint_D(x^2+y^2)dA&=\int_0^{2\pi}\int_0^2r^3dr\,d\theta\\
+&=\int_0^{2\pi}4d\theta\\
+&=8\pi.
+\end{aligned}
 $$
 
 Diskin alanı $4\pi$ olduğundan fonksiyonun bölge ortalaması 2'dir. İntegrandın en küçük değeri 0, en büyük değeri 4 olduğundan bu ortalama beklenen aralıktadır. Ortalama yalnız merkezin değerini veya sınırın değerini kullanmaz; her noktayı alan ağırlığıyla toplar.
@@ -134,6 +169,32 @@ Diskin alanı $4\pi$ olduğundan fonksiyonun bölge ortalaması 2'dir. İntegran
 Ek $r$'yi unutursak $\int r^2dr$ hesabı çıkar ve yanlış bir sonuç elde ederiz. Bu hata, bütün yarıçaplarda aynı açısal parçanın aynı alanı taşıdığını varsaymakla eşdeğerdir. Koordinat değişikliğinin yalnız formülü değil küçük ölçüyü de değiştirdiğini hatırlamak gerekir.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Kutupsal hücrenin alanı" caption="Aynı radyal kalınlık ve açı genişliğindeki hücre merkezden uzaklaştıkça büyür. Alan elemanındaki r çarpanı bu genişlemeyi ölçer." />
+
+### Elipsi diske dönüştürmek: iki alan çarpanını izlemek
+
+Kutupsal koordinatlar yalnız çember biçimindeki başlangıç bölgelerinde işe yaramaz. Önce uygun bir ölçekleme yaparak elipsi de diske çevirebiliriz. Bölge:
+
+$$
+D=\left\{(x,y):\frac{x^2}{4}+\frac{y^2}{9}\le1\right\}
+$$
+
+olsun. Yatay yarı eksen 2, düşey yarı eksen 3'tür. $x=2u$, $y=3v$ seçersek sınır koşulu $u^2+v^2\le1$ olur; yeni bölge birim disktir. Bu dönüşümün Jacobian matrisi $\begin{pmatrix}2&0\\0&3\end{pmatrix}$ ve determinantı 6'dır. Demek ki $du\,dv$ büyüklüğündeki alan, eski düzlemde $6du\,dv$ büyüklüğüne gider.
+
+Elips üzerinde $f(x,y)=x^2/4+y^2/9$ fonksiyonunun integralini bulalım. Yeni değişkenlerde $f=u^2+v^2$ olur. Şimdi birim diskte $u=r\cos\theta$, $v=r\sin\theta$ dönüşümünü yaparız. İkinci dönüşümün alan çarpanı $r$ olduğundan iki çarpan birlikte:
+
+$$
+\begin{aligned}
+\iint_D f\,dA&=6\int_0^{2\pi}\int_0^1r^2\,r\,dr\,d\theta\\
+&=6\cdot\frac14\cdot2\pi\\
+&=3\pi
+\end{aligned}
+$$
+
+verir. İç integralde $r^3$'ün antitürevi $r^4/4$'tür; sınırlar 0 ve 1 olduğu için $1/4$ kaldı. Dış integral, bu sabit katkıyı tam $2\pi$ açı boyunca toplar.
+
+Aynı dönüşümle $f=1$ seçersek elipsin alanı $6\int_0^{2\pi}\int_0^1r\,dr\,d\theta=6\pi$ olur. Dolayısıyla asıl fonksiyonun elips üzerindeki ortalaması $3\pi/(6\pi)=1/2$'dir. Merkezde değer 0, sınırda 1 olduğundan ortalama bu iki uç arasında kalır.
+
+Altı çarpanını unutmak, elipsi diske küçültürken kaybolan alanı hesaba katmamak olurdu. $r$ çarpanını unutmak ise disk içinde açısal hücrelerin değişen genişliğini gözden kaçırırdı. Aynı hesapta iki farklı geometrik değişim yaptığımız için iki ölçü düzeltmesini de taşıdık. Doğrudan $x=2r\cos\theta$, $y=3r\sin\theta$ yazıp determinant hesaplamak da $6r$ verir; ardışık iki dönüşümün ölçekleri çarpılır.
 
 ## 8. Üçlü integral ve silindirik koordinatlar
 
@@ -143,14 +204,26 @@ Silindirik koordinatlar düzlemdeki kutupsal koordinatlara yüksekliği ekler: $
 
 Yarıçapı 2, yüksekliği 3 olan dik silindirin hacmi $\int_0^3\int_0^{2\pi}\int_0^2rdrd\theta dz=3\cdot2\pi\cdot2=12\pi$'dir. Eğer yükseklik $z=4-r^2$ paraboloidiyle sınırlıysa üst sınır sabit 3 yerine $4-r^2$ olur. O zaman hacim $\int_0^{2\pi}\int_0^2(4-r^2)rdrd\theta=8\pi$ çıkar. Bölgenin şekli sınırların bağımlılığında görünür.
 
+Paraboloid örneğinde $z$ sınırını ayrıntılandıralım. Alt yüzey $z=0$, üst yüzey $z=4-r^2$ olduğundan bu aralık boş olmamalıdır: $4-r^2\ge0$ ve $r\ge0$ birlikte $0\le r\le2$ verir. Önce yükseklik boyunca toplarsak:
+
+$$
+\begin{aligned}
+V&=\int_0^{2\pi}\int_0^2
+\left[\int_0^{4-r^2}r\,dz\right]dr\,d\theta\\
+&=\int_0^{2\pi}\int_0^2(4r-r^3)dr\,d\theta.
+\end{aligned}
+$$
+
+$z$'ye göre integralde $r$ sabittir, bu yüzden iç sonuç $r(4-r^2)$ olur. Sonraki antitürev $2r^2-r^4/4$'tür; 2'deki değeri $8-4=4$, 0'daki değeri 0'dır. Son integral $4\cdot2\pi=8\pi$ verir. Yarıçapı 2, yüksekliği 4 olan çevre silindirin hacmi $16\pi$'dir; bulduğumuz değer daha küçüktür, çünkü üst yüzey dışa doğru alçalır. Bu geometrik kontrol, sınır ve alan çarpanı hatalarını fark etmeye yardım eder.
+
 ## 9. Küresel koordinatlarda açı adlarını sabitlemek
 
 Küresel koordinatlar için şu konvansiyonu kullanacağız: $\rho\geq0$ orijine uzaklık, $0\leq\theta<2\pi$ düzlemdeki azimut açısı, $0\leq\phi\leq\pi$ pozitif $z$ ekseninden ölçülen kutup açısıdır. Bazı kaynaklar iki açı harfini değiştirir; formülleri karşılaştırırken anlamlarına bakmalıyız.
 
 $$
-x=\rho\sin\phi\cos\theta,\quad
-y=\rho\sin\phi\sin\theta,\quad
-z=\rho\cos\phi.
+\begin{aligned}
+x&=\rho\sin\phi\cos\theta,\\y&=\rho\sin\phi\sin\theta,\\z&=\rho\cos\phi.
+\end{aligned}
 $$
 
 Küçük hücrenin üç dik kenarı yaklaşık $d\rho$, $\rho d\phi$ ve $\rho\sin\phi d\theta$'dır. Çarpımları:
@@ -163,6 +236,10 @@ verir. Aynı sonuç üçe üç Jacobian determinantının mutlak değeriyle bulu
 
 Yarıçapı $R$ olan kürenin hacmi $\int_0^{2\pi}\int_0^\pi\int_0^R\rho^2\sin\phi\,d\rho d\phi d\theta$ olur. Üç çarpan sırasıyla $R^3/3$, 2 ve $2\pi$ verir; sonuç $4\pi R^3/3$'tür. Tanıdık formülü bu kez küçük küresel hücrelerden türettik.
 
+Küresel çarpanları tek tek okuyalım. Sabit $\rho$'da kutup açısını değiştirmek yarıçapı $\rho$ olan büyük çember üzerinde ilerletir; yay uzunluğu $\rho d\phi$'dir. Azimut açısını değiştirirken ise bulunduğumuz yatay çemberin yarıçapı $\rho\sin\phi$'dir. Bu nedenle üçüncü kenar $\rho\sin\phi d\theta$ olur. Kuzey kutbunda $\phi=0$ iken bu çember tek noktaya çöker; azimut değişimi mesafe oluşturmaz. $\sin\phi$ çarpanı bunu doğru biçimde sıfırlar.
+
+Küre hacmindeki açısal integral $\int_0^\pi\sin\phi\,d\phi=[-\cos\phi]_0^\pi=1-(-1)=2$'dir. Radyal integral $\int_0^R\rho^2d\rho=R^3/3$, diğer açı integrali $\int_0^{2\pi}d\theta=2\pi$ olur. Üst yarımküre istenseydi yalnız $\phi$ aralığı $[0,\pi/2]$ olur; sinüsün integrali 1'e iner ve hacim yarıya düşer. Açı sınırlarının geometrik anlamını bilmek, formülü ezberlemekten daha güvenilir bir kontrol sağlar.
+
 ## 10. Gauss integraline hazırlanmak
 
 Şimdi $I=\int_{-\infty}^{\infty}e^{-x^2}dx$ değerini arayalım. Bu integralin yakınsak olduğunu önce doğrulayabiliriz. $|x|\geq1$ için $x^2\geq|x|$ ve $0\leq e^{-x^2}\leq e^{-|x|}$ olur. Üstel kuyrukların integrali sonludur; orta parça da sürekli ve sınırlıdır. Böylece iki kuyruk ayrı ayrı yakınsar.
@@ -174,6 +251,19 @@ J_R^2=\iint_{[-R,R]^2}e^{-(x^2+y^2)}dA
 $$
 
 verir. İntegrand artık yalnız merkezden uzaklığın karesine bağlıdır. Dairelerde kutupsal dönüşüm kolay olduğundan kareyi iki daire arasında sıkıştıracağız.
+
+Kare alma adımında yeni bir değişken kullanmamız önemlidir. Aynı sayı olan iki integralden birinde bütünleme değişkenini $y$ diye adlandırabiliriz. Sonlu aralıklarda çarpımları:
+
+$$
+\begin{aligned}
+J_R^2&=\int_{-R}^R e^{-x^2}
+\left[\int_{-R}^R e^{-y^2}dy\right]dx\\
+&=\int_{-R}^R\int_{-R}^R
+ e^{-x^2}e^{-y^2}dy\,dx.
+\end{aligned}
+$$
+
+Köşeli parantez içindeki sayı $x$'ten bağımsızdır; bu yüzden ilk integralin içine sabit çarpan olarak girebilir. Üstellerin çarpımı da $e^{-(x^2+y^2)}$ olur. Bu işlem, tek integralin içindeki fonksiyonu karesine çevirip $e^{-2x^2}$ yazmakla aynı değildir. İki bağımsız toplama işlemini çarptığımız için bütün $(x,y)$ çiftlerinden oluşan kare bölge ortaya çıkar.
 
 ## 11. Kareyi iki disk arasında sıkıştırmak
 

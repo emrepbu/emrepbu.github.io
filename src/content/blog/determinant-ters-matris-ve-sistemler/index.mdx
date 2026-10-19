@@ -64,6 +64,14 @@ Sütunlardan biri sıfır olduğunda paralelkenarın bir kenarı yok olur, alan 
 
 Başlangıçtaki örnekte $\det A=2\cdot2-1\cdot1=3$ olur. Yeni alan 3 birimkaredir. Determinantı kenar uzunluğu sanmayız; burada alanın eski alana oranını anlatır. Birim kareden başladığımız için yeni alanın sayısal değeriyle aynı çıktı.
 
+### Determinant ile üçgen alanı arasındaki iki çarpanı
+
+Sütunların oluşturduğu paralelkenar, aynı iki kenarı paylaşan iki eş üçgene ayrılır. Bu yüzden orijin ile $\mathbf u,\mathbf v$ uçlarının oluşturduğu üçgenin alanı $|\det A|/2$ olur. Determinantın mutlak değerini doğrudan üçgen alanı diye yazmak iki kat büyük sonuç verir. Hangi şeklin alanını hesapladığımızı önce belirlemeliyiz.
+
+Örneğin $\mathbf u=(3,0)$ ve $\mathbf v=(1,2)$ için determinant $3\cdot2-1\cdot0=6$'dır. Paralelkenarın tabanı 3, yüksekliği 2 olduğundan alanı 6; ilgili üçgenin alanı 3'tür. İkinci vektörün yatay bileşenini 1'den 5'e değiştirmek determinantı değiştirmez. Şekil yana doğru uzamış görünse de taban ve dik yükseklik aynı kaldığı için alan aynı kalır.
+
+Başlangıç şeklinin alanı 1 değilse determinant yeni alanın kendisi değildir. Alanı 4 olan bir şekle determinantı $-3$ olan dönüşüm uygularsak yeni alan $|-3|\cdot4=12$ olur. Eksi işaret yalnız yönelim değişimini gösterir. Uzunluk oranını 3 diye okuyamayız: örneğin bir doğrultu üç kat büyürken diğeri korunabilir veya iki doğrultu farklı miktarlarda ölçeklenebilir. Determinant bu ayrıntıları tek tek saklamaz.
+
 ## 3. İşaret ve Alanı Ayırmak
 
 Yatay eksene göre yansımanın matrisi $F=\begin{pmatrix}1&0\\0&-1\end{pmatrix}$ olsun. Determinant $-1$'dir. Alanın eksi bir birimkare olduğu anlamına gelmez; alan ölçeğinin büyüklüğü 1'dir, yönelim tersine dönmüştür.
@@ -92,6 +100,14 @@ olur. Bu matris $(x,y)$'yi $(0,y)$'ye gönderir. Aynı yükseklikteki bütün fa
 
 Sıfır determinantlı $2\times2$ matrislerde sütunlar bağımlıdır; ya bir doğruyu, ya yalnızca sıfır vektörünü gererler. Dolayısıyla bütün düzleme erişemezler. “Determinant sıfır, demek sonuç sıfır vektörü” demek yanlış olur: örneğimizde $(0,3)$ gibi birçok sıfırdan farklı çıktı vardır. Kaybolan, bütün çıktılar değil, bir bağımsız yöndür.
 
+### Kaybolan yönü açık bir vektörle bulmak
+
+$A=\begin{pmatrix}1&2\\2&4\end{pmatrix}$ matrisini düşünelim. Determinant sıfırdır; fakat hangi girdilerin ayırt edilemediğini ayrıca bulabiliriz. $A(x,y)=(x+2y,2x+4y)$ olduğundan $\mathbf z=(-2,1)$ vektörü sıfıra gider. Birinci bileşen $-2+2=0$, ikinci bileşen $-4+4=0$ olur. Bu yön boyunca yapılan bir değişiklik çıktıda görünmez.
+
+Örneğin $\mathbf x=(3,0)$ girdisinin çıktısı $(3,6)$'dır. Buna $\mathbf z$ ekleyerek $(1,1)$ elde edelim. Onun çıktısı da $(3,6)$ olur. Daha genel olarak $\mathbf x+t\mathbf z$ girdilerinin hepsi aynı çıktıyı verir; çünkü doğrusallık $A(\mathbf x+t\mathbf z)=A\mathbf x+tA\mathbf z=A\mathbf x$ der.
+
+Bu, tersin neden bulunmadığına doğrudan bir kanıttır. Ters dönüşüm $(3,6)$ verildiğinde hem $(3,0)$ hem $(1,1)$ üretmek zorunda kalırdı; tek değerli bir fonksiyon bunu yapamaz. Ayrıca bütün çıktılar $(s,2s)$ biçimindedir. $(3,7)$ hedefi bu doğru üzerinde olmadığı için hiçbir girdiden gelmez. Aynı bilgi kaybı bir yandan bazı hedeflere ulaşmayı engeller, diğer yandan erişilen hedeflerin birden fazla girdisi olmasına yol açar.
+
 ## 5. Ters Matris Ne Yapar?
 
 Bir $A$ matrisinin yaptığı dönüşümü geri alan matrise $A^{-1}$ denir. Üstteki $-1$ burada bir ters dönüşümü gösterir. Matrisin her elemanının sayısal tersini almak anlamına gelmez.
@@ -112,6 +128,23 @@ $$
 $$
 
 Sıfır determinantlı örneği geri almak mümkün değildir. $(0,3)$ çıktısını gördüğümüzde başlangıcın $(1,3)$ mü, $(5,3)$ mü, başka bir nokta mı olduğunu bilemeyiz. Tek girdiye tek çıktı vermesi gereken ters fonksiyon, bu kayıp bilgiyi kendiliğinden üretemez.
+
+### Bir ters bulunduysa neden ikinci bir ters olamaz?
+
+Aynı $A$ için hem $B$ hem $C$ matrislerinin ters olduğunu varsayalım. O zaman $BA=I$ ve $AC=I$ olur. Çarpımın sırasını değiştirmeden yalnız parantezleri yeniden gruplayabiliriz:
+
+$$
+\begin{aligned}
+B&=BI\\
+&=B(AC)\\
+&=(BA)C\\
+&=IC=C.
+\end{aligned}
+$$
+
+Başta iki farklı ters olabileceğini düşündük ama koşullar onların aynı olmasını zorunlu kıldı. “Ters matris” diye tek bir nesneden söz etmemizin nedeni budur.
+
+Bu hesap, birleşme özelliğiyle değişme özelliğini de ayırır. $B(AC)$ yerine $(BA)C$ yazarken harflerin soldan sağa sırası hep $B,A,C$ kaldı. $AB$ ile $BA$'yı rastgele yer değiştirmedik. Matris denklemlerini çözerken eşitliğin hangi tarafından çarptığımızı belirtmek, bu yüzden sayı denklemlerindekinden daha görünür bir önem taşır. Birim matris araya girdiğinde de uygun boyutlarda hiçbir girdiyi değiştirmez.
 
 ## 6. İki Boyutta Ters Formülünü Kontrol Etmek
 
@@ -143,6 +176,21 @@ A^{-1}=\frac13\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.
 $$
 
 $(1,2)$ girdisi $A$ altında $(4,5)$ olur. Tersi uygulayalım: ilk bileşen $(2\cdot4-5)/3=1$, ikinci bileşen $(-4+2\cdot5)/3=2$ çıkar. Başlangıç vektörünü geri bulduk. Formülün dışındaki $1/3$ bütün elemanları çarpar; yalnızca ilk satıra uygulanmaz.
+
+### Ters dönüşümü önce sıradan denklemlerle kurmak
+
+Ters formülünün ne yaptığını görmek için küçük bir dönüşümü doğrudan geri çözelim. $A=\begin{pmatrix}2&1\\1&1\end{pmatrix}$ ve çıktı $(u,v)$ olsun. Çıktı bileşenlerinin tanımları $u=2x+y$, $v=x+y$'dir. İki eşitliği çıkarınca $u-v=x$ bulunur. Sonra $v=x+y$ içinde bu değeri kullanırız: $y=v-(u-v)=2v-u$. Böylece girdi, çıktıdan şu şekilde yeniden kurulabilir:
+
+$$
+\begin{aligned}
+x&=u-v,\\
+y&=-u+2v.
+\end{aligned}
+$$
+
+Bu iki satırın katsayıları ters matrisin satırlarıdır: $A^{-1}=\begin{pmatrix}1&-1\\-1&2\end{pmatrix}$. Başlangıç determinantı $2\cdot1-1\cdot1=1$ olduğu için hazır formül de aynı sonucu verir. İki yöntem farklı şeyler bulmadı; biri dönüşümü denklem olarak, diğeri genel matris kuralıyla geri aldı.
+
+Kontrol için $(x,y)=(4,-1)$ seçelim. İleri dönüşüm $(u,v)=(7,3)$ verir. Geri formül $x=7-3=4$, $y=-7+6=-1$ ile başlangıca döner. Ters matrisi elemanların tek tek tersini alarak kurmaya çalışsaydık bu geri dönüş sağlanmazdı. Ters işlemin anlamı, her giriş–çıkış ilişkisini çözmektir; tablodaki sayıları ayrı ayrı değiştirmek değildir.
 
 ## 7. Ters Matrisle Sistem Çözmek
 
@@ -212,6 +260,14 @@ Her satır işlemini hem sol hem sağ tarafa uyguladık. Yalnızca sol tablodaki
 
 Ayrıca eleme sırasında determinantın nasıl değiştiğini bilmek yararlıdır. Satır değiştirme işareti tersine çevirir; bir satırı bir sayıyla çarpmak determinantı o sayıyla çarpar; bir satıra başka satırın katını eklemek determinantı değiştirmez. Son özellik iki boyutta doğrudan görülebilir: ikinci satır $(c+ka,d+kb)$ olunca determinant $a(d+kb)-b(c+ka)=ad-bc$ kalır. Fazladan $kab$ ve $kba$ terimleri birbirini götürür.
 
+### Bir satıra diğerinin katını eklemek neden çözümü korur?
+
+İki denklem $L_1=b_1$ ve $L_2=b_2$ olsun; $L_1,L_2$ bilinmeyenlerin doğrusal ifadeleridir. İkinciyi $L_2+kL_1=b_2+kb_1$ ile değiştirelim ve birinciyi koruyalım. Eski denklemleri sağlayan her çözüm yenisini de sağlar; iki doğru eşitliği taraf tarafa topladık. Ters yönde yeni ikinci denklemden korunan birincinin $k$ katını çıkarırsak eski ikinci denklemi geri alırız. Dolayısıyla fazladan çözüm eklemedik, gerçek çözüm de kaybetmedik.
+
+Örneğin $x+y=5$, $2x-y=1$ sisteminde ikinciye birinciyi eklemek $3x=6$ verir. Birinci hâlâ elimizde olduğundan $x=2$, ardından $y=3$ bulunur. İki eski denklemde kontrol edersek $2+3=5$ ve $4-3=1$ çıkar. Yalnız $3x=6$ denklemini saklayıp birinciyi de silseydik $y$ hakkındaki bilgiyi kaybederdik.
+
+Bu nedenle satır işlemi “denklemleri rastgele birleştirmek” değildir; hangi satırın değiştiği, hangisinin korunduğu bellidir. Aynı şekilde bir eşitliği sıfırla çarpmak geri alınamaz. $x+y=5$ koşulunu $0=0$'a çevirmek bütün noktaları kabul eder ve başlangıç çözüm kümesini büyütür. İzinli işlemlerin ortak özelliği geri döndürülebilmeleridir.
+
 ## 9. Tek, Hiç veya Sonsuz Çözüm
 
 Determinant sıfırdan farklı bir kare sistemde her sağ taraf için tek çözüm vardır. Determinant sıfır olduğunda ise sağ tarafa bağlı olarak hiç çözüm veya sonsuz çözüm bulunabilir. İki olasılığı aynı katsayılarla görelim:
@@ -232,6 +288,28 @@ Aynı satır işlemi bu kez $0=1$ verir. Hiçbir gerçek sayı seçimi bunu sağ
 
 Sütun açısından sağ taraf, sütunların gerdiği doğru üzerindeyse çözümler vardır; dışındaysa yoktur. Doğru üzerindeki hedefe giden birden çok girdi bulunması, dönüşümün bilgi kaybetmesiyle aynı olgudur. Cebirdeki serbest parametre ile geometrideki çökme birbirini açıklamış olur.
 
+### Tek çözüm bulunması, veriye duyarlılığın küçük olduğunu söylemez
+
+Determinantın sıfırdan farklı olması çözümün varlığı ve tekliği konusunda kesin bir bilgidir. Fakat verilen sayılar biraz değiştiğinde çözümün ne kadar değişeceğini tek başına bu evet-hayır bilgisi söylemez. Birbirine çok yakın iki denklemle bunu görelim:
+
+$$
+x+y=1,\qquad x+1{,}01y=1.
+$$
+
+Katsayı matrisinin determinantı $1\cdot1{,}01-1\cdot1=0{,}01$'dir; yani sıfır değildir. İkinci denklemden birinciyi çıkarınca $0{,}01y=0$ kalır. Buradan $y=0$, birinci denklemden de $x=1$ bulunur. İki doğrunun yalnızca bir kesişim noktası vardır.
+
+Şimdi katsayıları koruyup yalnızca ikinci sağ tarafı $1{,}01$ yapalım. İlk sağ taraf hâlâ 1 olsun. Aynı çıkarma adımı bu kez:
+
+$$
+0{,}01y=0{,}01,\qquad y=1,\qquad x=1-y=0
+$$
+
+verir. Verilerden biri sadece $0{,}01$ değiştiği hâlde çözüm $(1,0)$'dan $(0,1)$'e gitti. Bu iki çözüm arasındaki uzaklık $\sqrt{(0-1)^2+(1-0)^2}=\sqrt2$'dir. Her iki sonucu da kendi denklemlerinde yerine koyarak doğrulayabiliriz; sorun yanlış işlem yapmamız değildir.
+
+Neden böyle oldu? İkinci denklemdeki sağ tarafı $1+\delta$ diye yazalım. Buradaki $\delta$, ilk değere eklenen değişimdir. Eleme $0{,}01y=\delta$ verir; dolayısıyla $y=100\delta$ ve $x=1-100\delta$ olur. Sağ taraftaki değişiklik çözüm katsayılarında yüz kat büyür. Neredeyse aynı koşulu söyleyen iki denklemin farkından küçük bir katsayı kaldı ve bu katsayıya böldük.
+
+Bu örnek determinantın işlevini sınırlarıyla okumayı sağlar. Sıfır determinant tam bilgi kaybını gösterir; bu örnekte ise bilgi korunur ama küçük veri değişimleri belirgin sonuç değişimleri doğurur. Bununla birlikte yalnızca determinantın sayısal olarak küçük olmasına bakarak her matris için aynı duyarlılık hükmünü veremeyiz. Denklemlerin birimlerini veya bütün katsayıların ölçeğini değiştirmek determinantı da değiştirir. Buradaki duyarlılığı açıkça gösteren kanıt, $x$ ve $y$'nin $\delta$'ya bağlı hesabıdır.
+
 ## 10. Baz Değişimi de Bir Matris Hesabıdır
 
 $\mathbf b_1=(1,0)$ ve $\mathbf b_2=(1,1)$ bazını yeniden kullanalım. Bu vektörleri sütunlara yazalım:
@@ -249,6 +327,14 @@ $$
 Standart koordinatları $(3,2)$ olan vektöre $P^{-1}$ uygularsak $(1,2)$ buluruz. Bu, önceki baz yazısındaki katsayılardır. Vektörü fiziksel olarak taşımadık; tarif edildiği koordinat sistemini değiştirdik. Aynı sayısal matris bir bağlamda şekli kaydırmak, başka bağlamda koordinatları çevirmek için kullanılabilir. Neyin girdi, neyin çıktı olduğunu belirtmek bu ayrımı korur.
 
 Baz vektörleri bağımlı olsaydı $P$'nin determinantı sıfır olurdu. Bütün standart vektörleri tek anlamlı koordinatlarla ifade edemezdik. Böylece bazın bağımsızlık ve germe koşulları ile matrisin tersinirliği aynı yapının farklı anlatımları olarak birleşir.
+
+### Bazdan koordinata ve koordinattan baza dönüş
+
+Baz vektörlerini $\mathbf b_1=(1,1)$ ve $\mathbf b_2=(1,-1)$ seçelim. Sütun matrisi $P=\begin{pmatrix}1&1\\1&-1\end{pmatrix}$'dir. Katsayılar $(s,t)$ olduğunda standart vektör $(s+t,s-t)$ olur. Burada matris bir vektörü yeni bir fiziksel konuma götürmek için değil, aynı vektörün tarifini değiştirmek için kullanılıyor.
+
+Standart vektör $(3,1)$ verilsin. $s+t=3$, $s-t=1$ denklemlerini toplamak $2s=4$, yani $s=2$ verir; ilk denklemden $t=1$ çıkar. Geri kontrol $2(1,1)+(1,-1)=(3,1)$'dir. Determinant $-2$ sıfır olmadığından bu koordinat dönüşümü her standart vektör için tek çözümlüdür.
+
+Genel çözüm $s=(x+y)/2$, $t=(x-y)/2$ olduğuna göre ters matrisin satırları da $\tfrac12(1,1)$ ve $\tfrac12(1,-1)$ olur. Baz sırasını değiştirirsek katsayıların sırası da değişir; başlangıç vektörünün kendisi değişmez. Ayrıca bu baz yönleri dik olsa da birim değildir: her ikisinin normu $\sqrt2$'dir. Bu nedenle örneğin norm karesi $s^2+t^2=5$ değil, $2s^2+2t^2=10$ olur. Standart $(3,1)$ hesabındaki $9+1=10$ ile aynı sonucu bulduk.
 
 ## 11. Üç Boyutta Hacim Anlamı
 

@@ -39,6 +39,12 @@ Bir önermenin **değili**, onun doğru olmadığı iddiasıdır. $P$'nin değil
 
 Bu ifadeleri gündelik sezgiyle okuyabiliriz; semboller yalnızca uzun cümlelerde neyin neye bağlandığını takip etmeyi kolaylaştırır. Bir cümle belirsizse önce açık Türkçeyle yazmak, sonra gerekirse sembolle kısaltmak daha güvenlidir.
 
+### Değilleme cümlenin hangi kısmına uygulanıyor?
+
+“Bir sayı hem 2'den büyük hem 5'ten küçüktür” koşulunu düşünelim. Bunun sağlanmaması için sayı 2 veya daha küçük olabilir; yahut 5 veya daha büyük olabilir. İki uçtan birinin koşulu bozması yeterlidir. 7 sayısı ilk şartı sağlar ama ikinciyi bozduğu için birleşik cümleyi yanlış yapar. Dolayısıyla “her iki şart da yanlış olmalı” demek, değillemeyi gereğinden fazla daraltır.
+
+Buna karşılık “sayı 2'den küçüktür veya 5'ten büyüktür” cümlesinin yanlış olması için iki seçenek de kapanmalıdır. Sayı ne 2'den küçük ne 5'ten büyükse $2\le x\le5$ aralığında kalır. Uçlardaki eşitliklerin bulunması, özgün cümlede kesin küçüklük ve büyüklük kullanılmasından gelir. Bu örneklerde mantık sözcükleri sayı doğrusundaki bölgeleri belirledi; yalnız dilbilgisel süs değillerdi. Değili kurarken özgün cümleyi bir aday üzerinde denemek yararlıdır: Özgün koşul doğruysa değili yanlış, özgün koşul yanlışsa değili doğru çıkmalıdır. İkisini birden doğru yapan veya ikisini birden yanlış bırakan bir yazım, henüz gerçek değilleme değildir.
+
 ## 3. “Her” ile “Bazı” Aynı Gücü Taşımaz
 
 “Her tam sayının karesi negatif değildir” dediğimizde bütün tam sayıları kapsayan bir iddia kurarız. $n$ hangi tam sayı olursa olsun $n^2\ge0$ olması gerekir. Bir tek aykırı değer bile bu iddiayı çürütmeye yeterdi.
@@ -48,6 +54,12 @@ Bu ifadeleri gündelik sezgiyle okuyabiliriz; semboller yalnızca uzun cümleler
 “Bütün sayılar bu özelliğe sahip” cümlesinin değili “hiçbiri sahip değil” değildir. Doğru değilse en az bir sayı özelliği taşımıyor demektir. “Her pozitif tam sayı çifttir” iddiasını 3 çürütür; bunun için bütün pozitif sayıların tek olduğunu söylememize gerek yoktur.
 
 “En az bir sayı bu özelliğe sahip” cümlesinin değili ise “hiçbir sayı bu özelliğe sahip değil” olur. Her ve bazı sözcüklerinin yeri, ispatın ne göstermesi gerektiğini belirler. Sayı kümesini de açıkça söylemeliyiz: “Her sayının bir sonraki sayısı vardır” gibi gündelik bir cümle, tam sayılarla gerçek sayılarda aynı biçimde yorumlanamaz.
+
+### “Bazı” iddiasında bir örneği tam doğrulamak
+
+“Bazı tam sayılar, kendileriyle çarpılınca 16 verir” iddiasını göstermek için 4 seçebiliriz. Önce 4'ün konuştuğumuz alanın, yani tam sayıların içinde olduğunu belirtiriz. Sonra $4\times4=16$ hesabıyla istenen özelliği sağladığını gösteririz. Böyle bir örneğe iddianın gerçekleştiğini gösteren bir **tanık** diyebiliriz. Başka örneklerin bulunup bulunmaması bu varlık iddiasını değiştirmez; $-4$'ün de işe yaraması iddiayla uyumludur.
+
+“Her tam sayı kendisiyle çarpılınca 16 verir” ise aynı tanıkla doğrulanamaz. Bu cümlede 0 da kapsama girer ve $0^2=0$ olduğundan iddiayı çürütür. Görüldüğü gibi aynı matematiksel özellik, başındaki “bazı” veya “her” sözcüğüne göre farklı bir görev yükler. Bir örnek bazen tam ispattır, bazen yalnız küçük bir kontroldür. Görevi belirleyen şey örneğin etkileyiciliği değil, cümlenin kapsamıdır. Çözmeye başlamadan önce konuşulan kümeyi ve bütün elemanların mı en az birinin mi istendiğini açıkça söylemek, yanlış türde gerekçe aramamızı önler.
 
 ## 4. Koşullu İddia: Eğer P ise Q
 
@@ -71,6 +83,12 @@ Buna karşılık “4 ile bölünmüyorsa çift değildir” cümlesi, iki koşu
 
 Hem $P\Rightarrow Q$ hem $Q\Rightarrow P$ doğruysa koşullar **denk** veya **eşdeğer**dir; $P\Leftrightarrow Q$ yazarız. “P ancak ve ancak Q” denir. Bu durumda P, Q için hem gerekli hem yeterlidir. Böyle bir iddiayı ispatlarken iki yönü de göstermeliyiz; tek yön yetmez.
 
+### Karşıt tersin neden aynı yasak durumu anlattığını görmek
+
+$P\Rightarrow Q$ iddiasının yasakladığı durum, P'nin doğru olup Q'nun yanlış olmasıdır. Karşıt ters $\neg Q\Rightarrow\neg P$ de Q yanlışken P'nin doğru olmasına izin vermez. İki cümle aynı olasılığı dışladığı için mantıksal olarak denktir. Dörde bölünen bir sayının çift olmaması, ilk cümleyi de karşıt tersini de aynı anda bozar. Bu açıklama, koşulların yerlerini ve işaretlerini neden birlikte değiştirdiğimizi gösterir.
+
+Ters önerme ise farklı bir olasılığı yasaklamaya çalışır: Q doğruyken P yanlış olmasın der. Çift ama dörde bölünmeyen 6 tam olarak bu olasılıktır. İlk önerme böyle bir sayıya izin verdiği için tersinin doğruluğunu garanti etmez. Benzer biçimde iki yönlü bir iddia kurduğumuzda iki ayrı yasağı da savunmalıyız. “Ancak ve ancak” ifadesini tek bir ok gibi okumak, bu işin yarısını bırakır. Bir ispatta sonuçtan varsayıma geri giderken de bu ayrımı kontrol ederiz; yalnız ileri yönü bilinen bir kuralı ters kullanamayız.
+
 ## 6. Örnek Neyi Gösterir, Neyi Göstermez?
 
 $2^2>2$, $3^2>3$ ve $10^2>10$ örneklerinden “Her pozitif tam sayı $n$ için $n^2>n$” sonucunu çıkarırsak hata yaparız. $n=1$ için $1^2=1$ olur. Bu tek örnek genel iddiayı çürütür; ona **karşı örnek** deriz.
@@ -85,10 +103,13 @@ Buna karşılık incelenen küme sonluysa bütün durumları kontrol etmek bir i
 
 Bir tam sayı, başka bir tam sayının iki katıysa **çift**tir. Yani $n=2k$ olacak bir tam sayı $k$ bulunur. **Tek** tam sayılar ise $n=2k+1$ biçimindedir. $k$ negatif de olabilir: $-5=2(-3)+1$ tektir. Sıfır $2\times0$ olduğu için çifttir.
 
-“İki tek tam sayının toplamı çifttir” iddiasını ispatlayalım. İki tek sayıyı $2r+1$ ve $2s+1$ yazabiliriz; $r$ ve $s$ tam sayılardır. Aynı harfi kullanmıyoruz, çünkü sayıların aynı olmasını istemiyoruz. Toplam:
+“İki tek tam sayının toplamı çifttir” iddiasını ispatlayalım. İki tek sayıyı $2r+1$ ve $2s+1$ yazabiliriz; $r$ ve $s$ tam sayılardır. İki ayrı harf kullanıyoruz, çünkü sayıların birbirine eşit olmasını zorunlu kılmak istemiyoruz. Eşit olmalarına da izin var; bu durumda $r=s$ seçilir. Toplam:
 
 $$
-(2r+1)+(2s+1)=2r+2s+2=2(r+s+1)
+\begin{aligned}
+(2r+1)+(2s+1)&=2r+2s+2\\
+&=2(r+s+1)
+\end{aligned}
 $$
 
 olur. $r+s+1$ bir tam sayı olduğundan sonuç bir tam sayının iki katıdır. Çift tanımı tam olarak bunu istediği için ispat tamamlanır.
@@ -96,6 +117,21 @@ olur. $r+s+1$ bir tam sayı olduğundan sonuç bir tam sayının iki katıdır. 
 Bu bir **doğrudan ispat**tır: Varsayımla başlayıp tanımlar ve geçerli işlemler aracılığıyla sonuca vardık. “Sonuç çift olsun” diye başlamadık; tek olma varsayımının zorunlu olarak çift bir toplam ürettiğini gösterdik.
 
 İspatta $r$ ve $s$'ye belirli değer vermememiz bilinçlidir. Böylece akıl yürütme 3 ile 5 için olduğu kadar $-7$ ile 101 için de geçerlidir. Harf kullanmak tek başına ispat yapmaz; harflerin bütün izin verilen değerlerinde adımların geçerli olması gerekir.
+
+### Genel bir ispatın her satırında neyi bildiğimizi izlemek
+
+İki çift tam sayının toplamının çift olduğunu en küçük adımlarla gösterelim. İlk sayıya $a$, ikinciye $b$ diyelim. Çift tanımından dolayı $a=2r$, $b=2s$ yazabiliriz; $r$ ve $s$ tam sayıdır. Burada sayıları ikiye böldüğümüzde tam sayı kaldığı bilgisi, varsayımın içindedir. Şimdi toplamı dönüştürelim:
+
+$$
+\begin{aligned}
+a+b&=2r+2s\\
+&=2(r+s).
+\end{aligned}
+$$
+
+İlk eşitlik yerine koymadır. İkinci eşitlik dağılma özelliğinin ters yönüdür. İki tam sayının toplamı yine tam sayı olduğundan $r+s$ bir tam sayıdır. Sonuç bu tam sayının iki katı biçimindedir; dolayısıyla çift tanımını sağlar. Son adım yalnız “2 dışarı çıktı” gözlemine dayanmaz; içeride kalan miktarın tam sayı olduğunu da kullanır. Örneğin $3=2\times1{,}5$ yazmak 3'ü çift yapmaz, çünkü 1,5 tam sayı değildir.
+
+Kontrol için $a=-6$, $b=10$ seçelim. Burada $r=-3$, $s=5$ olur. Doğrudan toplam 4'tür; ispatın biçimi de $2(-3+5)=4$ verir. Bu örnek genel gerekçeyi üretmedi; kurduğumuz gerekçenin negatif sayılarda nasıl çalıştığını görünür kıldı.
 
 ## 8. Ardışık Sayılarda İki Durumu Kapsamak
 
@@ -118,13 +154,22 @@ Her iki durumda parantez içleri tam sayıdır ve bütün olasılıkları kapsad
 $n=2k+1$ yazalım. Kare açılımıyla:
 
 $$
-n^2=(2k+1)^2=4k^2+4k+1
-=2(2k^2+2k)+1.
+\begin{aligned}
+n^2&=(2k+1)^2\\
+&=4k^2+4k+1\\
+&=2(2k^2+2k)+1.
+\end{aligned}
 $$
 
 Parantezin içi tam sayı olduğu için sonuç tektir. Böylece karşıt tersi ve ona denk olan başlangıç iddiasını ispatladık. Burada “çift değil” ile “tek” eşlemesini tam sayılarda yapıyoruz; gerçek sayıların tamamını çift veya tek diye sınıflandırmıyoruz.
 
 Ayrıca $n$ çiftse $n^2$ çifttir; çünkü $n=2k$ için $n^2=4k^2=2(2k^2)$ olur. İki yön birlikte, bir tam sayının çift olmasıyla karesinin çift olmasının eşdeğer olduğunu gösterir.
+
+### Karşıt terste hangi iddiayı kanıtladığımızı geri okumak
+
+Karesi çift olan bir tam sayının tek olduğunu varsaymaya çalışırsak az önceki açılım karesinin tek olacağını söyler. Böyle bir sayı aynı anda hem çift hem tek kareye sahip olamaz. Bu nedenle karesi çift olan sayı tek değildir; tam sayılar çift ve tek olarak iki eksiksiz duruma ayrıldığı için çifttir. Karşıt ters yönteminin sonuca nasıl döndüğünü bu cümleler açıklar.
+
+Bu gerekçede iki önemli sınır vardır. Önce, $n$ bir tam sayıdır; 1,5 gibi bir gerçek sayı için “çift değil, öyleyse tek” diyemeyiz. Sonra, tek bir tam sayının karesini genel olarak $2(2k^2+2k)+1$ biçimine getirdik. Parantez içinin tam sayı olması, sonucun tek tanımına uymasını sağlar. Yalnız 3'ün karesinin 9 olduğunu göstermek yeterli olmazdı. Başlangıç koşuluna dönüp hangi sayısal alanın ve hangi tanımın kullanıldığını açıkça belirtmek, sembolik hesabın ispatla bağlantısını tamamlar. Aksi hâlde doğru bir açılım yazmış fakat onun neden bütün iddiayı çözdüğünü söylememiş olurduk.
 
 ## 10. Çelişkiyle İspat
 
@@ -136,6 +181,28 @@ Tersini varsayalım: En büyük tam sayı $M$ var olsun. $M+1$ de bir tam sayıd
 
 Bu yöntem, kanıtlamak istediğimiz sonucu baştan doğru kabul etmek değildir. Geçici olarak onun değiline izin verir, diğer bilinen kurallarla çatışıp çatışmadığını inceleriz. Çatışma ortaya çıkarsa geçici varsayımı reddederiz. Çelişki bulamamak ise iddianın yanlış olduğunu tek başına göstermez; kullandığımız yol yeterince ilerlememiş olabilir.
 
+### Doğru görünen bir zincirde geçersiz adımı bulmak
+
+Bir “ispatın” her satırı tanıdık işlemlerden oluşabilir ve yine de zincir yanlış olabilir. $a=b=1$ kabul ederek şu adımları izleyelim. $a=b$ eşitliğinin iki tarafını $a$ ile çarparsak $a^2=ab$ olur. İki taraftan $b^2$ çıkarınca:
+
+$$
+a^2-b^2=ab-b^2
+$$
+
+elde ederiz. Çarpanlara ayırmak da geçerlidir:
+
+$$
+(a-b)(a+b)=b(a-b).
+$$
+
+Buraya kadar sorun yok. Fakat şimdi iki taraftaki $a-b$ çarpanlarını “sadeleştirip” $a+b=b$ yazarsak, $a=b=1$ için $2=1$ sonucuna ulaşırız. Yanlışlığın başladığı yer hangisidir?
+
+Başlangıç varsayımımız $a=b$ olduğu için $a-b=0$'dır. Son sadeleştirme, iki tarafı sıfıra bölmek anlamına gelir; bu işlem tanımsızdır. Geçerli son satır gerçekte $0\times2=1\times0$, yani $0=0$ demektedir. Bu eşitlikten $2=1$ çıkmaz. İki çarpımın sıfır olması, sıfır olmayan diğer çarpanların eşit olduğunu söylemez.
+
+Bu örnekte sonucu yanlış bulduğumuz için başlangıç varsayımını reddetmiyoruz. $a=b=1$ baştan beri tutarlıdır; hata akıl yürütmenin içindeki izin verilmeyen adımdadır. Çelişkiyle ispatta ise geçici varsayımdan çelişkiye giden **bütün** adımlar geçerli olmalıdır. Geçersiz bir bölmeyle çelişki üretmek, varsayımın yanlışlığını kanıtlamaz.
+
+Bir ispatı okurken bu yüzden yalnız eşittir işaretlerini değil, her dönüşümün koşullarını da izleriz: böldüğümüz ifade sıfır olabilir mi, kök aldığımız sayı izin verilen aralıkta mı, kullandığımız iddia kanıtlamaya çalıştığımız sonucun kendisi mi? Birkaç sayıyla denemek hatayı fark ettirebilir. Hatayı açıklamak içinse hangi adımın hangi koşulu bozduğunu göstermemiz gerekir. Böylece “bu sonuç garip” tepkisini, denetlenebilir bir matematiksel gerekçeye dönüştürürüz.
+
 ## 11. Tanım, Aksiyom ve Teorem
 
 Tanım, bir sözcüğü nasıl kullanacağımızı belirler: “Çift tam sayı, bir tam sayının iki katıdır.” Tanıma göre işlem yaparken kavramın anlamını açmış oluruz. **Aksiyom**, kurduğumuz matematiksel sistemin başlangıçta kabul edilen temel ilişkilerinden biridir. **Teorem** ise bu başlangıçlar ve önceden kanıtlanan sonuçlar kullanılarak ispatlanan iddiadır.
@@ -145,6 +212,8 @@ Her şeyi daha önceki bir cümleyle gerekçelendirmeye çalışırsak sonsuz bi
 Bir sonucu yine kendisine dayanarak gerekçelendirmek **döngüsel akıl yürütme** olur. Örneğin bir üçgen özelliğini, yalnızca o özelliği kullanarak elde edilmiş başka bir kuralla ispatlayamayız. Ara cümleler değişse bile bağımlılık aynı sonuca geri dönüyorsa yeni bir gerekçe üretmiş olmayız.
 
 Geometride çizimler özellikle yararlıdır, ama ekranda iki çizginin eşit görünmesi eşit olduklarının ispatı değildir. Eşit uzunluk, paralellik veya diklik ya verilmiş olmalı ya da bir gerekçeyle çıkarılmalıdır. Çizim düşünmemize yardım eder; görünüş, koşulun yerini almaz.
+
+İspat okurken bir adımı gerekçelendirmek için daha önce kurduğumuz temel bir kurala dönmek doğaldır. Örneğin $2r+2s=2(r+s)$ satırı, [işlemlerin düzeninde](/blog/islemlerin-duzeni/) açıkladığımız dağılma özelliğini kullanır; her ispatta bu özelliği en baştan yeniden kurmayız. Ancak “toplam çifttir” sonucunu gerekçe olarak kullanıp yine toplamın çift olduğunu çıkarmayız. Önceki kural ile hedef sonuç arasındaki farkı korumak döngüyü engeller. Bir satırın gerekçesini bulamıyorsak, ona yalnız bir isim vermek yerine hangi tanım veya önceki ilişkiden geldiğini açıkça yazmak gerekir.
 
 Sonraki yazıda bu ayrımı kullanarak noktaları, doğruları, açıları ve üçgenleri kuracağız. Üçgenin açı toplamını yalnızca ölçerek görmekle, paralellikten çıkararak ispatlamak arasındaki farkı adım adım göstereceğiz.
 

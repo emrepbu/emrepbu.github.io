@@ -68,6 +68,14 @@ $$
 
 Yani çıktı, matris sütunlarının girdideki koordinatlarla oluşturulan doğrusal birleşimidir. Bu ikinci yorum geometrik anlamı görünür kılar: sütunlar, dönüşümün temel yönlerini kaydeder.
 
+### Her satır bir çıktı sorusunu yanıtlar
+
+$A=\begin{pmatrix}2&1\\-1&3\end{pmatrix}$ için yeni yatay bileşen $2x+y$, yeni düşey bileşen $-x+3y$ idi. Girdiyi $(x,y)=(-1,2)$ seçersek birinci satır $2(-1)+2=0$, ikinci satır $-(-1)+3\cdot2=7$ verir. Sonuç $(0,7)$'dir. İlk bileşenin sıfır olması bütün çıktının sıfır olduğunu söylemez; yalnız yatay katkılar birbirini götürmüştür.
+
+Sütun yorumuyla aynı hesabı yeniden yapabiliriz: $-1(2,-1)+2(1,3)=(-2,1)+(2,6)=(0,7)$. İki hesap farklı kurallar değildir. Birinde önce her çıktı bileşenini, diğerinde önce her girdi katsayısının bütün çıktıya katkısını topladık. Sıradan sayıların toplamasını yeniden gruplayabildiğimiz için sonuçlar aynıdır.
+
+Matris çarpımına başlarken çıktıdaki boş yerleri saymak da yararlıdır. İki satır varsa iki ayrı sayı hesaplanacaktır. Her satırda iki eleman varsa o satır iki bileşenli bir girdi bekler. Girdiye üçüncü bir bileşen eklemek, aynı matrisle hiçbir tanım değiştirmeden devam edilebilecek bir işlem değildir; o bileşenin çıktılara nasıl katkı yapacağı ayrıca belirlenmelidir.
+
 ## 3. Sütunlar Baz Vektörlerinin Görüntüleridir
 
 Standart baz vektörleri $\mathbf e_1=(1,0)$ ve $\mathbf e_2=(0,1)$ idi. İlkini matrise uygularsak $x=1$, $y=0$ olduğu için birinci sütun kalır. İkincisini uygularsak ikinci sütun kalır:
@@ -79,6 +87,21 @@ $$
 Bir fonksiyonun verdiği çıktıya girdinin **görüntüsü** de denir. Bu kullanımda “görüntü” fotoğraf anlamına gelmez. Matrisin birinci sütunu ilk baz vektörünün, ikinci sütunu ikinci baz vektörünün görüntüsüdür.
 
 Her vektör $x\mathbf e_1+y\mathbf e_2$ biçiminde kurulduğundan, bu iki görüntüyü bilmek bütün girdilerin sonucunu belirleyebilir. Ancak bunun için dönüşümün toplamı ve skalerle çarpmayı koruması gerekir. Şimdi bu koşulu tanımlayacağız.
+
+### Sütunları hazır olmayan bir dönüşümü bulmak
+
+Bir doğrusal dönüşümün $T(1,1)=(3,1)$ ve $T(1,-1)=(1,3)$ değerleri bilinsin. Bunlar doğrudan standart baz görüntüleri değildir. Ancak verilen iki girdiyi toplayınca $(2,0)$, çıkarınca $(0,2)$ oluşur. Doğrusallık varsa aynı işlemleri çıktılarda da yapabiliriz:
+
+$$
+\begin{aligned}
+2T(1,0)&=(3,1)+(1,3)=(4,4),\\
+2T(0,1)&=(3,1)-(1,3)=(2,-2).
+\end{aligned}
+$$
+
+Her bileşeni 2'ye bölerek sütunları $(2,2)$ ve $(1,-1)$ buluruz. Dolayısıyla matris $A=\begin{pmatrix}2&1\\2&-1\end{pmatrix}$ olur. Kontrol için $(1,1)$'e uygulandığında sütunların toplamı $(3,1)$, $(1,-1)$'e uygulandığında farkı $(1,3)$ çıkar. Başlangıçtaki iki bilgi geri elde edildi.
+
+Bu hesap, iki keyfi girdi bilmenin her fonksiyonu belirlediği anlamına gelmez. Sonucu belirleyen varsayım, bütün doğrusal birleşimlerin korunmasıdır. Ayrıca kullanılan iki girdi bütün düzlemi gerebilmelidir. Yalnız $(1,0)$ ve $(2,0)$ görüntülerini bilseydik aynı yatay yönü iki kez ölçmüş olurduk; düşey baz yönünün nereye gittiği hâlâ serbest kalırdı. Yeterli bağımsız girdilerle çalışmak bu belirsizliği giderir.
 
 ## 4. Doğrusal Dönüşümün İki Koşulu
 
@@ -103,6 +126,14 @@ Her doğrusal dönüşüm sıfır vektörünü sıfıra götürür. İkinci koş
 Her noktayı sağa 2 birim götüren $T(x,y)=(x+2,y)$ kuralını düşünelim. Başlangıç noktası $(0,0)$, $(2,0)$ noktasına gider. Dolayısıyla bu dönüşüm doğrusal değildir. Vektörlerin toplamı ile de uyum bozulur: iki ayrı çıktıya eklenen 2'ler toplanırken iki kez sayılır.
 
 Günlük okul kullanımında $f(x)=mx+b$ biçimindeki fonksiyonlara “doğrusal fonksiyon” denmesiyle burada kullanılan teknik tanımı ayırmalıyız. Lineer cebirde $b\ne0$ olduğunda sabit öteleme içeren böyle kurallar **afin** olarak adlandırılır. Bu yazıda doğrusal dönüşüm derken toplam ve skaler çarpma koşullarını kullanıyoruz.
+
+### İki koşulu bütün girdiler için göstermek
+
+$T(x,y)=(2x+y,-x+3y)$ kuralının doğrusallığını birkaç nokta deneyerek değil harflerle gösterebiliriz. $\mathbf u=(u_1,u_2)$, $\mathbf v=(v_1,v_2)$ olsun. Toplamın ilk çıktı bileşeni $2(u_1+v_1)+(u_2+v_2)$'dir. Dağılma ve gruplama ile bu ifade $(2u_1+u_2)+(2v_1+v_2)$ olur. Bunlar ayrı görüntülerin ilk bileşenleridir. İkinci bileşende de aynı işlem $(-u_1+3u_2)+(-v_1+3v_2)$ verir. Böylece toplama korunur.
+
+Skaler $k$ için ilk bileşen $2ku_1+ku_2=k(2u_1+u_2)$; ikinci bileşen $-ku_1+3ku_2=k(-u_1+3u_2)$ olur. Aynı $k$ bütün çıktıdan dışarı alınabildiği için ölçekleme de korunur. Katsayılar sabit kaldığı sürece bu gerekçe her matris satırında çalışır.
+
+Önemli olan, koşulların **bütün** girdilerde sağlanmasıdır. $T(x,y)=(|x|,y)$ kuralı pozitif yatay bileşenlerde sıradan bir matris gibi görünebilir. Fakat $(1,0)$ ve $(-1,0)$ görüntülerinin toplamı $(2,0)$ iken bu iki girdinin toplamının görüntüsü $(0,0)$ olur. Tek bir başarısız karşılaştırma doğrusallığı çürütür; çok sayıda başarılı örnek ise tek başına genel kanıt değildir.
 
 ## 5. Temel Şekil Dönüşümleri
 
@@ -156,7 +187,70 @@ $$
 
 Dönmenin gerçekten doğrusal olduğunu, herhangi bir vektörü $r(\cos\varphi,\sin\varphi)$ olarak yazarak doğrulayabiliriz. $r$ uzunluk, $\varphi$ başlangıç açısıdır. Yeni açı $\varphi+\theta$ olur. Toplam açı bağıntıları yeni koordinatları $(x\cos\theta-y\sin\theta,x\sin\theta+y\cos\theta)$ verir. Bunlar matris çarpımındaki ifadelerdir ve $x,y$ bakımından doğrusaldır. Sıfır vektörü de yerinde kalır.
 
+Toplam açı bağıntısındaki yer değiştirmeleri açık yazalım. Başlangıçta $x=r\cos\varphi$ ve $y=r\sin\varphi$ olduğundan dönmüş koordinatlar şöyledir:
+
+$$
+\begin{aligned}
+x'&=r\cos(\varphi+\theta)\\
+&=(r\cos\varphi)\cos\theta\\
+&\quad-(r\sin\varphi)\sin\theta\\
+&=x\cos\theta-y\sin\theta,\\
+y'&=r\sin(\varphi+\theta)\\
+&=(r\sin\varphi)\cos\theta\\
+&\quad+(r\cos\varphi)\sin\theta\\
+&=y\cos\theta+x\sin\theta.
+\end{aligned}
+$$
+
+Üstteki kesme işaretleri burada türev değil, dönüşümden sonraki koordinatların etiketidir. Sabit dönme açısı için sinüs ve kosinüs yalnız sabit katsayılardır. Bu yüzden her çıktı, girdilerin sabit katsayılı toplamıdır; doğrusal dönüşüm koşulları sağlanır. Matrisin sütunlarını seçerken kullandığımız geometrik dönmeyle, bu matrisin bütün girdilere uyguladığı cebirsel kuralın aynı olduğunu böyle doğruladık.
+
 $\theta=90^\circ$ için kosinüs 0, sinüs 1 olduğundan $R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$ bulunur. $(3,2)$ girdisi $(-2,3)$ olur. Normların ikisi de $\sqrt{13}$'tür. Bu dönüşümde uzunlukların korunması özel bir özelliktir; her matris için beklemeyiz.
+
+### Dönme merkezi orijin değilse
+
+Dönme matrisini doğrudan bir konum vektörüne uygulamak, orijin çevresinde dönme yapar. Oysa bir şekli kendi köşesi veya başka bir sabit nokta çevresinde döndürmek isteyebiliriz. Bunun için önce hangi hareketi matrise verdiğimizi değiştirmeliyiz.
+
+Dönme merkezi $C=(1,2)$, döndürülecek nokta $P=(4,3)$ olsun. $P$'yi $C$ çevresinde saat yönünün tersine $90^\circ$ döndürelim. Önce merkezden noktaya giden farkı hesaplarız: $P-C=(4-1,3-2)=(3,1)$. Bu vektörün kuyruğunu orijine taşımak, uzunluğunu ve yönünü değiştirmez. Artık standart dönme matrisini kullanabiliriz:
+
+$$
+R\begin{pmatrix}3\\1\end{pmatrix}
+=\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\begin{pmatrix}3\\1\end{pmatrix}
+=\begin{pmatrix}-1\\3\end{pmatrix}.
+$$
+
+Bu çıktı yeni noktanın adresi değil, merkezden yeni noktaya giden vektördür. Son adresi bulmak için merkezi geri ekleriz:
+
+$$
+\begin{aligned}
+P'&=C+R(P-C)\\
+&=(1,2)+(-1,3)\\
+&=(0,5).
+\end{aligned}
+$$
+
+Merkeze uzaklık başlangıçta $\sqrt{3^2+1^2}=\sqrt{10}$, sonda $\sqrt{(-1)^2+3^2}=\sqrt{10}$ olur. Ayrıca $P=C$ yazarsak $P-C=\mathbf0$ ve sonuç yine $C$ çıkar; dönme merkezi gerçekten yerinde kalır. Doğrudan $RP=(-3,4)$ hesaplamak ise başka bir merkez, yani orijin çevresinde dönmek olurdu.
+
+Bu işlem bütün düzlem için $T(P)=C+R(P-C)$ kuralını verir. Açarsak $T(P)=RP+(C-RC)$ olur. Burada $RC=(-2,1)$, dolayısıyla sabit ekleme $C-RC=(3,1)$'dir. Özellikle $T(\mathbf0)=(3,1)$ olduğundan bu kural, bu merkez ve açı seçimiyle doğrusal değil afindir. Dönme hareketinin kendisi uzunlukları korurken koordinat tarifinin sabit bir öteleme içermesi çelişki değildir. Doğrusallık kararı, yalnızca şeklin hareketine değil, seçtiğimiz koordinatlarda yazılan kuralın toplamı ve skalerle çarpmayı korumasına dayanır.
+
+Dönme merkezini değiştirmek, iki nokta arasındaki uzaklığın korunmasını bozmaz. İki dönüştürülmüş adresi birbirinden çıkarırken ortak sabit öteleme yok olur; geriye fark vektörüne uygulanan norm koruyan dönme matrisi kalır.
+
+### Dönmenin uzunluğu koruduğunu genel olarak görmek
+
+Dönme formülünde $x'=x\cos\theta-y\sin\theta$, $y'=x\sin\theta+y\cos\theta$ olsun. Uzunluk karesini bulmak için ikisini de kareye alıp toplarız. İlk karedeki çapraz terim $-2xy\sin\theta\cos\theta$, ikincideki $+2xy\sin\theta\cos\theta$'dır; birbirlerini götürürler. Kalanlar:
+
+$$
+\begin{aligned}
+(x')^2+(y')^2
+&=x^2(\cos^2\theta+\sin^2\theta)\\
+&\quad+y^2(\sin^2\theta+\cos^2\theta)\\
+&=x^2+y^2.
+\end{aligned}
+$$
+
+Karekökler negatif olmadığı için normlar da eşittir. Bu kanıt tek bir 90 derecelik örnekten farklı olarak her açı ve her vektör için geçerlidir. Açının pozitif veya negatif olması sonucu değiştirmez; negatif açı dönmenin yönünü değiştirir.
+
+Aynı hesap kayma matrisine uygulanınca çapraz terim genellikle kaybolmaz. Örneğin $(0,1)$ kaymada $(1,1)$'e gider; norm 1'den $\sqrt2$'ye çıkar. İki işlem de doğrusal olsa da yalnız birinin uzunluğu koruması çelişki değildir. Doğrusallık, toplamları ve skalerle çarpmayı koruyan cebirsel koşuldur. Uzunluk koruma ise ayrıca sınanan geometrik bir özelliktir. Her bir özellik için hangi eşitliğin denetlendiğini bilmek, matrislere sahip olmadıkları anlamları yüklememizi önler.
 
 ## 8. Matris Çarpımı, Dönüşümlerin Bileşkesidir
 
@@ -187,6 +281,14 @@ ve aynı girdi $(4,1)$ olur. Çünkü önce kaymanın eklediği yatay miktar da 
 ![Aynı iki dönüşüm farklı sırada uygulandığında aynı başlangıç vektörü farklı yerlere gider.](./donusum-sirasi.svg)
 
 Buna karşılık parantezleme uyumludur: $A(BC)=(AB)C$, boyutlar elverdiğinde aynı ardışık uygulamayı anlatır. Burada sıra korunur; sadece ara hesabı nasıl grupladığımız değişir. Değişme ve birleşme özelliklerini birbirinden ayırmak gerekir.
+
+### Satır–sütun kuralını tam bir çarpımda izlemek
+
+$A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ ve $B=\begin{pmatrix}2&0\\1&3\end{pmatrix}$ olsun. $AB$'nin ilk sütunu $A(2,1)=(4,1)$, ikinci sütunu $A(0,3)=(6,3)$ olur. Bu nedenle $AB=\begin{pmatrix}4&6\\1&3\end{pmatrix}$ buluruz. Örneğin sağ üstteki 6, $A$'nın ilk satırı ile $B$'nin ikinci sütununun çarpımından gelir: $1\cdot0+2\cdot3=6$.
+
+Şimdi $(1,-1)$ girdisini iki yoldan izleyelim. Önce $B$ uygularsak $(2,-2)$, sonra $A$ uygularsak $(-2,-2)$ çıkar. Birleşik matrisle de ilk bileşen $4-6=-2$, ikinci bileşen $1-3=-2$ olur. Bu kontrol çarpımın neden eleman eleman yapılmadığını gösterir: çıktıdaki her ara bileşen, sonraki dönüşümün birden fazla bileşenine katkı yapabilir.
+
+Sırayı ters çevirmek başka bir hesap verir. $BA=\begin{pmatrix}2&4\\1&5\end{pmatrix}$ olur; aynı girdiye uygulanınca $(-2,-4)$ bulunur. Demek ki çarpımın hangi sıradaki işlemi temsil ettiğini yalnız rakamlara bakarak değil, girdi akışını izleyerek belirleriz. Parantez değiştirmek bu sırayı değiştirmez; matrislerin yerini değiştirmek değiştirir.
 
 ## 9. Boyutlar Uyumlu mu?
 

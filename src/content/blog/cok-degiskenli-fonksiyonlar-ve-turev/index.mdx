@@ -25,6 +25,8 @@ Grafik $(x,y,f(x,y))$ noktalarının oluşturduğu yüzeydir. Fakat her bilgiyi 
 
 $f(x,y)=x^2+y^2$ için $c>0$ seviyeleri yarıçapı $\sqrt c$ olan çemberlerdir. Sıfır seviyesi yalnız orijindir; negatif seviyeler boştur. Her $c$ için bir eğri bulunmak zorunda değildir. Seviyelerin sıklaşması, aynı çıktı değişiminin daha kısa yatay uzaklıkta gerçekleştiğini gösterir; yerel değişim büyüktür.
 
+Bir kesit ile bir seviye eğrisini ayıralım. $f=x^2+y^2$ yüzeyinde $y=1$ tutarsak $z=x^2+1$ parabolünü elde ederiz: bir girdiyi sabitledik, yükseklik değişiyor. $z=1$ tutarsak $x^2+y^2=1$ çemberini elde ederiz: bu kez çıktı sabit, iki girdi birlikte değişebiliyor. Kısmi türev ilk tür kesitin eğimini ölçer; gradyanın dik olacağı eğri ise ikinci türdür. İkisinde de bir şeyi sabit tutuyoruz, fakat sabitlediğimiz nesne farklıdır.
+
 ## 2. Limit bütün yaklaşma yollarını kapsar
 
 $(x,y)\to(a,b)$ demek, noktalar arası uzaklık $\sqrt{(x-a)^2+(y-b)^2}$ sıfıra gidiyor demektir. $f(x,y)$'nin limiti $L$ ise, tanım kümesi içindeki bütün yeterince yakın noktalarda çıktı $L$'ye yaklaşmalıdır. Yalnız bir doğru boyunca yaklaşmak yeterli değildir.
@@ -35,13 +37,45 @@ Var olan bir limit için bütün yolları kapsayan bir sınır kullanabiliriz. $
 
 Süreklilik, limitin fonksiyonun o noktadaki değerine eşit olmasıdır. Süreklilik olmadan iyi bir doğrusal yaklaşım bekleyemeyiz. Çok değişkenli türev kavramının dikkatli kurulmasının nedeni de bu farklı yol olasılıklarıdır.
 
+### Bütün doğru yollarında aynı sonuç çıkması da yetmeyebilir
+
+İki ayrı yolda farklı sonuç bulmak limitin yokluğunu gösterdi. Tersine, çok sayıda doğru boyunca aynı sonuca ulaşmanın neden yeterli olmadığını daha keskin bir örnekle görelim. Orijin dışında:
+
+$$
+q(x,y)=\frac{x^2y}{x^4+y^2}
+$$
+
+tanımlansın. Payda, iki negatif olmayan terimin toplamıdır ve yalnız orijinde sıfır olur. Dolayısıyla orijine hangi yoldan yaklaşacağımızı serbestçe seçebiliriz.
+
+Önce eğimi $m$ olan herhangi bir sabit doğruyu, yani $y=mx$ yolunu deneyelim. $m\ne0$ ve $x\ne0$ iken yerine koyup ortak $x^2$ çarpanını sadeleştirirsek:
+
+$$
+q(x,mx)=\frac{mx^3}{x^4+m^2x^2}
+=\frac{mx}{x^2+m^2}\longrightarrow0.
+$$
+
+Son limitte $m$ sabittir; pay sıfıra, payda pozitif $m^2$'ye gider. $m=0$ olduğunda yatay eksendeyiz ve fonksiyon zaten sıfırdır. Düşey $x=0$ doğrusu üzerinde de çıktı sıfırdır. Böylece orijinden geçen **her sabit doğru** aynı 0 limitini verdi. Yalnız doğrusal yaklaşmaları inceleyen bir çizim, limitin var olduğunu düşündürebilir.
+
+Şimdi eğri bir yol seçelim: $y=x^2$. Orijine yaklaşırken bu yol da geçerli tanım noktalarından geçer. Fakat:
+
+$$
+q(x,x^2)=\frac{x^4}{x^4+x^4}=\frac12
+\qquad(x\ne0)
+$$
+
+olur. Bu yolun limiti $1/2$'dir. Sonuç olarak iki değişkenli limit yoktur; orijindeki değeri 0, $1/2$ veya başka bir sayı seçmek bunu düzeltmez.
+
+Farkın kaynağı paydadaki iki terimin hangi ölçekte küçüldüğüdür. Sabit eğimli yollarda $y^2$ ile $x^4$ farklı hızlarda küçülür. $y=x^2$ yolunda ise ikisi tam aynı büyüklüktedir; oran farklı davranır. Limit kanıtında bütün noktalar için çalışan bir eşitsizlik aramamızın nedeni budur. Birkaç doğrultu, hatta bütün sabit doğrultular, eğri yolların taşıdığı bilgiyi kapsamak zorunda değildir.
+
 ## 3. Bir girdiyi değiştirirken diğerini sabit tutmak
 
 $x$'e göre **kısmi türev**, $y$ sabitken alınan sıradan türevdir:
 
 $$
-f_x(a,b)=\frac{\partial f}{\partial x}(a,b)
-=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}h.
+\begin{aligned}
+f_x(a,b)&=\frac{\partial f}{\partial x}(a,b)\\
+&=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}h.
+\end{aligned}
 $$
 
 $\partial$ işareti, birden çok bağımsız girdi varken bunlardan birini değiştirdiğimizi hatırlatır. Benzer biçimde $f_y(a,b)$, $x=a$ sabit tutularak $y$ yönündeki değişimi ölçer. Kısmi türevler yüzeyin iki koordinat doğrultusundaki kesit eğimleridir.
@@ -49,6 +83,20 @@ $\partial$ işareti, birden çok bağımsız girdi varken bunlardan birini deği
 $f(x,y)=x^2y+3y^2$ olsun. $x$'e göre türev alırken $y$ sabit katsayı gibi davranır; $f_x=2xy$. $y$'ye göre türev alırken $x^2$ sabit katsayıdır; $f_y=x^2+6y$. $(2,1)$ noktasında bunlar sırasıyla 4 ve 10 olur. Aynı noktada farklı yönlere ait iki farklı eğim bulunması doğaldır.
 
 Trigonometri ve zincir kuralı da aynı şekilde çalışır. $g(x,y)=\sin(xy)$ için $g_x=y\cos(xy)$, $g_y=x\cos(xy)$ olur. Çarpanlar hangi girdinin sabit tutulduğunu gösterir. Bu hesapta $x$ ve $y$ bağımsızdır; eğer $y$ ayrıca $x$'in bir fonksiyonuysa toplam değişim için başka bir hesap gerekecek.
+
+Türev hesabındaki “sabit tutma”yı fark oranında görelim. $f=x^2y+3y^2$ için yalnız $x$'i $h$ kadar değiştirirsek:
+
+$$
+\begin{aligned}
+f(x+h,y)-f(x,y)
+&=[(x+h)^2-x^2]y\\
+&=(2xh+h^2)y.
+\end{aligned}
+$$
+
+$3y^2$ terimleri birbirini götürür, çünkü $y$ hiç değişmedi. $h\ne0$ iken farkı $h$'ye bölersek $2xy+hy$ kalır; $h\to0$ limiti $2xy$ verir. Bu, kullandığımız kısa türev kuralının altında yatan işlemdir. Özellikle $y$ sabit diye $y$'yi sıfır yapmadık; yalnız türev alınırken değerinin değişmediğini söyledik.
+
+$y$ yönünde ise $x^2(y+k)-x^2y=x^2k$ olur. Diğer fark $3[(y+k)^2-y^2]=6yk+3k^2$'dir. Toplamı $k$'ye bölüp limit alınca $x^2+6y$ çıkar. İki türev aynı fonksiyonun farklı kesitlerinden geldiği için birbirinden farklıdır.
 
 ## 4. Kısmi türevlerin varlığı neden yeterli değil?
 
@@ -63,7 +111,9 @@ Bu ayrım uygulamada önemlidir. Bir hesap programının $f_x$ ve $f_y$ ifadeler
 $f$ fonksiyonu $(a,b)$'de türevlenebilirse küçük $(h,k)$ değişimleri için:
 
 $$
-f(a+h,b+k)=f(a,b)+f_x(a,b)h+f_y(a,b)k+r(h,k)
+\begin{aligned}
+f(a+h,b+k)&=f(a,b)\\&\quad+f_x(a,b)h+f_y(a,b)k\\&\quad+r(h,k)
+\end{aligned}
 $$
 
 olur ve kalan şu koşulu sağlar:
@@ -83,6 +133,21 @@ z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
 $$
 
 olur. Bu düzlem yüzeye yalnız “değen” rastgele bir düzlem değildir; bütün küçük yatay yönlerdeki birinci dereceden değişimi aynı anda temsil eder.
+
+### Hata koşulundaki bölme neyi denetliyor?
+
+$f(x,y)=x^2+y^2$ için $(a,b)$ çevresindeki farkı tam açalım:
+
+$$
+\begin{aligned}
+&f(a+h,b+k)-f(a,b)\\
+&\quad=2ah+2bk+h^2+k^2.
+\end{aligned}
+$$
+
+İlk iki terim girdilerde birinci derecedir. Kalan $r=h^2+k^2$'dir. $\rho=\sqrt{h^2+k^2}$ dersek $r/\rho=\rho\to0$ olur; bu sonuç hangi yönden geldiğimize bağlı değildir. Girdi değişimini on kat küçülttüğümüzde doğrusal katkı on kat, bu kalan yüz kat küçülür. Doğrusal yaklaşımın giderek baskın hale gelmesi tam olarak budur.
+
+Yalnız $r\to0$ yeterli olsaydı $f(x,y)=\sqrt{x^2+y^2}$ fonksiyonunu orijinde sıfır düzlemiyle temsil edebilirdik. Oysa bu aday için $r=\rho$, dolayısıyla $r/\rho=1$ kalır. Hata, temsil etmeye çalıştığımız birinci dereceden değişim kadar büyüktür. Üstelik $x$ eksenindeki kesit $|x|$ olduğundan orijinde iki yandan aynı eğim bile yoktur. Bölme koşulu bu eksik yaklaşımı reddeder; yalnız “yakın noktada değer de küçük” demekten daha fazla bilgi ister.
 
 ## 6. Doğrusal yaklaşımın sayısal hesabı
 
@@ -120,6 +185,10 @@ Skaler çarpım formülü $D_{\mathbf u}f=|\nabla f|\cos\theta$ verir. $\theta$,
 
 ![Seviye elipsinde gradyan eğriye dik ve artan değer yönündedir.](./seviye-ve-gradyan.svg)
 
+Yönlü türev formülünü tam türevden de okuyabiliriz. Birim $\mathbf u$ yönünde $t$ kadar ilerlemek $h=tu_x$, $k=tu_y$ demektir. Doğrusal yaklaşımda bunları yerine koyup farkı $t$'ye bölersek $f_xu_x+f_yu_y+r/t$ elde ederiz. Birim yön için $\sqrt{h^2+k^2}=|t|$ olduğundan kalan oranı sıfıra gider. Böylece gradyanla skaler çarpım kuralı çıkar. Bu gerekçe tam türevlenebilirlik kullanır; yalnız eksenlerde kısmi türev bulunmasını yeterli saymayız.
+
+“En hızlı” ifadesinde karşılaştırılan bütün yönlerin birim olması gerekir. Aksi halde aynı doğrultuda daha büyük bir vektör seçerek sonucu keyfî büyütebiliriz. Yönün etkisini hızın etkisinden ayırmak için önce uzunluğu 1'e getiriyoruz. Gradyana dik birim yön seçildiğinde skaler çarpım sıfır olur; bu, o yöndeki ilk dereceden değişimin sıfır olduğunu söyler. Sonlu bir adımda fonksiyonun tamamen sabit kalacağını söylemez.
+
 ## 8. Gradyan seviye eğrisine neden diktir?
 
 $f(x(t),y(t))=c$ sabit seviyesini izleyen düzgün bir eğri düşünelim. Zincir kuralına göre:
@@ -148,6 +217,19 @@ $f(x,y)=x^2+y^2$, $x(t)=\cos t$, $y(t)=\sin t$ olsun. Doğrudan $f=1$ olduğu i�
 
 İki ara değişken de $s,t$'ye bağlıysa aynı düşünce her bağımsız girdi için ayrı uygulanır. $z=f(x(s,t),y(s,t))$ için $z_s=f_xx_s+f_yy_s$, $z_t=f_xx_t+f_yy_t$ olur. Hangi türevde hangi diğer girdinin sabit tutulduğunu açıkça yazmak, zincir kuralını karmaşık gösterimlerde de düzenli tutar.
 
+Kısmi türev ile yol boyunca türevin farklı sonuç verebildiği bir örnek daha kuralım. $f(x,y)=x^2y$ ve $y=x^2$ yolu seçilsin. Bağımsız girdiler için $f_x=2xy$'dir. Ancak bu yolda $y$ de $x$ ile değişir. Zincir kuralıyla:
+
+$$
+\begin{aligned}
+\frac d{dx}f(x,x^2)
+&=f_x+f_y\frac{dy}{dx}\\
+&=2x(x^2)+x^2(2x)\\
+&=4x^3.
+\end{aligned}
+$$
+
+Doğrudan yerine koyarsak $f(x,x^2)=x^4$ olur ve türevi yine $4x^3$ çıkar. Yalnız $f_x$ kullanmak $2x^3$ verip değişimin yarısını kaçırırdı. Çünkü birinci yol, $x$ değişirken $y$'nin sabit kaldığını; ikinci yol ise $y=x^2$ bağıntısına göre değiştiğini anlatır. Bir türev işleminden önce hangi değişkenlerin gerçekten bağımsız olduğunu belirlemek bu yüzden zorunludur.
+
 ## 10. Birden çok çıktı ve Jacobian matrisi
 
 Şimdi $\mathbf F(x,y)=(u(x,y),v(x,y))$ iki çıktı üretsin. Her çıktının her girdiye duyarlılığını bir matriste toplarız:
@@ -157,9 +239,11 @@ J_{\mathbf F}=
 \begin{pmatrix}u_x&u_y\\v_x&v_y\end{pmatrix}.
 $$
 
-Bu **Jacobian matrisi**dir. Satırlar çıktılara, sütunlar girdilere aittir. Küçük değişim vektörü $\Delta\mathbf x$ için $\Delta\mathbf F\approx J_{\mathbf F}\Delta\mathbf x$ olur. Tek çıktılı gradyan aynı türev bilgisinin vektör gösterimidir; çok çıktılı durumda bütün satırları birlikte taşırız.
+Bu **Jacobian matrisi**dir. Satırlar çıktılara, sütunlar girdilere aittir. Fonksiyon bu noktada tam türevlenebilirse küçük değişim vektörü $\Delta\mathbf x$ için $\Delta\mathbf F\approx J_{\mathbf F}\Delta\mathbf x$ olur. Örneğin her bileşenin kısmi türevlerinin bir çevrede bulunup noktada sürekli olması bunu sağlar. Yalnız kısmi türevleri bir matrise yazabilmek, bütün yönlerde geçerli bu yaklaşımı tek başına garanti etmez. Tek çıktılı gradyan aynı türev bilgisinin vektör gösterimidir; çok çıktılı durumda bütün satırları birlikte taşırız.
 
 $u=x^2-y^2$, $v=2xy$ seçelim. Jacobian $\begin{pmatrix}2x&-2y\\2y&2x\end{pmatrix}$'tir. $(1,2)$ noktasında $\begin{pmatrix}2&-4\\4&2\end{pmatrix}$ olur. $\Delta x=0{,}01$, $\Delta y=-0{,}02$ için yaklaşık çıktı değişimi $(0{,}10,0)$'dır. Tam değişim $(0{,}0997,-0{,}0004)$ çıkar; farklar ikinci derecedendir.
+
+Matrisi örnekte adım adım çarpalım. İlk satır $2(0{,}01)-4(-0{,}02)=0{,}10$, ikinci satır $4(0{,}01)+2(-0{,}02)=0$ verir. Tam değer kontrolünde yeni nokta $(1{,}01,1{,}98)$'dir. İlk çıktı $1{,}0201-3{,}9204=-2{,}9003$; eski çıktı $1-4=-3$ olduğundan değişim $0{,}0997$'dir. İkinci çıktı $2(1{,}01)(1{,}98)=3{,}9996$; eski çıktı 4 olduğundan değişim $-0{,}0004$'tür. Matris yalnız yaklaşık **değişimi** verir; yeni çıktıyı bulmak için eski çıktı vektörünü de eklemek gerekir.
 
 ![Küçük girdi değişimi Jacobian ile yerel bir doğrusal dönüşüme gider.](./yerel-donusum.svg)
 
@@ -178,6 +262,21 @@ $$
 Uygun iki kez türevlenebilirlik altında ikinci derece yerel yaklaşım $f(\mathbf a+\mathbf h)\approx f(\mathbf a)+\nabla f(\mathbf a)\cdot\mathbf h+\frac12\mathbf h^{T}H_f(\mathbf a)\mathbf h$ olur. Üstteki $T$ transpozu, sütunu satıra çevirmeyi belirtir. Bu matris çarpımı, farklı yönlerdeki kavis bilgisini tek sayıya dönüştürür.
 
 $f=x^2+xy+2y^2$ için Hessian $\begin{pmatrix}2&1\\1&4\end{pmatrix}$ olur. Orijinde gradyan sıfırdır. Fonksiyonu $(x+y/2)^2+7y^2/4$ diye yazarsak sıfır dışında pozitif olduğunu görürüz; orijin mutlak minimumdur. $g=x^2-y^2$ için ise $x$ yönünde değer yükselirken $y$ yönünde düşer. Gradyan yine sıfırdır, fakat nokta bir **eyer noktasıdır**.
+
+Hessian içindeki çarpımı açmak, karışık terimin katsayısını anlaşılır kılar. $\mathbf h=(h,k)^T$ ve örnekteki Hessian için:
+
+$$
+\begin{aligned}
+H_f\mathbf h&=(2h+k,\ h+4k)^T,\\
+\frac12\mathbf h^TH_f\mathbf h
+&=\frac12[2h^2+2hk+4k^2]\\
+&=h^2+hk+2k^2.
+\end{aligned}
+$$
+
+$hk$ katkısı matrisin iki ayrı yerinden gelir; baştaki $1/2$ bu iki katkının toplamını doğru katsayıya getirir. Minimum kontrolündeki kare tamamlama da $x^2+xy+y^2/4+7y^2/4$ toplamıdır. Bu ifade yalnız $x=y=0$ iken sıfır, diğer her noktada pozitiftir.
+
+İkinci türev bilgisi her zaman kararı vermez. $f=x^4+y^4$, $g=-x^4-y^4$ ve $h=x^4-y^4$ için orijindeki gradyan ve Hessian hep sıfırdır. Buna rağmen ilkinde minimum, ikincisinde maksimum, üçüncüsünde eyer vardır. İkinci dereceden terimler de kaybolduğunda daha yüksek dereceli değişime veya doğrudan işaret hesabına bakarız; sıfır Hessian “fonksiyon sabit” anlamına gelmez.
 
 Çok değişkenli türevde temel soru artık tek bir eğimi bulmak değil, küçük bir girdi değişimini çıktı değişimine dönüştüren düzeni bulmaktır. Kısmi türevler bu düzenin eksen bileşenleri, gradyan tek çıktının yön bilgisi, Jacobian çok çıktının doğrusal dönüşümü, Hessian ise ikinci dereceden düzeltmesidir. Sonraki adımda bu girdileri bir bölge boyunca toplayarak çok katlı integrallere geçeceğiz.
 

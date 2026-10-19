@@ -23,6 +23,10 @@ Koordinat takımını **sağ elli** seçiyoruz. Sağ elin parmakları pozitif $x
 
 Vektörün uzunluğu $|\mathbf a|=\sqrt{a_x^2+a_y^2+a_z^2}$'dir. Sıfır olmayan bir vektörü uzunluğuna bölersek aynı yönde birim vektör elde ederiz: $\widehat{\mathbf a}=\mathbf a/|\mathbf a|$. Şapka işareti burada uzunluğu 1 olan vektörü belirtir. Sıfır vektörünün yönü bulunmadığı için onu normalleştiremeyiz.
 
+Nokta ile vektör gösterimi benzer görünse de görevleri farklıdır. $P=(1,2,3)$ bir konumu, $\mathbf a=(1,2,3)$ bir yer değiştirmeyi anlatabilir. $P$'den $Q=(4,1,5)$'e giden vektör $Q-P=(3,-1,2)$'dir: önce hedefin koordinatından başlangıcın koordinatını çıkarırız. Aynı vektörü başka bir başlangıca taşısak da yönü ve uzunluğu değişmez. Bu yüzden iki noktadan düzlem yönü üretirken noktaların koordinatlarını doğrudan çarpmak yerine önce farklarını alacağız.
+
+Normalleştirmeyi de bu örnekte görebiliriz. $(3,-1,2)$ vektörünün uzunluğu $\sqrt{9+1+4}=\sqrt{14}$ olduğundan birim yönü $(3,-1,2)/\sqrt{14}$'tür. Üç bileşenin de aynı sayıya bölünmesi yönü korur. Yeni uzunluğun karesi $(9+1+4)/14=1$ çıkar. Yalnız bir bileşeni bölmek genel olarak yönü değiştirir; yapılan işlem bütün vektöre uygulanan tek bir ölçeklemedir.
+
 ## 2. Skaler çarpımın kısa hatırlatması
 
 İki vektörün skaler çarpımı:
@@ -43,8 +47,9 @@ Bir vektörün birim $\widehat{\mathbf n}$ yönündeki işaretli bileşeni $\mat
 Sağ elli koordinatlarda **vektörel çarpımı** şu biçimde tanımlayalım:
 
 $$
-\mathbf a\times\mathbf b=
-(a_yb_z-a_zb_y,\ a_zb_x-a_xb_z,\ a_xb_y-a_yb_x).
+\begin{aligned}
+\mathbf a\times\mathbf b&=\begin{pmatrix}a_yb_z-a_zb_y\\a_zb_x-a_xb_z\\a_xb_y-a_yb_x\end{pmatrix}.
+\end{aligned}
 $$
 
 $\times$ işareti burada sayı çarpımı veya skaler çarpım değildir; sonuç yine bir vektördür. Formülü ezberlemeden önce temel eksenlerde ne yaptığını görelim: $\mathbf e_x\times\mathbf e_y=\mathbf e_z$, $\mathbf e_y\times\mathbf e_z=\mathbf e_x$, $\mathbf e_z\times\mathbf e_x=\mathbf e_y$. Döngüyü tersine çevirirsek işaret değişir.
@@ -54,10 +59,18 @@ Formül iki girdi bakımından ayrı ayrı doğrusaldır. Örneğin $(\mathbf a+
 Çarpımın girdilere dik olduğunu cebirle kontrol edelim. $\mathbf a\cdot(\mathbf a\times\mathbf b)$ açıldığında:
 
 $$
-a_xa_yb_z-a_xa_zb_y+a_ya_zb_x-a_ya_xb_z+a_za_xb_y-a_za_yb_x=0
+\begin{aligned}
+&a_xa_yb_z-a_xa_zb_y\\&\quad+a_ya_zb_x-a_ya_xb_z\\&\quad+a_za_xb_y-a_za_yb_x=0
+\end{aligned}
 $$
 
 olur. Her terim karşı işaretli eşiyle gider. $\mathbf b$ ile skaler çarpımda da aynı iptal gerçekleşir. Böylece yeni vektör iki girdiye de diktir; bu geometrik iddia yalnız çizime dayanmıyor.
+
+### Bileşen formülündeki farklar nereden geliyor?
+
+Örneğin sonucun $\mathbf e_z$ yönündeki kısmını düşünelim. $\mathbf a$'nın $a_x\mathbf e_x$ parçasıyla $\mathbf b$'nin $b_y\mathbf e_y$ parçasının çarpımı $a_xb_y\mathbf e_z$ verir. Ters eksen sırasındaki $a_y\mathbf e_y$ ve $b_x\mathbf e_x$ ise $-a_yb_x\mathbf e_z$ verir. Bu iki katkı toplanınca $z$ bileşeni $a_xb_y-a_yb_x$ olur. Aynı eksenin kendisiyle çarpımı sıfır olduğu için $a_xb_x$ gibi bir terim bu bileşene katkı yapmaz.
+
+Diğer iki bileşen de aynı mantıkla kurulur: $y$ ile $z$ eksenlerinden $x$ bileşeni, $z$ ile $x$ eksenlerinden $y$ bileşeni gelir. Böylece üç fark, dağıtma kuralının ve yön seçiminin sonucudur. Her bileşen, ilgili koordinat düzlemine düşen iki vektörün yönlü alanını ölçer. Tek başına bir bileşen negatif olabilir; bu, toplam alanın negatif olduğu anlamına gelmez. Alan, üç bileşenin oluşturduğu vektörün uzunluğudur.
 
 ## 4. Determinant yazımı ve eksi işareti
 
@@ -97,6 +110,31 @@ Vektörel çarpım böylece **yönlü alan** taşır: uzunluğu paralelkenarın 
 
 ![İki vektörün gerdiği paralelkenar ile düzleme dik vektörel çarpım gösterilir.](./yonlu-alan.svg)
 
+Alan bağıntısını ayrı bir sayısal hesapla da denetleyelim. Yukarıdaki $(1,2,0)$ ve $(0,1,3)$ vektörlerinin uzunluk kareleri 5 ve 10, skaler çarpımları 2'dir. O halde:
+
+$$
+|\mathbf a|^2|\mathbf b|^2
+-(\mathbf a\cdot\mathbf b)^2
+=5\cdot10-2^2=46.
+$$
+
+Vektörel çarpımdan bulduğumuz $6^2+(-3)^2+1^2=46$ ile aynı sonuç çıktı. Bu kontrol birinci hesabın işaret veya bileşen hatalarını yakalayabilir. Ayrıca $\mathbf a\cdot\mathbf b=2$ sayısını alan sanmadık: o, hizalanmayı ölçer; alan için dik bileşen gerekir. Geometride hangi çarpımı kullanacağımızı aranan büyüklük belirler. Alan sorusu uzunluk ile dik yüksekliği, izdüşüm sorusu ise aynı yöndeki bileşeni birleştirir.
+
+Bileşen özdeşliğinin genel açılımını da görmek istersek sağ taraftan başlayabiliriz. $|\mathbf a|^2|\mathbf b|^2$ çarpımında dokuz kare çarpımı vardır. $(\mathbf a\cdot\mathbf b)^2$ çıkarıldığında aynı indisli üç kare iptal olur. Kalanlar şu üç grupta toplanır:
+
+$$
+\begin{aligned}
+&a_y^2b_z^2+a_z^2b_y^2-2a_ya_zb_yb_z\\
+&\quad=(a_yb_z-a_zb_y)^2,\\
+&a_z^2b_x^2+a_x^2b_z^2-2a_za_xb_zb_x\\
+&\quad=(a_zb_x-a_xb_z)^2,\\
+&a_x^2b_y^2+a_y^2b_x^2-2a_xa_yb_xb_y\\
+&\quad=(a_xb_y-a_yb_x)^2.
+\end{aligned}
+$$
+
+Her satır $u^2+v^2-2uv=(u-v)^2$ özdeşliğidir. Bu üç kareyi toplamak, vektörel çarpımın üç bileşeninin karelerini toplamakla aynıdır. Dolayısıyla alan bağıntısını yalnız çizimden çıkarmadık; tanımladığımız bileşen formülünün istenen geometrik büyüklüğü gerçekten verdiğini doğruladık.
+
 ## 6. Sıra, paralellik ve sıfır
 
 Girdileri yer değiştirince bileşen formülündeki her fark tersine döner:
@@ -127,6 +165,10 @@ $\mathbf a=(2,0,0)$, $\mathbf b=(0,3,0)$ ve $\mathbf c=(1,1,4)$ seçelim. İlk �
 
 Üçlü çarpım sıfırsa üç vektör aynı düzlem içinde kalır veya başka bir doğrusal bağımlılık taşır. Bu, determinantın sıfır olmasıyla da ifade edilir. Hacmin sıfır olması, üç boyutlu bir bölge gerilemediğinin geometrik karşılığıdır.
 
+Hacim formülündeki normalleştirme neden görünmüyor? Taban normali $\mathbf n=\mathbf a\times\mathbf b\ne0$ ise birim normal $\widehat{\mathbf n}=\mathbf n/|\mathbf n|$'dir. Yükseklik $|\mathbf c\cdot\widehat{\mathbf n}|=|\mathbf c\cdot\mathbf n|/|\mathbf n|$ olur. Taban alanı $|\mathbf n|$ ile çarpınca paydadaki aynı uzunluk sadeleşir ve yalnız $|\mathbf c\cdot\mathbf n|$ kalır. Formülde yüksekliği ayrıca yazmamamızın nedeni, onun zaten skaler çarpım içinde bulunmasıdır.
+
+Sıra işaretini de kontrol edebiliriz. $\mathbf a$ ve $\mathbf b$ yer değiştirince $\mathbf n$ eksilenir, yönlü üçlü çarpımın işareti değişir. Mutlak değeri aynı kalır; dolayısıyla geometrik hacim eksilmez. Taban alanı sıfırsa bu normalleştirme hesabında bölme yapılamaz, fakat cisim üç boyutlu hacim oluşturmaz ve doğrudan üçlü çarpım da sıfır verir. Sıfır durumu ayrı ele almak cebir ile geometriyi tutarlı tutar.
+
 ## 8. Bir nokta ve bir normal düzlemi belirler
 
 $\mathbf n=(A,B,C)\ne\mathbf0$ düzleme dik bir normal, $\mathbf r_0=(x_0,y_0,z_0)$ düzlem üzerindeki bir nokta olsun. Başka bir $\mathbf r=(x,y,z)$ noktasının aynı düzlemde olması, aradaki farkın normale dik olması demektir:
@@ -140,6 +182,10 @@ Bileşenlerle $A(x-x_0)+B(y-y_0)+C(z-z_0)=0$ olur. Düzenlersek $Ax+By+Cz=D$ bi�
 Örneğin $\mathbf n=(2,-1,3)$ ve $P=(1,0,2)$ için $D=2+0+6=8$ olur; düzlem $2x-y+3z=8$'dir. $P$'yi yerine koymak denklemi doğrular. $(0,1,3)$ noktası da $0-1+9=8$ verdiği için düzlemdedir; $(0,0,0)$ ise değildir.
 
 Bir düzlemin normalini bilmek, onun uzaydaki yönünü verir ama konumunu vermez. Aynı normalle farklı $D$ değerleri paralel düzlemler oluşturur. Nokta bilgisi bu aileden tek bir düzlemi seçer.
+
+Düzlem denklemi üç koordinat için tek koşuldur. Örnekte $2x-y+3z=8$ eşitliğini $y=2x+3z-8$ biçiminde çözebiliriz. $x$ ve $z$'yi bağımsız seçtiğimizde $y$ belirlenir; bu iki serbest seçim düzlemin iki boyutlu oluşunu gösterir. $x=z=0$ seçersek $(0,-8,0)$, $x=1,z=2$ seçersek verilen $(1,0,2)$ noktası çıkar.
+
+Normal vektör düzlemin üzerinde ilerleme yönü değildir. Normal boyunca bir adım, sol tarafı değiştirir. Nitekim $P$'den $\mathbf n$ kadar ilerlersek $\mathbf n\cdot(P+\mathbf n)=8+|\mathbf n|^2=22$ elde ederiz; yeni nokta düzlemde değildir. Düzlem içinde kalmak için eklediğimiz yönün normalle skaler çarpımı sıfır olmalıdır. Bu ayrım, düzlem denklemindeki katsayılardan yön okurken sık yapılan karışıklığı önler.
 
 ## 9. Üç noktadan düzlem kurmak
 
@@ -167,6 +213,39 @@ $\mathbf r_0=(1,0,0)$ ve $\mathbf v=(1,1,1)$ için $x=1+t$, $y=t$, $z=t$ olur. B
 
 Genel olarak yerine koyma $\mathbf n\cdot\mathbf r_0+t\,\mathbf n\cdot\mathbf v=D$ denklemini üretir. $\mathbf n\cdot\mathbf v\ne0$ ise tek kesişim vardır. Bu çarpım sıfırsa doğru düzleme paraleldir; başlangıç noktası düzlemin içindeyse doğrunun tamamı düzlemdedir, değilse kesişim yoktur.
 
+### Kesişmeyen iki doğru arasındaki dik uzaklık
+
+Uzayda paralel olmayan iki doğru yine de kesişmeyebilir. Bu tür, aynı düzlemde bulunmayan doğrulara aykırı doğrular denir. Birinin noktaları $P+t\mathbf u$, diğerininkiler $Q+s\mathbf v$ olsun. İki parametreyi ayrı harflerle yazıyoruz; doğrular üzerindeki noktalar birbirinden bağımsız seçilir. $\mathbf u\times\mathbf v\ne\mathbf0$ ise bu çarpım iki doğru yönüne de diktir.
+
+Örnek olarak $P=(0,0,0)$, $\mathbf u=(1,0,1)$, $Q=(1,1,0)$ ve $\mathbf v=(0,1,1)$ seçelim. Normal vektör:
+
+$$
+\mathbf n=\mathbf u\times\mathbf v=(-1,-1,1)
+$$
+
+olur. Doğrular arasındaki herhangi bir bağlayıcı vektör $\mathbf d=Q+s\mathbf v-(P+t\mathbf u)$ biçimindedir. $\mathbf n$ ile skaler çarpınca $s\mathbf v$ ve $t\mathbf u$ terimleri yok olur; bu yönlerde ilerlemek normal bileşeni değiştirmez. Dolayısıyla her bağlayıcının normal yöndeki bileşen büyüklüğü:
+
+$$
+\frac{|(Q-P)\cdot\mathbf n|}{\|\mathbf n\|}
+=\frac{|(1,1,0)\cdot(-1,-1,1)|}{\sqrt3}
+=\frac2{\sqrt3}
+$$
+
+olur. Her uzaklık en az bu kadardır. Şimdi bu alt sınıra gerçekten ulaşan noktaları bulalım. Bağlayıcı vektör $\mathbf d=(1-t,1+s,s-t)$'dir. En kısa bağlantının iki doğruya da dik olması için:
+
+$$
+\begin{aligned}
+\mathbf d\cdot\mathbf u&=1+s-2t\\
+&=0,\\
+\mathbf d\cdot\mathbf v&=1+2s-t\\
+&=0
+\end{aligned}
+$$
+
+isteriz. İlkinden $s=2t-1$ yazıp ikincide kullanınca $1+4t-2-t=0$, yani $t=1/3$ bulunur; ardından $s=-1/3$ çıkar. Bu seçimde $\mathbf d=(2/3,2/3,-2/3)$ ve uzunluğu $\sqrt{12/9}=2/\sqrt3$'tür. Alt sınıra ulaştık, dolayısıyla gerçekten en kısa uzaklığı hesapladık.
+
+Uzaklığın pozitif olması, bu doğruların kesişmediğini de gösterir. Paralel doğrularda ise $\mathbf u\times\mathbf v=\mathbf0$ olur; yukarıdaki bölme kullanılamaz. O durumda bir noktadan diğer doğruya dik izdüşüm hesabına dönmek gerekir. Yeni formül, yön vektörlerinin bağımsız olması koşuluyla çalışır.
+
 ## 11. Noktanın düzleme uzaklığı
 
 $\mathbf n\cdot\mathbf r=D$ düzleminden bir $\mathbf r_0$ noktası seçelim. Dışarıdaki $P$ noktasına ait vektör $\mathbf p$ olsun. $\mathbf p-\mathbf r_0$ farkının normal yönündeki işaretli bileşeni $(\mathbf n\cdot\mathbf p-D)/|\mathbf n|$'dir. En kısa uzaklık bunun mutlak değeridir:
@@ -178,6 +257,16 @@ $$
 Neden en kısadır? Noktadan düzlemdeki başka bir noktaya giden her fark vektörü, aynı dik bileşene ek olarak bir düzlem içi bileşen taşır. Dik bileşenler için Pisagor bağıntısı, bu ek bileşenin toplam uzunluğu ancak artırabileceğini söyler. Dik izdüşüm, düzlem içi bileşeni sıfıra indirir.
 
 Orijinin $2x-y+3z=8$ düzlemine uzaklığı $8/\sqrt{14}$'tür. Dik ayağı $\mathbf q=(8/14)(2,-1,3)$ olarak bulabiliriz. Bu nokta düzlem üzerindedir, çünkü normalle skaler çarpımı $(8/14)14=8$ olur. Orijinden bu noktaya giden vektör normale paraleldir ve uzunluğu da $8/\sqrt{14}$ çıkar.
+
+### Dik ayağın formülünü kurmak
+
+Orijin dışındaki bir $P$ noktası için de en yakın noktayı açıkça bulabiliriz. Ayağa $Q$ diyelim. Bağlantı normal yönünde olduğundan $Q=P-t\mathbf n$ yazılır. $Q$'nun düzlemde olması için $\mathbf n\cdot Q=D$ gerekir. Yerine koyunca $\mathbf n\cdot P-t|\mathbf n|^2=D$ ve dolayısıyla:
+
+$$
+t=\frac{\mathbf n\cdot P-D}{|\mathbf n|^2}
+$$
+
+bulunur. Burada $t$ henüz uzaklık değildir; normal vektörünü kaç kat kullanacağımızdır. Bağlantının uzunluğu $|t|\,|\mathbf n|$ olduğu için uzaklık formülünün paydasında uzunluğun karesi yerine uzunluğu kalır. Örneğin $P=(1,0,0)$ ve $2x-y+3z=8$ düzlemi için $t=-6/14=-3/7$ olur. Ayak $Q=(13/7,-3/7,9/7)$'dir; denkleme koymak $(26+3+27)/7=8$ verir. Eksi $t$, bu noktadan düzleme ulaşmak için pozitif normal yönünde gitmemiz gerektiğini söyler; uzaklık yine pozitif $6/\sqrt{14}$'tür.
 
 ![Bir noktanın düzleme en kısa uzaklığı normal doğrultusundadır.](./duzleme-uzaklik.svg)
 

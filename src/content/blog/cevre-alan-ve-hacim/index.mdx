@@ -27,6 +27,10 @@ Kenarları 3 ve 2 santimetre olan bir dikdörtgene, her sırada üç kare olacak
 
 ![Alan birim karelerle, hacim birim küplerle ölçülür.](./birim-kare-ve-birim-kup.svg)
 
+Kesirli uzunluklarda da birim kare fikri çalışır; yalnız daha küçük bir ölçü karesi seçeriz. Kenarları 2,5 ve 1,2 santimetre olan dikdörtgeni, kenarı 0,1 santimetrelik küçük karelere ayıralım. Bir yönde 25, diğer yönde 12 kare vardır. Toplam $25\times12=300$ küçük kare bulunur. Her birinin alanı $0{,}1\times0{,}1=0{,}01\text{ cm}^2$ olduğundan toplam alan $300\times0{,}01=3\text{ cm}^2$ olur. Bu, $2{,}5\times1{,}2=3$ çarpımının geometrik karşılığıdır.
+
+Burada 300 sayısı tek başına alanı söylemez; hangi kareyi saydığımızı da belirtmeliyiz. Küçük karenin kenarını on kat küçültünce aynı bölgeyi dolduran kare sayısı yüz kat artar. Bölgenin kendisi değişmez, ölçü birimi değişir. Alanın yanına kareli birim yazmamız bu nedenle önemlidir. Ayrıca kenarı 0,1 santimetre olan karenin alanını 0,1 santimetrekare sanmak, uzunluk birimini alan birimi yerine kullanmak olur.
+
 ## 2. Dikdörtgende Çevre ile Alan
 
 Kısa kenarı 4 metre, uzun kenarı 7 metre olan dikdörtgen bir bahçeyi ele alalım. Sınırı boyunca dolaştığımızda 7, 4, 7 ve 4 metrelik dört kenar geçeriz. Çevre:
@@ -37,10 +41,10 @@ $$
 
 İç yüzeyi ise dört sıra yedişer birim kareyle kaplayabiliriz. Alan $4\times7=28\text{ m}^2$ olur. Çevrenin birimi metre, alanın birimi metrekaredir. Sonucun yanındaki birim, hangi soruyu cevapladığımızın parçasıdır.
 
-Genel bir dikdörtgenin kenarlarına $a$ ve $b$, çevresine $Ç$, alanına $A$ diyelim. O zaman:
+Genel bir dikdörtgenin kenarlarına $a$ ve $b$, çevresine $\text{Ç}$, alanına $A$ diyelim. O zaman:
 
 $$
-Ç=2(a+b),\qquad A=ab
+\text{Ç}=2(a+b),\qquad A=ab
 $$
 
 $ab$, $a$ ile $b$ sayılarının çarpımıdır. İlk formüldeki 2, her kenar uzunluğundan iki tane bulunmasından gelir. İkinci formül, iki yöndeki birim sayılarının çarpımını anlatır. Karede iki kenar da $a$ olduğundan çevre $4a$, alan $a^2$ olur.
@@ -65,6 +69,10 @@ Yükseklik harfinin çizimde şeklin içinde bulunması zorunlu değildir. Çok 
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Paralelkenardan dikdörtgene" caption="Üçgen parça yer değiştirirken alan korunur. Taban ile dik yükseklik, oluşan dikdörtgenin kenarlarıdır." />
 
+Paralelkenarı kesip yeniden düzenlerken neden alan değişmez? Kesilen parçayı esnetmeden taşıyoruz; parça ne küçülüyor ne büyüyor. Yeni düzenlemede parçalar üst üste binmeden ve arada boşluk bırakmadan dikdörtgeni dolduruyorsa, eski bölge ile yeni bölge aynı toplam parçadan oluşur. Bu iki koşuldan biri bozulsa yalnız dış çerçevenin dikdörtgene benzemesi alan eşitliğini kanıtlamazdı.
+
+Yüksekliğin iki paralel kenar arasındaki dik uzaklık olması da buradan anlaşılır. Üst kenarı tabana paralel biçimde yana kaydırmak eğik yan kenarı değiştirir, fakat taban ile üst kenar arasındaki dik uzaklığı değiştirmez. Taban 6, yükseklik 4 santimetre kaldığı sürece alan 24 santimetrekaredir. Eğik kenarın 5 santimetre olması hâlinde $6\times5=30$ yazmak aynı düzenlemede bulunmayan fazla bir bölgeyi sayar. Formüldeki iki uzunluk, yan yana seçilmiş herhangi iki kenar değil, birbirine dik iki ölçü doğrultusudur.
+
 ## 4. Üçgen Alanındaki İkiye Bölme
 
 Bir üçgenin aynısından bir tane daha alıp uygun biçimde döndürerek yanına koyduğumuzda bir paralelkenar oluşturabiliriz. İki üçgen eş olduğundan alanları eşittir. Paralelkenarın tabanı üçgenin tabanı, yüksekliği de üçgenin o tabana ait yüksekliğidir. Dolayısıyla tek üçgen alanın yarısını kaplar:
@@ -78,6 +86,10 @@ Tabanı 8 santimetre, yüksekliği 3 santimetre olan üçgen için önce $8\time
 Bir üçgende herhangi bir kenarı taban seçebiliriz. Ancak yüksekliği de o seçime göre değiştirmeliyiz. Başka bir kenarın uzunluğunu, başka bir tabanın yüksekliğiyle çarpmak tutarlı bir ölçüm değildir. Dik üçgende birbirine dik iki kenardan biri taban, diğeri yükseklik olabilir. Geniş açılı üçgende ise yüksekliğin ayağı taban parçasının dışına düşebilir; alan bağıntısı yine geçerlidir.
 
 Örneğin alanı 30 santimetrekare, tabanı 10 santimetre olan üçgenin yüksekliğini arayalım. $30=10h/2$ eşitliğini önce ikiyle çarparız: $60=10h$. Sonra ona böleriz: $h=6$. Birim kontrolü de aynı sonuca gider; alanı uzunluğa bölünce bir uzunluk buluruz.
+
+Üçgen alanındaki yarım çarpanını, “her üçgen bir dikdörtgenin yarısı gibi görünür” diye yorumlamayalım. Genel bir üçgene eş bir kopya eklediğimizde aynı tabanı ve yüksekliği kullanan bir paralelkenar kurulabilir. Bu paralelkenar iki eş üçgenden oluşur; eş parçalar eş alanlıdır. Toplam alan $bh$ olduğuna göre birinin alanı $bh/2$ olur. Üçgenin eğik durması bu paylaşımı değiştirmez.
+
+Örneğin tabanı 8, yüksekliği 3 santimetre olan üçgenin alanı önce $8\times3=24$ santimetrekarelik paralelkenarın alanı, sonra bunun yarısı alınarak 12 santimetrekare bulunur. Sonuçtan yüksekliği geri bulurken $12=8h/2$ yazarız. İkiye çarpınca $24=8h$, sekize bölünce $h=3$ çıkar. Bu geri kontrol, yarım çarpanının yalnız yazım süsü olmadığını gösterir. Birimi de kontrol edebiliriz: alanı tabana böldüğümüzde santimetrekare/santimetre, yani santimetre kalır. Uzunluk beklediğimiz yerde alan birimi kalıyorsa işlemi yeniden düşünmeliyiz.
 
 ## 5. Yamukta İki Tabanın Ortalaması
 
@@ -102,7 +114,7 @@ Bir noktaya uzaklığı sabit olan düzlem noktalarının oluşturduğu eğriye 
 Farklı büyüklükte çemberlerin çevre uzunluğu çapına bölündüğünde aynı sayı elde edilir. Bu sabite $\pi$, “pi”, adı verilir. Dolayısıyla pi sayısının tanımı çevre ile çap arasındaki orandır:
 
 $$
-\pi=\frac{Ç}{d},\qquad Ç=\pi d=2\pi r
+\pi=\frac{\text{Ç}}{d},\qquad \text{Ç}=\pi d=2\pi r
 $$
 
 Pi yaklaşık 3,14159'dur; 3,14 tam değeri değildir. Yarıçapı 3 metre olan dairesel bir havuzun kenarına gereken şerit uzunluğu tam olarak $6\pi$ metredir. İki ondalık basamağa yuvarlarsak yaklaşık 18,85 metre buluruz. Birbirine benzeyen çemberleri büyütürken hem çevre hem çap aynı ölçekle değiştiğinden oran korunur. Sabitin sayısal değerini bulmak ise bundan ayrı bir ölçme ve yaklaşım problemidir.
@@ -121,6 +133,10 @@ Burada ince dilimlerle anlattığımız süreç **alan formülünün geometrik g
 
 Yarıçapı 3 metre olan havuzun taban alanı $9\pi\text{ m}^2$, yaklaşık 28,27 metrekaredir. Çapı yanlışlıkla yarıçap yerine yazıp $\pi\times6^2$ hesaplarsak dört kat büyük bir alan buluruz. Çünkü yarıçapı iki kat almak, karesini dört kat yapar. Yarıçap, çap ve birim ayrımı, formülü ezberlemekten önce gelmelidir.
 
+Dilimleri sırayla ters çevirerek yan yana koyduğumuzda, bir kenara bütün çember çevresi taşınmaz. Yayların yaklaşık yarısı üstte, diğer yarısı altta kalır. Bu yüzden gittikçe düzleşen uzun kenarın ölçüsü $2\pi r$ değil, onun yarısı $\pi r$ olur. Kısa yöndeki ölçü de merkezden çembere kadar olan yarıçap $r$'ye yaklaşır. Böylece alan hesabındaki iki çarpanın neden $\pi r$ ve $r$ olduğunu izleyebiliriz.
+
+Az sayıda dilimle elde edilen şeklin üstü ve altı dalgalıdır; onu tam dikdörtgen saymak ispatı gereğinden fazla güçlü anlatmak olur. Dilimler inceldikçe bu dalgalanma küçülür. Burada alan bağıntısının gerekçesini bu yaklaşmayla görüyoruz; limitin biçimsel tanımı daha sonra kurulacaktır. Formülü uygularkense $r$'nin yarıçap olduğuna dikkat ederiz. Çapı 10 santimetre olan dairede önce $r=5$ bulunur ve alan $25\pi\text{ cm}^2$ olur. Çapı doğrudan karesini alarak kullanmak $100\pi$ verir; hata dört kattır, çünkü yanlış uzunluk da iki kattır.
+
 ## 8. Bileşik Şekilleri Parçalayarak Ölçmek
 
 Dıştan 8 metreye 6 metrelik bir dikdörtgen düşünelim. Bir köşesinden 3 metreye 2 metrelik dikdörtgen parça çıkarılsın. Kalan L biçimindeki alanı doğrudan yeni bir formülle hesaplamak zorunda değiliz. Büyük alan $8\times6=48$, çıkarılan alan $3\times2=6$ metrekaredir. Kalan alan $48-6=42\text{ m}^2$ olur.
@@ -130,6 +146,37 @@ Dıştan 8 metreye 6 metrelik bir dikdörtgen düşünelim. Bir köşesinden 3 m
 Başka bir örnekte 10 metreye 4 metrelik dikdörtgenin kısa kenarına yarım daire ekleyelim. Yarım dairenin çapı 4, yarıçapı 2 metredir. Toplam alan $40+\pi\times2^2/2=40+2\pi$ metrekare olur. Dış çevre ise iki uzun kenar, açıkta kalan kısa kenar ve yarım çember yayından oluşur: $10+10+4+2\pi=24+2\pi$ metre. Ortak kenar şeklin içinde kaldığı için çevreye eklenmez.
 
 Parçalara ayırırken bölgelerin üst üste binmemesine dikkat ederiz. Üst üste binen iki alanı doğrudan toplarsak ortak bölgeyi iki kez sayarız. Çizimde her parçayı ayrı renkle düşünmek, hangi yüzeyin kaç kez hesaba girdiğini izlemeyi kolaylaştırır.
+
+### Sabit genişlikte bir çerçevenin alanını hesaplamak
+
+İç ölçüleri 6 metreye 4 metre olan dikdörtgen bir bahçenin çevresine, dışarı doğru her tarafta 1 metre genişliğinde dikdörtgen bir yol yapalım. Bahçenin sağında ve solunda birer metre bulunduğundan dış yatay uzunluk $6+1+1=8$ metredir. Üstte ve altta da birer metre olduğundan dış düşey uzunluk $4+1+1=6$ metredir.
+
+Yolun alanını, dış dikdörtgenden bahçeyi çıkararak bulabiliriz:
+
+$$
+A_{\text{yol}}=8\times6-6\times4=48-24=24\ \mathrm{m}^2.
+$$
+
+Burada alt indis “yol”, $A$ alanının hangi bölgeye ait olduğunu belirtir. Dıştaki yolun bütün köşeleri bu çıkarma işlemine dahildir.
+
+Bahçenin çevresi $2(6+4)=20$ metredir. Çevreyi bir metrelik genişlikle çarparak 20 metrekare bulmak neden eksik kaldı? Bu hesap, uzunlukları 6, 6, 4 ve 4 metre olan dört yan şeridi sayar; köşelerdeki dört adet $1\times1$ metrelik kareyi saymaz. Bu dört metrekare eklendiğinde yine 24 metrekare elde edilir.
+
+Genişliğe $t$, iç kenarlara $a$ ve $b$ diyerek aynı hesabı genel biçimde yazabiliriz. Hepsi aynı uzunluk birimiyle ölçülsün ve pozitif olsun:
+
+$$
+\begin{aligned}
+A_{\text{yol}}
+&=(a+2t)(b+2t)-ab\\
+&=ab+2at+2bt+4t^2-ab\\
+&=2t(a+b)+4t^2.
+\end{aligned}
+$$
+
+İlk terim yan şeritlerin, ikinci terim köşe karelerinin alanıdır. Bu formül dış sınırı da dikdörtgen olan yol için geçerlidir. Köşeleri yuvarlatılmış bir yol seçersek köşe bölgeleri kare olmayacağı için hesap değişir. Formül seçmeden önce şeklin gerçek sınırını tanımlamak, özellikle “her yerde bir metre genişlik” gibi sözel tariflerde önemlidir.
+
+Bileşik bir şeklin alanını toplarken parçaların iç bölgelerini, çevresini bulurken yalnız dış sınırını takip ederiz. İki dikdörtgen ortak bir kenardan birleştirildiyse bu kenar şeklin içinde kalır. Parçaların çevrelerini toplamak onu iki kez sayar; gerçek dış çevrede ise hiç sayılmamalıdır. Bu nedenle ortak kenarın uzunluğunun iki katını çıkarmak gerekir. Alan hesabında ortak kenarın kendisi bir alan kaplamaz; iç bölgeler çakışmıyorsa alanları doğrudan toplayabiliriz.
+
+Örneğin 4'e 3 santimetrelik iki dikdörtgeni 3 santimetrelik kenarlarından birleştirelim. Her birinin alanı 12, çevresi 14'tür. Yeni dikdörtgen 8'e 3 olur: alanı $12+12=24$, çevresi ise $14+14-2\times3=22$ santimetredir. Dış kenarlardan yeniden hesaplamak $2(8+3)=22$ sonucunu verir. Bu kontrol, alanla çevrenin neden aynı toplama kuralını izlemediğini gösterir. Bir kesik veya oyuk eklendiğinde de sınırı baştan dolaşırız; çıkarılan alanın büyüklüğü çevredeki değişimi tek başına belirlemez.
 
 ## 9. Hacmi Katman Katman Kurmak
 
@@ -162,6 +209,12 @@ $$
 3, 2 ve 4 santimetrelik kutuda $S=2(6+12+8)=52\text{ cm}^2$ buluruz. Hacim 24 santimetreküptü. 52 ile 24'ü karşılaştırıp kutunun “dışının içinden büyük” olduğunu söyleyemeyiz; farklı türde büyüklükleri ölçüyorlar.
 
 Kapalı dik silindirin iki dairesel tabanı vardır. Yan yüzeyi kesip açtığımızda, bir kenarı yükseklik, diğer kenarı tabanın çevresi olan dikdörtgen elde ederiz. Yan alan $2\pi rh$, iki tabanın toplam alanı $2\pi r^2$ olur. Böylece $S=2\pi rh+2\pi r^2$ bulunur. Silindir üstten açıksa yalnızca bir taban alanı eklenir. Gerçek bir kutuda kapak, kalınlık ve birleşme payı gibi ayrıntılar da hangi yüzeyin kaplanacağını değiştirebilir.
+
+Yüzey alanı ile hacmi ayırmak için bir kutunun içini doldurduğumuzu ve dışını kapladığımızı düşünelim. İçini doldururken katmanlar boyunca birim küpleri sayarız. Dışını kaplarken her yüzün üzerindeki birim kareleri sayarız. Aynı üç uzunluk kullanıldığı hâlde birinde üç uzunluk birlikte çarpılır, diğerinde ikişerli çarpımlar toplanır. Dolayısıyla sayısal sonuçların tesadüfen eşit çıkması bile bu iki ölçünün aynı olduğunu göstermez.
+
+Kapalı, ayrıtları 2, 3 ve 4 santimetre olan kutuda iki yüzün alanı 6, iki yüzün alanı 8, iki yüzün alanı 12 santimetrekaredir. Toplam $2\times6+2\times8+2\times12=52$ santimetrekare olur. Kutu üstten açıksa çıkarılacak alanı kutunun hangi yüzünü üst seçtiğimize göre belirleriz. Taban 2'ye 3 ise çıkarılan alan 6 ve kalan yüzey 46 santimetrekaredir. Hacim yine 24 santimetreküp olabilir; kapağı kaldırmak ideal geometrik kabın iç boyutlarını değiştirmez. Gerçek malzemenin kalınlığı hesaba katılacaksa ayrıca iç ve dış ölçüler gerekir.
+
+Silindirin yan yüzünü bir dik kenarı boyunca kesip düz açtığımızı düşünelim. Taban çevresinde bir tam tur dolaşan kenarın uzunluğu $2\pi r$, diğer kenarın uzunluğu silindirin yüksekliği $h$ olur. Açılmış yan yüz bu iki ölçüye sahip bir dikdörtgendir; alanı $2\pi rh$ buradan gelir. Kapalı silindirde iki dairesel kapak bulunduğundan ayrıca iki kez $\pi r^2$ eklenir. Böylece formüldeki çarpanların hangi yüzleri saydığını izleriz. Örneğin $r=2$, $h=5$ santimetre için yan yüz $20\pi$, iki kapak birlikte $8\pi$, toplam $28\pi\text{ cm}^2$ olur. Aynı cismin hacmi $20\pi\text{ cm}^3$ idi; bazı sayısal parçaların aynı görünmesi birimleri ve ölçülen nesneleri eşitlemez.
 
 ## 11. Kare ve Küp Birimleri Dönüştürmek
 

@@ -23,6 +23,10 @@ Toplama bileşen bileşen yapılır. Bir karmaşık $\alpha$ sayısıyla çarpma
 
 Standart baz vektörleri $\mathbf e_1=(1,0,\ldots,0)^T$ ve benzerleridir. Her vektör bileşenlerini katsayı alarak bu bazda tek biçimde yazılır. Bir bazın her vektörü bir fiziksel yönü temsil etmek zorunda değildir; burada soyut bir koordinat sistemini tanımlıyoruz.
 
+$\mathbb C^2$'nin karmaşık boyutu 2 iken dört gerçek koordinat gerektirmesi çelişki değildir. $(z_1,z_2)^T$ vektörünü $z_1=a+ib$, $z_2=c+id$ diye yazarsak dört gerçek sayı $a,b,c,d$ gerekir. Karmaşık katsayılara izin verdiğimizde ise yalnız iki baz vektörü yeterlidir: $z_1(1,0)^T+z_2(0,1)^T$. Boyut söylenirken hangi tür katsayıların kullanılabildiğini belirtmemiz bu yüzden önemlidir.
+
+Burada [karmaşık sayı yazısındaki](/blog/karmasik-sayilar-ve-euler-bagintisi/) $i^2=-1$, $\overline{a+ib}=a-ib$ ve $|a+ib|^2=a^2+b^2$ kurallarını kullanacağız. Bir vektörü eşlemek, her bileşeni ayrı eşlemek demektir. Örneğin $(1+2i,-i)^T$ vektörünün eşleniği $(1-2i,i)^T$ olur. Eşlenik alma, bileşenlerin eşleniğini alır; bileşenlerin sırasını veya sütun biçimini değiştirmez. Transpoz ise sütunu aynı bileşen sırasını koruyarak satır haline getirir. Genel bir matriste transpoz, satır ve sütun yerleşimini değiştirir.
+
 ## 2. İç çarpımda ilk bileşeni eşlemek
 
 Bu yazıda iç çarpımı **ilk girdide eşlenik** alarak tanımlıyoruz:
@@ -37,6 +41,10 @@ $j$ bileşen sayacı, üst çizgi karmaşık eşleniktir. Bazı matematik kaynak
 İkinci girdide doğrusallık vardır: $\langle\mathbf u,\alpha\mathbf v+\beta\mathbf w\rangle=\alpha\langle\mathbf u,\mathbf v\rangle+\beta\langle\mathbf u,\mathbf w\rangle$. İlk girdide ise katsayılar eşlenir: $\langle\alpha\mathbf u,\mathbf v\rangle=\overline\alpha\langle\mathbf u,\mathbf v\rangle$. Ayrıca $\langle\mathbf v,\mathbf u\rangle=\overline{\langle\mathbf u,\mathbf v\rangle}$ olur. Gerçek durumdaki simetri yerini eşlenik simetriye bırakır.
 
 $\mathbf u=(1,i)^T$, $\mathbf v=(2,1)^T$ için iç çarpım $1\cdot2+(-i)\cdot1=2-i$ olur. Sıra değiştirilince $2+i$ çıkar. İç çarpımın genel olarak karmaşık olması normaldir; uzunluğa dönüşmesi için iki girdiyi aynı seçmemiz gerekir.
+
+İlk girdideki katsayının neden eşlendiğini tanımdan görebiliriz. $(\alpha\mathbf u)$ vektörünün $j$'nci bileşeni $\alpha u_j$'dir; eşleniği $\overline\alpha\,\overline{u_j}$ olur. Dolayısıyla bu ortak $\overline\alpha$ toplamın dışına çıkar. İkinci girdinin bileşenleri eşlenmediğinden oradaki $\alpha$ değişmeden çıkar. Bu iki farklı davranış, iç çarpımda sırayı korumamızın nedenidir.
+
+Örneğin $\mathbf u=(1,i)^T$ için $i\mathbf u=(i,-1)^T$ olur. $\langle i\mathbf u,\mathbf u\rangle=(-i)1+(-1)i=-2i$ çıkar. Aynı sonucu $\overline i\langle\mathbf u,\mathbf u\rangle=(-i)2$ ile buluruz. Buna karşılık $\langle\mathbf u,i\mathbf u\rangle=2i$'dir. Gerçek sayıdaki “çarpanı dışarı al” alışkanlığını hangi girdide olduğuna bakmadan uygulamak işareti değiştirir.
 
 ## 3. Norm ve diklik
 
@@ -70,6 +78,40 @@ $\mathbf q=(1,i)^T/\sqrt2$ ve $\mathbf v=(1,0)^T$ için katsayı $1/\sqrt2$, izd
 
 Bu, dik vektörlerde Pisagor ilişkisinin karmaşık uzayda da sürdüğünü gösterir. Genel olarak $\langle\mathbf a,\mathbf b\rangle=0$ ise $\|\mathbf a+\mathbf b\|^2=\|\mathbf a\|^2+\|\mathbf b\|^2$ olur; çapraz iç çarpımlar sıfırlanır. Eşlenik kullanımı bu pozitif geometrinin temelidir.
 
+### İzdüşüm katsayısı karmaşık olduğunda sırayı denetlemek
+
+Önceki izdüşüm örneğinde katsayı gerçek çıktı; iç çarpım sırasını karıştırmanın etkisi görünmüyordu. Aynı birim $\mathbf q=(1,i)^T/\sqrt2$ vektörünü bu kez $\mathbf v=(0,1)^T$ ile kullanalım. İlk girdiyi eşlediğimiz konvansiyonda katsayı:
+
+$$
+c=\langle\mathbf q,\mathbf v\rangle
+=\frac1{\sqrt2}\cdot0+\frac{-i}{\sqrt2}\cdot1
+=-\frac{i}{\sqrt2}
+$$
+
+olur. İzdüşüm $\mathbf p=c\mathbf q$ olduğundan her bileşeni aynı karmaşık katsayıyla çarparız:
+
+$$
+\mathbf p=\frac{-i}{2}(1,i)^T
+=(-i/2,1/2)^T.
+$$
+
+İkinci bileşenin pozitif olmasının nedeni $(-i)i=-i^2=1$'dir. Kalan vektör $\mathbf r=\mathbf v-\mathbf p=(i/2,1/2)^T$ olur. Diklik kontrolü:
+
+$$
+\langle\mathbf q,\mathbf r\rangle
+=\frac{i}{2\sqrt2}-\frac{i}{2\sqrt2}=0
+$$
+
+verir. Ayrıca $\|\mathbf p\|^2=1/4+1/4=1/2$ ve $\|\mathbf r\|^2=1/2$'dir; toplamları $\|\mathbf v\|^2=1$ ile uyuşur. Böylece hem yönlü ayrışımı hem uzunluk hesabını bağımsız olarak kontrol ettik.
+
+Sırayı yanlışlıkla ters alsaydık $\langle\mathbf v,\mathbf q\rangle=i/\sqrt2$ bulurduk. Bu katsayıyla yazılan “izdüşüm” $(i/2,-1/2)^T$, kalan ise $(-i/2,3/2)^T$ olur. Kalanın $\mathbf q$ ile iç çarpımı $-2i/\sqrt2$'dir; sıfır olmadığı için gerekli diklik sağlanmaz. Sorun küçük bir gösterim tercihi değil, farklı bir vektör hesaplamaktır.
+
+Aşağıdaki matris yazımında $\dagger$ işaretini kullanacağız. Bir sütun vektöründe bu işaret, bileşenleri eşleyip satır haline getirmek anlamına gelir. Burada $\mathbf q^\dagger=(1,-i)/\sqrt2$'dir. Sütun ile satırı çarpmak bir matris oluşturur: her $(j,k)$ girişine $q_j\overline{q_k}$ yazılır. Bu işlem, iki vektörün iç çarpımında satır ile sütunu çarpıp tek sayı elde etmekten farklı sıradadır. Genel matrisler için aynı işareti yedinci bölümde ayrıntılandıracağız.
+
+İşlemi bir matrisle kaydetmek istersek $P=\mathbf q\mathbf q^\dagger=\tfrac12\begin{pmatrix}1&-i\\i&1\end{pmatrix}$ elde ederiz. $P(0,1)^T$ gerçekten $(-i/2,1/2)^T$ verir. İlk kez burada görünen karmaşık katsayı, eşlenik alma kuralının izdüşümde hangi tarafta bulunması gerektiğini görünür kılar. Gerçek katsayılı örneklerde tesadüfen gizlenen bu farkı, kalan parçanın dikliğini denetleyerek her seferinde yakalayabiliriz.
+
+Katsayının saf sanal olması uzunluğun sanal olmasına yol açmaz. İzdüşümün uzunluğu $|c|\|\mathbf q\|=1/\sqrt2$'dir; karmaşık katsayı yön bilgisini taşırken norm hesabında yalnız modülü yer alır.
+
 ## 5. Cauchy–Schwarz eşitsizliğinin gerekçesi
 
 $\mathbf u\ne0$ olsun. $\mathbf v$'den onun $\mathbf u$ doğrultusundaki izdüşümünü çıkaralım:
@@ -95,6 +137,23 @@ Sıfır vektör durumunda eşitsizlik doğrudan doğrudur. Eşitlik, dik kalanı
 
 Önceki $\mathbf u=(1,i)$ ve $\mathbf v=(2,1)$ örneğinde iç çarpımın modülü $\sqrt5$, normların çarpımı $\sqrt2\sqrt5=\sqrt{10}$'dur. Eşitsizlik sağlanır ve sıkıdır; iki vektör birbirinin katı değildir. Aynı sonuç üçgen eşitsizliğini de destekler: çapraz terimi sınırlandırınca $\|\mathbf u+\mathbf v\|\leq\|\mathbf u\|+\|\mathbf v\|$ elde edilir.
 
+### Eşitsizlik ispatındaki norm açılımı
+
+Kısaltmak için $a=\langle\mathbf u,\mathbf v\rangle$ ve $s=\|\mathbf u\|^2>0$ diyelim. İzdüşüm katsayısı $c=a/s$, kalan $\mathbf w=\mathbf v-c\mathbf u$ olur. İlk girdideki katsayıları eşleyerek açarsak:
+
+$$
+\begin{aligned}
+\|\mathbf w\|^2
+&=\|\mathbf v\|^2-c\langle\mathbf v,\mathbf u\rangle\\
+&\quad-\overline c\langle\mathbf u,\mathbf v\rangle
++|c|^2s.
+\end{aligned}
+$$
+
+$\langle\mathbf v,\mathbf u\rangle=\overline a$ olduğundan iki eksi terimin her biri $-|a|^2/s$, son artı terim ise $|a|^2/s$'dir. İkisi çıkarılıp biri geri eklenince toplamda yalnız $-|a|^2/s$ kalır. Böylece üstte kullanılan norm formülünün bütün terimlerini elde ettik. Pozitif $s$ ile çarpıp karekök alırken eşitsizlik yönü değişmez.
+
+Üçgen eşitsizliği için de $\|\mathbf u+\mathbf v\|^2=\|\mathbf u\|^2+\|\mathbf v\|^2+2\operatorname{Re}\langle\mathbf u,\mathbf v\rangle$ yazılır. Bir karmaşık sayının gerçek kısmı modülünü aşamayacağı için son terim en fazla $2\|\mathbf u\|\|\mathbf v\|$ olur. Sağ taraf $(\|\mathbf u\|+\|\mathbf v\|)^2$'dir; iki taraf da negatif olmadığından karekök alınır. Böylece uzunluğun iki temel eşitsizliği aynı izdüşüm düşüncesine bağlanır.
+
 ## 6. Gram–Schmidt ile ortonormal baz
 
 Bağımsız vektörlerden dik bir baz üretmek için her yeni vektörden önceki doğrultulardaki izdüşümleri çıkarırız. İlk vektörü normalleştirip $\mathbf q_1=\mathbf a_1/\|\mathbf a_1\|$ seçeriz. İkinci için $\mathbf w_2=\mathbf a_2-\mathbf q_1\langle\mathbf q_1,\mathbf a_2\rangle$, sonra $\mathbf q_2=\mathbf w_2/\|\mathbf w_2\|$ yazılır.
@@ -102,6 +161,10 @@ Bağımsız vektörlerden dik bir baz üretmek için her yeni vektörden önceki
 Daha sonraki adımlarda bütün önceki izdüşümler çıkarılır: $\mathbf w_k=\mathbf a_k-\sum_{j<k}\mathbf q_j\langle\mathbf q_j,\mathbf a_k\rangle$. Başlangıç vektörleri bağımsızsa kalan sıfır olmaz. Kalan sıfır çıkıyorsa yeni vektör önceki vektörlerin gerdiği uzayda bulunuyor demektir; onu sıfıra bölerek normalleştiremeyiz.
 
 $\mathbf a_1=(1,i)^T$, $\mathbf a_2=(1,0)^T$ için ilk birim vektör $(1,i)^T/\sqrt2$'dir. İkinci izdüşüm katsayısı $1/\sqrt2$, kalan $(1,-i)^T/2$ ve kalan normu $1/\sqrt2$ olur. Sonuç $\mathbf q_2=(1,-i)^T/\sqrt2$'dir. Böylece daha önce doğrudan doğruladığımız ortonormal çifti sistematik yöntemle elde ettik.
+
+Örnekte ikinci kalanın normunu açık hesaplayalım: $\|(1,-i)^T/2\|^2=1/4+1/4=1/2$ olduğundan norm $1/\sqrt2$'dir. Bu sayıya bölmek $\sqrt2$ ile çarpmaktır; $\mathbf q_2=(1,-i)^T\sqrt2/2=(1,-i)^T/\sqrt2$ elde edilir. Çıkarma adımı dikliği, bölme adımı birim uzunluğu sağlar; bunlar aynı işlem değildir.
+
+Başlangıç vektörleri aynı altuzayı germeye devam eder. Çünkü çıkardığımız parça zaten önceki vektörlerin doğrusal birleşimidir; yeni kalanla eski izdüşümü toplamak başlangıç vektörünü geri verir. Daha sonra birkaç izdüşümü çıkarırken önceki $\mathbf q_j$'lerin birbirine dik olması önemlidir: bir yöndeki katkıyı çıkarmak, daha önce sıfırlanmış başka bir dik bileşeni geri eklemez. Gram–Schmidt'in her adımının bir öncekini bozmadan ilerlemesi buna dayanır.
 
 ## 7. Eşlenik transpoz ve adjoint
 
@@ -119,6 +182,10 @@ $H\mathbf v=\lambda\mathbf v$, $\mathbf v\ne0$ olsun. İç çarpım $\langle\mat
 
 Farklı özdeğerlere ait özvektörler de diktir. $H\mathbf u=\lambda\mathbf u$, $H\mathbf v=\mu\mathbf v$ için $\langle H\mathbf u,\mathbf v\rangle=\langle\mathbf u,H\mathbf v\rangle$ eşitliği $\lambda\langle\mathbf u,\mathbf v\rangle=\mu\langle\mathbf u,\mathbf v\rangle$ verir; özdeğerlerin gerçekliğini kullandık. $\lambda\ne\mu$ ise iç çarpım sıfırdır.
 
+Özdeğerin gerçekliği ispatında eşlenik adımını açık yazalım. $z=\langle\mathbf v,H\mathbf v\rangle$ olsun. Eşlenik simetriden $\overline z=\langle H\mathbf v,\mathbf v\rangle$ elde edilir. $H^\dagger=H$ olduğu için bu son ifade yeniden $\langle\mathbf v,H\mathbf v\rangle=z$'dir. Kendi eşleniğine eşit bir karmaşık sayının sanal kısmı sıfırdır; dolayısıyla $z$ gerçektir. $z=\lambda\|\mathbf v\|^2$ ve norm karesi pozitif gerçek olduğundan $\lambda$ da gerçektir.
+
+Bu sonuca özdeğerin baştan gerçek olduğunu varsayarak ulaşmadık. İlk girdide $\langle\lambda\mathbf v,\mathbf v\rangle=\overline\lambda\|\mathbf v\|^2$ olduğunu korumak gerekir. Hermit özelliği iki tarafı eşitleyince $(\lambda-\overline\lambda)\|\mathbf v\|^2=0$ çıkar. Sıfır olmayan özvektör koşulu burada tekrar zorunludur; sıfır vektör seçilseydi hiçbir özdeğer bilgisi elde edemezdik.
+
 ## 9. Karmaşık spektral teorem
 
 Sonlu boyutta her Hermit matrisin ortonormal bir özbazı vardır. Özdeğerleri köşegene, birim özvektörleri $U$'nun sütunlarına koyarsak:
@@ -132,6 +199,17 @@ elde edilir. $D$ gerçek köşegendir. Gerçek simetrik teoremin karmaşık kar�
 Varoluş gerekçesi de önceki yazıdaki fikri genişletir. Birim karmaşık küreyi gerçek ve sanal bileşenlerden oluşan kapalı, sınırlı bir küme gibi görürüz. Gerçek değerli $\mathbf v^\dagger H\mathbf v$ fonksiyonu maksimum alır. Hem $\mathbf u$ hem $i\mathbf u$ yönlerindeki küçük değişimleri incelemek, $H\mathbf v$'nin dik bütün yönlerle iç çarpımının gerçek ve sanal kısımlarını sıfırlar. Böylece $H\mathbf v$ yalnız $\mathbf v$ doğrultusunda kalır. Dik tümleyen Hermit işlem altında korunur ve boyut azaltarak tam baz elde edilir.
 
 Örnek $H$ için determinant $(2-\lambda)^2-1$ olur; özdeğerler 3 ve 1'dir. Birim özvektörleri sırasıyla $(i,1)^T/\sqrt2$ ve $(-i,1)^T/\sqrt2$ seçebiliriz. İlk vektörle çarpım $(3i,3)^T/\sqrt2$, ikinciyle $(-i,1)^T/\sqrt2$ verir. İç çarpımları $[(-i)(-i)+1]/2=0$'dır.
+
+Karmaşık maksimum ispatında iki yön kullanılmasının nedeni de eşlenik geometridir. $\mathbf u$ dik bir yön olsun ve $z=\langle\mathbf u,H\mathbf v\rangle$ diyelim. Önceki yazıdaki gibi, maksimumu aradığımız birim kürede kalmak için gerçek $t$ ile normalize edilmiş
+
+$$
+\mathbf w(t)=\frac{\mathbf v+t\mathbf u}
+{\sqrt{1+t^2\|\mathbf u\|^2}}
+$$
+
+yolunu kullanırız; burada $\|\mathbf v\|=1$ ve $\langle\mathbf v,\mathbf u\rangle=0$ olduğu için paydanın karesi, payın norm karesidir. $t=0$'da normalleştirme çarpanının türevi sıfırdır. Bu nedenle $\langle\mathbf w(t),H\mathbf w(t)\rangle$ ifadesinin türevi $2\operatorname{Re}z$ verir. Maksimum koşulu yalnız gerçek kısmı sıfırlar. $\mathbf u$ yerine $i\mathbf u$ seçilirse iç çarpımın ilk girdisi eşlendiğinden $\langle i\mathbf u,H\mathbf v\rangle=-iz$ olur; bunun gerçek kısmı $z$'nin sanal kısmıdır. İkinci değişim de sıfır olduğunda hem gerçek hem sanal kısım kaybolur. Tek gerçek yön hesabıyla karmaşık iç çarpımın tamamının sıfır olduğunu söyleyemezdik.
+
+Örnek matrisin determinantında da işareti denetleyelim: köşegen dışı girişlerin çarpımı $i(-i)=-i^2=1$'dir. Bu yüzden determinant $(2-\lambda)^2-1$ olur. Karmaşık girişler olsa da karakteristik polinom gerçektir ve kökler 1 ile 3 çıkar. Birim özvektörleri bulduktan sonra hem normlarını hem birbirleriyle iç çarpımını kontrol etmek, spektral ayrışımda kullanılacak $U$'nun gerçekten üniter olduğunu doğrular.
 
 ## 10. Üniter matris normu korur
 
@@ -151,6 +229,8 @@ $U=\frac1{\sqrt2}\begin{pmatrix}1&i\\i&1\end{pmatrix}$ örneğinde sütunların 
 
 Hermit olmak ile üniter olmak farklı koşullardır. Hermit matrisin özdeğerleri gerçek, üniter matrisin özdeğerlerinin modülü 1'dir. İkisini aynı anda sağlayan matrisler olabilir, fakat her Hermit matris norm korumaz. Örneğin $2I$ Hermit'tir ve bütün normları iki katına çıkarır; üniter değildir.
 
+Üniter bir matrisin özdeğeri $\lambda$ ise $U\mathbf v=\lambda\mathbf v$ eşitliğinin normunu alırız. Solda norm korunarak $\|\mathbf v\|$, sağda $|\lambda|\|\mathbf v\|$ gelir. $\mathbf v\ne0$ olduğundan normuna bölmek $|\lambda|=1$ verir. Hermit matris için elde ettiğimiz “gerçek özdeğer” ile bu sonuç farklıdır: birim çember üzerinde gerçek olmayan sayılar da vardır. İki özelliği birlikte taşıyan matrisin özdeğerleri ise gerçek ve modülü 1 olduğu için yalnız $+1$ veya $-1$ olabilir.
+
 ## 11. Baz değişiminde koordinatlar değişir
 
 $\mathbf q_1,\ldots,\mathbf q_n$ ortonormal bir baz olsun. Her vektör:
@@ -167,6 +247,10 @@ Ortonormallik sayesinde $\|\mathbf v\|^2=\sum_j|c_j|^2$ elde edilir. Tamlık ba�
 Birim $\mathbf q$ için $P=\mathbf q\mathbf q^\dagger$ matrisi $P^2=P$ ve $P^\dagger=P$ sağlar. İlk eşitlik, bir doğrultuya ikinci kez izdüşmenin sonucu değiştirmediğini söyler. Genel olarak izdüşüm üniter değildir; dik bileşeni kaybettiği için normu azaltabilir. “Dik bir işlem” sözüyle bu iki farklı yapıyı karıştırmamalıyız.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Normu koruyan bir dönüşüm" caption="Gerçek düzlem dönmesi, uniter dönüşümün özel bir örneğidir. Ok birim ölçekli çember üzerinde dönerken uzunluğu sabit kalır." />
+
+Baz değişiminde işlem sırası bir vektör üzerinden okunabilir. Yeni koordinat $\mathbf c$ verilmişse önce $U\mathbf c$ ile eski koordinatlara geçeriz, sonra $A$ işlemini uygularız, en son $U^\dagger$ ile sonucu yeni koordinatlara çeviririz. Bu üç adım $U^\dagger AU\mathbf c$ olur. $U$'yu vektöre fiziksel veya geometrik bir dönüşüm olarak uygulamakla, aynı vektörün koordinatlarını $U^\dagger$ ile başka bazda yazmak farklı amaçlardır; ikisinde de norm korunması bu amaç ayrımını ortadan kaldırmaz.
+
+İzdüşümün ikinci uygulamada değişmemesi de doğrudan çarpımdan gelir: $P^2=\mathbf q(\mathbf q^\dagger\mathbf q)\mathbf q^\dagger=\mathbf q\,1\,\mathbf q^\dagger=P$. Ortadaki çarpımın 1 olması için $\mathbf q$ birim olmalıdır. Birim değilse doğru izdüşüm matrisi $\mathbf q\mathbf q^\dagger/\|\mathbf q\|^2$ olur. Böylece normalleştirme koşulunun formüldeki tam yerini görebiliriz.
 
 ## 12. Sonlu boyutun sınırını açık tutmak
 

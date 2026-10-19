@@ -43,6 +43,10 @@ Terimler bazı kaynaklarda farklı adlandırılabilir; özellikle “değer küm
 
 Fonksiyona $f$ adını verip $f:X\to Y$ yazabiliriz. Bu ifade, “$f$, $X$ tanım kümesinden $Y$ hedef kümesine giden fonksiyondur” diye okunur. Ok işareti, her $X$ elemanının bir $Y$ elemanına bağlandığını anlatır; bütün $Y$ elemanlarının kullanıldığını tek başına söylemez.
 
+Sonlu bir tanım kümesinde görüntüyü bütün girdileri tek tek deneyerek bulabiliriz. Sonsuz bir tanım kümesinde ise bir gerekçe gerekir. Gerçek sayılarda $f(x)=x^2$ için her karenin negatif olmadığını bilmek, görüntünün $[0,\infty)$ içinde kaldığını gösterir. Fakat bu tek başına aralıktaki her sayıya ulaştığımızı kanıtlamaz. Bunun için herhangi bir $y\ge0$ seçelim. $x=\sqrt y$ gerçek bir girdidir ve karesi $y$'dir. Böylece aralıktaki bütün çıktılara gerçekten ulaşıldığını da göstermiş oluruz.
+
+Tanım kümesini değiştirdiğimizde bu ikinci adımı yeniden denetleriz. Örneğin yalnız $-2\le x\le1$ kullanırsak kareler 0 ile 4 arasında kalır. Bu aralıktaki her $y$ için $x=-\sqrt y$ seçimi izinlidir; çünkü bu girdi $-2$ ile 0 arasındadır. Dolayısıyla görüntü $[0,4]$ olur. Yalnız uçların karelerini alıp 1 ile 4 arasında sonuç aramak, içerideki $x=0$ girdisini ve onun sıfır çıktısını kaçırır.
+
 ## 3. f(x) Nasıl Okunur?
 
 Başlangıçtaki iki katını alıp 3 ekleyen kurala $f$ adını verelim. Bunu:
@@ -69,6 +73,20 @@ $$
 
 Buna karşılık $f(x)+1=(2x+3)+1=2x+4$ olur. İlkinde fonksiyona verilen girdi, ikincisinde çıktı değiştirilmiştir. Parantezin içi ve dışı farklı görev taşır. Bu ayrımı ileride fonksiyon dönüşümlerinde ayrıntılı kullanacağız.
 
+Fonksiyon kuralındaki harfi bir boş yer gibi düşünebiliriz, fakat aynı kuralda görünen bütün boş yerlere aynı girdi konmalıdır. $g(x)=x^2-2x$ için $g(-3)$ hesaplayalım. İki yerde de $x$ yerine parantez içinde $-3$ yazınca $(-3)^2-2(-3)=9+6=15$ olur. İlk terimde parantezi unutup $-3^2$ yazmak 9 yerine $-9$ üretir; bu başka bir işlemdir. Fonksiyon gösterimi, işlem önceliğini ortadan kaldırmaz.
+
+Girdi bir ifade olduğunda da bütününü koruruz:
+
+$$
+\begin{aligned}
+g(t+1)&=(t+1)^2-2(t+1)\\
+&=t^2+2t+1-2t-2\\
+&=t^2-1.
+\end{aligned}
+$$
+
+Burada $t$ yeni girdiyi yazmak için seçilmiş gerçek sayı harfidir. $t=2$ ile kontrol edersek içerideki girdi 3 olur; doğrudan $g(3)=9-6=3$ bulunur. Sadeleştirilmiş ifade de $2^2-1=3$ verir. Bu kontrol, girdinin tamamını hem kareye hem ikinci terime doğru taşıdığımızı gösterir; yalnız ilk gördüğümüz $x$'i değiştirmek yeterli değildir.
+
 ## 4. Değer Hesaplamak ile Denklem Çözmek
 
 $f(x)=2x+3$ için $f(5)$ sorusu girdiyi verir ve çıktıyı ister. İşlem doğrudan $2\times5+3=13$ olur. Buna karşılık $f(x)=13$ sorusu çıktıyı verir ve onu üreten girdiyi arar. Artık $2x+3=13$ denklemini çözeriz: önce iki taraftan 3 çıkarıp $2x=10$, sonra ikiye bölüp $x=5$ buluruz.
@@ -93,6 +111,10 @@ Grafikte yatay eksene girdiyi, düşey eksene çıktıyı koyarız. Fonksiyonun 
 Bir kural verildiğinde tablo o kuralın bazı sonuçlarını gösterir. Ancak yalnızca birkaç ölçüm verilmişse aradaki bütün değerleri kesin bildiğimizi söyleyemeyiz. Örneğin $x=0$ ve $x=1$ noktalarında hem $f(x)=x$ hem $g(x)=x^2$ aynı sonuçları verir. $x=2$ için biri 2, diğeri 4 olur. İki nokta, kuralın doğrusal olduğu ayrıca bilinmeden tüm fonksiyonu belirlemez.
 
 Bu ayrım veri grafiklerinde önemlidir. Ölçülmüş noktaları çizgiyle birleştirmek, aradaki davranışa ilişkin bir varsayım ekleyebilir. Kuralın nereden geldiğini, hangi aralıkta kullanılacağını ve çizginin ölçüm mü model mi anlattığını belirtiriz.
+
+Bir noktanın grafiğe ait olup olmadığını çizime bakmadan denetleyebiliriz. Örneğin $f(x)=2x+3$ için $(4,11)$ noktası grafiktedir, çünkü ilk koordinatı kurala koyduğumuzda ikinci koordinat çıkar. $(4,12)$ grafikte değildir; aynı girdi için 12 değil 11 elde edilir. Bu kontrolün sırası önemlidir: noktanın ilk sayısını girdi, ikinci sayısını çıktı olarak okuruz. $(11,4)$ noktası farklı bir iddiadır ve $f(11)=25$ olduğu için bu grafikte bulunmaz.
+
+Tablodan grafiğe geçerken eksen ölçeklerini de yazmalıyız. Yatayda bir kare bir birim, düşeyde bir kare iki birim gösterebilir. Bu durumda noktanın sayısal koordinatını kare sayısıyla karıştırmamak gerekir. Grafik, eşleştirmelerin resmidir; eksenleri farklı ölçeklemek aynı fonksiyonun formülünü değiştirmez, yalnız görünüşünü değiştirir. Özellikle bir doğrunun sayfada çok dik görünmesi, tek başına çıktının hangi birimle ve ne hızda değiştiğini söylemez. Önce eksen etiketleri ve ölçekler okunur.
 
 ## 6. Düşey Doğru Testi
 
@@ -122,6 +144,10 @@ Kök için $x\ge1$, payda için $x\ne3$ gerekir. Tanım kümesi $[1,3)\cup(3,\in
 
 Sadeleştirme de başlangıçtaki kısıtı kendiliğinden kaldırmaz. $(x^2-1)/(x-1)$ ifadesi, $x\ne1$ koşuluyla $x+1$'e sadeleşir. İlk fonksiyon 1'de tanımsız, $x+1$ kuralıyla bütün gerçek sayılarda tanımlanan başka bir fonksiyon ise 1'de 2 değerini alır. Formüllerin izin verilen yerde aynı değerleri vermesi, tanım kümeleri farklıyken fonksiyonları tamamen aynı yapmaz.
 
+Birden fazla kısıt varsa bunları sayı doğrusunda üst üste düşen izinler olarak düşünebiliriz. Örneğin $r(x)=\sqrt{4-x}/(x+1)$ için kök $4-x\ge0$ ister. $-x\ge-4$ eşitsizliğini $-1$'e böldüğümüzde yön değişir ve $x\le4$ bulunur. Payda ise $x\ne-1$ koşulunu getirir. Birlikte tanım kümesi $(-\infty,-1)\cup(-1,4]$ olur. 4 dahildir, çünkü sıfırın karekökü vardır ve payda 5'tir; $-1$ hariçtir, çünkü payda sıfır olur.
+
+İzinli bir girdiyle kontrol yapalım: $x=0$ için $r(0)=\sqrt4/1=2$. $x=5$ seçilse kök altı $-1$ olur ve gerçek sayılarla çalıştığımız kurala uymaz. $x=-1$ için kök anlamlı olsa bile bölüm anlamlı değildir. Demek ki koşullardan birini sağlamak yeterli değildir. Çözüm kümesindeki birleşim işareti iki ayrı izinli parçayı toplar; koşulları birleştirirken kullandığımız mantık ise her ikisini aynı anda sağlamaktır.
+
 ## 8. Parçalı Fonksiyonlar
 
 Bir kuralın bütün girdilerde aynı işlem biçimini kullanması gerekmez. Mutlak değer buna iyi bir örnektir. Pozitif sayının sıfıra uzaklığı kendisidir; negatif sayının uzaklığı işaretini değiştirince elde edilir:
@@ -150,6 +176,25 @@ $$
 
 Üç saat için önce iki saatten sonraki süreyi buluruz: $3-2=1$. Ek ücret 8, toplam ücret 38 olur. İkinci satırda $8t$ yazsaydık ilk iki saati yeniden ücretlendirmiş olurduk. Sıfır saatlik kullanım bu modelin tanım kümesine alınmamıştır; ayrıca bir kural verilirse eklenebilir.
 
+### Sınırdaki girdiyi hangi satıra koyacağız?
+
+Parçalı bir fonksiyonun kullanımını sınırın iki yanında izleyelim:
+
+$$
+f(x)=\begin{cases}
+2x+1,&x<2,\\
+7-x,&x\ge2.
+\end{cases}
+$$
+
+Önce girdiye bakıp koşulu seçer, **sonra** o satırdaki hesabı yaparız. $x=1{,}9$ için ilk koşul geçerlidir; $f(1{,}9)=2\times1{,}9+1=4{,}8$ olur. $x=2$ ikinci satıra aittir; $f(2)=7-2=5$ bulunur. $x=2{,}1$ de ikinci satırdadır ve $f(2{,}1)=7-2{,}1=4{,}9$ verir. Aynı girdiyi iki formüle yerleştirip sonuçları toplamak gibi bir işlem yapmıyoruz.
+
+Bu örnekte ilk formüle 2 koyarsak da 5 çıkar. Dolayısıyla sınırı ilk satıra dahil edip ikinci satırdan çıkarsaydık fonksiyonun çıktısı değişmezdi. Ancak bu, her parçalı kural için geçerli değildir. İkinci formül $8-x$ olsaydı sınırdaki çıktısı 6 olurdu. O zaman $x=2$'yi hangi satıra dahil ettiğimiz gerçekten farklı bir fonksiyon tanımlardı.
+
+İki satır da 2'yi kapsar ve farklı çıktılar verirse, 2 girdisi için tek çıktı koşulu bozulur. İkisi de 2'yi dışlarsa bu kez fonksiyon o noktada tanımsız kalır. Bu nedenle grafik üzerinde kullanılan dolu nokta “bu değer dahil”, boş nokta “bu dal bu değeri kapsamıyor” anlamına gelir. Dairenin dolu veya boş olması çizim tercihi değildir; tanım kümesinin sınır bilgisidir.
+
+Bir tablo hazırlarken aralıktan rastgele birkaç nokta seçmenin yanına, kuralın değiştiği sınırı da eklemek yararlıdır. Yalnız 0 ve 4 girdilerini hesaplasaydık, 2'de hangi kuralın kullanıldığına dair soruyu hiç denetlememiş olurduk.
+
 ## 9. Kökleri ve Eksen Kesişimlerini Okumak
 
 Bir fonksiyonun **sıfırı**, çıktıyı sıfır yapan girdidir. Yani $f(x)=0$ denkleminin çözümünü ararız. Grafikte bu, yatay eksene değen veya onu kesen noktaların yatay koordinatlarını bulmaktır. Denklem bağlamında bu çözümlere kök de deriz.
@@ -160,6 +205,10 @@ Düşey eksen kesişimi başka bir sorudur: girdi sıfır olduğunda çıktı ne
 
 Fonksiyonun sıfırları için yalnızca formülün denklemini çözmek yetmez; aday girdilerin tanım kümesinde olması gerekir. Kısaltılmış ifadenin kökü, başlangıçta yasaklanan bir girdiye denk gelirse gerçek fonksiyonun sıfırı sayılmaz.
 
+Paylı bir ifadenin sıfırını ararken payın sıfır olması yeterli değil, paydanın da tanımlı ve sıfırdan farklı olması gerekir. $q(x)=(x^2-1)/(x-1)$ örneğinde pay $x=1$ ve $x=-1$ için sıfırdır. Ancak 1 girdisi başlangıçtaki fonksiyonda yasaktır. Yalnız $x=-1$ kalır; doğrudan kontrol $q(-1)=0/(-2)=0$ verir. Sadeleşmiş $x+1$ ifadesi de bu kökü gösterir, fakat grafikte 1 girdisindeki boşluğu ayrıca korumalıyız.
+
+Fonksiyonun sıfırı ile grafiğin düşey ekseni kestiği çıktı arasındaki farkı aynı örnekte görebiliriz. $q(0)=(-1)/(-1)=1$ olduğundan düşey kesişim $(0,1)$'dir. Yatay kesişim ise $(-1,0)$'dır. Birinde çıktıyı sıfır yapacak girdiyi aradık, diğerinde girdiyi sıfır seçip çıktıyı hesapladık. “Sıfırı bul” sözünü hangi eksendeki soruya çevirdiğimizi açık tutmak, ileride köklerle grafik yorumunu birbirine bağlamamızı sağlar.
+
 ## 10. Artmayı, Azalmayı ve İşareti Ayırmak
 
 Bir aralıkta girdi büyüdükçe çıktı da büyüyorsa fonksiyon o aralıkta **artandır**. Daha açık biçimde, aralıkta $x_1<x_2$ seçildiğinde $f(x_1)<f(x_2)$ olmalıdır. Girdi büyürken çıktı küçülüyorsa fonksiyon **azalandır**. Çıktı aynı kalıyorsa sabittir.
@@ -167,6 +216,20 @@ Bir aralıkta girdi büyüdükçe çıktı da büyüyorsa fonksiyon o aralıkta 
 Artan olmakla pozitif olmak aynı şey değildir. $f(x)=x-10$ fonksiyonu 1'den 2'ye giderken $-9$'dan $-8$'e yükselir. Çıktılar negatiftir ama fonksiyon artmaktadır. $g(x)=10-x$ ise 1'den 2'ye giderken 9'dan 8'e iner; çıktılar pozitifken fonksiyon azalmaktadır.
 
 Mutlak değer fonksiyonu bütün gerçek sayılarda tek yönde değişmez. Negatif tarafta $-3,-2,-1$ girdileri 3,2,1 çıktılarını verir; sıfıra doğru gelirken azalır. Pozitif tarafta 1,2,3 girdileri 1,2,3 çıktılarını verir; artar. Bu yüzden davranışı aralıklara ayırarak anlatırız.
+
+Artma tanımındaki “aralıkta seçilen her iki girdi” koşulu, iki örnek noktadan daha güçlüdür. Bir fonksiyon 0'da 1, 4'te 5 değerini alabilir; fakat bu iki nokta arasında önce yükselip sonra alçalabilir. Yalnız başlangıç ve bitiş değerlerini karşılaştırmak bütün aralıkta artan olduğunu kanıtlamaz. Kuralı biliyorsak iki genel girdiyi karşılaştırarak ilerleyebiliriz.
+
+Örneğin $f(x)=2x+3$ için $x_1<x_2$ seçelim. Çıktı farkı:
+
+$$
+\begin{aligned}
+f(x_2)-f(x_1)
+&=(2x_2+3)-(2x_1+3)\\
+&=2(x_2-x_1)>0
+\end{aligned}
+$$
+
+olur. $x_2-x_1$ pozitif, 2 de pozitif olduğundan ikinci çıktı daha büyüktür. Böylece yalnız seçilmiş birkaç sayıda değil, bütün gerçek girdilerde artışı gerekçelendirdik. Mutlak değer örneğinde aynı sonuç bütün doğruya yayılamaz; girdiler sıfırın solunda veya sağında olduğunda kural farklıdır. “Artıyor” derken hangi aralığın kastedildiğini söylemek bu nedenle tanımın parçasıdır, sonradan eklenen bir ayrıntı değildir.
 
 ## 11. Formül Aynı Kalsa da Modelin Tanım Kümesi Değişebilir
 

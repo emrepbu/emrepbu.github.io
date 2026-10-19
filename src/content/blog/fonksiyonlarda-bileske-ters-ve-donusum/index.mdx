@@ -47,6 +47,10 @@ $f(x)=\sqrt{x-1}$ ve $g(x)=x-2$ seçelim. İlk fonksiyon $x\ge1$ ister, ikinci b
 
 Bir başka örnekte $f(x)=x^2-1$, $g(x)=x-1$ olsun. Bölüm $(x^2-1)/(x-1)$, $x\ne1$ koşuluyla $x+1$ olur. Ancak sadeleşmeden sonra 1 girdisini geri eklemeyiz. Elde ettiğimiz fonksiyon, 1 girdisi eksik olan bir doğru grafiğine sahiptir. O noktayı sonradan doldurmak yeni bir tanımlama olur.
 
+Toplam ile bölümün tanım kümesini aynı yöntemle kontrol etsek de bölümdeki ek yasak bir **çıktıya** aittir. Örneğin $f(x)=x+1$, $g(x)=x^2-4$ olsun. Her iki başlangıç fonksiyonu bütün gerçek girdileri kabul eder. Fakat $f/g$ için $g(x)=0$ olan $x=-2$ ve $x=2$ dışarıda bırakılır. Burada $x=0$ tamamen uygundur; bölümün değeri $1/(-4)=-1/4$ olur. “Paydalı ifadede sıfırı çıkar” sözüyle yalnız sıfır girdisini dışlamak, yanlış nesneyi kontrol etmektir.
+
+Öte yandan $g/f$ için yasak girdi $-1$ olur, çünkü bu kez payda $x+1$'dir. Aynı iki fonksiyonun yerini değiştirmek sonucu ve tanım kümesini değiştirmiştir. Payın sıfır olmasıysa, payda sıfır değilken sorun yaratmaz: $(f/g)(-1)=0/(-3)=0$ geçerli bir çıktıdır. Hesaba başlamadan “hangi ifade bölüyor, onu hangi girdi sıfır yapıyor?” diye ayrı ayrı sormak, fonksiyon bölümünü sıradan kesir kurallarıyla tutarlı biçimde kullanmamızı sağlar.
+
 ## 3. Bileşke: Çıktıyı Yeniden Girdi Yapmak
 
 Başlangıçtaki iki kurala dönelim: $f(x)=x+1$, $g(x)=2x$. Önce $f$ uygulanırsa $x+1$ elde edilir. Sonra bu sonucun tamamı $g$'ye verilir:
@@ -71,6 +75,20 @@ verir. $x=3$ için ilk sıra 8, ikinci sıra 7 üretir. Demek ki genel olarak $g
 
 Bileşke gösterimi karmaşık görünen kuralları küçük parçalara ayırmayı da sağlar. $(2x+3)^2$ ifadesinde önce $x\mapsto2x+3$, sonra çıkan sayıyı kareye götüren kural uygulanır. $\mapsto$ işareti burada “şuna gönderilir” anlamındadır. İfadeyi hangi işlem adımlarının oluşturduğunu görmek, geri alma ve tanım kümesi sorularında işe yarar.
 
+Bileşkede dış fonksiyondaki bütün girdi yerlerine içteki sonucun tamamını koyarız. $p(u)=u^2-u$ ve $q(x)=3x-1$ olsun. Önce $q$, sonra $p$ uygulanırsa:
+
+$$
+\begin{aligned}
+p(q(x))&=(3x-1)^2-(3x-1)\\
+&=9x^2-6x+1-3x+1\\
+&=9x^2-9x+2.
+\end{aligned}
+$$
+
+İkinci parantezin önündeki eksi, içindeki iki terime de dağıldığı için son sabit terim 2 oldu. Bunu kolay bir girdiyle doğrulayalım. $x=2$ önce $q(2)=5$ verir, ardından $p(5)=25-5=20$ olur. Açılmış ifade de $36-18+2=20$ verir.
+
+Ters sırada $q(p(x))=3(x^2-x)-1$ çıkar. Aynı 2 girdisinde önce $p(2)=2$, ardından $q(2)=5$ buluruz. İki hesapta aynı harfler ve sayılar bulunsa da sonraki işlemin üzerinde çalıştığı sayı farklıdır. Parantezler bu nedenle okunacak süreci kaydeder. Bileşkeyi $p(x)q(x)$ çarpımıyla değiştirmek, bir çıktıyı sonraki aşamaya taşıma işlemini bütünüyle değiştirmiş olur.
+
 ## 4. Bileşkenin Tanım Kümesi
 
 Bileşkede iki fonksiyonun tanım kümelerini doğrudan kesiştirmek yeterli değildir. Önce içteki fonksiyonun girdisi uygun olmalı; sonra onun **çıktısı**, dıştaki fonksiyon için uygun girdi olmalıdır.
@@ -82,6 +100,10 @@ Ters sırada $f(g(x))=\sqrt{x}-3$ elde edilir. Bu kez kök altı doğrudan $x$ o
 Başka bir örnekte $f(x)=x^2$, $g(u)=1/(u-4)$ olsun. $(g\circ f)(x)=1/(x^2-4)$ çıkar. Payda sıfır olmamalıdır: $x^2\ne4$, dolayısıyla $x\ne-2$ ve $x\ne2$. Dış fonksiyonun yasakladığı girdi 4'tür; başlangıçtaki $x$ için yasaklanan değerler, onu 4'e götüren iki sayıdır.
 
 Tanım kümesini sembolle de anlatabiliriz: $g\circ f$ için $x$, $f$'nin tanım kümesinde olmalı ve $f(x)$, $g$'nin tanım kümesinde bulunmalıdır. Bu iki aşamalı kontrol, formülü sadeleştirmenin öncesinde yapılır. İçteki fonksiyon zaten tanımsızsa dıştaki kuralın sonradan bir değeri varmış gibi görünmesi sorunu çözmez.
+
+İki aşamalı koşulun sadeleştirmeden neden önce kaydedildiğini somutlaştıralım. $f(x)=1/x$ ve $g(u)=1/u$ olsun. İç fonksiyon için $x\ne0$ gerekir. Bu izinli girdilerde $f(x)=1/x$ hiçbir zaman sıfır olmaz, dolayısıyla dış fonksiyonun koşulu da sağlanır. Bileşke $g(f(x))=1/(1/x)=x$ olur; fakat tanım kümesi sıfır dışındaki gerçek sayılardır.
+
+Son satırda yalnız $x$ görünmesi, 0 girdisini kullanılabilir yapmaz. Örneğin 2 girdisi önce $1/2$, sonra yeniden 2 olur. Sıfır girdisinde ise ilk aşama başlayamaz; sonucun formülü basit diye aradaki tanımsız işlemi yok sayamayız. Bu bileşke, bütün gerçek sayılarda tanımlanan özdeşlik fonksiyonuyla aynı formülü taşır ama aynı tanım kümesini taşımaz. Fonksiyonların eşitliğinde hem kurala hem izinli girdilere bakmamızın nedeni budur. Böylece tanım kümesini yalnız en son görünüşten okumanın hangi bilgiyi kaybettirdiğini görebiliriz.
 
 ## 5. Bir İşlemi Geri Almak
 
@@ -103,6 +125,18 @@ $$
 
 yazarız. Harfleri yer değiştirmek, asıl fikir olan girdi ile çıktının rollerini değiştirmeyi kaydeder. Tek başına harf değiştirmek tersin var olduğunu kanıtlamaz; elde edilen kuralın her izinli çıktıdan tek bir girdiye dönmesi gerekir.
 
+Geri alırken sıranın ters dönmesi, çıktıya en son yapılan işlemin artık en dışta olmasından kaynaklanır. Örneğin $F(x)=3(x-2)+4$ kuralında önce 2 çıkarır, sonra üçle çarpar, en son 4 ekleriz. Çıktı $y$ verildiğinde önce 4 çıkarmalıyız. Sonra üçe bölüp son olarak 2 ekleriz:
+
+$$
+\begin{aligned}
+y-4&=3(x-2),\\
+\frac{y-4}{3}&=x-2,\\
+x&=\frac{y-4}{3}+2.
+\end{aligned}
+$$
+
+Dolayısıyla ters kural $F^{-1}(y)=(y-4)/3+2$ olur. $x=5$ için ilk kural 13 üretir; geri dönüş $(13-4)/3+2=3+2=5$ verir. Üçe bölmeyi 4 çıkarmadan önce yapsaydık $13/3$ üzerinde farklı bir işlem zincirine başlamış olurduk. İşlemlerin yalnız terslerini seçmek yetmez, sıralarını da ters çevirmek gerekir. Sonuçta girdi harfini $y$ veya $x$ seçmemiz kuralı değiştirmez; önemli olan eski çıktının yeni girdi olmasıdır.
+
 ## 6. Birebirlik Neden Gerekir?
 
 Kare alma fonksiyonunda 3 ve $-3$ girdileri aynı 9 çıktısına gider. Yalnızca 9'u görürsek başlangıçtaki işareti bilemeyiz. Geri dönüşte hem 3 hem $-3$ demek, tek girdiye iki çıktı vermektir; bu bir fonksiyon olmaz.
@@ -112,6 +146,10 @@ Farklı girdiler daima farklı çıktılara gidiyorsa fonksiyona **birebir** der
 Grafikte bunu **yatay doğru testiyle** kontrol ederiz. Bir yatay doğru grafiği iki farklı noktada kesiyorsa aynı çıktı iki girdiden gelmiştir; fonksiyon birebir değildir. Düşey doğru testi fonksiyon olup olmadığını, yatay doğru testi zaten fonksiyon olan kuralın birebir olup olmadığını denetler. İki testin görevi farklıdır.
 
 $f:X\to Y$ birebirse, görüntü kümesi üzerinde tanımlanan $f^{-1}$ ile $X$'e geri dönebiliriz. Eğer tersin bütün $Y$ üzerinde tanımlı olmasını istiyorsak, $Y$'deki her elemanın gerçekten elde edilmiş olması da gerekir. Bu özelliğe **örtenlik** denir. Hem birebir hem örten fonksiyon için hedefin tamamından geri dönüş vardır. Hedefte hiç kullanılmayan bir elemanın hangi girdiden geldiğini bulamayız.
+
+Birebirlikle örtenliğin farklı görevlerini sonlu bir örnekte görebiliriz. Tanım kümesi $X=\{1,2\}$, hedef küme $Y=\{3,4,5\}$ olsun; 1'i 3'e, 2'yi 4'e bağlayalım. İki farklı girdi farklı çıktılara gittiği için fonksiyon birebirdir. Fakat 5'e giden girdi yoktur, dolayısıyla hedefin tamamını örtmez. 3'ten 1'e ve 4'ten 2'ye dönen bir ters kuralı görüntü kümesi $\{3,4\}$ üzerinde kurabiliriz. 5'i de bu tersin girdisi yapmak istersek ona karşılık gelen bir eski girdi bulamayız.
+
+Bu eksikliği yalnız harfleri değiştirerek çözemezdik. Hedefi görüntüye daraltmak, tersin tanım kümesini doğru seçmenin yoludur. Buna karşılık 1 ile 2'nin ikisi de 3'e gitseydi sorun farklı olurdu: 3'ten geri dönerken hangi girdiyi seçmemiz gerektiği belirsiz kalırdı. İlk örnekte bazı çıktılara ulaşılamıyordu, ikincide bir çıktıya iki yoldan ulaşılıyordu. Ters fonksiyonun her girdiye tam bir çıktı verme koşulu, bu iki engeli ayrı ayrı ortadan kaldırmayı gerektirir.
 
 ## 7. Kare Alma Fonksiyonunu Kısıtlamak
 
@@ -151,6 +189,34 @@ elde edilir. Biri “5 çıktısı hangi girdiden geldi?” sorusunu sorar; diğ
 
 Ters fonksiyonun grafiğinde her $(u,v)$ noktası $(v,u)$ olur. Eksenlerde aynı birim uzunluğu kullanıldığında bu, $y=x$ doğrusuna göre yansımadır. Örneğin $f$ üzerindeki $(1,5)$, ters üzerinde $(5,1)$ olur. Tanım ve görüntü kümelerinin yer değiştirmesinin geometrik karşılığı budur.
 
+### Paydalı bir fonksiyonda tersin yasak girdisi
+
+$f(x)=(2x+1)/(x-3)$ fonksiyonunda $x\ne3$ olmalıdır. Tersi ararken çıktıya $y$ adını verip girdiyi yalnız bırakalım:
+
+$$
+y=\frac{2x+1}{x-3},
+\qquad
+y(x-3)=2x+1.
+$$
+
+İkinci adım, başlangıçtaki $x\ne3$ koşulunda geçerlidir. Açıp $x$ içeren terimleri toplayınca $yx-3y=2x+1$, ardından $x(y-2)=3y+1$ elde ederiz. $y\ne2$ için:
+
+$$
+x=\frac{3y+1}{y-2}.
+$$
+
+Neden 2'yi ayırdık? $y=2$ başlangıç fonksiyonunun çıktısı olsaydı $2(x-3)=2x+1$, yani $-6=1$ gerekirdi. Bu mümkün değildir. Diğer her $y\ne2$ için bulunan $x$ tek değerdir; ayrıca bu değer 3 olamaz, çünkü $(3y+1)/(y-2)=3$ eşitliği $1=-6$ çelişkisini verir. Böylece fonksiyonun görüntüsü, 2 dışındaki bütün gerçek sayılardır.
+
+Ters kuralı kendi girdi harfiyle yazalım:
+
+$$
+f^{-1}(x)=\frac{3x+1}{x-2},\qquad x\ne2.
+$$
+
+İlk fonksiyonun yasak girdisi 3, tersin yasak girdisi 2'dir. Tanım ve görüntü kümeleri yer değiştirdiği için bu fark beklenir. Örneğin $f(4)=9$ ve $f^{-1}(9)=28/7=4$ bulunur. Gidiş-dönüş aynı girdiyi geri verir.
+
+Genel geri dönüşü de görebiliriz: $y=f(x)$ için $3y+1=7x/(x-3)$ ve $y-2=7/(x-3)$ olur. Bu iki ifadeyi böldüğümüzde $f^{-1}(f(x))=x$ elde ederiz. Sadeleştirme, baştan kaydettiğimiz tanım koşulları içinde yapılır; dışlanan girdileri hesap sonunda geri eklemeyiz.
+
 ## 9. Grafiği Yukarı ve Sağa Taşımak
 
 Bir fonksiyonun her çıktısına 3 eklersek yeni grafik üç birim yukarı taşınır: $g(x)=f(x)+3$. Eski $(u,v)$ noktası $(u,v+3)$ olur. $f(x)-3$ ise üç birim aşağı taşır. Girdi değişmemiş, yalnızca düşey koordinat değişmiştir.
@@ -163,6 +229,10 @@ Genel olarak $g(x)=f(x-h)+k$, her $(u,v)$ noktasını $(u+h,v+k)$ noktasına ta�
 
 $f(x)=x^2$ için $g(x)=(x-2)^2-1$ elde ettiğimizde tepe $(0,0)$'dan $(2,-1)$'e gider. Önceki yazıda kareli uzaklıkla açıkladığımız tepe biçimini şimdi bütün grafiğin taşınması olarak okuyabiliyoruz.
 
+Yatay kaymayı birkaç noktayla birlikte tanım kümesinde de izleyelim. $f(x)=\sqrt x$ için grafik $(0,0)$, $(1,1)$, $(4,2)$ noktalarından geçer. $g(x)=\sqrt{x-2}+3$ kuralında eski girdiyi elde etmek için yeni girdiden 2 çıkarılması gerekir. Bu nedenle aynı çıktının ham değeri iki birim sağda elde edilir; ardından çıktıya 3 eklenir. Noktalar sırasıyla $(2,3)$, $(3,4)$ ve $(6,5)$ olur.
+
+Son noktayı doğrudan denetlemek $g(6)=\sqrt4+3=5$ verir. Başlangıç noktası da $g(2)=3$ ile doğrulanır. Eski $x\ge0$ koşulu yeni iç ifade için $x-2\ge0$, yani $x\ge2$ olur. Böylece yalnız grafikte çizilmiş noktalar değil, izin verilen bütün yatay konumlar iki birim sağa taşınmıştır. İçeride eksi gördüğümüz için sola kaydırırsak örneğin $x=-2$'yi yeni başlangıç sanırız; fakat orada kök altı $-4$ olur. Tanım kümesi kontrolü, kayma yönündeki hatayı hesapla yakalar.
+
 ## 10. Yansıma ve Ölçek Değişimi
 
 $g(x)=-f(x)$ kuralında düşey koordinatın işareti değişir. Grafik yatay eksene göre yansır. $g(x)=f(-x)$ kuralında ise eski girdiyi elde etmek için yeni girdinin onun negatifi olması gerekir; grafik düşey eksene göre yansır. Birinci dönüşüm çıktıyı, ikinci girdiyi etkiler.
@@ -170,6 +240,10 @@ $g(x)=-f(x)$ kuralında düşey koordinatın işareti değişir. Grafik yatay ek
 $g(x)=2f(x)$, her düşey koordinatı ikiyle çarpar. Örneğin eski $(3,4)$ noktası $(3,8)$ olur. Buna karşılık $g(x)=f(2x)$ için eski 3 girdisi yeni $x=3/2$ girdisinde elde edilir. Nokta $(1{,}5,4)$ olur: yatay koordinatlar yarıya iner.
 
 Daha genel $f(bx)$ ifadesinde $b\ne0$ olmak üzere yatay koordinat $b$'ye bölünür. $b<0$ ise bu işlem aynı zamanda düşey eksene göre yansıma içerir. $af(x)$ ifadesinde düşey koordinat $a$ ile çarpılır; $a<0$ ise yatay eksene göre yansıma da vardır. $a=0$ seçilirse bütün çıktılar sıfıra çöker; eski şeklin ayrıntıları korunmaz.
+
+Girdiye ve çıktıya eksi koymak bazı özel fonksiyonlarda aynı görünüşü verebilir; bu, iki işlemin tanımlarının aynı olduğu anlamına gelmez. $f(x)=x^2$ için $f(-x)=(-x)^2=x^2$ olur. Grafik zaten düşey eksene göre simetrik olduğu için bu yansıma görünüşü değiştirmez. Fakat $-f(x)=-x^2$ grafiği aşağı açılır; çıktılar işaret değiştirmiştir.
+
+Benzer biçimde $f(2x)$ ile $2f(x)$ kare alma kuralında aynı değildir: ilki $(2x)^2=4x^2$, ikincisi $2x^2$ olur. $x=1$'de çıktılar 4 ve 2'dir. İçteki 2 yalnız sonuca uygulanmaz; kare alma işleminden önce girdiyi değiştirdiği için o da kareye girer. Dönüşüm işaretini yorumlarken hangi işlemin önce yapıldığını her zaman sayısal bir girdide izleyebiliriz. Nokta eşlemesi yöntemi de aynı sıralamayı geometrik olarak kaydeder; formülde parantezin yeri bu yüzden belirleyicidir.
 
 ## 11. Dönüşümlerin Sırası
 

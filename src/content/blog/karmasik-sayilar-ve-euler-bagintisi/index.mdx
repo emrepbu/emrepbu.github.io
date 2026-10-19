@@ -29,6 +29,12 @@ biçimindedir. Burada $a$ ve $b$ gerçek sayılardır. $\operatorname{Re}z=a$ ge
 
 $i$'nin kuvvetleri kısa bir döngü oluşturur: $i^0=1$, $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$. Dördüncü kuvvetten sonra aynı dört değer tekrarlanır. Örneğin $i^{23}=i^{4\cdot5+3}=i^3=-i$. Bu döngü, yüksek kuvvetleri sadeleştirmenin yanı sıra seri hesaplarında gerçek ve sanal terimleri ayırmamızı sağlayacak.
 
+### $i$ bir bilinmeyen mi, yeni birim mi?
+
+$i$ burada çözeceğimiz değişken değildir; karesi $-1$ olan sabit birimdir. $a+bi$ yazımında değişebilen gerçek katsayılar $a$ ve $b$'dir. Gerçek kısmı yatay, sanal kısmı düşey koordinat gibi okumak bu ayrımı somutlaştırır. Örneğin $3-2i$, yatayda 3 ve düşeyde $-2$ bileşeni olan tek bir sayıdır; iki ayrı çözüm değildir.
+
+İki karmaşık sayının eşitliği iki gerçek eşitlik verir. $(x+2)+(2y-1)i=5+3i$ ise gerçek kısımlardan $x+2=5$, sanal kısımlardan $2y-1=3$ çıkar. İlkinden $x=3$, ikincisinden $2y=4$ ve $y=2$ bulunur. Yerine koyunca iki taraf da $5+3i$ olur. Sanal katsayıları eşitlemek için $i$'yi yaklaşık bir gerçek sayıya dönüştürmeye çalışmayız; iki bağımsız bileşeni karşılaştırırız.
+
 ## 2. Toplama ve çarpma
 
 Toplama, bileşenleri ayrı toplar:
@@ -42,13 +48,19 @@ $$
 Çarpmada dağılma kuralını kullanır ve $i^2=-1$ yazarız:
 
 $$
-(a+bi)(c+di)=ac+adi+bci+bd i^2
-=(ac-bd)+(ad+bc)i.
+\begin{aligned}
+(a+bi)(c+di)&=ac+adi+bci+bd i^2\\
+&=(ac-bd)+(ad+bc)i.
+\end{aligned}
 $$
 
 $(2+i)(3-2i)$ örneğinde gerçek kısım $6+2=8$, sanal kısım $-4+3=-1$ olur; sonuç $8-i$'dir. Son $+2$ işaretinin nedeni $i(-2i)=-2i^2=2$ olmasıdır. Karmaşık çarpmadaki en yaygın işaret hatası tam bu adımda ortaya çıkar.
 
 Bir gerçek sayı ile çarpma iki bileşeni de aynı oranda ölçekler. $i$ ile çarpma ise $i(a+bi)=-b+ai$ verir: $(a,b)$ noktası $(-b,a)$ noktasına gider. Bu, uzunluğu değiştirmeden saat yönünün tersine çeyrek tur dönmedir. Yeni sayı sistemindeki birim, düzlemde doğal bir geometrik işlem yapmaktadır.
+
+Gerçek sayılardan taşıdığımız kuralların koşullarını da korumalıyız. Örneğin gerçek ve negatif olmayan $a,b$ için kullandığımız $\sqrt{ab}=\sqrt a\sqrt b$ eşitliğini negatif sayılara aynı biçimde yayamayız. $\sqrt{-1}=i$ seçimini yaparsak $\sqrt{-1}\sqrt{-1}=i^2=-1$, oysa $\sqrt{(-1)(-1)}=\sqrt1=1$ olur.
+
+Buradaki ayrım “kök bulmak” ile “karekök sembolü için bir değer seçmek” arasındadır. $w^2=-1$ denkleminin hem $i$ hem $-i$ çözümü vardır; çünkü $(-i)^2=i^2=-1$'dir. Bir karekök gösterimi bu iki değerden birini seçse de denklemin diğer çözümü kaybolmaz. Birazdan bütün kökleri açıları kullanarak sistemli biçimde bulacağız. Şimdilik güvenli kontrol, bulduğumuz sayıyı gerçekten karesini alarak denkleme geri koymaktır.
 
 ## 3. Eşlenik ve uzaklık
 
@@ -67,6 +79,8 @@ $$
 Bu tanım Pisagor teoremidir. Gerçek sayılarda alıştığımız mutlak değer, karmaşık düzleme uzaklık olarak genişler. Örneğin $|3+4i|=5$ ve $|-3-4i|=5$ olur. Farkın modülü $|z-w|$, iki karmaşık sayı arasındaki düzlem uzaklığıdır.
 
 Eşlenik toplam ve çarpıma dağılır: $\overline{z+w}=\overline z+\overline w$ ve $\overline{zw}=\overline z\,\overline w$. İkinci özelliği kullanınca $|zw|^2=(zw)\overline{zw}=|z|^2|w|^2$ bulunur. Modüller negatif olmadığından $|zw|=|z||w|$ olur. Birazdan çarpmanın neden uzunlukları çarptığını bu cebirsel sonuçla birlikte geometrik olarak okuyacağız.
+
+Modülün çarpım kuralını eşlenik yardımıyla gerekçelendirebiliriz. $|zw|^2=(zw)\overline{zw}=zw\overline z\,\overline w$ olur. Karmaşık sayı çarpımı yer değiştirebildiği için çarpanları $z\overline z\,w\overline w$ biçiminde toplayabiliriz; sonuç $|z|^2|w|^2$'dir. Modüller negatif olmadığı için karekök alarak $|zw|=|z||w|$ elde ederiz. Eşlenik yalnız sanal kısmın işaretini değiştiren bir işlem değildir; uzunluğu cebirle hesaplamayı da sağlar.
 
 ## 4. Bölme neden eşlenikle kolaylaşır?
 
@@ -88,11 +102,21 @@ Sonucun doğruluğunu bölenle çarparak kontrol edelim: $[(1+5i)/2](1-i)=(6+4i)
 
 Sıfıra bölme burada da tanımsızdır. Sayı sistemini genişletmek, eski tutarlılık koşullarını kaldırmak anlamına gelmez. Örneğin $1/i=-i$ olur; çünkü $i(-i)=1$. Bu küçük örnek, gerçek sayılarda olmayan bölenlerin de düzenli biçimde tersinin alınabildiğini gösterir.
 
+Bölme işleminin sonucunu bir de anlamından kontrol edelim. $q=(3+2i)/(1-i)$ demek, $(1-i)q=3+2i$ eşitliğini sağlayan sayıyı aramak demektir. $q=u+vi$ yazarsak:
+
+$$
+(1-i)(u+vi)=(u+v)+(v-u)i.
+$$
+
+Burada $-vi^2=+v$ olduğu için gerçek kısım $u+v$'dir. Katsayıları eşitleyince $u+v=3$ ve $v-u=2$ elde ederiz. İki denklemi toplamak $2v=5$, dolayısıyla $v=5/2$ verir. İlk denklemden $u=3-5/2=1/2$ çıkar. Eşlenikle hesapladığımız $(1+5i)/2$ sonucunu ayrı bir yoldan doğruladık. Eşlenik yöntemi bu iki gerçek denklemi her seferinde baştan çözmeden aynı sonucu üretir; paydanın sıfır olmaması koşulu da çözümün tek olmasını sağlar.
+
 ## 5. Gerçek sayı sırasını aynen taşıyamayız
 
 Karmaşık sayıları düzlemde gösterebiliriz ama hepsini gerçek sayılardaki gibi toplama ve çarpmayla uyumlu bir “büyük-küçük” sırasına yerleştiremeyiz. Böyle bir sıralama olsaydı her sıfırdan farklı sayının karesi pozitif olurdu. $i^2=-1$ ise negatif olması gereken sayının pozitif olmasını gerektirirdi. Bu çelişki, alıştığımız düzenin aynen genişletilemediğini gösterir.
 
 Bu nedenle $3+2i>1+i$ gibi bir ifade burada tanımladığımız aritmetikte anlam taşımaz. Modülleri karşılaştırabilir, gerçek kısımları sıralayabilir veya başka açık ölçütler seçebiliriz. Fakat seçtiğimiz ölçütün tüm karmaşık sayılar için gerçek sayı sırasının yerini aldığını varsaymayız. Yeni sistem neyi koruduğunu, neyi değiştirdiğini açıkça belirtmeyi gerektirir.
+
+Sıralama çelişkisindeki “her sıfır olmayan sayının karesi pozitif” adımı, gerçek sayı düzeninin çarpma kuralından gelir. Bir sayı pozitifse kendisiyle çarpımı pozitiftir. Negatifse eksilisi pozitiftir; eksilisinin karesi de kendi karesine eşittir ve yine pozitiftir. $i$ sıfır olmadığına göre bu kurala uyan bir düzende $i^2$ pozitif olmalıydı. Ancak $i^2=-1$ ve $1>0$ olduğundan $-1<0$ olmalıdır. Aynı sayıyı hem pozitif hem negatif yapan bu sonuç, söz konusu sıralama kurallarının karmaşık sayılarda birlikte sürdürülemeyeceğini gösterir.
 
 ## 6. Kutupsal biçim ve açı çokluğu
 
@@ -110,6 +134,12 @@ Sıfırın modülü 0'dır, fakat belirli bir yönü yoktur; sıfır için argü
 
 ![Bir karmaşık sayı bileşenleri, modülü ve açısıyla aynı noktayı tanımlar.](./karmasik-duzlem.svg)
 
+### Açıyı yalnız tanjanttan seçmek neden eksik kalır?
+
+$z=-\sqrt3-i$ için uzunluk $r=\sqrt{3+1}=2$'dir. Bu nedenle $\cos\theta=-\sqrt3/2$ ve $\sin\theta=-1/2$ olmalıdır. İki bileşen de negatif olduğundan nokta üçüncü bölgededir; uygun açı $7\pi/6$'dır. $-5\pi/6$ de aynı yönü verir, çünkü bu iki açı arasında $2\pi$ fark vardır.
+
+Yalnız $b/a=1/\sqrt3$ oranına bakıp $\theta=\pi/6$ seçseydik yanlış noktayı bulurduk: o açı hem kosinüsü hem sinüsü pozitif yapar. Tanjantın periyodu $\pi$ olduğundan oran tek başına karşılıklı iki yönü ayıramaz. Hesaptan sonra $r\cos\theta$ ve $r\sin\theta$ değerlerini yeniden üretmek, bölge seçimini denetlemenin doğrudan yoludur. Ayrıca $r$'yi negatif seçmeyiz; yönün tersine dönmesini açıya eklenen $\pi$ ile temsil ederiz.
+
 ## 7. Karmaşık üstel fonksiyonu tanımlamak
 
 Gerçek üstel fonksiyonun serisi $e^x=\sum_{n=0}^{\infty}x^n/n!$ idi. Şimdi herhangi bir karmaşık $z$ için:
@@ -124,14 +154,16 @@ $z$ gerçek olduğunda bu tanım önceki üstel fonksiyonla aynıdır. Karmaşı
 
 Mutlak yakınsak iki serinin çarpımındaki terimleri toplam dereceye göre gruplayabiliriz. $e^ze^w$ çarpımında derece $n$ terimleri $\sum_{k=0}^nz^kw^{n-k}/[k!(n-k)!]$ olur. Binom açılımı bu sonlu toplamın $(z+w)^n/n!$ olduğunu verir. Sonuç $e^{z+w}=e^ze^w$'dir. Bu gerekçe, üstel çarpım kuralını karmaşık girdilere güvenilir biçimde taşır.
 
+İki üstel seriyi çarparken toplam derece 2 olan terimleri tek tek görebiliriz. Bunlar $(z^2/2!)\cdot1$, $z\cdot w$ ve $1\cdot(w^2/2!)$'dir. Toplamları $(z^2+2zw+w^2)/2!=(z+w)^2/2!$ olur. Genel $n$ için $n!/[k!(n-k)!]$ katsayısı, binom açılımındaki seçme sayısıdır. $k$ birinci seriden, $n-k$ ikinci seriden gelen kuvveti sayar. Bu seçme sayısını da sayabiliriz: $(z+w)^n$ çarpımındaki $n$ parantezden hangilerinde $z$ seçileceğini belirliyoruz. $k$ konumu sırayla seçmek $n(n-1)\cdots(n-k+1)$ yol verir; fakat aynı konum kümesi kendi içinde $k!$ farklı sırayla sayılmıştır. Bu fazlalığa bölmek $n!/[k!(n-k)!]$ katsayısını verir. Seçilmeyen $n-k$ parantezden de $w$ gelir. Sonlu binom hesabını sonsuz toplamın içinde bu biçimde gruplayabilmemizi ise mutlak yakınsaklık sağlar; yalnız ilk birkaç terimin uyması bütün serinin çarpım kuralını kanıtlamaya yetmez.
+
 ## 8. Euler bağıntısını seriden görmek
 
 $z=i\theta$ yazalım. $i$'nin kuvvet döngüsüyle serinin çift ve tek terimlerini ayırırız:
 
 $$
-e^{i\theta}
-=\left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right)
-+i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right).
+\begin{aligned}
+e^{i\theta}&=\left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right)\\&\quad+i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right).
+\end{aligned}
 $$
 
 Mutlak yakınsaklık bu ayırmayı meşru kılar. İlk parantez kosinüs, ikinci parantez sinüs serisidir. Böylece:
@@ -143,6 +175,10 @@ $$
 Euler bağıntısı, ayrı görünen üstel işlemle çember geometrisini birleştirir. $|e^{i\theta}|=1$ olur; sayı birim çember üzerinde kalır. $\theta=\pi$ seçersek $e^{i\pi}=-1$, yani $e^{i\pi}+1=0$ elde edilir. Bu eşitlik bir simge oyunu değildir; açık bir seri tanımının özel değeridir.
 
 Kutupsal biçimi artık $z=re^{i\theta}$ diye kısaltabiliriz. $e^{i(\theta+2\pi)}=e^{i\theta}$ olduğundan açı çokluğu bu yazımda da sürer. Üstel fonksiyon karmaşık düzlemde bire bir değildir; bu nedenle onu ters çevirirken gerçek logaritmadaki tek değerli yapıyı aynen bekleyemeyiz.
+
+Euler bağıntısındaki $i$'nin görevini ilk birkaç terimde izleyelim. $e^{i\theta}$ serisinde sabit terim 1, doğrusal terim $i\theta$, ikinci terim $-\theta^2/2!$, üçüncü terim $-i\theta^3/3!$'dir. Gerçek terimler çift kuvvetlerden, $i$ çarpanlı terimler tek kuvvetlerden gelir. İşaretlerin sırayla değişmesi $i^2=-1$, $i^3=-i$, $i^4=1$ döngüsünün sonucudur; kosinüs ve sinüs adları bu iki ayrı toplamı tanır.
+
+Özel değerler de anlamı kontrol eder: $\theta=0$ için $e^{i0}=1$, $\theta=\pi/2$ için $e^{i\pi/2}=i$, $\theta=\pi$ için $e^{i\pi}=-1$ bulunur. Bunların uzunlukları hep 1'dir. Buna karşılık $e^{a+i\theta}=e^a(\cos\theta+i\sin\theta)$ için uzunluk $e^a$ olur. Gerçek üs $a$ uzunluğu, sanal üs $i\theta$ açıyı belirler. Böylece karmaşık üstel ifadenin iki bileşeni farklı geometrik işler yapar.
 
 ## 9. Çarpma ölçekler ve döndürür
 
@@ -180,6 +216,10 @@ olur. Sonuncuyu doğrudan kontrol edelim: $(-2i)^3=-8i^3=8i$. Diğerlerinde aç�
 
 ![Sekiz i sayısının üç küpkökü eşit açılarla aynı çember üzerinde yer alır.](./kupkokler.svg)
 
+Küpkök örneğinin açı hesabını adım adım yazalım. $3\phi=\pi/2+2k\pi$ eşitliğini 3'e bölünce $\phi=\pi/6+2k\pi/3$ olur. $k=0,1,2$ için sırasıyla $\pi/6,5\pi/6,9\pi/6=3\pi/2$ çıkar. $k=3$ seçimi ilk açıya $2\pi$ ekler ve aynı noktayı tekrar eder. Bu yüzden üç farklı kök elde ederiz; yalnız $\pi/2$'yi 3'e bölmek diğer ikisini kaçırırdı.
+
+İlk kökü cebirle de kontrol edelim. $(\sqrt3+i)^2=3+2\sqrt3i-1=2+2\sqrt3i$ olur. Bir kez daha $\sqrt3+i$ ile çarpınca gerçek terimler $2\sqrt3-2\sqrt3=0$, sanal terimler $2i+6i=8i$ verir. Kutupsal çözümle dikdörtgensel çarpım aynı sonucu üretir. Çemberde eşit aralıklı köklerin her biri farklı bir açıda olsa da küp alma açılarını aynı yöne taşır.
+
 ## 11. Karmaşık üstel ile salınım yazmak
 
 Gerçek $a,b$ için $e^{a+ib}=e^ae^{ib}=e^a(\cos b+i\sin b)$ olur. Böylece gerçek kısım büyüme veya azalma ölçeği, sanal kısım dönme açısı taşır. Zamana bağlı $e^{(\alpha+i\omega)t}$ ifadesinde $\alpha$ gerçek büyüme katsayısı, $\omega$ açısal değişim katsayısıdır. Gerçek kısmı $e^{\alpha t}\cos(\omega t)$, sanal kısmı $e^{\alpha t}\sin(\omega t)$ olur.
@@ -189,6 +229,33 @@ $A\cos(\omega t+\phi)$ gibi gerçek bir salınımı $\operatorname{Re}[Ae^{i\phi
 Örneğin $\operatorname{Re}[(2-i)e^{it}]=2\cos t+\sin t$ olur. Çarpımı açınca gerçek terimler $2\cos t$ ve $(-i)(i\sin t)=\sin t$'dir. Kompleks katsayı hem genlik hem faz bilgisi saklar. Modülü $\sqrt5$ ve argümanı $-\arctan(1/2)$ olduğundan aynı ifade $\sqrt5\cos[t-\arctan(1/2)]$ biçimindedir.
 
 Bu yöntem doğrusal işlemlerde özellikle elverişlidir. Gerçek kısım alma toplama ve gerçek katsayıyla çarpmaya dağılır. Fakat iki karmaşık ifadenin gerçek kısımlarını çarpmak, çarpımlarının gerçek kısmını almakla genel olarak aynı değildir. Örneğin $\operatorname{Re}(i)\operatorname{Re}(i)=0$, ama $\operatorname{Re}(i^2)=-1$ olur. Gösterimi kullanırken hangi işlemin korunduğunu bilmek gerekir.
+
+### Aynı frekanstaki iki salınımı tek salınımda toplamak
+
+Karmaşık gösterimin hesapta sağladığı kolaylığı iki gerçek salınım üzerinde kullanalım. $t$ radyan girdisini belirleyen gerçek değişken olmak üzere:
+
+$$
+s(t)=\cos t+\cos(t+2\pi/3)
+$$
+
+olsun. İki terimin de genliği 1'dir; ancak toplamın genliğinin 2 olacağını hemen söyleyemeyiz. İkinci salınım ilkine göre farklı fazdadır. Euler gösterimiyle ortak zamana bağlı çarpanı ayırabiliriz:
+
+$$
+s(t)=\operatorname{Re}\left[(1+e^{2\pi i/3})e^{it}\right].
+$$
+
+Şimdi yalnız sabit katsayıyı hesaplayalım. $e^{2\pi i/3}=-1/2+i\sqrt3/2$ olduğundan toplam katsayı $1/2+i\sqrt3/2$ olur. Modülü $\sqrt{1/4+3/4}=1$, açısı $\pi/3$'tür. Dolayısıyla katsayı $e^{i\pi/3}$ olarak yazılır ve:
+
+$$
+s(t)=\operatorname{Re}[e^{i(t+\pi/3)}]
+=\cos(t+\pi/3)
+$$
+
+sonucuna ulaşırız. Yeni salınımın genliği 1, fazı $\pi/3$'tür. $t=0$ için ilk ifadede $1-1/2=1/2$, son ifadede $\cos(\pi/3)=1/2$ çıkar. $t=\pi/2$ için ise ilk ifade $0+\cos(7\pi/6)=-\sqrt3/2$, son ifade $\cos(5\pi/6)=-\sqrt3/2$ verir.
+
+Genliğin iki olmamasının nedeni, iki birim uzunluklu karmaşık okun aynı yöne bakmamasıdır. Toplarken modülleri değil, gerçek ve sanal bileşenleri toplarız; ardından toplamın modülünü buluruz. Faz farkı sıfır olsaydı katsayı $1+1=2$ olurdu. Faz farkı $\pi$ olsaydı $1+e^{i\pi}=0$ çıkar ve bütün salınım yok olurdu. Sıfır katsayıya belirli bir faz atamaya çalışmayız.
+
+Bu yöntem ortak $e^{it}$ çarpanı sayesinde çalıştı. Terimlerin frekansları farklı olsaydı aynı ortak çarpanla iki sabit katsayıyı toplama adımı genellikle kurulamazdı; toplamı tek sabit genlikli sinüsle ifade etmek de genel olarak mümkün olmazdı. Böylece cebirsel kolaylığın hangi koşula dayandığını da görmüş olduk.
 
 Karmaşık sayılarla artık hem cebirsel işlemleri hem düzlemde yön ve ölçeği aynı dilde ifade edebiliyoruz. Bundan sonra üç boyutlu vektörlere döndüğümüzde başka bir çarpımın, iki yöne dik bir yön ve yönlü alan üretmek için neden gerektiğini göreceğiz.
 

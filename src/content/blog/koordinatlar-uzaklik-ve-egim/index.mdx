@@ -27,6 +27,10 @@ Bir noktanın koordinatlarını $(x,y)$ biçiminde yazarız. Buna **sıralı iki
 
 Noktaya ad vermek istersek $A(2,5)$ yazabiliriz: $A$ noktanın adı, parantezin içi koordinatlarıdır. Sayıların kendisi yol tarifi verir; önce yukarı sonra sağa yürümek de aynı noktaya götürür. Koordinatların sırası ile fiziksel olarak adımları hangi sırada attığımız farklı konulardır.
 
+Bir noktayı yerleştirirken koordinatlarını iki ayrı bilgi olarak kullanabiliriz. $P=(-2,3)$ için düşey eksenin iki birim solunda olan bütün noktaları düşünelim; bunlar $x=-2$ doğrusu üzerindedir. Yatay eksenin üç birim üstündeki bütün noktalar ise $y=3$ doğrusu üzerindedir. İki koşulu aynı anda sağlayan yer, bu doğruların tek kesişimidir. Noktanın adresini belirleyen şey, önce hangi yönde yürüdüğümüz değil bu iki koşulun birlikte sağlanmasıdır.
+
+Bu açıklama eksen üzerindeki sıfırları da anlamlandırır. $(0,3)$ noktasında yatay konum sıfırdır; nokta düşey eksen üzerindedir. $(3,0)$ ise yatay eksen üzerindedir. İki nokta aynı değildir. Ayrıca iki noktada yalnız $x$ değerlerinin eşit olması noktaların eşit olması için yetmez; düşey bir doğru üzerinde farklı yüksekliklerde bulunabilirler. Noktaların eşitliği için iki koordinatın da eşitliği gerekir. Daha sonra iki denklemin aynı noktayı istemesini incelerken bu çift koşulu yeniden kullanacağız.
+
 ## 2. Bölgeler, Eksenler ve Ölçek
 
 Eksenler düzlemi dört bölgeye ayırır. Sağ üstte iki koordinat pozitif, sol üstte ilk negatif ikinci pozitif, sol altta ikisi negatif, sağ altta ilk pozitif ikinci negatiftir. Geleneksel adlandırmada sağ üstten başlayıp saat yönünün tersine birinci, ikinci, üçüncü ve dördüncü bölge deriz.
@@ -99,6 +103,10 @@ $$
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Koordinatlardan uzaklığa ve eğime" caption="A(1,1) ile B(5,4) arasında yatay fark 4, düşey fark 3 birimdir. Aynı üçgen uzaklık için 5, eğim için 3/4 verir." />
 
+Uzaklık hesabındaki yardımcı köşeyi nasıl seçtiğimizi açık tutalım. $A=(x_1,y_1)$ noktasından yatay gidersek yükseklik $y_1$ değişmez. $B$'nin yatay konumuna ulaşınca $C=(x_2,y_1)$ noktasındayız. Buradan düşey giderek $B=(x_2,y_2)$'ye ulaşırız. Yatay ve düşey eksenler dik olduğu için $ACB$ dik üçgendir. Bu nedenle formülde kareleri toplayabiliyoruz; aynı işlem birbirine dik olmayan iki doğrultu için doğrudan geçerli olmazdı.
+
+Örnekteki $A=(-2,3)$, $B=(4,-5)$ için yardımcı köşe $(4,3)$'tür. Yatay uzunluk 6, düşey uzunluk 8 olur. Noktaların koordinatlarını ayrı ayrı kareleyip toplamak ise başka bir soruyu cevaplar: her noktanın orijine olan uzaklığını hesaplamış oluruz. İki nokta arasındaki uzaklık için önce koordinat farkları alınmalıdır. Uzaklığın 10 çıkması, iki kenar boyunca yürüdüğümüzde alınan $6+8=14$ yolu da birbirinden ayırır. Düz bağlantı ile yatay-düşey rota farklı güzergâhlardır; yalnız uçları ortaktır.
+
 ## 6. Orta Noktanın Koordinatları
 
 Bir doğru parçasının ortasına ulaşmak için iki uç arasındaki yatay değişimin yarısını, düşey değişimin de yarısını alırız. $A(1,1)$ ile $B(5,4)$ arasında yatay fark 4, düşey fark 3 olduğundan, $A$'dan 2 birim sağa ve 1,5 birim yukarı gideriz. Orta nokta $(3,2{,}5)$ olur.
@@ -119,6 +127,36 @@ $$
 
 Burada ortalamaları ayrı ayrı alıyoruz. Bütün dört sayıyı toplayıp dörde bölmek tek sayı verir; düzlemdeki bir noktayı belirlemek için iki koordinat gerekir. $(-2,3)$ ile $(4,-5)$ örneğinde orta nokta $(1,-1)$ olur. Bu noktanın her iki uca uzaklığı $\sqrt{3^2+4^2}=5$ birimdir; toplam uzaklığın yarısını elde ederek kontrol ederiz.
 
+### Bir parçanın yalnız ortasını değil, üçte birini bulmak
+
+$A(-2,1)$ noktasından $B(4,10)$ noktasına giden doğru parçasını ele alalım. Yatay değişim $4-(-2)=6$, düşey değişim $10-1=9$ birimdir. Yolun üçte biri kadar ilerlemek için bu iki değişimin de üçte birini alırız: yatayda 2, düşeyde 3 birim. Başlangıca ekleyince:
+
+$$
+P=(-2+2,\,1+3)=(0,4)
+$$
+
+bulunur. Burada $P$, parça üzerindeki yeni noktanın adıdır. Koordinatları doğrudan üçe bölmedik; **başlangıç ile bitiş arasındaki değişimi** üçe böldük ve başlangıç konumuna ekledik. Yalnız $B$'nin koordinatlarını üçe bölmek, başlangıcın $(0,0)$ olduğu farklı bir hesap yapardı.
+
+Sonucu uzaklıklarla kontrol edebiliriz. $A$ ile $P$ arasında:
+
+$$
+AP=\sqrt{2^2+3^2}=\sqrt{13},
+$$
+
+$P$ ile $B$ arasında ise:
+
+$$
+PB=\sqrt{4^2+6^2}=\sqrt{52}=2\sqrt{13}
+$$
+
+birim vardır. Böylece $AP:PB=1:2$ ve $AP$, bütün $AB$ uzunluğunun üçte biridir. “Parçayı $1:2$ oranında bölmek”, ilk kısmın bütünün yarısı olduğunu söylemez; bütün $1+2=3$ eş paydan oluşur.
+
+Aynı yöntem başka oranlara da uygulanır. $A$'dan $B$'ye yolun $t$ kadarını ilerlemek, yatay koordinata $t(x_2-x_1)$ ve düşey koordinata $t(y_2-y_1)$ eklemektir. $0\le t\le1$ seçildiğinde nokta iki uç arasında kalır; $t=0$ ilk ucu, $t=1$ son ucu, $t=1/2$ orta noktayı verir. Böylece orta nokta formülünün, iki koordinatı aynı oranda ilerletmenin özel bir durumu olduğunu görürüz.
+
+Orta noktanın her koordinatını ayrı ayrı ortalamamızın gerekçesi, başlangıçtan bitişe olan değişimin her doğrultuda yarısını almaktır. $A=(-2,3)$'ten $B=(4,-5)$'ye giderken yatay değişim 6, düşey değişim $-8$'dir. Yarısında yatay değişim 3, düşey değişim $-4$ olur. Bunları başlangıç adresine ekleriz: $-2+3=1$, $3-4=-1$. Böylece $M=(1,-1)$ elde edilir. Değişimin yarısı $(3,-4)$ ile orta noktanın adresi $(1,-1)$ aynı şey değildir.
+
+Kontrol için $A$'dan $M$'ye farklar $(3,-4)$, $M$'den $B$'ye de $(3,-4)$ olur. Her iki uzaklık $\sqrt{9+16}=5$ birimdir; toplamı 10 olan bütün uzaklığın yarısıdır. Yalnız iki uzaklığın eşit olması bir noktayı orta nokta yapmaya yetmez: doğru parçasının dışındaki başka noktalar da iki uca eşit uzaklıkta olabilir. Burada hem parça üzerinde bulunmayı hem iki eş yarıya ayırmayı sağladık. Koordinatlara aynı yarım ilerlemeyi uygulamamız, doğrultuyu koruyan koşuldur.
+
 ## 7. Eğim Bir Değişim Oranıdır
 
 Bir yol yatayda 4 metre ilerlerken 3 metre yükseliyorsa, her 1 metre yatay ilerleme başına 3/4 metre yükselir. **Eğim**, düşey değişimin yatay değişime oranıdır. Eğimi genellikle $m$ ile gösteririz:
@@ -134,6 +172,20 @@ $A(1,1)$ ve $B(5,4)$ için eğim $3/4=0{,}75$'tir. Her iki eksen metreyle ölç�
 Sağa giderken yükselen doğrunun eğimi pozitif, alçalanın negatiftir. $(1,4)$ ile $(5,2)$ arasında $m=(2-4)/(5-1)=-2/4=-1/2$ olur. Eksi işareti uzunluğun negatifliğini değil, sağa ilerlerken düşey koordinatın azalmasını anlatır. Noktaları ters sırayla çıkardığımızda hem pay hem payda işaret değiştirir; oran aynı kalır.
 
 Yatay doğru üzerinde düşey değişim sıfırdır, eğim 0 olur. Dikey doğru üzerinde yatay değişim sıfırdır; eğim **tanımsızdır**. Dikey doğruya “eğimi sıfır” demek onu yatay doğruyla karıştırır. Burada sıfıra bölmeyi bir sayı gibi kullanmıyoruz.
+
+Eğim oranındaki sıra tutarlılığını kolay bir örnekle izleyelim. $A=(2,7)$ ve $B=(6,5)$ için:
+
+$$
+\begin{aligned}
+\Delta x&=6-2=4,\\
+\Delta y&=5-7=-2,\\
+m&=\frac{-2}{4}=-\frac12.
+\end{aligned}
+$$
+
+Sağa dört birim giderken iki birim aşağı iniyoruz. Ters yönde gidersek $\Delta x=-4$, $\Delta y=2$ olur; oran yine $-1/2$'dir. Yalnız payın sırasını ters çevirmek ise $+1/2$ verir ve çizginin aşağı gittiği bilgisini yanlışlıkla yukarı gidişe çevirir. Noktaların hangi sırayla seçildiği serbesttir, fakat aynı sıra iki farkta da kullanılmalıdır.
+
+Eğimde pozitif ve negatif işaret, sayfa üzerindeki çizimin sağa ilerlerken ne yaptığını anlatır. Dik bir doğru için yatay değişim sıfırdır; iki ayrı noktanın düşey farkını sıfıra bölmek mümkün değildir. Buna “çok büyük eğim” diye belirli bir sayı atamayız. Yatay doğruysa düşey değişim sıfır, yatay değişim sıfırdan farklıdır ve eğim gerçekten sıfırdır.
 
 ## 8. Bir Nokta ve Eğimden Doğru Denklemi
 
@@ -155,6 +207,10 @@ Bir doğru üzerinde eğimin neden değişmediğini de geometriden görebiliriz.
 
 Dikey doğrular $y=mx+b$ biçimine sığmaz. Örneğin $x=3$, yatay koordinatı daima 3 olan bütün noktaları anlatır. Düşey koordinat serbesttir. Daha genel $ax+by=c$ biçimi hem dikey hem diğer doğruları kapsar; ancak $a$ ile $b$ aynı anda sıfır olamaz. Burada harfler sabit katsayıları gösterir.
 
+Bir noktadan doğru denklemine geçerken $(x,y)$ ifadesi, doğru üzerindeki herhangi bir aday noktayı temsil eder. Sabit $(1,1)$ noktasından o adaya yatay değişim $x-1$, düşey değişim $y-1$ olur. Eğim $3/4$ olduğundan her dört birim yatay değişime üç birim düşey değişim karşılık gelmelidir. Bu ilişkiyi $y-1=(3/4)(x-1)$ diye yazınca başlangıç noktası da denklemi sağlar: $x=1$ koyduğumuzda $y=1$ çıkar.
+
+Bunu yalnız $(y-1)/(x-1)=3/4$ bölümünde bıraksaydık başlangıç noktasında $0/0$ ile karşılaşırdık. Çarpım biçimi, doğruyu bu nokta dahil anlatır. Örneğin $x=9$ için yatay fark 8, yani dört birimlik iki adımdır. Düşey fark $2\times3=6$ ve $y=7$ olur. Yeni $(9,7)$ noktasıyla eğimi yeniden hesaplamak $6/8=3/4$ verir. Formül, tablodaki birkaç noktayı birleştirmenin ötesinde, bütün aday noktaların sağlaması gereken aynı değişim oranını kaydeder.
+
 ## 9. Eksen Kesişimlerini Bulmak
 
 $2x+3y=12$ doğrusunu çizmek için iki farklı noktası yeterlidir. $y=0$ koyarsak $2x=12$, dolayısıyla $x=6$ buluruz. Yatay eksen kesişimi $(6,0)$ olur. $x=0$ koyarsak $3y=12$, dolayısıyla $y=4$ çıkar. Düşey eksen kesişimi $(0,4)$ olur.
@@ -172,6 +228,10 @@ Geometrik anlamı şudur: $(2,3)$ noktası iki doğrunun da üzerindedir. Sistem
 $y=2x+1$ ve $2y=4x+2$ ise aynı doğrunun iki farklı yazımıdır. İkinci denklemi ikiye böldüğümüzde ilkini buluruz. Bu durumda bir doğru boyunca sonsuz sayıda ortak nokta vardır. [Denklem sistemlerinde](/blog/iki-bilinmeyenli-denklem-sistemleri/) cebirle ayırdığımız tek çözüm, çözümsüzlük ve sonsuz çözüm durumları böylece görünür hâle gelir.
 
 Grafik yaklaşık bir kesişim okumaya yardımcı olur; kesin koordinatları cebirle doğrularız. Kalın çizgi veya küçük ekran, $(2,3)$ ile ona çok yakın bir noktayı ayırt etmeyebilir. Çizim ilişkiyi gösterir, yerine koyma ise bulduğumuz çiftin iki koşulu da tam sağladığını denetler.
+
+İki doğrunun kesişimi, bir denklemi bir noktada ve diğerini başka noktada sağlamak değildir. Aynı $x$ ve aynı $y$ değerleri iki eşitliği de sağlamalıdır. $y=x+1$ ile $y=-x+5$ örneğinde her iki sağ taraf aynı $y$'ye eşit olduğu için birbirine eşitlenebilir. $x+1=-x+5$ denklemi önce $2x=4$, sonra $x=2$ verir. Ardından herhangi bir özgün denklemden $y=3$ bulunur.
+
+Sonucu ikisinde de kontrol edelim: $3=2+1$ ve $3=-2+5$ doğrudur. Yalnız $x=2$ yazmak kesişim noktasını tamamlamaz; nokta $(2,3)$'tür. Paralel doğrularda aynı işlem örneğin $2x+1=2x-3$ verip $1=-3$ çelişkisine ulaşır. Bu, kötü hesap yaptığımızı zorunlu olarak göstermez; ortak nokta bulunmadığının cebirsel karşılığıdır. Çakışık doğrularda ise yeni bir kısıt çıkmaz, $0=0$ gibi her zaman doğru bir eşitlik kalır. O zaman tek nokta değil, aynı doğru üzerindeki bütün noktalar ortaktır.
 
 ## 11. Birimleri Değiştirince Hangi Sayılar Değişir?
 

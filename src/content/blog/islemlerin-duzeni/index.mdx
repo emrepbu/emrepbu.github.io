@@ -47,6 +47,12 @@ $4+3\times2$ bir **sayısal ifadedir**: sayılar ve işlemlerle bir miktarı tar
 
 İlerleyen bölümlerde bir ifadeyi başka bir ifadeye dönüştüreceğiz. Amaç, hesabı daha anlaşılır veya kolay hâle getirirken **değerini korumak** olacak.
 
+### Bir alt hesabı değiştirirken çevresini korumak
+
+Bir ifadedeki çarpımı hesaplamak, ifadenin geri kalanını yok etmez. $7+2\times5-3$ içinde önce $2\times5=10$ bulduğumuzda satırın tamamı $7+10-3$ olur. Buradaki 10 yalnız bir parçanın değeridir; bütünün değeri henüz yazılmamıştır. Sonra $7+10=17$ ve $17-3=14$ hesaplanır. Bu sırada dışarıdaki 7'yi ve çıkarılan 3'ü her adımda taşıdık.
+
+Bu yöntemi metin okuma gibi düşünebiliriz: Birkaç kelimelik bir açıklamayı aynı anlamdaki tek sözcükle değiştirdiğimizde, cümlenin geri kalanı yerinde durur. Matematikte de $2\times5$ grubunu onunla aynı değerdeki 10 ile değiştiriyoruz. Dolayısıyla ara satırın tamamı hâlâ başlangıçtaki miktarı temsil eder. Hesap hızlanınca bu satırları zihinden atlayabiliriz; öğrenirken açık yazmak hangi bölümün dönüştüğünü takip etmeyi sağlar. Özellikle bir eksi işareti veya parantez dışındaki çarpan kaybolduğunda, önceki satırla karşılaştırarak hatanın yerini bulabiliriz. İşlem sırası böylece ezberlenmiş bir liste olmaktan çıkar, ifadenin yapısını koruyan bir okuma alışkanlığı olur.
+
 ## 2. Öncelik ve Soldan Sağa İlerlemek
 
 Dört işlem içeren ifadelerimizde düzeni üç katmanda okuyabiliriz:
@@ -86,6 +92,12 @@ $$
 Bu nedenle kuralları “önce çarpma, sonra bölme, sonra toplama, sonra çıkarma” diye dört ayrı basamak hâlinde ezberlemek yanlış sonuca götürür. Çarpma–bölme bir çift, toplama–çıkarma başka bir çifttir.
 
 Üslü ifadeler de devreye girdiğinde, üs hesabı çarpma ve bölmeden önce ele alınır. Üssün neyi anlattığını ve parantezin bu hesabı nasıl etkilediğini bir sonraki yazıda kuracağız. Buradaki üç katman, **şimdiki dört işlem örneklerimizin** okuma düzenidir.
+
+### Aynı düzeydeki işlem ne demektir?
+
+$24\div(2\times3)\times2$ ifadesinde iki çarpma görünür; fakat aynı görevi yapmazlar. Parantez içindeki çarpma bölenin ne olduğunu belirler. Önce $2\times3=6$ buluruz. Dışarıdaki ifade artık $24\div6\times2$'dir. Bu düzeyde bölme ile çarpma eşit öncelikli olduğu için soldan sağa ilerleriz: $24\div6=4$, ardından $4\times2=8$.
+
+Dışarıdaki son 2'yi de paydaya katıp $24/(6\times2)=2$ bulmak farklı bir gruplama kurar. Başlangıçta son 2, bölme işleminden elde edilen miktarı büyütüyordu; değiştirilmiş yazımda böleni büyüttüğü için sonucu küçültür. Aynı rakamları kullanmak aynı hesabı yaptığımız anlamına gelmez. Kontrol olarak özgün ifadeyi sözcüklerle okuyabiliriz: “Yirmi dördü altıya böl, çıkan sayının iki katını al.” Bu cümle sekizi verir. Parantezin işlevi, hangi sayının hangi işlemin girdisi olduğunu belirlemektir. Bir hesap makinesine satır yazarken de özellikle bölünen ve bölen birden çok terim içeriyorsa bu gruplamayı açıkça belirtmek gerekir.
 
 ## 3. Parantezin İçinde de Bir Düzen Var
 
@@ -195,6 +207,12 @@ $$
 
 $12+5-3$ yazmak aynı düzenleme değildir; o ifade 14 eder. Yer değiştirdiğimiz şey yalnızca “5 rakamı” değil, $-5$ sayısıdır.
 
+### Çıkarmada işareti terimin parçası yapmak
+
+$15-6+2$ ifadesini $15+(-6)+2$ biçiminde yazabiliriz. Artık toplama yaptığımız için terimlerin yerini, işaretlerini birlikte taşıyarak değiştirmek mümkündür: $15+2+(-6)=11$. Fakat yalnız sayıları yer değiştirip $15-2+6=19$ yazarsak çıkarılan altıyı eklenen altıya dönüştürmüş oluruz. Değiştirdiğimiz şey sadece sıra değildir; miktarların yönleri de değişmiştir.
+
+Aynı dikkat çarpmada ve bölmede gerekir. $12\div3\times2$ ifadesini $12\times(1/3)\times2$ diye okuyabiliriz. Burada yer değiştirebilen çarpanlar 12, $1/3$ ve 2'dir. Bunları $12\times2\times(1/3)$ olarak düzenlemek sekiz sonucunu korur. Bölendeki 3'ü doğrudan çarpan 3 hâline getiremeyiz. Bu açıklama, “toplamada ve çarpmada yer değiştirme var” kuralını karma işlemlere taşırken neden önce çıkarma ve bölmenin anlamını korumamız gerektiğini gösterir. Güvenli dönüşümde eksilen terim ters işaretiyle, bölen ise çarpmaya göre tersiyle birlikte düşünülür; böylece eski hesapla yeni hesabın aynı değeri verdiğini izleyebiliriz.
+
 ## 6. Dağılma: Her Parça Aynı Çarpandan Payını Alır
 
 Dört sıra kare düşünelim. Her sırada üç yeşil, iki sarı kare olsun. Bir sırada beş kare; dört sırada yirmi kare var:
@@ -300,6 +318,12 @@ $(-12)\div3$, “3 ile çarpıldığında $-12$ veren sayı ne?” sorusudur. Ce
 
 Bölmenin işaretleri bu ters ilişkiden gelir. Sıfır olmayan bir bölen için aynı işaretli iki sayının bölümü pozitif, farklı işaretli iki sayının bölümü negatiftir. Sıfırı sıfırdan farklı bir sayıya bölmek 0 verir; sıfıra bölmek ise yine tanımsızdır.
 
+### Eksiyle çarpmayı sıfıra dönerek denetlemek
+
+İşaret kuralını küçük bir örnekte yeniden kuralım. $2+(-2)=0$ olduğu için bu toplamın $-5$ katı da sıfırdır. Dağılma özelliği aynı hesabı iki parçaya ayırır: $(-5)\times2$ ile $(-5)\times(-2)$ toplamı sıfır olmalıdır. İlk parça $-10$'dur. Onunla toplandığında sıfır veren ikinci parça yalnızca $+10$ olabilir. Dolayısıyla $(-5)\times(-2)=10$ sonucunu, daha önce kullandığımız dağılma ve ters işaret ilişkilerini koruyarak elde ederiz.
+
+Bu, eksi işaretinin her gördüğümüz yerde “iptal edildiği” anlamına gelmez. $-5+(-2)$ toplamı $-7$'dir; işlem çarpma olmadığı için çarpmanın işaret kuralını uygulayamayız. Benzer biçimde $-5-2$ de $-7$ olur. Önce hangi işlemin yapıldığını sormak gerekir. “İki eksi artı yapar” cümlesi tek başına yeterli bir kural değildir; burada iki negatif **çarpanın çarpımından** söz ediyoruz. Çıkarmada ise başka bir ilişki, negatif miktarı çıkarmanın ters işaretli miktarı eklemek olması kullanılır. Sonuçlar bazen benzer işaret düzeni gösterse de gerekçelerini ayırmak hatayı önler.
+
 ## 8. Eksi İşareti Nereye Kadar Etkili?
 
 Eksi işaretinin iki kullanımını ayırmak yararlıdır. $7-3$ ifadesinde iki miktar arasında çıkarma yaparız. $-3$ yazımında ise 3'ün toplamsal tersini belirtiriz. $-(7-3)$ yazımı, **parantezdeki sonucun tamamının tersini** almamızı ister.
@@ -332,6 +356,8 @@ Parantezin içi önce hesaplandığında $12-2=10$ bulmamız bunu doğrular. $12
 
 Parantezin önünde artı varsa içerideki miktarları olduğu gibi ekleriz: $12+(5-3)=12+5-3=14$. Her iki durumda da parantezi kaldırırken, içerideki grubun dışarıdaki işleme nasıl bağlandığını koruruz.
 
+Bir grubun önündeki eksiyi $-1$ çarpanı olarak okumak, her terimin neden değiştiğini açıklar. $-(8-3)$ ifadesinde önce içeriği hesaplayınca $-5$ buluruz. Dağıtarak gidersek $(-1)\times8+(-1)\times(-3)=-8+3=-5$ olur. İki yöntem aynı grubu ters işaretlisiyle değiştirdi. Yalnız ilk terime eksi uygulayıp $-8-3=-11$ yazmak, ikinci terimin yönünü çevirmeyi unutur. Parantezin dışındaki eksi tek bir rakamı değil, grubun tamamını etkiler; içeride birden çok terim varsa hepsi bu etkinin içindedir.
+
 ## 9. Bölmeyi Dağıtırken ve Sadeleştirirken
 
 Dağılma özelliğini görmek, her işlemi her yere dağıtabileceğimiz anlamına gelmez. Paydaki bir toplamı, aynı sıfırdan farklı sayıya parça parça bölebiliriz:
@@ -357,6 +383,40 @@ $$
 $$
 
 Payın **tamamındaki** ortak 3 çarpanını ortaya çıkardık. Üç katına çıkarılmış bir miktarı üçe bölünce o miktarın kendisine döndük. Yalnızca payın içindeki bir terimi bölüp diğerini olduğu gibi bırakamayız. Örneğin $(3+6)/3$, $1+6$ değil, $1+2=3$ eder.
+
+### İç içe kesirlerde hangi miktarı bölüyoruz?
+
+Şu iki ifadede aynı sayılar görünür, fakat gruplar farklıdır:
+
+$$
+\frac{12}{3/2}
+\qquad\text{ve}\qquad
+\frac{12/3}{2}.
+$$
+
+Soldaki ifadede bölen, $3/2$ sayısının tamamıdır. Kesre bölme kuralıyla:
+
+$$
+\frac{12}{3/2}=12\times\frac23=8
+$$
+
+elde ederiz. Sağdaki ifadede önce $12/3=4$ hesabı yapılır, sonra bu sonuç 2'ye bölünür:
+
+$$
+\frac{12/3}{2}=\frac42=2.
+$$
+
+İki sonuç farklıdır; kesir çizgilerinin hangi grubu kapsadığı işlem sırasını belirlemiştir. Yalnız `12 / 3 / 2` yazarsak aynı öncelikteki bölmeleri soldan sağa okuyarak ikinci anlama ulaşırız. İlk anlamı satır içinde göstermek için `12 / (3 / 2)` yazmamız gerekir. Parantez burada bir süs veya fazladan açıklama değil, hangi sorunun sorulduğunun parçasıdır.
+
+Sonucu ters işlemle de sınayabiliriz. İlk örnekte 8'i bölenle çarptığımızda $8\times(3/2)=12$ buluruz; bölme gerçekten 12'den başlamıştır. İkinci örnekte ise 2'yi önce 2, sonra 3 ile çarparak 12'ye döneriz. Geri dönüş adımlarının farklı olması, ileri yöndeki hesapların da farklı olduğunu doğrular.
+
+Benzer dikkat eksi işareti için gerekir. $10-[4-(2+1)]$ ifadesinde önce $2+1=3$, sonra $4-3=1$, en son $10-1=9$ bulunur. Köşeli parantez de normal parantez gibi gruplama yapar; yalnız iç içe grupları görmeyi kolaylaştırır. Bir ara sonucu yazarken dışarıdaki $10-$ bölümünü korumak, hesapladığımız parçayla bütün ifadeyi karıştırmamızı önler. Uzun bir ifadeyi doğru çözmenin ilk adımı hızlı aritmetik değil, hangi parçanın hangi işlemin girdisi olduğunu okumaktır.
+
+### Bölümde neyin sadeleştiğini görmek
+
+$\frac{6+9}{3}$ ifadesinde her iki toplama terimi 3'e bölünebilir. Bu yüzden $6/3+9/3=2+3=5$ yazmak geçerlidir. Aynı sonucu önce payı toplayarak $15/3=5$ buluruz. İki yöntemin aynı cevabı vermesi, toplamın her parçasına aynı bölmenin uygulanmasından gelir. Yalnız ilk terimi bölüp $2+9=11$ yazmak, dokuzun payına düşen bölmeyi unutmak olur.
+
+Paydada toplam bulunduğunda durum değişir. $12/(2+4)=12/6=2$'dir. $12/2+12/4=6+3=9$ ise iki ayrı bölmenin toplamıdır; ilk ifadedeki tek bölmeyle aynı şeyi saymaz. Bunları geri çarparak da ayırabiliriz: Gerçek sonuç 2, bölen 6 ile çarpılınca 12'yi verir. Yanlış aday 9 ise 6 ile çarpılınca 54 verir. Bölme sonucunun bölenle çarpıldığında bölünene dönmesi, parantez içeren hesaplarda da geçerli ve kolay bir denetimdir. Bu kontrol, bir kuralı yalnız şekline benzeterek uygulamak yerine, işlemin anlamını yeniden kullanmamızı sağlar.
 
 ## 10. Bir İfadeyi Baştan Sona Okumak
 

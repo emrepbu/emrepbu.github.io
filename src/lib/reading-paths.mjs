@@ -140,6 +140,66 @@ export const PHYSICS_READING_SECTIONS = [
     ],
   },
   {
+    id: 'kristalde-elektronlar',
+    title: 'Kristalde elektronlar ve yarı iletkenler',
+    description:
+      'Ters örgüden durum sayımına, etkin kütleden akıma, katkılama ve ışıkla etkileşime ilerle.',
+    postIds: [
+      'ters-orgu-ve-bragg-kirinimi',
+      'durum-yogunlugu-ve-fermi-yuzeyi',
+      'etkin-kutle-ve-delikler',
+      'elektriksel-iletkenlik-ve-drude-modeli',
+      'yari-iletkenler-ve-katkilama',
+      'pn-eklemi-ve-diyot',
+      'katilarda-isik-ve-eksitonlar',
+    ],
+  },
+  {
+    id: 'fononlar-ve-isi',
+    title: 'Örgü titreşimleri ve ısı',
+    description:
+      'Normal modları fononlarla anlat; katıların ısı sığasını ve ısı iletimini hesapla.',
+    postIds: [
+      'orgu-titresimleri-ve-fononlar',
+      'katilarin-isi-sigasi-ve-debye-modeli',
+      'fononlar-ve-isi-iletimi',
+    ],
+  },
+  {
+    id: 'manyetizma-ve-duzen',
+    title: 'Manyetizma ve ortak düzen',
+    description:
+      'Tek bir manyetik momentin yanıtından değiş tokuşa, düzenlenmeye ve faz geçişlerine geç.',
+    postIds: [
+      'diyamanyetizma-ve-paramanyetizma',
+      'degis-tokus-etkilesimi-ve-manyetik-duzen',
+      'ising-modeli-ve-faz-gecisleri',
+    ],
+  },
+  {
+    id: 'kuantum-gazlari-ve-akis',
+    title: 'Kuantum gazları, süperakışkanlık ve süperiletkenlik',
+    description:
+      'Fermi basıncını ve Bose yoğuşmasını kur; ortak kuantum fazının akışa ve elektrik akımına etkisini incele.',
+    postIds: [
+      'fermi-gazi-ve-dejenerasyon-basinci',
+      'bose-einstein-yogusmasi',
+      'superakiskanlik-ve-kuantum-girdaplari',
+      'cooper-ciftleri-ve-bcs-kurami',
+      'josephson-etkisi-ve-aki-kuantumlanmasi',
+    ],
+  },
+  {
+    id: 'hall-ve-geometrik-faz',
+    title: 'Hall etkisi ve geometrik faz',
+    description:
+      'Landau düzeylerinden kuantum Hall etkisine, Berry fazına ve topolojik bantlara ulaş.',
+    postIds: [
+      'landau-duzeyleri-ve-kuantum-hall-etkisi',
+      'berry-fazi-ve-topolojik-bantlar',
+    ],
+  },
+  {
     id: 'ileri-okuma',
     title: 'İleri okuma: Planck ölçeği',
     description:

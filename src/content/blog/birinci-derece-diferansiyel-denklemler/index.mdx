@@ -23,6 +23,10 @@ Bir çözümü yalnız bir noktada denkleme uydurmak yeterli değildir. Örneği
 
 Denklemde görülen en yüksek türevin sırasına **mertebe** denir. $y'+y=t$ birinci mertebe, $y''+y=0$ ikinci mertebedir. **Derece** ayrı bir kavramdır: denklem türevlerde polinom biçimindeyse en yüksek mertebeli türevin kuvvetini anlatır. Örneğin $(y')^2=y$ birinci mertebe ve ikinci derecedir. Günlük dilde bu iki sözcük karışabilse de hesapta ayrımı koruyacağız.
 
+Bu yazıyı çalışırken [türevin anlamını](/blog/turevin-anlami-ve-temel-kurallari/), [zincir kuralını](/blog/trigonometrik-ve-ters-fonksiyonlarda-turev/) ve [integral yöntemlerini](/blog/integral-alma-yontemleri/) gerektiğinde yeniden açabilirsin. Diferansiyel denklemde bu araçların görevleri değişmiyor: türev değişimi ölçüyor, integral türev bilgisi verilmiş fonksiyonu geri kuruyor. Yeni soru, değişim hızının bilinmeyen fonksiyonun kendisine de bağlı olabilmesidir.
+
+Örneğin $y'=2y$ demek “$y$ her noktada 2'dir” değildir; o noktadaki eğim, o noktadaki yüksekliğin iki katıdır. $y=3e^{2t}$ adayı için türev $6e^{2t}$, sağ taraf $2y=6e^{2t}$ olur. $y=3e^t$ ise başlangıçta aynı 3 değerini verse de türevi $3e^t$ olduğundan denklemi sağlamaz. Başlangıç değeri tek başına fonksiyonun nasıl devam edeceğini söylemez; bu devamı diferansiyel denklem sınırlar.
+
 ## 2. Başlangıç değeri ve sınır değeri
 
 $y'=2t$ ile birlikte $y(0)=3$ verilirse $C=3$ seçilir ve çözüm $y=t^2+3$ olur. Denklem ile aynı başlangıç noktasındaki ek bilgiye **başlangıç değer problemi** denir. $t$ zaman olarak yorumlanıyorsa isim doğrudan anlaşılır; fakat bağımsız değişkenin zaman olması şart değildir.
@@ -55,6 +59,10 @@ $y'=2ty$, $y(0)=3$ örneğinde sıfır olmayan dalda $y'/y=2t$ olur. İntegral $
 
 Ayırma işlemi kendiliğinden çözümün hangi aralıkta bulunduğunu söylemez. Logaritmanın argümanı, paydalar ve başlangıç koşulu birlikte incelenir. Bir mutlak değerli denklemden açık fonksiyon çıkarırken işaret dalını başlangıç bilgisi seçebilir.
 
+Logaritmadan üstel biçime geçişteki sabitleri açalım. $\ln|y|=t^2+C$ eşitliğinin iki yanına üstel uygulamak $|y|=e^Ce^{t^2}$ verir. $e^C$ her zaman pozitiftir; buna $K_0>0$ diyebiliriz. Bir çözümün sıfır olmayan bağlantılı aralığında işareti değişemeyeceği için $y=K_0e^{t^2}$ veya $y=-K_0e^{t^2}$ olur. İkisini $y=Ke^{t^2}$, $K\ne0$, diye birleştiririz. $y(0)=3$ koşulu pozitif dalı ve $K=3$ değerini seçer.
+
+$K=0$ değerini son formüle koymak da bir çözüm üretir; ancak bu, logaritma adımından gelmedi. $\ln0$ tanımlı olmadığı için sıfır çözümünü özgün denklemde ayrıca doğrulamamız gerekir. Bir işlemin ara adımda dışarıda bıraktığı değer, son formül düzgün görünse bile otomatik olarak ispatlanmış olmaz.
+
 ## 5. Bölmede kaybolan denge çözümleri
 
 Az önce $y$'ye böldüğümüz için $y=0$ çözümünü dışarıda bıraktık. Oysa özgün $y'=2ty$ denkleminde $y\equiv0$ doğrudan çözümüdür. Genel bir $y'=g(t)h(y)$ denkleminde $h(c)=0$ sağlayan her sabit $y(t)=c$, ayrı kontrol edilmesi gereken bir denge çözümüdür.
@@ -70,6 +78,44 @@ $$
 İntegral $\ln|y|-\ln|1-y|=t+C$ verir. $0<y<1$ dalında $y/(1-y)=Ke^t$ ve buradan $y=1/(1+Ae^{-t})$ elde edilir. $y(0)=1/5$ ise $1/(1+A)=1/5$, yani $A=4$ olur.
 
 Çözüm $y(t)=1/(1+4e^{-t})$'dir. Türevi $4e^{-t}/(1+4e^{-t})^2$, sağ tarafı da $[1/(1+4e^{-t})][4e^{-t}/(1+4e^{-t})]$ olduğundan eşittir. Başlangıç değeri $1/5$ ve uzun zaman limiti 1'dir. Denge 1'e sonlu bir anda “çarpıp durduğunu” söylemiyoruz; bu çözüm her sonlu zamanda 1'den küçüktür ve limite yaklaşır.
+
+Lojistik örneğin cebirini de tamamlayalım. Kesirleri toplarsak $1/y+1/(1-y)=[(1-y)+y]/[y(1-y)]=1/[y(1-y)]$ olur. İkinci terimin antitürevi $-\ln|1-y|$'dir; eksi işareti, içteki $1-y$'nin türevinin $-1$ olmasından gelir. Bu nedenle integral logaritmaların toplamını değil farkını verir.
+
+$0<y<1$ aralığında iki ifade de pozitiftir. $\ln[y/(1-y)]=t+C$ yazıp üstel alırız. $K=e^C>0$ ile $y/(1-y)=Ke^t$ elde edilir. Şimdi:
+
+$$
+\begin{aligned}
+y&=Ke^t(1-y),\\
+y+Ke^ty&=Ke^t,\\
+y(1+Ke^t)&=Ke^t,\\
+y&=\frac{Ke^t}{1+Ke^t}
+=\frac1{1+K^{-1}e^{-t}}.
+\end{aligned}
+$$
+
+$A=K^{-1}$ demek yalnız sabitin adını değiştirmektir. Başlangıç $1/5$ olduğunda $A=4>0$ çıkar; payda bütün gerçek $t$'lerde 1'den büyük olduğundan çözüm hep 0 ile 1 arasında kalır. Başlangıçta seçtiğimiz dalın, bulduğumuz çözüm boyunca gerçekten korunduğunu böylece kontrol ederiz.
+
+### Açık çözümü bulduktan sonra hangi aralıkta kalıyoruz?
+
+Ayrılabilir bir denklemde integral hesabının bittiği an, çözümün geçerli aralığını incelemeye başlayabiliriz. $y'=t(1+y^2)$ ve $y(0)=0$ problemini ele alalım. Gerçek $y$ için $1+y^2\ge1$ olduğundan bu ifadeye bölmek hiçbir denge çözümünü kaybettirmez:
+
+$$
+\frac{y'}{1+y^2}=t.
+$$
+
+Sol taraf zincir kuralıyla $d[\arctan y(t)]/dt$'dir. İki tarafın integralini alınca $\arctan y=t^2/2+C$ elde edilir. Başlangıç değerini kullanalım: $\arctan0=0$ ve $t=0$ olduğundan $C=0$ çıkar. O hâlde başlangıç çevresindeki çözüm:
+
+$$
+y(t)=\tan(t^2/2)
+$$
+
+olmalıdır. Türevi $t/\cos^2(t^2/2)$'dir. $1+\tan^2u=1/\cos^2u$ özdeşliğiyle bu, tam olarak $t(1+y^2)$ eder. Ayrıca $y(0)=\tan0=0$ koşulu sağlanır.
+
+Fakat formülü bütün gerçek zamanlarda kullanamayız. İntegral adımında kullandığımız arktanjantın çıktısı $(-\pi/2,\pi/2)$ aralığındadır. Sağ taraf $t^2/2$ negatif değildir; bu yüzden ilgili dalda $t^2/2<\pi/2$, yani $|t|<\sqrt\pi$ gerekir. Başlangıç noktasını içeren en geniş çözüm aralığı $(-\sqrt\pi,\sqrt\pi)$'dir. İki uca yaklaşırken tanjantın girdisi $\pi/2$'ye alttan yaklaşır ve $y$ sınırsız büyür.
+
+Daha uzak bazı $t$ değerlerinde $\tan(t^2/2)$ yeniden sonlu olabilir. Bu, aradaki sonsuz büyümeyi geçerek aynı gerçek değerli çözümü kesintisiz uzattığımız anlamına gelmez. Bir çözümün aralığı bağlantılıdır; o aralıktaki her noktada gerekli değer ve türev bulunmalıdır.
+
+Bu örnekte denklemin sağ tarafı $t(1+y^2)$ bütün düzlemde düzgün bir polinomdur. Yine de seçilen çözümün sonlu kaldığı zaman aralığı sınırlıdır. Dolayısıyla denklemin katsayılarının her yerde tanımlı olmasıyla çözümün her zamanda sonlu olması ayrı özelliklerdir. Çözümün formülü, başlangıç bilgisi ve geçerli aralığı birlikte verilmelidir.
 
 ## 6. Doğrusal denklemde tümleştiren çarpan
 
@@ -90,6 +136,17 @@ $$
 olur. Bu fonksiyona tümleştiren çarpan denir. Sabit çarpan yöntemin sonucunu değiştirmediği için antitürev sabitini burada sıfır seçebiliriz. Denklem $ (\mu y)'=\mu q$ haline gelir ve bir kez integral alınır.
 
 $p$ ve $q$ ilgili aralıkta sürekli olduğunda yöntem düzenli çalışır. En yüksek türevin önünde başka katsayı varsa önce ona bölerek standart biçime getiririz; katsayının sıfır olduğu noktaları aynı aralığın içinde dikkatsizce geçemeyiz.
+
+Tümleştiren çarpanı bulurken $\mu'=p\mu$ denklemini neden çözebildiğimizi de izleyelim. $\mu>0$ seçersek $\mu'/\mu=p$ ve zincir kuralıyla $(\ln\mu)'=p$ olur. İntegral alıp üstel uygulamak $\mu=e^{\int p(t)dt}$ verir. Üstel hiçbir yerde sıfır olmadığı için sonradan $\mu$'ye bölmek çözüm kaybettirmez.
+
+Çarpımı yaptıktan sonraki genel çözüm:
+
+$$
+ y(t)=\frac1{\mu(t)}
+ \left[C+\int\mu(t)q(t)dt\right]
+$$
+
+şeklindedir. Sağdaki integralde seçtiğimiz bir antitürevi kullanırız; onun sabit farkını zaten $C$ taşır. Tümleştiren çarpanın önüne ayrı bir sıfır olmayan sabit koymak hem dıştaki bölmeyi hem içteki integrali aynı oranda değiştirir; kalan sabit yine $C$'ye alınır. Bu nedenle yöntemde gereksiz ikinci bir serbest sabit üretmeyiz. Birinci mertebeli doğrusal denklemde başlangıç değerini seçen tek sabit kalır.
 
 ## 7. Sabit katsayılı doğrusal örnek
 
@@ -129,6 +186,10 @@ Teoremin fikrini integral biçimi açıklar: $y(t)=y_0+\int_{t_0}^tf(s,y(s))ds$.
 
 Buradaki sonuç **yereldir**. $y'=y^2$, $y(0)=1$ denkleminin çözümü $y=1/(1-t)$'dir; başlangıç çevresinde tektir ama $t=1$'e yaklaşınca büyür. Alan $f=y^2$ her yerde düzgün olsa da çözüm bütün zamanlarda sonlu kalmak zorunda değildir. Genel bir teklik teoremi sonsuza kadar devam garantisi diye okunmamalıdır.
 
+Teklik fikrindeki “kısa aralık” hesabını görünür kılalım. Aynı başlangıçtan çıkan iki aday $y_1,y_2$, uzunluğu $\delta$ olan kapalı bir aralıkta bulunsun ve bu aralıkta Lipschitz katsayısı $L$ geçerli olsun. Aralarındaki en büyük farka $M$ diyelim. İntegral denklemlerini çıkarıp mutlak değer alırsak her $t$ için fark en fazla $L\delta M$ olur. En büyük fark için de $M\le L\delta M$ geçerlidir. $L\delta<1$ seçersek $M>0$ varsayımı $1\le L\delta$ çelişkisini verir; dolayısıyla $M=0$ ve iki aday aynıdır.
+
+Bu hesap, mevcut iki çözümün neden tek olması gerektiğini anlatır. Çözümün gerçekten varlığının ispatı ayrıca ardışık yaklaşımların bir fonksiyona yakınsadığını göstermeyi gerektirir. Kullanılan varlık-teklik teoremi bu ikinci kısmı da sağlar; yalnız iki çözüm arasındaki farkı hesaplamak, kendi başına varlık ispatı değildir.
+
 ## 10. Bir başlangıçtan birçok çözüm
 
 $y'=\sqrt y$, $y(0)=0$ ve $y\geq0$ örneğinde $y\equiv0$ bir çözümdür. Fakat herhangi bir $c\geq0$ için $t\leq c$ boyunca 0 kalan, $t\geq c$ için $(t-c)^2/4$ olan fonksiyon da çözümdür. Geçiş noktasında hem fonksiyon hem türev 0'dır. Sonrasında türev $(t-c)/2$, karekök de aynı değerdir.
@@ -156,6 +217,10 @@ $h=0{,}1$ ile on adım sonucu $(1{,}1)^{10}\approx2{,}593742$ olur; hata yaklaş
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Euler adımı ve tam çözüm" caption="y′=−y, y(0)=1 probleminde Euler yönteminin adım boyu küçülür. Sarı kırık çizgi, turkuaz üstel çözüme yaklaşır; karşılaştırma aynı zaman aralığında yapılır." />
 
+Euler örneğindeki ilk adımda $t_0=0$, $y_0=1$ ve eğim $f(t_0,y_0)=1$'dir. $h=1/4$ kadar yatay ilerlediğimiz için tahmini düşey artış $1/4$ olur; $y_1=1+1/4=1{,}25$ elde edilir. İkinci adımın eğimi artık 1 değildir: yaklaşık noktada $f(t_1,y_1)=1{,}25$'tir. Artış $0{,}25\cdot1{,}25=0{,}3125$, yeni değer $1{,}5625$ olur. Her adımda aynı ilk eğimi kullansaydık Euler yöntemi yerine tek bir teğet doğruyu uzatmış olurduk.
+
+Alt indisler türev anlamına gelmez: $y_n$, $n$'nci adımdaki yaklaşık sayıdır; $y'(t)$ ise fonksiyonun türevidir. Kesin değerle karşılaştırmayı da aynı girdide yaparız. Dört adımın sonu $t_4=4h=1$ olduğu için $y_4$'ü $e^1$ ile karşılaştırdık; farklı adım sayılarının sonuçları, aynı son zamana ulaştıkları sürece anlamlı biçimde karşılaştırılır.
+
 ## 12. Yerel hata ile biriken hatayı ayırmak
 
 Kesin çözümden tek bir adım başlatırsak Taylor açılımı $y(t+h)=y(t)+hy'(t)+O(h^2)$ verir. Buradaki $O(h^2)$, hata büyüklüğünün yeterince küçük $h$ için sabit çarpı $h^2$ ile sınırlanması demektir. Euler yöntemi ikinci ve daha yüksek terimleri atar; tek adımın yerel hatası bu düzendedir.
@@ -163,6 +228,10 @@ Kesin çözümden tek bir adım başlatırsak Taylor açılımı $y(t+h)=y(t)+hy
 Sabit uzunlukta bir aralıkta yaklaşık $1/h$ adım bulunduğu için, uygun düzgünlük ve Lipschitz koşullarında toplam hata $O(h)$ mertebesindedir. Yerel $h^2$ ile küresel $h$ aynı şey değildir. Adımı yarıya indirmek çoğu düzenli durumda toplam hatayı yaklaşık yarıya indirir; her problemde aynı sayısal oranı garanti eden koşulsuz bir kural değildir.
 
 Yöntemin kararlılığı da önemlidir. $y'=-ky$, $k>0$ için Euler çarpanı $1-kh$ olur. Kesin çözüm azalırken $|1-kh|>1$ seçilirse sayısal sonuç büyüyebilir. Dolayısıyla büyük adım yalnız kaba yaklaşım üretmeyebilir, yanlış davranış da üretebilir. Sonucu adım küçülterek karşılaştırmak ve denklemin beklenen nitelikleriyle denetlemek gerekir.
+
+Kararlılık uyarısını $k=2$ üzerinden görelim. Kesin çözüm $y=e^{-2t}$ iken $h=1{,}5$ seçilen Euler adımında çarpan $1-2(1{,}5)=-2$ olur. Başlangıç 1'den yaklaşık değerler $-2,4,-8$ diye gider; hem işaret değiştirir hem büyür. Adımı $h=0{,}25$ seçersek çarpan $1/2$ olur ve değerler $1,1/2,1/4,\ldots$ biçiminde azalır.
+
+Genel azalma koşulu $|1-kh|<1$ eşitsizliğidir. Bunu $-1<1-kh<1$ diye açınca pozitif $h,k$ için $0<kh<2$ bulunur. İşaretin de değişmemesi istenirse daha sıkı olarak $0<kh\le1$ gerekir. Kararlı bir adımın mutlaka çok doğru olduğunu söylemiyoruz; kararlılık kaba davranışın kontrolden çıkmamasını, hata hesabı ise sayısal yakınlığın derecesini ölçer.
 
 Bir diferansiyel denklem çözümü artık yalnız bir formül bulmaktan ibaret görünmüyor: çözümün varlığı, tekliği, aralığı ve yaklaşık hesabın hatası ayrı sorulardır. Bir sonraki yazıda ikinci türev içeren denklemlerde iki başlangıç bilgisinin nasıl rol oynadığını ve farklı üstel köklerin neden farklı davranışlar ürettiğini inceleyeceğiz.
 

@@ -29,6 +29,10 @@ $A$ ile $B$ arasındaki noktaları ve iki ucu içeren sonlu bölüm **doğru par
 
 Aynı doğru üzerinde bulunan noktalara **doğrusal noktalar** denir. $B$, $A$ ile $C$ arasındaysa $|AC|=|AB|+|BC|$ olur. “Arasında” koşulu önemlidir; üç harfin aynı doğru üzerinde bulunması tek başına bu özel toplamı garanti etmez. Ortadaki noktanın hangisi olduğu verilmelidir.
 
+Bir doğru üzerinde parçaları toplarken nokta sırası neden önemlidir? $A$, $B$, $C$ bu sırada dizilmişse $A$'dan $C$'ye giderken önce $AB$, sonra $BC$ parçasını geçeriz. Örneğin $AB=4$ ve $BC=3$ santimetreyse $AC=7$ santimetredir. Fakat $AB=4$ ve $AC=7$ bilgileri, sıra belirtilmeden $BC=3$ demeye yetmez. $B$ ile $C$, $A$'nın karşı taraflarındaysa aralarındaki uzaklık $4+7=11$ olur. Aynı iki ölçü, farklı yerleşimlerde farklı soruları cevaplar.
+
+Bu yüzden çizime önce verilmiş ilişkileri işleriz: hangi noktalar aynı doğru üzerinde, hangisi diğerlerinin arasında? Bir şekli ölçerek elde ettiğimiz tahmin ile metnin verdiği kesin bilgi aynı şey değildir. Çizim ölçekli olmayabilir. Ayrıca $AB$ ışınını adlandırırken ilk harf başlangıcı belirler; $BA$ ışını başka yönde ve başka başlangıçtadır. Doğru parçasında ise uçların yerini değiştirmek parçayı değiştirmez. Gösterimin sırasını, gösterilen nesnenin tanımıyla birlikte okumak gerekir.
+
 ## 2. Açı Bir Açılma Miktarıdır
 
 Ortak başlangıçlı iki ışın bir açı oluşturur. Ortak noktaya **köşe**, ışınlara açının **kolları** deriz. $\angle ABC$ gösteriminde ortadaki $B$ köşedir; kollar $BA$ ve $BC$ yönündeki ışınlardır. Köşedeki açı tek ve açıkça belli ise yalnızca $\angle B$ yazılabilir.
@@ -51,6 +55,18 @@ Komşu iki açının ortak olmayan kolları birbirine zıt ışınlarsa, birlikt
 
 Bu ilişkiyi kullanırken doğru boyunca gerçekten zıt yönde uzanan iki kol bulunduğundan emin olmalıyız. Kolların düz görünmesi bir çizim izlenimi olabilir; doğrusal oldukları verilmişse veya ispatlanmışsa toplamı kesin olarak kullanabiliriz.
 
+Bir açı hesabında sayıdan önce dayanağı yazmak işimizi kolaylaştırır. Örneğin bir doğru üzerinde duran $A,B,C$ noktaları ve $B$'den çıkan başka bir ışın olsun. Bu ışın doğru açıyı $x$ ve $x+40^\circ$ büyüklüğünde iki parçaya ayırsın. Doğru açı 180 derece olduğu için:
+
+$$
+\begin{aligned}
+x+(x+40^\circ)&=180^\circ,\\
+2x&=140^\circ,\\
+x&=70^\circ.
+\end{aligned}
+$$
+
+Diğer açı $110^\circ$ olur. Kontrol ederken hem $70+110=180$ toplamını hem de $110-70=40$ farkını doğrularız; böylece iki veriyi de kullandığımızı görürüz. Burada $x$ bir uzunluk değil, açı ölçüsüdür. İki açının yan yana çizilmesi tek başına aynı denklemi kurdurmazdı: dıştaki iki ışının zıt yönlü olduğu, yani bir doğru açı oluşturduğu bilgisine ihtiyaç vardır. Hesabı mümkün kılan koşul, şeklin yaklaşık görünüşü değil bu doğrusal yerleşimdir.
+
 ## 4. Kesişen İki Doğrunun Ters Açıları
 
 İki farklı doğru bir noktada kesiştiğinde dört açı oluşur. Birbirinin karşısında duran, ortak kol paylaşmayan açı çiftlerine **ters açılar** denir. Ters açıların ölçüleri eşittir.
@@ -72,6 +88,10 @@ Paralellerin arasında kalan ve kesenin zıt taraflarında bulunan açılar **i�
 Bu ilişkiler Öklid düzleminin paralellik kurallarıdır. Önceki kesişim ilişkilerinden farklı olarak iki doğrunun paralel olması gerekir. Paralellik yoksa, farklı kesişimlerdeki açıları yalnızca benzer konumda durdukları için eşit sayamayız.
 
 Ters yönde de kullanılabilecek ölçütler vardır: Bir kesenin oluşturduğu yöndeş veya iç ters açılar eşitse, kesilen iki doğrunun paralel olduğu sonucuna ulaşabiliriz. Burada “paralel oldukları için açılar eşit” ile “açılar eşit olduğu için paralelliği çıkarıyoruz” iki farklı çıkarım yönüdür; hangisini kullandığımızı belirtiriz.
+
+Paralellik kurallarını birbirinden kopuk ezberler olarak görmeyelim. Bir kesenin iki paralel doğruyla yaptığı yöndeş açılar eşitse, kesişimlerden birindeki ters açı da yöndeş açının eşidir. Böylece iç ters açı eşitliğine ulaşırız. Aynı taraftaki iç açılardan biri de bu eş açıya komşu bir doğru açı parçasıdır; bu nedenle toplamları 180 derece olur. Ters açı ve doğru açı bilgileri, paralel doğrular üzerindeki farklı görünen durumları birbirine bağlar.
+
+Bir açının 65 derece olduğu çizimde öteki kesişimde rastgele 65 yazmak yerine, önce kesene ve paralellere göre yerini belirleriz. Yöndeşi 65, onun ters açısı 65, komşu doğru açı parçası ise $180-65=115$ derecedir. Her geçişte tek gerekçe kullanmak hata kaynağını görünür kılar. Doğruların paralelliği verilmemişse bu aktarım yapılamaz. Buna karşılık uygun yöndeş açıların eşitliği kanıtlanmışsa ters yönlü bir sonuçla paralelliği gösterebiliriz; varsayım ile çıkarımın yerini değiştirdiğimizin farkında olmalıyız.
 
 ## 6. Üçgeni Tanımlamak ve Adlandırmak
 
@@ -113,6 +133,10 @@ Burada geometri bize eşitliği, cebir ise bilinmeyeni bulma yolunu verdi. Çizi
 
 Açıların toplamının doğru olması, bir çizimde yazılan bütün kenarların da doğru olduğu anlamına gelmez. Uzunluk verileri ayrıca üçgen eşitsizliğini ve başka geometrik ilişkileri sağlamalıdır. Her bilgi grubunu kendi koşulları içinde denetlemek, çizimin görünüşüne aşırı güvenmememizi sağlar.
 
+İspatta köşeden yeni bir paralel çizmemiz, üçgenin açılarını değiştirmez. Üçgenin kenarlarını veya köşelerini taşımıyoruz; aynı düzleme bir yardımcı doğru ekliyoruz. Bu doğru sayesinde farklı köşelerde bulunan üç açı ölçüsünü, eş açıları kullanarak tek köşede yan yana okuyabiliyoruz. Buradaki işlem açıları kesip fiziksel olarak yapıştırmak değil, eşit ölçüleri aynı doğru açı içinde göstermektir. Yardımcı çizginin işe yaramasının nedeni paralellik, son toplamın 180 olmasının nedeni doğru açıdır.
+
+Örneğin iki açı 35 ve 90 dereceyse üçüncüyü $180-35-90=55$ derece buluruz. Önce bilinenleri toplayıp $35+90=125$, sonra $180-125=55$ yapmak aynı işlemdir. Sonucun pozitif olması gerekir; 100 ve 95 derece verilseydi kalan ölçü $-15$ çıkardı. Bu, negatif açılı bir üçgen bulduğumuz anlamına gelmez. Üçgenin iç açıları için sunulan verilerin birbiriyle uyuşmadığını gösterir. Formül yalnız eksik sayıyı bulmaz, verilerin mümkün olup olmadığını da denetler.
+
 ## 8. Dış Açı ve Bir Tam Dönüş
 
 Bir üçgenin bir kenarını köşeden ileri uzattığımızda, uzantı ile komşu kenarın oluşturduğu ve iç açıyla bütünler olan açıya o köşedeki **dış açı** deriz. İç açı $\gamma$ ise bu dış açı $180^\circ-\gamma$'dır.
@@ -122,13 +146,37 @@ Bir üçgenin bir kenarını köşeden ileri uzattığımızda, uzantı ile kom�
 Üçgenin kenarları boyunca aynı yönde yürüdüğümüzü düşünelim. Her köşede yolumuza devam edebilmek için bir dış açı kadar döneriz. Üç köşeyi geçip başlangıç yönüne döndüğümüzde toplam bir tam dönüş yaparız. Cebirsel hesap da bunu doğrular:
 
 $$
-(180^\circ-\alpha)+(180^\circ-\beta)
-+(180^\circ-\gamma)=540^\circ-180^\circ=360^\circ.
+\begin{aligned}
+&(180^\circ-\alpha)+(180^\circ-\beta)\\
+&\qquad+(180^\circ-\gamma)\\
+&\quad=540^\circ-180^\circ\\
+&\quad=360^\circ.
+\end{aligned}
 $$
 
 Burada her köşede bir tane, aynı dolaşım yönüne uygun dış açı seçtik. Bir köşenin iki uzantısından doğan açıları rastgele toplayarak aynı toplamı beklememeliyiz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Üçgenin çevresinde bir tam dönüş" caption="Her köşede aynı yönde seçilen dış açı, yürüyüş yönünü değiştiriyor. Üç dış açının toplamı bir tam dönüş, yani 360 derecedir." />
+
+### Üçgenin açı toplamından dörtgene geçmek
+
+Bir dörtgenin köşelerini sınır boyunca $A,B,C,D$ diye adlandıralım. Şimdilik bütün iç açıları $180^\circ$'den küçük olan, içe doğru çukuru bulunmayan bir dörtgen seçiyoruz; böyle bir çokgene **dışbükey** denir. Karşılıklı $A$ ve $C$ köşelerini bir doğru parçasıyla birleştirelim. Komşu olmayan köşeleri birleştiren bu parçaya **köşegen** denir.
+
+$AC$ köşegeni dörtgeni $ABC$ ve $ACD$ olmak üzere iki üçgene ayırır. Her üçgenin iç açı toplamı $180^\circ$ olduğu için iki toplam birlikte $360^\circ$ eder. $A$ ve $C$ köşelerinde üçgenlere ait iki küçük açı yan yana gelerek dörtgenin o köşedeki iç açısını oluşturur. $B$ ve $D$ açıları ise zaten değişmeden kalır. Bu nedenle iki üçgenin açılarını toplamak, dörtgenin dört iç açısını tam birer kez saymak demektir.
+
+Örneğin dörtgenin üç açısı $80^\circ$, $95^\circ$ ve $110^\circ$ ise dördüncü açı:
+
+$$
+\begin{aligned}
+&360^\circ-(80^\circ+95^\circ+110^\circ)\\
+&\quad=360^\circ-285^\circ\\
+&\quad=75^\circ
+\end{aligned}
+$$
+
+olur. Sonucu diğerleriyle toplayınca yeniden $360^\circ$ elde ederiz. Fakat bu hesap tek başına kenar uzunluklarını belirlemez; açı bilgisi ile uzunluk bilgisinin farklı görevleri vardır.
+
+Aynı düşünce dışbükey bir beşgende, bir köşeden çizilen iki köşegenle üç üçgen oluşturur; açı toplamı $3\times180^\circ=540^\circ$ olur. Genel olarak $n$ köşeli dışbükey bir çokgende, bir köşeden yapılan bu ayırma $n-2$ üçgen verir. Burada $n$ köşe sayısı olan, en az 3 değerindeki tam sayıdır. Açı toplamı $(n-2)180^\circ$ çıkar. Ezberlenmiş yeni bir sayı yerine, önceden gerekçelendirdiğimiz üçgen sonucunu bölgeyi eksiksiz parçalara ayırarak kullanmış olduk.
 
 ## 9. Her Üç Uzunluk Üçgen Olmaz
 
@@ -139,6 +187,10 @@ Uzunlukları 2, 3 ve 8 santimetre olan üç çubuğu uç uca kapatıp üçgen ya
 Eşitlik durumunda üç köşe aynı doğru üzerine kapanır; alan kapatan üçgen oluşmaz. Bu yüzden “büyük veya eşit” değil, kesin büyüklük kullanıyoruz. 2, 3 ve 5 uzunlukları da gerçek bir üçgen vermez.
 
 İki kenar 4 ve 7 santimetre, üçüncüsü $x$ ise toplam koşulu $x<11$ verir. Diğer iki koşul $x>3$ ve $x>-3$ olur; pozitif uzunluklarda güçlü alt sınır $x>3$'tür. Birlikte $3<x<11$ bulunur. Genel biçim $|a-b|<c<a+b$ olarak da yazılır. Kenarların farkı alt, toplamı üst sınırı belirler.
+
+Üçgen eşitsizliğini üçüncü köşenin hareketiyle de okuyabiliriz. Uzunlukları 4 ve 7 olan iki çubuğu ortak uçlarından bağlayalım. Diğer iki uç arasındaki uzaklık, çubuklar zıt yönlerde aynı doğruya açıldığında 11 olur; aynı yöne kapandığında 3 olur. Arada kalan, alanı pozitif bir üçgen için uzaklık bu iki uç değerden kesinlikle içeride kalmalıdır. Bu nedenle $3<x<11$ yazısındaki eşitsizlikler sıkıdır; 3 ve 11 dahil değildir.
+
+Örneğin $x=5$ uygundur: $4+5>7$, $4+7>5$ ve $5+7>4$ kontrolleri sağlanır. $x=2$ ise üst sınırı sağlasa bile alt sınırı sağlamaz; $4+2<7$ olduğu için üçgen kapanamaz. Yalnız iki kenarın toplamına bakmak bu ikinci engeli gözden kaçırır. $|a-b|$ alt sınırı tam olarak bu olasılığı kapsar. Kenar uzunluklarının pozitif olması da başlangıç koşuludur; negatif bir sayıyı eşitsizliğe sokup geometrik kenar kabul etmeyiz.
 
 ## 10. Yükseklik Her Zaman İçeride Değildir
 
@@ -151,6 +203,10 @@ Bir üçgende seçtiğimiz kenara **taban** diyebiliriz; taban yalnızca sayfan�
 Dar açılı üçgende üç yükseklik de içeriden geçer. Dik üçgende dik kenarlardan her biri, diğer dik kenara ait yükseklik görevini görür. Geniş açılı üçgende iki yüksekliğin ayağı kenar uzantılarında bulunur. Her köşeden bir yükseklik seçilebildiği için bir üçgenin üç farklı taban-yükseklik eşleşmesi vardır.
 
 Yüksekliği **kenarortay** ile karıştırmamalıyız. Kenarortay, bir köşeyi karşı kenarın orta noktasına bağlar; mutlaka dik değildir. **Açıortay** ise bir köşedeki açıyı iki eş açıya böler; mutlaka kenarın ortasına gitmez. Özel simetrili üçgenlerde bu parçalar çakışabilir, fakat tanımları farklıdır.
+
+Tabanı seçtikten sonra yüksekliği ararken şu işlemi izleriz: tabanın üzerinde bulunduğu doğruyu düşünür, karşı köşeden o doğruya dik gideriz. Dikmenin ayağının iki uç arasında kalmasını şart koşmayız. Örneğin geniş açılı bir üçgeni çizerken karşı köşe taban parçasının yanına kaymışsa, dikme uzantıya iner; yine aynı doğruya olan uzaklığı ölçer. Yüksekliği çizimdeki eğik bir kenarla değiştirmek, bu uzaklığı başka bir ölçüyle karıştırmaktır.
+
+Bir köşeden çizilen kenarortay ise karşı kenarı iki eşit parçaya ayırma koşuluyla belirlenir. Açıortay o köşedeki açıyı eşit ölçülere ayırır. Üç çizginin bazı özel üçgenlerde üst üste gelmesi, tanımlarının aynı olduğunu göstermez. Genel bir çizimde “dik”, “eşit parçalar” ve “eşit açılar” işaretlerinin farklı bilgileri kaydettiğini izleyebiliriz. Bir sonuca geçmeden önce elimizde bu üç koşuldan hangisinin bulunduğunu sormak, sonraki alan ve benzerlik hesapları için de sağlam bir başlangıçtır.
 
 Bu temel nesneler, sonraki ölçüm kurallarının dilini kuruyor. Sonraki yazıda iki üçgenin ne zaman tam olarak aynı biçim ve boyutta olduğunu, ne zaman yalnızca ölçek farkıyla aynı şekli taşıdığını inceleyeceğiz.
 

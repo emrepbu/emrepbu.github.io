@@ -45,6 +45,12 @@ $1/x=x^{-1}$ ve $\sqrt{x}=x^{1/2}$ ifadeleri bu tanıma göre $x$'te polinom de�
 
 Şimdilik tek değişkenli ifadeler üzerinde duruyoruz. $2xy+3x$ gibi birden fazla değişken içeren polinomlar da vardır; ancak burada “derece” dediğimizde hangi değişkene göre konuştuğumuzu belirttiğimiz basit çerçeve yeterlidir.
 
+### Dereceyi okumadan önce aynı kuvvetleri toplamak
+
+$5x^3+2x-5x^3+4$ yazımında üçüncü kuvvet görünür, fakat iki küplü terimin toplamı sıfırdır. İfade bütün $x$ değerlerinde $2x+4$'e eşittir. Bu yüzden düzenlenmiş polinom birinci derecedir. Dereceyi belirlerken yalnız en büyük görünen üsse bakmak, birbirini götüren terimleri hesaba katmamış olur. Benzer biçimde $x^2-x^2+7$ sabit 7 polinomudur; seçilen $x$ sayısı sonucu değiştirmez.
+
+Bir terimin katsayısının sıfır olması ile değişkenin belirli bir değerde sıfır olması da ayrıdır. $3x^2$ polinomunun katsayısı 3'tür ve derecesi 2'dir. $x=0$ seçince değeri sıfır olur; fakat polinomun derecesi bu değerlendirmeyle değişmez. Derece, tek bir girdide çıkan sonucu değil, değişkenin farklı değerleri için kullandığımız ifadenin yapısını anlatır. $\sqrt2x$ teriminde de kökün altında yalnız sabit 2 vardır, değişken $x$ kökün dışında ve birinci kuvvettedir. Bu nedenle irrasyonel bir katsayı polinom olmayı bozmaz. Önce değişkenin nerede durduğunu belirlemek, biçimsel tanımın neden bu örnekleri farklı sınıflandırdığını açıklar.
+
 ## 3. Benzer Terimleri Birleştirmek
 
 $4x^2+3x-2x^2+5x-6$ ifadesinde kareli terimleri kendi aralarında, birinci kuvvetli terimleri kendi aralarında birleştirebiliriz:
@@ -64,8 +70,10 @@ $$
 $$
 
 $$
-=3x^2+x-4-x^2+2x-5
-=2x^2+3x-9.
+\begin{aligned}
+&=3x^2+x-4-x^2+2x-5\\
+&=2x^2+3x-9.
+\end{aligned}
 $$
 
 Parantez önündeki eksi, içerideki her terimi $-1$ ile çarpar. Sabit terimin işareti de, eksiyle yazılmış terimin işareti de değişir. Düzenleme bittikten sonra en yüksek kuvveti kontrol ederiz; başlangıçta görünen yüksek dereceli terimler birbirini götürmüş olabilir.
@@ -87,10 +95,29 @@ Her terimin diğer parantezdeki her terimle çarpıldığını görmek önemlidi
 Aynı işlem farklarda da geçerlidir:
 
 $$
-(x+4)(x-2)=x^2-2x+4x-8=x^2+2x-8.
+\begin{aligned}
+(x+4)(x-2)&=x^2-2x+4x-8\\
+&=x^2+2x-8.
+\end{aligned}
 $$
 
 Açılmış biçim, benzer terimleri toplamayı kolaylaştırır. Çarpım biçimi ise hangi iki parçanın çarpıldığını gösterir. “En sade biçim” her zaman “en az parantez” demek değildir; kullanacağımız işe göre bir biçim daha uygun olur.
+
+### İki parantezi bir çarpım tablosuyla izlemek
+
+$(2x+1)(x-3)$ çarpımında ilk parantezde iki, ikincide iki terim vardır. Hiçbir eşleşmeyi atlamamak için önce $2x$'i ikinci parantezin tamamıyla, sonra 1'i aynı parantezle çarparız. Dört katkı sırasıyla $2x^2$, $-6x$, $x$ ve $-3$ olur. Orta terimlerin toplamı $-6x+x=-5x$ olduğundan:
+
+$$
+\begin{aligned}
+(2x+1)(x-3)
+&=2x^2-6x+x-3\\
+&=2x^2-5x-3.
+\end{aligned}
+$$
+
+Burada $2x\times x=2x^2$ çarpımı, iki $x$ çarpanının birleşmesidir; $2x+x=3x$ toplamıyla karıştırılmamalıdır. Çarpma ve toplama farklı satırlarda farklı görevler yapar.
+
+Kolay bir sayısal kontrol için $x=4$ seçelim. İlk biçim $(8+1)(4-3)=9$ verir. Açılmış biçim $2\times16-5\times4-3=32-20-3=9$ verir. Bu uyum bütün değerler için ispat değildir, fakat işaret ve eksik çarpım hatasını yakalamaya yardım eder. Genel geçerliliği sağlayan şey, önceki satırda dağılma özelliğiyle dört çarpımı eksiksiz kurmamızdır. İki parantezin yalnız ilk ve son terimlerini çarpsaydık $2x^2-3$ kalır ve $x=4$ için 29 bulurduk; unutulan iki katkının toplamı $-20$'dir.
 
 ## 5. Toplamın Karesindeki İki Dikdörtgen
 
@@ -116,8 +143,10 @@ Cebirsel olarak $(a+b)(a+b)$ çarpımını açtığımızda da aynı dört terim
 Toplamın karesinde $b$ yerine $-b$ koyarsak:
 
 $$
-(a-b)^2=a^2+2a(-b)+(-b)^2
-=a^2-2ab+b^2.
+\begin{aligned}
+(a-b)^2&=a^2+2a(-b)+(-b)^2\\
+&=a^2-2ab+b^2.
+\end{aligned}
 $$
 
 Son terim pozitiftir, çünkü $(-b)^2=b^2$ olur. Örneğin $(x-4)^2=x^2-8x+16$'dır. Ortadaki terim iki ifadenin çarpımının iki katıdır; yalnızca $-4x$ yazmak doğru olmaz.
@@ -133,6 +162,12 @@ Bu, **iki kare farkı** özdeşliğidir. $x^2-25=(x-5)(x+5)$ yazabiliriz, çünk
 İki kural birbirine karıştırılmamalıdır. $(a-b)^2$ bir farkın karesidir; $a^2-b^2$ ise iki karenin farkıdır. $a=7$, $b=2$ için ilki $5^2=25$, ikincisi $49-4=45$ olur. Parantez, hangi bütünün karesini aldığımızı belirler.
 
 Bu özdeşlikler zihinden hesapta da işe yarar. $49^2=(50-1)^2=2500-100+1=2401$ olur. $53\times47=(50+3)(50-3)=2500-9=2491$ hesabında ise iki kare farkını kullandık. Sayıları ezberlenmiş bir şablona zorlamıyor, uygun yapıyı fark ediyoruz.
+
+### Tam kareyi tanırken yalnız uçlara bakmamak
+
+$x^2+10x+25$ ifadesinin ilk ve son terimleri kare olduğu için $(x+5)^2$ adayı akla gelir. Fakat adayın doğruluğu orta terimin de uygun olmasına bağlıdır. Açılımda orta terim $2\times x\times5=10x$ olur; burada gerçekten eşleşir. Buna karşılık $x^2+8x+25$ ifadesi aynı uç terimlere sahip olsa da $(x+5)^2$ değildir. Aradaki $2x$ farkını görmezden gelemeyiz.
+
+Farkın karesinde de son terimin artı olması gerekir: $(x-5)^2=x^2-10x+25$. Eksi işareti iki çapraz çarpıma girer; son çarpım $(-5)(-5)$ olduğundan pozitiftir. $x^2-25$ ise bir kare açılımı değil, iki karenin farkıdır ve $(x-5)(x+5)$ olur. Kontrol için $x=6$ seçtiğimizde $(x-5)^2=1$, $x^2-25=11$ çıkar. Birbirine benzeyen semboller aynı miktarı anlatmıyor. Özdeşlik kullanırken önce hangi parçanın kare, hangi parçanın toplam veya fark olduğunu okumak; sonra bütün terimleri geri açarak denetlemek gerekir. Uç terimler bize aday verir, ortadaki terim o adayın gerçekten uyup uymadığını belirler.
 
 ## 7. Ortak Çarpan ve Gruplama
 
@@ -162,6 +197,40 @@ $x^2+7x+12$ ifadesinde orta terimi neden $3x+4x$ diye ayırabiliriz? Çünkü $3
 
 Çarpanlara ayırdıktan sonra geri çarpmak küçük ama güçlü bir denetimdir. $(x+4)(x+3)$ açıldığında başlangıçtaki üç terimi eksiksiz vermelidir. Sonuç benzer görünüyorsa değil, aynı ifadeye dönüyorsa işlem doğrudur.
 
+Ortak çarpanı bulduğumuzda parantezin içinde ne kaldığını bölme düşüncesiyle kontrol edebiliriz, ancak işlemimizin bir özdeşlik yazmak olduğunu koruruz. $12x^2-8x$ için her terim $4x$ çarpanını içerir: $12x^2=(4x)(3x)$, $-8x=(4x)(-2)$. Dolayısıyla sonuç $4x(3x-2)$'dir. Parantez içindeki eksi işareti, ikinci terimin negatif olmasından gelir. Geri çarpınca $12x^2-8x$ aynen dönmelidir.
+
+Ortak çarpanın mutlaka mümkün olan en büyüğü seçilmesi zorunlu değildir. $2x(6x-4)$ da doğru bir yazımdır; fakat parantezin içinde hâlâ ortak 2 bulunduğu için daha ileri ayrılabilir. Bütün terimlerde $x$ bulunmuyorsa onu dışarı alamayız: $12x^2-8$ içinde sabit $-8$, genel olarak bir $x$ çarpanı taşımaz. Ortak sözcüğü, çarpanın her terimde bulunmasını ister. Ayrıca $4x$ dışarı yazmak $x=0$ değerini yasaklamaz; bu değerde başlangıç ve sonuç birlikte sıfırdır. Sadeleştirme için sıfır olmayan çarpana bölmekle, ifadeyi bir çarpım olarak yeniden yazmak ayrı işlemlerdir.
+
+### İlk katsayı bir değilse gruplamayı hazırlamak
+
+$6x^2+7x-3$ ifadesini çarpanlara ayırmak isteyelim. Ortadaki $7x$'i, birazdan aynı parantezi elde edebileceğimiz iki terime böleceğiz. $6\times(-3)=-18$ çarpımına ve 7 toplamına sahip iki tam sayı ararız. 9 ve $-2$ bu koşulları sağlar. Dolayısıyla:
+
+$$
+6x^2+7x-3=6x^2+9x-2x-3.
+$$
+
+$7x$ yerine $9x-2x$ yazmak ifadenin değerini değiştirmez. İlk iki terimden $3x$, son iki terimden $-1$ ortak çarpanını çıkaralım:
+
+$$
+3x(2x+3)-1(2x+3).
+$$
+
+Artık aynı $2x+3$ parantezi iki kez görünüyor. Dağılma özelliğini ters yönde kullanınca:
+
+$$
+6x^2+7x-3=(3x-1)(2x+3)
+$$
+
+elde ederiz. Bu aramada neden özellikle $6\times(-3)$ çarpımı kullanıldı? İki parantezli bir açılımda baş terim iki baş katsayının, sabit terim iki sabitin çarpımından gelir. Orta terim ise çapraz iki çarpımın toplamıdır. Örneğimizin doğru çarpımını açarken çapraz katkılar $9x$ ile $-2x$ olur. Bu iki katkının sayısal katsayılarını çarparsak $9\times(-2)=-18$ elde ederiz; aynı sonuç baş katsayı ile sabit terimin çarpımı $6\times(-3)$'ten gelir. Çarpanların yerini değiştirebilmemiz bu iki hesabı eşit kılar.
+
+Bu nedenle orta terimi ayıracak sayılardan hem toplamın 7 olmasını hem çarpımın $-18$ olmasını istedik. Yalnız toplamı sağlamak yetmezdi: $8+(-1)=7$ doğrudur ama bu seçim gruplar arasında gerekli ortak çarpanı oluşturmaz. Arama bir aday bulma yoludur; sonucun asıl doğrulaması parantezleri geri açmaktır.
+
+Seçtiğimiz iki sayının çarpımını ve toplamını denetlememizin amacı, bu ortak parantezi oluşturabilmekti. Bulduğumuz son biçimi açarak yöntemin başarısını bağımsız kontrol edebiliriz: $6x^2+9x-2x-3=6x^2+7x-3$.
+
+Yalnızca $x=1$ koyup iki tarafta da 10 görmek, özdeşliğin bütün $x$ değerlerinde doğru olduğunu kanıtlamaz. Genel kontrol, parantezleri harflerle açarak aynı ifadeye ulaşmaktır. Sayısal deneme olası bir hatayı çabuk yakalar; cebirsel geri açılım ise bütün izin verilen değerleri birden kapsar.
+
+Bu tam sayılı aramanın her ifadede başarılı olacağını da varsaymayalım. Örneğin $x^2+1$ için çarpımı 1, toplamı 0 olan iki gerçek sayı yoktur; gerçek sayılarda iki birinci derece çarpan elde edemeyiz. “Hemen iki tam sayı bulamadım” ise tek başına böyle bir imkânsızlık kanıtı değildir. Şimdiki yöntem uygun bir çarpanlaşma aramak içindir; hangi ikinci derece ifadenin hangi sayılar içinde çarpanlara ayrılabileceğini sonraki konularda ayrıca inceleyeceğiz.
+
 ## 8. Cebirsel Kesirde Sadeleştirme
 
 Payı ve paydası polinom olan kesirli ifadeye **rasyonel ifade** denir. $\frac{x^2-9}{x-3}$ buna bir örnektir. İlk iş, paydanın hangi değerde sıfır olduğunu görmektir. Burada $x=3$ yasaktır; sıfıra bölme tanımlı değildir.
@@ -169,9 +238,10 @@ Payı ve paydası polinom olan kesirli ifadeye **rasyonel ifade** denir. $\frac{
 İki kare farkını kullanalım:
 
 $$
-\frac{x^2-9}{x-3}
-=\frac{(x-3)(x+3)}{x-3}
-=x+3,\qquad x\ne3.
+\begin{aligned}
+\frac{x^2-9}{x-3}&=\frac{(x-3)(x+3)}{x-3}\\
+&=x+3,\qquad x\ne3.
+\end{aligned}
 $$
 
 Sadeleşen şey, toplam içindeki bir terim değil, payın ve paydanın **tamamını çarpan ortak çarpandır**. $x-3$ sıfır olmadığı için kendisine bölündüğünde 1 eder. Son ifade $x=3$ için kendi başına tanımlı görünse de başlangıçtaki kesir tanımsızdır. Eşitlik, yalnızca $x\ne3$ koşuluyla geçerlidir.
@@ -185,14 +255,18 @@ $$
 
 biçimindedir. $x=3$ seçince başlangıç ifadesi 2 eder; yanlış sadeleştirme 3 verirdi. Tek bir sayısal kontrol, iddia edilen genel kuralın yanlışlığını hemen gösterebilir.
 
+Sadeleştirmede eski tanım koşulunu korumak için iki bilgiyi birlikte taşıyabiliriz: yeni hesap kuralı ve izin verilen girdiler. Yukarıdaki kesir için yeni kural $x+3$, izin verilen girdiler ise 3 dışındaki gerçek sayılardır. $x=4$ koyarsak ilk kesir $7/1=7$, yeni kural da 7 verir. $x=3$ koymaya çalışınca ilk kesirde $0/0$ oluşur; bunu 6 sayısı olarak okuyamayız. Böylece “aynı ifade” derken ortak tanım bölgesini kastettiğimiz anlaşılır. Koşulu yazmak hesabın dışında bir uyarı değil, eşitliğin hangi değerler için söylendiğinin bir parçasıdır.
+
 ## 9. Kesirlerle İşlemler Aynı Mantığı İzler
 
 Çarpmada payları ve paydaları çarparız, ortak çarpanları sadeleştiririz:
 
 $$
-\frac{x^2-4}{x+1}\cdot\frac{x+1}{x+2}
-=\frac{(x-2)(x+2)(x+1)}{(x+1)(x+2)}
-=x-2.
+\begin{aligned}
+&\frac{x^2-4}{x+1}\cdot\frac{x+1}{x+2}\\
+&\quad=\frac{(x-2)(x+2)(x+1)}{(x+1)(x+2)}\\
+&\quad=x-2.
+\end{aligned}
 $$
 
 Başlangıçtaki paydalardan $x\ne-1$ ve $x\ne-2$ koşulları gelir. Sonuç yazılırken bu koşullar korunur. $x=2$ ise yasak değildir; payın sıfır olması, payda sıfır değilken, geçerli bir sıfır sonucu verir.
@@ -200,19 +274,23 @@ Başlangıçtaki paydalardan $x\ne-1$ ve $x\ne-2$ koşulları gelir. Sonuç yaz�
 Toplamada önce ortak payda gerekir:
 
 $$
-\frac1x+\frac1{x+1}
-=\frac{x+1}{x(x+1)}+\frac{x}{x(x+1)}
-=\frac{2x+1}{x(x+1)}.
+\begin{aligned}
+\frac1x+\frac1{x+1}&=\frac{x+1}{x(x+1)}+\frac{x}{x(x+1)}\\
+&=\frac{2x+1}{x(x+1)}.
+\end{aligned}
 $$
 
 Burada $x\ne0,-1$ olmalıdır. Paydaları doğrudan toplayıp $2/(2x+1)$ yazamayız; sayısal kesirlerde geçersiz olan işlem, harfler eklenince geçerli hâle gelmez.
 
+Ortak paydada ilk kesrin neden $x+1$ ile genişletildiğini açalım. İlk payda $x$'tir; hedef payda $x(x+1)$ olduğuna göre eksik çarpan $x+1$'dir. İkinci payda $x+1$ olduğundan onun eksik çarpanı $x$ olur. Her kesrin payı da aynı çarpanla çarpılmalıdır; bu yüzden yeni paylar $x+1$ ve $x$ olur. Toplayınca $(x+1)+x=2x+1$ elde ederiz. Tanım koşulları bu genişletme çarpanlarının sıfır olmadığını da garanti eder. Ortak paydayı yazıp payları olduğu gibi bırakmak, kesirlerin değerini değiştirmek olurdu.
+
 Çıkarmada payın tamamına dikkat edelim:
 
 $$
-\frac2{x-1}-\frac1{x+1}
-=\frac{2(x+1)-(x-1)}{(x-1)(x+1)}
-=\frac{x+3}{x^2-1}.
+\begin{aligned}
+\frac2{x-1}-\frac1{x+1}&=\frac{2(x+1)-(x-1)}{(x-1)(x+1)}\\
+&=\frac{x+3}{x^2-1}.
+\end{aligned}
 $$
 
 Payda $x\ne1,-1$ koşulunu verir. Paydaki $-(x-1)$, $-x+1$ olur; son sabitin 3 çıkması bu işaret değişimine bağlıdır.
@@ -252,7 +330,10 @@ Son iki terimi $-2(x-3)$ olarak yazdık; $-2x+6$ ifadesinin işaretleri böyle d
 Kenar uzunluğu $x$ metre olan kare bir alanın her kenarını 2 metre artırdığımızı düşünelim. Burada $x>0$ olsun. Yeni alan $(x+2)^2$, eski alan $x^2$ metrekaredir. Alan artışını bulmak için yenisinden eskisini çıkarırız:
 
 $$
-(x+2)^2-x^2=(x^2+4x+4)-x^2=4x+4.
+\begin{aligned}
+(x+2)^2-x^2&=(x^2+4x+4)-x^2\\
+&=4x+4.
+\end{aligned}
 $$
 
 Sonuç, eklenen alanın her başlangıç boyutunda aynı olmadığını söylüyor. $x=3$ için artış 16 metrekare, $x=5$ için 24 metrekaredir. Her iki durumda kenara 2 metre eklenmesine rağmen, yeni kenar şeritlerinin uzunluğu başlangıç boyutuna bağlıdır. Harfli ifade bu bağımlılığı tek bir satırda görünür kılar.
@@ -260,8 +341,11 @@ Sonuç, eklenen alanın her başlangıç boyutunda aynı olmadığını söylüy
 Aynı hesabı iki kare farkıyla da yapabiliriz. Büyük karenin kenarı $x+2$, küçük karenin kenarı $x$ olduğundan:
 
 $$
-(x+2)^2-x^2=((x+2)-x)((x+2)+x)
-=2(2x+2)=4x+4.
+\begin{aligned}
+&(x+2)^2-x^2\\
+&\quad=((x+2)-x)((x+2)+x)\\
+&\quad=2(2x+2)=4x+4.
+\end{aligned}
 $$
 
 Birbirinden farklı iki dönüşüm aynı sonucu verdi. İlk yol alanı dört parçaya ayırmayı, ikinci yol iki kare farkını vurguluyor. Hangisini seçtiğimiz bilgiyi değiştirmiyor; hesabın hangi yapısını görmek istediğimizi değiştiriyor.

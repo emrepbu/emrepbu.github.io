@@ -31,6 +31,10 @@ Bu iki eleman farklıdır. $d\mathbf r$ yönlüdür; $ds$ negatif olmayan uzunlu
 
 Düzgün eğri derken türevli ve teğet vektörü sıfır olmayan parçalarla çalışıyoruz. Köşeli yolları sonlu sayıda düzgün parçaya ayırabiliriz. Bir çemberi iki kez dolaşan parametreleme ile bir kez dolaşan parametreleme aynı yönlü toplamı vermek zorunda değildir; kaç kez gezildiği de verinin parçasıdır.
 
+İki uzunluk gösterimini aynı doğru parçasında hesaplayalım. $\mathbf r(t)=(2t,3t)$, $0\le t\le1$ olsun. Teğet $(2,3)$, uzunluğu $\sqrt{13}$'tür. Birim yoğunluğun toplamı $\int_C1\,ds=\int_0^1\sqrt{13}\,dt=\sqrt{13}$ çıkar; bu, parçanın uzunluğudur. Sabit $\mathbf F=(1,0)$ alanının yönlü katkısı ise $\int_C\mathbf F\cdot d\mathbf r=\int_0^1(1,0)\cdot(2,3)dt=2$ olur. Alan yalnız yatay değişimi ölçer.
+
+Ters yönde $\widetilde{\mathbf r}(t)=(2-2t,3-3t)$ seçilirse teğet $(-2,-3)$ olur. Uzunluk hâlâ $\sqrt{13}$, yönlü integral ise $-2$'dir. Demek ki $ds$ ile $d\mathbf r$ aynı nesnenin iki yazımı değildir. Birinde teğetin uzunluğunu, diğerinde bütün teğet vektörünü kullanırız; hesapladığımız büyüklük buna göre değişir.
+
 ## 3. Vektör alanının çizgi integrali
 
 Eğri boyunca küçük yer değiştirmeyle alanın skaler çarpımını toplarız:
@@ -61,6 +65,39 @@ $\mathbf F=(y,x)$ için $\phi(x,y)=xy$ seçebiliriz; çünkü $\phi_x=y$, $\phi_
 
 Açık, yol bağlantılı bir bölgede bütün yollar için uçlara bağlılık varsa bir başlangıç noktası seçip potansiyeli çizgi integraliyle tanımlayabiliriz. Yol bağımsızlığı tanımı belirsizlikten kurtarır. Bu nedenle potansiyel varlığı ile yol bağımsızlığı uygun düzenlilik koşullarında aynı yapının iki anlatımıdır.
 
+### Potansiyeli bulup eğri bir yolda denetlemek
+
+Potansiyelin yalnızca gözle tahmin edilmediği bir örnek çözelim. Düzlemin tamamında:
+
+$$
+\mathbf F(x,y)=(2xy+y^2,\ x^2+2xy)
+$$
+
+olsun. $\mathbf F=\nabla\phi$ sağlayan bir $\phi$ arıyoruz. İlk bileşen $\phi_x=2xy+y^2$ demektir. $y$'yi sabit tutup $x$'e göre integral alırsak $\phi=x^2y+xy^2+h(y)$ elde edilir. Son terimi $h(y)$ yazmamızın nedeni, $x$'e göre türevi sıfır olan her $y$ fonksiyonunun ilk koşulu sağlamasıdır.
+
+Şimdi ikinci bileşeni kullanırız. Bulduğumuz ifadenin $y$ türevi $\phi_y=x^2+2xy+h'(y)$ olur. Bunun $x^2+2xy$'ye eşitliği $h'(y)=0$ gerektirir. Dolayısıyla $h$ sabittir; hesapta bu sabiti 0 seçebiliriz. Başlangıç $A=(0,0)$ ve bitiş $B=(1,2)$ için:
+
+$$
+\begin{aligned}
+\int_A^B\mathbf F\cdot d\mathbf r&=\phi(1,2)-\phi(0,0)\\
+&=(1^2\cdot2+1\cdot2^2)-0\\
+&=6.
+\end{aligned}
+$$
+
+Buradaki gösterim, bu uçları birleştiren uygun herhangi bir yolu anlatır; potansiyeli bulduğumuz için yol seçimi sonucu değiştirmez. Bunu parabol biçimindeki $\mathbf r(t)=(t,2t^2)$, $0\le t\le1$, yolunda doğrudan kontrol edelim. Teğet $\mathbf r'(t)=(1,4t)$ olur. Alanın bileşenleri yolda $(4t^3+4t^4,\ t^2+4t^3)$'e dönüşür. Skaler çarpım:
+
+$$
+(4t^3+4t^4)\cdot1+(t^2+4t^3)\cdot4t
+=8t^3+20t^4
+$$
+
+verir. İntegral $[2t^4+4t^5]_0^1=6$ çıkar; uç değer hesabıyla aynı sonucu elde ettik.
+
+Bu denetimde $|\mathbf r'(t)|$ ile çarpmadık; vektör alanının yönlü çizgi integralinde doğrudan teğet vektörüyle skaler çarpım kullandık. Ayrıca yalnız iki yol eşit çıktı diye yol bağımsızlığı ileri sürmedik. Genel güvence, bütün düzlemde tanımlı ve türevi alanı veren açık potansiyel fonksiyonudur. Eğri üzerindeki hesap, bu güvencenin somut bir kontrolüdür.
+
+Potansiyele eklenen herhangi bir sabit, iki uç değer farkında yok olur. Çizgi integralini değiştirmediği için aynı alanı temsil eden potansiyelin başlangıç seviyesini ayrıca seçmekte serbestiz.
+
 ## 5. Küçük kapalı dolaşım ve rotasyonel
 
 Düzlemde küçük bir dikdörtgeni saat yönünün tersine dolaşalım. Yatay kenarların katkı farkı yaklaşık $-P_y\Delta x\Delta y$, düşey kenarların farkı yaklaşık $Q_x\Delta x\Delta y$ olur. Toplamı alana bölersek $Q_x-P_y$ kalır. Bu sayı yerel dolaşım yoğunluğudur.
@@ -75,6 +112,15 @@ $$
 Bu vektöre **rotasyonel**, İngilizce adıyla curl denir. Yönü, yerel dolaşımın sağ el kuralına göre eksenini; ilgili birim normale skaler çarpımı, o düzlemdeki dolaşım yoğunluğunu verir. Her dönen gibi görünen ok resmi aynı rotasyoneli taşımaz; yerel türevler belirleyicidir.
 
 $\mathbf F=(-y/2,x/2,0)$ için rotasyonel $(0,0,1)$'dir. $Q_x=1/2$, $P_y=-1/2$ olduğundan son bileşen 1 olur. Dairesel okların teğetsel büyüklüğü yarıçapla artar; küçük bölgelerdeki dolaşım alanla orantılıdır.
+
+Küçük dikdörtgende işaretlerin kaynağını açalım. Alt kenarda sağa yürüdüğümüz için yatay katkı yaklaşık $P(x,y)\Delta x$, üst kenarda sola yürüdüğümüz için $-P(x,y+\Delta y)\Delta x$'tir. Toplam:
+
+$$
+-[P(x,y+\Delta y)-P(x,y)]\Delta x
+\approx-P_y\Delta y\Delta x
+$$
+
+olur. Sağ kenarda yukarı, sol kenarda aşağı yürümek de $[Q(x+\Delta x,y)-Q(x,y)]\Delta y\approx Q_x\Delta x\Delta y$ verir. Bu nedenle iki türevi toplamak yerine $Q_x-P_y$ farkını alıyoruz. Yönü ters çevirsek bütün kenar katkıları ve sonuç birlikte işaret değiştirir. Rotasyonelin işareti, dolaşma yönü belirlenmeden tek başına “saat yönü” diye yorumlanmamalıdır.
 
 ## 6. Sıfır rotasyonel ve bölgenin deliği
 
@@ -91,6 +137,19 @@ alanının $Q_x-P_y$ değeri sıfırdır. Fakat birim çemberde $\mathbf r(t)=(\
 Sorun merkezdeki eksik noktadır. Çemberi orijine çökertmeye çalışırken tanım kümesinden çıkarız. Yerel türev koşulu, bölgenin deliğini tek başına göremez. Bu örnek “curl sıfırsa her yerde potansiyel vardır” cümlesinin neden eksik olduğunu açıkça gösterir.
 
 ![Dolaşım alanında kapalı yol ve merkezde dışarıda bırakılan nokta gösterilir.](./dolasim-ve-delik.svg)
+
+Delikli alanın yerel türevini de açık hesaplayalım. $P=-y/(x^2+y^2)$ ve $Q=x/(x^2+y^2)$ için bölüm kuralı:
+
+$$
+\begin{aligned}
+Q_x&=\frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2}
+=\frac{y^2-x^2}{(x^2+y^2)^2},\\
+P_y&=\frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2}
+=\frac{y^2-x^2}{(x^2+y^2)^2}
+\end{aligned}
+$$
+
+verir. İki ifade orijin dışında eşittir. Buna rağmen çember integralinin $2\pi$ çıkması bir hesap çelişkisi değildir: orijindeki payda sıfırdır, dolayısıyla tüm diskte düzgün bir alan yoktur. Green teoremini tam diske uygulamanın koşulu sağlanmaz. Merkezi çıkartıp bir halka alırsak hem dış hem iç sınırı saymamız gerekir. Dıştaki saat yönünün tersine dolaşım $2\pi$, içteki saat yönünde dolaşım $-2\pi$ verir; toplam sıfır olur. Yerel sıfır rotasyonelle uyumlu sonuç, bölgenin bütün sınırlarını hesaba kattığımızda ortaya çıkar.
 
 ## 7. Green teoremi: iç dolaşım ile sınır
 
@@ -121,6 +180,19 @@ Yüzey $\mathbf r(u,v)$ ile parametrelenmişse iki teğet $\mathbf r_u$ ve $\mat
 
 Basit örnekte $z=2$ düzlemindeki alanı 6 olan dikdörtgenden $\mathbf F=(0,0,3)$ geçsin. Yukarı normali $(0,0,1)$ seçersek integrand sabit 3 ve akı 18'dir. Aşağı normal seçilirse $-18$ olur. Alanın büyüklüğü aynı kaldığı halde yönlü ölçüm işaret değiştirir.
 
+### Eğik yüzeyde birim normal ve alanı birlikte taşımak
+
+$z=x+y$ yüzeyinin $0\le x\le1$, $0\le y\le1$ üzerindeki parçasında $\mathbf r(u,v)=(u,v,u+v)$ seçelim. Teğetler $\mathbf r_u=(1,0,1)$ ve $\mathbf r_v=(0,1,1)$ olur. Çarpımları $(-1,-1,1)$, uzunluğu $\sqrt3$'tür. Pozitif $z$ bileşeni yukarı yönü seçtiğimizi gösterir. Bu durumda birim normal $(-1,-1,1)/\sqrt3$, alan elemanı ise $\sqrt3du\,dv$'dir.
+
+$\mathbf F=(0,0,2)$ için birim normalle skaler çarpım $2/\sqrt3$ olur. Alan elemanıyla çarpınca $\sqrt3$ sadeleşir ve:
+
+$$
+\iint_S\mathbf F\cdot\widehat{\mathbf n}\,dS
+=\int_0^1\int_0^1 2\,du\,dv=2
+$$
+
+elde edilir. Yalnız birim normali kullanıp alanın büyümesini unutmak veya normalleştirilmemiş çarpımı kullanıp ayrıca bir kez daha $\sqrt3$ ile çarpmak yanlış olur. İki eşdeğer yöntem vardır: birim normal ile gerçek yüzey alanını çarpmak veya doğrudan yönlü alan vektörünü kullanmak. İkisini aynı hesapta tekrar tekrar uygulamayız.
+
 ## 9. Diverjans: küçük hacimden net çıkış
 
 $\mathbf F=(P,Q,R)$ için **diverjans**:
@@ -148,6 +220,10 @@ $\mathbf F=(x,y,z)$ ve yarıçapı $a$ olan küre için hacim hesabı $3\cdot4\p
 
 ![Komşu hücrelerin ortak sınırlarındaki ters katkılar iptal olur ve dış sınır kalır.](./ic-sinir-iptali.svg)
 
+Gauss teoremini birim küpte yüz yüz kontrol edebiliriz. $0\le x,y,z\le1$ ve $\mathbf F=(x,y,z)$ olsun. $x=1$ yüzünde dış normal $(1,0,0)$, alanla skaler çarpım 1 ve yüz alanı 1'dir; katkı 1 olur. $x=0$ yüzünde normal $(-1,0,0)$'dır ama alanın $x$ bileşeni sıfır olduğundan katkı 0'dır. $y$ ve $z$ yüzleri aynı şekilde birer toplam katkı verir. Altı yüzün net akısı $1+0+1+0+1+0=3$'tür.
+
+İçeride diverjans $1+1+1=3$, küpün hacmi 1 olduğundan hacim integrali de 3 çıkar. Her yüzde alanın farklı bileşenini kullanmamızın nedeni dış normalin değişmesidir. Kapalı yüzeyde “pozitif yön” bütün yüzlerde aynı sabit vektör değildir; cismin dışına bakan yerel yöndür.
+
 ## 11. Stokes: yüzeydeki dönme ile kenar dolaşımı
 
 $S$ yönlendirilebilir, parça parça düzgün bir yüzey; $\partial S$ onun kapalı sınır eğrisi olsun. Alan yüzeyin bir açık çevresinde sürekli birinci türevli olsun. Seçilen normal ile sınırın dolaşma yönü sağ el kuralına uymalıdır. Stokes teoremi:
@@ -164,6 +240,10 @@ $\mathbf F=(-y/2,x/2,0)$ alanında rotasyonel $(0,0,1)$'dir. $xy$ düzlemindeki 
 Bu, her yüzey integralinin yalnız sınıra bağlı olduğu anlamına gelmez. Burada integrand özel olarak bir alanın rotasyonelidir ve yönler uyumludur. Teoremin nesnesini değiştirdiğimizde aynı sonucu beklemeyiz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Düzlemde dışarı akı" caption="F=(x,y) alanının çember sınırındaki okları dış normalle aynı yönü gösterir. Düzlemsel diverjans 2 olduğu için toplam dışarı akı, diskin alanının iki katıdır." />
+
+Hangi teoremin kullanılacağı, aranan integralin türünden okunabilir. Bir kapalı eğri boyunca **teğetsel** katkı soruluyorsa Stokes, düzlemsel durumda Green, dolaşımı rotasyonelin yüzey toplamına bağlar. Bir kapalı yüzeyden **normal** yönde geçiş soruluyorsa Gauss, akıyı diverjansın hacim toplamına bağlar. Açık bir yüzeyin akısına doğrudan “içindeki hacim” atayamayız; yüzey kapalı bir hacim çevrelemiyor olabilir.
+
+Örneğin yarımkürenin dış akısını Gauss ile bulmak için önce taban diskiyle kapatırız. Teorem kapalı yüzeyin, yani yarımküre ile diskin akılarının toplamını verir. Sonra diskin uygun dış normalle hesaplanan akısını çıkarırız. Stokes'ta ise aynı diski başka bir yüzeyle değiştirmek, aynı sınırı ve uyumlu yönü korumak koşuluyla rotasyonel akısını korur. Bu iki işlem benzer görünse de farklı integrallere uygulanır; önce nokta çarpımının alanın kendisiyle mi, rotasyoneliyle mi yapıldığına bakarız.
 
 ## 12. Türev işlemleri arasındaki iki kimlik
 

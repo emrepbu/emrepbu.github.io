@@ -11,7 +11,7 @@ import ArticleVideo from '@/components/ArticleVideo.astro'
 import yuruyus from './media/01-yol-ve-yer-degistirme.mp4?url'
 import yuruyusPoster from './media/01-yol-ve-yer-degistirme.jpg?url'
 
-[Pisagor yazısında](/blog/pisagor-teoremi/) uzunluklarla çalıştık. [Kosinüs teoremini incelerken](/blog/pisagorun-otesi-kosinus-teoremi/) ise bir kenarın yatay izdüşümünün negatif olabildiğini gördük. Burada durup açıklamamız gereken bir soru var: Bir uzunluk nasıl negatif olabilir?
+Bir yerin konumunu eksi üç metre diye anlatabiliriz; fakat iki yer arasındaki uzaklığa eksi üç metre demeyiz. Aynı metre birimiyle yazılan bu iki bilgi neden farklıdır? Sayı doğrusunu, bu ayrımı en baştan kurmak için kullanacağız. [Pisagor](/blog/pisagor-teoremi/) ve [kosinüs teoremi](/blog/pisagorun-otesi-kosinus-teoremi/) yazılarındaki uzunluk ve izdüşüm sorularıyla da bağlantı kuracağız; bu konuları önceden bilmek gerekmiyor.
 
 Bu soruyu cevaplamak için bir çizgi üzerinde yürüyeceğiz. Önce bulunduğumuz yeri, sonra yaptığımız hareketi, en sonunda iki yer arasındaki uzaklığı sayılarla anlatacağız.
 
@@ -35,6 +35,12 @@ Sıfırın solunda da yerler var. Oradaki işaretlere sırasıyla −1, −2, �
 
 Sağı pozitif seçmek bir uzlaşmadır. Tersini de seçebilirdik. Ancak bir hesap boyunca seçtiğimiz yönü tutarlı kullanmalıyız.
 
+### İşaretleri değil, aralıkları sayıyoruz
+
+Sıfırdan üçe giderken çizgide 0, 1, 2 ve 3 yazan dört işaret görürüz. Buna rağmen uzaklık üç birimdir. Çünkü uzaklığı noktaların sayısı değil, aralarında geçtiğimiz eş aralıkların sayısı belirler: sıfırdan bire bir, birden ikiye bir, ikiden üçe bir aralık vardır. Başlangıç noktasını ilk adım diye sayarsak sonucu bir fazla buluruz. Cetvelde ölçüm yaparken de ölçtüğümüz nesnenin iki ucundaki çizgileri değil, bu çizgiler arasındaki uzunluğu karşılaştırırız.
+
+Ayrıca çizimde birim aralığını iki kat büyük çizebiliriz. Kâğıt üzerindeki 0 ile 1 birbirinden daha uzak görünür; fakat temsil edilen sayı yine bir birimdir. Bir haritayı büyütmek nasıl şehirlerin gerçek uzaklığını değiştirmiyorsa sayı doğrusunu büyütmek de sayıları değiştirmez. Bu yüzden bir noktanın sayısını yalnız ekrandaki uzaklığına bakarak değil, çizimde belirtilen ölçeğe göre okuruz. Ölçek, çizilen aralığın hangi miktarı temsil ettiğini söyleyen bilgidir.
+
 ## 2. Konum ile Uzaklık Aynı Bilgi Değildir
 
 Bir arkadaşımız sıfırın üç birim sağında, bir başkası üç birim solunda dursun. Konumları 3 ve −3’tür. İkisi de başlangıç noktasına üç birim uzaktadır.
@@ -52,6 +58,12 @@ $$
 Buradaki $>$ işareti “büyüktür” diye okunur. Ters yöndeki $<$ işareti “küçüktür” demektir. İşaretin açık tarafı büyük sayıya bakar.
 
 −4 sıfıra daha uzak olsa da −1’den küçük bir sayıdır. **Bir sayının büyüklük sırası ile sıfıra uzaklığı farklı sorulardır.** Sayıların sıralanması ve sıfıra uzaklıkları için [OpenStax’ın tam sayılar bölümü](https://openstax.org/books/prealgebra-2e/pages/3-1-introduction-to-integers) ek örnekler sunar.
+
+### İki negatif sayıyı karşılaştırırken
+
+$-7$ ile $-2$ karşılaştırmasında önce yalnız 7 ve 2 rakamlarına bakmak yanıltır. İki sayı da sıfırın solundadır. $-7$'den $-2$'ye ulaşmak için beş birim sağa gideriz; sağa doğru sayılar büyüdüğünden $-7<-2$ olur. Sıfıra uzaklıkları sorulsaydı cevaplar 7 ve 2 olurdu ve ilk uzaklık daha büyük çıkardı. “Daha büyük” sözünü hangi soruya cevap olarak kullandığımızı açık tutmalıyız.
+
+Bu ayrımı borç örneğiyle de okuyabiliriz. Yalnız borcu gösteren işaretli bir hesapta $-7$ birim, $-2$ birime göre daha düşük bir bakiyedir. Borcun miktarı ise 7 birimdir ve 2 birim borçtan fazladır. Sayı doğrusu işaretli bakiyeyi, sıfıra uzaklık borcun büyüklüğünü temsil eder. Benzetmede her şeyi borç saymıyoruz; aynı iki sayıyla iki farklı karşılaştırma yapılabileceğini gösteriyoruz.
 
 ## 3. Toplama: Bulunduğumuz Yerden Hareket Etmek
 
@@ -78,6 +90,12 @@ $$
 Parantez, eklediğimiz sayının −4 olduğunu belirginleştiriyor. Negatif bir sayı eklemek, seçtiğimiz sayı doğrusunda sola ilerlemek anlamına geliyor.
 
 Dolayısıyla toplamanın sonucu her zaman başlangıçtaki sayıdan büyük olmak zorunda değildir. Sonucun hangi yönde değişeceğini eklediğimiz sayının işareti belirler. Sıfır eklersek bulunduğumuz yerde kalırız. Bu hareket yorumunu [tam sayılarda toplama](https://openstax.org/books/prealgebra-2e/pages/3-2-add-integers) örneklerinde de kullanabiliriz.
+
+### Sağ ve sol adımlar birbirini nasıl götürür?
+
+$-4+6$ işlemini düşünelim. Sıfırdan dört birim sola gidip ardından altı birim sağa gidebiliriz. Sağa giden adımların ilk dördü, sola giden dört adımın etkisini geri alır; sıfıra döneriz. İki sağ adım daha kaldığı için sonuç 2 olur. Bu, bir pozitif ve bir negatif sayıyı toplarken neden büyük uzaklıktan küçük uzaklığı çıkardığımızı açıklar. Ortak bölüm birbirini götürür, fazla kalan yön sonucun işaretini belirler.
+
+Aynı işlemde sayıları yalnız rakamlarına bakarak toplayıp $-10$ yazmak, altı sağ adımı da sol adımmış gibi saymak olurdu. Sonucun pozitif olacağını baştan da kestirebiliriz: sağa hareket altı, sola hareket dört birimdir. Ayrıca ters kontrol yapabiliriz. Sonuç 2'den altı birim sola gidersek yeniden $-4$'e ulaşırız. Eklediğimiz hareketi geri aldığımızda başlangıca dönmemiz, hesabın yön ve miktar bakımından tutarlı olduğunu gösterir.
 
 ## 4. Çıkarma: Başlangıçtan Sona Ne Kadar Değiştik?
 
@@ -108,6 +126,22 @@ $$
 $$
 
 Bu sefer değişim negatiftir; beş birim sola gittik. Gidişte de dönüşte de iki nokta arasındaki uzaklık beş birimdir. Değişimin işareti hareketin yönünü ayırır.
+
+### Çıkarmada iki eksi neden tek bir bilgi değildir?
+
+$-4-(-6)$ ifadesinde başlangıç sayısı $-4$, çıkarılan sayı $-6$'dır. Soruyu “$-6$'ya ne eklersem $-4$ olur?” diye okursak cevap iki sağ adım, yani $+2$ çıkar. Parantezin önündeki çıkarma işareti, içindeki sayının işaretinden farklı görev yapar. Parantezi görmezden gelip $-4-6=-10$ hesaplamak, eksi altıyı çıkarmak yerine artı altıyı çıkarmaktır; başka bir soruyu çözmüş oluruz.
+
+Hesabı üç kısa satırla izleyebiliriz:
+
+$$
+\begin{aligned}
+-4-(-6)&=-4+6,\\
+&=2,\\
+2+(-6)&=-4.
+\end{aligned}
+$$
+
+Son satır çıkarma sonucunu kontrol eder: bulunan farka çıkarılan sayıyı ekleyince ilk sayı geri gelir. Bu kontrolün sayı doğrusundaki karşılığı, yaptığımız değişimin tersini izlemektir. “İki eksi artı yapar” sözünü her eksi gördüğümüz yere uygulamıyoruz; burada belirli olarak negatif bir sayının çıkarılmasını, onun karşıtını eklemeye dönüştürüyoruz.
 
 ## 5. Mutlak Değer: Sıfıra Olan Uzaklık
 
@@ -144,6 +178,24 @@ $$
 $$
 
 buluruz. Başlangıç ile sonun yer değiştirmesi, iki nokta arasındaki uzaklığı değiştirmez.
+
+İki nokta sıfırın farklı taraflarındaysa aralarındaki uzaklık, sıfıra kadar gidişle sıfırdan sonraki gidişin toplamıdır. $-2$ ile 3 arasında önce iki, sonra üç birim bulunduğundan beş buluruz. Fakat iki nokta aynı taraftaysa sıfıra uzaklıkları toplayamayız. Örneğin 2 ile 7 arasında yalnızca beş birim vardır; $2+7=9$ hesabı iki nokta arasındaki yolu saymaz. Fark alıp mutlak değer kullanmak her iki yerleşimde de aynı soruya cevap verir. Bu yüzden uzaklık kuralını “iki sayının işaretlerini silip topla” diye kısaltmak doğru değildir.
+
+### Sıfır noktasını değiştirirsek uzaklık değişir mi?
+
+Bir koridorda iki kapının konumları, seçtiğimiz başlangıca göre 2 metre ve 7 metre olsun. İlk kapıdan ikinciye değişim $7-2=5$ metredir. Şimdi cetveli oynatmadan yalnızca sıfır kabul ettiğimiz yeri üç metre sağa taşıyalım. İlk kapı yeni sıfırın bir metre solunda, ikinci kapı dört metre sağında kalır. Yeni konum sayıları $2-3=-1$ ve $7-3=4$ olur.
+
+Kapılar hareket etmedi. İki konumun sayı değeri değişmesine rağmen aralarındaki değişim yine:
+
+$$
+4-(-1)=4+1=5\ \text{metre}
+$$
+
+çıkar. Her iki konumdan da aynı 3'ü çıkardığımız için fark korunmuştur. Bu örnek, **konumun bir başlangıç noktasına göre, uzaklığın ise iki noktayı karşılaştırarak** belirlendiğini gösterir. Bir yere “eksi bir metre” demek, oranın uzunluğunun negatif olduğu anlamına gelmez; yeni başlangıcın hangi tarafında olduğunu söyler.
+
+Peki sıfırı aynı bırakıp pozitif yönü sola seçersek? İlk kapının konumu $-2$, ikincinin konumu $-7$ olur. İlkinden ikinciye değişim bu kez $-7-(-2)=-5$ metredir. Yer değiştirme sayısının işareti tersine döndü, çünkü sağa gitmek artık negatif yönü ifade ediyor. Uzaklık ise $|-5|=5$ metredir.
+
+Bu iki değişikliği ayrı düşünmek gerekir: sıfırı taşımak konum sayılarını, eksenin yönünü ters çevirmek işaretleri değiştirir. Fiziksel kapılar ve aralarındaki mesafe aynı kalır. Bir sayı doğrusu çiziminde önce sıfırı, birim aralığını ve pozitif yönü belirtmemizin nedeni budur. Bir çizimden sayı okurken bu üç bilgi verilmemişse yalnız çizginin üzerindeki noktalara bakarak konum belirleyemeyiz.
 
 ## 6. Alınan Yol ile Yer Değiştirme
 
@@ -184,9 +236,15 @@ Bir boyutta yer değiştirmeyi işaretli bir sayıyla ifade edebiliyoruz. İleri
   caption="Nokta −2’den 3’e gidip 1’e dönüyor. Dönüşte alınan yol büyümeye devam ederken yer değiştirme oku kısalıyor: toplam yol 7 birim, yer değiştirme +3 birim."
 />
 
+### Aynı yere dönmek, hiç yürümemek değildir
+
+Bir kişi 1 konumundan $-3$'e, oradan tekrar 1'e yürüsün. İlk hareket dört birim sola, ikincisi dört birim sağadır. Yer değiştirme $1-1=0$ olur; başlangıç ve bitiş aynıdır. Alınan yol ise $4+4=8$ birimdir. Sıfır yer değiştirme, hareketin bütün ayrıntılarını söylemez. Aynı yerde bekleyen kişiyle gidip dönen kişinin son konumu aynı olabilir, fakat yürüdükleri yollar farklıdır.
+
+Önceki örnekte de her hareket parçasının uzunluğunu pozitif saydık. Alınan yolu hesaplarken sola giden bölümü negatif yazıp sağa giden bölümden çıkarsaydık, yol yerine yer değiştirmeyi hesaplamış olurduk. Bu nedenle önce soruyu bir cümleyle belirlemek işe yarar: “Nerede bitti?” sorusu için son konum, “Başlangıca göre ne değişti?” için işaretli fark, “Ne kadar yürüdü?” için bütün parçaların uzunlukları gerekir. İşlem seçimi bu anlamdan sonra gelir.
+
 ## 7. Negatif İzdüşüme Geri Dönmek
 
-Önceki yazıda bir çubuğun ucundan yatay doğruya dikme indirmiştik. Dikmenin ayağı başlangıç noktasının soluna düştüğünde yatay konumu negatif çıkıyordu.
+Bu bağlantıyı ilk kez okuyorsak yatay izdüşümü şöyle düşünebiliriz: Eğik bir çubuğun ucundan yatay çizgiye dik bir çizgi indirir, çizgilerin buluştuğu noktaya bakarız. Bu nokta çubuğun ucunun yataydaki yerini gösterir. Nokta, seçilen başlangıcın solundaysa yatay konumu negatiftir. Burada açı veya üçgen hesabı yapmıyoruz; yalnız bir noktanın sağda mı solda mı olduğunu sayı doğrusuyla anlatıyoruz.
 
 Bu ayak, başlangıcın üç birim solundaysa yatay konumuna −3 deriz. Başlangıca uzaklığı ise $|-3|=3$ birimdir. Çubuğun fiziksel uzunluğu da negatif olmaz.
 

@@ -49,6 +49,14 @@ $\sin(\arcsin t)=t$ eşitliği $-1\le t\le1$ için geçerlidir. Fakat $\arcsin(\
 
 Hesap makinesinin derece veya radyan ayarı da çıktının nasıl okunacağını belirler. Yaklaşık $0{,}3948$ radyan ile yaklaşık $22{,}62^\circ$ aynı açıdır. Sonuca sadece 0,3948 yazıp bunu derece olarak kullanmak, sonraki kenar hesaplarını değiştirir.
 
+### Ters işlemi denklemin hangi aşamasında kullanıyoruz?
+
+Örneğin bir üçgen açısı için $2\sin\theta=\sqrt3$ verilmiş olsun. Arksinüs uygulamadan önce sinüsü yalnız bırakırız: iki tarafı 2'ye bölerek $\sin\theta=\sqrt3/2$ buluruz. $\arcsin(\sqrt3)/2$ yazmak aynı işlem değildir; arksinüsün girdisi $\sqrt3>1$ olduğunda gerçek bir açı bile yoktur. Bir fonksiyonun dışındaki çarpanı kaldırmakla fonksiyonun içine bölme yapmak birbirine karıştırılmamalıdır.
+
+Hesap makinesi veya özel açı bilgisi ilk adayı $60^\circ$ verir. Ancak üçgen açısı istediğimiz için aralığımız $0<\theta<180^\circ$'dir; aynı sinüsü veren $120^\circ$ de bu aralıktadır. İki adayın hangisini kullanacağımızı ek veri belirler. Diğer açılardan biri $80^\circ$ ise $120^\circ+80^\circ>180^\circ$ olduğundan ikinci aday elenir. Geriye $\theta=60^\circ$ ve üçüncü açı $40^\circ$ kalır.
+
+Ters kontrol iki ayrı soruyu yanıtlar. $2\sin60^\circ=\sqrt3$ başlangıç denklemini doğrular; $60+80+40=180$ ise açıların aynı üçgene sığıp sığmadığını denetler. Yalnız ilk kontrolü yapmak, üçgene uymayan bir trigonometrik çözümü kabul etmemize yol açabilir. Açıları radyanla yazsaydık aynı işlem $\pi/3$, $4\pi/9$, $2\pi/9$ üzerinden ilerlerdi; derece ile radyanı tek toplama içinde karıştırmazdık.
+
 ## 2. Üçgenin Harflerini Yerleştirmek
 
 Köşelere $A$, $B$, $C$ diyelim. Aynı harfleri köşelerdeki açıların ölçüleri için de kullanacağız; hangi anlamın kastedildiği bağlamdan anlaşılacak. **$a$ kenarı $A$ açısının karşısında, $b$ kenarı $B$ açısının karşısında, $c$ kenarı $C$ açısının karşısındadır.** Küçük harfler uzunlukları gösterir.
@@ -81,6 +89,14 @@ $A$ geniş açı olduğunda dikme taban parçasının dışına düşebilir. Bu 
 
 Kenarlardan birini santimetre, diğerini metre olarak verirlerse önce ortak birime geçeriz. Sinüsün birimi yoktur; alanın birimi iki uzunluk biriminin çarpımından gelir. Açıyı doğrudan kenarlarla çarpmıyoruz; açının sinüsünü kullanıyoruz.
 
+### Yükseklik neden bir kenarın tamamından kısa olabilir?
+
+Yükseklik, köşeden tabanın **doğrusuna dik uzaklıktır**. Eğik kenar boyunca alınan yol değildir. Bu nedenle alan hesabında eğik kenarı doğrudan yükseklik yerine koyamayız. $b=5$, $c=8$ ve aralarındaki açı $A=150^\circ$ olsun. Dikmenin ayağı taban parçasının dışında kalsa da yardımcı dik üçgendeki dar açı $30^\circ$'dir. Böylece $h=5\sin30^\circ=5/2$ ve alan $8(5/2)/2=10$ birimkare çıkar.
+
+Burada taban olarak 8'i seçmemiz, dikmenin ayağının bu 8 birimlik parçanın içinde kalmasını gerektirmez. Alan formülü taban doğrusu ile karşı köşe arasındaki dik uzaklığı kullanır. Üçgeni uzatılmış doğru üzerinde düşünmek, yeni bir alan parçasını asıl üçgene eklediğimiz anlamına gelmez.
+
+İki kenarı sabit tutup açıyı değiştirdiğimizde sinüs çarpanı alanın ne kadar küçüldüğünü gösterir. Aynı 5 ve 8 kenarları arasındaki açı $90^\circ$ olsaydı yükseklik 5, alan 20 olurdu. $150^\circ$ için alan bunun yarısıdır. $30^\circ$ de aynı sinüse sahip olduğu için aynı alanı verir; fakat üçüncü kenar ve üçgenin biçimi farklıdır. Demek ki alanı ve iki kenarı bilmek bile bazen aradaki açıyı tek başına belirlemez.
+
 ## 4. Sinüs Teoremi Alandan Çıkar
 
 Aynı üçgenin alanını üç farklı biçimde yazdık. Her birini $2/(abc)$ ile çarpalım. Bütün kenarlar pozitif olduğundan bu bölme geçerlidir. İlk ifadeden $\sin A/a$, diğerlerinden $\sin B/b$ ve $\sin C/c$ kalır:
@@ -100,14 +116,32 @@ Teorem, bir kenarı herhangi bir açının sinüsüyle eşleştirmez. Her bölü
 $A=40^\circ$, $B=65^\circ$ ve $a=8$ birim verilsin. Önce üçüncü açı $C=180^\circ-40^\circ-65^\circ=75^\circ$ olur. Sonra:
 
 $$
-b=8\frac{\sin65^\circ}{\sin40^\circ}\approx11{,}28,
-\qquad
-c=8\frac{\sin75^\circ}{\sin40^\circ}\approx12{,}02.
+\begin{aligned}
+b&=8\frac{\sin65^\circ}{\sin40^\circ}\\
+&\approx11{,}28,\\
+c&=8\frac{\sin75^\circ}{\sin40^\circ}\\
+&\approx12{,}02.
+\end{aligned}
 $$
 
 Hesap sırasında sinüsleri çok erken yuvarlamadan son sonucu yuvarlarız. En büyük açı 75 derece, karşısındaki en uzun kenar da yaklaşık 12,02 birimdir. Ayrıca $8+11{,}28>12{,}02$ olduğundan üçgen eşitsizliğiyle çelişmiyoruz.
 
 Bu örnekte iki açı ve bir kenar yeterliydi. Açılar şekli benzerlik bakımından belirledi, verilen kenar da ölçeği sabitledi. Üç açıyı bilip hiçbir kenarı bilmeseydik, aynı biçimin farklı büyüklüklerini ayırt edemezdik.
+
+### Oranın eşitliği bilinmeyeni nasıl yalnız bırakır?
+
+Sinüs teoremindeki kesirleri ezberlemek yerine eşitliğin iki tarafında yaptığımız işlemi izleyelim. $a/\sin A=b/\sin B$ içinde $b$ aranıyorsa iki tarafı $\sin B$ ile çarparız. Sağda paydadaki $\sin B$ sadeleşir; solda ise yeni bir çarpan olarak kalır. Sonuç $b=a\sin B/\sin A$ olur. $\sin A$'yı karşı tarafa geçirmek gibi belirsiz bir ifade yerine bu çarpma ve sadeleşmeyi görmek, pay ile paydayı ters yazmayı önler.
+
+Basit bir örnekte $A=30^\circ$, $B=90^\circ$, $a=4$ seçelim. Önce $C=60^\circ$ bulunur. Sonra $b=4\cdot1/(1/2)=8$, $c=4(\sqrt3/2)/(1/2)=4\sqrt3$ olur. Sonuçları dik üçgen olarak tekrar denetleyebiliriz:
+
+$$
+\begin{aligned}
+a^2+c^2&=4^2+(4\sqrt3)^2\\
+&=16+48=64=b^2.
+\end{aligned}
+$$
+
+Bu kontrol yalnız sayıları yerine koymak değildir: en büyük açının karşısındaki kenarın hipotenüs olduğunu da kullanır. Sinüs teoremi bütün üçgenlere uygulanır; burada dik üçgen seçmemiz, önceden bildiğimiz Pisagor hesabıyla sonucu bağımsız biçimde sınayabilmek içindir. $a$'yı iki katına çıkarsaydık bütün kenarlar iki katına çıkar, açılar ve kenar oranları aynı kalırdı.
 
 ## 5. Kosinüs Teoremi: Dik Açı Koşulunu Kaldırmak
 
@@ -139,6 +173,14 @@ Bu **kosinüs teoremidir**. $A$ geniş açı olduğunda $\cos A$ negatiftir; $C$
 
 $A=90^\circ$ olursa $\cos A=0$ ve son terim kaybolur: $a^2=b^2+c^2$. Böylece [Pisagor teoremi](/blog/pisagor-teoremi/) bu daha genel ilişkinin dik açı durumudur. Başlangıçta doğrudan Pisagor kullanamadığımız sorunu, açıya bağlı düzeltme terimi çözer.
 
+### Koordinat hesabındaki iki fark neyi ölçüyor?
+
+Kosinüs teoreminde $c-b\cos A$ ifadesi rastgele seçilmiş bir cebir parçası değildir. $B$ noktasının yatay adresi $c$, $C$ noktasının yatay adresi $b\cos A$ olduğundan bu fark iki köşe arasındaki yatay değişimdir. Düşey adresler 0 ve $b\sin A$'dır; düşey farkın büyüklüğü de $b\sin A$ olur. Uzaklık, bu iki dik değişimin oluşturduğu üçgene Pisagor uygulanarak bulunur. Böylece başlangıçta dik olmayan üçgenin içine koordinatlara bağlı bir dik üçgen kurmuş oluruz.
+
+Kare açılımındaki $-2bc\cos A$ işaretini de izleyebiliriz. $(x-y)^2=x^2-2xy+y^2$ özdeşliğinde $x=c$, $y=b\cos A$ konmuştur. Ortadaki terimi unutmak, iki noktanın yatay konumları arasındaki ortak kısmı hesaba katmamak olur. Dar açıda bu düzeltme üçüncü kenarın karesini $b^2+c^2$'den küçültür; geniş açıda büyütür.
+
+Son adımda $a^2$ biliniyorsa uzunluk olarak pozitif karekökü seçeriz. Cebirsel $a^2=13$ denkleminin iki gerçek kökü vardır, fakat kenar uzunluğu koşulu $a=-\sqrt{13}$ adayını eler. Denklem çözümüyle geometrik yorumun birlikte kullanılması burada da gereklidir.
+
 ## 6. Aynı İki Kenar, Değişen Uzaklık
 
 Park örneğinde iki yol üzerindeki uzaklıklar 3 ve 4 metreydi. Aralarındaki açıyı $C$, kişilerin arasındaki uzaklığı $c$ olarak adlandıralım:
@@ -162,6 +204,8 @@ $$
 \cos A=\frac{b^2+c^2-a^2}{2bc}.
 $$
 
+Bu düzenlemede önce eşitliğin iki tarafına $2bc\cos A$ ekler, sonra iki taraftan $a^2$ çıkarırız. Böylece $2bc\cos A=b^2+c^2-a^2$ kalır. Son olarak $b,c>0$ olduğu için sıfırdan farklı $2bc$ sayısına böleriz. Açının karşısındaki kenarın karesinin payda değil, paydaki eksi terimde bulunmasının nedeni bu işlemlerdir.
+
 $a=7$, $b=5$, $c=8$ birim olsun. Kenarlar üçgen eşitsizliğini sağlar. Yerine koyunca:
 
 $$
@@ -174,6 +218,29 @@ Dolayısıyla $A=\arccos(1/2)=60^\circ$ olur. Burada arkkosinüsün $[0,180^\cir
 Öteki açılardan $B$ için $\cos B=(49+64-25)/(2\cdot7\cdot8)=11/14$ buluruz. Buradan $B\approx38{,}21^\circ$, son açı da $C\approx81{,}79^\circ$ olur. En uzun kenar 8'in karşısındaki açı en büyüktür. Alan, bilinen iki kenar ve 60 dereceyle $(1/2)\cdot5\cdot8\sin60^\circ=10\sqrt3$ birimkaredir.
 
 Verilen kenarlar üçgen oluşturmuyorsa formülden çıkan kosinüs bazen $[-1,1]$ dışına çıkar. Bu, gerçek açının bulunmadığını gösterir. Örneğin 2, 3 ve 6 uzunlukları için zaten $2+3<6$ koşulu başarısızdır. Hesap makinesine geçersiz arkkosinüs girdisi vermeden önce şeklin mümkün olup olmadığını kontrol etmeliyiz.
+
+### En büyük açıyı bulmak neden güvenli bir başlangıçtır?
+
+Üç kenar biliniyorken sinüsle açı aramak bazen gereksiz bir belirsizlik doğurur. Kenarları $a=3$, $b=4$, $c=6$ olan bir üçgeni baştan sona çözelim. Önce $3+4>6$ olduğunu kontrol ederiz; diğer iki üçgen eşitsizliği de sağlanır. En uzun kenar 6 olduğuna göre en büyük açı onun karşısındaki $C$ açısıdır. Kosinüs teoreminden:
+
+$$
+\cos C=\frac{3^2+4^2-6^2}{2\cdot3\cdot4}
+=\frac{9+16-36}{24}=-\frac{11}{24}.
+$$
+
+Payın negatif çıkması hesap hatası değildir. $C$ açısının geniş olduğunu, yani $90^\circ$ ile $180^\circ$ arasında bulunduğunu söyler. Arkkosinüsle $C\approx117{,}28^\circ$ buluruz. Şimdi daha küçük bir açıya geçebiliriz:
+
+$$
+\cos A=\frac{4^2+6^2-3^2}{2\cdot4\cdot6}
+=\frac{43}{48},
+\qquad A\approx26{,}38^\circ.
+$$
+
+Son açı $B=180^\circ-A-C\approx36{,}34^\circ$ olur. Açıların sıralaması $A<B<C$, kenarların sıralaması $3<4<6$ ile uyumludur. Yuvarlama hatasını büyütmemek için hesap makinesindeki tam değerleri son adıma kadar saklamak uygundur.
+
+Peki geniş açı için yalnızca sinüs değeri verilseydi? $\sin C\approx0{,}8888$ sayısını arksinüse koymak yaklaşık $62{,}72^\circ$ verir. Bu, bulduğumuz geniş açının bütünleridir. İki açının sinüsü aynı olsa da üç kenarın belirlediği üçgende ikisi birden geçerli olamaz. Kosinüsün negatif işareti doğru adayı seçmiştir. Böylece “hesap makinesinin verdiği açı” ile “problemin koşullarını sağlayan açı” arasındaki farkı somut olarak görürüz.
+
+Alanı da yeni bir bağıntı öğrenmeden bulabiliriz: $K=\tfrac12\cdot3\cdot4\sin C\approx5{,}33$ birimkaredir. Geniş açıya rağmen sinüs pozitiftir. Kenarların çarpımını doğrudan ikiye bölmek ise 6 sonucunu verirdi; bu ancak aradaki açı dik olduğunda doğru alan olurdu.
 
 ## 8. SSA Durumunda Neden İki Cevap Çıkabilir?
 
@@ -205,6 +272,14 @@ Sonuçlar yaklaşık $13{,}56$ ve $3{,}76$ birimdir. Tek bir arksinüs çıktıs
 Dar $A$ verildiğinde $h=b\sin A$ yüksekliği yararlı bir ölçüttür. Eğer $a<h$ ise karşı kenar yatay doğruya ulaşamaz; üçgen yoktur. $a=h$ ise dik olarak değdiği tek konum vardır. $h<a<b$ durumunda iki konum da ışın üzerinde kalır ve iki üçgen oluşur. $a\ge b$ durumunda ise dar $A$ için yalnızca bir geçerli üçgen kalır.
 
 Bu sınıflandırmayı geniş açılı $A$'ya aynen aktarmayız. Geniş açının karşısındaki kenar en uzun olmalıdır; o yüzden $a>b$ gereklidir ve bu durumda tek üçgen bulunur. Pratikte en güvenilir yaklaşım, sinüsten gelen her açı adayını tek tek $A+B<180^\circ$ koşuluyla ve kenar bilgileriyle sınamaktır.
+
+### İki adayın her zaman iki üçgen vermediğini görmek
+
+Sinüs değeri 0 ile 1 arasında çıktığında iki bütünler açı adayı yazabiliriz; fakat her aday henüz bir üçgen değildir. $A=30^\circ$, $a=10$, $b=6$ verilsin. Sinüs teoremi $\sin B=6(1/2)/10=0{,}3$ verir. İlk aday yaklaşık $17{,}46^\circ$, ikinci aday $162{,}54^\circ$'dir. İkincisiyle $A+B$ zaten $180^\circ$'yi aştığından pozitif bir $C$ kalmaz. Bu veriler için yalnız ilk aday geçerlidir.
+
+Üçgenin hiç oluşmadığı durumda ise sorun daha önce görülür. Aynı $A=30^\circ$ ve $b=10$ için $a=4$ seçersek $\sin B=10(1/2)/4=1{,}25$ çıkar. Gerçek bir açının sinüsü 1'i aşamaz; hesap makinesinin hata vermesi yeni bir sayısal yöntem aramamızı gerektirmez. Geometrik olarak $C$ köşesi taban doğrusundan 5 birim uzaktadır; uzunluğu 4 olan kenar bu doğruya erişemez.
+
+Bu iki durum, aday elemenin neden çözümün parçası olduğunu gösterir. Önce oran gerçek bir açıya izin veriyor mu, sonra açı toplamı pozitif bir üçüncü açı bırakıyor mu diye bakarız. En sonunda bulunan kenarları başlangıçta verilen kenarlarla aynı isimler altında karşılaştırırız.
 
 ## 9. Ulaşılamayan Bir Noktanın Uzaklığını Ölçmek
 

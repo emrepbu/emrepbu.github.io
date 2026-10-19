@@ -39,6 +39,10 @@ Her adımda 2 eklenen kural ise $L(n)=1+2n$ olur. $n=4$ için $P(4)=16$, $L(4)=9
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Her adımda ikiye katlanmak" caption="Adım sayısı bir artarken miktar ikiyle çarpılır. n=0,1,2,3,4 için değerler 1,2,4,8,16 olur." />
 
+Ardışık miktarların oranının sabit olması, genel kuralı tekrar tekrar kurmamızı sağlar. Başlangıç $C$, her adımdaki pozitif çarpan $a$ olsun. Bir adım sonra $Ca$, iki adım sonra $(Ca)a=Ca^2$, üç adım sonra $Ca^3$ bulunur. $n$ adımda $n$ tane aynı çarpan kullanıldığından $Ca^n$ yazılır. Başlangıcı $n=0$ seçmemiz de $a^0=1$ sayesinde $Ca^0=C$ ile uyuşur.
+
+Bu kuraldan her adımın eklediği miktarı çıkarabiliriz: yeni miktar $aP(n)$ olduğuna göre artış $aP(n)-P(n)=(a-1)P(n)$'dir. Çarpan $a$ sabit olsa bile artış, o andaki $P(n)$ miktarına bağlıdır. Örneğin $a=1{,}5$ iken her seferinde eldekinin yarısı eklenir. 20'den 30'a geçerken 10, 30'dan 45'e geçerken 15 eklenmesi bu nedenle tutarlıdır. “Sabit değişim” ifadesini kullandığımızda sabit olanın fark mı oran mı olduğunu söylemeden modelin türünü belirleyemeyiz.
+
 ## 2. Üstel Fonksiyonun Taban Koşulları
 
 Temel üstel fonksiyonu:
@@ -73,6 +77,10 @@ Peki $2^{\sqrt2}$ ne demektir? Üs artık bir kesirle tam yazılamaz. $\sqrt2$'y
 
 Bu genişletmenin varlık ve tekliğinin tam ispatı, gerçek sayıların ve limitlerin özelliklerini gerektirir. Şimdilik kullanılan yapıyı açıkça belirtiyoruz: pozitif taban için gerçek üslerde üs kuralları korunur ve grafik kopmadan devam eder. Hesap makinesindeki ondalık değer, bu tanımlanmış sayının yaklaşık gösterimidir.
 
+Yarım adımın çarpanını, tam adım çarpanının yarısı sanmak doğru değildir. Tam adımda miktar 4 katına çıkıyorsa iki eş yarım adımın her biri aynı pozitif $q$ çarpanını kullanmalıdır. Arka arkaya uygulayınca $q^2=4$ olur ve $q=2$ bulunur. Bu örnekte 4'ün yarısı tesadüfen de 2'dir; fakat tam çarpan 9 olsaydı yarım adımın çarpanı $\sqrt9=3$ olurdu, 4,5 olmazdı. Gerekçe toplama değil çarpma üzerinden kurulmalıdır.
+
+Örneğin başlangıç 12 birim ve her iki saatte çarpan 9 ise, kesintisiz üstel modeli kabul ettiğimizde bir saat sonra $12\times3=36$, ikinci saat sonunda $36\times3=108$ bulunur. Tam dönem hesabı da $12\times9=108$ verir. Bu ara değeri yalnız başlangıç ve bitiş miktarlarından zorunlu olarak çıkaramayız; eşit zaman aralıklarında aynı oranın uygulandığı varsayımını kullandık. Kesirli üs, bu varsayımı tam sayı adımlarının arasına tutarlı biçimde taşır.
+
 ## 4. Yüzde Artış ve Azalışı Çarpana Çevirmek
 
 Bir miktar her adımda yüzde 8 artsın. Yeni miktar, eskisinin tamamı ile yüzde 8'inin toplamıdır. Bu nedenle çarpan $1+0{,}08=1{,}08$ olur. Başlangıç miktarı 100 birimse:
@@ -97,7 +105,7 @@ $$
 
 Burada $P_0$ başlangıç miktarıdır. Üçüncü saatte üs 1, altıncı saatte üs 2 olur. Başlangıç 80 ise bu zamanlarda 160 ve 320 bulunur. Bir buçuk saatte sürekli üstel modeli kabul edersek üs $1/2$, miktar $80\sqrt2$ olur.
 
-Süreyi dakikaya çevirirsek dönem 180 dakikadır ve $P(s)=P_0,2^{s/180}$ yazarız; $s$ dakika sayısını gösterir. Fiziksel olarak üs, sürelerin oranıdır ve birimsizdir. Sayısal formülde zaman birimini değiştirirken paydadaki dönem de değiştirilir.
+Süreyi dakikaya çevirirsek dönem 180 dakikadır ve $P(s)=P_0\,2^{s/180}$ yazarız; $s$ dakika sayısını gösterir. Fiziksel olarak üs, sürelerin oranıdır ve birimsizdir. Sayısal formülde zaman birimini değiştirirken paydadaki dönem de değiştirilir.
 
 Her üç saatte bir yapılan ayrı bir işlemle, aralarda kesintisiz büyüyen süreç aynı model değildir. İlkinde miktar adımlar arasında sabit kalabilir; ikincisinde kesirli zamanlara da üstel kural uygulanır. Hangi yorumun kullanıldığını söylemek, grafiği çizgilerle doldurmadan önce gerekir.
 
@@ -120,6 +128,10 @@ $$
 Çift yönlü ok, iki ifadenin aynı ilişkiyi anlattığını belirtir. Koşullar $a>0$, $a\ne1$ ve $x>0$'dır. Pozitif tabanlı üstel fonksiyon yalnızca pozitif çıktılar ürettiği için gerçek logaritmanın girdisi pozitif olmalıdır.
 
 Örneğin $\log_3 81=4$, çünkü $3^4=81$. $\log_2(1/8)=-3$, çünkü $2^{-3}=1/8$. Logaritmanın çıktısı negatif olabilir; yasak olan negatif **girdi**dir. $\log_a1=0$ ve $\log_a a=1$ ilişkileri, sırasıyla $a^0=1$ ve $a^1=a$ eşitliklerinden gelir.
+
+Logaritmadaki üç sayının rolünü her defasında üstel eşitliğe dönerek kontrol edebiliriz. $\log_2 8=3$ yazısında 2 taban, 8 girdi, 3 çıktıdır. Taban ile girdinin yerini değiştirmek başka bir soru oluşturur: $\log_8 2=1/3$, çünkü $8^{1/3}=2$'dir. Logaritma bir bölme kısaltması değildir; $8/2=4$ işlemi, 2'nin hangi kuvvetinin 8 olduğunu söylemez.
+
+Tabanın 0 ile 1 arasında olması da tanıma uygundur. Örneğin $\log_{1/2}8=-3$ olur: $(1/2)^{-3}=2^3=8$. Pozitif girdi 8'den negatif çıktı elde edilmesi bir hata değildir. Üstel fonksiyonda negatif üs, çarpanın tersini kullanmayı anlatır. Buna karşılık $\log_{1/2}(-8)$ gerçek sayılarda tanımlanamaz; pozitif tabanın hiçbir gerçek kuvveti negatif sonuç vermez. Hangi sayının pozitif olması gerektiğini sembolün konumundan okumak, “logaritma negatif olamaz” biçimindeki yanlış genellemeyi önler.
 
 ## 7. Üstel ve Logaritmik Grafiklerin Bağı
 
@@ -169,6 +181,10 @@ Bu kurallar koşullarıyla kullanılır. $\log_a(x^2)=2\log_a x$ yazımı $x>0$ 
 
 Logaritma toplama üzerine dağılmaz. $\log_2(1+1)=1$ iken $\log_2 1+\log_2 1=0$ olur. İçerideki işlemin çarpım mı toplam mı olduğunu görmek, kuralı seçmenin ilk adımıdır.
 
+Bölüm ve kuvvet kurallarının ara adımlarını da aynı tanımdan çıkaralım. $u=a^p$ ve $v=a^q$ ise $u/v=a^{p-q}$ olur. “$a$'yı hangi üsse yükseltince bu bölümü elde ederiz?” sorusunun cevabı $p-q$'dur; bu nedenle bölümün logaritması iki logaritmanın farkıdır. Kuvvetteyse $u^r=(a^p)^r=a^{pr}$ olur; aranan üs $pr=r\log_a u$'dur. Yeni kurallar, üs kurallarını ters yönde okumaktan gelir.
+
+Örneğin $\log_2(32/4)$ için önce iç bölümü yaparsak 8 ve sonuç 3 çıkar. Kuralla ise $\log_2 32-\log_2 4=5-2=3$ buluruz. Bu iki yol aynı işlemi doğrular. Fakat $\log_2(32-4)$ için aynı çıkarma kuralı yoktur; içerideki işlem bölüm değil farktır. Ayrıca kuralı iki ayrı logaritmaya açarken $u$ ile $v$'nin ayrı ayrı pozitif olması gerekir. Bölümün pozitif olması tek başına yetmez; iki negatif sayının bölümü pozitif olsa bile onların gerçek logaritmaları tanımlı değildir.
+
 ## 9. Başka Bir Tabanda Hesaplamak
 
 Hesap makinesinde istediğimiz taban bulunmayabilir. $y=\log_a x$ dersek $a^y=x$ olur. Her iki tarafın başka bir geçerli $b$ tabanında logaritmasını alalım:
@@ -186,6 +202,10 @@ $$
 Bu, **taban değiştirme formülüdür**. Kullanılan $a$ ve $b$ tabanları pozitif ve 1'den farklı, $x$ pozitiftir. Pay ile paydada aynı yeni tabanı kullanırız.
 
 Örneğin $3^x=7$ denkleminin çözümü $x=\log_3 7$'dir. Ondalık yaklaşık değer için taban değiştirerek yaklaşık $1{,}77124$ buluruz. Tam cevap $\log_3 7$ olarak kalabilir; ondalık yazım işlem kolaylığı sağlar ama tam değerin yerine eşitlik işaretiyle konmamalıdır.
+
+Taban değiştirme formülünde pay ile paydayı neden bu sırayla yazdığımızı örnekle denetleyelim. $y=\log_3 9$ sorusunda $3^y=9$ olur. İki tarafın doğal logaritmasını alınca $y\ln3=\ln9$ çıkar. $y$'yi yalnız bırakmak için onu çarpan $\ln3$'e böleriz; sonuç $\ln9/\ln3=2$'dir. Oranı ters yazmak $1/2$ verirdi ve $3^{1/2}$ sayısı 9 olmadığı için ilk denklem sağlanmazdı.
+
+Yeni tabanı seçmek aranan üssü değiştirmez. Hem payı hem paydayı onluk logaritmayla hesaplasak da 2 elde ederiz; çünkü aynı üstel eşitlikten yola çıkarız. Buna karşılık payda doğal, pay onluk logaritma kullanmak türettiğimiz eşitlikle uyuşmaz. Sıfıra bölme koşulu da açıktır: $\ln a=0$ ancak $a=1$ için olur. Tabanın 1 olmaması, hem tersin tekliğini hem bu bölmenin geçerliliğini güvence altına alır. Formülü yalnız hesap makinesinde tuş bulunmadığında değil, bu ilişkileri kontrol etmek için de kullanabiliriz.
 
 ## 10. Doğal Taban e ve Doğal Logaritma
 
@@ -217,11 +237,42 @@ $$
 
 İki logaritma için $x-1>0$ ve $x+1>0$, birlikte $x>1$ gerekir. Çarpım kuralıyla $\ln((x-1)(x+1))=\ln8$ elde edilir. Logaritma birebir olduğu için $x^2-1=8$, yani $x^2=9$ olur. Cebirsel adaylar 3 ve $-3$'tür, fakat koşulu yalnızca 3 sağlar. Başlangıçta yasak olan $-3$'ü çözüm olarak tutamayız.
 
+### Yarıya inme süresini modelden okumak
+
+Bir miktarın her 6 saatte yarıya indiği sürekli üstel modeli kabul edelim. Başlangıç miktarı 80 birim, geçen süre $t$ saat olsun. Altı saatlik dönem sayısı $t/6$ olduğundan:
+
+$$
+M(t)=80\left(\frac12\right)^{t/6}.
+$$
+
+$t=0$ için üs sıfırdır ve $M(0)=80$ çıkar. Altıncı saatte 40, on ikinci saatte 20, on sekizinci saatte 10 birim kalır. Her dönem aynı **miktar** değil, elde kalanın aynı **oranı** azalır. İlk dönemde 40, ikincide 20, üçüncüde 10 birim eksilmesi bu ayrımı gösterir.
+
+10 birime ne zaman ulaşıldığını cebirle de bulalım. Önce $80(1/2)^{t/6}=10$ eşitliğini 80'e böleriz:
+
+$$
+\left(\frac12\right)^{t/6}=\frac18
+=\left(\frac12\right)^3.
+$$
+
+Tabanı $1/2$ olan üstel fonksiyon birebir olduğundan $t/6=3$, dolayısıyla $t=18$ saat elde edilir. Logaritmayla çözseydik aynı sonucu:
+
+$$
+t=6\frac{\ln(1/8)}{\ln(1/2)}=18
+$$
+
+olarak bulurduk. Pay ve payda negatiftir; oran pozitif olur. Miktarın azalması, geçen zamanın negatif olmasını gerektirmez.
+
+Ayrıca “10'a ulaşmak” ile “10'un altına inmek” ayrı koşullardır. Sürekli azalan bu modelde ilki tam 18'inci saatte, ikincisi $t>18$ için gerçekleşir. Yalnız tam saatlerde gözlem yapılıyorsa ilk gözlenen 10'dan küçük değer 19'uncu saattedir. Modeli yalnız altı saatlik aralıkların sonunda yapılan ayrı işlemler için kurmuş olsaydık, ara zamanlara üstel değer atamak ek bir varsayım olurdu. Formülü kullanırken zamanın sürekli mi, yalnız belirli adımlardan mı oluştuğunu söylememizin nedeni budur.
+
 ## 12. Azalan Tabanla Eşitsizlik
 
 $(1/2)^x$ fonksiyonu azalandır. Dolayısıyla $x$ büyüdükçe çıktı küçülür. $(1/2)^x<1/8$ eşitsizliğinde $1/8=(1/2)^3$ yazılır. Çıktının daha küçük olması için girdinin daha büyük olması gerekir: $x>3$.
 
 Taban 2 olsaydı $2^x<2^3$ eşitsizliği $x<3$ verirdi. Aynı “üsleri karşılaştırma” fikri kullanılır; fakat fonksiyonun artan mı azalan mı olduğu yönü belirler. Logaritmalarda da 1'den büyük taban sıralamayı korur, 0 ile 1 arasındaki taban ters çevirir.
+
+Azalan tabanda yön değişimini sayısal bir karşılaştırmayla izleyelim. $(1/2)^2=1/4$, $(1/2)^3=1/8$, $(1/2)^4=1/16$ olur. Girdi 2'den 4'e artarken çıktı küçülür. Dolayısıyla $1/8$'den küçük çıktı istediğimizde 3'ten büyük üsleri seçeriz. Eşitsizliğin yönü, iki üssü yazarken keyfî biçimde çevrilmez; fonksiyonun azalan olması yüzünden çevrilir.
+
+Aynı sonucu logaritmayla çözersek bu kez cebirsel gerekçe görünür. Pozitif iki tarafın doğal logaritması sıralamayı korur, böylece $x\ln(1/2)<\ln(1/8)$ olur. Fakat $\ln(1/2)$ negatiftir; ona bölünce yön ters döner ve $x>3$ bulunur. Doğal logaritmanın artmasıyla negatif sayıya bölmenin etkisi iki ayrı adımdır. Bunları tek bir ezbere sıkıştırmak, farklı tabanlarda işaret hatasına yol açabilir. Bulduğumuz aralıktan $x=4$ seçip $1/16<1/8$ kontrolünü yapmak, son yönün doğru olduğunu ayrıca gösterir.
 
 ## 13. Verilen Değerlerden Çarpanı Bulmak
 

@@ -27,6 +27,12 @@ Hiç elemanı olmayan kümeye **boş küme** denir ve $\varnothing$ ile gösteri
 
 $A$ kümesinin her elemanı $B$ içinde de bulunuyorsa $A$, $B$'nin **alt kümesidir**; $A\subseteq B$ yazarız. Örneğin $\{1,2\}\subseteq\{1,2,3\}$ doğrudur. Eşit kümeler de birbirlerinin alt kümesidir; gösterimdeki küçük eşitlik çizgisi buna izin verir.
 
+### Bir eleman ile o elemandan oluşan kümeyi ayırmak
+
+$2$ bir sayıdır; $\{2\}$ ise içinde yalnız 2 sayısı bulunan bir kümedir. Bu nedenle $2\in A$ yazımı elemanlık sorusunu, $\{2\}\subseteq A$ yazımı küçük kümenin bütün elemanlarının A'da olup olmadığını sorar. $A=\{1,2,3\}$ için ikisi de doğrudur, fakat kullandığımız ilişki farklıdır. Süslü parantezler yeni bir sayı üretmez; sayıları bir topluluk olarak ele aldığımızı belirtir.
+
+Boş kümenin eleman sayısı sıfırdır. $\{0\}$ kümesinin ise bir elemanı vardır; o elemanın sayısal değeri sıfırdır. Örneğin “3'ten büyük ve 2'den küçük gerçek sayılar” koşulu hiçbir sayı seçmediği için boş küme verir. “Sıfıra eşit gerçek sayılar” koşulu tek bir noktayı seçer. Çözüm kümesini okurken önce içinde kaç aday bulunduğunu, sonra varsa bu adayların ne olduğunu ayırmak yararlıdır. Bu ayrım, ileride harfler birbirini götürdüğünde “çözüm yok” sonucunu yanlışlıkla “çözüm sıfır” diye okumamızı da önler.
+
 ## 2. Hangi Sayılarda Çözüm Arıyoruz?
 
 Bu yazıda doğal sayıları $\mathbb N=\{0,1,2,3,\ldots\}$ olarak kabul edeceğiz. Bazı kaynaklar 0'ı doğal sayılara katmaz; bu nedenle kullandığımız anlaşmayı açıkça belirtiyoruz. Tam sayılar $\mathbb Z$, negatif tam sayıları, sıfırı ve pozitif tam sayıları içerir.
@@ -55,6 +61,12 @@ $x\ge2$ koşulunun sağda sonlu bir sınırı yoktur. $[2,\infty)$ yazarız. $\i
 
 Aralık gösterimindeki virgül iki ucu ayırır. Türkçede ondalık virgülle karışabilecek bir durumda uçları kesirle yazmak veya aralıkta ayırıcı olarak noktalı virgül kullanıldığını açıkça belirtmek mümkündür. Burada uç değerlerde tam sayı ve kesir tercih ederek bu belirsizliği önlüyoruz.
 
+### Uç noktayı doğrudan koşula sorarak seçmek
+
+$[-2,3)$ aralığının anlamını her sınırı ayrı okuyarak kurabiliriz: Soldaki köşeli parantez $-2$'yi kabul eder, sağdaki yuvarlak parantez 3'ü kabul etmez. Aradaki bütün gerçek sayılar dahildir. Örneğin $-1{,}7$ ve $\sqrt2$ de bu aralıktadır; aralık yalnız tam sayıların kısa listesi değildir. $3$'e istediğimiz kadar yakın ama ondan küçük sayılar da kabul edilir; 3'ün kendisinin kabul edilmemesi bundan ayrı bir bilgidir.
+
+Kararsız kaldığımızda sınır değerini özgün eşitsizlikte deneyebiliriz. $x<3$ için $x=3$ koymak $3<3$ verir ve yanlıştır. $x\le3$ için aynı değer $3\le3$ verir ve doğrudur. Boş ve dolu noktanın gerekçesi bu kontrolün görsel karşılığıdır. Sonsuzlukta aynı deneme yapılamaz: $\infty$ yerine konacak bir gerçek sayı değildir. $x\ge-2$ koşulunda seçtiğimiz her büyük sayıdan daha büyüğü de bulunabilir. Sağ ucun açık yazılması, sonsuzdaki bir noktanın dışlandığını değil, sonlu bir uç bulunmadığını gösterir.
+
 ## 5. İki Koşul: Kesişim ve Birleşim
 
 Bir depodaki sıcaklık için ilk cihaz $x\ge2$, ikinci cihaz $x<6$ koşulu koysun. İkisinin de kabul ettiği değerler $[2,6)$ aralığındadır. İki kümenin ortak elemanlarından oluşan kümeye **kesişim** denir; $A\cap B$ ile gösterilir. Gündelik dildeki “ve” çoğu zaman bu yapıya karşılık gelir.
@@ -66,6 +78,12 @@ Bir depodaki sıcaklık için ilk cihaz $x\ge2$, ikinci cihaz $x<6$ koşulu koys
 $A=[1,5]$ ve $B=[3,8]$ için kesişim $[3,5]$, birleşim $[1,8]$'dir. İlkinde ortak kısmı, ikincisinde iki parçanın kapladığı bütün bölgeyi alırız. Aralıklar arasında boşluk varsa birleşimi tek aralık gibi yazamayız. Örneğin $[1,2]\cup[4,5]$, 3'ü içermez.
 
 Uç noktalar birleşim ve kesişimde de ayrı düşünülür. $[1,3)$ ile $[3,5]$'in kesişimi boştur; 3 ilk kümede bulunmaz. Aynı iki kümenin birleşimi $[1,5]$ olur, çünkü 3 ikinci kümede vardır ve arada eksik nokta kalmaz.
+
+### “Ve” ile “veya”yı aynı aday üzerinde denemek
+
+$x\ge1$ ve $x<4$ koşullarında bir sayı iki kapıdan da geçmelidir. 2 birinci koşulu ve ikinci koşulu sağlar; 5 ilkini sağlasa da ikinciden geçemez. Bu yüzden kesişim $[1,4)$ olur. Aynı koşulları “veya” ile birleştirirsek kabul kuralı değişir: En az bir kapıdan geçmek yeterlidir. Bu örnekte bütün gerçek sayılar kabul edilir. Çünkü 1'den küçük olanlar zaten 4'ten küçüktür; 1 veya daha büyük olanlar ilk koşulu sağlar.
+
+Bu örnek birleşimin her zaman iki ayrı parça olarak kalmadığını gösterir. Birleşimde tekrar saymak da gerekmez; 2 her iki kümede bulunsa bile sonuçta tek elemandır. Ayrı koşulların birleşimini yazarken yalnız uç sayılarını yan yana getirmek yeterli değildir. Önce hangi noktaların gerçekten kaplandığını izleriz. Kesişimde bir tek koşulu sağlamak yetmez; birleşimde ise bütün koşulları sağlama zorunluluğu yoktur. “Ve” ile “veya” sözcüğünü değiştirmek, aynı eşitsizlikleri kullansak bile cevap kümesini tamamen değiştirebilir.
 
 ## 6. Toplama ve Pozitif Çarpanlar
 
@@ -79,7 +97,7 @@ $$
 
 İki tarafı pozitif 3'e bölersek $x<4$ elde ederiz. Çözüm kümesi $(-\infty,4)$'tür. $x=3$ için başlangıçta $11<14$ doğru, $x=4$ için $14<14$ yanlış olur. Sınırın dahil olmaması, başlangıçtaki kesin küçüklük işaretinden gelir.
 
-Parantezli bir örnekte $2(x-1)\le x+5$ yazalım. Açınca $2x-2\le x+5$ olur. İki taraftan $x$ çıkarıp 2 eklersek $x\le7$ bulunur. $x=7$ eşitlik verdiği için çözümün içindedir. Sonuç $(-\infty,7]$ aralığıdır.
+Parantezli bir örnekte $2(x-1)\le x+5$ yazalım. Açınca $2x-2\le x+5$ olur. İki taraftan $x$ çıkarınca $x-2\le5$ kalır; çünkü $2x-x=x$ ve sağdaki $x-x=0$ olur. İki tarafa 2 ekleyince $x\le7$ bulunur. Bilinmeyen $x$ negatif olsa bile bu adımın yönü değişmez: Bir eşitsizliğe aynı sayıyı eklemek veya ondan aynı sayıyı çıkarmak, o sayının işaretinden bağımsız olarak sırayı korur. $x=7$ eşitlik verdiği için çözümün içindedir. Sonuç $(-\infty,7]$ aralığıdır.
 
 ## 7. Negatifle Çarpınca Yön Neden Değişir?
 
@@ -101,7 +119,33 @@ olur. Kontrol edelim: $x=-4$ için $14\ge11$ doğrudur. Yanlış yönde $x\ge-3$
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Sayı doğrusunda iki koşul ve yansıma" caption="Aralıkların ortak kısmı birlikte sağlanan koşulları gösteriyor. Negatifle çarpma ise sayı doğrusundaki sıralamayı tersine çevirerek eşitsizlik yönünün neden değiştiğini açıklıyor." />
 
-İşareti bilinmeyen bir ifadeyle çarpmak doğrudan aynı kuralla yapılamaz. $x$'in pozitif mi, negatif mi, sıfır mı olduğu belli değilken bir eşitsizliği $x$ ile çarpıp yönü koruyamayız. Gerekirse durumları ayırmak gerekir. Burada sabit katsayılı örneklerle çalışarak bu ek güçlüğü sonraya bırakıyoruz.
+İşareti bilinmeyen bir ifadeyle çarpmak doğrudan aynı kuralla yapılamaz. $x$'in pozitif mi, negatif mi, sıfır mı olduğu belli değilken bir eşitsizliği $x$ ile çarpıp yönü koruyamayız. Gerekirse durumları ayırmak gerekir. Aşağıdaki örnekte bu ayrımı paydanın işaretini izleyerek yapacağız.
+
+Negatif bir sayı **eklemek** ile negatif bir sayıyla **çarpmak** farklı etkiler yaratır. $2<5$ eşitsizliğinin iki yanına $-7$ eklersek $-5<-2$ olur; sıra korunur. Bu yüzden her eksi işareti gördüğümüzde yön çevirmeyiz. Yön değişimini gerektiren adım, iki tarafı negatif bir çarpanla ölçeklemek veya negatif bölenle bölmektir.
+
+Örneğin $5-2x\le11$ için önce iki taraftan 5 çıkaralım. Bu adımda $-2x\le6$ olur ve yön aynı kalır. Sonra iki tarafı $-2$'ye böleriz; sıra ters döner ve $x\ge-3$ bulunur. Sınırda $x=-3$ için sol taraf $5+6=11$ olduğundan eşitlik sağlanır. Kabul edilen taraftan $x=0$ seçince $5\le11$ doğrudur; dışarıdan $x=-4$ seçince $13\le11$ yanlıştır. Bu üç kontrol hem yönü hem sınırın dahil olmasını denetler. Sonuç $[-3,\infty)$'dir. Yanlış $x\le-3$ cevabı, az önce başarısız olduğunu gördüğümüz $-4$'ü kabul ederdi.
+
+### Bilinmeyen bir paydayı işaretine göre ayırmak
+
+İşareti belirsiz ifadeyle çarpma uyarısını tek bir örnekte uygulayalım:
+
+$$
+\frac{x-1}{x+2}>0.
+$$
+
+Önce paydanın sıfır olmaması gerekir: $x\ne-2$. Bir bölümün pozitif olması için pay ile payda aynı işaretli olmalıdır. İkisi de pozitifse $x-1>0$ ve $x+2>0$ gerekir. Bunlar sırasıyla $x>1$ ve $x>-2$ verir. İkisinin birlikte sağlandığı bölge $x>1$'dir; daha sıkı koşul diğerini de sağlamıştır.
+
+İkisi de negatifse $x-1<0$ ve $x+2<0$ olmalıdır. Bu kez $x<1$ ve $x<-2$ koşullarının ortak bölgesi $x<-2$ olur. Böylece çözüm:
+
+$$
+(-\infty,-2)\cup(1,\infty)
+$$
+
+olarak bulunur. $x=1$ için bölüm sıfırdır; istenen kesin pozitiflik sağlanmaz. $x=-2$ için ise bölümün değeri hiç yoktur. İki uç da dışarıdadır, fakat dışlanma nedenleri farklıdır.
+
+Bir noktayı her bölgeden deneyerek işaretleri kontrol edelim. $x=-3$ için $(-4)/(-1)=4$ pozitiftir. Ortadaki bölgeden $x=0$ seçersek $(-1)/2=-1/2$ negatiftir. $x=2$ için $1/4$ pozitiftir. Denemeler bulduğumuz aralıklarla uyumludur; bütün aralıkların gerekçesi ise payın ve paydanın işaretini ayrı ayrı belirlemiş olmamızdır.
+
+Başlangıçta iki tarafı doğrudan $x+2$ ile çarpıp $x-1>0$ yazsaydık yalnız $x>1$ dalını bulurduk. Negatif payda durumunda eşitsizlik yönünü çevirmediğimiz için sol taraftaki bütün çözümleri kaybederdik. Durumlara ayırmak, yeni bir ezber kuralı eklemekten çok önceki işaret kuralını doğru koşullarda kullanmamızı sağlar.
 
 ## 8. Bileşik Eşitsizlikleri Çözmek
 
@@ -159,6 +203,21 @@ $$
 
 Üç çıkarıp pozitif 2'ye bölersek $|x-1|\le4$ olur. Buradan $-4\le x-1\le4$, ardından $-3\le x\le5$ bulunur. İşlem sırası, uzaklık koşulunu açıkça görmemizi sağlar.
 
+### Mutlak değerli koşulu iki sınırla geri kontrol etmek
+
+$|x+1|\le2$ koşulunda merkez neden $-1$'dir? Uzaklık biçimi $|x-a|$ idi; $x+1=x-(-1)$ olduğundan burada $a=-1$ olur. Merkezden en fazla iki birim uzaklaşabiliriz. Sol uç $-1-2=-3$, sağ uç $-1+2=1$'dir. Cebirsel yol da aynı sınırları verir:
+
+$$
+\begin{aligned}
+-2&\le x+1\le2,\\
+-3&\le x\le1.
+\end{aligned}
+$$
+
+İkinci satırı elde etmek için üç bölüme de $-1$ ekledik. Sonuç $[-3,1]$ aralığıdır. Uçları kontrol edersek $|-3+1|=2$ ve $|1+1|=2$ buluruz; ikisi de kabul edilir. Merkezde $|-1+1|=0$ olur. Dışarıdaki $x=2$ ise uzaklık 3 verdiği için reddedilir.
+
+İçerideki artıya bakıp merkezi $+1$ almak, farkı yanlış okumak olurdu. Bir başka hata $x+1\le2$ satırıyla yetinmektir: Bu yalnız üst sınırı verir, çok negatif sayıları da kabul eder. Oysa mutlak değer hem sağdaki hem soldaki uzaklığı kısıtlar. İki sınırın birlikte yazılması tam olarak bu iki yönü korur.
+
 ## 11. Bir Uzaklık İfadesinin İçinde Katsayı Varsa
 
 $|2x-4|<6$ eşitsizliğinde önce içerideki ifadenin ne söylediğini okuyalım. $2x-4=2(x-2)$ olduğundan, bu ifade $x$'in 2'ye olan uzaklığının iki katıyla ilgilidir. Bir sayıyı pozitif 2 ile çarpmak uzaklığını iki katına çıkarır. Dolayısıyla $|2(x-2)|=2|x-2|$ ve koşul $|x-2|<3$ olur. Az önceki iç bölgeyi kullanırsak $-1<x<5$ buluruz.
@@ -183,7 +242,7 @@ Bir kontrol noktası seçmek de yararlıdır, fakat bütün çözümün ispatı 
 
 ## 13. Sayısal Sonucu Duruma Geri Taşımak
 
-Bir taşıma kutusunun boş kütlesi 2 kilogram, her paketin kütlesi 0,75 kilogram ve izin verilen toplam en fazla 8 kilogram olsun. Paket sayısına $n$ diyelim. Modelimiz $2+0{,}75n\le8$ olur. İki çıkarıp 0,75'e böleriz: $n\le8$.
+Bir taşıma kutusunun boş kütlesi 2 kilogram, her paketin kütlesi 0,75 kilogram ve izin verilen toplam en fazla 8 kilogram olsun. Paket sayısına $n$ diyelim. Modelimiz $2+0{,}75n\le8$ olur. İki taraftan boş kutunun 2 kilogramını çıkarınca $0{,}75n\le6$ kalır. Paketler için altı kilogram yerimiz vardır. $0{,}75=3/4$ pozitif olduğundan iki tarafı bu sayıya bölerken yönü koruruz: $n\le6\times4/3=8$.
 
 Cebirsel çözüm gerçek sayılarda $(-\infty,8]$ olsa da paket adedi negatif veya kesirli olamaz. Durumun ek koşulu $n\in\mathbb N$ olduğundan izin verilen sayılar $\{0,1,2,\ldots,8\}$'dir. Sekiz pakette toplam tam 8 kilogram olur; dokuz paket 8,75 kilogram vererek sınırı aşar.
 

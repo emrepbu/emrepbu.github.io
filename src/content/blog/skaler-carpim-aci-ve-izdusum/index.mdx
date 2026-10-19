@@ -62,6 +62,23 @@ $$
 
 Bunu bileşenlerde $u_1(v_1+w_1)=u_1v_1+u_1w_1$ ve ikinci bileşendeki aynı özellikten elde ederiz. Bir skaler $k$ için $(k\mathbf u)\cdot\mathbf v=k(\mathbf u\cdot\mathbf v)$ de geçerlidir. Bu kurallar uzun ifadeleri açmamızı sağlar; fakat sonuçların sayı mı vektör mü olduğunu her adımda izleriz.
 
+### Uzunluk karesini açarken çapraz terimler
+
+$(\mathbf u+\mathbf v)\cdot(\mathbf u+\mathbf v)$ ifadesinde iki parantez de toplamdır. Dağılma özelliğini bir kez değil iki kez kullanırız: dört çarpım oluşur. Ortadaki iki çarpım gerçek vektörlerde birbirine eşittir. Bu nedenle:
+
+$$
+\begin{aligned}
+\|\mathbf u+\mathbf v\|^2
+&=\mathbf u\cdot\mathbf u
+ +2\mathbf u\cdot\mathbf v
+ +\mathbf v\cdot\mathbf v.
+\end{aligned}
+$$
+
+Sayılar için bildiğimiz toplamın karesi burada da benzer biçimde görünür; fakat her terimin bir sayı olduğunu skaler çarpım sağlar. $\mathbf u=(2,0)$ ve $\mathbf v=(1,3)$ için toplam $(3,3)$, uzunluğun karesi 18'dir. Sağ tarafta $4+2\cdot2+10=18$ buluruz. Ortadaki terimi unutmak 14 verirdi.
+
+İki vektör dik olduğunda çapraz terim sıfır olur ve toplamın uzunluğuna Pisagor uygulanabilir. Yani her vektör toplamı bir dik üçgen toplamı değildir; dikliği sağlayan özel koşul $\mathbf u\cdot\mathbf v=0$'dır. Fark için aynı açılım yapılır, yalnız iki çapraz terimin işareti eksi olur. Sonraki kosinüs gerekçesinde kullanılacak $-2\mathbf u\cdot\mathbf v$ tam olarak bu iki terimin birleşmesidir.
+
 ## 3. Kosinüs Nereden Gelir?
 
 İki sıfırdan farklı vektörü aynı başlangıç noktasından çizelim. Aralarındaki küçük, yönsüz açıya $\theta$ diyelim; $0\le\theta\le\pi$ olsun. İki ucun arasındaki fark vektörü $\mathbf u-\mathbf v$'dir. Bu farkın uzunluğunun karesini iki yöntemle bulabiliriz.
@@ -110,6 +127,14 @@ Aynı veya zıt yöndeki vektörlerde üçgen düzleşir; bu iki uç durum, $\ma
 
 $\mathbf0\cdot\mathbf v=0$ eşitliği her $\mathbf v$ için doğrudur. Cebirde sıfır vektörü her vektöre ortogonal kabul edilir. Ancak sıfır vektörünün belirli bir yönü olmadığından, onunla başka bir vektör arasında geometrik açı tanımlamayız. “Çarpım sıfır, demek açı 90 derece” yorumunu yaparken iki vektörün de sıfırdan farklı olduğunu kontrol etmeliyiz.
 
+### Sıfır skaler çarpım bir bileşeni nasıl belirler?
+
+Diklik koşulu bilinmeyen bir bileşeni bulmaya da yarar. $\mathbf u=(2,1)$ vektörüne dik olacak $\mathbf w=(x,4)$ vektörünü arayalım. Nokta çarpımını bileşenlerden kurunca $2x+1\cdot4=0$ elde ederiz. Önce iki taraftan 4 çıkarır, sonra 2'ye böleriz: $2x=-4$ ve $x=-2$. Böylece aradığımız vektör $(-2,4)$ olur.
+
+Ters kontrolünde $2(-2)+1\cdot4=-4+4=0$ çıkar. Her iki vektör sıfırdan farklı olduğu için bu sıfır, geometrik olarak dik açı demektir. İlk vektörün yatay eksenle yaptığı açıyı hesaplamamıza hiç gerek kalmadı. Skaler çarpımın sağladığı kolaylık, açıya ilişkin koşulu bir bileşen denklemine çevirmesidir.
+
+Eğer $\mathbf w=(x,y)$ diye her iki bileşeni serbest bıraksaydık $2x+y=0$ kalırdı. Buradan $y=-2x$ çıkar ve birden fazla dik vektör bulunurdu: $(1,-2)$, $(3,-6)$ gibi. Bunlar aynı doğru üzerinde farklı uzunlukları temsil eder. Diklik tek başına uzunluğu belirlemez; önceki soruda ikinci bileşeni 4 vermemiz bu serbestliği kaldırdı.
+
 ## 5. Açı Hesabını Adım Adım Yapmak
 
 İki sıfırdan farklı vektör için temel bağıntıyı normların çarpımına bölebiliriz:
@@ -125,6 +150,10 @@ $$
 \cos\theta=\frac5{\sqrt5\sqrt{10}}
 =\frac5{\sqrt{50}}=\frac1{\sqrt2}.
 $$
+
+Son kesrin sadeleşmesini de açalım. $\sqrt5\sqrt{10}=\sqrt{50}$ yazabiliriz; kök içleri negatife düşmediği için bu çarpma geçerlidir. $50=25\cdot2$ olduğundan $\sqrt{50}=5\sqrt2$ olur. Dolayısıyla $5/\sqrt{50}=5/(5\sqrt2)=1/\sqrt2$ çıkar. İstersek payı ve paydayı $\sqrt2$ ile çarpıp aynı sayıyı $\sqrt2/2$ biçiminde yazabiliriz. Bu, birim çemberde $45^\circ$ açısının kosinüsüdür.
+
+Paydaki 5 tek başına bir açı ölçüsü değildir. Normlara bölmek, iki vektörün uzunluk ölçeklerini kaldırarak yalnız yön ilişkisini bırakır. Böylece kosinüsün alabileceği $[-1,1]$ aralığında birimsiz bir sayı elde ederiz. Örneğin iki vektörün bileşenleri metre cinsindense hem pay hem normların çarpımı metrekaredir; bölümde birimler de sadeleşir.
 
 Arkkosinüsün $[0,\pi]$ aralığındaki çıktısını seçeriz: $\theta=\pi/4=45^\circ$. Bu açı yönsüz açıdır; bir vektörden diğerine saat yönünde mi yoksa ters yönde mi dönüldüğünü skaler çarpım tek başına belirlemez.
 
@@ -150,6 +179,14 @@ $\mathbf u=(4,1)$ ve $\mathbf v=(1,1)$ için skaler çarpım 5, $\|\mathbf v\|=\
 Yön vektörünü pozitif bir sayıyla büyütmek bu işaretli izdüşümü değiştirmez. Örneğin $(1,1)$ yerine $(10,10)$ kullanırsak hem pay hem payda on katına çıkar. Sadece yön önemlidir. Ters yönü seçersek işaret değişir; aynı doğru üzerindeki ölçüm yönünü ters çevirmiş oluruz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Dönen vektörün işaretli izdüşümü" caption="Okun uzunluğu sabit kalırken yatay izdüşümü değişir. Dik konumda sıfır olur; ok sola döndüğünde izdüşümün işareti negatife geçer." />
+
+### İzdüşüm sayısını neden birim yönle ölçüyoruz?
+
+Bir yöndeki miktarı ölçerken yön okun uzunluğunun sonucu değiştirmesini istemeyiz. $\mathbf u=(3,4)$ için doğu yönünü $(1,0)$ ile gösterirsek nokta çarpımı 3; aynı yönü $(5,0)$ ile gösterirsek 15 çıkar. İkisi aynı doğrultuya baktığı halde sayılar değişti. Çünkü skaler çarpım yön kadar ikinci okun uzunluğunu da çarpar. Bu istenmeyen beş katı kaldırmak için yön vektörünün normuna böleriz.
+
+Dolayısıyla $\mathbf u\cdot\mathbf v$ ile skaler izdüşüm aynı şey ancak $\|\mathbf v\|=1$ olduğunda olur. Birim yön kullanımı bir süs veya hesap kısaltması değildir; ölçülecek miktarın seçtiğimiz yön okunun keyfi uzunluğuna bağımlı olmasını önler.
+
+$\mathbf u=(-3,4)$ ve doğu yönü için işaretli izdüşüm $-3$'tür. Bu doğru üzerindeki parçanın uzunluğu ise $|-3|=3$ olur. Yönü batı olarak seçersek işaretli sayı $+3$ olur; geometrik parçanın uzunluğu yine değişmez. Böylece üç ayrı nesneyi ayırırız: işaretli miktar, bu miktarın mutlak uzunluğu ve doğru üzerinde duran vektör. Bir sonraki adımda işaretli miktarı birim okla çarparak sonuncuyu kuracağız.
 
 ## 7. Vektörel İzdüşüm: Parçanın Kendisi
 
@@ -189,6 +226,23 @@ $$
 
 Dağılma özelliği ve $\mathbf v\cdot\mathbf v=\|\mathbf v\|^2$ sayesinde dikliği doğruladık. Dik izdüşümün cebirsel formülü, şekle göz kararı bir dikme çizmenin kesin hesap karşılığıdır.
 
+### İzdüşüm katsayısını diklik koşulundan türetmek
+
+Formül verilmemiş olsaydı da izdüşümü bulabilirdik. Aradığımız parça $\mathbf v$ ile aynı doğru üzerinde olacağı için $\mathbf p=t\mathbf v$ yazılır; $t$ henüz bilinmeyen gerçek sayıdır. Kalan $\mathbf u-t\mathbf v$ bu yöne dik olmalıdır. Diklik denklemini açalım:
+
+$$
+\begin{aligned}
+(\mathbf u-t\mathbf v)\cdot\mathbf v&=0,\\
+\mathbf u\cdot\mathbf v-t(\mathbf v\cdot\mathbf v)&=0,\\
+t&=\frac{\mathbf u\cdot\mathbf v}
+{\mathbf v\cdot\mathbf v}.
+\end{aligned}
+$$
+
+Son bölme $\mathbf v\ne\mathbf0$ olduğundan mümkündür; payda pozitif kareler toplamıdır. Böylece formülün iki şartı birlikte sağladığını gördük: izdüşüm doğru üzerindedir, kalan ona diktir.
+
+$\mathbf u=(1,5)$, $\mathbf v=(2,1)$ için pay $2+5=7$, payda $4+1=5$ olur. $t=7/5$, $\mathbf p=(14/5,7/5)$ ve kalan $\mathbf r=(-9/5,18/5)$ çıkar. Kalanın yönle çarpımı $-18/5+18/5=0$; iki parçanın toplamı $(1,5)$'tir. Uzunlukları da denetlersek $\|\mathbf p\|^2=49/5$, $\|\mathbf r\|^2=81/5$ ve toplamları $26=\|\mathbf u\|^2$ olur. Bu son kontrol dik ayrışımın Pisagor karşılığıdır. Katsayı $7/5$ ile izdüşümün uzunluğu aynı sayı değildir; uzunluk için ayrıca $\|\mathbf v\|$ çarpanı gerekir.
+
 ## 8. Bir Noktanın Doğruya En Kısa Uzaklığı
 
 Orijinden geçen ve $(1,1)$ yönündeki doğruyu düşünelim. $(4,1)$ noktasının bu doğru üzerindeki dik izdüşümü $(5/2,5/2)$ bulundu. Aradaki fark $(3/2,-3/2)$ olduğundan uzaklık:
@@ -203,6 +257,32 @@ Bunun neden en kısa uzaklık olduğunu geometriden açıklayabiliriz. Doğru ü
 Doğru orijinden geçmiyorsa önce başlangıcı ona göre taşıyabiliriz. Doğru üzerindeki bir nokta $A$, dışarıdaki nokta $P$ ve doğru yönü $\mathbf v$ olsun. Önce $\mathbf u=\overrightarrow{AP}$ farkını alır, bunu $\mathbf v$ üzerine izdüşürürüz. Ayağın adresi $A+\operatorname{proj}_{\mathbf v}\mathbf u$, uzaklık ise kalan vektörün normudur. Böylece konum vektörüyle yer değiştirmeyi karıştırmadan aynı hesabı kullanırız.
 
 Örneğin $A=(1,2)$, $P=(5,3)$ seçilirse $\overrightarrow{AP}=(4,1)$ olur. Aynı yön için ayak noktası $(1,2)+(5/2,5/2)=(7/2,9/2)$'dir. Uzaklık yine $3/\sqrt2$ kalır; bütün şekli taşımak uzunlukları değiştirmez.
+
+### En yakın nokta, doğru parçasının dışında kalabilir
+
+İzdüşüm hesabı sonsuza uzanan doğruyu kullanır. Problem yalnızca iki uç arasındaki doğru parçasını soruyorsa, bulunan ayağın bu parçanın üzerinde olup olmadığını ayrıca denetlemeliyiz. $A=(1,1)$, $B=(3,2)$ ve $P=(6,2)$ olsun. Parçanın yönü $\mathbf v=B-A=(2,1)$, başlangıçtan dış noktaya fark ise $\mathbf u=P-A=(5,1)$'dir.
+
+Doğru üzerindeki noktaları $Q(t)=A+t\mathbf v$ biçiminde yazabiliriz. $t$ gerçek sayı olduğunda bütün doğruyu, $0\le t\le1$ olduğunda yalnızca $AB$ parçasını dolaşırız. İzdüşüm katsayısı:
+
+$$
+t_*=\frac{\mathbf u\cdot\mathbf v}{\mathbf v\cdot\mathbf v}
+=\frac{5\cdot2+1\cdot1}{2^2+1^2}=\frac{11}{5}.
+$$
+
+Bu katsayıyla ayak $Q(t_*)=(27/5,16/5)$ olur. Fakat $11/5>1$ olduğu için ayak, $B$ noktasının ötesindedir. Doğruya uzaklık hesabı geçerlidir; bu noktayı parça üzerinde bir noktaymış gibi kabul etmek geçerli değildir.
+
+Parça üzerindeki en iyi seçimi türev kullanmadan da bulabiliriz. Uzaklığın karesini açıp tam kareye tamamlayalım:
+
+$$
+\begin{aligned}
+\|P-Q(t)\|^2&=(5-2t)^2+(1-t)^2\\
+&=5\left(t-\frac{11}{5}\right)^2+\frac95.
+\end{aligned}
+$$
+
+Bütün gerçek $t$ değerlerinde en küçük sonuç $t=11/5$ ile gelir. Ancak izin verilen $[0,1]$ aralığında $11/5$'e en yakın sayı 1'dir. Bu yüzden parça üzerindeki en yakın nokta $Q(1)=B$ olur. Uzaklık $\|P-B\|=\|(3,0)\|=3$ birimdir. Sonsuz doğruya uzaklık ise $\sqrt{9/5}$ birimdir; daha küçüktür çünkü orada seçebileceğimiz noktalar daha fazladır.
+
+Bu ayrım harita üzerindeki bir yol parçasına veya bir çubuğa uzaklık bulurken önem kazanır. İzdüşüm katsayısı 0 ile 1 arasındaysa dik ayak parçada bulunur. Katsayı 0'dan küçükse başlangıç ucu, 1'den büyükse bitiş ucu en yakın noktadır. Önce hangi geometrik kümenin istendiğini belirlemek, doğru formülü yanlış soruya uygulamamızı önler.
 
 ## 9. Üç Boyutta ve Fiziksel Birimlerle
 
@@ -231,6 +311,19 @@ Aynı şekilde $\mathbf u\cdot\mathbf v=\mathbf u\cdot\mathbf w$ eşitliğinde $
 Bu örnek aynı zamanda ölçümün sınırını anlatır. Bir gölgeye veya tek bir eksendeki bileşene bakarak asıl vektörün tüm yönünü ve uzunluğunu belirleyemeyiz. Aynı yatay izdüşüme sahip çok sayıda farklı vektör olabilir. Daha fazla bağımsız yöndeki bilgi, bu belirsizliği azaltır.
 
 Fiziksel birimler de sonuç türünün parçasıdır. İki yer değiştirme vektörünün skaler çarpımı metrekare birimindedir; bunun bir alan formülü olduğu sonucu kendiliğinden çıkmaz. Kuvvet ile yer değiştirmede ise birim newton metredir ve tanımlanan fiziksel büyüklük iştir. Aynı matematik işlemi, girdilerin anlamına göre farklı ölçülen büyüklükleri temsil edebilir.
+
+### En kısa uzaklığın cebirsel denetimi
+
+Bir doğruya dik ayak bulduğumuzda başka her noktanın neden daha uzak olduğunu sayı hesabıyla da gösterebiliriz. Ayrışımımız $\mathbf u=t_*\mathbf v+\mathbf r$ ve $\mathbf r\cdot\mathbf v=0$ olsun. Doğru üzerinde başka bir $t\mathbf v$ seçildiğinde fark $\mathbf r+(t_*-t)\mathbf v$ olur. Norm karesini açarken çapraz terim diklik nedeniyle sıfır kalır:
+
+$$
+\|\mathbf u-t\mathbf v\|^2
+=\|\mathbf r\|^2+(t-t_*)^2\|\mathbf v\|^2.
+$$
+
+Son terim negatif olamaz. En küçük uzaklık ancak $t=t_*$ olduğunda gelir; yön vektörü sıfırdan farklı olduğu için başka bir $t$ aynı minimumu vermez. Böylece hem minimumu hem tekliğini, türev almadan kanıtladık.
+
+Önceki yeni örnekte $t_*=7/5$, $\|\mathbf r\|^2=81/5$ ve $\|\mathbf v\|^2=5$ idi. $t=1$ seçersek uzaklık karesi $81/5+5(2/5)^2=17$ olur. Doğrudan $(1,5)-(2,1)=(-1,4)$ farkının karesi de $1+16=17$'dir. İzdüşümün uzaklık karesi $16{,}2$ daha küçüktür. En yakın nokta ilkesinin bir çizim gözleminden öte olduğunu bu iki farklı hesapla denetleyebiliriz.
 
 ## 11. Skaler Çarpım Ne Kadar Büyük Olabilir?
 

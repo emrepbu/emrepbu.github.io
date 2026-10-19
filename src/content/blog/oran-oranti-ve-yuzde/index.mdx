@@ -53,6 +53,12 @@ Bu ayrım ileride yüzde hesabında da belirleyici olacak. “Mavilerin sarılar
 
 Bölme işleminden bildiğimiz sınırlama burada da geçerlidir: Referans miktar sıfırsa, ona bölerek sayısal bir oran hesaplayamayız. Buna karşılık sıfır mavi ve üç sarı boncuk varsa mavilerin sarılara oranı $0/3=0$ olur.
 
+### Oranı okurken karşılaştırılan iki miktarı söylemek
+
+$2/3$ sayısını tek başına görmek, hangi iki miktarın karşılaştırıldığını bildirmez. Boncuk örneğinde bu sayı “her üç sarıya karşılık iki mavi” demektir. “Boncukların üçte ikisi mavi” cümlesi ise başka bir iddiadır: O cümlede payda bütün boncukları sayar. İlk durumda beş boncuğun ikisi maviyken, ikinci durumda üç boncuğun ikisi mavidir. Aynı kesir yazımı farklı soruların cevabı olabilir; miktarların adlarını söylemek bu karışıklığı önler.
+
+Parça–parça oranından parça–bütün oranına geçerken yeni bir sayım yaparız. İki mavi pay ile üç sarı pay birlikte beş pay eder. Mavinin bütüne oranındaki 5 bu toplamdan gelir; 3'ün keyfî biçimde değiştirilmesi değildir. Bu “pay” gerçek boncuk olmak zorunda değildir. Her pay on boncuk olursa yirmi mavi, otuz sarı, toplam elli boncuk vardır. Mavilerin bütüne oranı yine $20/50=2/5$ olur. Payların büyüklüğünü bilmeden gerçek boncuk sayısını bulamayız; oran yalnızca göreli dağılımı bildirir.
+
 ## 2. Miktar Değişirken Oranı Korumak
 
 Aynı boncuk düzeninden iki tane yan yana koyalım. Dört mavi, altı sarı boncuğumuz olur. Üç düzen yaparsak altı mavi, dokuz sarı boncuk elde ederiz:
@@ -122,6 +128,12 @@ $$
 Diğer paket kilogram başına 116 TL'dir. Aynı miktarın fiyatını karşılaştırınca ikinci paket daha ucuz çıkar. Bu hesap, iki paket için aynı ürünü ve aynı fiyat koşullarını karşılaştırdığımız varsayımına dayanır.
 
 Zaman birimlerinde de sayıları körlemesine karşılaştırmamalıyız. Bir saat 60 dakika olduğu için 30 dakika $30/60=1/2$ saattir; $0{,}30$ saat değildir. Her birim dönüşümü onluk sisteme uymaz.
+
+### Birim başına değeri yeniden toplam miktara taşımak
+
+Bir litre meyve suyu 24 lira ise yarım litreye 12 lira düşer. Bu hesap, her litreye aynı fiyatın uygulandığı varsayımıyla yapılır. Litre başına 24 lirayı bir litreyle çarpmak 24 lira; iki litreyle çarpmak 48 lira verir. Birim başına miktar, bölmeyle bulduğumuz ve çarpmayla bütüne geri taşıdığımız bir bilgidir.
+
+Örneğin 600 gram peynir 90 lira olsun. Önce bir gramın fiyatını bulabiliriz: $90/600=0{,}15$ lira. Ardından 1000 gramı sayarız: $0{,}15\times1000=150$ lira. Kontrol için 150 liralık bir kilogramın $600/1000=0{,}6$ kadarını alırız; $150\times0{,}6=90$ lira başlangıca döner. 600'ü 90'a bölmek de anlamlıdır, ancak sonucu gram/liradır: bir lirayla alınan peynir miktarı. Bu, lira/gram olan fiyatın kendisi değildir. Sayıları bölmekten önce istenen birimi yazmak, hangi miktarın payda olacağını seçmemize yardım eder. İndirim veya paket ücreti varsa farklı miktarlara aynı birim fiyatı taşımadan önce bu koşulu ayrıca kontrol ederiz.
 
 ## 4. Orantı: İki Oranın Eşit Olması
 
@@ -204,6 +216,30 @@ Ters orantı için de yalnızca “biri artarken diğeri azalıyor” demek yete
 
 Orantı problemlerinde ilk soru böylece netleşir: **Sabit tuttuğumuz şey ne?** Birim başına miktar mı, toplam miktar mı, yoksa başka bir şey mi? Hesabın hangi koşullarda geçerli olduğunu bu cevap belirler.
 
+### Her artan ilişki doğru orantı değildir
+
+Bir atölye, bir sipariş için 40 birim hazırlık gideri ve üretilen her parça için 6 birim malzeme gideri hesaplasın. İki parça için toplam $40+2\times6=52$, dört parça için $40+4\times6=64$ birimdir. Parça sayısı iki katına çıktı, fakat toplam gider $52\times2=104$ olmadı. Bu ilişki artıyor olsa da **toplam gider parça sayısıyla doğru orantılı değildir**.
+
+Oranları kontrol etmek bunu görünür kılar:
+
+$$
+52\div2=26,
+\qquad
+64\div4=16.
+$$
+
+Parça başına toplam gider sabit değildir. Hazırlık gideri daha çok parçaya dağıldığı için, parça başına düşen pay azalır. Buna karşılık yalnız malzeme gideri iki parçada 12, dört parçada 24 birimdir; $12/2=24/4=6$ sabit kaldığı için bu bölüm doğru orantılıdır.
+
+Dört parçanın toplam giderini bildiğimizde sekiz parça için doğrudan “64'ün iki katı” diyemeyiz. Önce sabit gideri çıkarırız: $64-40=24$. Değişen malzeme bölümü iki katına çıkar: $24\times2=48$. Hazırlık giderini yalnız bir kez ekleriz: $48+40=88$. 128 sonucuna ulaşan işlem, tek siparişin hazırlık giderini de yanlışlıkla iki kez saymış olurdu.
+
+Bu örnek, içler dışlar çarpımından **önce** sorulması gereken soruyu gösterir: karşılaştırılan iki oran gerçekten eşit mi? Sayıların düzenli büyümesi bu eşitliği tek başına sağlamaz. Bir ilişkiye orantı demek, o ilişkinin belli bir özelliğini kabul etmektir. Birim başına değeri karşılaştırmak, söz konusu özelliği somut veriler üzerinde sınamamıza yardım eder. Ayrıca bu modelde hazırlık giderinin ve parça başına malzeme miktarının sipariş büyüdüğünde değişmediğini varsaydık; farklı üretim koşullarında bu varsayımı yeniden kontrol etmeliyiz.
+
+### Ters orantıda iki değişimi birlikte izlemek
+
+On iki litre örneğinde üç kap yerine altı kap kullanınca yalnız “kap sayısı arttı” demiyoruz; iki katına çıktığını belirliyoruz. Her kaba düşen dört litreyi aynı bıraksaydık altı kap için 24 litre gerekirdi. Elimizde hâlâ 12 litre bulunduğundan her kabın payı iki litreye inmelidir. Çarpımın sabit kalması, bu fiziksel sayımı kısaca ifade eder.
+
+Kap sayısı üçten dörde çıkınca artış bir kaptır; fakat paydaki azalışın da bir litre olması genel bir kural değildir. Bu örnekte tesadüfen dört litreden üç litreye iner. Dörtten altı kaba geçince iki kap eklenir, fakat pay üçten iki litreye, yalnız bir litre azalır. Ters orantı **eşit farkların** değil, karşılıklı çarpanların ilişkisidir. Üçten dörde geçişte çarpan $4/3$; dört litrelik paya uygulanacak çarpan bunun tersi $3/4$ olur. Böylece $4\times3/4=3$ litre buluruz. Kontrol $4\times3=12$ ile yapılır. Paylaştırmanın eşit olması, toplamın korunması ve kapların yeterli büyüklükte olması hesabın açık koşullarıdır.
+
 ## 6. Yüzde: Oranı Yüz Üzerinden Söylemek
 
 Başlangıçtaki beş boncuğun ikisi maviydi. Mavilerin bütüne oranı $2/5$ idi. Aynı oranı paydası 100 olacak şekilde yazalım:
@@ -277,6 +313,16 @@ $$
 
 Bu kez 18'i %30 ile çarpmadık. Öyle yapsaydık bütünün kendisini değil, bilinen 18 sayfanın %30'unu bulurduk. Önceki soruda bütünün bir parçasına iniyorduk; şimdi o parçadan bütüne geri dönüyoruz.
 
+### Soruyu ters yönde çözerek yöntemi seçmek
+
+Bir ürün indirimden önce 200 lira olsun. Fiyatının %15'i $200\times15/100=30$ liradır. Bu hesapta 30, yeni fiyat değil, çıkarılacak miktardır. Yeni fiyat $200-30=170$ liradır. Aynı sonucu başlangıcın %85'ini alarak bulabiliriz: $200\times0{,}85=170$. Yüzde oranı ile geriye kalan oranı ayırmak, sorunun hangi miktarı istediğini görünür kılar.
+
+Şimdi yalnızca “%15 indirimden sonra fiyat 170 lira” bilgisi verilmiş olsun. Başlangıç fiyatının yüz eş payından 85'i 170 liradır. Bir pay $170/85=2$ lira, yüz pay $2\times100=200$ lira eder. Bu çözümün her adımı önceki yönün tersidir. Kontrolde 200 liranın 30 liralık indirimi çıkarılınca 170 kalır.
+
+170'e %15 eklemek ise $170+25{,}5=195{,}5$ verir. Yanlışlığın nedeni toplama işlemi değil, yüzdeyi yanlış bütünden almaktır. İndirim 200 üzerinden hesaplanmıştı; geri dönmeye çalışırken 170 üzerinden hesaplanan yüzde, kaybolan 30 lirayı vermez. Bilinmeyen bütünü ararken “hangi miktarın yüzde kaçı?” cümlesini tamamlamak, çarpma ile bölme arasında gerekçeli bir seçim sağlar.
+
+Bu üç soru, aynı ilişkinin farklı yönleridir: bütünle oranı çarparsak parçayı; parçayı bütüne bölersek oranı; parçayı sıfırdan farklı orana bölersek bütünü buluruz. Oran %0 olduğunda son yön çalışmaz. “Bir miktarın %0'ı sıfırdır” bilgisi, başlangıç miktarını belirlemez; 10'un da 200'ün de %0'ı sıfırdır. Bu yüzden bilinmeyen bütünü bulmak için yüzde oranının sıfır olmaması gerekir. Hangi iki bilginin verildiğini söylemek, aynı sayıların farklı sırada kullanılmasını ezberlemekten daha açıklayıcıdır.
+
 ## 8. Artış ve Azalış: Yüzdenin Referansı Değişince
 
 Bir fidanın boyu 80 santimetreden 100 santimetreye çıksın. Artış $100-80=20$ santimetredir. Yüzde artışı bulurken bu farkı **başlangıç boyuyla** karşılaştırırız:
@@ -341,6 +387,10 @@ $$
 İki yüzdeyi doğrudan ortalamak %62,5 verirdi; burada doğru sonuç değildir. Büyük grupta daha çok insan bulunduğu için o grubun oranı toplamda daha fazla ağırlık taşır. Gruplar eşit büyüklükte olsaydı iki yüzdeyi toplayıp ikiye bölmek işe yarardı.
 
 ![20 kişilik grupta 10 kişi, 60 kişilik grupta 45 kişi kitabı bitirmiş. İkinci grubu gösteren çubuk birincinin üç katı uzunlukta. Birlikte 80 kişinin 55'i, yani yüzde 68,75'i kitabı bitirmiş.](./iki-grubun-yuzdesi.svg)
+
+İki grubun oranını birleştirirken her kişiyi bir kez saymak istediğimiz için, büyük grubun katkısı da daha büyük olmalıdır. Bunu bir düşünce kontrolüyle görebiliriz: İlk grup bir kişiden, ikinci grup yüz kişiden oluşsaydı iki gruba eşit ağırlık vermek, tek kişiye yüz kişi kadar etki tanırdı. Bu yüzden önce gerçek tamamlayan sayılarını topladık.
+
+Eşit büyüklükte gruplarda doğrudan ortalamanın neden çalıştığını da açıklayabiliriz. Her biri 20 kişilik iki grupta oranlar %50 ve %75 olsaydı tamamlayan sayıları 10 ve 15 olurdu. Toplam $25/40=0{,}625$, yani %62,5 çıkar. Bu kez her yüzde aynı büyüklükte bir bütüne uygulanmıştır. Önceki örnekte ikinci grubun üç kat büyük olması bu simetriyi bozuyordu. “Yüzdelerin ortalaması alınmaz” diye koşulsuz bir yasak ezberlemek yerine, hangi bütünlerin sayıldığını belirlemek daha doğru bir alışkanlıktır.
 
 Başlangıçtaki boncuklara döndüğümüzde bütün bu hesapların ortak sorusunu görebiliriz: **Paydada hangi miktar var?** İki maviyi üç sarıyla karşılaştırınca $2/3$, beş boncukluk bütünle karşılaştırınca $2/5$ bulduk. Yüzdeyle yazmak da, birim başına değere inmek de bu karşılaştırmayı daha kullanışlı bir biçimde ifade etti.
 

@@ -57,6 +57,12 @@ Kesrin tamamını taban olarak göstermek için parantez kullandık. Ondalık g�
 
 Bu örnek, “üs almak sayıyı büyütür” düşüncesinin her zaman doğru olmadığını gösterir. 1'den büyük pozitif bir sayının pozitif tam sayı kuvvetleri, üs arttıkça büyür. 0 ile 1 arasındaki bir sayıyı kendisiyle tekrar çarpmak ise sonucu küçültür. Tabanın ne olduğu, üssün ne olduğu kadar önemlidir.
 
+### Üssü bir hesap tarifine çevirmek
+
+$3^4$ ifadesini hesaplamak için önce $3\times3=9$, sonra $9\times3=27$, son olarak $27\times3=81$ buluruz. Her adımda önceki sonuca bir tane daha 3 çarpanı katıyoruz. Dört tane 3'ün çarpımını kurmak için üç çarpma yapılması bu yüzdendir: İlk 3 zaten başlangıç miktarıdır. Üssü işlem işaretlerinin sayısı sanarsak yanlışlıkla beş tane 3 kullanabiliriz.
+
+Taban ile üssün yerini değiştirmek de genellikle sonucu korumaz. $3^2=9$ iken $2^3=8$ olur. Çarpmada bildiğimiz $3\times2=2\times3$ özelliği, üs alma için geçerli değildir. Çünkü taban tekrarlanan miktarı, üs ise kaç çarpan kullanılacağını belirler; rolleri farklıdır. İfade yabancı görünüyorsa küçük pozitif tam sayı üslerinde çarpımı açık yazmak güvenilir bir başlangıçtır. Kontrol için son çarpanı geri alabiliriz: $81/3=27$, $27/3=9$, $9/3=3$. Böylece çarpan sayısının başta kurduğumuz dört 3 ile tutarlı olduğunu görürüz. Bu yöntem daha sonra kuracağımız üs kurallarının da somut dayanağıdır.
+
 ## 2. Neden Kare ve Küp Diyoruz?
 
 İkinci kuvvete **kare** dememizin geometrik bir karşılığı vardır. Kenarı 3 santimetre olan karenin alanı:
@@ -187,6 +193,12 @@ $$
 
 Şekildeki iki dikdörtgenin her biri 6 birimkaredir. Yalnızca 3'ün karesiyle 2'nin karesini toplamak bu iki bölgeyi dışarıda bırakır. **Kuvveti bir çarpımın çarpanlarına uygulayabiliriz; bir toplamın terimlerine ayrı ayrı uygulayıp toplayamayız.**
 
+### Hangi kuralı seçtiğimizi dış işlem belirler
+
+$3^2\times3^4$ ile $(3^2)^4$ yan yana benzer görünür. İlkinde iki ayrı kuvvet çarpılır; iki 3 çarpanı ile dört 3 çarpanı birleştirilir ve toplam altı çarpan bulunur. İkincisinde ise $3^2$ grubu dört kez kullanılır; her grupta iki çarpan bulunduğundan sekiz tane 3 vardır. Birincide üsleri toplama, ikincide çarpma yapmamız iki farklı sayımın sonucudur.
+
+Bir kuvveti diğerinin içine almakla iki kuvveti yan yana çarpmak aynı işlem değildir. Bu yüzden kurala karar verirken önce en dıştaki işarete bakarız: toplam mı, çarpım mı, yoksa bir parantezin kuvveti mi? $3^2+3^2$ toplamında ise dört tane 3 çarpanı yoktur; 9 ile 9 toplanır ve 18 elde edilir. İstersek ortak $3^2$ miktarını alıp $2\times3^2$ yazarız. Üslerin toplanması için toplam değil çarpım gerektiğini bu örnek açıkça gösterir. Sayısal sonuca bakmak da hatayı yakalar: yanlış $3^4=81$ sonucu, 9 ile 9'un toplamı olamaz.
+
 ## 5. Sıfırıncı Kuvvet ve Negatif Üs
 
 Üsler azaldığında ne olduğunu 2'nin kuvvetlerinden izleyelim:
@@ -265,6 +277,12 @@ $$
 
 Toplama için aynı kuvveti ortak çarpan olarak yazmak gerekir. $3\times10^4+2\times10^3$ ifadesinde ikinci terim $0{,}2\times10^4$ olarak yazılabilir. Böylece toplam $(3+0{,}2)\times10^4=3{,}2\times10^4=32000$ olur. Çarpmadaki üs toplama kuralını, sayıların toplamına uygulamayız.
 
+### Virgülün hareketini değer korunumu ile açıklamak
+
+$0{,}0062$ sayısını $6{,}2$ biçimine getirirken onu bin kat büyütmüş oluruz. Bilimsel gösterimde başlangıç sayısını korumak istediğimiz için bu büyütmeyi $1/1000=10^{-3}$ çarpanıyla geri alırız. Bu nedenle $0{,}0062=6{,}2\times10^{-3}$ olur. Negatif üs burada küçük bir sayıyı temsil eden çarpanı anlatır; sayının eksi olduğunu söylemez.
+
+Kontrol için $6{,}2$'yi sırayla üç kez ona bölebiliriz: $0{,}62$, $0{,}062$, $0{,}0062$. Aynı fikir büyük sayıda ters yönde çalışır. 6200'ü 6,2 yaparken bin kat küçültürüz; değeri koruyan ikinci çarpan bu kez $10^3$'tür. “Virgül sağa gitti, üs şöyle oldu” gibi yön ezberleri yerine hangi çarpanın ne kadar büyüyüp küçüldüğünü izlemek daha sağlamdır. Özellikle öndeki sayı standart aralığa getirildiğinde bu düşünce işe yarar: $62\times10^{-4}$ yazımında 62'yi ona bölüp 6,2 yaparsak ikinci çarpanı onla çarpar ve $10^{-3}$ elde ederiz. İki gösterimin çarpımları aynı kalır.
+
 ## 7. Karekök: Alan Verildiğinde Kenarı Bulmak
 
 Alanı 36 birimkare olan bir karenin kenarını arayalım. 5 birimlik kenar $5^2=25$ birimkare, 6 birimlik kenar $6^2=36$ birimkare alan verir. Aradığımız uzunluk 6 birimdir. Bunu **karekök işaretiyle** şöyle yazarız:
@@ -299,6 +317,12 @@ $$
 
 Çizgi toplamın tamamını kapsadığı için önce alttaki toplamı hesapladık. Çizgi yalnızca 9'u kapsıyorsa $\sqrt9+16=3+16=19$ olur. Bir ifadenin hangi kısmının kök altında bulunduğunu görmek, parantezleri doğru okumak kadar gereklidir.
 
+### Kare alma neden bazen geri dönüşte bilgi kaybettirir?
+
+Bir sayının karesi 49 ise ilk adayımız 7'dir; fakat $(-7)\times(-7)=49$ olduğu için $-7$ de aynı kareyi verir. Kare alma işlemi, sayının sıfıra uzaklığını büyütülmüş biçimde taşır ama hangi tarafta olduğunu ayırt etmez. Bu nedenle karesinden başlangıç sayısını tek başına geri çıkarmak her zaman mümkün değildir. Başlangıçta “sayı pozitiftir” bilgisi varsa 7'yi seçebiliriz; böyle bir koşul yoksa iki olasılığı da koruruz.
+
+Karekök işareti ise belirli tek bir sayı göstermesi için negatif olmayan sonucu seçer. Böylece $\sqrt{49}+1$ ifadesinin değeri belirsiz kalmaz: 8'dir. Burada $\sqrt{49}$ yerine hem 7 hem $-7$ yazmak, sembolün tanımını değiştirmek olur. Buna karşılık “karesi 49 olan sayı” sorusunun cevabında iki seçeneği belirtmek gerekir. Negatif bir sayının karesini alıp sonra kök aldığımızda ilk sayının işareti geri gelmediği için $\sqrt{(-7)^2}=7$ buluruz. Sonucu başlangıçla değil, başlangıcın mutlak değeriyle karşılaştırmamızın gerekçesi budur.
+
 ## 8. Tam Değer ile Yaklaşık Değeri Ayırmak
 
 0, 1, 4, 9, 16, 25, 36 gibi sayılar birer tam sayının karesidir; bunlara **tam kare sayılar** deriz. Karekökleri de tam sayıdır. Fakat her pozitif tam sayı bir tam kare değildir.
@@ -329,7 +353,9 @@ $\sqrt2$, sayının **tam gösterimidir**. Dört ondalık basamağa yuvarlanmı�
 
 İki tam sayının oranı biçiminde yazılabilen, paydası sıfır olmayan sayılara **rasyonel sayılar** denir. $3/4$, $-5/2$ ve $7=7/1$ bu gruptadır. Böyle bir oranla tam olarak yazılamayan gerçek sayılar ise **irrasyoneldir**. $\sqrt2$ bunlardan biridir.
 
-Bu sonuç, hesap makinesinde çok basamak görmemize dayanmaz. Kısa bir gerekçe kurabiliriz. $\sqrt2$'nin en sade hâliyle bir tam sayı kesri olduğunu varsayalım ve payına $p$, paydasına $q$ diyelim. Karesini aldığımızda $p^2/q^2=2$ çıkar. Her iki tarafı da $q^2$ ile çarparsak $p^2=2q^2$ olur. Yani $p$'nin karesi çifttir. Tek sayının karesi tek olduğundan $p$ de çift olmalıdır. Bunun arkasındaki sayma fikri basittir: Tek sayıda tek miktarı topladığımızda, ikişer gruplar çift miktar verir; açıkta kalan tek grup toplamı tek yapar.
+İrrasyonellik gerekçesinde birazdan kullanacağımız “çift” sözcüğü, iki eş tam sayı grubuna ayrılabilen tam sayıyı anlatır. “Tek” sayıda bu ikili gruplardan sonra bir birim artar. Tek bir sayının karesinin neden tek olduğunu 5 ile görebiliriz: beş tane beşi toplarken ilk iki beş çift bir toplam, sonraki iki beş yine çift bir toplam verir; son beş tek kalır. Aynı eşleme herhangi bir pozitif tek sayıda yapılabilir. Dolayısıyla bir tam sayının karesi çift çıkıyorsa sayı tek olamaz; çift olmalıdır. Negatif sayının karesi pozitif karşılığının karesiyle aynı olduğundan bu sonuç negatif tam sayılarda da geçerlidir.
+
+Bu sonuç, hesap makinesinde çok basamak görmemize dayanmaz. Kısa bir gerekçe kurabiliriz. $\sqrt2$'nin en sade hâliyle bir tam sayı kesri olduğunu varsayalım ve payına $p$, paydasına $q$ diyelim; $q$ sıfırdan farklıdır. Sayı pozitif olduğu için payı ve paydayı pozitif seçebiliriz. En sade biçim, payla paydanın 1'den büyük ortak tam sayı böleni kalmaması demektir. Karesini aldığımızda $p^2/q^2=2$ çıkar. Her iki tarafı da $q^2$ ile çarparsak $p^2=2q^2$ olur. Yani $p$'nin karesi çifttir. Tek sayının karesi tek olduğundan $p$ de çift olmalıdır. Bunun arkasındaki sayma fikri basittir: Tek sayıda tek miktarı topladığımızda, ikişer gruplar çift miktar verir; açıkta kalan tek grup toplamı tek yapar.
 
 Çift olan $p$'yi, bir tam sayı $k$ kullanarak $p=2k$ diye yazalım. Yerine koyunca $4k^2=2q^2$, ikiye bölünce $q^2=2k^2$ çıkar. Aynı gerekçeyle $q$ da çifttir. Böylece hem payın hem paydanın 2'ye bölünebildiğini bulduk; oysa kesri en sade hâliyle seçmiştik. Bu çelişki, başlangıçtaki varsayımın mümkün olmadığını gösterir.
 
@@ -385,6 +411,21 @@ $$
 
 Paydada iki $\sqrt2$'nin çarpımı 2 oldu. Bu dönüşüme **paydayı rasyonelleştirme** denir. Burada yaptığımız, daha önce öğrendiğimiz denk kesir oluşturmanın köklü bir örneğidir. Birden fazla terim içeren paydaları, cebirsel ifadeleri ilerlettiğimizde ele alacağız.
 
+### Köklü bir toplamı tam değerini koruyarak hesaplamak
+
+$\sqrt{12}+\sqrt{27}$ ifadesini adım adım sadeleştirelim. İlk sayının içinde $12=4\times3$, ikincisinde $27=9\times3$ vardır. 4 ve 9 tam kare oldukları için kökleri sırasıyla 2 ve 3'tür. Çarpanların hepsi pozitif olduğundan kökü çarpanlara ayırma kuralı uygulanabilir:
+
+$$
+\begin{aligned}
+\sqrt{12}+\sqrt{27}
+&=2\sqrt3+3\sqrt3\\
+&=(2+3)\sqrt3\\
+&=5\sqrt3.
+\end{aligned}
+$$
+
+Ortak miktar olan $\sqrt3$ değişmedi; yalnız kaç tane bulunduğunu topladık. Geri kontrol için $2\sqrt3$'ün karesi 12, $3\sqrt3$'ün karesi 27'dir. Bu iki pozitif sayı başlangıçtaki köklerdir. Toplamı $\sqrt{39}$ yazmak ise doğru değildir. Gerçek toplam $5\sqrt3$'ün karesi 75'tir; $\sqrt{39}$'un karesi 39 olur. Bir toplamın karesinde iki çapraz çarpım bulunduğu için kök içlerini doğrudan toplamak bu katkıları kaybettirir. Hesap boyunca ondalık yuvarlama yapmadığımızdan $5\sqrt3$ sonucu tamdır; yalnız yaklaşık büyüklük istenirse en sonda ondalık değer kullanılır.
+
 ## 10. Küpkök ve Kesirli Üsler
 
 Karesi verilen sayıyı karekökle aradık. Küpü verilen sayıyı ararken **küpkök** kullanırız:
@@ -414,6 +455,30 @@ $$
 Pozitif tabanlı $a^{m/n}$ gösteriminde, $m$ ve $n$ pozitif tam sayılar olmak üzere, **payda kökün derecesini, pay ise alınacak kuvveti** gösterir. Negatif bir kesirli üs de tersini alma fikrini ekler: $16^{-1/2}=1/\sqrt{16}=1/4$.
 
 Kesirli üsler için burada özellikle pozitif tabanla çalışıyoruz. Negatif tabanlarda kesrin nasıl yazıldığı ve kökün derecesi ayrı dikkat gerektirir; pozitif tabanla kurduğumuz bu okuma kuralını koşulsuz genişletmeyeceğiz.
+
+### Kesirli üssü iki ayrı işlem olarak okumak
+
+$27^{2/3}$ ifadesini ele alalım. Paydadaki 3, küpkök almayı; paydaki 2, karesini almayı belirtir. Pozitif tabanla çalıştığımız için önce kök alıp sonra kuvvet alabiliriz:
+
+$$
+27^{2/3}=(\sqrt[3]{27})^2=3^2=9.
+$$
+
+Önce karesini almayı seçseydik $27^2=729$, ardından $\sqrt[3]{729}=9$ bulurduk. İki yol aynı sonucu verir; kökü önce almak burada daha küçük sayılarla işlem yapmamızı sağlar. Hesapta $27\times2/3=18$ yazmak ise üs alma işlemini çarpmayla karıştırmak olurdu. Kesirli üs, tabanın kesir kadarını almak demek değildir.
+
+Negatif üs de eklenirse önce karşılık gelen pozitif kuvveti bulur, sonra çarpmaya göre tersini alırız:
+
+$$
+16^{-3/4}
+=\frac1{16^{3/4}}
+=\frac1{(\sqrt[4]{16})^3}
+=\frac1{2^3}
+=\frac18.
+$$
+
+Dördüncü kök, dördüncü kuvveti 16 olan negatif olmayan sayıdır; burada 2'dir. Sonucu kontrol etmek için $16^{3/4}=8$ ile $1/8$'i çarparız: 1 elde ederiz. Eksi üs, sonucun eksi olmasını söylemedi; sayının tersini istedi.
+
+Taban sıfır olduğunda bu son işlem yapılamaz. $0^{3/4}=0$ anlamlıdır, ama $0^{-3/4}$ yazmaya çalışınca sıfıra bölme ortaya çıkar. Negatif tabanlarda da kökün derecesini incelemek gerekir: $\sqrt[3]{-8}=-2$ gerçek sayıdır, çünkü $(-2)^3=-8$; buna karşılık $\sqrt[4]{-16}$ gerçek sayılar içinde tanımlı değildir. Bu nedenle kesirli üs kurallarını yeni öğrenirken pozitif taban koşulunu korumak güvenli ve açık bir başlangıçtır. Pozitif taban dışına çıktığımızda yalnız sembolleri dönüştürmek yerine, kullandığımız kökün ve üssün nasıl tanımlandığını ayrıca kontrol ederiz.
 
 ## 11. Pisagor'a Geri Dönüş
 

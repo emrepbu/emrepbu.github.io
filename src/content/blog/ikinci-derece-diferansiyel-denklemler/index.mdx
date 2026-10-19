@@ -29,6 +29,10 @@ $g(t)=0$ ise denklem **homojen**, sıfır olmayan sağ taraf varsa **homojen olm
 
 $y(0)=y_0$ ile $y'(0)=v_0$ başlangıç verileri olsun. Buradaki $v_0$ yalnız başlangıç eğiminin adıdır; fiziksel hız olmak zorunda değildir. Katsayılar düzenli ve en yüksek türevin katsayısı sıfır değilken doğrusal başlangıç değer problemi bir tek çözüm üretir. Sabit katsayılı durumda sürekli $g$ için bu çözüm, $g$'nin tanımlı olduğu aralık boyunca sürer.
 
+İki başlangıç verisinin rolünü en sade denklemde görebiliriz. $y''=0$ ise bir kez integral almak $y'=C_2$, bir kez daha almak $y=C_1+C_2t$ verir. $y(0)=a$ koşulu $C_1=a$'yı, $y'(0)=b$ koşulu $C_2=b$'yi seçer. Yalnız ilk koşul verilseydi $(0,a)$ noktasından geçen bütün eğimler mümkün olurdu. İkinci koşul, bu doğrular arasından birini seçer.
+
+Daha genel doğrusal denklemde grafik artık doğru olmayabilir; ancak değer ve eğim bilgisi yine iki bağımsız başlangıç verisidir. [Birinci mertebe yazısındaki](/blog/birinci-derece-diferansiyel-denklemler/) çözüm kontrolünü burada iki türeve genişletiyoruz. Kök hesabında [ikinci derece denklemleri](/blog/ikinci-derece-denklemler/), karmaşık köklerde [Euler bağıntısını](/blog/karmasik-sayilar-ve-euler-bagintisi/) kullanacağız. Bu bağlantılar yeni bir kuralın yerine geçmez; hangi önceki aracın hangi adımda çalıştığını gösterir.
+
 ## 2. Üstel deneme neden işe yarar?
 
 Homojen denklemde $y=e^{rt}$ biçimini deneyelim. $r$ sabit bir sayı olsun. Türevler $y'=re^{rt}$ ve $y''=r^2e^{rt}$ olur. Yerine koyunca:
@@ -54,6 +58,18 @@ $L[y]=ay''+by'+cy$ ifadesini bir işlem olarak adlandıralım. Türevin doğrusa
 Ancak aynı çözümün iki katını ikinci bir bağımsız çözüm sayamayız. $e^t$ ve $2e^t$ yalnız bir yönlü aile üretir: $C_1e^t+C_2(2e^t)=(C_1+2C_2)e^t$. İki başlangıç koşulunu serbestçe karşılamak için birbirinin sabit katı olmayan iki temel çözüm gerekir.
 
 Bunu başlangıç matrisinden kontrol edebiliriz. $y=C_1y_1+C_2y_2$ için başlangıç denklemlerinin katsayıları $\begin{pmatrix}y_1(0)&y_2(0)\\y_1'(0)&y_2'(0)\end{pmatrix}$ olur. Determinant sıfır değilse iki sabit tek biçimde belirlenir. Bu determinantın genel $t$ değerindeki haline Wronskiyen denir. Burada adı kadar işlevi önemlidir: değer ve eğim bilgileri bağımsız mı, onu sınar.
+
+Başlangıç matrisini soyut sembolden çıkaralım. $y_1=e^t$ ve $y_2=e^{2t}$ için sıfırdaki değerler ikisinde de 1, türevler sırasıyla 1 ve 2'dir. Dolayısıyla başlangıç değerini $a$, eğimi $b$ seçmek:
+
+$$
+\begin{pmatrix}1&1\\1&2\end{pmatrix}
+\begin{pmatrix}C_1\\C_2\end{pmatrix}
+=\begin{pmatrix}a\\b\end{pmatrix}
+$$
+
+sistemini verir. Determinant $1\cdot2-1\cdot1=1$ olduğu için her $a,b$ çifti için tek katsayı çifti vardır. İkinci satırdan birinciyi çıkarmak $C_2=b-a$, sonra $C_1=2a-b$ verir. İki fonksiyonun başlangıçta aynı değeri taşıması bağımsız olmalarını engellemez; başlangıç eğimleri onları ayırır.
+
+Wronskiyen ölçütünü bu bağlamıyla kullanıyoruz: aynı düzenli ikinci mertebeli homojen denklemin çözümlerini karşılaştırıyoruz. Rastgele iki fonksiyonun yalnız bir noktadaki determinantının sıfır çıkması, tek başına her yerde birbirinin sabit katı olduklarını söylemez. Burada güvenceyi matris hesabıyla birlikte diferansiyel denklemin teklik özelliği sağlar.
 
 ## 4. İki farklı gerçek kök
 
@@ -93,6 +109,30 @@ $$
 
 $y''+4y'+4y=0$, $y(0)=1$, $y'(0)=0$ için kök $r=-2$'dir. $C_1=1$, başlangıç türevi $C_2-2C_1=0$ olduğundan $C_2=2$ bulunur. Çözüm $(1+2t)e^{-2t}$'dir. Birinci türev $-4te^{-2t}$, ikinci türev $(-4+8t)e^{-2t}$ olur. Üç terimi topladığımızda katsayılar sıfırlanır.
 
+### Tekrarlı kökteki iptal işlemini açmak
+
+$y=e^{rt}u$ seçiminin iki türevini çarpım kuralıyla yazalım:
+
+$$
+\begin{aligned}
+y'&=e^{rt}(ru+u'),\\
+y''&=e^{rt}(r^2u+2ru'+u'').
+\end{aligned}
+$$
+
+İkinci satırda $ru'$ iki kez oluşur: bir katkı $e^{rt}$'nin türevinden, diğeri parantezdeki $ru$'nun türevinden gelir. Denklemde ortak $e^{rt}$ çıkarıldıktan sonra:
+
+$$
+\begin{aligned}
+&e^{-rt}(y''-2ry'+r^2y)\\
+&=(r^2u+2ru'+u'')-2r(ru+u')+r^2u\\
+&=(r^2-2r^2+r^2)u+(2r-2r)u'+u''\\
+&=u''
+\end{aligned}
+$$
+
+kalır. Dolayısıyla $u''=0$ denkleminin $u=C_1+C_2t$ çözümü geri gelir. $e^{rt}$ ve $te^{rt}$ çözümlerinin sıfırdaki değer-türev çiftleri $(1,r)$ ve $(0,1)$'dir; başlangıç determinantı 1'dir. Böylece yeni $t$ çarpanının hem denklemi sağladığını hem ikinci başlangıç koşulunu bağımsız biçimde taşıdığını gördük.
+
 ## 6. Karmaşık kökten gerçek salınım
 
 Kökler $\alpha\pm i\beta$, $\beta>0$ olsun. Euler bağıntısı:
@@ -111,6 +151,16 @@ $\beta$ salınımın açısal sıklığını, $\alpha$ genel büyüme veya azalm
 
 $y''+2y'+5y=0$ için kökler $-1\pm2i$'dir. $y(0)=0$, $y'(0)=2$ verilsin. İlk koşul $C_1=0$, ikinci koşul $2C_2=2$ verdiği için $y=e^{-t}\sin2t$ bulunur. Türev $e^{-t}(2\cos2t-\sin2t)$, ikinci türev $e^{-t}(-4\cos2t-3\sin2t)$ olur. $y''+2y'+5y$ içinde kosinüs ve sinüs katsayıları ayrı ayrı sıfırdır.
 
+Gerçek ve sanal kısımların neden ayrı çözümler olduğunu da açalım. Karmaşık çözüme $z=u+iv$ dersek gerçek katsayılı doğrusal işlem $L[z]=L[u]+iL[v]$ verir. Bunun sıfır olması, bir karmaşık sayının iki bileşenini ayrı ayrı sıfıra eşitlemek gibi, $L[u]=0$ ve $L[v]=0$ demektir. Katsayılar gerçek olmasaydı bu ayrım aynı biçimde çalışmazdı.
+
+Genel gerçek çözümün başlangıç türevi de ürün ve zincir kurallarıyla:
+
+$$
+y'(0)=\alpha C_1+\beta C_2
+$$
+
+olur; çünkü sıfırda kosinüs 1, sinüs 0'dır. İlk koşul $y(0)=C_1$'i seçer, sonra $C_2=[y'(0)-\alpha C_1]/\beta$ bulunur. $\beta>0$ olduğundan bölme güvenlidir. Tekrarlı gerçek kökte $\beta=0$ olurdu ve bu iki trigonometrik çözümden sinüs sıfıra çökerdi; o durumda önceki bölümün $te^{rt}$ çözümüne dönmemizin nedeni budur.
+
 ## 7. Üç sönüm biçimini matematikten ayırmak
 
 $y''+2\gamma y'+\omega_0^2y=0$ ailesini ele alalım; $\gamma\geq0$, $\omega_0>0$ olsun. Kökler $-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$'dir. Buradaki iki parametre henüz fiziksel bir modele bağlanmak zorunda değildir; köklerin türünü düzenli biçimde sınıflandırırlar.
@@ -122,6 +172,8 @@ $\gamma=\omega_0$ durumunda kök tekrarlıdır ve çözüm $(C_1+C_2t)e^{-\omega
 ![Aynı başlangıç koşullarında üç farklı kök yapısının ürettiği eğriler karşılaştırılır.](./uc-kok-davranisi.svg)
 
 Bu adların fiziksel anlamını yalnız denklem bir modele bağlandığında tamamlayabiliriz. Ayrıca “salınım yok” demek her başlangıçta tekdüze azalma var demek değildir; katsayılar ve başlangıç eğimi geçici yükselme veya eksen geçişi yaratabilir. Kök yapısı çözümün biçimini sınırlar, tek başına bütün ayrıntıları belirlemez.
+
+Köklerin işaretini yalnız grafikten okumak zorunda değiliz. Aşırı sönümde $\gamma>\omega_0>0$ olduğundan $0<\sqrt{\gamma^2-\omega_0^2}<\gamma$ olur. Bu yüzden hem $-\gamma+\sqrt{\gamma^2-\omega_0^2}$ hem $-\gamma-\sqrt{\gamma^2-\omega_0^2}$ negatiftir. İki üstel de zaman artarken azalır. Kritik durumda $te^{-\omega_0t}$ terimindeki $t$ büyüse de üstel azalma sonunda baskın gelir ve terim sıfıra yaklaşır. Üstel ile polinom büyümesi arasındaki bu karşılaştırma, tekrarlı kökte çözümün neden yine söndüğünü açıklar.
 
 ## 8. Zorlanmış denklemde homojen artı özel çözüm
 
@@ -136,6 +188,40 @@ $$
 $y''+y=\cos2t$ için $y_p=A\cos2t$ deneyelim. Yerine koyunca $(-4A+A)\cos2t=\cos2t$, yani $A=-1/3$ çıkar. Homojen çözüm $C_1\cos t+C_2\sin t$'dir. $y(0)=0$, $y'(0)=0$ koşulları $C_1=1/3$, $C_2=0$ verir. Sonuç $(\cos t-\cos2t)/3$ olur.
 
 Doğrusal süperpozisyon sağ taraflar için de çalışır: $L[y_1]=g_1$, $L[y_2]=g_2$ ise $L[y_1+y_2]=g_1+g_2$. Fakat aynı sağ tarafı sağlayan iki çözümü toplamak, yine aynı sağ tarafı değil iki katını üretir. Homojen durumun özel kolaylığını bütün denklemlere aynı sözlerle taşımamalıyız.
+
+Zorlanmış örnekte başlangıç koşulunu yalnız homojen kısma koymayalım. Toplam çözüm $y=C_1\cos t+C_2\sin t-(1/3)\cos2t$ olduğundan sıfırdaki değer $C_1-1/3$'tür. Bunun 0 olması $C_1=1/3$ gerektirir. Türev $-C_1\sin t+C_2\cos t+(2/3)\sin2t$ olduğundan sıfırdaki eğim $C_2$'dir ve ikinci koşul $C_2=0$ verir.
+
+Sonucun ikinci türevi $[-\cos t+4\cos2t]/3$'tür. Kendisiyle toplandığında $\cos t$ terimleri gider, $\cos2t$ katsayısı $(4-1)/3=1$ kalır. Yani gerçekten $y''+y=\cos2t$ elde edilir. Özel çözümün başlangıçta $-1/3$ olması hata değildi; homojen katkı onu başlangıç verisine uygun hale getirdi. Denklem koşulu ve başlangıç koşulu iki ayrı denetimdir.
+
+### Çözüm boyunca sabit kalan bir ifadeyi bulmak
+
+İkinci mertebeli denklemi çözerken bazen hareketin sınırlarını açık çözümden önce görebiliriz. Şu başlangıç değer problemini alalım:
+
+$$
+y''+4y=8,\qquad y(0)=1,\qquad y'(0)=2.
+$$
+
+Sabit çözüm $y=2$'dir; çünkü ikinci türevi sıfır ve $4\cdot2=8$ olur. Bu değerden sapmayı $u=y-2$ ile adlandıralım. Sabit çıkarmak türevleri değiştirmez: $u'=y'$, $u''=y''$. Denklem artık $u''+4u=0$, başlangıçlar $u(0)=-1$, $u'(0)=2$ olur.
+
+Şimdi $E(t)=[u'(t)]^2+4[u(t)]^2$ ifadesini düşünelim. Bu aşamada $E$ yalnız matematiksel bir toplamın adıdır. Zincir kuralıyla:
+
+$$
+E'(t)=2u'u''+8uu'=2u'(u''+4u)=0
+$$
+
+buluruz. Denklem sağlandığı için son parantez sıfırdır; dolayısıyla $E$ çözüm aralığında sabittir. Başlangıçtan sabitin değeri $E(0)=2^2+4(-1)^2=8$ çıkar. Karelerin negatif olmaması iki sınır verir: $4u^2\le8$ ve $(u')^2\le8$. Böylece $|u|\le\sqrt2$, $|y'|\le2\sqrt2$ ve $2-\sqrt2\le y\le2+\sqrt2$ elde edilir.
+
+Açık çözümle de bunu görelim. $u=C_1\cos2t+C_2\sin2t$ yazılır. İlk koşul $C_1=-1$, türev koşulu $2C_2=2$ verdiğinden $C_2=1$ olur:
+
+$$
+y(t)=2-\cos2t+\sin2t.
+$$
+
+Sinüs ve kosinüs katsayılarından sapmanın genliği $\sqrt{(-1)^2+1^2}=\sqrt2$'dir; az önceki sınırlarla uyuşur. Doğrudan türev alırsak $y''=4\cos2t-4\sin2t$ bulunur ve $y''+4y=8$ doğrulanır.
+
+Bu sabit toplam, başlangıç yüksekliğiyle başlangıç eğiminin birbirini nasıl tamamladığını gösterir. Eğimin büyüklüğü arttığında sapmanın karesine kalan pay azalır. Ancak aynı ifadeyi sönümlü bir denkleme taşıyıp değişmez sanamayız: denkleme $u'$ terimi eklendiğinde $E'$ hesabı da değişir. Korunan niceliği tahmin etmek yararlıdır; korunmayı kanıtlayan adım, türevini alıp özgün denklemi kullanmaktır.
+
+Örneğin dönüm noktalarında $y'=0$ olur ve bütün toplam $4u^2$ teriminde kalır. Bu nedenle uç sapmalar $u=\pm\sqrt2$'dir; başlangıç eğimi, ulaşılabilecek en büyük sapmaya da katkı yapmıştır.
 
 ## 9. Rezonans: deneme neden t ile çarpılır?
 
@@ -162,14 +248,20 @@ $\lambda=0$ ise $y=A+Bx$ olur. İlk sınır $A=0$, ikinci sınır $BL=0$ verir; 
 $\lambda=k^2>0$ ise çözüm $A\cos kx+B\sin kx$'tir. İlk sınır $A=0$ yapar. Sıfır olmayan $B$ için ikinci sınır $\sin(kL)=0$ gerektirir. Böylece:
 
 $$
-kL=n\pi,\qquad
-\lambda_n=\left(\frac{n\pi}{L}\right)^2,
-\qquad n=1,2,3,\ldots
+\begin{aligned}
+kL&=n\pi,\\
+\lambda_n&=\left(\frac{n\pi}{L}\right)^2,\\
+n&=1,2,3,\ldots
+\end{aligned}
 $$
 
 olur. Uygun fonksiyonlar $y_n(x)=B\sin(n\pi x/L)$'dir. Sınır koşulları, sürekli seçilebilen bir parametreden yalnız ayrık değerleri kabul etti. Bu değerlere özdeğer, karşılık gelen sıfır olmayan fonksiyonlara özfonksiyon denir.
 
 ![İki uçta sıfır olan ilk üç sinüs biçimi farklı ayrık parametre değerlerine karşılık gelir.](./sinir-ve-modlar.svg)
+
+Pozitif parametre durumunda $n=0$'ı niçin listelemedik? O seçim $k=0$, dolayısıyla $\lambda=0$ yapar; bu durumu ayrı çözüp yalnız sıfır fonksiyonunu bulmuştuk. Negatif tam sayılar ise yeni özdeğer üretmez: $(-n)^2=n^2$, ayrıca $\sin(-n\pi x/L)=-\sin(n\pi x/L)$ ve bu eksi işareti serbest $B$ katsayısına alınabilir.
+
+Örneğin $L=2$ için ilk özdeğer $\pi^2/4$, ilgili fonksiyon $y=B\sin(\pi x/2)$'dir. İki kez türev almak $y''=-(\pi^2/4)y$ verir. Uçlarda $\sin0=0$ ve $\sin\pi=0$ olduğundan iki sınır sağlanır. İkinci özdeğer $\pi^2$ ve fonksiyon $B\sin(\pi x)$ olur; bu kez arada $x=1$ noktasında da sıfır vardır. Sınırlar genliği $B$'yi seçmez; hangi dalga biçimlerinin sığabileceğini seçer. Genlik için başka bir bilgi gerekir.
 
 ## 11. Başlangıç ve sınır bilgisinin farkı
 

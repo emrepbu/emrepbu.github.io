@@ -40,6 +40,12 @@ $x$ ve $y$'nin görevlerini değiştirirsek denklemler de değişmelidir. Harfle
 
 ![Üç tekli ve dört ikili paketin yedi paket ve on bir elma oluşturması.](./paketler-ve-elmalar.svg)
 
+### Her denklemin hangi bütünü saydığını belirlemek
+
+Paketleri sayan ilk satırda ikili paketin katsayısı 1'dir; çünkü iki elma taşısa da rafta bir pakettir. Elmaları sayan ikinci satırda aynı paketin katsayısı 2 olur. Harf aynı nesne grubunun **adedini** temsil eder, katsayı ise o grubun sayılan bütüne kaç birim katkıda bulunduğunu söyler. Bu nedenle $x+2y=7$ yazmak paket sayısıyla elma katkılarını yanlış biçimde karıştırır.
+
+Model kurarken her eşitliği bir cümleyle okuyabiliriz: “Tekli paket sayısı artı ikili paket sayısı yedidir”; “Teklilerden gelen elma sayısı artı ikililerden gelen elma sayısı on birdir.” Sağ ve solda aynı tür miktarın sayılması gerekir. $x$ ve $y$'yi açıklamadan yalnız semboller yazmak, bu denetimi zorlaştırır. Ayrıca paketler kapalı ve verilen türlerden oluşuyor; tekli bir paket eksik veya ikili bir paket fazla elma içeriyorsa katsayılar gerçek durumu anlatmaz. Denklemin kurulması, verilen sözel bilgide hangi ilişkinin sabit olduğunu seçmektir. Cebir bu seçilmiş ilişkileri izler; modelde yazılmayan bir durumu kendiliğinden tahmin etmez.
+
 ## 2. Çözüm Bir Sıralı Çifttir
 
 İki bilinmeyenli bir sistemin çözümünü $(x,y)$ biçiminde bir **sıralı çift** olarak yazarız. İlk sayı $x$'in, ikinci sayı $y$'nin değeridir. Elma problemindeki çözüm $(3,4)$'tür. $(4,3)$ aynı çözüm değildir; dört tekli ve üç ikili paket yalnızca on elma verir.
@@ -78,6 +84,12 @@ Yalnızca $y=4$ yazıp durmak çözümü eksik bırakır. Sistem iki bilinmeyeni
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Paketleri ve elmaları birlikte saymak" caption="Tekli ve ikili gruplar, x + y = 7 ile x + 2y = 11 koşullarını aynı anda görünür kılıyor. Ortak çözüm üç tekli ve dört ikili gruptur." />
 
+### Yerine koymada neden yeni bir çözüm uydurmuyoruz?
+
+İlk denklem $x=7-y$ diyorsa, onu sağlayan her çiftte $x$ ile $7-y$ gerçekten aynı sayıdır. İkinci denklemde birini diğerinin yerine yazmak bu ortak adaylar için değeri değiştirmez. Geri yönde de kontrol mümkündür: Yeni tek bilinmeyenli denklemi sağlayan bir $y$ seçip $x=7-y$ diye tanımladığımızda ilk koşul kendiliğinden sağlanır. İkinci koşul ise tam olarak çözdüğümüz yerine koyma eşitliğidir. İki yön birlikte, yöntemimizin ortak çözüm bilgisini koruduğunu anlatır.
+
+$y=4$ bulduğumuzda $x=3$'ü belirleyen ek bilgi hâlâ $x=7-y$ satırıdır. Onu unutarak “$y=4$, $x$ herhangi bir sayı” diyemeyiz. Örneğin $x=8$ seçersek ikinci denklem de ilk denklem de bozulur. Yerine koyma, bilinmeyenlerden birini önemini kaybettiği için silmez; onun değerini diğerine bağlayıp daha sonra geri bulmamıza yarar. Hesap boyunca sakladığımız ilişki bu yüzden çözümün parçasıdır. Bulduğumuz iki sayıyı başlangıçtaki iki satırda denemek, kullanılan bağın ve aritmetik adımların doğru taşındığını denetler.
+
 ## 4. Yerine Koymada Parantezleri Korumak
 
 Biraz farklı bir sistem alalım:
@@ -95,7 +107,7 @@ $$
 3x+2(2x-1)=19.
 $$
 
-Parantezi açınca $3x+4x-2=19$, terimleri birleştirince $7x-2=19$ olur. İki ekleyip 7'ye bölerek $x=3$ buluruz. Sonra $y=2\times3-1=5$ çıkar. Kontrol: $3\times3+2\times5=9+10=19$.
+Parantezi açınca $3x+4x-2=19$, terimleri birleştirince $7x-2=19$ olur. İki tarafa 2 ekleyince $7x=21$ kalır. İki tarafı 7'ye bölerek $x=3$ buluruz. Sonra $y=2\times3-1=5$ çıkar. Kontrol: $3\times3+2\times5=9+10=19$.
 
 Parantezi unutup $3x+2\times2x-1=19$ yazsaydık, $-1$ terimini ikiyle çarpmamış olurduk. Hata yöntemde değil, yerine konan ifadenin bir bütün olduğunu gözden kaçırmakta olurdu.
 
@@ -126,6 +138,23 @@ $$
 İlk denkleme dönünce $8+y=11$ ve $y=3$ elde ederiz. İkinci denklemde de $12-3=9$ olur. Burada $+y$ ile $-y$ birbirini götürdüğü için toplama uygun seçimdi.
 
 İki denklemi topladıktan sonra başlangıçtaki bütün bilgiyi yalnızca yeni satırla değiştiremeyiz. $5x=20$ tek başına $y$ hakkında hiçbir şey söylemez. Yeni denklemle birlikte ilk denklemlerden en az birini tutarız; kaybolan değişkeni onun yardımıyla geri buluruz.
+
+### Çıkarma yaparken ikinci denklemin tamamını çıkarmak
+
+Aşağıdaki sistemde iki satırın $x$ katsayıları zaten aynıdır:
+
+$$
+\begin{cases}
+3x+2y=13,\\
+3x-y=4.
+\end{cases}
+$$
+
+Birinci satırdan ikinciyi çıkarırsak solda $(3x+2y)-(3x-y)$ bulunur. Dışarıdaki eksi, ikinci parantezin her terimine uygulanır: $3x+2y-3x+y=3y$. Sağda $13-4=9$ vardır. Dolayısıyla $3y=9$ ve $y=3$ olur. İkinci başlangıç denkleminde yerine koyunca $3x-3=4$, ardından $3x=7$ ve $x=7/3$ elde ederiz. Çözüm çifti $(7/3,3)$'tür.
+
+İki kontrolü ayrı yapalım: İlk sol taraf $3(7/3)+2(3)=7+6=13$, ikinci sol taraf $3(7/3)-3=7-3=4$ eder. Kesirli $x$ değeri burada hiçbir koşulu bozmaz; yalnız gerçek sayılar arıyoruz.
+
+Sık yapılan hata, $2y-(-y)$ yerine $2y-y$ yazmaktır. O durumda ikinci satırdaki negatif katkıyı çıkarmak yerine bir pozitif katkı çıkarılmış olur. İkinci denklemin tamamını parantez içine almak ve eksi işaretini açıkça dağıtmak bu hatayı görünür kılar. Yok etme yönteminde çıkarma, terimlerin görünüşüne değil eşit miktarların tamamına uygulanır.
 
 ## 6. Katsayıları Uygun Hâle Getirmek
 
@@ -163,6 +192,40 @@ $$
 
 İstersek ikinci denklemi 2 ile çarpıp ilkinden çıkararak $y$'yi de önce bulabilirdik. Yöntem seçerken amaç, işlemleri takip edebileceğimiz kadar açık tutmaktır. Özellikle çıkarma yaparken ikinci satırın tamamını paranteze almak işaret hatalarını azaltır.
 
+### Ondalık katsayıları yuvarlamadan kaldırmak
+
+Bir model şu iki koşulu versin:
+
+$$
+\begin{cases}
+x+y=8,\\
+0{,}2x+0{,}3y=2{,}1.
+\end{cases}
+$$
+
+Ondalık katsayılar yeni bir çözüm yöntemi gerektirmez. İkinci denklemin **tamamını** 10 ile çarparız; ilk denklemi olduğu gibi tutabiliriz. Sistem artık $x+y=8$ ve $2x+3y=21$ koşullarını taşır. Yalnızca ikinci denklemin sağını 10 ile çarpmak veya yalnız bir katsayının virgülünü kaydırmak aynı sistemi vermezdi.
+
+İlk denklemin iki katı $2x+2y=16$ olur. Bu satırı ikinci denklemden çıkarınca:
+
+$$
+(2x+3y)-(2x+2y)=21-16,
+\qquad y=5
+$$
+
+bulunur. İlk koşula geri koyarsak $x+5=8$, dolayısıyla $x=3$ çıkar. Başlangıçtaki iki denklemi de kontrol edelim:
+
+$$
+\begin{aligned}
+3+5&=8,\\
+0{,}2\times3+0{,}3\times5&=0{,}6+1{,}5\\
+&=2{,}1.
+\end{aligned}
+$$
+
+Bu hesapta herhangi bir sayıyı yuvarlamadık. $0{,}2=2/10$ ve $0{,}3=3/10$ tam eşitliklerini kullanarak aynı koşulları daha kolay okunur biçimde yazdık. Özellikle küçük ondalık katsayılar varsa, daha işlemin başında onları tam sayıya “yaklaştırmak” çözümü değiştirebilir; sıfıra yuvarlanan bir katsayı bir bilinmeyenin etkisini tamamen siler.
+
+Yok etme sırasında neden ilk denklemi sakladığımız da burada görülebilir. Yalnız $y=5$ satırını tutarsak $x$ için hiçbir koşul kalmaz. $x+y=8$ ile birlikte tutulduğunda ise $x=3$ zorunludur. Ters yönde, $x+y=8$ denkleminin iki katına $y=5$ ekleyerek $2x+3y=21$ satırını geri kurabiliriz. Böylece yeni iki koşulun, önceki iki koşuldaki bilgiyi gerçekten koruduğunu görürüz.
+
 ## 7. Çözüm Neden Tek Olmak Zorunda Değil?
 
 Şu iki koşula bakalım:
@@ -178,6 +241,12 @@ Gerçek sayılarda çözüm çiftlerini şöyle anlatabiliriz: $x$ herhangi bir 
 Bu sistemin gerçek sayılarda sonsuz çözümü vardır. Paket sayısı gibi negatif olmayan tam sayı koşulu ekleseydik, yalnızca $(0,7)$'den $(7,0)$'a kadar sekiz çift kalırdı. “Sonsuz çözüm” ifadesini hangi sayı kümesinde kullandığımız bu nedenle önemlidir.
 
 Şimdi ikinci satırı $2x+2y=15$ olarak değiştirelim. Birinci satır ikiyle çarpıldığında aynı sol tarafın 14 olması gerektiğini söylüyor. Çıkarma yapınca $0=1$ gibi yanlış bir eşitlik çıkar. İki koşul birlikte sağlanamaz; **çözüm yoktur**. Burada bilinmeyenleri farklı seçmek işe yaramaz, çünkü çelişki değerlerden bağımsızdır.
+
+### Parametre iki bağımsız seçim anlamına gelmez
+
+$(t,7-t)$ yazımında $t$'yi seçmek bütün çifti belirler. $t=2$ seçince çift $(2,5)$, $t=-1$ seçince $(-1,8)$ olur. İkinci bileşeni ayrıca serbestçe seçmiyoruz; toplamın 7 olması onu zorunlu kılıyor. Parametre, bütün çözümleri tek bir hesap tarifiyle üretmemizi sağlar. “Her iki değişken de herhangi bir gerçek sayıdır” deseydik $(2,8)$ gibi toplamı 7 olmayan çiftleri de yanlışlıkla kabul ederdik.
+
+Paket koşuluna geri dönersek parametrenin izin verilen değerlerini ayrıca kısıtlarız. $x=t\ge0$ ve $y=7-t\ge0$ birlikte $0\le t\le7$ verir. Paketler bölünemediği için $t$ tam sayı da olmalıdır. Seçenekler 0, 1, 2, 3, 4, 5, 6 ve 7'dir; toplam sekiz çift buradan gelir. Gerçek sayılarda ise 0 ile 7 arasında bile sınırsız seçenek vardır. Bir çözüm ailesinin büyüklüğünü söylerken hem cebirsel bağıntıyı hem sayısal alanı belirtmek bu nedenle gereklidir. İkinci denklemin yeni bilgi eklememesi, modelin diğer kısıtlarının da ortadan kalktığı anlamına gelmez.
 
 ## 8. Tek, Yok veya Sonsuz Çözümü Ayırmak
 
@@ -221,6 +290,14 @@ $$
 İlk denklemden $x=600-y$ yazalım. Yerine koyunca $120-0{,}20y+0{,}50y=180$, ardından $0{,}30y=60$ elde edilir. Böylece $y=200$ gram ve $x=400$ gram bulunur.
 
 Kontrol hem toplamı hem içeriği kapsar. $400+200=600$ gramdır; çözünen miktarı $80+100=180$ gramdır. $180/600=0{,}30$, hedef yüzdeyi verir. Yüzdeleri doğrudan toplayıp 70 demedik; her yüzdeyi ait olduğu miktarla çarptık. Ayrıca hacimlerin her karışımda toplanacağı varsayımına ihtiyaç duymamak için gram cinsinden kütle kullandık.
+
+### Karışım yüzdesini neden miktarla çarpıyoruz?
+
+Yüzde 20'lik çözeltinin her 100 gramında 20 gram çözünen madde vardır. Bu yüzden 400 gramında dört katı, yani 80 gram bulunur. $0{,}20x$ ifadesi aynı hesabı herhangi bir $x$ gram için yapar. Yüzde 50'lik 200 gramın içinde ise 100 gram vardır. Yüzdeler gram değildir; bir oranı kütleyle çarptığımızda gram cinsinden içerik elde ederiz. Toplananlar bu iki içerik kütlesidir.
+
+Yerine koyma hesabındaki ara işlemleri de açalım. $x=600-y$ yazınca ilk katkı $0{,}20(600-y)$ olur. Dağılma bunu $120-0{,}20y$ yapar. İkinci katkıyla toplam $120+0{,}30y$'dir. Eşitliğin sağındaki 180'den 120'yi çıkarınca $0{,}30y=60$ kalır. $0{,}30=3/10$ olduğundan $y=60\times10/3=200$ gram bulunur; kalan kütle $600-200=400$ gramdır.
+
+Sonucun makul olup olmadığını oranlardan da okuyabiliriz. Hedef %30, %20'ye daha yakın olduğu için düşük derişimli çözeltiden daha çok kullanılması beklenir. Eşit 300 gram kullansaydık içerik $60+150=210$ gram ve oran $210/600=0{,}35$ olurdu. %35, hedefin üstündedir; yalnız yüzdelerin ortalamasını almak, miktarların eşit olduğu farklı bir karışımı anlatır.
 
 ## 11. Bir Çifti Bulmak ile Tekliğini Göstermek
 

@@ -59,6 +59,36 @@ Teoremi kullanırken dik açı koşuluna dikkat etmek gerekir. Her üçgenin ken
   caption="Dik kenarlardaki iki karenin alanları toplamı, hipotenüsteki karenin alanına eşittir."
 />
 
+### Aranan kenar hipotenüs değilse
+
+5 metre uzunluğunda düz bir merdiven, düşey bir duvara dayansın. Merdivenin alt ucu duvardan yatayda 3 metre uzakta olsun. Zeminle duvarın dik olduğu ideal modelde, merdiven dik açının karşısında bulunduğu için hipotenüstür. Duvara ulaşılan yüksekliğe $h$ diyelim; $h$ bir uzunluktur ve pozitif olmalıdır.
+
+$$
+3^2+h^2=5^2.
+$$
+
+Burada 3 ile 5'i doğrudan kareleyip toplamayız; 5 zaten hipotenüstür. İki taraftan $3^2=9$ çıkararak bilinmeyenin karesini yalnız bırakırız:
+
+$$
+h^2=25-9=16.
+$$
+
+$h^2=16$ denkleminin gerçek sayı çözümleri 4 ve $-4$'tür. Fakat $h$ yüksekliğin uzunluğunu anlattığı için $h=4$ metre seçilir. Kontrol: $3^2+4^2=9+16=25=5^2$. Ayrıca 4 metrelik dik kenar, 5 metrelik hipotenüsten kısa olmalıdır; sonuç bu koşulu da sağlar.
+
+Bu örnekte $h=5-3=2$ demek, **uzunlukların kareleri arasındaki** ilişkiyi uzunlukların kendileri arasındaki çıkarma sanmak olurdu. 2'yi yerine koyunca $3^2+2^2=13$ çıkar; 25 olmadığı için modelin eşitliği sağlanmaz.
+
+### Verilen üç uzunlukla dikliği denetlemek
+
+Kenarları 5, 12 ve 13 santimetre olan bir üçgende önce en uzun kenarı, yani 13'ü belirleriz. $5^2+12^2=25+144=169=13^2$ olduğundan Pisagor teoreminin tersine göre 13 santimetrelik kenarın karşısındaki açı diktir. Aynı kontrolü 5, 12 ve 14 için yaparsak $169\ne196$ bulunur; bu üçgen dik değildir.
+
+Ters çıkarımın neden geçerli olduğunu ayrıca gerekçelendirelim. Verilen üçgende en uzun kenar $c$ olsun ve $a^2+b^2=c^2$ sağlansın. Şimdi dik kenarları $a$ ve $b$ olan yeni bir dik üçgen kuralım. Onun hipotenüsüne $d$ dersek, Pisagor bu yeni üçgende $d^2=a^2+b^2$ verir. Verilen eşitlikle birlikte $d^2=c^2$ olur. İkisi de pozitif uzunluk olduğu için $d=c$'dir. Böylece iki üçgenin üçer kenarı eşleşir; [KKK eşliği](/blog/eslik-benzerlik-ve-olcek/) gereği açıları da eşleşir. Yeni üçgenin dik açısına karşılık gelen eski açı da diktir. Doğru teoremi geriye doğru yalnız varsaymadık; ayrıca eşlik kullanarak tersini gösterdik.
+
+Üç uzunluğun önce üçgen oluşturabilmesi gerekir. Örneğin 2, 3 ve 8 için ilk sorun diklik değil, $2+3<8$ olduğu için üçgenin kapanamamasıdır. Ölçümle elde edilen uzunluklarda küçük farkların bulunabileceğini de ayırırız: yaklaşık bir eşitlik, ideal geometrik teoremin tam eşitliğiyle aynı kanıt değildir. Buradaki hesaplar, verilen uzunlukların tam kabul edildiği matematiksel örneklerdir.
+
+Formülü kullanmadan önce harfleri şekle bağlayalım. $a$ ile $b$ birbirine dik olan iki kenarın uzunluklarıdır; $c$, dik açının karşısında bulunan üçüncü kenardır. Harfler değişebilir, fakat bu görevler değişmez. Bir soruda en uzun kenara $x$ denmişse hipotenüs $x$ olur ve formülün tek başına duran karesi $x^2$ olmalıdır. Dik açı işareti verilmeden üç kenara rastgele $a,b,c$ yazmak teoremin koşulunu sağlamaz.
+
+Kareleri toplamak ile uzunlukları toplamak da farklı işlemlerdir. $a=3$, $b=4$ için önce $a^2=9$ ve $b^2=16$ bulunur; bu iki karenin alanları toplamı 25'tir. Aradığımız kenar alan değil uzunluk olduğundan son adımda karekök alıp 5 buluruz. $c=25$ yazsaydık $c^2=625$ olur, başlangıç eşitliği bozulurdu. $c=3+4=7$ yazmak ise iki dik kenar boyunca gidilen kırık yolun uzunluğunu verir. Düz uzaklığın başka bir ölçü olduğunu, sonuçları yeniden formüle koyarak ayırt edebiliriz.
+
 ## 2. Pisagor Teoreminin Tarihsel Yolculuğu
 
 Teorem Pisagor’un adını taşısa da onunla bağlantılı matematiksel bilgiler çok daha eskiye uzanır.
@@ -123,6 +153,10 @@ Bu işlemlerde kenarlara belirli sayılar vermedik. Akıl yürütmemiz, herhangi
   title="Dört eş üçgenin yeniden yerleştirilmesiyle Pisagor teoreminin alan ispatı"
   caption="Aynı dış karede aynı dört üçgen yeniden yerleşiyor. Geriye kalan alan değişmiyor: a² + b² = c²."
 />
+
+Ortadaki dörtgenin kare olduğuna karar verirken iki ayrı koşulu denetledik: dört kenarın eşitliği ve köşelerin dikliği. Dört eşit kenar tek başına yeterli değildir; eğik bir eşkenar dörtgen de çizilebilir. Üçgenin dar açılarına $\alpha$ ve $\beta$ dersek $\alpha+\beta=90^\circ$ olur. Yerleşimde ortadaki köşeyle bu iki açı bir doğru açı oluşturur. Bu nedenle orta köşe $180^\circ-(\alpha+\beta)=90^\circ$'dir. Kare alanını kullanmayı haklı çıkaran eksik halka budur.
+
+Alan eşitliğinin cebirinde de bir geçişi açalım. $(a+b)^2$, $(a+b)(a+b)$ anlamındadır. Dağılma özelliğiyle $a^2+ab+ba+b^2$ elde edilir; iki eş çarpımın toplamı $2ab$ olur. Bu yüzden $(a+b)^2$ ifadesini $a^2+b^2$ diye açamayız. İspatta iki tarafta görünen $2ab$ terimleri, dört üçgenin toplam alanını temsil eder. Onları iki taraftan çıkardığımızda aynı parçaları hesap dışına alırız. Kalan alanların eşitliği, kenar karelerinin bağıntısını verir; şekil ile cebir aynı çıkarma işlemini anlatır.
 
 ## 4. Bir Karenin Köşegeni: √2 ve İrrasyonel Sayılar
 
@@ -201,6 +235,19 @@ Buradaki sonsuzluk, sayının büyüklüğüyle ilgili değildir. $\sqrt{2}$, 1 
 
 Birim karenin köşegeni, böylece sayı anlayışımızı genişletir: Kesirlerle ifade edemediğimiz uzunluklar da vardır.
 
+İrrasyonellik ispatında kullanılan “karesi çift olan tam sayı çifttir” adımı neden geçerlidir? Bir tek tam sayı $2k+1$ biçimindedir; $k$ burada herhangi bir tam sayıdır. Karesini açınca:
+
+$$
+\begin{aligned}
+(2k+1)^2&=4k^2+4k+1\\
+&=2(2k^2+2k)+1
+\end{aligned}
+$$
+
+çıkar. Bu da ikiyle bölündüğünde 1 artan, yani tek bir sayıdır. Demek ki karesi çift olan sayı tek olamaz; çift olmak zorundadır. Hem $p$ hem $q$ için kullandığımız adımın dayanağı budur.
+
+Kesri başlangıçta sadeleştirilmiş seçmemiz de önemlidir. Herhangi bir kesirde pay ve payda ortak çarpan taşıyabilir; bunda çelişki yoktur. Fakat bütün ortak çarpanları baştan sadeleştirdiğimiz hâlde ikisinin de yeniden 2'ye bölündüğünü bulursak ilk kabulle uyuşmayan bir sonuca ulaşırız. Bu çelişki, karekökün bulunmadığını değil, onun iki tam sayının oranıyla yazılamadığını söyler. Geometride belirli bir köşegen ve sayı doğrusunda belirli bir uzunluk vardır; yalnız kesir biçimindeki gösterim ona yetmez.
+
 ## 5. Pisagor Üçlüleri ve Sayılar Arasındaki Örüntüler
 
 Bazı dik üçgenlerin üç kenarı da tam sayı uzunluklarına sahiptir:
@@ -229,7 +276,11 @@ Eşitliği sağlayan bu pozitif tam sayı gruplarına **Pisagor üçlüleri** de
 Bu üçlüleri belirli bir yöntemle üretebiliriz. $m>n>0$ olacak şekilde iki tam sayı seçelim ve:
 
 $$
-a=m^2-n^2,\qquad b=2mn,\qquad c=m^2+n^2
+\begin{aligned}
+a&=m^2-n^2,\\
+b&=2mn,\\
+c&=m^2+n^2
+\end{aligned}
 $$
 
 tanımlarını kullanalım.
@@ -245,12 +296,18 @@ elde ederiz. $m=3$, $n=2$ seçtiğimizde ise 5–12–13 üçlüsüne ulaşırı
 Yöntemin neden çalıştığını cebirle görebiliriz:
 
 $$
-(m^2-n^2)^2+(2mn)^2
-=m^4+2m^2n^2+n^4
-=(m^2+n^2)^2
+\begin{aligned}
+&(m^2-n^2)^2+(2mn)^2\\
+&\quad=m^4+2m^2n^2+n^4\\
+&\quad=(m^2+n^2)^2
+\end{aligned}
 $$
 
 Başlangıçta birbirinden ayrı görünen örnekler, böylece ortak bir yapının parçaları hâline gelir. Örüntüyü fark etmek bizi bir tahmine götürür; cebirsel açıklama da bu tahmini gerekçelendirir.
+
+Üçlü üretme formülündeki iptali ayrı ayrı görelim. İlk karenin açılımında $m^4-2m^2n^2+n^4$, ikinci karenin açılımında $4m^2n^2$ bulunur. Ortadaki terimler $-2m^2n^2+4m^2n^2=2m^2n^2$ verir. Toplam bu nedenle $(m^2+n^2)^2$ olur. Seçtiğimiz $m>n>0$ koşulu $m^2-n^2$ ile $2mn$ uzunluklarının pozitif olmasını sağlar. Burada sadece birkaç sayının tesadüfen uyuşmasını değil, seçilen her uygun $m,n$ için çalışan bir kuralı gösteriyoruz.
+
+Örneğin $m=4$, $n=1$ seçersek dik kenarlar $16-1=15$ ve $2\times4\times1=8$, hipotenüs $16+1=17$ olur. Bağımsız kontrol $15^2+8^2=225+64=289=17^2$ verir. Elde edilen üçgeni iki kat büyütürsek 30, 16, 34 kenarları çıkar. Her kare dört katına çıktığı için aynı eşitlik korunur. Dolayısıyla bir üçlünün bütün pozitif tam sayı katları da üçlüdür. Farklı görünen örneklerin bazılarının yalnız aynı biçimin büyütülmüş kopyaları olduğunu bu yolla anlayabiliriz.
 
 ## 6. Pisagor Teoreminin Kullanım Alanları
 
@@ -275,6 +332,10 @@ Bilgisayar grafiklerinde iki nesnenin birbirine ne kadar yakın olduğunu hesapl
 İnşaatta da teoremin tersinden faydalanılır. Kenarları 3, 4 ve 5 birim olan bir üçgen oluşturulduğunda, 3 ve 4 birimlik kenarların arasındaki açı diktir. Bu ilişki, bir köşenin dikliğini kontrol etmenin geometrik temelini verir.
 
 Bütün bu örneklerde yaptığımız şey, fiziksel bir durumu uzunluklar ve açılarla temsil etmektir. Kurduğumuz model duruma uygun olduğunda, matematik doğrudan ölçmenin zor olduğu bir mesafeyi hesaplamamıza yardımcı olur.
+
+Uzaklık formülünde indisleri birer etiket olarak okuyalım: $(x_1,y_1)$ başlangıç noktasının, $(x_2,y_2)$ bitiş noktasının koordinatlarıdır. $x_2-x_1$ yatay, $y_2-y_1$ düşey değişimdir. Bunlar sola veya aşağı gidildiğinde negatif olabilir; dik üçgenin kenar uzunlukları ise bu farkların mutlak değerleridir. Kare alındığında işaret kaybolduğu için uzaklık formülünde mutlak değerler ayrıca görünmez. Aynı tür uzunlukları, aynı birimde ölçtüğümüzü varsayarız.
+
+Örneğin $A=(1,5)$ ve $B=(7,-3)$ olsun. Yatay değişim $7-1=6$, düşey değişim $-3-5=-8$'dir. Dik üçgenin kenarları 6 ve 8 birimdir; uzaklık $\sqrt{36+64}=10$ bulunur. Noktaların sırasını ters çevirirsek değişimler $-6$ ve 8 olur; kareler yine 36 ve 64'tür. Uzaklığın hangi noktadan başladığımıza bağlı olmaması gerekir ve hesap bunu doğrular. İşaretleri kare almadan önce toplamak, örneğin $6-8=-2$ yazmak, iki dik doğrultuyu aynı doğru üzerindeymiş gibi birleştirdiği için uzaklık vermez.
 
 ## 7. Pisagor’dan Fermat’ın Son Teoremine
 
