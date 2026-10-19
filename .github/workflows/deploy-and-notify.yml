@@ -64,7 +64,9 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
       - name: Build with Astro
         env:
-          NODE_OPTIONS: --max-old-space-size=6144
+          # The math-heavy MDX build exceeds 6 GiB; public Linux runners have
+          # 16 GiB RAM, so leave room for native allocations and the OS.
+          NODE_OPTIONS: --max-old-space-size=10240
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
             --site "${{ steps.pages.outputs.origin }}" \
