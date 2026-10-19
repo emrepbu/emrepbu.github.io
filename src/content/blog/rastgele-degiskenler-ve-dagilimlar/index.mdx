@@ -320,6 +320,20 @@ Bir ölçüm modeli $M_j=\theta+\epsilon_j$ olsun. $\theta$ sabit gerçek değer
 
 Bağımsızlık da sınanması gereken bir varsayımdır. Ortak sıcaklık değişimi veya aynı kalibrasyon hatası bütün ölçümleri birlikte etkileyebilir. Böyle durumlarda kovaryans terimleri toplamın varyansına katkı yapar ve basit $\sigma/\sqrt n$ hesabı yetersiz kalabilir. İstatistiksel modelin hangi belirsizliği temsil ettiği açıklanmalıdır.
 
+Ortak etkiyi nicel bir modelle ayıralım. Aynı ölçüm grubundaki bütün sonuçlar için $M_j=\theta+B+\epsilon_j$ olsun. B, gruptan gruba değişebilen fakat grup içinde aynı kalan sıfır ortalamalı bir kayma; $\epsilon_j$'ler birbirinden ve B'den bağımsız, sıfır ortalamalı hatalar olsun. $\operatorname{Var}(B)=\tau^2$, $\operatorname{Var}(\epsilon_j)=\sigma_\epsilon^2$ yazalım. Ortalamada:
+
+$$
+\begin{aligned}
+\overline M_n&=\theta+B+\frac1n\sum_j\epsilon_j,\\
+\operatorname{Var}(\overline M_n)
+&=\tau^2+\frac{\sigma_\epsilon^2}{n}
+\end{aligned}
+$$
+
+olur. B'yi n kez toplayıp n'ye bölmek yine B verir; ortak katkı küçülmez. Aynı sonucu farklı ölçümler için $\operatorname{Cov}(M_i,M_j)=\tau^2$ yazarak da bulabiliriz. Örneğin $\sigma_\epsilon=2$ ve $\tau=0{,}5$ aynı ölçüm biriminde olsun. Yüz tekrarın ortalama standart sapması $\sqrt{0{,}25+4/100}\simeq0{,}539$ olur; bağımsız hata kısmından gelen $0{,}2$ tek başına yeterli değildir. Tekrar sayısı sınırsız artsa bile bu modelin grup ortalaması yayılımı $0{,}5$'e yaklaşır.
+
+Buradaki rastgele B ile önceki sabit b farklıdır. Sabit b beklentiyi kaydırır; rastgele B ise farklı ölçüm grupları arasında ek varyans yaratır. İkisini de yalnız aynı gruptaki tekrarları artırarak ortadan kaldıramayız.
+
 Buradaki standart sapma dağılımın yayılımıdır. Onu cihaz çözünürlüğü, tahminin hata payı veya ileride karşılaşacağımız kuantum belirsizlik ilişkileriyle isim benzerliği üzerinden özdeşleştirmeyeceğiz. Aynı matematiksel ölçü farklı bağlamlarda kullanılabilir, fakat nedenleri ve yorumları ayrıca kurulur.
 
 Olasılığın sayısal dili artık hazır: dağılım bütün ağırlıkları, beklenen değer merkezi, varyans ve standart sapma yayılımı, kovaryans ise iki değişkenin birlikte değişimini anlatır. Bundan sonra fiziksel büyüklükleri ölçmeye, birimlerle ifade etmeye ve bir modelin hangi koşullarda geçerli olduğunu sorgulamaya başlayacağız.

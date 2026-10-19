@@ -212,6 +212,20 @@ olur. Sol taraf $\mu\mathbf u^T\mathbf v$, sağ taraf $\lambda\mathbf u^T\mathbf
 
 Aynı özdeğere ait iki rastgele özvektörün dik olması gerekmez. Fakat özuzay içinde birbirine dik bir baz seçebiliriz. Simetri bütün uzay için bunu tamamlamamıza izin verir: **gerçek simetrik bir matrisin gerçek özdeğerlerden oluşan ortonormal bir özbazı vardır**. Ortonormal, vektörlerin birbirine dik ve her birinin uzunluğunun 1 olması demektir. Bu sonuç sonlu boyutlu spektral teoremdir.
 
+Aynı özuzay içinde dikleştirme yapınca özvektör özelliğinin neden korunduğunu da görelim. $A\mathbf u=\lambda\mathbf u$ ve $A\mathbf v=\lambda\mathbf v$ ise herhangi bir gerçek $\alpha$ için:
+
+$$
+\begin{aligned}
+A(\mathbf v-\alpha\mathbf u)
+&=\lambda\mathbf v-\alpha\lambda\mathbf u\\
+&=\lambda(\mathbf v-\alpha\mathbf u).
+\end{aligned}
+$$
+
+$\alpha=(\mathbf u\cdot\mathbf v)/|\mathbf u|^2$ seçmek, v'den u yönündeki izdüşümü çıkarır. Vektörler bağımsızsa kalan sıfır olmaz; sonra uzunluğuna bölmek de özdeğeri değiştirmez. Bu, sonraki yazıda sistemleştireceğimiz dik baz üretiminin özuzay içinde neden güvenli olduğudur.
+
+Farklı özdeğerlerde aynı çıkarma genel olarak bir özvektör üretmez. Önceki $B=\begin{pmatrix}2&1\\0&3\end{pmatrix}$ örneğinde $(1,1)^T$'den $(1,0)^T$ çıkarınca $(0,1)^T$ kalır; fakat B bunun görüntüsünü $(1,3)^T$ yapar. Sonuç aynı doğrultuda değildir. Simetrik matrislerde farklı özuzaylar zaten dik olduğu için bu sorun oluşmaz; dikleştirme yalnız aynı özdeğer içindeki serbest seçimde gerekir.
+
 ## 9. Spektral teoremin nedenini görmek
 
 Sonucun arkasındaki fikri kısaca kuralım. Birim vektörler üzerinde $q(\mathbf v)=\mathbf v^TA\mathbf v$ fonksiyonu süreklidir. Birim küre kapalı ve sınırlı olduğundan bu fonksiyon en büyük değerini bir $\mathbf v$ noktasında alır; bu, ekstremum teoreminin sonlu boyutlu biçimidir.

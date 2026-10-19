@@ -45,6 +45,17 @@ $$
 
 Birinci türev hızı, ikinci türev hızın kuvvet karşısındaki değişimini belirler. İki kavramı ayırmak önemlidir: eğim büyükken eğrilik küçük olabilir. Hızlı hareket eden bir dalga paketi, aynı anda kuvvete küçük ivmeyle yanıt verebilir. [MIT'nin etkin kütle ders notu](https://ocw.mit.edu/courses/6-730-physics-for-solid-state-applications-spring-2003/resources/lecture_23/) bu bant eğriliği yaklaşımını ayrıntılandırır.
 
+Hareket denklemlerinin enerjiyle tutarlılığını da sınayabiliriz. Bant zamana açıkça bağlı değilse:
+
+$$
+\begin{aligned}
+\frac{dE}{dt}&=\frac{dE}{dk}\frac{dk}{dt}\\
+&=(\hbar v_g)\frac F\hbar=Fv_g.
+\end{aligned}
+$$
+
+Sonuç mekanikteki güç bağıntısıdır: enerji değişiminin hızı kuvvet ile hızın çarpımıdır. Kuvvet ve hız aynı yöndeyse enerji artar; ters yöndeyse azalır. Negatif eğrilikli bölgede kuvvet hızın büyüklüğünü azaltırken enerji yine artabilir, çünkü kristalde enerji bütün bant boyunca $m_ev^2/2$ değildir. Bu nedenle yalnız ivmenin yönüne bakıp iş–enerji yasasının bozulduğunu söyleyemeyiz. Dış alanla yapılan işi bant enerjisiyle karşılaştırmak gerekir.
+
 ## 3. Parabol neden özel bir kolaylık sağlar?
 
 Bir bandın minimumu $k=0$ noktasında ve enerji değeri $E_c$ olsun. Minimumda ilk türev sıfırdır. Minimumun yeterince yakınında daha yüksek kuvvetleri ihmal ederek:

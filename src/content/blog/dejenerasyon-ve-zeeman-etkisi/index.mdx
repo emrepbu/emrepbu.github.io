@@ -196,6 +196,19 @@ Negatif m değerlerinde işaret ters döner; $j=3/2,m_j=3/2$ için kayma $2\mu_B
 
 Manyetik terim farklı j grupları arasında da matris elemanına sahip olabilir. Onları bu ilk derece hesabında ayrı tutabilmemizin nedeni ince yapı aralığının manyetik bağlaşımdan büyük olmasıdır. Aynı $m_j=1/2$ için iki grubun çapraz elemanının büyüklüğü $\sqrt2\mu_BB/3$ çıkar; güçlü karışım ölçüsü yaklaşık bunun $\Delta_{\text{ince}}$'ye oranıdır. Böylece “zayıf alan” koşulu yine önceki yazının bağlaşım/enerji aralığı ölçüsüne bağlanır.
 
+Çapraz elemanı aynı iki genlikle bulabiliriz. Ürün bazında boyutsuz manyetik işleç $D=\operatorname{diag}(1,0)$, iki j durumunun sütunları ise $v=(\sqrt{2/3},\sqrt{1/3})^T$ ve $w=(\sqrt{1/3},-\sqrt{2/3})^T$'dir. Bu nedenle $v^\dagger Dw=\sqrt{2/3}\sqrt{1/3}=\sqrt2/3$ olur. j bazında bütün blok:
+
+$$
+\begin{aligned}
+H_{m_j=1/2}
+&=\begin{pmatrix}E_{3/2}&0\\0&E_{1/2}\end{pmatrix}\\
+&\quad+\frac{\mu_BB}{3}
+\begin{pmatrix}2&\sqrt2\\\sqrt2&1\end{pmatrix}.
+\end{aligned}
+$$
+
+İlk matris alan yokkenki ince yapı enerjilerini içerir. İkinci matrisin köşegenleri kullandığımız ilk derece kaymalar, çapraz elemanı ise ihmal edilen j karışımıdır. Sadece manyetik matrisin özdeğerleri $\mu_BB$ ve sıfırdır; izinin $\mu_BB$, determinantının sıfır olması bunu kontrol eder. Bunlar başlangıç ürün bazındaki değerlerle aynıdır. İnce yapı aralığı önemliyken iki matrisi birlikte ele alırız; $g_j$ eğimlerini her alan büyüklüğünde kesin özenerji sanmayız.
+
 Ölçeği sayıya dökmek için varsayımsal bir $\Delta_{\text{ince}}=1\,\mathrm{meV}$ aralığı ve B=0,20 T seçelim. Bu aralığı hidrojenin belirli bir düzeyinin gerçek değeri olarak vermiyoruz; karşılaştırma hesabı için seçiyoruz. Manyetik ölçek $0{,}0115768\,\mathrm{meV}$, çapraz eleman yaklaşık $0{,}00546\,\mathrm{meV}$ olur. İlk karışım genliği yaklaşık $0{,}00546$, bu küçük katkının olasılık ölçeği yaklaşık $3\times10^{-5}$'tir. Aynı alanı aralığı yüz kat küçük bir gruba uygularsak bu kontrol artık küçük çıkmaz. Dış cihazın aynı alan değerini üretmesi, her atomik altuzay için aynı yaklaşımın geçerli olacağını garanti etmez.
 
 Burada aynı $m_j$ değerine sahip iki durumun neden birbirine bağlanabildiğini de görebiliriz. Alan z yönünde olduğu için manyetik terim toplam z bileşeniyle komütasyon yapar; farklı $m_j$ değerlerini birbirine karıştırmaz. Fakat toplam açısal momentumun büyüklüğü aynı korumaya sahip değildir: $L_z+2S_z$, $J_z$ ile aynı işleç değildir. Bu nedenle farklı j grupları arasında yukarıda hesapladığımız çapraz eleman kalabilir. Alan yeterince küçükken bu elemanın ilk etkisi durumdaki küçük karışım, enerjideki etkisi ise ikinci derece katkıdır. İnce yapı aralığı küçüldüğünde yalnız birinci derece eğimleri kullanmak bu katkıları gözden kaçırır.

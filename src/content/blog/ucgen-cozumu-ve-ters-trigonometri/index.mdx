@@ -273,6 +273,17 @@ Dar $A$ verildiğinde $h=b\sin A$ yüksekliği yararlı bir ölçüttür. Eğer 
 
 Bu sınıflandırmayı geniş açılı $A$'ya aynen aktarmayız. Geniş açının karşısındaki kenar en uzun olmalıdır; o yüzden $a>b$ gereklidir ve bu durumda tek üçgen bulunur. Pratikte en güvenilir yaklaşım, sinüsten gelen her açı adayını tek tek $A+B<180^\circ$ koşuluyla ve kenar bilgileriyle sınamaktır.
 
+Bu sınıflandırmanın dar açıdaki $a=b$ sınırını koordinatla açıklayabiliriz. Yukarıdaki çizimi genel harflerle kurarsak $C=(b\cos A,h)$, $B=(c,0)$ ve $h=b\sin A$ olur. $BC=a$ koşuluna Pisagor uygulamak:
+
+$$
+\begin{aligned}
+(c-b\cos A)^2+h^2&=a^2,\\
+c&=b\cos A\pm\sqrt{a^2-h^2}
+\end{aligned}
+$$
+
+verir. Kök içi negatifse kesişim yoktur; sıfırsa iki işaret aynı noktayı verir. Dar açıda $b\cos A>0$ olduğundan iki farklı **pozitif** $c$ için $0<\sqrt{a^2-h^2}<b\cos A$ gerekir. Karelerini karşılaştırınca $h<a<b$ bulunur. $a=b$ olduğunda eksi işaretli sonuç $c=0$ olur: B, A ile çakışır ve ikinci üçgen dejenere olur. $a>b$ olduğunda eksi işaretli c değeri negatife geçer; yatay doğrunun karşı tarafına düştüğü için başlangıçtaki açıya ait ışında değildir. Bu yüzden yalnız artı işaretli sonuç kalır.
+
 ### İki adayın her zaman iki üçgen vermediğini görmek
 
 Sinüs değeri 0 ile 1 arasında çıktığında iki bütünler açı adayı yazabiliriz; fakat her aday henüz bir üçgen değildir. $A=30^\circ$, $a=10$, $b=6$ verilsin. Sinüs teoremi $\sin B=6(1/2)/10=0{,}3$ verir. İlk aday yaklaşık $17{,}46^\circ$, ikinci aday $162{,}54^\circ$'dir. İkincisiyle $A+B$ zaten $180^\circ$'yi aştığından pozitif bir $C$ kalmaz. Bu veriler için yalnız ilk aday geçerlidir.

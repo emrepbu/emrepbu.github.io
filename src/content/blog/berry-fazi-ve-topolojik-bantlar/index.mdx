@@ -111,6 +111,14 @@ Yolun kürede çevrelediği katı açı $\Omega=2\pi(1-\cos\theta)$ olduğundan 
 
 Şekil: Küre elektronun gerçek uzayda izlediği yörünge değildir; iki bileşenli durumun yön parametrelerini gösterir. İşaret, durum ve dolaşım yönü seçimimize aittir.
 
+Uç nokta düzeltmesini aynı örnekte deneyelim. Yol üzerinde $|u'\rangle=e^{i\phi/2}|u\rangle$ seçersek $\mathcal A'_\phi=\mathcal A_\phi-1/2$ olur. Tur integrali eski değerden $\pi$ daha küçüktür. Fakat bu yeni vektör $\phi=2\pi$ sonunda başlangıcının eksisine döner; dolayısıyla $\arg\langle u'(0)|u'(2\pi)\rangle=\pi$ eklenir. İki değişiklik birbirini götürür:
+
+$$
+\gamma'=(\gamma-\pi)+\pi=\gamma\pmod{2\pi}.
+$$
+
+Yalnız integrali kullansaydık aynı fiziksel duruma farklı girişim sonucu atamış olurduk. Bu faz seçimi yolun açık parametre aralığında düzgündür, fakat iki ucunu özdeşleyen tek bir periyodik temsil değildir. Uç nokta koşulunu ayrıca belirtmemizin nedeni tam olarak budur.
+
 ## 5. Bağlantıdan eğriliğe
 
 İki parametre $R_1,R_2$ için **Berry eğriliğini**:
@@ -176,6 +184,16 @@ $$
 $$
 
 Bu kısa formül normalize iki bileşenli özvektörün türevlerinden elde edilir. Son eşitlikte vektörel çarpım açıkça alınmıştır; böylece sayısal integral için belirsiz bir geometrik tarif yerine doğrudan fonksiyonumuz vardır.
+
+Alt bant işaretini önceki spin örneğiyle eşleştirebiliriz. $\hat{\mathbf d}=\mathbf d/|\mathbf d|$ yönündeki üst bant özvektörü, kutupsal açıları bu yönden alan örnek $u$ ile aynı yapıdadır; onun açısal eğriliği $-\sin\theta/2$ idi. Alt bant bu yöne zıt özdurumdur ve işaret tersine döner. Açı türevlerini $K_x,K_y$ türevlerine çevirmek:
+
+$$
+\mathcal F_{xy}^{(-)}
+=\frac12\hat{\mathbf d}\cdot
+(\partial_{K_x}\hat{\mathbf d}\times\partial_{K_y}\hat{\mathbf d})
+$$
+
+verir. Normalizasyon türevlerinin $\mathbf d$'ye paralel parçaları üçlü çarpımda sıfırlandığından bu ifade yukarıdaki $|\mathbf d|^3$ paydalı biçime dönüşür. Böylece alt bant için kullandığımız artı işaret, rastgele bir tercih değil, baştan seçtiğimiz Berry bağlantısı tanımının sonucudur.
 
 ## 9. Sayısal Chern hesabını adımlarıyla okumak
 

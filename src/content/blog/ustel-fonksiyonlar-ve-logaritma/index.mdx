@@ -217,6 +217,21 @@ $e$ tabanındaki logaritma **doğal logaritma** diye adlandırılır ve $\ln x$ 
 
 Doğal tabanın değişim problemlerinde neden özellikle kullanışlı olduğunu türev konusu açıklayacak. Şimdilik diğer geçerli tabanlarla aynı logaritma kurallarını sağladığını kullanabiliriz. Örneğin $\log_3 7=\ln7/\ln3$ olur.
 
+Daha önceki herhangi bir pozitif tabanı $e$ ile de yazabiliriz. Terslikten $a=e^{\ln a}$; kuvvet kuralından da:
+
+$$
+a^x=(e^{\ln a})^x=e^{x\ln a}
+$$
+
+olur. Bu yüzden $T$ süresinde $a$ katına çıkan sürekli model aynı zamanda:
+
+$$
+P(t)=P_0a^{t/T}=P_0e^{kt},
+\qquad k=\frac{\ln a}{T}
+$$
+
+biçimindedir. $T>0$ aynı birimle ölçülen dönem süresi, $k$ ise birimi zamanın tersi olan katsayıdır; $kt$ birimsizdir. $a>1$ için $k>0$, $0<a<1$ için $k<0$ olur. Bir dönemde yüzde 8 büyümede $a=1{,}08$'dir; $T=1$ seçilen zaman birimi için $k=\ln(1{,}08)\approx0{,}07696$ çıkar. Yüzdeyi doğrudan $k=0{,}08$ yazmak aynı modeli vermez: $e^{0{,}08}\approx1{,}08329$ olur. Taban değiştirmek süreci değiştirmez; katsayıyı da yeni yazıma uygun dönüştürmek gerekir.
+
 ## 11. Üstel ve Logaritmik Denklem Çözmek
 
 $2^{x+1}=16$ denkleminde sağ tarafı $2^4$ yazabiliriz. Aynı tabanlı üstel fonksiyon birebir olduğundan $x+1=4$, dolayısıyla $x=3$ bulunur. Yerine koyunca $2^4=16$ doğrulanır.

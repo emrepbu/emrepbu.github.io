@@ -146,6 +146,26 @@ $$
 \frac{\partial^2\mathbf E}{\partial t^2}.
 $$
 
+İki curl işlemini içeren özdeşliğin bir bileşenini açmak, bu türetimdeki en sık atlanan adımı görünür kılar. $\partial_x$, $x$'e göre kısmi türevin kısaltması olsun. Sol tarafın $x$ bileşeni:
+
+$$
+\begin{aligned}
+[\nabla\times(\nabla\times\mathbf E)]_x
+&=\partial_y(\partial_xE_y-\partial_yE_x)\\
+&\quad-\partial_z(\partial_zE_x-\partial_xE_z)\\
+&=\partial_x(\partial_yE_y+\partial_zE_z)\\
+&\quad-\partial_y^2E_x-\partial_z^2E_x.
+\end{aligned}
+$$
+
+Karışık türevlerin sırasını değiştirmek için alanın ilgili ikinci türevlerinin sürekli olduğunu kullandık. Son ifadeye birbirini götüren $+\partial_x^2E_x-\partial_x^2E_x$ terimlerini ekleyince:
+
+$$
+\partial_x(\nabla\cdot\mathbf E)-\nabla^2E_x
+$$
+
+elde edilir. Diğer iki bileşen de aynı çevrimsel işlemden gelir. Böylece Laplace işlemcisi dışarıdan eklenmiş bir dalga varsayımı değil, Maxwell denklemlerindeki uzaysal türevlerin birleşimidir.
+
 Aynı işlemler manyetik alan için de aynı dalga denklemini verir. Daha önce gördüğümüz $\nabla^2u=(1/v^2)\partial_t^2u$ biçimiyle karşılaştırınca yayılma hızı
 
 $$

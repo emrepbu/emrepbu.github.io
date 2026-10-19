@@ -164,6 +164,20 @@ En üstte $J_+|1,1\rangle=0$ yazımı da sıfır açısal momentum durumuna geç
 
 Genel cebir yarım tam sayılara izin verdi. Sıradan uzaysal dalga fonksiyonunun yörüngesel açısal momentumunda ise ek bir koşul vardır. $z$ ekseni çevresindeki açıya $\varphi$ diyelim. Bu açı etrafındaki dönüşümü üreten işleç $L_z=-i\hbar\partial_\varphi$ biçimindedir.
 
+Bu türev biçimi Kartezyen tanımdan zincir kuralıyla çıkar. $r$ ve kutupsal açı sabitken azimut açısı $\varphi$ değişsin. $x=r\sin\theta\cos\varphi$, $y=r\sin\theta\sin\varphi$ olduğundan $\partial x/\partial\varphi=-y$ ve $\partial y/\partial\varphi=x$ olur. Dolayısıyla:
+
+$$
+\begin{aligned}
+\partial_\varphi\psi
+&=-y\partial_x\psi+x\partial_y\psi,\\
+L_z\psi
+&=-i\hbar(x\partial_y-y\partial_x)\psi\\
+&=-i\hbar\partial_\varphi\psi.
+\end{aligned}
+$$
+
+Açısal türev, dalga fonksiyonunun sabit uzaklıkta yön boyunca değişimini ölçer. Formülde görünür bir uzaklık çarpanı kalmaması, açısal momentumun birimsiz olduğu anlamına gelmez: Radyan boyutsuz, $\hbar$ ise açısal momentum birimindedir. Buradaki $\theta$ yalnız noktanın kutupsal koordinatıdır; ileride cihaz yönünü belirtirken aynı harfi ayrıca tanımlayacağız.
+
 $L_z\psi=\hbar m\psi$ denkleminin açısal kısmı $d\Phi/d\varphi=im\Phi$ verir. Çözüm $\Phi(\varphi)=C e^{im\varphi}$ olur. Uzayda aynı noktayı temsil eden $\varphi$ ile $\varphi+2\pi$ için sıradan skaler uzaysal fonksiyonun aynı değeri alması gerekir. Böylece $e^{2\pi im}=1$ ve $m$ tam sayı çıkar.
 
 Bu durumda merdivenin üst etiketi de tam sayı olur. Yörüngesel büyüklük için geleneksel olarak $j$ yerine $l$ harfini kullanırız:

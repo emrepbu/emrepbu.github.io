@@ -227,6 +227,28 @@ Kesin çözümden tek bir adım başlatırsak Taylor açılımı $y(t+h)=y(t)+hy
 
 Sabit uzunlukta bir aralıkta yaklaşık $1/h$ adım bulunduğu için, uygun düzgünlük ve Lipschitz koşullarında toplam hata $O(h)$ mertebesindedir. Yerel $h^2$ ile küresel $h$ aynı şey değildir. Adımı yarıya indirmek çoğu düzenli durumda toplam hatayı yaklaşık yarıya indirir; her problemde aynı sayısal oranı garanti eden koşulsuz bir kural değildir.
 
+Biriken hata hesabında eski hatanın sonraki eğimi de değiştirdiğini unutmamalıyız. $e_n=y(t_n)-y_n$ olsun. Kesin çözümün bir adımındaki kalan $\tau_n$ için $|\tau_n|\le Ch^2$ varsayalım. Kesin ve yaklaşık noktaları kapsayan bölgede aynı Lipschitz katsayısı L geçerli olsun. İki güncellemeyi çıkarıp bu sınırı kullanınca:
+
+$$
+\begin{aligned}
+e_{n+1}&=e_n+\tau_n\\
+&\quad+h[f(t_n,y(t_n))-f(t_n,y_n)],\\
+|e_{n+1}|&\le(1+hL)|e_n|+Ch^2
+\end{aligned}
+$$
+
+buluruz. Başlangıç hatası sıfırsa bu eşitsizliği tekrarlamak, $L>0$ için geometrik toplam verir:
+
+$$
+\begin{aligned}
+|e_n|&\le Ch^2\sum_{j=0}^{n-1}(1+hL)^j\\
+&=\frac{Ch}{L}[(1+hL)^n-1]\\
+&\le\frac{Ch}{L}(e^{LT}-1),\qquad nh\le T.
+\end{aligned}
+$$
+
+Son adımda $1+hL\le e^{hL}$ kullandık. Sabit son zaman T için diğer çarpanlar h'den bağımsızsa hata gerçekten $O(h)$ olur. $L=0$ durumunda bölme yerine doğrudan toplam alınır ve sınır $CTh$ çıkar. Böylece “yaklaşık $1/h$ hata topluyoruz” kestirimi, önceki hataların büyüme etkisini de içeren bir gerekçeye kavuşur.
+
 Yöntemin kararlılığı da önemlidir. $y'=-ky$, $k>0$ için Euler çarpanı $1-kh$ olur. Kesin çözüm azalırken $|1-kh|>1$ seçilirse sayısal sonuç büyüyebilir. Dolayısıyla büyük adım yalnız kaba yaklaşım üretmeyebilir, yanlış davranış da üretebilir. Sonucu adım küçülterek karşılaştırmak ve denklemin beklenen nitelikleriyle denetlemek gerekir.
 
 Kararlılık uyarısını $k=2$ üzerinden görelim. Kesin çözüm $y=e^{-2t}$ iken $h=1{,}5$ seçilen Euler adımında çarpan $1-2(1{,}5)=-2$ olur. Başlangıç 1'den yaklaşık değerler $-2,4,-8$ diye gider; hem işaret değiştirir hem büyür. Adımı $h=0{,}25$ seçersek çarpan $1/2$ olur ve değerler $1,1/2,1/4,\ldots$ biçiminde azalır.

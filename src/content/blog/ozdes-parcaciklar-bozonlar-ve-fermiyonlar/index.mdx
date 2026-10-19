@@ -112,6 +112,17 @@ Dolayısıyla bu iki koordinattaki ortak yoğunluklar sıfır ve $4/L^2$'dir. Bu
 
 Öte yandan $x_1=x_2=L/4$ seçildiğinde bu kez simetrik genlik $2/L$, antisimetrik genlik sıfırdır. Aynı iki orbital, seçilen simetriye göre farklı konum korelasyonları oluşturur. Bu örnekte uzaysal artı ve eksi seçeneklerini fiziksel parçacığa atarken spin koşulunu korumamız gerekir: elektronlarda artı uzay tekli spinle, eksi uzay üçlü spinle tamamlanır.
 
+Bu farklı ortak yoğunluklar, tek konum histogramının da farklı olması gerektiği anlamına gelmez. Aynı iki ortonormal orbital için ikinci koordinatı görmezden gelip integre edelim:
+
+$$
+\begin{aligned}
+p_1(x_1)&=\int_0^L|\Psi_\pm(x_1,x_2)|^2dx_2\\
+&=\frac12\big[|u_1(x_1)|^2+|u_2(x_1)|^2\big].
+\end{aligned}
+$$
+
+İki doğrudan katkıda $\int|u_j|^2dx_2=1$ kullanılır. Artı veya eksi işaretli çapraz katkıda ise $\int u_1^*u_2dx_2=0$ olduğundan işaretin etkisi kaybolur. Bu $p_1$ bire normalleştirilmiş tek parçacık dağılımıdır. İki parçacığın da sayıldığı yerel sayı yoğunluğu $n(x)=2p_1(x)$ olur ve integrali ikidir. Dolayısıyla bu örnekte aynı tek parçacık dağılımına sahip iki hazırlık, iki konum birlikte kaydedildiğinde farklı korelasyon gösterebilir. Değiş tokuşun etkisini görmek için hangi sayımların karşılaştırıldığını belirtmek gerekir.
+
 ## 6. Kısıt enerji tablosunu değiştirir
 
 Etkileşmeyen iki parçacık ve tek parçacık enerjileri $\varepsilon_a<\varepsilon_b$ olan iki orbital düşünelim. Toplam Hamiltonyen $H=h_1+h_2$ olduğunda ürün durumunun enerjisi tek parçacık enerjilerinin toplamıdır. $|ab\rangle$ ile $|ba\rangle$ aynı $\varepsilon_a+\varepsilon_b$ enerjisine sahiptir; simetrik veya antisimetrik birleşimleri de aynı enerji özdurumlarıdır.

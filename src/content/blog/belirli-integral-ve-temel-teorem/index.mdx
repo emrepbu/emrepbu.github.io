@@ -166,6 +166,17 @@ $h\to0$ iken limit $2x$ olur. Başlangıç sınırının 1 olması, fonksiyonda 
 
 $x<1$ için $A(x)$ negatif olabilir. Örneğin $A(1/2)=-3/4$'tür. Buna rağmen $A'(1/2)=1$ pozitiftir: üst sınırı biraz sağa götürmek negatif birikimi sıfıra yaklaştırarak artırır. Fonksiyonun değeriyle türevin işareti burada da farklı bilgileri taşır.
 
+Süreklilik koşulunun rolünü bir sıçrama örneği ayırır. $f(t)=0$ kuralını $t<1$ için, $f(t)=2$ kuralını $t\ge1$ için seçelim. $x\ge0$ üzerinde $A(x)=\int_0^x f(t)dt$ tanımlarsak:
+
+$$
+A(x)=\begin{cases}
+0,&0\le x\le1,\\
+2(x-1),&x>1.
+\end{cases}
+$$
+
+Biriken miktar $x=1$'de süreklidir; fakat soldaki eğimi 0, sağdaki eğimi 2 olduğu için orada türevi yoktur. İntegralin bulunması, her noktada $A'=f$ yazmaya tek başına yetmedi. Ayrıca yalnız $f(1)$ değerini değiştirmek bu birikimi değiştirmez: tek bir noktaya ait değişimin, Riemann toplamında etkileyebildiği parçaların toplam genişliği sıfıra gider. Dolayısıyla noktaya başka değer atayarak bu köşeyi kaldıramayız. Temel teoremin sürekli f varsayımı, o anda tek bir katkı hızına ulaşmamızı güvenceye alır.
+
 ## 7. İntegrali uç değerlerle hesaplamak
 
 $F'(x)=f(x)$ sağlayan bir $F$ fonksiyonuna $f$'nin antitürevi denir. Birinci teoremle kurduğumuz $A$ da aynı türeve sahiptir. Dolayısıyla $(F-A)'=0$ olur. Ortalama değer teoremi, türevi sıfır olan fonksiyonun aralıkta sabit olduğunu söyler. $A(a)=0$ olduğundan bu sabit $F(a)$'dır. $x=b$ koyarsak:

@@ -127,7 +127,20 @@ Aynı eşikte $\lambda_{T_c}=(2{,}612/n)^{1/3}\simeq297\,\mathrm{nm}$, ortalama 
 
 Gerçek deneylerde atomlar çoğu kez düzgün kutu yerine yaklaşık harmonik bir potansiyelde tutulur. Üç doğrultudaki açısal frekanslar $\omega_x,\omega_y,\omega_z$ olsun; geometrik ortalama $\bar\omega=(\omega_x\omega_y\omega_z)^{1/3}$'tür. Bu kez yüksekçe enerjilerde durum yoğunluğu $\sqrt E$ yerine $E^2/[2(\hbar\bar\omega)^3]$ ile büyür. Çünkü enerji, üç osilatör kuantum sayısının toplamıyla artar.
 
-Büyük parçacık sayısı ve $k_BT\gg\hbar\bar\omega$ koşulunda ideal tuzak için:
+Bu durum sayımını enerji sıfırını tuzak tabanına kaydırarak açalım. Düzeyler $E=\hbar(\omega_xn_x+\omega_yn_y+\omega_zn_z)$, $n_i\ge0$ biçimindedir. Belirli bir E'nin altında kalan tam sayı noktaları, kuantum sayısı uzayında eksen kesişimleri $E/(\hbar\omega_i)$ olan bir dört yüzlü içindedir. Düzeyler sıkken nokta sayısını bu cismin hacmiyle yaklaştırırız:
+
+$$
+\begin{aligned}
+\mathcal N(E)&\simeq\frac16
+\frac{E^3}{\hbar^3\omega_x\omega_y\omega_z},\\
+g(E)&=\frac{d\mathcal N}{dE}
+=\frac{E^2}{2(\hbar\bar\omega)^3}.
+\end{aligned}
+$$
+
+$1/6$ üç dik eksenli dört yüzlünün hacim katsayısıdır. Bose integralinde $x=E/(k_BT)$ seçildiğinde $E^2dE$ toplamda $T^3$ getirir; $\int_0^\infty x^2/(e^x-1)\,dx=2\zeta(3)$ içindeki iki de yoğunluğun paydasındaki ikiyi götürür. Böylece üs değişiminin kaynağı görünür olur. Anizotropik tuzakta sürekli yaklaşım için $k_BT$'nin üç ayrı $\hbar\omega_i$ aralığından da büyük olması gerekir; yalnız geometrik ortalamayı kontrol etmek çok sıkı tek bir yönü gözden kaçırabilir.
+
+Büyük parçacık sayısı ve bu düzey aralığı koşulları altında ideal tuzak için:
 
 $$
 \begin{aligned}

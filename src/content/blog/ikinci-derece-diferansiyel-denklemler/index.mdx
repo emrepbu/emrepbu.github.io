@@ -71,6 +71,18 @@ sistemini verir. Determinant $1\cdot2-1\cdot1=1$ olduğu için her $a,b$ çifti 
 
 Wronskiyen ölçütünü bu bağlamıyla kullanıyoruz: aynı düzenli ikinci mertebeli homojen denklemin çözümlerini karşılaştırıyoruz. Rastgele iki fonksiyonun yalnız bir noktadaki determinantının sıfır çıkması, tek başına her yerde birbirinin sabit katı olduklarını söylemez. Burada güvenceyi matris hesabıyla birlikte diferansiyel denklemin teklik özelliği sağlar.
 
+Bu özel bağlamda Wronskiyenin neden bir noktadan diğerine keyfî değişemediğini türevle görelim. $W=y_1y_2'-y_1'y_2$ ise çarpım kuralındaki $y_1'y_2'$ terimleri iptal olur. İki çözüm de $ay''+by'+cy=0$ sağladığı için:
+
+$$
+\begin{aligned}
+W'&=y_1y_2''-y_1''y_2\\
+&=-\frac ba(y_1y_2'-y_1'y_2)\\
+&=-\frac baW.
+\end{aligned}
+$$
+
+$c/a$ içeren iki terim de birbirini götürdü. Birinci mertebe çözümünden $W(t)=W(t_0)e^{-(b/a)(t-t_0)}$ çıkar. Üstel çarpan sıfır olmadığından Wronskiyen bir noktada sıfır değilse bütün aralıkta sıfır değildir. Başlangıç için 0 yerine başka bir $t_0$ seçmek bağımsız çözüm çiftini bozmaz. Bu sonuç iki fonksiyonun **aynı düzenli denklemi** sağlamasını kullandığı için rastgele fonksiyon çiftlerine koşulsuz uygulanmaz.
+
 ## 4. İki farklı gerçek kök
 
 Karakteristik kökler $r_1\ne r_2$ ise:

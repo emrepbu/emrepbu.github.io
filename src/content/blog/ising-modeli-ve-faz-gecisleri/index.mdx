@@ -152,6 +152,14 @@ $$
 
 olur. $\xi$ burada örgü adımı birimindeki korelasyon uzunluğudur. $T>0$ için hiperbolik tanjant birden küçüktür, dolayısıyla uzaklık arttıkça korelasyon sıfıra iner. Sonuç, bütün düşük boyutlu modelleri kapsayan bir slogan değildir; belirtilen zincir, etkileşim menzili ve alan koşullarına aittir.
 
+Bu kuvvetin neden çıktığını sıfır alanlı açık zincirde görelim. Komşunun $s_i$ değeri verildiğinde sonraki spinin koşullu olasılığı:
+
+$$
+P(s_{i+1}\mid s_i)=\frac{e^{\beta J s_is_{i+1}}}{2\cosh(\beta J)}
+$$
+
+olur. Sıfır alanda zincirin geri kalanını toplamak iki olası uç işareti için aynı çarpanı verdiğinden bu yerel normalizasyon yeterlidir. İki sonuçla ortalamayı alırsak $\langle s_{i+1}\mid s_i\rangle=s_i\tanh(\beta J)$ buluruz. Bir adım daha ilerlerken aynı çarpan yeniden gelir. r adım sonunda koşullu ortalama $s_i[\tanh(\beta J)]^r$ olur. Bunu $s_i$ ile çarpıp başlangıç spinini de ortaladığımızda $s_i^2=1$ sayesinde belirtilen korelasyon çıkar. Sonsuz zincirde açık uçların etkisi kaybolur; sonlu bir halkada kapanış koşulu ek düzeltme getirir. Dolayısıyla her bağda azalan yön bilgisinin çok sayıda bağ boyunca çarpılması, uzaktaki ilişkinin üstel sönmesini açıklar.
+
 ### Yakın komşunun bilgisi uzağa nasıl taşınır?
 
 Korelasyon uzunluğu bir spinin bütün komşularına doğrudan kuvvet uyguladığı menzil değildir. Modelde yalnız en yakın komşu bağı bulunsa bile, birinci komşunun ikincisiyle, ikincinin üçüncüsüyle ilişkisi nedeniyle bilgi istatistiksel olarak daha uzağa taşınabilir. $\xi$ bu ortak yön bilgisinin uzaklıkla hangi ölçekte zayıfladığını anlatır. Etkileşim menzili ile korelasyon uzunluğunun farklı olması, kısa menzilli kuvvetlerle çok büyük düzenli bölgelerin oluşabilmesini mümkün kılar.

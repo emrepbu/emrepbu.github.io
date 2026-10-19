@@ -228,6 +228,10 @@ $f(x)=3x+2$ için ters fonksiyonu önce cebirle bulalım. $y=3x+2$ denkleminden 
 
 İleri türevin sıfır olmasının neden sorun olduğunu da bu örnek ayırır. İleri değişim oranı sıfıra yaklaşırken onun tersinin sonlu bir limite yaklaşması garanti değildir. $x^3$ bütün gerçek sayılarda terslenebilir, fakat sıfırdaki türevi sıfırdır; küpkökün sıfırdaki fark oranı $h^{-2/3}$ sınırsız büyür. Demek ki tersin var olması, her noktada sonlu türevinin de bulunacağı anlamına gelmez.
 
+Ters türev kuralının yararı, tersin açık formülünü bilmediğimizde daha belirginleşir. $f(x)=x^3+x$ seçelim. Süreklidir, türevi $3x^2+1>0$ olduğundan kesin artandır ve bütün gerçek değerlere ulaşır. Tersine g diyelim. $f(1)=2$ olduğu için $g(2)=1$; ileri eğim $f'(1)=4$ olduğundan $g'(2)=1/4$ olur. Kübik denklemi genel olarak çözmemize gerek kalmadı.
+
+Örneğin $g(2{,}04)\approx1+(1/4)\cdot0{,}04=1{,}01$ yerel tahminini kurabiliriz. İleri fonksiyonda kontrol edersek $f(1{,}01)=1{,}030301+1{,}01=2{,}040301$ çıkar; 2,04'e yakındır ama tam eşit değildir. Eğimi karşılıklı noktada hesaplamak kesin bir kural, bu eğimle sonlu bir değişimi tahmin etmek ise yaklaşık hesaptır.
+
 ## 8. Üç ters trigonometrik türev
 
 $y=\arcsin x$ yazarsak $x=\sin y$ ve $-\pi/2\leq y\leq\pi/2$ olur. İç noktalarda $\cos y>0$'dır. Ters kural ve çember özdeşliğiyle:

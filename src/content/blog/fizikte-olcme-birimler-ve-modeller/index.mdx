@@ -105,6 +105,18 @@ $$
 
 olur. Burada çarpımın ikinci mertebedeki küçük katkısını ihmal ettik. Bu, [çok değişkenli türevde](/blog/cok-degiskenli-fonksiyonlar-ve-turev/) kurduğumuz yerel doğrusallaştırmadır. Fakat standart belirsizlikleri toplarken değişimlerin işaretini kesin biliyormuş gibi davranamayız.
 
+Yaklaşımda tam olarak neyi attığımızı çarpımı açarak görebiliriz:
+
+$$
+\begin{aligned}
+(a+\delta a)(b+\delta b)-ab
+&=b\,\delta a+a\,\delta b\\
+&\quad+\delta a\,\delta b.
+\end{aligned}
+$$
+
+Son terim iki küçük değişimin çarpımıdır. Örneğin aşağıdaki uzunluklarda değişimler $\delta a=0{,}01\,\mathrm m$ ve $\delta b=0{,}02\,\mathrm m$ olursa doğrusal katkılar toplamı $0{,}07\,\mathrm m^2$, atılan katkı $0{,}0002\,\mathrm m^2$ olur. Bu bir **belirli değişim** hesabıdır; henüz standart belirsizlik hesabı değildir. Değişimlerin hangi işaretle gerçekleşeceğini bilmediğimizde $0{,}07$ değerini doğrudan standart belirsizlik ilan edemeyiz. Bir sonraki formül, küçük rastgele katkıların yayılımını değerlendirir.
+
 Girdilerin belirsizlikleri bağımsızsa ve küçükse, $u_a$ ile $u_b$ standart belirsizlikleri için:
 
 $$

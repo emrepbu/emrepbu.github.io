@@ -132,6 +132,18 @@ $$
 
 bulunur. Hazır Hermite polinomlarını ön bilgi saymadık; ilk iki çarpanı doğrudan türevle ürettik. Genel durumda Gauss zarfını çarpan polinomlara Hermite polinomları adı verilir. Bu isim, burada oluşturduğumuz tekrar eden yapının adıdır.
 
+İkinci durumdaki sabit eksi terim çarpımın türevinden gelir; onu atlamayalım. $q=x/\ell$ yazınca $a^\dagger=(q-d/dq)/\sqrt2$, $d\psi_0/dq=-q\psi_0$ ve $\psi_1=\sqrt2q\psi_0$ olur. Bu nedenle:
+
+$$
+\begin{aligned}
+\psi_2&=\frac1{\sqrt2}a^\dagger\psi_1\\
+&=\frac1{\sqrt2}\left[q^2\psi_0-\frac{d}{dq}(q\psi_0)\right]\\
+&=\frac1{\sqrt2}\left[q^2\psi_0-\psi_0+q^2\psi_0\right].
+\end{aligned}
+$$
+
+$d(q\psi_0)/dq=\psi_0+q\psi_0'$ olduğu için $-1$ ortaya çıktı. Baştaki $1/\sqrt2$ ise türevden değil, ikinci basamağın normunu bire getirmekten gelir. Bu ikisi farklı görevler yapar. Sonuçta düğümler $2q^2-1=0$, yani $x=\pm\ell/\sqrt2$ noktalarındadır; Gauss çarpanı sonlu konumda sıfır olmadığı için başka düğüm yoktur.
+
 Enerji arttıkça özfonksiyonların düğüm sayısı artar. Yoğunluk fonksiyonun mutlak değer karesidir; negatif loblar negatif olasılık oluşturmaz. Fonksiyonun işaret ve faz yapısı, farklı durumların süperpozisyonlarında girişim için önem taşır. Bu yüzden yalnız yoğunluk grafiğini çizmek bütün durum bilgisini göstermeye yetmez.
 
 ![Temel ve ilk uyarılmış osilatör fonksiyonları aynı Gauss zarfına bağlı farklı düğüm yapıları taşır.](./osilator-durumlari.png)

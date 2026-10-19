@@ -133,7 +133,20 @@ $$
 V(r)=k_e\frac{q}{r}
 $$
 
-olur. Türevini alıp eksi işaretle çarpmak Coulomb alanını geri verir. Pozitif kaynağın potansiyeli pozitif, negatif kaynağınki negatiftir. Birçok yük için potansiyeller cebirsel toplanır; alanları ise vektörel toplamıştık.
+olur. Bu sonucu potansiyel tanımından da çıkarabiliriz. Kaynağa göre dışarı yönlü radyal koordinatı $r'$ kullanalım. Noktasal yükün alan bileşeni $E_r=k_eq/(r')^2$ olduğundan, sonsuzdan $r$ uzaklığına integral:
+
+$$
+\begin{aligned}
+V(r)-V(\infty)
+&=-k_eq\int_\infty^r\frac{dr'}{(r')^2}\\
+&=-k_eq\left[-\frac1{r'}\right]_\infty^r\\
+&=\frac{k_eq}{r}
+\end{aligned}
+$$
+
+verir. İlk eksi potansiyel tanımından, köşeli parantezdeki eksi $1/(r')^2$ fonksiyonunun integralinden gelir. Sonsuzdaki $1/r'$ katkısı sıfıra yaklaşır. $q$'nun işaretini hesap boyunca taşıdığımız için sonuç negatif kaynak için de geçerlidir; büyüklük formülündeki mutlak değeri buraya koymayız.
+
+Türevini alıp eksi işaretle çarpmak Coulomb alanını geri verir. Pozitif kaynağın potansiyeli pozitif, negatif kaynağınki negatiftir. Birçok yük için potansiyeller cebirsel toplanır; alanları ise vektörel toplamıştık.
 
 Zıt iki yük örneğimizde orta noktanın potansiyeli $+60\,\mathrm V-60\,\mathrm V=0$ olur. Alan ise sağa dört yüz newton bölü coulombdu. Potansiyelin sıfır olması alanın sıfır olduğunu göstermez. Alan potansiyelin değeriyle değil uzaysal değişimiyle ilişkilidir. Bir doğrunun yüksekliği sıfır olduğu yerde eğiminin sıfır olması gerekmediği gibi.
 

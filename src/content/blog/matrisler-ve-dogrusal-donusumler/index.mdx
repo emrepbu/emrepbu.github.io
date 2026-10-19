@@ -325,6 +325,19 @@ $$
 
 $2\times3$ boyut, $3\times2$ olur. İki kez transpoz almak ilk matrise döndürür. Transpoz genel olarak dönüşümü geri alan ters matris değildir; bu başka bir kavramdır. Örneğin yatay iki kat büyütmenin matrisi transpoz alınca değişmez, oysa geri almak için yatay bileşeni ikiye bölmek gerekir.
 
+Transpozun bir hesap görevi de vardır: uygun gerçek vektörlerde $(A\mathbf u)\cdot\mathbf v=\mathbf u\cdot(A^T\mathbf v)$ olur. İki boyutta $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$, $\mathbf u=(x,y)$, $\mathbf v=(s,t)$ yazıp açalım:
+
+$$
+\begin{aligned}
+(A\mathbf u)\cdot\mathbf v
+&=(ax+by)s+(cx+dy)t\\
+&=x(as+ct)+y(bs+dt)\\
+&=\mathbf u\cdot(A^T\mathbf v).
+\end{aligned}
+$$
+
+Önce çıktıyı dönüştürüp karşılaştırmakla, karşılaştırılan yönün katsayılarını transpozla girdiye taşımak aynı skaler sonucu verir. Önceki $2\times3$ matris ve $\mathbf u=(2,1,4)$ için $A\mathbf u=(4,3)$ idi. $\mathbf v=(1,-2)$ seçersek soldaki çarpım $4-6=-2$'dir. Sağda $A^T\mathbf v=(1,4,-2)$ ve $\mathbf u\cdot(A^T\mathbf v)=2+4-8=-2$ bulunur. Transpozun boyutları ters çevirmesi bu eşleşmeyi mümkün kılar; kaybolmuş girdiyi geri getiren bir ters işlem yapmadık.
+
 ## 11. Doğruların ve Şekillerin Görüntüsü
 
 Bir doğruyu $\mathbf p+t\mathbf v$ biçiminde yazabiliriz. Burada $\mathbf p$ doğru üzerindeki sabit bir noktanın konum vektörü, $\mathbf v\ne\mathbf0$ doğru yönü, $t$ ise bütün gerçek sayılar arasında değişen parametredir. Her farklı $t$ aynı doğru üzerindeki bir konumu tarif eder. $t$'yi zaman olarak yorumlamak zorunda değiliz; burada yalnızca noktaları sayısal olarak seçer.

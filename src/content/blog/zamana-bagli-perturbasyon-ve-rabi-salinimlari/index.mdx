@@ -153,6 +153,15 @@ i\frac{d}{dt}\begin{pmatrix}b_g\\b_e\end{pmatrix}
 \begin{pmatrix}b_g\\b_e\end{pmatrix}.
 $$
 
+Köşegendeki ters işaretleri türevden izleyelim. İlk dönüşüm için:
+
+$$
+i\dot c_g=e^{-i\Delta t/2}
+\left(i\dot b_g+\frac\Delta2b_g\right)
+$$
+
+olur. İlk bağlı denklemin sağ tarafı $(\Omega/2)e^{-i\Delta t/2}b_e$'dir. Ortak fazı bölüp $\Delta b_g/2$ terimini karşıya geçirince $i\dot b_g=-\Delta b_g/2+\Omega b_e/2$ çıkar. İkinci dönüşümde türevin işareti ters olduğundan $i\dot b_e=\Omega b_g/2+\Delta b_e/2$ buluruz. Bu iki satır, yazdığımız matrisin satırlarıdır. Faz dönüşümü her katsayının mutlak değerini korur; yeni $\pm\Delta/2$ terimleri fiziksel enerjiye kendiliğinden eklenmiş bir etkileşim değil, seçtiğimiz dönen gösterimin katkısıdır.
+
 $b_g,b_e$ zamanla değişen yeni katsayılar, $M$ frekans birimli matristir. $I$ iki boyutlu birim matris olacak; bir sütunu değiştirmeden bırakır. Çarpımını açıkça yapınca köşegen dışındaki $-\Delta\Omega+\Omega\Delta$ terimleri silinir; iki köşegen de $\Delta^2+\Omega^2$ olur. Dolayısıyla $M^2=\Omega_R^2I$, $\Omega_R=\sqrt{\Omega^2+\Delta^2}$.
 
 Üstelin çift kuvvetleri $I$ ile, tek kuvvetleri $M$ ile toplandığından evrim matrisi:

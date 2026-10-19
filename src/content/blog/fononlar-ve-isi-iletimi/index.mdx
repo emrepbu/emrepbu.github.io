@@ -168,6 +168,17 @@ elde edilir. $\alpha$ **ısıl yayınırlıktır**, birimi $\mathrm{m^2/s}$'dir.
 
 İlk örneğin değerleriyle $\alpha=60/(1{,}2\times10^6)=5{,}0\times10^{-5}\,\mathrm{m^2/s}$ olur. $L=2\,\mathrm{mm}$ ölçeğindeki değişimin karakteristik süresi boyut hesabıyla $L^2/\alpha\simeq0{,}080\,\mathrm s$ çıkar. Bu tam bir soğuma süresi değildir; sınır koşulları ve sıcaklık profilinin biçimi sayısal katsayıyı değiştirir. Hesap, uzunluk iki katına çıktığında yayınım zamanının yaklaşık dört katına çıktığını gösterir.
 
+Sınırların sayısal katsayıyı nasıl değiştirdiğini aynı denklemde çözebiliriz. Çubuğun iki ucunu aynı $T_0$ sıcaklığında tutalım ve başlangıçtaki fazlalığı $\delta T(x,0)=\Delta T_0\sin(\pi x/L)$ seçelim. Sinüs uçlarda sıfır olduğundan sınır koşulunu sağlar. İkinci uzay türevi sinüsü $-(\pi/L)^2$ ile çarpar. Bu yüzden çözüm:
+
+$$
+\begin{aligned}
+\delta T(x,t)&=\Delta T_0\sin\frac{\pi x}{L}\,e^{-t/\tau_T},\\
+\tau_T&=\frac{L^2}{\pi^2\alpha}
+\end{aligned}
+$$
+
+olur. Önceki sayılarla $\tau_T\simeq0{,}00811\,\mathrm s$ elde edilir. Bu sürede sıcaklık fazlalığı $1/e$'ye iner; tam sıfıra ulaşmaz. $0{,}080\,\mathrm s$ boyut kestirimiyle fark, artık seçilmiş bir profilin ve sınır koşulunun $\pi^2$ katsayısını içermesidir. Daha ince uzaysal sinüs desenleri daha büyük ikinci türev taşıdığı için daha hızlı söner.
+
 ## 9. Sıcaklık ve boyut birlikte önemlidir
 
 Yeterince düşük sıcaklıkta bir üç boyutlu yalıtkanın örgü ısı sığası yaklaşık $T^3$ ile artar. Eğer hız ve sınırların belirlediği serbest yol bu aralıkta yaklaşık sabitse $\kappa\propto T^3$ beklenebilir. Daha yüksek sıcaklıkta ısı sığası doygunluğa yaklaşırken anharmonik saçılma kuvvetlenip serbest yolu kısaltabilir. Bazı rejimlerde yaklaşık $1/T$ azalma görülebilir; bu bütün malzemelere bütün sıcaklıklarda uygulanacak evrensel bir yasa değildir.

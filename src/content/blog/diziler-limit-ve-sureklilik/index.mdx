@@ -76,6 +76,14 @@ Bu davranışa **yakınsaklık**, yaklaşılan gerçek sayıya limit deriz. Dizi
 
 $(-1)^n$ dizisi $-1,1,-1,1,\ldots$ diye salınır ve hiçbir tek gerçek sayıya yaklaşmaz. Buna karşılık $(-1)^n/n$ işaret değiştirse de mutlak değeri $1/n$ olduğu için sıfıra yaklaşır. Yakınsak olmak, mutlaka tek yönde ilerlemek veya hedefin hep aynı tarafında durmak demek değildir.
 
+Yaklaşılacak sayının neden tek olduğunu tanımdan görebiliriz. Aynı dizi iki farklı L ve M sayısına yakınsasın; aralarındaki pozitif uzaklık $d=|L-M|$ olsun. İki limit için de hata payını $d/3$ seçebiliriz. İki ayrı sıra eşiğinin büyüğünü geçince **aynı terim** hem L'ye hem M'ye $d/3$'ten yakın olmalıdır. Oysa üçgen eşitsizliği:
+
+$$
+d=|L-M|\le|L-a_n|+|a_n-M|<\frac{2d}{3}
+$$
+
+verir; pozitif d kendisinin üçte ikisinden küçük olamaz. Çelişki, iki farklı limit varsayımından doğdu. Salınan dizideki sorun da bu yüzden “iki limitinin olması” değildir: bütün geç terimleri tek bir sayıya yakın tutan koşulun sağlanmamasıdır.
+
 Sabit dizi $a_n=5$ de 5'e yakınsar. Limit, “hiçbir zaman ulaşılmayan sayı” diye tanımlanamaz. Terimler hedefe baştan beri eşit olabilir, bazen eşit olabilir veya hiç eşit olmayabilir. Belirleyici olan, sonraki bütün terimlerin her istenen yakınlık koşulunu sağlamasıdır.
 
 ### “Yeterince büyük” olan sıra numarasını gerçekten bulmak

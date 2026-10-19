@@ -78,6 +78,22 @@ $\mathbf q=(1,i)^T/\sqrt2$ ve $\mathbf v=(1,0)^T$ için katsayı $1/\sqrt2$, izd
 
 Bu, dik vektörlerde Pisagor ilişkisinin karmaşık uzayda da sürdüğünü gösterir. Genel olarak $\langle\mathbf a,\mathbf b\rangle=0$ ise $\|\mathbf a+\mathbf b\|^2=\|\mathbf a\|^2+\|\mathbf b\|^2$ olur; çapraz iç çarpımlar sıfırlanır. Eşlenik kullanımı bu pozitif geometrinin temelidir.
 
+Bu diklik şartı aynı zamanda **en yakın vektörü** seçer. $c_0=\langle\mathbf q,\mathbf v\rangle$ ve $\mathbf r=\mathbf v-c_0\mathbf q$ olsun. Aynı doğrultuda başka bir $c\mathbf q$ seçersek fark:
+
+$$
+\mathbf v-c\mathbf q
+=\mathbf r+(c_0-c)\mathbf q
+$$
+
+olur. İki sağ terim dik olduğundan Pisagor bağıntısı:
+
+$$
+\|\mathbf v-c\mathbf q\|^2
+=\|\mathbf r\|^2+|c_0-c|^2
+$$
+
+verir. İlk terim seçilen c'den bağımsızdır; ikinci terim negatif olamaz ve yalnız $c=c_0$ iken sıfır olur. Dolayısıyla izdüşüm, q'nun bütün karmaşık katları arasında v'ye en yakın olan tek vektördür. Karmaşık katsayı kullanılması bu en kısa uzaklık anlamını değiştirmez; farkın karesi yerine modül karesini kullanmamızı gerektirir. Sıfır olmayan fakat birim olmayan q için $c_0=\langle\mathbf q,\mathbf v\rangle/\|\mathbf q\|^2$ seçilir; aynı hesapta son terime ayrıca $\|\mathbf q\|^2$ çarpanı gelir.
+
 ### İzdüşüm katsayısı karmaşık olduğunda sırayı denetlemek
 
 Önceki izdüşüm örneğinde katsayı gerçek çıktı; iç çarpım sırasını karıştırmanın etkisi görünmüyordu. Aynı birim $\mathbf q=(1,i)^T/\sqrt2$ vektörünü bu kez $\mathbf v=(0,1)^T$ ile kullanalım. İlk girdiyi eşlediğimiz konvansiyonda katsayı:

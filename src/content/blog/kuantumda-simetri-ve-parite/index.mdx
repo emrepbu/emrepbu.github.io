@@ -26,6 +26,18 @@ Konumu $x$, kütleyi $m$, açısal frekansı $\omega$ ile gösterelim. Bir boyut
 
 Burada hangi dönüşümü uyguladığımızı söylemek zorundayız. Hem sistemi hem dış alanı birlikte döndürmek başka, dış alan sabitken yalnız durumu döndürmek başka bir işlemdir. Ayrıca simetri seçilen başlangıç noktasına bağlı görünebilir: Eğilmiş harmonik potansiyelin minimumunu yeni başlangıç yaparsak o noktanın çevresinde yeniden aynalama simetrisi buluruz. “Simetri yok” derken hangi eksen veya dönüşümün kastedildiği belirtilmelidir.
 
+Minimumu kaydırma iddiasını kareye tamamlayarak somutlaştıralım:
+
+$$
+\begin{aligned}
+&\frac12m\omega^2x^2+Fx\\
+&\quad=\frac12m\omega^2\left(x+\frac{F}{m\omega^2}\right)^2\\
+&\qquad-\frac{F^2}{2m\omega^2}.
+\end{aligned}
+$$
+
+Yeni merkez $x_c=-F/(m\omega^2)$'dir. $\xi=x-x_c$ koordinatında potansiyel $m\omega^2\xi^2/2$ ile sabit bir enerji kaymasının toplamıdır. Bu yüzden simetri $x\mapsto-x$ değil, $x\mapsto2x_c-x$ dönüşümüdür: Merkeze uzaklık aynı kalırken taraf değişir. Sabit enerji terimi kuvveti değiştirmez; türevi sıfırdır. Böylece “başlangıca göre parite bozuldu” ifadesi ile “potansiyel başka bir merkez çevresinde hâlâ simetrik” ifadesi birbiriyle uyumludur.
+
 ## 2. Üniter simetrinin cebirsel koşulu
 
 Dönüşümü $U$ ile gösterelim. Üniterlik $U^\dagger U=I$ demektir; $U^\dagger$ eşlenik devrik, $I$ birim işleçtir. Dönüştürülmüş durum $|\psi'\rangle=U|\psi\rangle$ olsun. Enerji ortalaması:

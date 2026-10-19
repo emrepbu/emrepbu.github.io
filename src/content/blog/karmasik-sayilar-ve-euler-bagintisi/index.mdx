@@ -80,7 +80,18 @@ Bu tanım Pisagor teoremidir. Gerçek sayılarda alıştığımız mutlak değer
 
 Eşlenik toplam ve çarpıma dağılır: $\overline{z+w}=\overline z+\overline w$ ve $\overline{zw}=\overline z\,\overline w$. İkinci özelliği kullanınca $|zw|^2=(zw)\overline{zw}=|z|^2|w|^2$ bulunur. Modüller negatif olmadığından $|zw|=|z||w|$ olur. Birazdan çarpmanın neden uzunlukları çarptığını bu cebirsel sonuçla birlikte geometrik olarak okuyacağız.
 
-Modülün çarpım kuralını eşlenik yardımıyla gerekçelendirebiliriz. $|zw|^2=(zw)\overline{zw}=zw\overline z\,\overline w$ olur. Karmaşık sayı çarpımı yer değiştirebildiği için çarpanları $z\overline z\,w\overline w$ biçiminde toplayabiliriz; sonuç $|z|^2|w|^2$'dir. Modüller negatif olmadığı için karekök alarak $|zw|=|z||w|$ elde ederiz. Eşlenik yalnız sanal kısmın işaretini değiştiren bir işlem değildir; uzunluğu cebirle hesaplamayı da sağlar.
+Toplamın modülünde ise genel olarak eşitlik değil, **üçgen eşitsizliği** vardır: $|z+w|\le |z|+|w|$. Bunu aynı eşlenik hesabıyla görebiliriz:
+
+$$
+\begin{aligned}
+|z+w|^2
+&=|z|^2+|w|^2+2\operatorname{Re}(z\overline w),\\
+\operatorname{Re}(z\overline w)
+&\le |z\overline w|=|z||w|.
+\end{aligned}
+$$
+
+İkinci satırda bir sayının yatay bileşeninin uzunluğundan büyük olamayacağını kullandık. Sonuç $|z+w|^2\le(|z|+|w|)^2$ olur; iki taraf negatif olmadığından karekök alınabilir. Örneğin $|1+i|=\sqrt2$, fakat $|1|+|i|=2$'dir. Oklar aynı yönde olduğunda toplam uzunluk bu üst sınıra ulaşır; farklı yönlerde uzunlukların toplamı yalnız üst sınır verir. Bu ayrım, salınım genliklerini toplarken de gerekecek.
 
 ## 4. Bölme neden eşlenikle kolaylaşır?
 

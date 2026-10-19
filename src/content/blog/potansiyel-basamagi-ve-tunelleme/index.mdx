@@ -42,6 +42,15 @@ $k=q$ sınırında potansiyel farkı yoktur; $r=0$, $t=1$ bulunur. Basamak sıf�
 
 Bu sonuçta dalga fonksiyonunun türevini eşleştirmeyi unutsaydık iki bilinmeyen için yalnız bir denklem kalırdı. Rastgele seçilen $r$ ve $t$ değerleri norm akımını korumayabilirdi. Sınır koşulları, farklı bölgelerdeki matematiksel çözümleri aynı fiziksel duruma bağlar.
 
+Bu iki süreklilik koşulunun kaynağı da Schrödinger denklemidir. Sınırın iki yanını kapsayan çok küçük bir aralıkta denklemi integre edelim:
+
+$$
+-\frac{\hbar^2}{2m}\big[u'(\varepsilon)-u'(-\varepsilon)\big]
+=\int_{-\varepsilon}^{\varepsilon}(E-V)u\,dx.
+$$
+
+Sonlu basamakta $V$ ve fiziksel çözüm $u$ sınırlıdır. Aralık daralınca sağdaki integral sıfıra gider; dolayısıyla türevin iki sınır değeri eşittir. $u$'nun kendisinde bir sıçrama olsaydı türevinde delta, ikinci türevinde delta türevi türünden tekil terimler oluşurdu; sonlu $(E-V)u$ bunları dengeleyemez. Bu yüzden fonksiyon da süreklidir. Delta potansiyelde sağ tarafta sonlu bir tekil katkı kalabilir; burada kullandığımız türev sürekliliğini o farklı modele doğrudan taşıyamayız.
+
 ## 3. Genlik karesi ile akım oranı
 
 Bir $Ae^{ikx}$ bileşeninin akımı $j=(\hbar k/m)|A|^2$ idi. Gelen akım $j_{\mathrm{gel}}=\hbar k/m$, yansıyanın işaretli akımı $j_{\mathrm{yan}}=-(\hbar k/m)|r|^2$, geçen akım $j_{\mathrm{geç}}=(\hbar q/m)|t|^2$ olur. Pozitif yansıma ve geçiş katsayılarını:
@@ -118,6 +127,19 @@ $$
 \boxed{T=\left[1+
 \frac{V_0^2}{4E(V_0-E)}\sinh^2(\kappa a)\right]^{-1}.}
 $$
+
+Son sadeleşmedeki enerji çarpanını açıkça kontrol edelim. $C^2=1+S^2$ olduğundan paydanın mutlak değer karesi:
+
+$$
+\begin{aligned}
+C^2+\frac{(\kappa^2-k^2)^2}{4k^2\kappa^2}S^2
+&=1+\frac{(k^2+\kappa^2)^2}{4k^2\kappa^2}S^2,\\
+\frac{(k^2+\kappa^2)^2}{4k^2\kappa^2}
+&=\frac{V_0^2}{4E(V_0-E)}.
+\end{aligned}
+$$
+
+İlk satırda $4k^2\kappa^2+(\kappa^2-k^2)^2=(k^2+\kappa^2)^2$ özdeşliğini kullandık. İkinci satırda her dalga sayısının karesindeki ortak $2m/\hbar^2$ çarpanları sadeleşti. Böylece boyutsuz geçiş katsayısında yalnız boyutsuz enerji oranı ve $\kappa a$ kaldı.
 
 Formülün nereden geldiğini dört eşleştirme koşulundan ve kısa eliminasyon adımından gördük. $T$ sıfırla bir arasındadır; karşılık gelen yansıma katsayısı gerçek statik engelde $R=1-T$ olur. Sol ve sağ potansiyeller farklı olsaydı son adımda yine dalga sayısı oranını kullanmamız gerekirdi.
 

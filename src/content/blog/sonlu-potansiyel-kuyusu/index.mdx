@@ -196,6 +196,30 @@ Sol kuyruğun yoğunluğu aynı olduğundan toplamı bunun iki katıdır. Burada
 
 $A$ birimi uzunluğun eksi yarım kuvvetidir; normalleştirme integralini boyutsuz yapar. Yukarıdaki temel durum için $P_{\text{dış}}\approx0{,}04043$, yani yaklaşık yüzde $4{,}04$ bulunur. Tek durumda iç integraldeki sinüs teriminin işareti eksi olur ve dış katkıda kosinüsün yerini sinüs alır. Aynı hesap ilk uyarılmış durum için yaklaşık yüzde $19{,}55$ verir.
 
+Normalleştirme formülünü eşleştirme koşuluyla daha da sadeleştirerek sayıları sınayabiliriz. Çift durumda $k\sin(ka)=\kappa\cos(ka)$ ve $\sin^2(ka)+\cos^2(ka)=1$ birlikte:
+
+$$
+\cos^2(ka)=\frac{k^2}{k^2+\kappa^2}
+$$
+
+verir. Ayrıca $\sin(2ka)/(2k)=\kappa\cos^2(ka)/k^2$ olduğundan normdaki iki sınır katkısının toplamı:
+
+$$
+\begin{aligned}
+\frac{\sin(2ka)}{2k}+\frac{\cos^2(ka)}\kappa
+&=\cos^2(ka)\frac{k^2+\kappa^2}{k^2\kappa}\\
+&=\frac1\kappa.
+\end{aligned}
+$$
+
+Dolayısıyla $A^2=1/(a+1/\kappa)$ olur. Tek durumda $k\cos(ka)=-\kappa\sin(ka)$ kullanılması aynı normalleştirme sonucunu verir; bu kez dış genlikte $\sin^2(ka)=k^2/(k^2+\kappa^2)$ vardır. Her iki fiziksel kök için dış olasılığın kısa kontrolü böylece:
+
+$$
+P_{\text{dış}}=\frac{z^2}{z_0^2(1+y)}
+$$
+
+olur. Tablodaki $z,y$ değerleri ilk düzeyde $0{,}04043$, ikincide $0{,}19553$ verir. Bu sadeleşme rastgele $k,\kappa$ için değil, türev eşleştirmesini sağlayan kökler için geçerlidir.
+
 ![Sonlu kuyunun iki enerji seviyesi ve normalize çift ve tek dalga fonksiyonlarının dış kuyrukları.](./media/durumlar.png)
 
 Grafikte dalga fonksiyonları ayrı panellerdedir; eğri yüksekliği enerji değildir. Yatay koordinat $x/a$, düşey koordinat $\sqrt a\,\psi$ olduğundan ikisi de boyutsuzdur. Bu ölçekle eğrinin mutlak karesinin yatay koordinata göre integrali birdir. Kuyunun dışındaki renkli alanlar hesaplanan dış olasılıkların bulunduğu bölgeleri gösterir.

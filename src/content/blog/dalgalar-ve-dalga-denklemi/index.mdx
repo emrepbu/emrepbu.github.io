@@ -100,6 +100,20 @@ $$
 
 Sonsuz, düzgün ve sönümsüz ip modelinde başlangıç şekli ile başlangıçtaki düşey hız dağılımı, bu iki ilerleyen parçayı belirler. Yalnız ilk fotoğrafı bilmek hareketin tamamını belirlemez. Aynı şekil o anda sağa, sola veya iki yöne birden gelişen hareketin parçası olabilir.
 
+Örneğin sonsuz ipte başlangıç şekli $F(x)$ olsun ve ip her noktada durgun bırakılmış olsun. İki eşit parçaya ayrılan çözüm:
+
+$$
+u(x,t)=\frac12F(x-ct)+\frac12F(x+ct)
+$$
+
+bu iki koşulu birlikte sağlar. $t=0$ anında iki yarım şekil toplanarak $F(x)$ olur. Zaman türevini aldığımızda ise:
+
+$$
+u_t(x,0)=-\frac c2F'(x)+\frac c2F'(x)=0.
+$$
+
+Sağa ve sola giden parçalar başlangıçta aynı yerde üst üste durur; sonrasında ayrılırlar. Buna karşılık yalnız $u=F(x-ct)$ seçseydik ilk fotoğraf yine aynı olurdu, fakat başlangıç düşey hızı $-cF'(x)$ olurdu. Demek ki ipi belirli bir şekle getirip durgun bırakmakla aynı şekli tek yöne ilerlerken fotoğraflamak farklı başlangıç durumlarıdır. Bu örnekte $F$'nin gerekli türevlerinin var olduğunu ve uçlardan henüz bir yansıma gelmediğini kabul ediyoruz.
+
 Sonlu bir ipte uçların nasıl tutulduğu da gerekir. Sabit uçta sapma sıfırdır. Serbest uç için uygun kuvvet koşulu kullanılır. Bu sınır bilgileri gelen dalgaların yansımasını ve izinli salınımları etkiler. Önceki diferansiyel denklemlerde başlangıç ile sınır koşullarını ayırmamızın fiziksel karşılığı burada açıkça görülür.
 
 Sabit bir uca ulaşan darbenin yansıması ters işaretli olabilir. Uçtaki toplam sapmanın her an sıfır kalması için gelen ve yansıyan katkılar uçta birbirini götürmelidir. Serbest uçta ise uygun sınır koşulu eğimin sıfır olmasıdır; ideal modelde yansımanın yer değiştirme işareti farklı davranır. Yansıma, dalganın keyfî biçimde karar değiştirmesi değil sınırda gereken kuvvet ve hareket koşullarının sonucudur.

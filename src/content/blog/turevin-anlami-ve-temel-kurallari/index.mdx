@@ -407,6 +407,17 @@ $x^2$ fonksiyonunda $a=1$ için $f(1)=1$, $f'(1)=2$ olduğundan teğet $y=1+2(x-
 
 Genel türev tanımı da benzer bir yerel fikir taşır: $f(a+h)=f(a)+f'(a)h$ ifadesinin hatası, $h$'nin büyüklüğüne bölündüğünde sıfıra yaklaşır. Bu, küçük değişimlerde doğrusal parçanın başlıca davranışı yakalamasıdır. Fonksiyonun bütün aralıkta düz bir doğru olduğunu söylemez.
 
+Bu hata iddiasını doğrudan türev tanımından yazabiliriz. $h\ne0$ için fark oranının türevden sapmasına $\varepsilon(h)$ diyelim:
+
+$$
+\begin{aligned}
+\varepsilon(h)&=\frac{f(a+h)-f(a)}h-f'(a),\\
+f(a+h)&=f(a)+f'(a)h+h\varepsilon(h).
+\end{aligned}
+$$
+
+Türev varsa $\varepsilon(h)\to0$ olur. Son terim yaklaşım hatasıdır; mutlak değerini $|h|$'ye bölünce $|\varepsilon(h)|\to0$ elde ederiz. Fakat hata her türevlenebilir fonksiyonda $h^2$ olmak zorunda değildir. Örneğin $f(x)=|x|^{3/2}$ için sıfırdaki fark oranı sağdan $\sqrt h$, soldan $-\sqrt{-h}$ olur; ikisi de sıfıra gider. Teğet sıfır doğrusudur ve hata $|h|^{3/2}$'dir. Bu hata $|h|$'ye göre küçülür, fakat $h^2$'ye bölündüğünde $1/\sqrt{|h|}$ olur. Kare fonksiyonundaki özel hata formülünü genel türev tanımıyla karıştırmayız.
+
 Karekök için $a=4$ seçersek $f(4)=2$, $f'(4)=1/4$ olur. $\sqrt{4{,}08}\approx2+(1/4)\cdot0{,}08=2{,}02$ bulunur. Yaklaşık işareti önemlidir; teğet hesabı burada tam eşitlik değildir.
 
 ### Teğet denklemindeki farkın görevi

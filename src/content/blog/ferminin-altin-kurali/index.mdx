@@ -162,6 +162,15 @@ $$
 
 Bu **Fermi'nin altın kuralıdır**. Geçişi mümkün kılan iki unsur açıkça ayrılır: dinamik bağlantı $|V_{fi}|^2$ ve erişilebilir son durumların sayısı $\rho$. Durum çok olsa da matris elemanı sıfırsa bu mertebede geçiş olmaz. Bağlantı güçlü olsa da gerekli enerjide son durum yoksa aynı ifade sıfır verir.
 
+Aynı enerjideki farklı son kanalları nasıl toplayacağımızı da belirtelim. Kanal etiketi a, örneğin farklı bir iç durum veya ayrık çıkış türünü ayırsın. Her kanal kendi durum yoğunluğuna ve bağlantısına sahipse:
+
+$$
+\Gamma=\frac{2\pi}{\hbar}
+\sum_a |V_{ai}|^2\rho_a(E_i).
+$$
+
+İki ortogonal kanal için $\rho_1=\rho_0$, $\rho_2=2\rho_0$, $V_{1i}=V_0$ ve $V_{2i}=V_0/2$ seçelim. $\Gamma_0=2\pi|V_0|^2\rho_0/\hbar$ dersek ilk hız $\Gamma_0$, ikincisi $(1/4)\times2\Gamma_0=\Gamma_0/2$ olur; toplam $3\Gamma_0/2$'dir. Toplam durum yoğunluğunu $3\rho_0$ yapıp hepsini aynı $|V_0|^2$ ile çarpsaydık iki kat büyük sonuç bulurduk. Dejenerasyon sayısını doğrudan bir çarpan olarak kullanmak, ancak kanalların bağlantı büyüklükleri eşitse uygundur. Ortogonal kanallar için girişim genliklerini değil bu ayrı hız katkılarını topladık.
+
 Birim kontrolü $\mathrm{eV^2}\times\mathrm{eV^{-1}}/(\mathrm{eV\,s})=\mathrm{s^{-1}}$ şeklindedir. Açısal frekans başına yoğunluk kullanılırsa $E=\hbar\omega$ nedeniyle $\rho_\omega=\hbar\rho_E$ olur. Dolayısıyla aynı hız $\Gamma=2\pi|V|^2\rho_\omega/\hbar^2$ diye yazılır. Yoğunluğun değişkenini değiştirmeden $\hbar$ kuvvetini değiştiremeyiz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Enerji seçiciliği ve birim alanlı daralan tepe" caption="Zaman oranı τ birden dörde yükselirken normalize sinc kare eğrisi daralır. Altın noktalar ilk sıfırlardır. Eğri tek başına geçiş olasılığı değildir; durum yoğunluğu ve matris elemanıyla enerji üzerinde integral alınırken kullanılan normalize ağırlıktır." />

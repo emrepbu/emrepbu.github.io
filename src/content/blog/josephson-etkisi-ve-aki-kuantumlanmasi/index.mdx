@@ -98,6 +98,17 @@ Bunu tam hesaplamak için kapasitif akım $C\,dV/dt$ ve örneğin dirençli kana
 
 Ayrıca termal dalgalanmalar fazı enerji bariyerleri üzerinden geçirebilir. $E_J\gg k_BT$ koşulu klasik termal faz kararlılığı için yararlı bir ölçek karşılaştırmasıdır. Çok küçük eklemlerde yük ve fazın kuantum dalgalanmaları da önem kazanır. Burada bu ileri devre rejimlerini çözmeden, ideal bağıntıların hangi temel parçayı verdiğini ayırıyoruz.
 
+Kararlı dalı enerjiyle sınayabiliriz. İdeal sabit akım kaynağı altında faz için etkin potansiyel:
+
+$$
+U_{\rm etkin}(\gamma)=-E_J\cos\gamma
+-\frac{\hbar I_{\text{dış}}}{2e}\gamma
+$$
+
+olur. İkinci terim, kaynağın faz değişirken yaptığı işi hesaba katar; artık yalnız eklemin yalıtılmış enerjisini küçültmüyoruz. Birinci türevi sıfırlamak $I_{\text{dış}}=I_c\sin\gamma$ denklemini verir. İkinci türev $E_J\cos\gamma$ olduğundan $\cos\gamma>0$ olan durağan noktalar yerel minimumdur. $|I_{\text{dış}}|$ kritik değere yaklaşınca minimumun eğriliği azalır; eşikte minimum ile komşu tepe birleşir. Böylece sinüs denkleminin her kökünün aynı kararlılıkta olmadığı görülür.
+
+İşaretleri bağımsız olarak güçle kontrol edebiliriz: $dU_J/dt=(dU_J/d\gamma)\dot\gamma=(\hbar I/2e)(2eV/\hbar)=IV$. Faz, gerilim ve akım yönlerini birlikte seçmemizin nedeni bu enerji hesabını da tutarlı kılmaktır.
+
 ## 6. Yüklü ortak alanın halka boyunca dolaşımı
 
 Nötr süperakışkanda $m\mathbf v=\hbar\nabla\theta$ bulmuştuk. Yüklü çift için mekanik momentum:

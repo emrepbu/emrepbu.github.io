@@ -126,6 +126,26 @@ Yani hata, girdi değişiminin uzunluğuna göre ihmal edilebilir hale gelir. Bu
 
 Kısmi türevler noktanın bir açık çevresinde bulunuyor ve noktada sürekli oluyorsa bu koşul sağlanır; sık kullandığımız yeterli ölçüt budur. Gerekçeyi iki küçük adımda görebiliriz: önce $x$'i, sonra $y$'yi değiştirip farkı iki parçaya ayırırız. Her parçada tek değişkenli ortalama değer teoremi bir ara noktadaki kısmi türevi verir. Kısmi türevlerin sürekliliği, bu katsayıları merkezdeki değerlere yaklaştırır ve kalan oranını sıfıra götürür.
 
+Bu yeterli koşulun hata hesabını açıkça yazalım. Değişimi önce $(a,b)$'den $(a,b+k)$'ye, sonra $(a+h,b+k)$'ye giderek ayırırsak ortalama değer teoremi:
+
+$$
+\begin{aligned}
+&f(a+h,b+k)-f(a,b)\\
+&=h f_x(a+\theta h,b+k)\\
+&\quad+k f_y(a,b+\eta k)
+\end{aligned}
+$$
+
+verir; $0<\theta,\eta<1$ ara noktaları belirtir. İlgili adım sıfırsa o terim zaten yoktur. Merkezdeki $h f_x(a,b)+k f_y(a,b)$ ifadesini çıkarınca kalan, iki kısmi türevin merkezden farklarıyla çarpılan h ve k terimleridir. Süreklilik sayesinde yeterince küçük bir çevrede her iki türev farkının mutlak değeri de seçtiğimiz $\varepsilon>0$'dan küçüktür. Dolayısıyla:
+
+$$
+\frac{|r(h,k)|}{\sqrt{h^2+k^2}}
+\le\varepsilon\frac{|h|+|k|}{\sqrt{h^2+k^2}}
+\le\sqrt2\,\varepsilon.
+$$
+
+Son eşitsizlik $(|h|+|k|)^2\le2(h^2+k^2)$ bağıntısıdır. $\varepsilon$ istediğimiz kadar küçük seçilebildiğinden oran sıfıra gider. Açık çevre koşulu, kullandığımız kısa yatay ve düşey parçaların fonksiyonun tanım bölgesinde kalmasını sağlar.
+
 Böylece teğet düzlem:
 
 $$

@@ -50,6 +50,10 @@ $\mathbf F=(y,x)$ ve $(0,0)$'dan $(1,1)$'e giden $\mathbf r(t)=(t,t)$ yolunu se�
 
 İki yol aynı sonucu verdi. Bu her alan için doğru değildir; birazdan bu alanın özel bir potansiyel yapısı olduğunu göreceğiz. Tek bir çift yolun eşit çıkması genel yol bağımsızlığını kanıtlamaz, fakat hangi yapıyı arayacağımıza işaret eder.
 
+Aynı yolu daha hızlı parametrelemek de sonucu değiştirmez. Az önceki doğruyu $\widetilde{\mathbf r}(s)=(2s,2s)$, $0\le s\le1/2$ ile yazalım. Aynı uçlara ulaşıyoruz; fakat teğet artık $(2,2)$, yol üzerindeki alan $(2s,2s)$'dir. Yeni integral $\int_0^{1/2}8s\,ds=1$ çıkar. İki kat hızlı ilerlemeye karşılık parametre aralığı yarıya indi.
+
+Genel neden zincir kuralı ve değişken değiştirmedir. $t=g(s)$ artan, düzgün bir yeniden parametreleme ise $\widetilde{\mathbf r}'(s)=\mathbf r'(g(s))g'(s)$ olur. Çizgi integralinde bu son $g'(s)$ çarpanı, $dt=g'(s)ds$ dönüşümünün tam gereken çarpanıdır. Alanı yeni yolda değerlendirip eski teğeti kullanmak bu dengeyi bozardı. Parametreleme azalıyorsa uçların sırası da tersine döner; aynı hesap integralin işaretini ters çevirir. Bu yüzden hızı değiştirmekle yolu ters yönde yürümek farklı işlemlerdir.
+
 ## 4. Potansiyel ve yol bağımsızlığı
 
 Bir skaler $\phi$ fonksiyonu için $\mathbf F=\nabla\phi$ ise alana konservatif, $\phi$'ye potansiyel fonksiyon deriz. Burada “potansiyel” yalnız matematiksel isimdir; fiziksel enerji anlamını daha sonra ayrıca kuracağız. Zincir kuralı:

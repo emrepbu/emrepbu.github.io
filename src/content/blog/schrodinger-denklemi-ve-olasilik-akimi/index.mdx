@@ -42,6 +42,20 @@ Kinetik terimin önündeki eksi işareti negatif kinetik enerji demek değildir.
 
 Daha genel olarak uygun sınır koşullarında kısmi integrasyon $\langle K\rangle=(\hbar^2/2m)\int|\psi'|^2dx\ge0$ verir. Bu bağıntıda sınır teriminin yok olduğunu kullandık. Böylece kinetik enerji ortalamasının negatif olmadığı, yalnız düzlem dalga örneğinde değil geniş bir uygun fonksiyon sınıfında görülür.
 
+Bu kısmi integrasyonun adımlarını, fonksiyon ve türevlerinin sonsuzda yeterince hızlı azaldığı bütün doğru için yazalım:
+
+$$
+\begin{aligned}
+\langle K\rangle
+&=-\frac{\hbar^2}{2m}\int\psi^*\psi''\,dx\\
+&=-\frac{\hbar^2}{2m}[\psi^*\psi']_{-\infty}^{\infty}\\
+&\quad+\frac{\hbar^2}{2m}\int\psi^{*'}\psi'\,dx\\
+&=\frac{\hbar^2}{2m}\int|\psi'|^2\,dx.
+\end{aligned}
+$$
+
+İlk türev bir çarpandan ötekine aktarılırken eksi işareti doğdu; Hamiltonyendeki eksiyle birleşince integralin katsayısı pozitif oldu. Sınır terimini sıfırlayan varsayımı ayrıca kullandık. Sonlu bir kutuda fonksiyonun uçlarda sıfır olması da aynı sınır terimini yok edebilir; başka sınır koşullarında o terimi incelemeden silmeyiz. Son integral, fonksiyonun uzayda ne kadar değiştiğini ölçer; yüksek uzaysal değişim kinetik enerjiye katkı yapar.
+
 ## 3. Durağan çözümleri ayırmak
 
 Potansiyel zamanla değişmiyorsa $\psi(x,t)=u(x)T(t)$ çarpım biçiminde çözümler arayabiliriz. Denklemde yerine koyup sıfır olmayan bölgede $uT$'ye böldüğümüzde:

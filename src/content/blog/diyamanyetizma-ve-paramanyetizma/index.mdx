@@ -122,6 +122,16 @@ biçimindedir. $e>0$ temel yük büyüklüğü, $m_e$ elektron kütlesi, $\langl
 
 Bu modelde sıcaklık doğrudan formüle girmez; atomik orbital büyük ölçüde değişmedikçe yanıt zayıf sıcaklık bağımlılığı gösterir. Paramanyetik iki seçenekli modelde ise mevcut momentlerin olasılıkları ısıya duyarlıydı. [OpenStax'ın madde manyetizması bölümü](https://openstax.org/books/university-physics-volume-2/pages/12-7-magnetism-in-matter), bu iki temel yanıtın işaretlerini ve makroskopik ayrımını karşılaştırır.
 
+Negatif işaret ve $1/6$ katsayısı, uygun bir bağlı durum için enerji hesabından da çıkar. Alan z doğrultusunda, vektör potansiyeli $\mathbf A=\mathbf B\times\mathbf r/2$ seçilsin. Elektronun kinetik terimi $(\mathbf p+e\mathbf A)^2/(2m_e)$ içinde alanın karesine bağlı katkı:
+
+$$
+\Delta E_{B^2}=\frac{e^2B^2}{8m_e}\langle x^2+y^2\rangle
+$$
+
+olur. Küresel bir orbitalde üç yön eşdeğerdir; $\langle x^2+y^2\rangle=2\langle r^2\rangle/3$ olur. Böylece $\Delta E_{B^2}=e^2B^2\langle r^2\rangle/(12m_e)$ çıkar. İndüklenen momenti $-\partial E/\partial B$ ile bulunca B'nin türevinden gelen iki çarpanı yukarıdaki sonucu verir. Alan enerjiyi artırdığı için moment alanın tersine yönelir. Bu yalın türetimde sıfır alan durumunu yörüngesel açısal momentumu sıfır olan bağlı bir durum seçtik; doğrusal yörüngesel terim onu karıştırmaz. Başka yakın düzeylerden gelen paramanyetik katkıları veya spin yanıtını bu tek $B^2$ terimine dahil etmedik.
+
+[Feynman'ın diyamanyetizma hesabı](https://www.feynmanlectures.caltech.edu/II_34.html), aynı indüklenmiş moment katsayısını yörünge hareketinin alanla değişmesi üzerinden elde eder.
+
 ## 7. Örnek: Negatif alınganlığın büyüklüğü
 
 Bir elektronlu ideal atomlar için $n=10^{28}\,\mathrm{m^{-3}}$ ve $\sqrt{\langle r^2\rangle}=0{,}10\,\mathrm{nm}=10^{-10}\,\mathrm m$ seçelim. Böylece $\langle r^2\rangle=10^{-20}\,\mathrm{m^2}$ olur. $M=n\mu_{\mathrm{ind},z}$ ve $B\simeq\mu_0H$ kullanınca:

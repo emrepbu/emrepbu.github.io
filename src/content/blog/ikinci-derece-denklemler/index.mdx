@@ -104,20 +104,36 @@ Böylece $x=2$ veya $x=-6$ bulunur. Başlangıçta $2^2+4\times2=12$ ve $(-6)^2+
 
 ### Eklenecek sayıyı kare açılımından bulmak
 
-$x^2+6x=7$ denklemini birlikte tamamlayalım. Tam kareyi $(x+h)^2$ biçiminde arıyoruz; $h$, henüz seçmediğimiz ek sayının adıdır. Açılım $x^2+2hx+h^2$ olduğundan ortadaki $2h$ katsayısını 6'ya eşitleriz. $2h=6$ bize $h=3$ verir. Eksik sabit $h^2=9$'dur; 3 değil 9 eklemeliyiz. İki tarafa 9 ekleyerek:
+Katsayı tek sayı olduğunda yarısının kesir çıkması yöntemi değiştirmez. $x^2+3x=1$ denklemini $(x+h)^2$ biçimine getirelim. Açılımın orta terimi $2hx$ olduğundan $2h=3$, yani $h=3/2$ gerekir. Eklenecek sayı $h$ değil, onun karesidir. Kesrin karesinde hem pay hem payda karelenir:
+
+$$
+\left(\frac32\right)^2
+=\frac{3\cdot3}{2\cdot2}
+=\frac94.
+$$
+
+Eşitliği korumak için iki tarafa da $9/4$ ekleyelim. Sağdaki 1'i ortak paydada $4/4$ olarak yazıyoruz:
 
 $$
 \begin{aligned}
-x^2+6x+9&=7+9,\\
-(x+3)^2&=16,\\
-x+3&=4\quad\text{veya}\quad-4,\\
-x&=1\quad\text{veya}\quad-7
+x^2+3x+\frac94&=\frac44+\frac94,\\
+\left(x+\frac32\right)^2&=\frac{13}{4}.
 \end{aligned}
 $$
 
-buluruz. Son satırda iki seçeneğin her birinden 3 çıkardık. Başlangıç denetimi $1^2+6(1)=7$ ve $(-7)^2+6(-7)=49-42=7$ verir. İki kök de çalışır.
+Soldaki dönüşümü geri açarak görelim: $(x+3/2)^2=x^2+2x(3/2)+(3/2)^2$. Ortadaki $2$ ile paydadaki $2$ sadeleşince $3x$, son terimde ise $9/4$ kalır. Dolayısıyla başlangıçtaki $x^2+3x$ korunmuş, yalnız gereken sabit eklenmiştir.
 
-Neden yalnız sol tarafa 9 eklemiyoruz? Sol tarafın değerini artırırken sağ tarafı aynı bırakmak, eski denklemin eşitlik koşulunu değiştirir. Sağdaki 7 de 16'ya çıkmalıdır. Tam kareyi oluşturmak cebirsel bir düzenleme hedefidir; bu hedef eşitliği koruma kuralını ortadan kaldırmaz. Ayrıca karesi 16 olan ifadenin iki işaretini de taşıdık; yalnız pozitif seçeneği almak negatif kökü kaybettirirdi.
+Şimdi kareden geri dönerken iki işareti koruruz. $\sqrt{13/4}=\sqrt{13}/2$ olduğundan:
+
+$$
+\begin{aligned}
+x+\frac32&=\pm\frac{\sqrt{13}}2,\\
+x&=-\frac32\pm\frac{\sqrt{13}}2\\
+&=\frac{-3\pm\sqrt{13}}2.
+\end{aligned}
+$$
+
+Son satırda paydalar zaten aynı olduğu için payları birleştirdik. Her iki kökü kontrol etmenin kısa yolu yine özdeşliktir: $x^2+3x=(x+3/2)^2-9/4$. Bulduğumuz iki değerin her birinde kareli parça $13/4$ eder; böylece başlangıç sol tarafı $13/4-9/4=1$ olur. Bu kontrol kökleri ondalığa çevirmeden, iki işaret için de tam olarak çalışır.
 
 ## 6. Baş Katsayı Bir Değilse
 

@@ -98,6 +98,26 @@ $$
 
 İlk integral $L^2/3$ verir. İkinci integralde iki kez kısmi integrasyon yapılır; sinüs sınır terimleri sıfırlanır ve $\int_0^Lx^2\cos(2n\pi x/L)dx=L^3/(2n^2\pi^2)$ bulunur. Böylece $\langle x^2\rangle=L^2[1/3-1/(2n^2\pi^2)]$ olur.
 
+İki kısmi integrasyonun nerede kullanıldığını görmek için $q=2n\pi/L$ ve $J=\int_0^Lx^2\cos(qx)\,dx$ diyelim. İlk adımda $x^2$ türevlenir, kosinüs integre edilir:
+
+$$
+J=\left[\frac{x^2\sin(qx)}q\right]_0^L
+-\frac2q\int_0^Lx\sin(qx)\,dx.
+$$
+
+$qL=2n\pi$ olduğundan ilk sınır terimi sıfırdır. Kalan integralde bu kez $x$ türevlenir:
+
+$$
+\begin{aligned}
+\int_0^Lx\sin(qx)\,dx
+&=\left[-\frac{x\cos(qx)}q\right]_0^L\\
+&\quad+\left[\frac{\sin(qx)}{q^2}\right]_0^L\\
+&=-\frac Lq.
+\end{aligned}
+$$
+
+Sonuç $J=(-2/q)(-L/q)=2L/q^2$ olur. $q^2=4n^2\pi^2/L^2$ yerine konunca $J=L^3/(2n^2\pi^2)$ bulunur. İkinci momentin önündeki $1/L$ ile çarpılınca katkının birimi $L^2$ olur. Böylece iki sınır değerlendirmesinde sinüsün sıfır, kosinüsün bir olmasını ayrı ayrı kullandık.
+
 Varyans için ortalama karesi $L^2/4$ çıkarılır:
 
 $$

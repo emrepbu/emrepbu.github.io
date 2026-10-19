@@ -191,6 +191,18 @@ $k=4$ olduğunda ise aynı adım $0\cdot b=y-2x$ verir. Hedef $(5,8)$ ise sağ t
 
 Demek ki “iki ok var” bilgisi baz kararı için yetmez. Katsayı denkleminde bir bilinmeyeni çözerken sıfıra bölmek zorunda kalmamız, geometrik bağımlılığın cebirdeki işaretidir. Böyle bir durumda bölmeyi yapıp devam etmek yerine, kalan eşitliğin imkânsız mı yoksa her katsayı için doğru mu olduğunu okumalıyız.
 
+Tam bağımlılığa yakın olmayı da aynı formülde görebiliriz. $k=3{,}99$ ve hedef $(5,8)$ için $b=(-2)/(-0{,}01)=200$, $a=5-400=-395$ olur. Büyük katsayılar büyük bir hedef gerektirmedi:
+
+$$
+\begin{aligned}
+&-395(1,2)+200(2,3{,}99)\\
+&\quad=(-395,-790)+(400,798)\\
+&\quad=(5,8).
+\end{aligned}
+$$
+
+İki büyük katkı neredeyse birbirini götürüyor. Hedefin yalnız ikinci bileşenini $8{,}01$ yaparsak $b=199$, $a=-393$ çıkar. Hedefteki $0{,}01$ değişim, bu bazdaki katsayılarda 1 ve 2 birimlik değişime yol açtı. Yine de $k\ne4$ olduğu için iki durumda da koordinatlar tektir. Baz olmak ile küçük veri değişimlerinde küçük katsayı değişimleri vermek ayrı özelliklerdir; neredeyse aynı yönleri seçmenin hesapta güçlük yaratabilmesinin nedeni bu bölmedir.
+
 ### Eğik koordinatlarda normu doğru hesaplamak
 
 Bazdaki sayıların karelerini toplamak neden bazen yanlış oluyor? $B=((1,0),(1,1))$ bazında koordinatlar $(s,t)$ ise standart vektör $(s+t,t)$ olur. Önce bu vektöre dönüp normu hesaplayalım:

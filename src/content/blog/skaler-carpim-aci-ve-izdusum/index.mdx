@@ -336,6 +336,19 @@ $$
 
 Bu bağıntıya **Cauchy–Schwarz eşitsizliği** denir. Buradaki geometrik anlamı açıktır: bir yöndeki izdüşümün mutlak büyüklüğü, vektörün tam uzunluğunu aşamaz. İki sıfırdan farklı vektör aynı veya zıt yöndeyse eşitlik sağlanır; dikken sol taraf sıfır olur. Sıfır vektörü içeren durumda da iki taraf sıfırdır.
 
+Aynı eşitsizliği, açı hesabına başvurmadan dik ayrışımdan da çıkarabiliriz. $\mathbf v\ne\mathbf0$ için daha önce bulduğumuz $t_*=(\mathbf u\cdot\mathbf v)/\|\mathbf v\|^2$ katsayısını kullanalım. Kalan parçanın norm karesini açınca:
+
+$$
+\begin{aligned}
+0&\le\|\mathbf u-t_*\mathbf v\|^2\\
+&=\|\mathbf u\|^2-2t_*(\mathbf u\cdot\mathbf v)+t_*^2\|\mathbf v\|^2\\
+&=\|\mathbf u\|^2-
+\frac{(\mathbf u\cdot\mathbf v)^2}{\|\mathbf v\|^2}.
+\end{aligned}
+$$
+
+Pozitif $\|\mathbf v\|^2$ ile çarpıp karekök almak istenen eşitsizliği verir; $\sqrt{(\mathbf u\cdot\mathbf v)^2}$ mutlak değerdir. Eşitlik ancak kalan sıfırsa, yani $\mathbf u=t_*\mathbf v$ ise sağlanır. Böylece büyüklük sınırıyla aynı doğrultuda olma koşulu, aynı norm hesabından çıkar. $\mathbf v=\mathbf0$ durumu bölme yapmadan doğrudan doğrulanır.
+
 Bu aynı zamanda açı hesabının tutarlılık kontrolüdür. $\mathbf u\cdot\mathbf v/(\|\mathbf u\|\|\mathbf v\|)$ oranını 1,3 bulursak gerçek bir kosinüs bulmuş olmayız. Bir aritmetik, birim veya veri hatası vardır. Bilgisayardaki çok küçük yuvarlama taşmaları ayrıca değerlendirilir; fakat büyük bir sapma geometriyle bağdaşmaz.
 
 İzdüşüm, bir vektörü seçtiğimiz bir yöne göre parçalamanın yoluydu. Bundan sonra birkaç yönü birlikte kullanarak hangi vektörleri kurabildiğimizi soracağız. Bu soru doğrusal birleşim, bağımsızlık, baz ve boyut kavramlarına götürecek.

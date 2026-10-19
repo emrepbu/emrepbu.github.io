@@ -177,7 +177,16 @@ $$
 b_{q+1}=\frac{q+l+1-\lambda}{(q+1)(q+2l+2)}b_q
 $$
 
-bulunur. Böylece bir katsayıdan ötekini hesaplayabiliriz. Büyük $q$ için oran yaklaşık $1/q$ olur; sonlanmayan düzenli seri, uzakta üstel büyüyen davranış üretir ve baştaki azalma çarpanına rağmen norm bozulur. Kabul edilen bağlı çözümlerde seri bir polinomda durmalıdır.
+Katsayıları eşleştirmek için önce türevleri açalım: $v'=\sum_{q\ge1}q b_q\rho^{q-1}$, $v''=\sum_{q\ge2}q(q-1)b_q\rho^{q-2}$ yazılır. $\rho v''$ ve $(2l+2)v'$ terimlerinde indeksi bir kaydırınca $\rho^q$ katsayıları sırasıyla $(q+1)q b_{q+1}$ ve $(2l+2)(q+1)b_{q+1}$ olur. Öteki iki terimden $-qb_q$ ile $(\lambda-l-1)b_q$ gelir. Toplam katsayı sıfır olmalıdır:
+
+$$
+\begin{aligned}
+&(q+1)(q+2l+2)b_{q+1}\\
+&\quad +(\lambda-l-1-q)b_q=0.
+\end{aligned}
+$$
+
+İkinci terimi sağa geçirip $b_{q+1}$'in katsayısına böldüğümüzde yukarıdaki bağıntı bulunur. Böylece bir katsayıdan ötekini hesaplayabiliriz. Büyük $q$ için oran yaklaşık $1/q$ olur; sonlanmayan düzenli seri, uzakta üstel büyüyen davranış üretir ve baştaki azalma çarpanına rağmen norm bozulur. Kabul edilen bağlı çözümlerde seri bir polinomda durmalıdır.
 
 En yüksek derece $N\ge0$ olsun. $b_{N+1}=0$ için payın sıfırlanması gerekir: $\lambda=N+l+1$. Bu pozitif tam sayıya $n$ diyelim. Böylece $n=N+l+1$, $\kappa=1/(na)$ ve:
 

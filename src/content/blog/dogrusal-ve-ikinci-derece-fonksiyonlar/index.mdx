@@ -107,6 +107,14 @@ $$
 
 Bu farkta $x$ bir daha 1 arttığında değişen bölüm yalnız $2ax$ olur; farkın artışı $2a$'dır. Örneğimizde $a=2$ olduğu için ikinci fark $2\times2=4$ çıktı. Sabit terim $c$ ilk çıkarmada, sabit eğim katkısı $b$ ise ikinci çıkarmada kaybolmuştur.
 
+Eşit adımın mutlaka 1 olması gerekmez; fakat ikinci farkın sayısı adımla değişir. Adım uzunluğu $s>0$ olsun. Kareyi açıp aynı terimleri çıkarınca:
+
+$$
+f(x+s)-f(x)=2asx+as^2+bs
+$$
+
+elde edilir. Sonraki adımın farkını bulmak için bu ifadede $x$ yerine $x+s$ koyarız. İki farkı çıkardığımızda $as^2$ ve $bs$ kaybolur; $2as(x+s)-2asx=2as^2$ kalır. Dolayısıyla ikinci fark $2as^2$'dir. Aynı $a=2$ parabolünü yarım birimlik adımlarla örneklersek ikinci fark $2\times2\times(1/2)^2=1$ olur; önceki 4 sonucu, özellikle birim adım içindi. Böylece tablodan $a$ katsayısını okurken yalnız farkı değil girdi adımını da kullanmalıyız.
+
 Burada girdilerin eşit aralıklarla seçilmesi önemlidir. 0, 1, 3 ve 6 gibi düzensiz adımlarda yalnız çıktı farklarına aynı testi uygulayamayız. Ayrıca birkaç ölçümde sabit ikinci fark görmek, gerçek sürecin bütün girdilerde kesinlikle ikinci derece olduğunu kanıtlamaz. Veriler ikinci derece bir modelle uyumlu olabilir; modelin geçerliliği için başka bilgi gerekir. Hesap, tablo ile seçilen formül arasındaki ilişkiyi denetlememize yardım eder.
 
 Kare alma grafiğinin negatif tarafta neden aşağı indiğini, “eksi sayının karesi artar” gibi belirsiz bir cümleyle anlatmayalım. Girdi soldan sağa $-3,-2,-1,0$ olarak büyürken sıfıra uzaklığı 3, 2, 1, 0 olarak küçülür. Kare bu uzaklığın karesi olduğundan çıktılar 9, 4, 1, 0 olur. Pozitif tarafta girdi büyürken sıfıra uzaklık da büyür ve çıktılar yükselir. Yön değişiminin merkezi bu nedenle 0'dır.

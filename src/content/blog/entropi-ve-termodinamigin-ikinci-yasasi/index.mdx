@@ -81,6 +81,16 @@ Aynı aktarımın tek başına ters yönde olduğunu varsaysaydık toplam entrop
 
 Depoların sıcaklığı sabit kalmayacaksa bu kısa hesap yeterli değildir. Her cismin ısı kapasitesi ve sıcaklığının değişimi kullanılmalıdır. $Q/T$ ifadesindeki sıcaklığı keyfî bir ortalama seçmek yerine, uygun integral veya iki uç arasındaki durum bağıntısı gerekir.
 
+Sabit ısı kapasiteli bir cismin sıcaklığı değişirken kullanılacak bağıntıyı önce kuralım. Bu örnekte $C$ cismin **toplam** ısı kapasitesidir, birimi $\mathrm{J/K}$ olur; molar kapasite değildir. Hacim değişiminin işini ihmal ettiğimiz katı cisim modeli için, aynı uçları bağlayan hayalî tersinir yolda $\delta Q_{\mathrm{tersinir}}=C\,dT$ yazabiliriz. O halde:
+
+$$
+\Delta S
+=C\int_{T_i}^{T_f}\frac{dT}{T}
+=C\ln\frac{T_f}{T_i}.
+$$
+
+Soğuyan cisimde oran birden küçük ve entropi değişimi negatiftir; ısınan cisimde pozitiftir. Bu sonuçla gerçek hızlı temas sürecinin başlangıç ve son durumlarını karşılaştırabiliriz. Ara yoldaki ısı aktarımını tersinir saymadık; durum farkını hesaplamak için yardımcı bir yol kullandık.
+
 Eşit ve sabit ısı kapasiteli iki küçük cisim için sıcaklıklar değişir. Başlangıç sıcaklıkları dört yüz ve üç yüz kelvin, her birinin ısı kapasitesi $C$ olsun. Dışarıya enerji kaçmadığında son ortak sıcaklık üç yüz elli kelvindir. Her cismin entropi değişimi $C\ln(T_f/T_i)$ olduğundan toplam:
 
 $$

@@ -153,6 +153,20 @@ Dolma örneğinde son depolanan enerji $\tfrac12C\mathcal E^2=1{,}8\,\mathrm{mJ}
 
 Direnç ısısını doğrudan hesaplamak da aynı sonucu verir: $\int_0^\infty I^2R\,dt=\tfrac12C\mathcal E^2$. Bu ideal modelde toplam kayıp direncin büyüklüğünden bağımsızdır; direnç enerji aktarımının zaman dağılımını değiştirir. Ancak direnci tam sıfır yapmak aynı çözümün sıradan bir sınırı değildir. Bağlantıların endüktansı, yayılma ve diğer etkiler artık ihmal edilemeyebilir.
 
+Dirençteki toplam dönüşümün neden yarım katsayısı verdiğini akımı yerine koyarak açalım. Dirençte iç enerjiye dönüşen miktarı $E_R$ ile gösterirsek:
+
+$$
+\begin{aligned}
+E_R&=\int_0^\infty I(t)^2R\,dt\\
+&=\frac{\mathcal E^2}{R}
+\int_0^\infty e^{-2t/(RC)}\,dt\\
+&=\frac{\mathcal E^2}{R}\frac{RC}{2}
+=\frac12C\mathcal E^2.
+\end{aligned}
+$$
+
+Üstelin karesini alırken üs iki katına çıktı; integraldeki zaman ölçeği bu yüzden $RC/2$ oldu. Başlangıçtaki $1/R$ ile bu süredeki $R$ sadeleşti. Büyük direnç her anda daha küçük güç oluştururken aktarım daha uzun sürer; toplam enerjinin aynı kalması bu iki etkinin birlikte sonucudur. Bu hesap yalnız başlangıçta boş kondansatörün sabit kaynak ve pozitif direnç üzerinden doldurulmasına aittir; her şarj yönteminin mutlaka enerjinin yarısını kaybettiği sonucu çıkarılamaz.
+
 Yük depolama ile enerji depolama aynı şey değildir; kapasite ve gerilim ilişkiyi belirler. Devrede akım, gerilim ve enerji hesabını tutarlı kurduğumuzda zamanla değişen alanlara hazır hale geliriz. Sonraki yazıda hareketli yüklerin manyetik etkileşimini ve değişen manyetik akının devrede nasıl gerilim oluşturduğunu inceleyeceğiz.
 
 ## Kaynaklar

@@ -57,6 +57,21 @@ $$
 
 Üniter $U$ ve çevre bazının tamlığı, $\sum_\alpha K_\alpha^\dagger K_\alpha=I$ sonucunu verir. Dolayısıyla $\operatorname{Tr}\rho'=\operatorname{Tr}\rho=1$. Bütün olası çevre kayıtları toplandığında sistemin toplam olasılığı korunur.
 
+Tamlık adımını çevre indislerini açık tutarak yazabiliriz. Kısmi bra-ket gösteriminde:
+
+$$
+\begin{aligned}
+\sum_\alpha K_\alpha^\dagger K_\alpha
+&=\langle e_0|U^\dagger
+\left(I_S\otimes\sum_\alpha|\alpha\rangle\langle\alpha|\right)
+U|e_0\rangle\\
+&=\langle e_0|U^\dagger U|e_0\rangle\\
+&=I_S.
+\end{aligned}
+$$
+
+İlk satırdaki çevre projektörlerinin toplamı $I_E$'dir. İkinci satırda üniterlik, son satırda $\langle e_0|e_0\rangle=1$ kullanılır. Sistem uzayındaki birim $I_S$ kalır; onu bir sayıyla karıştırmamalıyız. Bu hesap, olasılığın tek tek her dalda korunmasını değil, çevrenin bütün alternatifleri birlikte toplandığında korunmasını sağlar.
+
 Tek bir Kraus dalı $K_\alpha\rho K_\alpha^\dagger$ ise genellikle birden küçük iz taşır. Bu iz ilgili kayıt olasılığıdır. Kayıt gerçekten okunup yalnız o sonuç seçilirse normalize etmek için bu olasılığa bölünür. Kanal ise seçilmiş kayıt değil, bütün dalların toplamıdır. Doğrusal kanal ile normalleştirilmiş koşullu güncellemeyi aynı işlem saymamalıyız.
 
 Kraus gösterimi tek değildir. Aynı kanalı farklı operatör listeleri temsil edebilir. Bu nedenle bir listedeki her terimi, çevrede gerçekte kesin olarak meydana gelen benzersiz olayın kanıtı diye okumayız. Belirli bir çevre ölçümü ve fiziksel gerçekleştirim verilirse dallara operasyonel anlam atanabilir.
@@ -216,6 +231,15 @@ $|+\rangle$ başlangıcı $(1,0,0)$ olsun. Faz sönümünde $(\lambda,0,0)$ elde
 ![Aynı artı başlangıcından faz sönümü merkeze, genlik sönümü alt enerji kutbuna götürür.](./media/02-kanal-yollari.png)
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Faz sönümü ile enerji gevşemesi" caption="İki Bloch x–z kesitinde aynı |+⟩ başlangıcı gösteriliyor. Üstte λ=1−s ile faz sönümü; altta γ=s ile genlik sönümü uygulanıyor. s, 0 ile 1 arasında kanal gücünü karşılaştıran parametredir; ortak fiziksel saat olduğu varsayılmıyor. Vektörler durum uzayında çizilir, parçacık konumu değildir." />
+
+İki ardışık genlik sönümü de parametrelerin anlamını sınar. İlk kanalın gücü $\gamma_1$, ikincininki $\gamma_2$ olsun; aynı enerji bazında ve arada başka işlem olmadan uygulansınlar. Başlangıç üst nüfusu b ise önce $(1-\gamma_1)b$, sonra $(1-\gamma_2)(1-\gamma_1)b$ kalır. Bileşik güç bu nedenle:
+
+$$
+\gamma_{\text{toplam}}
+=1-(1-\gamma_1)(1-\gamma_2).
+$$
+
+İki kez $\gamma=1/2$ uygulanınca toplam gevşeme $3/4$ olur; bir olmaz. İkinci aşamada başlangıç nüfusunun değil, geride kalan nüfusun yarısı aktarılır. Çapraz elemanın iki karekök çarpanı da $\sqrt{1-\gamma_{\text{toplam}}}$ verir. Böylece hem nüfus hem eşevrelilik aynı bileşik kanalla tutarlı kalır.
 
 ## 8. Zaman modeli ayrıca belirtilmelidir
 

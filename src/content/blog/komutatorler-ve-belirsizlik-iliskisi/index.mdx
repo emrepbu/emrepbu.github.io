@@ -78,6 +78,18 @@ $$
 
 olur. Her iki dağılım aynı hazırlama yöntemine aittir. Pratikte birçok özdeş hazırlanmış sistemin bir bölümünde $A$, başka bölümünde $B$ ölçebiliriz. Her tek parçacığa sırayla iki ölçüm uygulamak zorunda değiliz.
 
+Merkezlenmiş tanımın alışılmış istatistik formülüne nasıl döndüğünü de görelim. $a=\langle A\rangle$ bir sayı olduğundan onun $A$ ile çarpımında sıra değiştirilebilir: $aA=Aa$. Bu nedenle:
+
+$$
+\begin{aligned}
+\langle(A-aI)^2\rangle
+&=\langle A^2\rangle-2a\langle A\rangle+a^2\langle I\rangle\\
+&=\langle A^2\rangle-a^2.
+\end{aligned}
+$$
+
+Normalleşme $\langle I\rangle=1$ verdi. Dolayısıyla ortalama sıfır olduğunda standart sapma ikinci momentin kareköküdür; ortalama sıfır değilse $\sqrt{\langle A^2\rangle}$ tek başına yayılım değildir. Ayrıca norm bağlantısında $\langle u|u\rangle=\langle\psi|(\delta A)^\dagger\delta A|\psi\rangle$ yazarız; $A$ Hermit olduğu için bu ifade tam olarak yukarıdaki varyanstır.
+
 Bu nedenle eşitsizlik doğrudan birinci ölçümün ikincisini ne kadar bozduğunun formülü değildir. Ölçüm bozunumu için ayrı tanımlar ve ayrı ilişkiler gerekir. Buradaki $\Delta A$ ve $\Delta B$, ideal ölçümlerin sonuç dağılımlarındaki standart sapmalardır. Aygıtın çözünürlük aralığını veya kalibrasyon hatasını bu sembollerin yerine koymayacağız.
 
 ## 5. Cauchy–Schwarz ile ilk sınır
@@ -138,6 +150,19 @@ Fazı konuma göre doğrusal olan Gauss paketi için $\Delta x=\sigma$ ve $\Delt
 Ancak her Gauss **konum yoğunluğu** aynı momentum yayılımını vermez. $\psi(x)=N e^{-x^2/(4\sigma^2)}e^{ibx^2/(4\sigma^2)}$ alalım; $b$ gerçek boyutsuz parametredir. Mutlak değer karesi önceki Gauss yoğunluğuyla aynıdır. Fakat ek karesel faz, momentum dağılımını değiştirir.
 
 Türevden $\hat p\psi=[\hbar(b+i)x/(2\sigma^2)]\psi$ bulunur. Ortalama simetriden sıfırdır. Momentum ikinci momentini türev normuyla hesaplayınca $\langle p^2\rangle=\hbar^2(1+b^2)/(4\sigma^2)$ çıkar. Böylece $\Delta x\Delta p=(\hbar/2)\sqrt{1+b^2}$ olur. $b\ne0$ için çarpım daha büyüktür. Yoğunluğun Gauss görünmesi tek başına en küçük momentum yayılımını garanti etmez.
+
+Buradaki “türev normu” adımı, sınır terimi kaybolduğu için geçerlidir:
+
+$$
+\begin{aligned}
+\langle p^2\rangle
+&=-\hbar^2\int_{-\infty}^{\infty}\psi^*\psi''\,dx\\
+&=\hbar^2\int_{-\infty}^{\infty}|\psi'|^2\,dx\\
+&=\frac{\hbar^2(1+b^2)}{4\sigma^4}\langle x^2\rangle.
+\end{aligned}
+$$
+
+İkinci satır kısmi integrasyondur; Gauss zarfı $\psi^*\psi'$ çarpımını iki uçta sıfıra götürür. Son satırda $|b+i|^2=b^2+1$ kullandık. Konum yoğunluğu merkezlenmiş ve varyansı $\sigma^2$ olduğundan $\langle x^2\rangle=\sigma^2$ yerleştirilir. Böylece aynı yoğunluğun farklı fazlarla neden farklı momentum yayılımı verebildiğini doğrudan integralde görüyoruz.
 
 <ArticleVideo src={kavram} poster={kavramPoster} title="Gauss durumunda konum ve momentum genişliği" caption="Faz eğriliği olmayan Gauss durumunda konum yoğunluğu daralırken momentum yoğunluğu genişler. Ölçekli birimlerde ħ=1 alınır; belirsizlik çarpımı 1/2 kalır." />
 

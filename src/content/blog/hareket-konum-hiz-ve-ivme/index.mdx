@@ -284,6 +284,21 @@ $$
 Tepede düşey hız sıfırdır ama yatay hız altı metre bölü saniye kalır. Dolayısıyla cisim tepede tamamen durmaz. İvmesi de sıfır olmaz; modelde her an aşağı yönlüdür. Bu sonuçlar [atış hareketi modelinin](https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion) açık varsayımlarına bağlıdır.
 
 
+### Zaman denklemlerinden yörüngeye geçmek
+
+Yatay ve düşey denklemleri birlikte kullanarak neden parabol elde ettiğimizi de görebiliriz. Başlangıç koordinatları sıfırken ve $v_{0x}\ne0$ iken yatay denklemden $t=x/v_{0x}$ bulunur. Bu aynı zamanı düşey denkleme yerleştiririz:
+
+$$
+\begin{aligned}
+y&=v_{0y}\frac{x}{v_{0x}}
+-\frac12g\left(\frac{x}{v_{0x}}\right)^2\\
+&=\frac{v_{0y}}{v_{0x}}x
+-\frac{g}{2v_{0x}^2}x^2.
+\end{aligned}
+$$
+
+İlk katsayı boyutsuz, ikinci katsayı ters uzunluk boyutundadır; iki terim de uzunluk verir. Sayısal örneğimizde $y=\tfrac43x-(\tfrac5{36}\,\mathrm{m^{-1}})x^2$ olur. $x=4{,}8\,\mathrm m$ koyunca $6{,}4-3{,}2=3{,}2\,\mathrm m$ yüksekliğini yeniden buluruz. Bu eğri hareketin uzaydaki izidir; üzerindeki her noktanın hangi anda geçildiğini öğrenmek için $t=x/v_{0x}$ bilgisine dönmeliyiz. Tam düşey atışta $v_{0x}=0$ olduğundan bu bölme yapılamaz; o hareketi zaman denklemleriyle anlatmaya devam ederiz.
+
 ### Sonucu yalnız sayıyla bırakmamak
 
 Atış örneğindeki dokuz virgül altı metre sonucunu okurken başlangıç yüksekliğine dönüldüğünü unutmamalıyız. Cisim daha aşağıdaki bir yere düşüyorsa düşey denklem başka bir son yükseklikle çözülür ve havada kalma süresi uzar. Daha yukarıdaki bir platforma ulaşması isteniyorsa denklem iki farklı pozitif zaman verebilir: Cisim aynı yüksekliği çıkarken ve inerken geçebilir. Her iki kök cebirsel olarak doğru olabilir; hangi olayın sorulduğu fiziksel seçimi belirler.

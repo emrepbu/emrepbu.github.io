@@ -93,6 +93,23 @@ elde ederiz. Logaritmanın içi boyutsuzdur; bütün yoğunlukların aynı hacim
 
 Bu iç potansiyel farkı, eklemin uçlarına voltmetre bağlayıp sürekli enerji elde edebileceğimiz bir pil gerilimi değildir. Ölçüm devresindeki temaslar ve elektrokimyasal denge birlikte değerlendirilir. Termal dengede devreyi dolaşarak net iş çıkarılamaz; içeride alan olması tek başına bir enerji kaynağı oluşturmaz.
 
+Sürüklenme ile difüzyonun sıfır toplam akım vermesini işaretleriyle kontrol edelim. Aynı malzemede $E_c(x)=E_c^0-e\phi(x)$ ve dengedeki ortak Fermi düzeyi $\mu$ kullanıldığında $n(x)\propto e^{e\phi(x)/(k_BT)}$ olur. Buradaki ortak $\mu$, elektriksel potansiyel enerjisini içeren enerji referansında elektrokimyasal denge düzeyidir. Türev alırsak:
+
+$$
+\frac{dn}{dx}=-\frac{en\mathcal E}{k_BT}.
+$$
+
+Elektronun difüzyon parçacık akısı $-D_n\,dn/dx$'tir. Bunu negatif yükle çarpınca geleneksel difüzyon akımı $+eD_n\,dn/dx$ çıkar. Pozitif hareketlilik $\mu_e$ ile toplam elektron akımı:
+
+$$
+\begin{aligned}
+j_n&=en\mu_e\mathcal E+eD_n\frac{dn}{dx}\\
+&=en\mathcal E\left(\mu_e-\frac{eD_n}{k_BT}\right)
+\end{aligned}
+$$
+
+olur. Dejenere olmayan yerel denge koşullarındaki Einstein bağıntısı $D_n=\mu_e k_BT/e$ iki terimi tam götürür. Alan ve yoğunluk gradyanı ayrı ayrı sıfır değildir; akımları dengelenir. Aynı denetim delikler için de yapılabilir. Bu taşıma bağıntısı, [MIT eklem akımları dersindeki](https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2009/a342ce0afb84bfa8e5b7dc819ff3e9bc_MIT6_012F09_lec06.pdf) denge ve enjeksiyon ayrımını somutlaştırır.
+
 ## 5. Sayısal örnek: Genişlik ve en büyük alan
 
 $T=300\,\mathrm K$, $n_i=10^{10}\,\mathrm{cm^{-3}}$, $N_A=N_D=10^{16}\,\mathrm{cm^{-3}}$ alalım. Önce yoğunluk oranı $10^{32}/10^{20}=10^{12}$ olur. Böylece:

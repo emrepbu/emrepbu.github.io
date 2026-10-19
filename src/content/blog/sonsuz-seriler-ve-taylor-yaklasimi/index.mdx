@@ -170,6 +170,15 @@ $$
 
 $f^{(n)}$ gösterimi $n$ kez türev demektir; $f^{(0)}=f$ kabul edilir. $a=0$ merkezli biçime Maclaurin polinomu da denir. Katsayıları böyle seçmek, fonksiyonun değerini, eğimini ve giderek daha yüksek değişim bilgilerini merkezde eşleştirir.
 
+Genel katsayının neden yalnız $n$'inci türevden çıktığını da ayıralım. $c_k(x-a)^k$ terimini $n$ kez türevlerken $k<n$ ise terim daha önce sabite, sonra sıfıra dönüşür. $k\ge n$ ise:
+
+$$
+\frac{d^n}{dx^n}[c_k(x-a)^k]
+=c_k\frac{k!}{(k-n)!}(x-a)^{k-n}
+$$
+
+olur. Şimdi $x=a$ koyalım: $k>n$ terimleri pozitif kuvvet yüzünden sıfırlanır; $k=n$ teriminde ise kalan sabit $n!c_n$'dir. Böylece $P_N^{(n)}(a)=n!c_n$ eşitliğinde başka hiçbir katsayı kalmaz. Merkezde türev eşleştirmek, her katsayıyı tek tek ayıran bir işlem olduğu için bu polinom tektir. Bu hesapta türev almadan önce $x=a$ koyamayız; öyle yapsaydık değişkeni ve onun değişim bilgisini baştan kaybederdik.
+
 Bu eşleşme bütün gerçek doğru üzerinde kusursuz yaklaşım garantisi değildir. Merkezden uzaklaştıkça hata büyüyebilir. Hatta bütün türevleri eşleştirmek bile tek başına fonksiyonun kendi sonsuz serisine eşit olduğunu garanti etmez. Eksik parçayı kalan terim hesabı tamamlar.
 
 ## 9. Kalan terim ve güvenilir yaklaşım

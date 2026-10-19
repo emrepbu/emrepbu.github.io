@@ -272,6 +272,15 @@ Tek bir Gauss yerine birkaç uygun fonksiyonun doğrusal birleşimini kullanabil
 
 Baz fonksiyonları ortogonal değilse örtüşme matrisi $S_{ij}=\langle f_i|f_j\rangle$ de hesaba girer; denklem $H\mathbf d=ES\mathbf d$ olur. Bu, normalizasyon paydasının çok katsayılı biçimidir. Bazı büyütürken eski denemelerin tamamı yeni aile içinde kalıyorsa bulunabilecek en düşük enerji artamaz; önceki optimum hâlâ izin verilen bir seçenektir. Sayısal integral ve yuvarlama hataları bu matematiksel güvencenin bilgisayarda ayrıca denetlenmesini gerektirir.
 
+Bu matris denkleminin nereden geldiğini normalizasyon kısıtıyla çıkarabiliriz. Matris elemanları $H_{ij}=\langle f_i|H|f_j\rangle$ ve $S_{ij}=\langle f_i|f_j\rangle$ olsun. Denemenin enerji payı $\mathbf d^\dagger H\mathbf d$, normu $\mathbf d^\dagger S\mathbf d$'dir. Normu bir tutarak enerjiyi eniyilemek için:
+
+$$
+\mathcal L=\sum_{i,j}d_i^*H_{ij}d_j
+-E\left(\sum_{i,j}d_i^*S_{ij}d_j-1\right)
+$$
+
+yazarız. E burada norm kısıtının Lagrange çarpanıdır. Karmaşık katsayıların gerçek ve sanal kısımlarını bağımsız değiştirmenin kısa gösterimiyle, her $d_i^*$ yönündeki türevi sıfırlamak $\sum_jH_{ij}d_j=E\sum_jS_{ij}d_j$ verir. Soldan $\mathbf d^\dagger$ ile çarpıp normu bir kullanınca E'nin enerji beklentisi olduğunu görürüz. Ortonormal bazda $S=I$ olduğundan sıradan özdeğer denklemine döneriz. Ortonormal olmayan ama doğrusal bağımsız bazda S pozitif belirli olur; aynı fonksiyonun iki kez eklenmesi gibi doğrusal bağımlılıklar önce çıkarılmalıdır.
+
 Son olarak, herhangi bir denemeyi küçültmek doğrudan uyarılmış enerji için üst sınır vermez. Deneme durumunda temel bileşen kalırsa minimizasyon aşağıya, temel duruma yönelir. Daha yüksek durum için alt durumlara ortogonallik veya uygun simetri altuzayı gibi ek koşullar gerekir. Doğru durum uzayı, normalizasyon ve enerji beklentisi birlikte korunduğunda varyasyon yöntemi, tam çözüm yokken bile hangi yönde güvenilir bilgi elde ettiğimizi açıkça söyleyen bir araç olur.
 
 ## Kaynaklar

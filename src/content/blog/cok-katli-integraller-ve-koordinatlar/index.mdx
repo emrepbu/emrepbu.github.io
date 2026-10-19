@@ -110,6 +110,19 @@ $$
 
 Sırayı değiştirirken aynı eşitsizlikleri yatay kesit için çözeriz. $y\le x$ koşulu $x\ge y$ verir. $x^2\le y$ ve bu bölgede $x\ge0$ olduğu için $x\le\sqrt y$ olur. Böylece $0\le y\le1$ ve $y\le x\le\sqrt y$ elde ederiz. Yeni hesap $\int_0^1(\sqrt y-y)dy=2/3-1/2=1/6$ çıkar. Neden negatif karekökü almadık? Başlangıçtaki bölge yalnız $0\le x\le1$ aralığındadır. Sınır denklemini çözerken bölgenin diğer koşullarını da taşımamız gerekir.
 
+Bazen sırayı değiştirmek için bölgeyi bölmek gerekir. $0\le x\le1$, $0\le y\le1+x$ bölgesinde düşey kesit tek aralıkla tarif edilir. Yatay kesitte ise $y\le1$ iken bütün $0\le x\le1$ aralığı uygundur; $1<y\le2$ iken $y\le1+x$ koşulu sol sınırı $x=y-1$ yapar. Bu nedenle aynı alan hesabı:
+
+$$
+\begin{aligned}
+A&=\int_0^1\int_0^{1+x}1\,dy\,dx\\
+&=\int_0^1\int_0^1 1\,dx\,dy
++\int_1^2\int_{y-1}^1 1\,dx\,dy\\
+&=1+\int_1^2(2-y)\,dy=\frac32
+\end{aligned}
+$$
+
+olur. İlk ifade de $\int_0^1(1+x)dx=3/2$ verir. Bütün y değerlerinde $x=y-1$ alt sınırını kullanmak, $y<1$ iken negatif x değerlerini yanlışlıkla bölgeye katardı. Bölme noktası hesap kolaylığından değil, yatay kesitin hangi sınır eğrisinde başladığının değişmesinden doğar.
+
 ## 5. Kutupsal koordinatların alan parçası
 
 Daire ve halka bölgelerinde $x=r\cos\theta$, $y=r\sin\theta$ kullanmak doğaldır. Burada $r\geq0$ merkezden uzaklık, $\theta$ pozitif $x$ ekseninden saat yönünün tersine ölçülen radyan açıdır. Küçük bir kutupsal hücrenin iki kenarı yaklaşık $\Delta r$ ve $r\Delta\theta$ olur. Bu nedenle alan yaklaşık $r\Delta r\Delta\theta$'dır; yalnız $\Delta r\Delta\theta$ değildir.

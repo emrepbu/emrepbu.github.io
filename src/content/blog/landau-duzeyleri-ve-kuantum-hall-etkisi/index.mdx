@@ -161,6 +161,22 @@ olur. $I=1{,}0\,\mu\mathrm A$ akımda enine gerilim büyüklüğü $|V_H|=I|R_H|
 
 Bu noktada $R_H$ ile üç boyutlu klasik Hall katsayısı karıştırılmamalıdır. İki boyutlu tabakanın enine direnç ölçümünde geometrik kalınlık çarpanı farklı yorumlanır. $\rho$ iki boyutlu özdirenç tensörünü göstersin. Ayrıca $\rho_{xy}=1/\sigma_{xy}$ bağıntısı genel durumda tek başına doğru değildir; tensör terslenir. $\sigma_{xx}\to0$ sınırında büyüklükler için $|\rho_{xy}|=1/|\sigma_{xy}|$ elde edilir.
 
+Tensörün tersini açıkça görmek işaret hatasını önler. Düzlemde dönme simetrili modelde:
+
+$$
+\begin{aligned}
+\boldsymbol\sigma&=\begin{pmatrix}
+\sigma_{xx}&\sigma_{xy}\\-\sigma_{xy}&\sigma_{xx}
+\end{pmatrix},\\
+\boldsymbol\rho&=\frac1{\sigma_{xx}^2+\sigma_{xy}^2}
+\begin{pmatrix}
+\sigma_{xx}&-\sigma_{xy}\\\sigma_{xy}&\sigma_{xx}
+\end{pmatrix}.
+\end{aligned}
+$$
+
+Dolayısıyla $\rho_{xy}=-\sigma_{xy}/(\sigma_{xx}^2+\sigma_{xy}^2)$'dir. x yönünde akım verilip y yönü açık bırakıldığında $j_y=0$ olur ve ölçülen $E_y/j_x$ oranı $\rho_{yx}$'tir; $\rho_{xy}$ değildir. Bizim elektron ve alan seçimimizde $\sigma_{xy}<0$, dolayısıyla $\rho_{yx}<0$ çıkar. Kontakların sırasını değiştirmek ölçülen gerilimi ters çevirir, fakat platonun büyüklüğünü değiştirmez. İki boyutta akım yoğunluğu A/m olduğundan bu tensörün birimi doğrudan ohm olur; üç boyuttaki ohm metre ile aynı değildir.
+
 ## 9. Platolar için düzensizlik neden yararlı olabilir?
 
 Kusursuz modelde yoğunluk sabitken tam sayı doluluk yalnız belirli alanlarda gerçekleşir. Deneysel platolar ise alan aralıkları boyunca sürer. Gerçek örnekte zayıf düzensizlik Landau düzeylerini genişletir; bazı durumlar örneğin küçük bölgelerine yerelleşir. Bu durumların doluluğu değişirken örneğin bir ucundan ötekine akım taşıyan genişlemiş durum sayısı değişmeyebilir.

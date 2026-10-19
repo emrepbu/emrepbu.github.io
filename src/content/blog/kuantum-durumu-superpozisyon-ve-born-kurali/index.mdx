@@ -162,6 +162,26 @@ Genel spin ölçüm ekseni, $z$ ile $\theta$ açısı ve yatay düzlemde $\varph
 
 $+z$ hazırlığını bu eksende ölçerken iç çarpımın mutlak değer karesi $\cos^2(\theta/2)$ olur. Önceki yazının açı bağıntısını artık hesaplayabiliyoruz. Yarım açı, sıradan iki boyutlu uzay oklarının izdüşümündeki açıyla aynı değildir. Durum uzayıyla fiziksel uzayın ayrımı burada bir kez daha görünür.
 
+İki sonuçlu ölçümün eksi durumunu da belirtmek gerekir. Artı durumla uyumlu bir faz seçimi:
+
+$$
+|-n\rangle=
+-e^{-i\varphi}\sin\frac\theta2\,|+z\rangle
++\cos\frac\theta2\,|-z\rangle
+$$
+
+olur. Normu sinüs ve kosinüs karelerinin toplamıyla birdir. Diklik için artı durumun brasını kullanınca:
+
+$$
+\begin{aligned}
+\langle+n|-n\rangle
+&=-e^{-i\varphi}\cos\frac\theta2\sin\frac\theta2\\
+&\quad+e^{-i\varphi}\sin\frac\theta2\cos\frac\theta2=0.
+\end{aligned}
+$$
+
+Böylece yalnız tek sonucu tarif etmedik; iki elemanlı tam bir ortonormal ölçüm bazı kurduk. $+z$ hazırlığının eksi genliği $\langle-n|+z\rangle=-e^{i\varphi}\sin(\theta/2)$, olasılığı $\sin^2(\theta/2)$ olur. Artı ve eksi olasılıklarının toplamı yeniden birdir. Eksendeki iki fiziksel sonuç, bu iki dik durum vektörüyle birlikte temsil edilir.
+
 ![Üç farklı ölçüm için aynı durumun sonuç olasılıkları birlikte gösterilir.](./uc-baz-olasilik.png)
 
 Bir saf durumun iki karmaşık bileşeni başlangıçta dört gerçek sayı taşır. Normalleşme bir koşul getirir; global fazın fiziksel etkisizliği de bir serbestliği kaldırır. Geriye iki gerçek parametre kalır. Yukarıdaki iki açı bu parametreleri kullanışlı biçimde ifade eder. Ancak kutuplarda faz açısının etkisinin kaybolması gibi koordinat ayrıntıları vardır; açı çizimi kendi başına yeni bir ölçüm kuralı değildir.

@@ -165,6 +165,19 @@ $\mathbf a=(2,0,0)$, $\mathbf b=(0,3,0)$ ve $\mathbf c=(1,1,4)$ seçelim. İlk �
 
 Üçlü çarpım sıfırsa üç vektör aynı düzlem içinde kalır veya başka bir doğrusal bağımlılık taşır. Bu, determinantın sıfır olmasıyla da ifade edilir. Hacmin sıfır olması, üç boyutlu bir bölge gerilemediğinin geometrik karşılığıdır.
 
+Determinantla bağlantıyı sırası açık bir eşitlikle yazabiliriz:
+
+$$
+\mathbf c\cdot(\mathbf a\times\mathbf b)
+=\begin{vmatrix}
+c_x&c_y&c_z\\
+a_x&a_y&a_z\\
+b_x&b_y&b_z
+\end{vmatrix}.
+$$
+
+İlk satırdan açınca $c_x(a_yb_z-a_zb_y)$, $c_y(a_zb_x-a_xb_z)$ ve $c_z(a_xb_y-a_yb_x)$ terimleri gelir; bunlar tam skaler çarpımın üç katkısıdır. Satırları döngüsel kaydırmak iki satır değişimine karşılık geldiğinden işaret değişmez: $\mathbf c\cdot(\mathbf a\times\mathbf b)=\mathbf a\cdot(\mathbf b\times\mathbf c)$. Yalnız iki vektörü yer değiştirmek ise tek satır değişimidir ve işareti ters çevirir. Böylece hacim için başka bir yüzü taban seçmek büyüklüğü değiştirmez; yönlü işareti izlerken sıra bilgisi korunur.
+
 Hacim formülündeki normalleştirme neden görünmüyor? Taban normali $\mathbf n=\mathbf a\times\mathbf b\ne0$ ise birim normal $\widehat{\mathbf n}=\mathbf n/|\mathbf n|$'dir. Yükseklik $|\mathbf c\cdot\widehat{\mathbf n}|=|\mathbf c\cdot\mathbf n|/|\mathbf n|$ olur. Taban alanı $|\mathbf n|$ ile çarpınca paydadaki aynı uzunluk sadeleşir ve yalnız $|\mathbf c\cdot\mathbf n|$ kalır. Formülde yüksekliği ayrıca yazmamamızın nedeni, onun zaten skaler çarpım içinde bulunmasıdır.
 
 Sıra işaretini de kontrol edebiliriz. $\mathbf a$ ve $\mathbf b$ yer değiştirince $\mathbf n$ eksilenir, yönlü üçlü çarpımın işareti değişir. Mutlak değeri aynı kalır; dolayısıyla geometrik hacim eksilmez. Taban alanı sıfırsa bu normalleştirme hesabında bölme yapılamaz, fakat cisim üç boyutlu hacim oluşturmaz ve doğrudan üçlü çarpım da sıfır verir. Sıfır durumu ayrı ele almak cebir ile geometriyi tutarlı tutar.

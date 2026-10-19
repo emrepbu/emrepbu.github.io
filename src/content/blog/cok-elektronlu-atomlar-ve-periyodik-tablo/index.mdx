@@ -100,6 +100,17 @@ $$
 
 $h_{ii}$ i spin orbitalinin kinetik ve çekirdek çekim enerjisidir. $J_{ij}$ doğrudan itme, $K_{ij}$ değiş tokuş katkısıdır. Bunlar burada enerji birimi taşır; atomik birimde hesaplandıysa $E_h$ ile çarpılır. $i=j$ için J ile K birbirini götürür; elektron kendi kendisiyle fiziksel olarak etkileşmez. Çift toplamındaki 1/2, ij ve ji çift sayımını düzeltir.
 
+J ile K'nın farkını görmek için $v_{12}=e^2/(4\pi\varepsilon_0r_{12})$ Coulomb enerjisini tanımlayalım. $\varepsilon_0$ boşluğun elektriksel geçirgenliğidir; bu ifadede uzaklık SI birimindedir. Kısa iki parçacık gösteriminde:
+
+$$
+\begin{aligned}
+J_{ij}&=\langle u_i u_j|v_{12}|u_i u_j\rangle,\\
+K_{ij}&=\langle u_i u_j|v_{12}|u_j u_i\rangle.
+\end{aligned}
+$$
+
+İlk terim iki yük yoğunluğunun itmesini sayar. İkincide sağdaki orbitaller yer değiştirmiştir; bu, antisimetrik durumun çapraz terimidir. Elektronların gerçekten yer değiştirerek gidip gelmesini anlatmaz. Uzay ve spin çarpımına ayrılan orbitallerde ters spinler için K'nın spin çarpanı $\langle\alpha|\beta\rangle\langle\beta|\alpha\rangle=0$ olur. J'de ise her spin kendi normuyla çarpılır ve itme kalır. Böylece ters spinli elektronların değiş tokuş katkısının sıfırlanması, aralarında Coulomb itmesi olmadığı anlamına gelmez. Bu ayrım [MIT'nin iki elektronlu matris elemanları hesabındaki](https://ocw.mit.edu/courses/5-73-quantum-mechanics-i-fall-2018/653b326897250844da1d83d0d1582636_MIT5_73F18_Lec31.pdf) doğrudan ve değiş tokuş terimlerine karşılık gelir.
+
 Kendisiyle tutarlı kanonik Hartree–Fock orbitallerinin özdeğerleri ise:
 
 $$

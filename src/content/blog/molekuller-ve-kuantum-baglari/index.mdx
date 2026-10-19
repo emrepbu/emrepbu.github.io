@@ -145,7 +145,18 @@ S&=\frac{\rho^3}{4}\int_1^\infty e^{-\rho\mu}I_\nu(\mu)d\mu\\
 \end{aligned}
 $$
 
-İç integralde $\int_{-1}^1d\nu=2$, $\int_{-1}^1\nu^2d\nu=2/3$ kullandık. Kalan integral iki kez kısmi integrasyonla:
+İç integralde $\int_{-1}^1d\nu=2$, $\int_{-1}^1\nu^2d\nu=2/3$ kullandık. Kalan integralde atlanan işlemi açalım. $I_n=\int_1^\infty\mu^n e^{-\rho\mu}d\mu$ tanımında, üstel kısmın integrali $-e^{-\rho\mu}/\rho$'dur. Kısmi integrasyon sınır terimiyle birlikte $I_n=e^{-\rho}/\rho+(n/\rho)I_{n-1}$ verir. Sonsuzdaki terim sıfırdır; üstel azalma her sonlu kuvvete baskın gelir. Böylece:
+
+$$
+\begin{aligned}
+I_0&=\frac{e^{-\rho}}\rho,\\
+I_1&=e^{-\rho}\left(\frac1\rho+\frac1{\rho^2}\right),\\
+I_2&=e^{-\rho}\left(\frac1\rho+\frac2{\rho^2}+\frac2{\rho^3}\right),\\
+S&=\frac{\rho^3}{2}\left(I_2-\frac{I_0}{3}\right).
+\end{aligned}
+$$
+
+Son satırda $1/\rho$ terimleri $2/(3\rho)$ verir; dışarıdaki $\rho^3/2$ ile çarptığımızda:
 
 $$
 \boxed{S=e^{-\rho}\left(1+\rho+\frac{\rho^2}{3}\right)}
@@ -176,6 +187,8 @@ $$
 $$
 
 Paydadaki S'yi unutmak, normalize olmayan bir durumun enerjisini hesaplamak anlamına gelir. Aynı ihmal hem durumun olasılık yorumunu hem enerji minimumunu bozar.
+
+Örtüşme matrisinin denkleme girişini de doğrudan izleyebiliriz: $h\psi=\epsilon\psi$ denkleminde $\psi=c_A\phi_A+c_B\phi_B$ yazıp soldan $\langle A|$ ile çarparız. Sol taraf $h_{AA}c_A+h_{AB}c_B$, sağ taraf $\epsilon(c_A+Sc_B)$ olur. $\langle B|$ ile aynı işlem ikinci satırı verir. Yani sağdaki matris yeni bir etkileşim değildir; seçtiğimiz iki baz fonksiyonunun birbirine dik olmayışını taşır.
 
 Hidrojen orbitaline kendi tek merkezli Hamiltonyeni uygulandığında $-\phi/2$ çıkar. Bu bilgiyle gerekli iki yeni integrali tanımlayalım:
 

@@ -148,6 +148,19 @@ Belirli değişken değiştirme formülü için kullanabileceğimiz açık yeter
 
 Antitürevle kontrol de $[\sin(x^2)]_{-1}^{1}=\sin1-\sin1=0$ verir. Ama integralde $|2x|$ olsaydı aynı iptal olmazdı; mutlak değer yön değişiminin eksi işaretini kaldırırdı. Bu durumda $x=0$'da aralığı ayırmak gerekir. Dönüşümün uçları tek başına yeterli bilgi değildir; başlangıç integrandının zincir kuralı biçimine gerçekten uyduğunu da kontrol ederiz.
 
+Mutlak değerli örnekte gereken iki hesabı tamamlayalım. $[-1,0]$ üzerinde $|2x|=-2x$, $[0,1]$ üzerinde $|2x|=2x$ olur. İki parçada da $u=x^2$ seçersek:
+
+$$
+\begin{aligned}
+&\int_{-1}^{1}|2x|\cos(x^2)\,dx\\
+&\quad=-\int_1^0\cos u\,du+\int_0^1\cos u\,du\\
+&=2\int_0^1\cos u\,du\\
+&=2\sin1.
+\end{aligned}
+$$
+
+İlk parçanın eksi işareti mutlak değeri açmaktan, ters sınırları ise $x^2$'nin bu parçada azalmasından geldi. İkisi birlikte pozitif katkı verdi. İki uçtaki u değerleri aynı olsa bile sonuç sıfır olmadı; çünkü başlangıç ifadesinde zincir kuralının işaretli $2x$ çarpanı yerine $|2x|$ vardı. Buradaki 1 radyandır.
+
 ## 5. Kısmi integrasyon çarpım kuralını geri alır
 
 İki türevlenebilir fonksiyon $u(x)$ ve $v(x)$ için $(uv)'=u'v+uv'$ olduğunu biliyoruz. Terimlerden birini karşıya alıp integral alırsak:

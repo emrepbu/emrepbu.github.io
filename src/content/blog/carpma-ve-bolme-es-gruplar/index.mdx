@@ -77,6 +77,17 @@ Yine de bir problemin içinde sayıların neyi temsil ettiğini korumalıyız. �
 
 Aynı toplamın iki düzeni arasında geçişi elle de kurabiliriz. Üç kutudaki beşer taşı alıp her yeni kutuya, eski üç kutunun her birinden birer taş koyalım. Yeni kutuda üç taş olur; bunu beş kez yapınca bütün taşlar kullanılır. Böylece beş kutuda üçer taş elde ederiz. Hiçbir taşı iki kez saymadığımız ve geride taş bırakmadığımız için toplam korunur. Değişme özelliğinin bu modeldeki gerekçesi, iki düzen arasında taşların eksiksiz eşleştirilebilmesidir.
 
+Grupların içinde başka gruplar bulunursa da hangi nesneyi saydığımızı izleyebiliriz. Üç kutunun her birinde iki torba, her torbada dört taş olsun. Önce bir kutunun taşlarını sayarsak iki torba sekiz taş eder; üç kutu yirmi dört taş eder. Önce bütün torbaları sayarsak altı torba bulur, her birinin dört taşını sayarız:
+
+$$
+\begin{aligned}
+3\times(2\times4)&=3\times8=24,\\
+(3\times2)\times4&=6\times4=24.
+\end{aligned}
+$$
+
+Parantez, önce hangi alt hesabın yapıldığını gösterir. Taşlar ve grup sayıları aynı kaldı; yalnız sayma işini hangi ara grupta birleştirdiğimiz değişti. Çarpmanın **birleşme özelliği**, bu tür gruplamada sonucun korunmasıdır. Değişme özelliğinde çarpanların yerini değiştirmiştik; burada sıra aynıyken parantezin yeri değişti.
+
 ## 3. Bir ve Sıfırla Çarpmak
 
 Tek bir kutuda beş taş varsa toplam beş taş vardır:
@@ -276,6 +287,8 @@ Burada $17\div3=5$ yazıp duramayız; iki taşı hesaptan düşürmüş oluruz. 
 Fakat aynı on yedi santimetrelik şeridi üç kişiye eşit uzunluklarda vermek istediğimizi düşünelim. Herkese beş santimetre verdiğimizde geriye iki santimetre kalır. Şeridin bu kalan kısmını da kesip paylaşabiliriz. Bu kez her payın uzunluğu beş santimetreden biraz fazla olacaktır.
 
 Bir örneği baştan sona tamamlayalım: 23 taşı dörderli kutulara koymak istiyoruz. Beş kutu $5\times4=20$ taş alır; $23-20=3$ taş artar. Altı kutu için 24 taş gerekir, bu yüzden altıncı tam kutuyu dolduramayız. Cevap “beş tam kutu ve üç artan taş”tır. Kontrol $5\times4+3=23$ eşitliğidir. Hem toplamın geri gelmesi hem kalanın dörtten küçük olması gerekir.
+
+Soruyu “23 taşın hepsini en fazla dörder taş alan kutulara yerleştirmek için kaç kutu gerekir?” diye değiştirirsek cevap altı kutudur. Beş kutu dolu, altıncı kutu üç taşlı olur. “Kaç tam grup var?” ile “Hepsini taşımak için kaç kap gerekir?” soruları aynı bölme hesabından farklı bilgiler seçer. Kalanı yalnız yazmak yetmez; sorunun bu kalanla ne yapmamızı istediğini de belirtiriz.
 
 “Dört kutu, yedi kalan” deseydik yine $4\times4+7=23$ yazabilirdik. Fakat yedi taşın içinden bir dörtlü daha çıkar. Bu nedenle o düzen henüz bütün tam grupları ayırmamıştır. Kalanın bölenden küçük olması bir ezber ek koşul değil, gruplama işinin bitmiş olmasının ifadesidir. Nesneleri parçalamadan paketliyorsak kalan ayrıca durur; uzunluk veya su gibi bölünebilir bir miktarda ise kalan, payları daha küçük parçalara ayırarak dağıtılabilir. Hangi cevabın uygun olduğu, sayının yanında anlatılan nesneye de bağlıdır.
 

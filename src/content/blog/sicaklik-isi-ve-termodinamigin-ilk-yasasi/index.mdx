@@ -97,7 +97,7 @@ Tek atomlu klasik ideal gazda iç enerji yalnız bu öteleme katkısıyla $U=\tf
 
 ## 8. Isı kapasitesi ve sabit hacim süreci
 
-**Isı kapasitesi**, belirli süreç koşullarında sıcaklığı değiştirmek için gereken ısıyla ilişkilidir. Mol başına kapasite kullanırsak sabit hacimde $\delta Q=nC_V\,dT$ yazarız. Sabit hacim işi sıfır olduğundan ilk yasa $dU=\delta Q$ Tek atomlu ideal gaz için $C_V=\tfrac32R$ çıkar.
+**Isı kapasitesi**, belirli süreç koşullarında sıcaklığı değiştirmek için gereken ısıyla ilişkilidir. Mol başına kapasite kullanırsak sabit hacimde $\delta Q=nC_V\,dT$ yazarız. Sabit hacim işi sıfır olduğundan ilk yasa $dU=\delta Q$ verir. Tek atomlu ideal gaz için $C_V=\tfrac32R$ çıkar.
 
 Bir mol gazı sabit hacimde üç yüz kelvinden üç yüz yirmi kelvine ısıtalım. İç enerji artışı $\Delta U=(3/2)(1)(8{,}314)(20)\approx249{,}4\,\mathrm J$ olur. Hacim işi sıfırdır ve gereken ısı aynı değerdir. Basınç sıcaklıkla orantılı arttığından son basıncın ilkine oranı $320/300$ olur.
 
@@ -114,6 +114,18 @@ Bir mol tek atomlu gazın yirmi kelvinlik artışında iç enerji yine yaklaşı
 $$
 W=nRT\ln\frac{V_2}{V_1}.
 $$
+
+Logaritmanın çıkışını integralde izleyelim. İzotermal süreçte $nRT$ sabittir, fakat basınç değildir:
+
+$$
+\begin{aligned}
+W&=\int_{V_1}^{V_2}\frac{nRT}{V}\,dV\\
+&=nRT\left[\ln\frac{V}{V_1}\right]_{V_1}^{V_2}\\
+&=nRT\ln\frac{V_2}{V_1}.
+\end{aligned}
+$$
+
+Logaritmanın içinde hacim oranı yazdık; böylece birimli bir niceliğin logaritmasını almadık. Alt sınırda $\ln1=0$ olur. Genişlemede hacim oranı birden büyük olduğu için iş pozitiftir; sıkıştırmada oran birden küçük ve iş negatiftir. $p_1(V_2-V_1)$ kullanmak doğru olmaz: Gaz genişlerken basınç $1/V$ ile düşer, başlangıç basıncı bütün yol boyunca korunmaz. Logaritmalı alan hesabı bu değişimi içerir.
 
 Bir mol gaz üç yüz kelvinde hacmini iki katına çıkarırsa iş $8{,}314(300)\ln2\approx1729\,\mathrm J$ olur. Aynı miktarda ısı sisteme girer. Sıcaklığın sabit kalması ısı alışverişinin sıfır olduğunu göstermez; giren enerji yapılan işi dengeler.
 

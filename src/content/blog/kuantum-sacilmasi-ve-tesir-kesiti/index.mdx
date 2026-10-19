@@ -206,6 +206,19 @@ $ka\to0$ limitinde $1-e^{-4b}\approx4b$ kullanılır ve izotropik $4\pi|f_0|^2$ 
 
 Boyutsuz güç $g=mV_0a^2/\hbar^2$ olsun. $g=0{,}05$, $ka=1$ seçersek $|f_0|^2/a^2=2\pi g^2\approx0{,}01571$ ve $\sigma_B/a^2\approx0{,}04844$ çıkar. Bu küçük güçlü örnekte yaklaşım makuldür. $|g|$, potansiyel enerjisi ölçeğini $\hbar^2/(ma^2)$ kinetik enerji ölçeğine oranlar; yalnız enerji birimli bir sayıya “küçük” demekten daha anlamlı bir denetimdir. Sıfırdan farklı kesit elde etmek için yaklaşımın mutlaka güçlü bir bozunma üretmesi gerekmez; burada genlik güce, kesit gücün karesine bağlıdır. Güçlü çekici potansiyel, bağlanma eşiği veya rezonans yakınında ilk Born terimi güvenilir olmayabilir; yalnız $E>V_0$ karşılaştırması genel ve yeterli bir hata garantisi değildir.
 
+Şimdi Gauss sonucunu belirli bir dedektör açıklığına uygulayalım. İleri yönde yarı açısı $\alpha$ olan koni için aynı integrali yalnız $0\le\theta\le\alpha$ boyunca alırız. $b=(ka)^2$ tanımıyla, saçılmış olayların bu koniye düşen koşullu payı:
+
+$$
+\begin{aligned}
+F(\alpha)
+&=\frac{\displaystyle\int_0^\alpha e^{-2b(1-\cos\theta)}\sin\theta\,d\theta}
+{\displaystyle\int_0^\pi e^{-2b(1-\cos\theta)}\sin\theta\,d\theta}\\
+&=\frac{1-e^{-2b(1-\cos\alpha)}}{1-e^{-4b}}.
+\end{aligned}
+$$
+
+Ortak $2\pi|f_0|^2$ çarpanı sadeleşti. $ka=1$ ve $\alpha=30^\circ$ için pay yaklaşık $0{,}2351$, payda $0{,}9817$ ve $F\approx0{,}2394$ olur. Yani saçılmış olayların yaklaşık yüzde 23,9'u, bütün katı açının yalnız yüzde 6,7'sini kapsayan bu ileri koniye düşer. Bu fark ileri yığılmayı nicel olarak gösterir. $b\to0$ limitinde iki üsteli ilk derecede açmak $F\to(1-\cos\alpha)/2$ verir; izotropik geometrik kesir geri gelir. Bu koşullu oran, demetteki bütün parçacıkların yüzde 23,9'unun mutlaka saçıldığı anlamına gelmez; toplam saçılma hızını hâlâ J ve toplam kesit belirler.
+
 ## 9. Sayıdan etkileşime geri dönmek
 
 Tesir kesiti, sayımları demet şiddeti ve dedektör geometrisinden ayırır. Kuantum hesabı önce karmaşık saçılma genliğini, sonra onun akımla ilişkisini verir. Tesir kesiti tek başına sıfır ile bir arasında sınırlı bir olasılık değildir; alan birimi taşır. Saçıldığı bilinen bir parçacığın hangi yöne gittiğinin koşullu olasılığını istersek, sonlu toplam kesit için $(d\sigma/d\Omega)/\sigma$ kullanırız. Bunun bütün kürede integrali birdir. Ölçülen açısal dağılım potansiyel hakkında bilgi taşır; fakat yalnız $|f|^2$ ölçmek karmaşık fazın tamamını otomatik belirlemez.

@@ -129,6 +129,8 @@ $$
 
 Mutlak kare, $W_{nk}=W_{kn}^*$ Hermitsellik bağıntısından gelir. Pay enerji karesi, payda enerji olduğu için sonuç doğru enerji birimindedir. Temel durumda bütün diğer enerjiler daha yüksekse paydalar negatiftir; ikinci derece katkı sıfır veya negatiftir. Uyarılmış durumda aşağıdaki ve yukarıdaki seviyeler farklı işaretli katkılar verebilir.
 
+Toplamdaki $k$ etiketi, yalnız görmek istediğimiz birkaç bağlı düzeyi değil, kullandığımız tam bazın bütün diğer durumlarını tarar. Burada ayrık özbaz varsayımıyla çalıştık. Hem bağlı hem sürekli spektrumu olan bir Hamiltonyende tamlık bağıntısı, ayrık toplamın yanında uygun normalleştirmeyle sürekli durum integralleri de içerir; aynı ek katkılar ikinci derece hesabına taşınır. İncelediğimiz başlangıç düzeyinin bağlı olması, ara durumların hepsinin bağlı olmasını gerektirmez. Birkaç düzeyli yaklaşık model kuruyorsak, dışarıda bırakılan durumların etkisini ihmal ettiğimizi ayrıca belirtiriz. Aşağıdaki iki düzey modeli ise tanımı gereği yalnız iki boyutlu olduğundan bu eksik baz sorunu içermez.
+
 ## 6. Küçüklüğü doğru ölçekle karşılaştırmak
 
 Durum düzeltmesinin küçük kalması için ilgili oranlar
@@ -199,6 +201,18 @@ Grafikteki iki eğrinin büyük bağlaşımda ayrılması da aynı amaçla göst
 ## 8. Birinci enerji düzeltmesi sıfırsa hiçbir şey olmadı mı?
 
 Hayır. İki düzeyli örnekte $W_{00}=0$ olduğundan ilk enerji düzeltmesi sıfırdı ama durum ilk derecede değişti. Tam alt özdurumu $\cos\alpha|0\rangle-\sin\alpha|1\rangle$ yazabiliriz. $g\ge0$ için $\tan(2\alpha)=2g/\Delta$ ve $0\le\alpha<\pi/4$ seçilir. Küçük g'de $\alpha\simeq g/\Delta$ çıkar; ilk durum düzeltmesiyle uyuşur.
+
+Karışım açısının bağıntısını da matrisle kontrol edelim. Alt özvektörü $(\cos\alpha,-\sin\alpha)^T$, ona dik sütunu $(\sin\alpha,\cos\alpha)^T$ seçelim. H ilk sütuna uygulandığında ikinci sütun yönünde bileşen kalmamalıdır. Bu bileşen:
+
+$$
+\begin{aligned}
+0&=g(\cos^2\alpha-\sin^2\alpha)
+-\Delta\sin\alpha\cos\alpha\\
+&=g\cos(2\alpha)-\frac\Delta2\sin(2\alpha).
+\end{aligned}
+$$
+
+Seçtiğimiz dalda $\cos(2\alpha)>0$ olduğundan bölebilir ve $\tan(2\alpha)=2g/\Delta$ bulabiliriz. Ayrıca $\cos(2\alpha)=\Delta/\sqrt{\Delta^2+4g^2}$ olur. Yarım açı özdeşliği $\sin^2\alpha=[1-\cos(2\alpha)]/2$, aşağıdaki olasılık formülünün kaynağıdır. Eksi genlik, g pozitifken düşük enerjili birleşimin bağlaşım katkısını azaltmasını sağlar; bütün vektöre eksi vermekten farklı bir göreli işarettir.
 
 Eski üst baz sonucunun tam olasılığı:
 

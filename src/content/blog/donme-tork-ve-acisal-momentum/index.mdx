@@ -194,6 +194,24 @@ $$
 
 Bu karşılaştırma, yarıçapların veya kütlelerin eşit olmasından çok boyutsuz $I/(MR^2)$ oranına bağlıdır. Fakat kaymadan yuvarlanma koşulunu sağlayacak yeterli statik sürtünme bulunmalıdır. Yüzey çok kaygansa enerji hesabına bu koşulu ekleyemeyiz. Dönme ve öteleme ayrı değişkenler olarak çözülür, kayma varsa enerji başka biçimlere de aktarılabilir.
 
+### Gerekli sürtünmeyi kuvvet ve torktan bulmak
+
+Enerji hesabındaki kaymama kabulünü, düzgün dolu bir disk için sınayabiliriz. Eğim boyunca aşağıyı pozitif seçelim; açısal ivmenin pozitif yönü de aşağı yuvarlanmaya karşılık gelsin. Diskin merkezine göre ağırlık ve normal kuvvet tork üretmez. Dönmeyi hızlandıran tork, yukarı yönlü statik sürtünmenin $f_sR$ torkudur. Öteleme ve dönme denklemleri:
+
+$$
+Mg\sin\theta-f_s=Ma,
+\qquad f_sR=I_{\mathrm{KM}}\alpha.
+$$
+
+Kaymadan yuvarlanma için $a=R\alpha$ ve disk için $I_{\mathrm{KM}}=MR^2/2$ koyarsak $f_s=Ma/2$ bulunur. İlk denklem bu nedenle $Mg\sin\theta=3Ma/2$ verir; sonuçlar:
+
+$$
+a=\frac23g\sin\theta,
+\qquad f_s=\frac13Mg\sin\theta.
+$$
+
+Normal kuvvet $N=Mg\cos\theta$ olduğundan kaymama koşulu $f_s\le\mu_sN$, yani $\mu_s\ge\tan\theta/3$ olur. Örneğin $30^\circ$ eğimde gereken katsayı en az yaklaşık $0{,}192$'dir. Sürtünmenin değeri baştan $\mu_sN$ alınmadı; hareketin gerektirdiği değer bulundu, sonra yüzeyin bunu sağlayıp sağlayamadığı kontrol edildi. Burada sürtünme merkezin ilerleyişine karşı olsa da diskin dönmesini hızlandırır.
+
 Kuvvet, tork, momentum ve enerji aynı hareketin farklı yönlerini tamamlıyor. Bir sonraki yazıda merkezi bir kuvvet olan kütleçekimi inceleyeceğiz. Kuvvetin merkeze yönelmesiyle torkun sıfırlanması, yörüngelerin düzenini anlamamızda temel rol oynayacak.
 
 Bir dönme hesabında ekseni her satırda aynı tutmak, işaretler ve korunum koşulları kadar önemlidir; eksen değişirse niceliklerin tanımı da değişir.

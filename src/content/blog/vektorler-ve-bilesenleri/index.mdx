@@ -264,6 +264,15 @@ Koordinat başlangıcını taşımak da yer değiştirmeyi değiştirmez. $A$ ve
 
 Eksenleri döndürürsek aynı geometrik vektörün bileşenleri değişebilir; fakat dik eksenler ve aynı birim ölçeği kullanıldığında uzunluğu değişmez. Sağa doğru çizdiğimiz bir ok başka bir gözlemcinin çiziminde eğik durabilir. Vektörün kendisi ile onu tarif etmek için seçilen sayı listesini ayırmaya başlamamızın nedeni budur.
 
+Eksen dönmesini sayılarla görelim. Eski yatay birim yön $\mathbf e_1$, düşey birim yön $\mathbf e_2$ olsun. Yeni eksenleri saat yönünün tersine $90^\circ$ çevirirsek yeni yatay yön $\mathbf e'_1=\mathbf e_2$, yeni düşey yön $\mathbf e'_2=-\mathbf e_1$ olur. Aynı oku bu yönlerde yeniden yazalım:
+
+$$
+3\mathbf e_1+4\mathbf e_2
+=4\mathbf e'_1-3\mathbf e'_2.
+$$
+
+Dolayısıyla eski bileşenler $(3,4)$, yenileri $(4,-3)$'tür. İki norm da 5 çıkar. Ok yerinde kaldı; sayıların değişmesinin nedeni yeni eksenlere göre okunmasıdır. Oku sabit eski eksenlerde $90^\circ$ döndürseydik sonuç $(-4,3)$ olurdu. Eksenleri döndürmekle oku döndürmenin ters işaretli sonuçlarını ayırmak için, hangi nesnenin değiştiğini her hesapta belirtiriz.
+
 ### Bileşenlerden yönü geri bulurken
 
 Bir vektörün bileşenlerini bildiğimizde uzunluğunu normla bulduk. Açıyı da tanjanttan arayabiliriz, fakat bölgeyi ayrıca okumalıyız. Örneğin $\mathbf v=(-3,3\sqrt3)$ için düşey bileşenin yataya oranı $-\sqrt3$ olur. Hesap makinesindeki $\arctan(-\sqrt3)$ çıktısı $-60^\circ$'dir. Oysa vektör ikinci bölgededir; doğru standart yön açısı $120^\circ$ olmalıdır.

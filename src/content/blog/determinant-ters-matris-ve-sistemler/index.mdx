@@ -84,6 +84,22 @@ Yatay kayma matrisi $S=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ için determinant 1
 
 Genel bir çokgeni üçgenlere ayırarak alanın aynı $|\det A|$ katsayısıyla ölçeklendiğini göstermek mümkündür. Bunu belirleyen temel cebirsel özellik, iki ardışık kare matris için $\det(AB)=\det A\det B$ olmasıdır. İki boyutta bu eşitlik matris çarpımının elemanlarını $ad-bc$ ifadesine koyup açarak doğrulanır. Geometrik okuması, önce bir alan ölçeği sonra diğerini uygulayınca oranların çarpılmasıdır.
 
+Çarpım kuralının atlanan açılımını da yapalım. $A=\begin{pmatrix}a&b\\c&d\end{pmatrix}$ ve $B=\begin{pmatrix}p&q\\r&s\end{pmatrix}$ olsun. Çarpımın köşegenlerini kullanınca:
+
+$$
+\begin{aligned}
+\det(AB)
+&=(ap+br)(cq+ds)\\
+&\quad-(aq+bs)(cp+dr)\\
+&=acpq+adps+bcrq+bdrs\\
+&\quad-acpq-adqr-bcsp-bdrs\\
+&=ad(ps-qr)-bc(ps-qr)\\
+&=(ad-bc)(ps-qr).
+\end{aligned}
+$$
+
+$acpq$ ile $bdrs$ terimleri karşıt işaretlerle silindi. Geri kalan dört terimde ortak $ps-qr$ çarpanını ayırdık. Son satır tam $\det A\det B$'dir. Bu hesap için determinantlara bölmedik; matrislerden biri tekilken de geçerlidir. Örneğin ilk dönüşüm alanı sıfıra çökertmişse, sonraki doğrusal dönüşüm onu yeniden iki boyutlu bir alana açamaz: çarpımın determinantı yine sıfırdır.
+
 ## 4. Sıfır Determinantta Ne Kaybolur?
 
 $D=\begin{pmatrix}2&0\\0&1\end{pmatrix}$ için determinant 2'dir. Yatay iki kat, düşey bir kat ölçekleme alanı ikiye katlar. İlk elemanı sıfıra indirirsek:

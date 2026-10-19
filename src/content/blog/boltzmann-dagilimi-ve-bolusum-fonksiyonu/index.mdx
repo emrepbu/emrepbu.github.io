@@ -59,6 +59,18 @@ $$
 
 Buradaki sabit bütün $i$ durumları için aynıdır. Yüksek enerjili sistem durumu, banyoya daha az enerji bıraktığından genellikle daha az banyo düzeniyle eşleşir. **Boltzmann ağırlığı** dediğimiz üstel çarpan bu saymadan çıkar. Banyoyu büyük seçmek, sıcaklığının değişmesini ve açılımdaki yüksek mertebe düzeltmelerini ihmal edebilmemizi sağlar. Bu kanonik kurulumun standart çerçevesi [Tong'un istatistiksel fizik notlarında](https://davidtong.org/pdfs/teaching/statistical-physics/statphys1.pdf) verilir; aşağıdaki örnekleri kendi sayımlarımızla açacağız.
 
+Birinci mertebe açılımın ne zaman yeterli olduğunu enerji dalgalanması ölçeğinde kontrol edebiliriz. Banyonun ısı kapasitesi $C_B=\partial E_B/\partial T$ ise zincir kuralıyla:
+
+$$
+\begin{aligned}
+\frac{\partial^2 S_B}{\partial E_B^2}
+&=\frac{\partial(1/T)}{\partial T}\frac{\partial T}{\partial E_B}\\
+&=-\frac1{T^2C_B}.
+\end{aligned}
+$$
+
+Sisteme aktarılan küçük bir $\delta E$ için ihmal edilen ikinci mertebe entropi katkısı $-(\delta E)^2/(2T^2C_B)$'dir. Bunu $k_B$'ye bölünce üstel ağırlıktaki düzeltme elde edilir. Büyük $C_B$, hem $\delta T_B\simeq-\delta E/C_B$ değişimini hem bu düzeltmeyi küçültür. Burada önemli olan seçilmiş enerji sıfırına göre sayının büyüklüğü değil, sistemin alışveriş yaptığı enerji aralığıdır; açılımı dengedeki banyo enerjisi çevresinde yapmak bu ayrımı korur.
+
 ## 4. Bölüşüm fonksiyonu normalizasyon toplamıdır
 
 Kısaltma olarak $\beta=1/(k_BT)$ yazalım. $k_BT$ bir enerjidir; dolayısıyla $\beta E_i$ boyutsuzdur. Ağırlıkları olasılığa çevirmek için toplamlarına böleriz:

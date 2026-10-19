@@ -220,6 +220,17 @@ WKB bize yerel fazın integralini, genliğin akımla ilişkisini ve engel altın
 
 Düzgün bir kuyunun iki dönüm noktasında elde edilen faz kaymaları ayrıca enerji seçimine yol açar: $\int_{x_1}^{x_2}p(x)dx\approx(n+1/2)\pi\hbar$, $n=0,1,2,\ldots$. Yarım katkı iki bağlantının fazından gelir; sonsuz sert duvarın koşuluyla aynı değildir. Bu sonucu kullanmak için iki basit dönüm noktası ve aralarındaki uygun WKB bölgesi gerekir. Enerji düzeylerini seçen şey yine dalga denklemiyle sınırların birlikte tutarlı olmasıdır.
 
+Yarım katkıyı iki sınırın fazlarını karşılaştırarak takip edelim. İzinli bölgede $\theta(x)=\int_{x_1}^{x}k(s)ds$ ve toplam faz $\Theta=\int_{x_1}^{x_2}k(s)ds$ olsun. Sol dış bölgede azalan çözüme bağlanan iç dal, sabit çarpan dışında $\sin[\theta(x)+\pi/4]/\sqrt{k}$ biçimindedir. Sağdaki azalan çözüme bağlanan ise $\sin[\Theta-\theta(x)+\pi/4]/\sqrt{k}$ olur. Aynı fonksiyonu vermeleri gerekir.
+
+$u=\theta+\pi/4$ yazarsak ikinci sinüs $\sin(\Theta+\pi/2-u)$ olur. Açılımı:
+
+$$
+\sin(\Theta+\pi/2)\cos u
+-\cos(\Theta+\pi/2)\sin u
+$$
+
+şeklindedir. Birinci dal yalnız $\sin u$ içerdiğinden $\cos u$ katsayısı sıfırlanmalıdır: $\Theta+\pi/2=N\pi$. Pozitif fazlar için $N=n+1$ yazmak $\Theta=(n+1/2)\pi$ verir. Son olarak $p=\hbar k$ kullanılır. Böylece yarım sayı, kuyunun her iki ucunda azalan bir bağlı çözüm istememizin ve iki $\pi/4$ fazının birlikte sonucudur.
+
 Bu enerji koşulunu bildiğimiz [harmonik osilatörde](/blog/kuantum-harmonik-osilatoru/) deneyelim. $V=m\omega^2x^2/2$ için $\omega$ açısal frekanstır. Dönüm noktaları $\pm x_t$, $x_t=\sqrt{2E/(m\omega^2)}$ olur. Kökün içinden $m^2\omega^2$ çarpanını ayırınca:
 
 $$

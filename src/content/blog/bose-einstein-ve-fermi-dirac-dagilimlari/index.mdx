@@ -103,6 +103,18 @@ Bu karşılaştırma aynı $x$ değerinde yapılmıştır. Aynı yoğunlukta ger
 
 ## 6. Kimyasal potansiyel parçacık sayısıyla bulunur
 
+Tek yuvadan bütün gaza nasıl geçtiğimizi açık yazalım. İdeal modelde bir doluluk düzeninin enerjisi $E=\sum_r n_r\varepsilon_r$, sayısı $N=\sum_r n_r$ olduğundan üstel ağırlık ayrı yuvaların çarpımına ayrılır:
+
+$$
+\begin{aligned}
+e^{-\beta(E-\mu N)}&=\prod_r e^{-\beta n_r(\varepsilon_r-\mu)},\\
+\Xi&=\prod_r\Xi_r,\\
+\ln\Xi&=\sum_r\ln\Xi_r.
+\end{aligned}
+$$
+
+Her $n_r$ üzerinden izinli değerleri toplamak ilk satırdaki çarpımı ikinci satıra çevirir. Burada N'yi her terimde sabitlemiyoruz; bunu yapsaydık doluluklar birbirinden bağımsız toplanamazdı. Ortak durumda iki özdeş parçacığın etiketlerini değiştirmek yeni bir düzen üretmediğinden ayrıca bir $N!$ çarpanı eklemeyiz. Etkileşim enerjisi örneğin $n_rn_s$ terimleri içerirse bu çarpanlaşma bozulur; ideal gaz formüllerini değiştirmeden kullanamayız.
+
 Tek parçacık durumlarını $r$ ile etiketlersek ortalama toplam sayı $\bar N=\sum_r\bar n_r$ olur. Gerçekte kapalı bir kabın $N$ sayısını sabit tutmak istiyorsak, büyük kanonik hesabı kullanırken $\mu$'yü bu toplam $N$ olacak şekilde seçeriz. Sıcaklığı değiştirdiğimizde aynı sayıyı korumak için kimyasal potansiyel de genellikle değişir.
 
 Dolayısıyla $T$, $\mu$ ve $N$ bağımsız üç ayar değildir. Büyük kanonik yöntemde ilk ikisini seçip üçüncüyü hesaplayabiliriz; sabit sayılı deneydeyse $T$ ile $N$'yi seçip $\mu$'yü çözeriz. Büyük sistemlerde bu yöntem ortalama büyüklükler için çok kullanışlıdır. Sonlu sistemlerin dalgalanmaları veya Bose yoğunlaşmasının temel durum dalgalanmaları gibi sorularda toplulukların farkları daha dikkatli ele alınmalıdır.
@@ -152,7 +164,7 @@ $\mu$ sıfıra alttan yaklaşırken uyarılmış durumların taşıyabileceği e
 $$
 N_{\mathrm{uy}}^{\max}
 =\int_0^\infty
-\frac{D(\varepsilon)}{e^{\beta\varepsilon}-1},d\varepsilon
+\frac{D(\varepsilon)}{e^{\beta\varepsilon}-1}\,d\varepsilon
 =\frac{V}{\lambda_T^3}\zeta(3/2)
 $$
 

@@ -183,6 +183,17 @@ Kuantum koşullu entropisini $S(A|B)=S(AB)-S(B)$ ile tanımlarız. Ürün karı�
 
 Klasik kayıtlar için $H(X|Y)$, Y'nin belirli kaydı bilindiğinde X'in kalan Shannon entropilerinin ortalamasıdır ve negatif olamaz. Kuantum ifadesinde ise B henüz belirli klasik sonuca ölçülmüş olmak zorunda değildir; kuantum yan bilgi taşır. Aynı cebirsel fark bu daha geniş bağlamda negatif olabilir. Bu özellik dolanıklıkla bilgi işleme kaynaklarını anlatırken önem kazanır, fakat eksi bir belirsizlikli sıradan zar gibi yorumlanmaz.
 
+Kuantum B'yi gerçekten klasik bir kayda çevirince ne değiştiğini Bell örneğinde görelim. B üzerinde Z ölçümü yapıp sonucu Y adlı ortogonal kayıt durumunda saklayalım. B'nin yerine bu kaydı tutarsak A ile kaydın ortak durumu:
+
+$$
+\begin{aligned}
+\rho_{AY}&=\tfrac12|0\rangle\langle0|_A\otimes|0\rangle\langle0|_Y\\
+&\quad+\tfrac12|1\rangle\langle1|_A\otimes|1\rangle\langle1|_Y.
+\end{aligned}
+$$
+
+olur. Artık ortak özdeğerler $1/2,1/2,0,0$'dır; $S(AY)=1$, $S(Y)=1$ ve $S(A|Y)=0$ çıkar. Gerçekten, Y sıfırsa A sıfır saf durumunda, Y birse A bir saf durumundadır; iki koşullu entropinin ortalaması sıfırdır. Ölçüm öncesindeki $S(A|B)=-1$ değerini klasik kayıtların entropilerinin ortalaması gibi okuyamıyoruz. B'yi ölçüp klasikleştirmek, başlangıçtaki kuantum yan bilgiyi farklı bir fiziksel nesneye dönüştürdü.
+
 B üzerindeki bir ölçümü seçmek A'ya ışık hızından hızlı mesaj göndermez. Sonuç etiketi iletilmezse A'nın yerel yoğunluk matrisi aynı kalır. Dolanıklığın entropi hesabındaki rolü, kullanılabilir iletişim yolunun yerini tutmaz.
 
 ## 9. Hazırlık etiketi ile durum entropisi

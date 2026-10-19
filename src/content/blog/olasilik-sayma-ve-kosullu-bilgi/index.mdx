@@ -136,6 +136,18 @@ Bağımsızlık ile ayrıklık aynı değildir. Pozitif olasılıklı iki ayrık
 
 Üçlü kesişim de yalnız $YY$'dir ve olasılığı $1/4$'tür. Oysa üç olasılığın çarpımı $1/8$ olur. Demek ki üçünün birlikte bağımsızlığı yoktur. İlk iki atışı bildiğimizde aynı gelip gelmediklerini artık kesin biliyoruz. Bu örnek, çok sayıda olayın ortak olasılığını çarpmak için yalnız ikişer ikişer yapılan kontrollerin yeterli olmadığını gösterir.
 
+Üç olayın ortak olasılığında koşulların nasıl taşındığını aynı örnekle görebiliriz. $P(A)>0$ ve $P(A\cap B)>0$ ise koşullu tanımı iki kez kullanmak:
+
+$$
+\begin{aligned}
+&P(A\cap B\cap C)\\
+&=P(C\mid A\cap B)P(A\cap B)\\
+&=P(C\mid A\cap B)P(B\mid A)P(A)
+\end{aligned}
+$$
+
+verir. Bu, bağımsızlık gerektirmeyen çarpma kuralıdır. Buradaki para örneğinde $P(B\mid A)=1/2$ kalır. Ancak A ve B birlikte gerçekleşmişse iki atış da yazıdır; dolayısıyla $P(C\mid A\cap B)=1$ olur. Sonuç $1\cdot(1/2)\cdot(1/2)=1/4$'tür. Son çarpanı $P(C)=1/2$ yapmak, iki olayın birlikte verdiği bilgiyi atmak olurdu. Birden çok adımda her yeni olasılığın önceki **bütün gerekli koşulları** taşıması gerekir; yalnız en son olaya koşullamak da genel bir kural değildir.
+
 ## 9. Geri koymadan seçmek bağımlılık yaratır
 
 Bir kutuda üç mavi ve iki sarı top bulunsun; toplar kendi renkleri içinde de fiziksel olarak ayrı nesnelerdir. Rastgele bir top çekip geri koymadan ikinciyi çekelim. İlk çekimin mavi olasılığı $3/5$'tir. İlk mavi geldiyse kalan dört topun ikisi mavidir; ikinci mavinin koşullu olasılığı $2/4$ olur.

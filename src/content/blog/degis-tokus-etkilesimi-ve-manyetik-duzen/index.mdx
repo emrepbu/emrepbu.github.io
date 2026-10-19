@@ -127,6 +127,26 @@ $$
 
 elde edilir. Bu iki noktalı, yarı dolu Hubbard modelinin güçlü etkileşim sınırıdır. İyonlar arasında bir bağlayıcı atom üzerinden oluşan benzer dolaylı süreçler **süper değiş tokuş** adıyla incelenir. Gerçek çok orbitalli malzemelerde bağ açısı, orbital doluluğu ve başka etkileşimler işareti değiştirebilir; tek formül bütün manyetik kimyanın yerine geçmez.
 
+Buradaki “sanal” sözcüğü, enerji korunumu kısa süreliğine ihlal ediliyor demek değildir. Tam özdurum, tek doluluk ağırlığı büyük olan bir durumla küçük çift doluluk bileşenlerinin durağan birleşimidir. $4t^2/U$ katsayısını görmek için tek doluluklu singlet ile ona bağlanan normalize çift doluluk birleşimini baz seçebiliriz. Uygun baz fazıyla ilgili matris:
+
+$$
+H_s=\begin{pmatrix}0&-2t\\-2t&U\end{pmatrix}
+$$
+
+olur. İki geçiş yönünün genlikleri bu seçilmiş birleşimde toplanır. Alt özdeğer ve büyük U açılımı:
+
+$$
+\begin{aligned}
+E_s&=\frac{U-\sqrt{U^2+16t^2}}2,\\
+\sqrt{U^2+16t^2}&\simeq U+\frac{8t^2}{U},\\
+E_s&\simeq-\frac{4t^2}{U}
+\end{aligned}
+$$
+
+verir. Tripletin bu referansta enerjisi sıfır kaldığından fark pozitiftir. Böylece $J>0$ sonucu hem seçtiğimiz Heisenberg işaretiyle hem singletin alçalmasıyla tutarlıdır. Küçük oran $t/U$, ihmal edilen sonraki terimlerin kontrol parametresidir.
+
+[Georgetown'ın iki noktalı Hubbard modeli notlarında](https://site.physics.georgetown.edu/~jkf/grad_quant2/html/lecture39.html) bu enerji ayrılması tam özdeğer problemi içinde de izlenebilir.
+
 ## 8. Örnek: Geçiş genliğinden enerji ölçeğine
 
 $t=0{,}10\,\mathrm{eV}$, $U=4{,}0\,\mathrm{eV}$ seçelim. Önce yaklaşım oranını kontrol ederiz: $t/U=0{,}025\ll1$. Ardından:

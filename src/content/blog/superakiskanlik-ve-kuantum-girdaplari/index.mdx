@@ -62,6 +62,19 @@ olarak yazılır. $\epsilon/p$ birimi $\mathrm{J}/(\mathrm{kg\,m/s})=\mathrm{m/s
 
 Bu, belirtilen uyarılma kanallarının **enerjetik** sınırıdır. Engelin şekli, mevcut kusurlar ve girdap çekirdeklenmesi daha düşük hızlarda bozunma yaratabilir. [MIT'nin süperakışkanlık dersleri](https://www.mit.edu/~levitov/8514/) bu ölçütün tek başına deneysel kritik hızı belirlemediğini özellikle vurgular.
 
+$-\mathbf v\cdot\mathbf p$ teriminin kökenini, sonlu kütleli bir engelle denetleyelim. Sıvı başlangıçta dururken kütlesi $M$ olan engel $\mathbf v$ hızıyla gelsin. Sıvıda $\mathbf p$ momentumlu uyarılma oluşunca momentum korunumundan engelin son momentumu $M\mathbf v-\mathbf p$ olur. Toplam enerji değişimi:
+
+$$
+\begin{aligned}
+\Delta E&=\epsilon(p)
++\frac{|M\mathbf v-\mathbf p|^2}{2M}
+-\frac{Mv^2}{2}\\
+&=\epsilon(p)-\mathbf v\cdot\mathbf p+\frac{p^2}{2M}
+\end{aligned}
+$$
+
+çıkar. Kareyi açınca başlangıç kinetik enerjisi sadeleşir. Son pozitif terim geri tepmenin bedelidir; çok ağır engel limitinde ihmal edilir ve kullandığımız ifade geri gelir. Sıfır sıcaklıkta uyarılma üretmenin enerjiye uygun olması için engelin kaybettiği enerjinin bu bedeli karşılaması gerekir. Sonlu sıcaklıkta önceden bulunan uyarılmaların saçılması da devreye girdiğinden bu tek üretim hesabı bütün sürükleme kuvvetini belirlemez.
+
 ## 4. İdeal yoğuşmuş gazın kritik hız sorunu
 
 Etkileşmeyen gazda uyarılmalar serbest parçacık biçimindedir: $\epsilon(p)=p^2/(2m)$. O zaman $\epsilon(p)/p=p/(2m)$ olur. Momentum sıfıra yaklaşırken bu oran da sıfıra yaklaşır; dolayısıyla $v_L=0$ bulunur. Önceki yazıdaki ideal üç boyutlu gaz yine de Bose–Einstein yoğuşması gösterebiliyordu.

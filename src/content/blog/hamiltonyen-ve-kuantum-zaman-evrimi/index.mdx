@@ -157,6 +157,21 @@ Aynı örneği $x$ bazında yazarsak Hamiltonyen köşegen görünmez. Bu bazda 
 
 Buradaki boyutsuz $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ matrisine $M$ dersek $M^2=I$ olduğu için üstel serisini çift ve tek kuvvetlere ayırabiliriz. Çift kuvvetler birim matrisi, tek kuvvetler $M$ matrisini taşır. Sonuç $U=I\cos(\Omega t/2)-iM\sin(\Omega t/2)$ olur. Başlangıç $x$ bazında $(1,0)^T$ olduğunda son durum $(\cos(\Omega t/2),-i\sin(\Omega t/2))^T$ bulunur. Bileşenlerin norm kareleri önceki olasılıkları aynen verir.
 
+Üstel serisinin bu sonucu nasıl verdiğini açıkça ayıralım. $\vartheta=\Omega t/2$ kısaltmasıyla, $M^2=I$ olduğu için $M^{2r}=I$ ve $M^{2r+1}=M$ olur. Burada $r=0,1,2,\ldots$ seri indeksidir. İlk terimler:
+
+$$
+\begin{aligned}
+e^{-i\vartheta M}
+&=I-i\vartheta M-\frac{\vartheta^2}{2!}I
++\frac{i\vartheta^3}{3!}M+\cdots\\
+&=I\left(1-\frac{\vartheta^2}{2!}+\cdots\right)\\
+&\quad-iM\left(\vartheta-\frac{\vartheta^3}{3!}+\cdots\right)\\
+&=I\cos\vartheta-iM\sin\vartheta.
+\end{aligned}
+$$
+
+Çift kuvvetlerde $(-i)^{2r}=(-1)^r$, teklerde $(-i)^{2r+1}=-i(-1)^r$ kullanıldı. Üstel matrisin içindeki sıfırları tek tek üstele çevirmek bu çarpım yapısını kaybederdi. Sonuç ayrıca $\vartheta=0$ için $U=I$ verir; başlangıçta durumun değişmemesi gereken sınır da sağlanır.
+
 Bu ikinci yol, genliklerin bir bazda yalnız faz kazanırken başka bir bazda birbirine aktarılıyor gibi görünmesinin çelişki olmadığını gösterir. Ölçülebilir sonuçlar aynı kalır. Hesabın ara satırlarındaki katsayılar baz seçimine bağlıdır; gerçek olasılık tahmini, aynı durumu aynı fiziksel ölçüme bağlayarak yapılmalıdır.
 
 Bir enerji farkından frekans çıkarırken son bir birim ayrımını koruyalım. Açısal frekans $\Omega=\Delta E/\hbar$, saniyedeki çevrim sayısı ise $f=\Delta E/h$ olur. Aralarında $\Omega=2\pi f$ bağıntısı vardır. Planck sabitiyle indirgenmiş Planck sabitini aynı formülde gelişigüzel değiştirmek periyotta tam $2\pi$ çarpanı kadar hata üretir. Periyodu doğrudan $T=h/\Delta E$ ile kontrol etmek, bu hatayı yakalayan bağımsız bir adımdır.

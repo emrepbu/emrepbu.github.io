@@ -178,6 +178,17 @@ olsun. Her biri pozitif; özdeğerleri $2/3$ ve sıfırdır. Dolayısıyla proje
 
 Giriş $|+\rangle$ için $p_j=\langle+|E_j|+\rangle=(1+\cos\phi_j)/3$ bulunur: $p_0=2/3$, $p_1=p_2=1/6$. Üç farklı kayıt etiketi elde ettik; bu, kübitin üç ortogonal durumu olduğu anlamına gelmez. Yardımcı aygıtın kayıt uzayı daha geniş olabilir. Ayrıca üç sonuç bulunması, tek bir bilinmeyen kübitin tüm durum bilgisini tek denemede öğrendiğimiz anlamına gelmez.
 
+Bu üç kayıtla hangi durum bilgisini elde ettiğimizi genel bir girişte hesaplayalım. $\rho=\tfrac12\begin{pmatrix}1+z&x-iy\\x+iy&1-z\end{pmatrix}$ yazımında $x,y,z$ Bloch bileşenleri olsun. İz kuralıyla:
+
+$$
+\begin{aligned}
+p_j&=\frac13\left[1+\frac{(x-iy)e^{i\phi_j}+(x+iy)e^{-i\phi_j}}2\right]\\
+&=\frac{1+x\cos\phi_j+y\sin\phi_j}{3}.
+\end{aligned}
+$$
+
+Köşegenlerin toplamı bir olduğundan z bilgisi silindi. Örneğin $|0\rangle$ ve $|1\rangle$ farklı saf durumlar olmalarına rağmen ikisi de üç sonuca $1/3$ olasılık verir. Bu aygıtı çok sayıda aynı hazırlıkta tekrarlamak da bu ikisini ayıramaz; z hakkında ayrıca bir ölçüm gerekir. Dolayısıyla “üç kayıt” ile “üç Bloch bileşeninin tamamına duyarlı ölçüm” aynı iddia değildir. Önceki $|+\rangle$ örneğinde $x=1,y=z=0$ koymak $2/3,1/6,1/6$ sonuçlarını geri verir.
+
 ![Bloch ekvatorunda üç eşit açılı etki yönü ve artı giriş için sonuç olasılıkları.](./media/02-uc-sonuc.png)
 
 ## 8. Büyük sistemde sıradan ölçümle bağlantı

@@ -41,6 +41,21 @@ Başlangıçta kütleyi sağa on santimetre çekip durgun bırakalım. $x(0)=0{,
 
 Başlangıç konumu sıfırken pozitif hız verilseydi faz başka olurdu. Genlik ve faz, iki başlangıç bilgisini taşır. Aynı yay-kütle düzeni farklı başlangıçlarda aynı doğal frekansta fakat farklı genlik ve fazlarda salınabilir. Doğal frekans düzeneğin, başlangıç fazı seçilen hareketin özelliğidir.
 
+Genlik ve fazı genel başlangıç verilerinden bulmak için çözümü önce $x=C\cos(\omega_0t)+D\sin(\omega_0t)$ yazabiliriz. $t=0$ koymak $C=x_0$ verir. Türev alıp aynı anda değerlendirmek ise $v_0=\omega_0D$, yani $D=v_0/\omega_0$ verir. Böylece:
+
+$$
+x(t)=x_0\cos(\omega_0t)
++\frac{v_0}{\omega_0}\sin(\omega_0t).
+$$
+
+$v_0/\omega_0$ uzunluk boyutundadır; iki katsayı aynı tür niceliktir. $A\cos(\omega_0t+\phi)$ açılımıyla karşılaştırınca $A\cos\phi=x_0$ ve $-A\sin\phi=v_0/\omega_0$ bulunur. Kareleri toplamak:
+
+$$
+A=\sqrt{x_0^2+\left(\frac{v_0}{\omega_0}\right)^2}
+$$
+
+sonucunu verir. Örneğin $x_0=0$ ve $v_0>0$ için $\phi=-\pi/2$ seçimi gerekir; konum başlangıçta sıfırken hemen sonra pozitife gider. Yalnız $\cos\phi=0$ bilgisini kullanıp $+\pi/2$ seçmek başlangıç hızının yönünü ters çevirirdi. İki başlangıç koşulunu birlikte kullanmamızın nedeni budur.
+
 ## 3. Enerji nerede bulunur?
 
 İdeal salınımda toplam mekanik enerji:
@@ -137,7 +152,7 @@ $$
 A(\Omega)=\frac{F_0}{\sqrt{(k-m\Omega^2)^2+(b\Omega)^2}}
 $$
 
-olur. Faz gecikmesi için $\cos\delta=(k-m\Omega^2)/D$, $\sin\delta=b\Omega/D$ yazılabilir; $D$ paydadaki pozitif köktür. Bu iki bağıntı fazın doğru bölgesini seçer. Yalnız tanjant kullanmak, kosinüsün negatif olduğu yüksek frekans bölgesindeki işareti kaçırabilir.
+olur. Faz gecikmesi için $\cos\delta=(k-m\Omega^2)/Z$, $\sin\delta=b\Omega/Z$ yazılabilir; $Z=\sqrt{(k-m\Omega^2)^2+(b\Omega)^2}$ paydadaki pozitif köktür. Bu yeni simge, yukarıdaki sinüs katsayısı $D$ ile paydanın karışmasını önler. Bu iki bağıntı fazın doğru bölgesini seçer. Yalnız tanjant kullanmak, kosinüsün negatif olduğu yüksek frekans bölgesindeki işareti kaçırabilir.
 
 Çok yavaş zorlamada kütle kuvveti yaklaşık izler ve genlik $F_0/k$ değerine yaklaşır. Çok yüksek frekansta eylemsizlik baskındır; genlik yaklaşık $F_0/(m\Omega^2)$ olur ve hareket kuvvete neredeyse ters fazdadır. Doğal frekansta ise faz gecikmesi yarım pi radyandır. Bu farklı bölgeler, genliğin yalnız kuvvet büyüklüğüne bağlı olmadığını gösterir.
 

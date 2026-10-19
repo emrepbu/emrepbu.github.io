@@ -25,6 +25,16 @@ $A|a\rangle=a|a\rangle$ denkleminde soldaki $A$ işleç, sağdaki $a$ sayısal �
 
 Hermitliğin gerçek özdeğer vermesini kısaca görelim. Normalleştirilmiş özvektörde $\langle a|A|a\rangle=a$ olur. Bunun karmaşık eşleniği $\langle a|A^\dagger|a\rangle=a^*$'dır. Hermitlik iki ifadeyi eşitlediği için $a=a^*$ çıkar; yani sanal kısım sıfırdır. Burada kullandığımız eşlenik sırası önceki yazıdaki iç çarpım konvansiyonuyla aynıdır.
 
+Farklı sonuçlara ait özvektörlerin neden dik olduğunu da aynı Hermitlikten çıkarabiliriz. $A|a\rangle=a|a\rangle$ ve $A|b\rangle=b|b\rangle$ olsun. Gerçek $a$ için ilk eşitliğin eşlenik devriği $\langle a|A=a\langle a|$ olur. Aynı iç çarpımı iki taraftan hesaplayınca:
+
+$$
+\langle a|A|b\rangle
+=a\langle a|b\rangle
+=b\langle a|b\rangle.
+$$
+
+Dolayısıyla $(a-b)\langle a|b\rangle=0$ bulunur. $a\ne b$ ise sıfır olmayan $a-b$ sayısına bölebiliriz ve $\langle a|b\rangle=0$ çıkar. Sonuçlar farklıyken diklik zorunludur. Aynı özdeğer durumunda bu çıkarma yalnız $0=0$ verir; o özuzay içinde ortonormal bir baz seçebiliriz ama her gelişigüzel özvektör çifti zaten dik olmak zorunda değildir. Dejenerelik bölümünde neden tek bir özvektör yerine bütün özuzayı kullanacağımızın ilk işareti budur.
+
 ## 2. Özdeğerler ve ölçüm olasılıkları
 
 $A$'nın farklı özdeğerleri $a_j$, bunların normalleştirilmiş özvektörleri $|a_j\rangle$ olsun; önce her özdeğerin tek özvektör yönüyle ilişkili olduğu durumu düşünelim. Hazırlığı bu bazda $|\psi\rangle=\sum_j c_j|a_j\rangle$ diye açarsak $c_j=\langle a_j|\psi\rangle$ olur. İdeal ölçümde $a_j$ sonucunun olasılığı $|c_j|^2$'dir.

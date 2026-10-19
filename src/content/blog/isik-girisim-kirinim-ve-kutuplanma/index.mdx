@@ -123,6 +123,19 @@ $$
 
 Üstel fonksiyonun integrali alınır, iki uçtaki değerler çıkarılır ve $e^{i\beta}-e^{-i\beta}=2i\sin\beta$ kullanılır. Böylece fazları farklı küçük katkıların nasıl toplandığı tek bir ifadede görünür. Merkezde bütün katkılar aynı fazda olduğundan genlik en büyüktür.
 
+İntegraldeki ara işlemleri kısa bir değişkenle açalım: $q=k\sin\theta$ olsun; burada $q$ yalnız ters uzunluk birimli yardımcı değişkendir, elektrik yükü değildir. $q\ne0$ için:
+
+$$
+\begin{aligned}
+\int_{-a/2}^{a/2}e^{iqs}\,ds
+&=\left[\frac{e^{iqs}}{iq}\right]_{-a/2}^{a/2}\\
+&=\frac{e^{iqa/2}-e^{-iqa/2}}{iq}\\
+&=\frac{2\sin(qa/2)}{q}.
+\end{aligned}
+$$
+
+$\beta=qa/2$ olduğundan $q=2\beta/a$ yazılır; son satır $a\sin\beta/\beta$ olur. Merkezde $q=0$ için ilk integrale dönersek integrand her yerde birdir, sonuç doğrudan yarık genişliği $a$ çıkar. Böylece merkezdeki limitin bir olması yalnız bir matematik kuralı değil, bütün yarık parçalarının aynı fazla toplanmasının karşılığıdır.
+
 Şiddet genliğin mutlak değerinin karesiyle orantılıdır. Merkez şiddetine $I(0)$ dersek
 
 $$
