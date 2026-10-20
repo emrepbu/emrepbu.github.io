@@ -78,7 +78,7 @@ test('next and previous links follow physics reading order with explicit boundar
     'the-planck-length-fundamental-limit-of-spacetime',
   )
   assert.equal(last?.nextId, null)
-  assert.equal(last?.previousId, 'berry-fazi-ve-topolojik-bantlar')
+  assert.equal(last?.previousId, 'topolojik-yalitkanlar-ve-sinir-durumlari')
   assert.equal(
     getPhysicsReadingStep(last.previousId).nextId,
     'the-planck-length-fundamental-limit-of-spacetime',

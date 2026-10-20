@@ -44,6 +44,17 @@ export const PHYSICS_READING_SECTIONS = [
     ],
   },
   {
+    id: 'analitik-mekanik',
+    title: 'Lagrange, Hamilton ve korunum yasaları',
+    description:
+      'Klasik fiziğin enerji ve alan bilgisini varyasyonla birleştir; faz uzayını ve Noether teoremini kur.',
+    postIds: [
+      'lagrange-mekanigi',
+      'klasik-hamilton-mekanigi',
+      'noether-teoremi',
+    ],
+  },
+  {
     id: 'kuantuma-giris',
     title: 'Kuantuma ilk adımlar',
     description:
@@ -111,6 +122,16 @@ export const PHYSICS_READING_SECTIONS = [
     ],
   },
   {
+    id: 'adyabatik-degisim-ve-kuantum-fazi',
+    title: 'Adyabatik değişim ve kuantum fazı',
+    description:
+      'Zamana bağlı sistemlerde adyabatik koşulu, Landau–Zener geçişini ve Aharonov–Bohm etkisini incele.',
+    postIds: [
+      'adyabatik-evrim-ve-landau-zener',
+      'aharonov-bohm-etkisi',
+    ],
+  },
+  {
     id: 'olcum-ve-cevre',
     title: 'Ölçüm, çevre ve entropi',
     description:
@@ -123,14 +144,33 @@ export const PHYSICS_READING_SECTIONS = [
   },
   {
     id: 'atomlardan-katilara',
-    title: 'Klasik sınırdan atomlara ve katılara',
+    title: 'Klasik sınır, atom ve ışık',
     description:
-      'Ehrenfest teoreminden ışıkla etkileşime, moleküllere, kuantum istatistiğine ve enerji bantlarına ilerle.',
+      'Ehrenfest teoreminden spin–yörünge etkileşimine, geçiş oranlarına ve atom–ışık etkileşimine ilerle.',
     postIds: [
       'ehrenfest-teoremi-ve-klasik-sinir',
       'spin-yorunge-etkilesimi',
       'ferminin-altin-kurali',
       'atom-isik-etkilesimi-ve-secim-kurallari',
+    ],
+  },
+  {
+    id: 'fock-uzayi-ve-kuantum-isik',
+    title: 'Çok parçacıklı dil ve kuantum ışık',
+    description:
+      'İşgal sayılarından fotonlara, koherent durumlara ve nicemlenmiş atom–ışık etkileşimine ilerle.',
+    postIds: [
+      'ikinci-kuantizasyon',
+      'elektromanyetik-alanin-kuantumlastirilmasi',
+      'kuantum-optigi-ve-koherent-durumlar',
+    ],
+  },
+  {
+    id: 'cok-parcacikli-madde',
+    title: 'Çok elektronlu atomlardan katılara',
+    description:
+      'Elektron etkileşimlerinden moleküllere, kuantum istatistiğine ve enerji bantlarına ilerle.',
+    postIds: [
       'helyum-ve-elektron-etkilesimi',
       'cok-elektronlu-atomlar-ve-periyodik-tablo',
       'molekuller-ve-kuantum-baglari',
@@ -197,6 +237,16 @@ export const PHYSICS_READING_SECTIONS = [
     postIds: [
       'landau-duzeyleri-ve-kuantum-hall-etkisi',
       'berry-fazi-ve-topolojik-bantlar',
+    ],
+  },
+  {
+    id: 'topolojik-sinir-durumlari',
+    title: 'Topolojik modeller ve sınır durumları',
+    description:
+      'Berry fazı ve bant geometrisini SSH zincirinde ve topolojik yalıtkanların sınırlarında somutlaştır.',
+    postIds: [
+      'ssh-modeli-ve-uc-durumlari',
+      'topolojik-yalitkanlar-ve-sinir-durumlari',
     ],
   },
   {
@@ -278,15 +328,16 @@ export const MATH_READING_SECTIONS = [
   },
   {
     id: 'vektorler-ve-matrisler',
-    title: 'Vektörler ve matrisler',
+    title: 'Vektörler, matrisler ve simetri',
     description:
-      'Bileşenleri, izdüşümü, baz kavramını ve doğrusal dönüşümleri tanı.',
+      'Bileşenleri, baz kavramını, doğrusal dönüşümleri ve sonlu simetri gruplarını tanı.',
     postIds: [
       'vektorler-ve-bilesenleri',
       'skaler-carpim-aci-ve-izdusum',
       'dogrusal-birlesim-baz-ve-boyut',
       'matrisler-ve-dogrusal-donusumler',
       'determinant-ters-matris-ve-sistemler',
+      'grup-kurami-ve-simetriler',
     ],
   },
   {
@@ -307,27 +358,52 @@ export const MATH_READING_SECTIONS = [
   },
   {
     id: 'cok-degiskenli-analiz',
-    title: 'Karmaşık sayılar ve çok değişkenli analiz',
+    title: 'Karmaşık sayılar, alanlar ve tensörler',
     description:
-      'Karmaşık sayıları, üç boyutlu vektörleri, çok değişkenli fonksiyonları ve alanları incele.',
+      'Karmaşık sayılardan çok değişkenli analize, alan integrallerine ve tensör dönüşümlerine geç.',
     postIds: [
       'karmasik-sayilar-ve-euler-bagintisi',
       'uc-boyutta-vektorel-carpim',
       'cok-degiskenli-fonksiyonlar-ve-turev',
       'cok-katli-integraller-ve-koordinatlar',
       'vektor-alanlari-ve-integral-teoremleri',
+      'tensorler-ve-indis-hesabi',
     ],
   },
   {
     id: 'denklemler-ve-ileri-cebir',
-    title: 'Diferansiyel denklemler ve ileri cebir',
+    title: 'Diferansiyel denklemler ve sürekli simetri',
     description:
-      'Diferansiyel denklemlerle değişimi modelle; özdeğerleri ve karmaşık vektör uzaylarını öğren.',
+      'Diferansiyel denklemleri, özdeğerleri ve üniter matrisleri kur; Lie gruplarıyla sürekli simetriye geç.',
     postIds: [
       'birinci-derece-diferansiyel-denklemler',
       'ikinci-derece-diferansiyel-denklemler',
       'ozdegerler-ozvektorler-ve-kosegenlestirme',
       'karmasik-vektorler-hermit-ve-uniter-matrisler',
+      'lie-gruplari-ve-lie-cebirleri',
+    ],
+  },
+  {
+    id: 'ileri-analiz-ve-cozum-yontemleri',
+    title: 'Varyasyon ve ileri çözüm yöntemleri',
+    description:
+      'Varyasyon, kısmi diferansiyel denklemler, özel fonksiyonlar, karmaşık analiz ve Green fonksiyonlarını adımlarıyla kur.',
+    postIds: [
+      'varyasyon-hesabi-ve-euler-lagrange',
+      'kismi-diferansiyel-denklemler',
+      'sturm-liouville-ve-ozfonksiyonlar',
+      'ozel-fonksiyonlar-legendre-hermite-bessel',
+      'karmasik-analiz-ve-reziduler',
+      'green-fonksiyonlari',
+    ],
+  },
+  {
+    id: 'sureklilik-ve-topoloji',
+    title: 'Süreklilik ve topoloji',
+    description:
+      'Açık kümelerden sürekli dönüşümlere, kapalı yollara ve sarım sayısına ilerle.',
+    postIds: [
+      'topoloji-ve-sarim-sayisi',
     ],
   },
   {
